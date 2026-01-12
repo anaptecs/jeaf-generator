@@ -7,6 +7,24 @@ package com.anaptecs.spring.base.backward;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonPropertyOrder(value = { "deprecatedProperty", "successorProperty" })
+@JsonDeserialize(builder = SimpleBackwardCompatibility.Builder.class)
 public class SimpleBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedProperty".
@@ -19,7 +37,8 @@ public class SimpleBackwardCompatibility {
    */
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
-  private final String successorProperty;
+  @JsonAlias({ "deprecatedProperty" })
+  private String successorProperty;
 
   /**
    * Initialize object using the passed builder.
@@ -60,7 +79,10 @@ public class SimpleBackwardCompatibility {
   /**
    * Class implements builder to create a new instance of class <code>SimpleBackwardCompatibility</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @JsonAlias({ "deprecatedProperty" })
     private String successorProperty;
 
     /**
@@ -81,13 +103,33 @@ public class SimpleBackwardCompatibility {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new SimpleBackwardCompatibility objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new SimpleBackwardCompatibility objects. The
+     * method never returns null.
+     */
+    public static Builder newBuilder( SimpleBackwardCompatibility pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #deprecatedProperty}.<br/>
      *
      * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedProperty( String pDeprecatedProperty ) {
+    public Builder setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
       // Delegate call to setSuccessorProperty(...)
       this.setSuccessorProperty(pDeprecatedProperty);
       return this;
@@ -99,7 +141,7 @@ public class SimpleBackwardCompatibility {
      * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSuccessorProperty( String pSuccessorProperty ) {
+    public Builder setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
       // Assign value to attribute
       successorProperty = pSuccessorProperty;
       return this;
@@ -112,7 +154,9 @@ public class SimpleBackwardCompatibility {
      * @return SimpleBackwardCompatibility Created object. The method never returns null.
      */
     public SimpleBackwardCompatibility build( ) {
-      return new SimpleBackwardCompatibility(this);
+      SimpleBackwardCompatibility lObject = new SimpleBackwardCompatibility(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -123,9 +167,23 @@ public class SimpleBackwardCompatibility {
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
    */
   @Deprecated
+  @JsonGetter
+  @MyNotNullProperty
   public String getDeprecatedProperty( ) {
     // Delegate call to getSuccessorProperty(...)
     return this.getSuccessorProperty();
+  }
+
+  /**
+   * Method sets attribute {@link #deprecatedProperty}.<br/>
+   * a comment
+   *
+   * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
+   */
+  @Deprecated
+  public void setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
+    // Delegate call to setSuccessorProperty(...)
+    this.setSuccessorProperty(pDeprecatedProperty);
   }
 
   /**
@@ -133,8 +191,19 @@ public class SimpleBackwardCompatibility {
    *
    * @return {@link String} Value to which {@link #successorProperty} is set.
    */
+  @MyNotNullProperty
   public String getSuccessorProperty( ) {
     return successorProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #successorProperty}.<br/>
+   *
+   * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
+   */
+  public void setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
+    // Assign value to attribute
+    successorProperty = pSuccessorProperty;
   }
 
   @Override

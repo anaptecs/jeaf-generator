@@ -10,13 +10,19 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultiValuedHeaderBeanParam {
   /**
@@ -89,33 +95,33 @@ public class MultiValuedHeaderBeanParam {
    */
   public static final String BASE64 = "base64";
 
-  private final String[] names;
+  private String[] names;
 
-  private final int[] ints;
+  private int[] ints;
 
-  private final Double[] doubles;
+  private Double[] doubles;
 
-  private final StringCode[] codes;
+  private StringCode[] codes;
 
-  private final Set<StringCode> stringCodeList;
+  private Set<StringCode> stringCodeList;
 
-  public final LocalDate startDate;
+  public LocalDate startDate;
 
-  private final LocalDate[] dates;
+  private LocalDate[] dates;
 
-  private final Set<LocalDateTime> timestamps;
+  private Set<LocalDateTime> timestamps;
 
-  private final Calendar[] calendars;
+  private Calendar[] calendars;
 
-  private final Date[] utilDates;
+  private Date[] utilDates;
 
-  private final Timestamp[] sqlTimestamps;
+  private Timestamp[] sqlTimestamps;
 
-  private final Set<TimeUnit> timeUnits;
+  private Set<TimeUnit> timeUnits;
 
-  private final TimeUnit[] timeUnitArray;
+  private TimeUnit[] timeUnitArray;
 
-  private final byte[] base64;
+  private byte[] base64;
 
   /**
    * Initialize object using the passed builder.
@@ -128,14 +134,14 @@ public class MultiValuedHeaderBeanParam {
     ints = pBuilder.ints;
     doubles = pBuilder.doubles;
     codes = pBuilder.codes;
-    stringCodeList = (pBuilder.stringCodeList == null) ? Set.of() : Set.copyOf(pBuilder.stringCodeList);
+    stringCodeList = (pBuilder.stringCodeList == null) ? new HashSet<>() : pBuilder.stringCodeList;
     startDate = pBuilder.startDate;
     dates = pBuilder.dates;
-    timestamps = (pBuilder.timestamps == null) ? Set.of() : Set.copyOf(pBuilder.timestamps);
+    timestamps = (pBuilder.timestamps == null) ? new HashSet<>() : pBuilder.timestamps;
     calendars = pBuilder.calendars;
     utilDates = pBuilder.utilDates;
     sqlTimestamps = pBuilder.sqlTimestamps;
-    timeUnits = (pBuilder.timeUnits == null) ? Set.of() : Set.copyOf(pBuilder.timeUnits);
+    timeUnits = (pBuilder.timeUnits == null) ? new HashSet<>() : pBuilder.timeUnits;
     timeUnitArray = pBuilder.timeUnitArray;
     base64 = pBuilder.base64;
   }
@@ -166,6 +172,8 @@ public class MultiValuedHeaderBeanParam {
   /**
    * Class implements builder to create a new instance of class <code>MultiValuedHeaderBeanParam</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String[] names;
 
@@ -226,6 +234,26 @@ public class MultiValuedHeaderBeanParam {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new MultiValuedHeaderBeanParam objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new MultiValuedHeaderBeanParam objects. The method
+     * never returns null.
+     */
+    public static Builder newBuilder( MultiValuedHeaderBeanParam pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #names}.<br/>
      *
      * @param pNames Collection to which {@link #names} should be set.
@@ -249,7 +277,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pInts Value to which {@link #ints} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInts( int[] pInts ) {
+    public Builder setInts( @MyNotEmptyProperty int[] pInts ) {
       // Assign value to attribute
       if (pInts != null) {
         ints = new int[pInts.length];
@@ -304,7 +332,13 @@ public class MultiValuedHeaderBeanParam {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStringCodeList( Set<StringCode> pStringCodeList ) {
-      stringCodeList = pStringCodeList;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pStringCodeList != null) {
+        stringCodeList = new HashSet<StringCode>(pStringCodeList);
+      }
+      else {
+        stringCodeList = null;
+      }
       return this;
     }
 
@@ -362,7 +396,13 @@ public class MultiValuedHeaderBeanParam {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimestamps( Set<LocalDateTime> pTimestamps ) {
-      timestamps = pTimestamps;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pTimestamps != null) {
+        timestamps = new HashSet<LocalDateTime>(pTimestamps);
+      }
+      else {
+        timestamps = null;
+      }
       return this;
     }
 
@@ -443,7 +483,13 @@ public class MultiValuedHeaderBeanParam {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setTimeUnits( Set<TimeUnit> pTimeUnits ) {
-      timeUnits = pTimeUnits;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pTimeUnits != null) {
+        timeUnits = new HashSet<TimeUnit>(pTimeUnits);
+      }
+      else {
+        timeUnits = null;
+      }
       return this;
     }
 
@@ -523,7 +569,9 @@ public class MultiValuedHeaderBeanParam {
      * @return MultiValuedHeaderBeanParam Created object. The method never returns null.
      */
     public MultiValuedHeaderBeanParam build( ) {
-      return new MultiValuedHeaderBeanParam(this);
+      MultiValuedHeaderBeanParam lObject = new MultiValuedHeaderBeanParam(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -545,10 +593,27 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
+   * Method sets attribute {@link #names}.<br/>
+   *
+   * @param pNames Value to which {@link #names} should be set.
+   */
+  public void setNames( String[] pNames ) {
+    // Assign value to attribute
+    if (pNames != null) {
+      names = new String[pNames.length];
+      System.arraycopy(pNames, 0, names, 0, pNames.length);
+    }
+    else {
+      names = null;
+    }
+  }
+
+  /**
    * Method returns attribute {@link #ints}.<br/>
    *
    * @return int[] Value to which {@link #ints} is set.
    */
+  @MyNotEmptyProperty
   public int[] getInts( ) {
     int[] lReturnValue;
     if (ints != null) {
@@ -559,6 +624,22 @@ public class MultiValuedHeaderBeanParam {
       lReturnValue = null;
     }
     return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #ints}.<br/>
+   *
+   * @param pInts Value to which {@link #ints} should be set.
+   */
+  public void setInts( @MyNotEmptyProperty int[] pInts ) {
+    // Assign value to attribute
+    if (pInts != null) {
+      ints = new int[pInts.length];
+      System.arraycopy(pInts, 0, ints, 0, pInts.length);
+    }
+    else {
+      ints = null;
+    }
   }
 
   /**
@@ -579,6 +660,22 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
+   * Method sets attribute {@link #doubles}.<br/>
+   *
+   * @param pDoubles Value to which {@link #doubles} should be set.
+   */
+  public void setDoubles( Double[] pDoubles ) {
+    // Assign value to attribute
+    if (pDoubles != null) {
+      doubles = new Double[pDoubles.length];
+      System.arraycopy(pDoubles, 0, doubles, 0, pDoubles.length);
+    }
+    else {
+      doubles = null;
+    }
+  }
+
+  /**
    * Method returns attribute {@link #codes}.<br/>
    *
    * @return {@link StringCode[]} Value to which {@link #codes} is set.
@@ -596,13 +693,71 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
+   * Method sets attribute {@link #codes}.<br/>
+   *
+   * @param pCodes Value to which {@link #codes} should be set.
+   */
+  public void setCodes( StringCode[] pCodes ) {
+    // Assign value to attribute
+    if (pCodes != null) {
+      codes = new StringCode[pCodes.length];
+      System.arraycopy(pCodes, 0, codes, 0, pCodes.length);
+    }
+    else {
+      codes = null;
+    }
+  }
+
+  /**
    * Method returns association {@link #stringCodeList}.<br/>
    *
    * @return {@link Set<StringCode>} Value to which {@link #stringCodeList} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
   public Set<StringCode> getStringCodeList( ) {
-    return stringCodeList;
+    // Return all StringCode objects as unmodifiable collection.
+    return Collections.unmodifiableSet(stringCodeList);
+  }
+
+  /**
+   * Method adds the passed object to {@link #stringCodeList}.
+   *
+   * @param pStringCodeList Object that should be added to {@link #stringCodeList}. The parameter must not be null.
+   */
+  public void addToStringCodeList( StringCode pStringCodeList ) {
+    // Add passed object to collection of associated StringCode objects.
+    stringCodeList.add(pStringCodeList);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #stringCodeList}.
+   *
+   * @param pStringCodeList Collection with all objects that should be added to {@link #stringCodeList}. The parameter
+   * must not be null.
+   */
+  public void addToStringCodeList( Collection<StringCode> pStringCodeList ) {
+    // Add all passed objects.
+    for (StringCode lNextObject : pStringCodeList) {
+      this.addToStringCodeList(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #stringCodeList}.<br/>
+   *
+   * @param pStringCodeList Object that should be removed from {@link #stringCodeList}. The parameter must not be null.
+   */
+  public void removeFromStringCodeList( StringCode pStringCodeList ) {
+    // Remove passed object from collection of associated StringCode objects.
+    stringCodeList.remove(pStringCodeList);
+  }
+
+  /**
+   * Method removes all objects from {@link #stringCodeList}.
+   */
+  public void clearStringCodeList( ) {
+    // Remove all objects from association "stringCodeList".
+    stringCodeList.clear();
   }
 
   /**
@@ -612,6 +767,16 @@ public class MultiValuedHeaderBeanParam {
    */
   public LocalDate getStartDate( ) {
     return startDate;
+  }
+
+  /**
+   * Method sets attribute {@link #startDate}.<br/>
+   *
+   * @param pStartDate Value to which {@link #startDate} should be set.
+   */
+  public void setStartDate( LocalDate pStartDate ) {
+    // Assign value to attribute
+    startDate = pStartDate;
   }
 
   /**
@@ -632,13 +797,71 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
+   * Method sets attribute {@link #dates}.<br/>
+   *
+   * @param pDates Value to which {@link #dates} should be set.
+   */
+  public void setDates( LocalDate[] pDates ) {
+    // Assign value to attribute
+    if (pDates != null) {
+      dates = new LocalDate[pDates.length];
+      System.arraycopy(pDates, 0, dates, 0, pDates.length);
+    }
+    else {
+      dates = null;
+    }
+  }
+
+  /**
    * Method returns association {@link #timestamps}.<br/>
    *
    * @return {@link Set<LocalDateTime>} Value to which {@link #timestamps} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
   public Set<LocalDateTime> getTimestamps( ) {
-    return timestamps;
+    // Return all LocalDateTime objects as unmodifiable collection.
+    return Collections.unmodifiableSet(timestamps);
+  }
+
+  /**
+   * Method adds the passed object to {@link #timestamps}.
+   *
+   * @param pTimestamps Object that should be added to {@link #timestamps}. The parameter must not be null.
+   */
+  public void addToTimestamps( LocalDateTime pTimestamps ) {
+    // Add passed object to collection of associated LocalDateTime objects.
+    timestamps.add(pTimestamps);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #timestamps}.
+   *
+   * @param pTimestamps Collection with all objects that should be added to {@link #timestamps}. The parameter must not
+   * be null.
+   */
+  public void addToTimestamps( Collection<LocalDateTime> pTimestamps ) {
+    // Add all passed objects.
+    for (LocalDateTime lNextObject : pTimestamps) {
+      this.addToTimestamps(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #timestamps}.<br/>
+   *
+   * @param pTimestamps Object that should be removed from {@link #timestamps}. The parameter must not be null.
+   */
+  public void removeFromTimestamps( LocalDateTime pTimestamps ) {
+    // Remove passed object from collection of associated LocalDateTime objects.
+    timestamps.remove(pTimestamps);
+  }
+
+  /**
+   * Method removes all objects from {@link #timestamps}.
+   */
+  public void clearTimestamps( ) {
+    // Remove all objects from association "timestamps".
+    timestamps.clear();
   }
 
   /**
@@ -659,6 +882,22 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
+   * Method sets attribute {@link #calendars}.<br/>
+   *
+   * @param pCalendars Value to which {@link #calendars} should be set.
+   */
+  public void setCalendars( Calendar[] pCalendars ) {
+    // Assign value to attribute
+    if (pCalendars != null) {
+      calendars = new Calendar[pCalendars.length];
+      System.arraycopy(pCalendars, 0, calendars, 0, pCalendars.length);
+    }
+    else {
+      calendars = null;
+    }
+  }
+
+  /**
    * Method returns attribute {@link #utilDates}.<br/>
    *
    * @return {@link Date[]} Value to which {@link #utilDates} is set.
@@ -673,6 +912,22 @@ public class MultiValuedHeaderBeanParam {
       lReturnValue = null;
     }
     return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #utilDates}.<br/>
+   *
+   * @param pUtilDates Value to which {@link #utilDates} should be set.
+   */
+  public void setUtilDates( Date[] pUtilDates ) {
+    // Assign value to attribute
+    if (pUtilDates != null) {
+      utilDates = new Date[pUtilDates.length];
+      System.arraycopy(pUtilDates, 0, utilDates, 0, pUtilDates.length);
+    }
+    else {
+      utilDates = null;
+    }
   }
 
   /**
@@ -693,13 +948,71 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
+   * Method sets attribute {@link #sqlTimestamps}.<br/>
+   *
+   * @param pSqlTimestamps Value to which {@link #sqlTimestamps} should be set.
+   */
+  public void setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
+    // Assign value to attribute
+    if (pSqlTimestamps != null) {
+      sqlTimestamps = new Timestamp[pSqlTimestamps.length];
+      System.arraycopy(pSqlTimestamps, 0, sqlTimestamps, 0, pSqlTimestamps.length);
+    }
+    else {
+      sqlTimestamps = null;
+    }
+  }
+
+  /**
    * Method returns association {@link #timeUnits}.<br/>
    *
    * @return {@link Set<TimeUnit>} Value to which {@link #timeUnits} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
   public Set<TimeUnit> getTimeUnits( ) {
-    return timeUnits;
+    // Return all TimeUnit objects as unmodifiable collection.
+    return Collections.unmodifiableSet(timeUnits);
+  }
+
+  /**
+   * Method adds the passed object to {@link #timeUnits}.
+   *
+   * @param pTimeUnits Object that should be added to {@link #timeUnits}. The parameter must not be null.
+   */
+  public void addToTimeUnits( TimeUnit pTimeUnits ) {
+    // Add passed object to collection of associated TimeUnit objects.
+    timeUnits.add(pTimeUnits);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #timeUnits}.
+   *
+   * @param pTimeUnits Collection with all objects that should be added to {@link #timeUnits}. The parameter must not be
+   * null.
+   */
+  public void addToTimeUnits( Collection<TimeUnit> pTimeUnits ) {
+    // Add all passed objects.
+    for (TimeUnit lNextObject : pTimeUnits) {
+      this.addToTimeUnits(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #timeUnits}.<br/>
+   *
+   * @param pTimeUnits Object that should be removed from {@link #timeUnits}. The parameter must not be null.
+   */
+  public void removeFromTimeUnits( TimeUnit pTimeUnits ) {
+    // Remove passed object from collection of associated TimeUnit objects.
+    timeUnits.remove(pTimeUnits);
+  }
+
+  /**
+   * Method removes all objects from {@link #timeUnits}.
+   */
+  public void clearTimeUnits( ) {
+    // Remove all objects from association "timeUnits".
+    timeUnits.clear();
   }
 
   /**
@@ -720,6 +1033,22 @@ public class MultiValuedHeaderBeanParam {
   }
 
   /**
+   * Method sets attribute {@link #timeUnitArray}.<br/>
+   *
+   * @param pTimeUnitArray Value to which {@link #timeUnitArray} should be set.
+   */
+  public void setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
+    // Assign value to attribute
+    if (pTimeUnitArray != null) {
+      timeUnitArray = new TimeUnit[pTimeUnitArray.length];
+      System.arraycopy(pTimeUnitArray, 0, timeUnitArray, 0, pTimeUnitArray.length);
+    }
+    else {
+      timeUnitArray = null;
+    }
+  }
+
+  /**
    * Method returns attribute {@link #base64}.<br/>
    *
    * @return byte[] Value to which {@link #base64} is set.
@@ -734,6 +1063,22 @@ public class MultiValuedHeaderBeanParam {
       lReturnValue = null;
     }
     return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #base64}.<br/>
+   *
+   * @param pBase64 Value to which {@link #base64} should be set.
+   */
+  public void setBase64( byte[] pBase64 ) {
+    // Assign value to attribute
+    if (pBase64 != null) {
+      base64 = new byte[pBase64.length];
+      System.arraycopy(pBase64, 0, base64, 0, pBase64.length);
+    }
+    else {
+      base64 = null;
+    }
   }
 
   @Override

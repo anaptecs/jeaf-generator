@@ -5,12 +5,25 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 /**
  * Generic error response type that is used in all cases.
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = ErrorResponse.Builder.class)
 public class ErrorResponse {
   /**
    * Initialize object using the passed builder.
@@ -43,6 +56,8 @@ public class ErrorResponse {
   /**
    * Class implements builder to create a new instance of class <code>ErrorResponse</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Use {@link ErrorResponse#builder()} instead of private constructor to create new builder.
@@ -57,13 +72,35 @@ public class ErrorResponse {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new ErrorResponse objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ErrorResponse objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( ErrorResponse pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method creates a new instance of class ErrorResponse. The object will be initialized with the values of the
      * builder.
      *
      * @return ErrorResponse Created object. The method never returns null.
      */
     public ErrorResponse build( ) {
-      return new ErrorResponse(this);
+      ErrorResponse lObject = new ErrorResponse(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

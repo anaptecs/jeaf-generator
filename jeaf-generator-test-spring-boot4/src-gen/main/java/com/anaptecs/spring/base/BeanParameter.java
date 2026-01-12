@@ -8,6 +8,20 @@ package com.anaptecs.spring.base;
 import java.util.Locale;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = BeanParameter.Builder.class)
 public class BeanParameter {
   /**
    * Constant for the name of attribute "accessToken".
@@ -25,12 +39,12 @@ public class BeanParameter {
   @Deprecated
   public static final String OLDSTYLE = "oldStyle";
 
-  private final String accessToken;
+  private String accessToken;
 
-  private final Locale language;
+  private Locale language;
 
   @Deprecated
-  private final String oldStyle;
+  private String oldStyle;
 
   /**
    * Initialize object using the passed builder.
@@ -76,6 +90,8 @@ public class BeanParameter {
   /**
    * Class implements builder to create a new instance of class <code>BeanParameter</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String accessToken;
 
@@ -103,12 +119,32 @@ public class BeanParameter {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new BeanParameter objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new BeanParameter objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( BeanParameter pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #accessToken}.<br/>
      *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( String pAccessToken ) {
+    public Builder setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
       return this;
@@ -120,7 +156,7 @@ public class BeanParameter {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( Locale pLanguage ) {
+    public Builder setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
       return this;
@@ -133,7 +169,7 @@ public class BeanParameter {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setOldStyle( String pOldStyle ) {
+    public Builder setOldStyle( @MyNotNullProperty String pOldStyle ) {
       // Assign value to attribute
       oldStyle = pOldStyle;
       return this;
@@ -146,7 +182,9 @@ public class BeanParameter {
      * @return BeanParameter Created object. The method never returns null.
      */
     public BeanParameter build( ) {
-      return new BeanParameter(this);
+      BeanParameter lObject = new BeanParameter(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -155,8 +193,19 @@ public class BeanParameter {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @MyNotNullProperty
   public String getAccessToken( ) {
     return accessToken;
+  }
+
+  /**
+   * Method sets attribute {@link #accessToken}.<br/>
+   *
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
+   */
+  public void setAccessToken( @MyNotNullProperty String pAccessToken ) {
+    // Assign value to attribute
+    accessToken = pAccessToken;
   }
 
   /**
@@ -164,8 +213,19 @@ public class BeanParameter {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNullProperty
   public Locale getLanguage( ) {
     return language;
+  }
+
+  /**
+   * Method sets attribute {@link #language}.<br/>
+   *
+   * @param pLanguage Value to which {@link #language} should be set.
+   */
+  public void setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    // Assign value to attribute
+    language = pLanguage;
   }
 
   /**
@@ -174,8 +234,20 @@ public class BeanParameter {
    * @return {@link String} Value to which {@link #oldStyle} is set.
    */
   @Deprecated
+  @MyNotNullProperty
   public String getOldStyle( ) {
     return oldStyle;
+  }
+
+  /**
+   * Method sets attribute {@link #oldStyle}.<br/>
+   *
+   * @param pOldStyle Value to which {@link #oldStyle} should be set.
+   */
+  @Deprecated
+  public void setOldStyle( @MyNotNullProperty String pOldStyle ) {
+    // Assign value to attribute
+    oldStyle = pOldStyle;
   }
 
   @Override

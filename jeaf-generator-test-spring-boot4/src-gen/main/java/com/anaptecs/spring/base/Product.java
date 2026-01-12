@@ -7,13 +7,23 @@ package com.anaptecs.spring.base;
 
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.Size;
+
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Data type represents a product definition
@@ -21,6 +31,13 @@ import jakarta.validation.constraints.Size;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Product.Builder.class)
 public class Product implements IProduct {
   /**
    * Constant for the name of attribute "resellers".
@@ -73,7 +90,7 @@ public class Product implements IProduct {
    */
   public static final String URI = "uri";
 
-  private final Set<Reseller> resellers;
+  private Set<Reseller> resellers;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -81,13 +98,13 @@ public class Product implements IProduct {
   private transient boolean resellersBackReferenceInitialized;
 
   @Size(min = 12, max = Integer.MAX_VALUE)
-  private final String name;
+  private String name;
 
   /**
    * Image describing the product.
    */
   @Size(min = 1024, max = 32768)
-  private final byte[] image;
+  private byte[] image;
 
   /**
    * <br/>
@@ -96,14 +113,14 @@ public class Product implements IProduct {
    * <li><code>https://www.company.com/products/1345-345</code></li>
    * </ul>
    */
-  private final URL link;
+  private URL link;
 
   private final UUID productID;
 
   @Size(min = 7, max = 42)
-  private final Set<CurrencyCode> supportedCurrencies;
+  private Set<CurrencyCode> supportedCurrencies;
 
-  private final Set<ProductCode> productCodes;
+  private Set<ProductCode> productCodes;
 
   /**
    * <br/>
@@ -116,15 +133,15 @@ public class Product implements IProduct {
    * </ul>
    */
   @Deprecated
-  private final String description;
+  private String description;
 
-  private final transient Set<Sortiment> sortiments;
+  private transient Set<Sortiment> sortiments;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
    */
-  private final String uri;
+  private String uri;
 
   /**
    * Initialize object using the passed builder.
@@ -133,7 +150,7 @@ public class Product implements IProduct {
    */
   protected Product( Builder pBuilder ) {
     // Read attribute values from builder.
-    resellers = (pBuilder.resellers == null) ? Set.of() : Set.copyOf(pBuilder.resellers);
+    resellers = (pBuilder.resellers == null) ? new HashSet<>() : pBuilder.resellers;
     // As association is bidirectional we also have to set it in the other direction.
     for (Reseller lNext : resellers) {
       lNext.addToProducts((Product) this);
@@ -144,8 +161,8 @@ public class Product implements IProduct {
     image = pBuilder.image;
     link = pBuilder.link;
     productID = pBuilder.productID;
-    supportedCurrencies = (pBuilder.supportedCurrencies == null) ? Set.of() : Set.copyOf(pBuilder.supportedCurrencies);
-    productCodes = (pBuilder.productCodes == null) ? Set.of() : Set.copyOf(pBuilder.productCodes);
+    supportedCurrencies = (pBuilder.supportedCurrencies == null) ? new HashSet<>() : pBuilder.supportedCurrencies;
+    productCodes = (pBuilder.productCodes == null) ? new HashSet<>() : pBuilder.productCodes;
     description = pBuilder.description;
     sortiments = new HashSet<>();
     uri = pBuilder.uri;
@@ -196,6 +213,8 @@ public class Product implements IProduct {
   /**
    * Class implements builder to create a new instance of class <code>Product</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private Set<Reseller> resellers;
 
@@ -267,13 +286,39 @@ public class Product implements IProduct {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Product objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Product objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( Product pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #resellers}.<br/>
      *
      * @param pResellers Collection to which {@link #resellers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setResellers( Set<Reseller> pResellers ) {
-      resellers = pResellers;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pResellers != null) {
+        resellers = new HashSet<Reseller>(pResellers);
+      }
+      else {
+        resellers = null;
+      }
       return this;
     }
 
@@ -299,7 +344,7 @@ public class Product implements IProduct {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public Builder setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -329,7 +374,7 @@ public class Product implements IProduct {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLink( URL pLink ) {
+    public Builder setLink( @MyNotNullProperty URL pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;
@@ -341,7 +386,7 @@ public class Product implements IProduct {
      * @param pProductID Value to which {@link #productID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProductID( UUID pProductID ) {
+    public Builder setProductID( @MyNotNullProperty UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
       return this;
@@ -353,8 +398,14 @@ public class Product implements IProduct {
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSupportedCurrencies( Set<CurrencyCode> pSupportedCurrencies ) {
-      supportedCurrencies = pSupportedCurrencies;
+    public Builder setSupportedCurrencies( @MyNotEmptyProperty Set<CurrencyCode> pSupportedCurrencies ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pSupportedCurrencies != null) {
+        supportedCurrencies = new HashSet<CurrencyCode>(pSupportedCurrencies);
+      }
+      else {
+        supportedCurrencies = null;
+      }
       return this;
     }
 
@@ -365,7 +416,7 @@ public class Product implements IProduct {
      * may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToSupportedCurrencies( CurrencyCode... pSupportedCurrencies ) {
+    public Builder addToSupportedCurrencies( @MyNotEmptyProperty CurrencyCode... pSupportedCurrencies ) {
       if (pSupportedCurrencies != null) {
         if (supportedCurrencies == null) {
           supportedCurrencies = new HashSet<CurrencyCode>();
@@ -381,8 +432,14 @@ public class Product implements IProduct {
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProductCodes( Set<ProductCode> pProductCodes ) {
-      productCodes = pProductCodes;
+    public Builder setProductCodes( @MyNotEmptyProperty Set<ProductCode> pProductCodes ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pProductCodes != null) {
+        productCodes = new HashSet<ProductCode>(pProductCodes);
+      }
+      else {
+        productCodes = null;
+      }
       return this;
     }
 
@@ -392,7 +449,7 @@ public class Product implements IProduct {
      * @param pProductCodes Array of objects that should be added to {@link #productCodes}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToProductCodes( ProductCode... pProductCodes ) {
+    public Builder addToProductCodes( @MyNotEmptyProperty ProductCode... pProductCodes ) {
       if (pProductCodes != null) {
         if (productCodes == null) {
           productCodes = new HashSet<ProductCode>();
@@ -409,7 +466,7 @@ public class Product implements IProduct {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDescription( String pDescription ) {
+    public Builder setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
       return this;
@@ -421,7 +478,7 @@ public class Product implements IProduct {
      * @param pUri Value to which {@link #uri} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUri( String pUri ) {
+    public Builder setUri( @MyNotNullProperty String pUri ) {
       // Assign value to attribute
       uri = pUri;
       return this;
@@ -433,7 +490,9 @@ public class Product implements IProduct {
      * @return Product Created object. The method never returns null.
      */
     public Product build( ) {
-      return new Product(this);
+      Product lObject = new Product(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -452,7 +511,64 @@ public class Product implements IProduct {
         lNext.addToProducts((Product) this);
       }
     }
-    return resellers;
+    // Return all Reseller objects as unmodifiable collection.
+    return Collections.unmodifiableSet(resellers);
+  }
+
+  /**
+   * Method adds the passed object to {@link #resellers}.
+   *
+   * @param pResellers Object that should be added to {@link #resellers}. The parameter must not be null.
+   */
+  public void addToResellers( Reseller pResellers ) {
+    // Add passed object to collection of associated Reseller objects.
+    resellers.add(pResellers);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pResellers != null && pResellers.getProducts().contains(this) == false) {
+      pResellers.addToProducts((Product) this);
+    }
+  }
+
+  /**
+   * Method adds all passed objects to {@link #resellers}.
+   *
+   * @param pResellers Collection with all objects that should be added to {@link #resellers}. The parameter must not be
+   * null.
+   */
+  public void addToResellers( Collection<Reseller> pResellers ) {
+    // Add all passed objects.
+    for (Reseller lNextObject : pResellers) {
+      this.addToResellers(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #resellers}.<br/>
+   *
+   * @param pResellers Object that should be removed from {@link #resellers}. The parameter must not be null.
+   */
+  public void removeFromResellers( Reseller pResellers ) {
+    // Remove passed object from collection of associated Reseller objects.
+    resellers.remove(pResellers);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pResellers.getProducts().contains(this) == true) {
+      pResellers.removeFromProducts((Product) this);
+    }
+  }
+
+  /**
+   * Method removes all objects from {@link #resellers}.
+   */
+  public void clearResellers( ) {
+    // Remove all objects from association "resellers".
+    Collection<Reseller> lResellers = new HashSet<Reseller>(resellers);
+    Iterator<Reseller> lIterator = lResellers.iterator();
+    while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
+      this.removeFromResellers(lIterator.next());
+    }
   }
 
   /**
@@ -460,8 +576,19 @@ public class Product implements IProduct {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNullProperty
   public String getName( ) {
     return name;
+  }
+
+  /**
+   * Method sets attribute {@link #name}.<br/>
+   *
+   * @param pName Value to which {@link #name} should be set.
+   */
+  public void setName( @MyNotNullProperty String pName ) {
+    // Assign value to attribute
+    name = pName;
   }
 
   /**
@@ -483,12 +610,40 @@ public class Product implements IProduct {
   }
 
   /**
+   * Method sets attribute {@link #image}.<br/>
+   * Image describing the product.
+   *
+   * @param pImage Value to which {@link #image} should be set.
+   */
+  public void setImage( byte[] pImage ) {
+    // Assign value to attribute
+    if (pImage != null) {
+      image = new byte[pImage.length];
+      System.arraycopy(pImage, 0, image, 0, pImage.length);
+    }
+    else {
+      image = null;
+    }
+  }
+
+  /**
    * Method returns attribute {@link #link}.<br/>
    *
    * @return {@link URL} Value to which {@link #link} is set.
    */
+  @MyNotNullProperty
   public URL getLink( ) {
     return link;
+  }
+
+  /**
+   * Method sets attribute {@link #link}.<br/>
+   *
+   * @param pLink Value to which {@link #link} should be set.
+   */
+  public void setLink( @MyNotNullProperty URL pLink ) {
+    // Assign value to attribute
+    link = pLink;
   }
 
   /**
@@ -496,6 +651,7 @@ public class Product implements IProduct {
    *
    * @return {@link UUID} Value to which {@link #productID} is set.
    */
+  @MyNotNullProperty
   public UUID getProductID( ) {
     return productID;
   }
@@ -506,8 +662,53 @@ public class Product implements IProduct {
    * @return {@link Set<CurrencyCode>} Value to which {@link #supportedCurrencies} is set. The method never returns null
    * and the returned collection is unmodifiable.
    */
+  @MyNotEmptyProperty
   public Set<CurrencyCode> getSupportedCurrencies( ) {
-    return supportedCurrencies;
+    // Return all CurrencyCode objects as unmodifiable collection.
+    return Collections.unmodifiableSet(supportedCurrencies);
+  }
+
+  /**
+   * Method adds the passed object to {@link #supportedCurrencies}.
+   *
+   * @param pSupportedCurrencies Object that should be added to {@link #supportedCurrencies}. The parameter must not be
+   * null.
+   */
+  public void addToSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
+    // Add passed object to collection of associated CurrencyCode objects.
+    supportedCurrencies.add(pSupportedCurrencies);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #supportedCurrencies}.
+   *
+   * @param pSupportedCurrencies Collection with all objects that should be added to {@link #supportedCurrencies}. The
+   * parameter must not be null.
+   */
+  public void addToSupportedCurrencies( Collection<CurrencyCode> pSupportedCurrencies ) {
+    // Add all passed objects.
+    for (CurrencyCode lNextObject : pSupportedCurrencies) {
+      this.addToSupportedCurrencies(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #supportedCurrencies}.<br/>
+   *
+   * @param pSupportedCurrencies Object that should be removed from {@link #supportedCurrencies}. The parameter must not
+   * be null.
+   */
+  public void removeFromSupportedCurrencies( CurrencyCode pSupportedCurrencies ) {
+    // Remove passed object from collection of associated CurrencyCode objects.
+    supportedCurrencies.remove(pSupportedCurrencies);
+  }
+
+  /**
+   * Method removes all objects from {@link #supportedCurrencies}.
+   */
+  public void clearSupportedCurrencies( ) {
+    // Remove all objects from association "supportedCurrencies".
+    supportedCurrencies.clear();
   }
 
   /**
@@ -516,8 +717,51 @@ public class Product implements IProduct {
    * @return {@link Set<ProductCode>} Value to which {@link #productCodes} is set. The method never returns null and the
    * returned collection is unmodifiable.
    */
+  @MyNotEmptyProperty
   public Set<ProductCode> getProductCodes( ) {
-    return productCodes;
+    // Return all ProductCode objects as unmodifiable collection.
+    return Collections.unmodifiableSet(productCodes);
+  }
+
+  /**
+   * Method adds the passed object to {@link #productCodes}.
+   *
+   * @param pProductCodes Object that should be added to {@link #productCodes}. The parameter must not be null.
+   */
+  public void addToProductCodes( ProductCode pProductCodes ) {
+    // Add passed object to collection of associated ProductCode objects.
+    productCodes.add(pProductCodes);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #productCodes}.
+   *
+   * @param pProductCodes Collection with all objects that should be added to {@link #productCodes}. The parameter must
+   * not be null.
+   */
+  public void addToProductCodes( Collection<ProductCode> pProductCodes ) {
+    // Add all passed objects.
+    for (ProductCode lNextObject : pProductCodes) {
+      this.addToProductCodes(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #productCodes}.<br/>
+   *
+   * @param pProductCodes Object that should be removed from {@link #productCodes}. The parameter must not be null.
+   */
+  public void removeFromProductCodes( ProductCode pProductCodes ) {
+    // Remove passed object from collection of associated ProductCode objects.
+    productCodes.remove(pProductCodes);
+  }
+
+  /**
+   * Method removes all objects from {@link #productCodes}.
+   */
+  public void clearProductCodes( ) {
+    // Remove all objects from association "productCodes".
+    productCodes.clear();
   }
 
   /**
@@ -526,8 +770,20 @@ public class Product implements IProduct {
    * @return {@link String} Value to which {@link #description} is set.
    */
   @Deprecated
+  @MyNotNullProperty
   public String getDescription( ) {
     return description;
+  }
+
+  /**
+   * Method sets attribute {@link #description}.<br/>
+   *
+   * @param pDescription Value to which {@link #description} should be set.
+   */
+  @Deprecated
+  public void setDescription( @MyNotNullProperty String pDescription ) {
+    // Assign value to attribute
+    description = pDescription;
   }
 
   /**
@@ -552,12 +808,59 @@ public class Product implements IProduct {
   }
 
   /**
+   * Method adds all passed objects to {@link #sortiments}.
+   *
+   * @param pSortiments Collection with all objects that should be added to {@link #sortiments}. The parameter must not
+   * be null.
+   */
+  void addToSortiments( Collection<Sortiment> pSortiments ) {
+    // Add all passed objects.
+    for (Sortiment lNextObject : pSortiments) {
+      this.addToSortiments(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #sortiments}.<br/>
+   *
+   * @param pSortiments Object that should be removed from {@link #sortiments}. The parameter must not be null.
+   */
+  void removeFromSortiments( Sortiment pSortiments ) {
+    // Remove passed object from collection of associated Sortiment objects.
+    sortiments.remove(pSortiments);
+  }
+
+  /**
+   * Method removes all objects from {@link #sortiments}.
+   */
+  void clearSortiments( ) {
+    // Remove all objects from association "sortiments".
+    Collection<Sortiment> lSortiments = new HashSet<Sortiment>(sortiments);
+    Iterator<Sortiment> lIterator = lSortiments.iterator();
+    while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
+      this.removeFromSortiments(lIterator.next());
+    }
+  }
+
+  /**
    * Method returns attribute {@link #uri}.<br/>
    *
    * @return {@link String} Value to which {@link #uri} is set.
    */
+  @MyNotNullProperty
   public String getUri( ) {
     return uri;
+  }
+
+  /**
+   * Method sets attribute {@link #uri}.<br/>
+   *
+   * @param pUri Value to which {@link #uri} should be set.
+   */
+  public void setUri( @MyNotNullProperty String pUri ) {
+    // Assign value to attribute
+    uri = pUri;
   }
 
   @Override

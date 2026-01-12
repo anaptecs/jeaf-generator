@@ -6,12 +6,28 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = ChildBB.ChildBBBuilderImpl.class)
 public class ChildBB extends ChildB {
   /**
    * Constant for the name of attribute "childBBAttribute".
@@ -42,33 +58,33 @@ public class ChildBB extends ChildB {
   @Deprecated
   public static final String DEPRECATEDARRAY = "deprecatedArray";
 
-  private final Long childBBAttribute;
+  private Long childBBAttribute;
 
   @Deprecated
-  private final int deprecatedAttribute;
+  private int deprecatedAttribute;
 
   @Deprecated
-  private final Set<ChildB> deprecatedBs;
+  private Set<ChildB> deprecatedBs;
 
   @Deprecated
-  private final ParentClass deprecatedParent;
+  private ParentClass deprecatedParent;
 
   @Deprecated
   @Size(min = 0, max = 4711)
-  private final byte[] deprecatedArray;
+  private byte[] deprecatedArray;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ChildBB( Builder pBuilder ) {
+  protected ChildBB( ChildBBBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
     childBBAttribute = pBuilder.childBBAttribute;
     deprecatedAttribute = pBuilder.deprecatedAttribute;
-    deprecatedBs = (pBuilder.deprecatedBs == null) ? Set.of() : Set.copyOf(pBuilder.deprecatedBs);
+    deprecatedBs = (pBuilder.deprecatedBs == null) ? new HashSet<>() : pBuilder.deprecatedBs;
     deprecatedParent = pBuilder.deprecatedParent;
     deprecatedArray = pBuilder.deprecatedArray;
   }
@@ -76,10 +92,10 @@ public class ChildBB extends ChildB {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildBB objects.
+   * @return {@link ChildBBBuilder} New builder that can be used to create new ChildBB objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ChildBBBuilder<?, ?> builder( ) {
+    return new ChildBBBuilderImpl();
   }
 
   /**
@@ -105,7 +121,10 @@ public class ChildBB extends ChildB {
   /**
    * Class implements builder to create a new instance of class <code>ChildBB</code>.
    */
-  public static class Builder extends ChildB.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ChildBBBuilder<T extends ChildBB, B extends ChildBBBuilder<T, B>>
+      extends ChildBBuilder<T, B> {
     private Long childBBAttribute;
 
     @Deprecated
@@ -124,14 +143,14 @@ public class ChildBB extends ChildB {
     /**
      * Use {@link ChildBB#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ChildBBBuilder( ) {
       super();
     }
 
     /**
      * Use {@link ChildBB#builder(ChildBB)} instead of private constructor to create new builder.
      */
-    protected Builder( ChildBB pObject ) {
+    protected ChildBBBuilder( ChildBB pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -144,130 +163,85 @@ public class ChildBB extends ChildB {
     }
 
     /**
-     * Method sets attribute {@link #parentAttribute}.<br/>
-     *
-     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setParentAttribute( String pParentAttribute ) {
-      // Call super class implementation.
-      super.setParentAttribute(pParentAttribute);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #childBAttribute}.<br/>
-     *
-     * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setChildBAttribute( boolean[] pChildBAttribute ) {
-      // Call super class implementation.
-      super.setChildBAttribute(pChildBAttribute);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #composition}.<br/>
-     *
-     * @param pComposition Collection to which {@link #composition} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setComposition( Set<ParentClass> pComposition ) {
-      // Call super class implementation.
-      super.setComposition(pComposition);
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #composition}.<br/>
-     *
-     * @param pComposition Array of objects that should be added to {@link #composition}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
-     */
-    public Builder addToComposition( ParentClass... pComposition ) {
-      // Call super class implementation.
-      super.addToComposition(pComposition);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #childBBAttribute}.<br/>
      *
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildBBAttribute( Long pChildBBAttribute ) {
+    public B setChildBBAttribute( @MyNotNullProperty Long pChildBBAttribute ) {
       // Assign value to attribute
       childBBAttribute = pChildBBAttribute;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #deprecatedAttribute}.<br/>
      *
      * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedAttribute( int pDeprecatedAttribute ) {
+    public B setDeprecatedAttribute( int pDeprecatedAttribute ) {
       // Assign value to attribute
       deprecatedAttribute = pDeprecatedAttribute;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #deprecatedBs}.<br/>
      *
      * @param pDeprecatedBs Collection to which {@link #deprecatedBs} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
-      deprecatedBs = pDeprecatedBs;
-      return this;
+    public B setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pDeprecatedBs != null) {
+        deprecatedBs = new HashSet<ChildB>(pDeprecatedBs);
+      }
+      else {
+        deprecatedBs = null;
+      }
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #deprecatedBs}.<br/>
      *
      * @param pDeprecatedBs Array of objects that should be added to {@link #deprecatedBs}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
-    public Builder addToDeprecatedBs( ChildB... pDeprecatedBs ) {
+    public B addToDeprecatedBs( ChildB... pDeprecatedBs ) {
       if (pDeprecatedBs != null) {
         if (deprecatedBs == null) {
           deprecatedBs = new HashSet<ChildB>();
         }
         deprecatedBs.addAll(Arrays.asList(pDeprecatedBs));
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #deprecatedParent}.<br/>
      *
      * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedParent( ParentClass pDeprecatedParent ) {
+    public B setDeprecatedParent( ParentClass pDeprecatedParent ) {
       deprecatedParent = pDeprecatedParent;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #deprecatedArray}.<br/>
      *
      * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    public Builder setDeprecatedArray( byte[] pDeprecatedArray ) {
+    public B setDeprecatedArray( byte[] pDeprecatedArray ) {
       // Assign value to attribute
       if (pDeprecatedArray != null) {
         deprecatedArray = new byte[pDeprecatedArray.length];
@@ -276,7 +250,7 @@ public class ChildBB extends ChildB {
       else {
         deprecatedArray = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
@@ -284,8 +258,27 @@ public class ChildBB extends ChildB {
      *
      * @return ChildBB Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ChildBBBuilderImpl extends ChildBBBuilder<ChildBB, ChildBBBuilderImpl> {
+    protected ChildBBBuilderImpl( ) {
+    }
+
+    protected ChildBBBuilderImpl( ChildBB pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ChildBBBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public ChildBB build( ) {
-      return new ChildBB(this);
+      ChildBB lObject = new ChildBB(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -294,8 +287,19 @@ public class ChildBB extends ChildB {
    *
    * @return {@link Long} Value to which {@link #childBBAttribute} is set.
    */
+  @MyNotNullProperty
   public Long getChildBBAttribute( ) {
     return childBBAttribute;
+  }
+
+  /**
+   * Method sets attribute {@link #childBBAttribute}.<br/>
+   *
+   * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
+   */
+  public void setChildBBAttribute( @MyNotNullProperty Long pChildBBAttribute ) {
+    // Assign value to attribute
+    childBBAttribute = pChildBBAttribute;
   }
 
   /**
@@ -309,6 +313,17 @@ public class ChildBB extends ChildB {
   }
 
   /**
+   * Method sets attribute {@link #deprecatedAttribute}.<br/>
+   *
+   * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
+   */
+  @Deprecated
+  public void setDeprecatedAttribute( int pDeprecatedAttribute ) {
+    // Assign value to attribute
+    deprecatedAttribute = pDeprecatedAttribute;
+  }
+
+  /**
    * Method returns association {@link #deprecatedBs}.<br/>
    *
    * @return {@link Set<ChildB>} Value to which {@link #deprecatedBs} is set. The method never returns null and the
@@ -316,7 +331,53 @@ public class ChildBB extends ChildB {
    */
   @Deprecated
   public Set<ChildB> getDeprecatedBs( ) {
-    return deprecatedBs;
+    // Return all ChildB objects as unmodifiable collection.
+    return Collections.unmodifiableSet(deprecatedBs);
+  }
+
+  /**
+   * Method adds the passed object to {@link #deprecatedBs}.
+   *
+   * @param pDeprecatedBs Object that should be added to {@link #deprecatedBs}. The parameter must not be null.
+   */
+  @Deprecated
+  public void addToDeprecatedBs( ChildB pDeprecatedBs ) {
+    // Add passed object to collection of associated ChildB objects.
+    deprecatedBs.add(pDeprecatedBs);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #deprecatedBs}.
+   *
+   * @param pDeprecatedBs Collection with all objects that should be added to {@link #deprecatedBs}. The parameter must
+   * not be null.
+   */
+  @Deprecated
+  public void addToDeprecatedBs( Collection<ChildB> pDeprecatedBs ) {
+    // Add all passed objects.
+    for (ChildB lNextObject : pDeprecatedBs) {
+      this.addToDeprecatedBs(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #deprecatedBs}.<br/>
+   *
+   * @param pDeprecatedBs Object that should be removed from {@link #deprecatedBs}. The parameter must not be null.
+   */
+  @Deprecated
+  public void removeFromDeprecatedBs( ChildB pDeprecatedBs ) {
+    // Remove passed object from collection of associated ChildB objects.
+    deprecatedBs.remove(pDeprecatedBs);
+  }
+
+  /**
+   * Method removes all objects from {@link #deprecatedBs}.
+   */
+  @Deprecated
+  public void clearDeprecatedBs( ) {
+    // Remove all objects from association "deprecatedBs".
+    deprecatedBs.clear();
   }
 
   /**
@@ -327,6 +388,24 @@ public class ChildBB extends ChildB {
   @Deprecated
   public ParentClass getDeprecatedParent( ) {
     return deprecatedParent;
+  }
+
+  /**
+   * Method sets association {@link #deprecatedParent}.<br/>
+   *
+   * @param pDeprecatedParent Value to which {@link #deprecatedParent} should be set.
+   */
+  @Deprecated
+  public void setDeprecatedParent( ParentClass pDeprecatedParent ) {
+    deprecatedParent = pDeprecatedParent;
+  }
+
+  /**
+   * Method unsets {@link #deprecatedParent}.
+   */
+  @Deprecated
+  public final void unsetDeprecatedParent( ) {
+    deprecatedParent = null;
   }
 
   /**
@@ -345,6 +424,23 @@ public class ChildBB extends ChildB {
       lReturnValue = null;
     }
     return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #deprecatedArray}.<br/>
+   *
+   * @param pDeprecatedArray Value to which {@link #deprecatedArray} should be set.
+   */
+  @Deprecated
+  public void setDeprecatedArray( byte[] pDeprecatedArray ) {
+    // Assign value to attribute
+    if (pDeprecatedArray != null) {
+      deprecatedArray = new byte[pDeprecatedArray.length];
+      System.arraycopy(pDeprecatedArray, 0, deprecatedArray, 0, pDeprecatedArray.length);
+    }
+    else {
+      deprecatedArray = null;
+    }
   }
 
   @Override
@@ -453,9 +549,10 @@ public class ChildBB extends ChildB {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildBB objects. The method never returns null.
+   * @return {@link ChildBBBuilder} New builder that can be used to create new ChildBB objects. The method never returns
+   * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ChildBBBuilder<?, ?> toBuilder( ) {
+    return new ChildBBBuilderImpl(this);
   }
 }

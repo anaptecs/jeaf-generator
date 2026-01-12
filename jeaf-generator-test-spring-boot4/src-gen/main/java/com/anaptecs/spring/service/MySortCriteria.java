@@ -14,6 +14,14 @@ public class MySortCriteria extends MySortCriteriaBase {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  MySortCriteria( SortOrder pSortOrder, MySortProperty pSortProperty ) {
+    super(pSortOrder, pSortProperty);
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new MySortCriteria objects.
@@ -38,6 +46,26 @@ public class MySortCriteria extends MySortCriteriaBase {
      */
     protected Builder( MySortCriteria pObject ) {
       super(pObject);
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new MySortCriteria objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( MySortCriteria pObject ) {
+      return new Builder(pObject);
     }
   }
 

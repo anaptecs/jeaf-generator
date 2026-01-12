@@ -7,20 +7,34 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = DerivedClassImpl.DerivedClassImplBuilderImpl.class)
 public class DerivedClassImpl extends AbtractWithDerivedProperty {
   /**
    * Constant for the name of attribute "derivedProperty".
    */
   public static final String DERIVEDPROPERTY = "derivedProperty";
 
-  private final String derivedProperty;
+  private String derivedProperty;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected DerivedClassImpl( Builder pBuilder ) {
+  protected DerivedClassImpl( DerivedClassImplBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -30,10 +44,10 @@ public class DerivedClassImpl extends AbtractWithDerivedProperty {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new DerivedClassImpl objects.
+   * @return {@link DerivedClassImplBuilder} New builder that can be used to create new DerivedClassImpl objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static DerivedClassImplBuilder<?, ?> builder( ) {
+    return new DerivedClassImplBuilderImpl();
   }
 
   /**
@@ -53,20 +67,23 @@ public class DerivedClassImpl extends AbtractWithDerivedProperty {
   /**
    * Class implements builder to create a new instance of class <code>DerivedClassImpl</code>.
    */
-  public static class Builder extends AbtractWithDerivedProperty.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class DerivedClassImplBuilder<T extends DerivedClassImpl, B extends DerivedClassImplBuilder<T, B>>
+      extends AbtractWithDerivedPropertyBuilder<T, B> {
     private String derivedProperty;
 
     /**
      * Use {@link DerivedClassImpl#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected DerivedClassImplBuilder( ) {
       super();
     }
 
     /**
      * Use {@link DerivedClassImpl#builder(DerivedClassImpl)} instead of private constructor to create new builder.
      */
-    protected Builder( DerivedClassImpl pObject ) {
+    protected DerivedClassImplBuilder( DerivedClassImpl pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -78,12 +95,12 @@ public class DerivedClassImpl extends AbtractWithDerivedProperty {
      * Method sets attribute {@link #derivedProperty}.<br/>
      *
      * @param pDerivedProperty Value to which {@link #derivedProperty} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDerivedProperty( String pDerivedProperty ) {
+    public B setDerivedProperty( @MyNotNullProperty String pDerivedProperty ) {
       // Assign value to attribute
       derivedProperty = pDerivedProperty;
-      return this;
+      return this.self();
     }
 
     /**
@@ -92,8 +109,28 @@ public class DerivedClassImpl extends AbtractWithDerivedProperty {
      *
      * @return DerivedClassImpl Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class DerivedClassImplBuilderImpl
+      extends DerivedClassImplBuilder<DerivedClassImpl, DerivedClassImplBuilderImpl> {
+    protected DerivedClassImplBuilderImpl( ) {
+    }
+
+    protected DerivedClassImplBuilderImpl( DerivedClassImpl pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected DerivedClassImplBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public DerivedClassImpl build( ) {
-      return new DerivedClassImpl(this);
+      DerivedClassImpl lObject = new DerivedClassImpl(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -102,9 +139,20 @@ public class DerivedClassImpl extends AbtractWithDerivedProperty {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+  @MyNotNullProperty
   @Override
   public String getDerivedProperty( ) {
     return derivedProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #derivedProperty}.<br/>
+   *
+   * @param pDerivedProperty Value to which {@link #derivedProperty} should be set.
+   */
+  public void setDerivedProperty( @MyNotNullProperty String pDerivedProperty ) {
+    // Assign value to attribute
+    derivedProperty = pDerivedProperty;
   }
 
   @Override
@@ -167,10 +215,10 @@ public class DerivedClassImpl extends AbtractWithDerivedProperty {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new DerivedClassImpl objects. The method never
-   * returns null.
+   * @return {@link DerivedClassImplBuilder} New builder that can be used to create new DerivedClassImpl objects. The
+   * method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public DerivedClassImplBuilder<?, ?> toBuilder( ) {
+    return new DerivedClassImplBuilderImpl(this);
   }
 }

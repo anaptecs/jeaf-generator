@@ -7,6 +7,17 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public abstract class MySortCriteriaBase {
   /**
    * Constant for the name of attribute "sortOrder".
@@ -18,9 +29,9 @@ public abstract class MySortCriteriaBase {
    */
   public static final String SORTPROPERTY = "sortProperty";
 
-  private final SortOrder sortOrder;
+  private SortOrder sortOrder;
 
-  private final MySortProperty sortProperty;
+  private MySortProperty sortProperty;
 
   /**
    * Initialize object using the passed builder.
@@ -34,9 +45,19 @@ public abstract class MySortCriteriaBase {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  MySortCriteriaBase( SortOrder pSortOrder, MySortProperty pSortProperty ) {
+    sortOrder = pSortOrder;
+    sortProperty = pSortProperty;
+  }
+
+  /**
    * Class implements builder to create a new instance of class MySortCriteria. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private SortOrder sortOrder;
 
@@ -65,7 +86,7 @@ public abstract class MySortCriteriaBase {
      * @param pSortOrder Value to which {@link #sortOrder} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSortOrder( SortOrder pSortOrder ) {
+    public BuilderBase setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
       sortOrder = pSortOrder;
       return this;
     }
@@ -76,7 +97,7 @@ public abstract class MySortCriteriaBase {
      * @param pSortProperty Value to which {@link #sortProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setSortProperty( MySortProperty pSortProperty ) {
+    public BuilderBase setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
       sortProperty = pSortProperty;
       return this;
     }
@@ -88,7 +109,9 @@ public abstract class MySortCriteriaBase {
      * @return MySortCriteria Created object. The method never returns null.
      */
     public MySortCriteria build( ) {
-      return new MySortCriteria(this);
+      MySortCriteria lObject = new MySortCriteria(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -97,8 +120,25 @@ public abstract class MySortCriteriaBase {
    *
    * @return {@link SortOrder} Value to which {@link #sortOrder} is set.
    */
+  @MyNotNullProperty
   public SortOrder getSortOrder( ) {
     return sortOrder;
+  }
+
+  /**
+   * Method sets association {@link #sortOrder}.<br/>
+   *
+   * @param pSortOrder Value to which {@link #sortOrder} should be set.
+   */
+  public void setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
+    sortOrder = pSortOrder;
+  }
+
+  /**
+   * Method unsets {@link #sortOrder}.
+   */
+  public final void unsetSortOrder( ) {
+    sortOrder = null;
   }
 
   /**
@@ -106,8 +146,39 @@ public abstract class MySortCriteriaBase {
    *
    * @return {@link MySortProperty} Value to which {@link #sortProperty} is set.
    */
+  @MyNotNullProperty
   public MySortProperty getSortProperty( ) {
     return sortProperty;
+  }
+
+  /**
+   * Method sets association {@link #sortProperty}.<br/>
+   *
+   * @param pSortProperty Value to which {@link #sortProperty} should be set.
+   */
+  public void setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
+    sortProperty = pSortProperty;
+  }
+
+  /**
+   * Method unsets {@link #sortProperty}.
+   */
+  public final void unsetSortProperty( ) {
+    sortProperty = null;
+  }
+
+  /**
+   * Convenience method to create new instance of class MySortCriteria.
+   *
+   *
+   * @param pSortOrder Value to which {@link #sortOrder} should be set.
+   *
+   * @param pSortProperty Value to which {@link #sortProperty} should be set.
+   *
+   * @return {@link MySortCriteria}
+   */
+  public static MySortCriteria of( SortOrder pSortOrder, MySortProperty pSortProperty ) {
+    return new MySortCriteria(pSortOrder, pSortProperty);
   }
 
   @Override

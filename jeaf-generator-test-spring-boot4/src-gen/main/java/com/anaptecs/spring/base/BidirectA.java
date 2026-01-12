@@ -5,11 +5,27 @@
  */
 package com.anaptecs.spring.base;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = BidirectA.Builder.class)
 public class BidirectA {
   /**
    * Constant for the name of attribute "transientBs".
@@ -26,9 +42,9 @@ public class BidirectA {
    */
   public static final String TRANSIENTCHILD = "transientChild";
 
-  private final transient Set<BidirectB> transientBs;
+  private transient Set<BidirectB> transientBs;
 
-  private final BidirectA parent;
+  private BidirectA parent;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -80,6 +96,8 @@ public class BidirectA {
   /**
    * Class implements builder to create a new instance of class <code>BidirectA</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private BidirectA parent;
 
@@ -100,12 +118,32 @@ public class BidirectA {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new BidirectA objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new BidirectA objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( BidirectA pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #parent}.<br/>
      *
      * @param pParent Value to which {@link #parent} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParent( BidirectA pParent ) {
+    public Builder setParent( @MyNotNullProperty BidirectA pParent ) {
       parent = pParent;
       return this;
     }
@@ -116,7 +154,9 @@ public class BidirectA {
      * @return BidirectA Created object. The method never returns null.
      */
     public BidirectA build( ) {
-      return new BidirectA(this);
+      BidirectA lObject = new BidirectA(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -142,10 +182,47 @@ public class BidirectA {
   }
 
   /**
+   * Method adds all passed objects to {@link #transientBs}.
+   *
+   * @param pTransientBs Collection with all objects that should be added to {@link #transientBs}. The parameter must
+   * not be null.
+   */
+  void addToTransientBs( Collection<BidirectB> pTransientBs ) {
+    // Add all passed objects.
+    for (BidirectB lNextObject : pTransientBs) {
+      this.addToTransientBs(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #transientBs}.<br/>
+   *
+   * @param pTransientBs Object that should be removed from {@link #transientBs}. The parameter must not be null.
+   */
+  void removeFromTransientBs( BidirectB pTransientBs ) {
+    // Remove passed object from collection of associated BidirectB objects.
+    transientBs.remove(pTransientBs);
+  }
+
+  /**
+   * Method removes all objects from {@link #transientBs}.
+   */
+  void clearTransientBs( ) {
+    // Remove all objects from association "transientBs".
+    Collection<BidirectB> lTransientBs = new HashSet<BidirectB>(transientBs);
+    Iterator<BidirectB> lIterator = lTransientBs.iterator();
+    while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
+      this.removeFromTransientBs(lIterator.next());
+    }
+  }
+
+  /**
    * Method returns association {@link #parent}.<br/>
    *
    * @return {@link BidirectA} Value to which {@link #parent} is set.
    */
+  @MyNotNullProperty
   public BidirectA getParent( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -157,10 +234,42 @@ public class BidirectA {
   }
 
   /**
+   * Method sets association {@link #parent}.<br/>
+   *
+   * @param pParent Value to which {@link #parent} should be set.
+   */
+  public void setParent( @MyNotNullProperty BidirectA pParent ) {
+    // Release already referenced object before setting a new association.
+    if (parent != null) {
+      parent.unsetTransientChild();
+    }
+    parent = pParent;
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pParent != null && this.equals(pParent.getTransientChild()) == false) {
+      pParent.setTransientChild((BidirectA) this);
+    }
+  }
+
+  /**
+   * Method unsets {@link #parent}.
+   */
+  public final void unsetParent( ) {
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    BidirectA lBidirectA = parent;
+    parent = null;
+    if (lBidirectA != null && this.equals(lBidirectA.getTransientChild()) == true) {
+      lBidirectA.unsetTransientChild();
+    }
+  }
+
+  /**
    * Method returns association {@link #transientChild}.<br/>
    *
    * @return {@link BidirectA} Value to which {@link #transientChild} is set.
    */
+  @MyNotNullProperty
   public BidirectA getTransientChild( ) {
     return transientChild;
   }
@@ -170,8 +279,19 @@ public class BidirectA {
    *
    * @param pTransientChild Value to which {@link #transientChild} should be set.
    */
-  void setTransientChild( BidirectA pTransientChild ) {
+  void setTransientChild( @MyNotNullProperty BidirectA pTransientChild ) {
+    // Release already referenced object before setting a new association.
+    if (transientChild != null) {
+      transientChild.unsetParent();
+    }
     transientChild = pTransientChild;
+  }
+
+  /**
+   * Method unsets {@link #transientChild}.
+   */
+  final void unsetTransientChild( ) {
+    transientChild = null;
   }
 
   @Override

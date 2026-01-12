@@ -7,9 +7,25 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Booking.Builder.class)
 public class Booking {
   /**
    * Constant for the name of attribute "bookingID".
@@ -26,11 +42,11 @@ public class Booking {
    */
   public static final String INVENTORIES = "inventories";
 
-  private final BookingID bookingID;
+  private BookingID bookingID;
 
-  private final String customerName;
+  private String customerName;
 
-  private final List<InventoryType> inventories;
+  private List<InventoryType> inventories;
 
   /**
    * Initialize object using the passed builder.
@@ -41,7 +57,7 @@ public class Booking {
     // Read attribute values from builder.
     bookingID = pBuilder.bookingID;
     customerName = pBuilder.customerName;
-    inventories = (pBuilder.inventories == null) ? List.of() : List.copyOf(pBuilder.inventories);
+    inventories = (pBuilder.inventories == null) ? new ArrayList<>() : pBuilder.inventories;
   }
 
   /**
@@ -76,6 +92,8 @@ public class Booking {
   /**
    * Class implements builder to create a new instance of class <code>Booking</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private BookingID bookingID;
 
@@ -102,12 +120,32 @@ public class Booking {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Booking objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Booking objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( Booking pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #bookingID}.<br/>
      *
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingID( BookingID pBookingID ) {
+    public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       bookingID = pBookingID;
       return this;
     }
@@ -118,7 +156,7 @@ public class Booking {
      * @param pCustomerName Value to which {@link #customerName} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCustomerName( String pCustomerName ) {
+    public Builder setCustomerName( @MyNotNullProperty String pCustomerName ) {
       // Assign value to attribute
       customerName = pCustomerName;
       return this;
@@ -131,7 +169,13 @@ public class Booking {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setInventories( List<InventoryType> pInventories ) {
-      inventories = pInventories;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pInventories != null) {
+        inventories = new ArrayList<InventoryType>(pInventories);
+      }
+      else {
+        inventories = null;
+      }
       return this;
     }
 
@@ -174,7 +218,9 @@ public class Booking {
      * @return Booking Created object. The method never returns null.
      */
     public Booking build( ) {
-      return new Booking(this);
+      Booking lObject = new Booking(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -183,8 +229,25 @@ public class Booking {
    *
    * @return {@link BookingID} Value to which {@link #bookingID} is set.
    */
+  @MyNotNullProperty
   public BookingID getBookingID( ) {
     return bookingID;
+  }
+
+  /**
+   * Method sets association {@link #bookingID}.<br/>
+   *
+   * @param pBookingID Value to which {@link #bookingID} should be set.
+   */
+  public void setBookingID( @MyNotNullProperty BookingID pBookingID ) {
+    bookingID = pBookingID;
+  }
+
+  /**
+   * Method unsets {@link #bookingID}.
+   */
+  public final void unsetBookingID( ) {
+    bookingID = null;
   }
 
   /**
@@ -192,8 +255,19 @@ public class Booking {
    *
    * @return {@link String} Value to which {@link #customerName} is set.
    */
+  @MyNotNullProperty
   public String getCustomerName( ) {
     return customerName;
+  }
+
+  /**
+   * Method sets attribute {@link #customerName}.<br/>
+   *
+   * @param pCustomerName Value to which {@link #customerName} should be set.
+   */
+  public void setCustomerName( @MyNotNullProperty String pCustomerName ) {
+    // Assign value to attribute
+    customerName = pCustomerName;
   }
 
   /**
@@ -203,7 +277,49 @@ public class Booking {
    * the returned collection is unmodifiable.
    */
   public List<InventoryType> getInventories( ) {
-    return inventories;
+    // Return all InventoryType objects as unmodifiable collection.
+    return Collections.unmodifiableList(inventories);
+  }
+
+  /**
+   * Method adds the passed object to {@link #inventories}.
+   *
+   * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
+   */
+  public void addToInventories( InventoryType pInventories ) {
+    // Add passed object to collection of associated InventoryType objects.
+    inventories.add(pInventories);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #inventories}.
+   *
+   * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
+   * not be null.
+   */
+  public void addToInventories( Collection<InventoryType> pInventories ) {
+    // Add all passed objects.
+    for (InventoryType lNextObject : pInventories) {
+      this.addToInventories(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #inventories}.<br/>
+   *
+   * @param pInventories Object that should be removed from {@link #inventories}. The parameter must not be null.
+   */
+  public void removeFromInventories( InventoryType pInventories ) {
+    // Remove passed object from collection of associated InventoryType objects.
+    inventories.remove(pInventories);
+  }
+
+  /**
+   * Method removes all objects from {@link #inventories}.
+   */
+  public void clearInventories( ) {
+    // Remove all objects from association "inventories".
+    inventories.clear();
   }
 
   @Override

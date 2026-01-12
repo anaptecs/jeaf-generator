@@ -7,9 +7,28 @@ package com.anaptecs.spring.base.backward;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonPropertyOrder(value = { "deprecatedLinks", "newLinks", "oldSingleLink", "newSingleLink" })
+@JsonDeserialize(builder = SimpleAssociationBackwardCompatibility.Builder.class)
 public class SimpleAssociationBackwardCompatibility {
   /**
    * Constant for the name of attribute "deprecatedLinks".
@@ -33,9 +52,11 @@ public class SimpleAssociationBackwardCompatibility {
    */
   public static final String NEWSINGLELINK = "newSingleLink";
 
-  private final List<SimpleBackwardCompatibility> newLinks;
+  @JsonAlias({ "deprecatedLinks" })
+  private List<SimpleBackwardCompatibility> newLinks;
 
-  private final SimpleBackwardCompatibility newSingleLink;
+  @JsonAlias({ "oldSingleLink" })
+  private SimpleBackwardCompatibility newSingleLink;
 
   /**
    * Initialize object using the passed builder.
@@ -44,7 +65,7 @@ public class SimpleAssociationBackwardCompatibility {
    */
   protected SimpleAssociationBackwardCompatibility( Builder pBuilder ) {
     // Read attribute values from builder.
-    newLinks = (pBuilder.newLinks == null) ? List.of() : List.copyOf(pBuilder.newLinks);
+    newLinks = (pBuilder.newLinks == null) ? new ArrayList<>() : pBuilder.newLinks;
     newSingleLink = pBuilder.newSingleLink;
   }
 
@@ -71,9 +92,13 @@ public class SimpleAssociationBackwardCompatibility {
   /**
    * Class implements builder to create a new instance of class <code>SimpleAssociationBackwardCompatibility</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @JsonAlias({ "deprecatedLinks" })
     private List<SimpleBackwardCompatibility> newLinks;
 
+    @JsonAlias({ "oldSingleLink" })
     private SimpleBackwardCompatibility newSingleLink;
 
     /**
@@ -93,6 +118,27 @@ public class SimpleAssociationBackwardCompatibility {
         this.setNewLinks(pObject.newLinks);
         this.setNewSingleLink(pObject.newSingleLink);
       }
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new SimpleAssociationBackwardCompatibility
+     * objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new SimpleAssociationBackwardCompatibility
+     * objects. The method never returns null.
+     */
+    public static Builder newBuilder( SimpleAssociationBackwardCompatibility pObject ) {
+      return new Builder(pObject);
     }
 
     /**
@@ -131,7 +177,13 @@ public class SimpleAssociationBackwardCompatibility {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setNewLinks( List<SimpleBackwardCompatibility> pNewLinks ) {
-      newLinks = pNewLinks;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pNewLinks != null) {
+        newLinks = new ArrayList<SimpleBackwardCompatibility>(pNewLinks);
+      }
+      else {
+        newLinks = null;
+      }
       return this;
     }
 
@@ -182,7 +234,9 @@ public class SimpleAssociationBackwardCompatibility {
      * @return SimpleAssociationBackwardCompatibility Created object. The method never returns null.
      */
     public SimpleAssociationBackwardCompatibility build( ) {
-      return new SimpleAssociationBackwardCompatibility(this);
+      SimpleAssociationBackwardCompatibility lObject = new SimpleAssociationBackwardCompatibility(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -194,9 +248,58 @@ public class SimpleAssociationBackwardCompatibility {
    * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
    */
   @Deprecated
+  @JsonGetter
   public List<SimpleBackwardCompatibility> getDeprecatedLinks( ) {
     // Delegate call to getNewLinks(...)
     return this.getNewLinks();
+  }
+
+  /**
+   * Method adds the passed object to {@link #deprecatedLinks}.
+   *
+   * @param pDeprecatedLinks Object that should be added to {@link #deprecatedLinks}. The parameter must not be null.
+   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
+   */
+  @Deprecated
+  public void addToDeprecatedLinks( SimpleBackwardCompatibility pDeprecatedLinks ) {
+    // Delegate call to addToNewLinks(...)
+    this.addToNewLinks(pDeprecatedLinks);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #deprecatedLinks}.
+   *
+   * @param pDeprecatedLinks Collection with all objects that should be added to {@link #deprecatedLinks}. The parameter
+   * must not be null.
+   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
+   */
+  @Deprecated
+  public void addToDeprecatedLinks( Collection<SimpleBackwardCompatibility> pDeprecatedLinks ) {
+    // Add all passed objects.
+    for (SimpleBackwardCompatibility lNextObject : pDeprecatedLinks) {
+      this.addToDeprecatedLinks(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #deprecatedLinks}.<br/>
+   *
+   * @param pDeprecatedLinks Object that should be removed from {@link #deprecatedLinks}. The parameter must not be
+   * null.
+   */
+  @Deprecated
+  public void removeFromDeprecatedLinks( SimpleBackwardCompatibility pDeprecatedLinks ) {
+    // Delegate call to removeFromNewLinks(...)
+    this.removeFromNewLinks(pDeprecatedLinks);
+  }
+
+  /**
+   * Method removes all objects from {@link #deprecatedLinks}.
+   */
+  @Deprecated
+  public void clearDeprecatedLinks( ) {
+    // Delegate call to clearNewLinks()
+    this.clearNewLinks();
   }
 
   /**
@@ -206,7 +309,49 @@ public class SimpleAssociationBackwardCompatibility {
    * null and the returned collection is unmodifiable.
    */
   public List<SimpleBackwardCompatibility> getNewLinks( ) {
-    return newLinks;
+    // Return all SimpleBackwardCompatibility objects as unmodifiable collection.
+    return Collections.unmodifiableList(newLinks);
+  }
+
+  /**
+   * Method adds the passed object to {@link #newLinks}.
+   *
+   * @param pNewLinks Object that should be added to {@link #newLinks}. The parameter must not be null.
+   */
+  public void addToNewLinks( SimpleBackwardCompatibility pNewLinks ) {
+    // Add passed object to collection of associated SimpleBackwardCompatibility objects.
+    newLinks.add(pNewLinks);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #newLinks}.
+   *
+   * @param pNewLinks Collection with all objects that should be added to {@link #newLinks}. The parameter must not be
+   * null.
+   */
+  public void addToNewLinks( Collection<SimpleBackwardCompatibility> pNewLinks ) {
+    // Add all passed objects.
+    for (SimpleBackwardCompatibility lNextObject : pNewLinks) {
+      this.addToNewLinks(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #newLinks}.<br/>
+   *
+   * @param pNewLinks Object that should be removed from {@link #newLinks}. The parameter must not be null.
+   */
+  public void removeFromNewLinks( SimpleBackwardCompatibility pNewLinks ) {
+    // Remove passed object from collection of associated SimpleBackwardCompatibility objects.
+    newLinks.remove(pNewLinks);
+  }
+
+  /**
+   * Method removes all objects from {@link #newLinks}.
+   */
+  public void clearNewLinks( ) {
+    // Remove all objects from association "newLinks".
+    newLinks.clear();
   }
 
   /**
@@ -215,9 +360,30 @@ public class SimpleAssociationBackwardCompatibility {
    * @return {@link SimpleBackwardCompatibility} Value to which {@link #oldSingleLink} is set.
    */
   @Deprecated
+  @JsonGetter
   public SimpleBackwardCompatibility getOldSingleLink( ) {
     // Delegate call to getNewSingleLink(...)
     return this.getNewSingleLink();
+  }
+
+  /**
+   * Method sets association {@link #oldSingleLink}.<br/>
+   *
+   * @param pOldSingleLink Value to which {@link #oldSingleLink} should be set.
+   */
+  @Deprecated
+  public void setOldSingleLink( SimpleBackwardCompatibility pOldSingleLink ) {
+    // Delegate call to setNewSingleLink(...)
+    this.setNewSingleLink(pOldSingleLink);
+  }
+
+  /**
+   * Method unsets {@link #oldSingleLink}.
+   */
+  @Deprecated
+  public final void unsetOldSingleLink( ) {
+    // Delegate call to unsetNewSingleLink()
+    this.unsetNewSingleLink();
   }
 
   /**
@@ -227,6 +393,22 @@ public class SimpleAssociationBackwardCompatibility {
    */
   public SimpleBackwardCompatibility getNewSingleLink( ) {
     return newSingleLink;
+  }
+
+  /**
+   * Method sets association {@link #newSingleLink}.<br/>
+   *
+   * @param pNewSingleLink Value to which {@link #newSingleLink} should be set.
+   */
+  public void setNewSingleLink( SimpleBackwardCompatibility pNewSingleLink ) {
+    newSingleLink = pNewSingleLink;
+  }
+
+  /**
+   * Method unsets {@link #newSingleLink}.
+   */
+  public final void unsetNewSingleLink( ) {
+    newSingleLink = null;
   }
 
   @Override

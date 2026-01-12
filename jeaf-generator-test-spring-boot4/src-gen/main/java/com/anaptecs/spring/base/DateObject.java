@@ -12,6 +12,20 @@ import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = DateObject.Builder.class)
 public class DateObject {
   /**
    * Constant for the name of attribute "localTime".
@@ -50,17 +64,17 @@ public class DateObject {
    * <li><code>12:07</code></li>
    * </ul>
    */
-  private final LocalTime localTime;
+  private LocalTime localTime;
 
-  private final LocalDate localDate;
+  private LocalDate localDate;
 
-  private final LocalDateTime localDateTime;
+  private LocalDateTime localDateTime;
 
-  private final Calendar calendar;
+  private Calendar calendar;
 
-  private final Date sqlDate;
+  private Date sqlDate;
 
-  private final java.util.Date utilDate;
+  private java.util.Date utilDate;
 
   /**
    * Initialize object using the passed builder.
@@ -119,6 +133,8 @@ public class DateObject {
   /**
    * Class implements builder to create a new instance of class <code>DateObject</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <br/>
@@ -161,12 +177,32 @@ public class DateObject {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new DateObject objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new DateObject objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( DateObject pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #localTime}.<br/>
      *
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalTime( LocalTime pLocalTime ) {
+    public Builder setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
       return this;
@@ -178,7 +214,7 @@ public class DateObject {
      * @param pLocalDate Value to which {@link #localDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDate( LocalDate pLocalDate ) {
+    public Builder setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
       // Assign value to attribute
       localDate = pLocalDate;
       return this;
@@ -190,7 +226,7 @@ public class DateObject {
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalDateTime( LocalDateTime pLocalDateTime ) {
+    public Builder setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
       return this;
@@ -202,7 +238,7 @@ public class DateObject {
      * @param pCalendar Value to which {@link #calendar} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCalendar( Calendar pCalendar ) {
+    public Builder setCalendar( @MyNotNullProperty Calendar pCalendar ) {
       // Assign value to attribute
       calendar = pCalendar;
       return this;
@@ -214,7 +250,7 @@ public class DateObject {
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSqlDate( Date pSqlDate ) {
+    public Builder setSqlDate( @MyNotNullProperty Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
       return this;
@@ -226,7 +262,7 @@ public class DateObject {
      * @param pUtilDate Value to which {@link #utilDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setUtilDate( java.util.Date pUtilDate ) {
+    public Builder setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;
       return this;
@@ -238,7 +274,9 @@ public class DateObject {
      * @return DateObject Created object. The method never returns null.
      */
     public DateObject build( ) {
-      return new DateObject(this);
+      DateObject lObject = new DateObject(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -247,8 +285,19 @@ public class DateObject {
    *
    * @return {@link LocalTime} Value to which {@link #localTime} is set.
    */
+  @MyNotNullProperty
   public LocalTime getLocalTime( ) {
     return localTime;
+  }
+
+  /**
+   * Method sets attribute {@link #localTime}.<br/>
+   *
+   * @param pLocalTime Value to which {@link #localTime} should be set.
+   */
+  public void setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
+    // Assign value to attribute
+    localTime = pLocalTime;
   }
 
   /**
@@ -256,8 +305,19 @@ public class DateObject {
    *
    * @return {@link LocalDate} Value to which {@link #localDate} is set.
    */
+  @MyNotNullProperty
   public LocalDate getLocalDate( ) {
     return localDate;
+  }
+
+  /**
+   * Method sets attribute {@link #localDate}.<br/>
+   *
+   * @param pLocalDate Value to which {@link #localDate} should be set.
+   */
+  public void setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
+    // Assign value to attribute
+    localDate = pLocalDate;
   }
 
   /**
@@ -265,8 +325,19 @@ public class DateObject {
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
+  @MyNotNullProperty
   public LocalDateTime getLocalDateTime( ) {
     return localDateTime;
+  }
+
+  /**
+   * Method sets attribute {@link #localDateTime}.<br/>
+   *
+   * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
+   */
+  public void setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
+    // Assign value to attribute
+    localDateTime = pLocalDateTime;
   }
 
   /**
@@ -274,8 +345,19 @@ public class DateObject {
    *
    * @return {@link Calendar} Value to which {@link #calendar} is set.
    */
+  @MyNotNullProperty
   public Calendar getCalendar( ) {
     return calendar;
+  }
+
+  /**
+   * Method sets attribute {@link #calendar}.<br/>
+   *
+   * @param pCalendar Value to which {@link #calendar} should be set.
+   */
+  public void setCalendar( @MyNotNullProperty Calendar pCalendar ) {
+    // Assign value to attribute
+    calendar = pCalendar;
   }
 
   /**
@@ -283,8 +365,19 @@ public class DateObject {
    *
    * @return {@link Date} Value to which {@link #sqlDate} is set.
    */
+  @MyNotNullProperty
   public Date getSqlDate( ) {
     return sqlDate;
+  }
+
+  /**
+   * Method sets attribute {@link #sqlDate}.<br/>
+   *
+   * @param pSqlDate Value to which {@link #sqlDate} should be set.
+   */
+  public void setSqlDate( @MyNotNullProperty Date pSqlDate ) {
+    // Assign value to attribute
+    sqlDate = pSqlDate;
   }
 
   /**
@@ -292,8 +385,19 @@ public class DateObject {
    *
    * @return {@link java.util.Date} Value to which {@link #utilDate} is set.
    */
+  @MyNotNullProperty
   public java.util.Date getUtilDate( ) {
     return utilDate;
+  }
+
+  /**
+   * Method sets attribute {@link #utilDate}.<br/>
+   *
+   * @param pUtilDate Value to which {@link #utilDate} should be set.
+   */
+  public void setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
+    // Assign value to attribute
+    utilDate = pUtilDate;
   }
 
   @Override

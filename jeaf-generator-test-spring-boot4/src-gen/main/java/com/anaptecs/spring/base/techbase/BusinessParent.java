@@ -5,20 +5,37 @@
  */
 package com.anaptecs.spring.base.techbase;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = BusinessChild.class, name = "BusinessChild") })
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = BusinessParent.BusinessParentBuilderImpl.class)
 public class BusinessParent extends TechParent {
   /**
    * Constant for the name of attribute "parentAttribute".
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
-  private final long parentAttribute;
+  private long parentAttribute;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected BusinessParent( Builder pBuilder ) {
+  protected BusinessParent( BusinessParentBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -28,10 +45,10 @@ public class BusinessParent extends TechParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new BusinessParent objects.
+   * @return {@link BusinessParentBuilder} New builder that can be used to create new BusinessParent objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static BusinessParentBuilder<?, ?> builder( ) {
+    return new BusinessParentBuilderImpl();
   }
 
   /**
@@ -54,20 +71,23 @@ public class BusinessParent extends TechParent {
   /**
    * Class implements builder to create a new instance of class <code>BusinessParent</code>.
    */
-  public static class Builder extends TechParent.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class BusinessParentBuilder<T extends BusinessParent, B extends BusinessParentBuilder<T, B>>
+      extends TechParentBuilder<T, B> {
     private long parentAttribute;
 
     /**
      * Use {@link BusinessParent#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected BusinessParentBuilder( ) {
       super();
     }
 
     /**
      * Use {@link BusinessParent#builder(BusinessParent)} instead of private constructor to create new builder.
      */
-    protected Builder( BusinessParent pObject ) {
+    protected BusinessParentBuilder( BusinessParent pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -76,28 +96,15 @@ public class BusinessParent extends TechParent {
     }
 
     /**
-     * Method sets attribute {@link #techAttribute}.<br/>
-     *
-     * @param pTechAttribute Value to which {@link #techAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setTechAttribute( String pTechAttribute ) {
-      // Call super class implementation.
-      super.setTechAttribute(pTechAttribute);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #parentAttribute}.<br/>
      *
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setParentAttribute( long pParentAttribute ) {
+    public B setParentAttribute( long pParentAttribute ) {
       // Assign value to attribute
       parentAttribute = pParentAttribute;
-      return this;
+      return this.self();
     }
 
     /**
@@ -106,8 +113,28 @@ public class BusinessParent extends TechParent {
      *
      * @return BusinessParent Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class BusinessParentBuilderImpl
+      extends BusinessParentBuilder<BusinessParent, BusinessParentBuilderImpl> {
+    protected BusinessParentBuilderImpl( ) {
+    }
+
+    protected BusinessParentBuilderImpl( BusinessParent pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected BusinessParentBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public BusinessParent build( ) {
-      return new BusinessParent(this);
+      BusinessParent lObject = new BusinessParent(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -118,6 +145,16 @@ public class BusinessParent extends TechParent {
    */
   public long getParentAttribute( ) {
     return parentAttribute;
+  }
+
+  /**
+   * Method sets attribute {@link #parentAttribute}.<br/>
+   *
+   * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
+   */
+  public void setParentAttribute( long pParentAttribute ) {
+    // Assign value to attribute
+    parentAttribute = pParentAttribute;
   }
 
   @Override
@@ -180,10 +217,10 @@ public class BusinessParent extends TechParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new BusinessParent objects. The method never returns
-   * null.
+   * @return {@link BusinessParentBuilder} New builder that can be used to create new BusinessParent objects. The method
+   * never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public BusinessParentBuilder<?, ?> toBuilder( ) {
+    return new BusinessParentBuilderImpl(this);
   }
 }

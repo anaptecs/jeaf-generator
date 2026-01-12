@@ -5,13 +5,24 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class FloatCodeType {
   /**
    * Constant for the name of attribute "code".
    */
   public static final String CODE = "code";
 
-  private final float code;
+  private float code;
 
   /**
    * Initialize object using the passed builder.
@@ -24,6 +35,14 @@ public class FloatCodeType {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private FloatCodeType( float pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new FloatCodeType objects.
@@ -33,8 +52,22 @@ public class FloatCodeType {
   }
 
   /**
+   * Convenience method to create new instance of class FloatCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link FloatCodeType}
+   */
+  public static FloatCodeType of( float pCode ) {
+    return new FloatCodeType(pCode);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>FloatCodeType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private float code;
 
@@ -52,6 +85,26 @@ public class FloatCodeType {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
       }
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new FloatCodeType objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new FloatCodeType objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( FloatCodeType pObject ) {
+      return new Builder(pObject);
     }
 
     /**
@@ -73,7 +126,9 @@ public class FloatCodeType {
      * @return FloatCodeType Created object. The method never returns null.
      */
     public FloatCodeType build( ) {
-      return new FloatCodeType(this);
+      FloatCodeType lObject = new FloatCodeType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -84,6 +139,16 @@ public class FloatCodeType {
    */
   public float getCode( ) {
     return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( float pCode ) {
+    // Assign value to attribute
+    code = pCode;
   }
 
   @Override

@@ -6,17 +6,33 @@
 package com.anaptecs.spring.base;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Sortiment.Builder.class)
 public class Sortiment {
   /**
    * Constant for the name of attribute "products".
    */
   public static final String PRODUCTS = "products";
 
-  private final Set<Product> products;
+  private Set<Product> products;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -30,7 +46,7 @@ public class Sortiment {
    */
   protected Sortiment( Builder pBuilder ) {
     // Read attribute values from builder.
-    products = (pBuilder.products == null) ? Set.of() : Set.copyOf(pBuilder.products);
+    products = (pBuilder.products == null) ? new HashSet<>() : pBuilder.products;
     // As association is bidirectional we also have to set it in the other direction.
     for (Product lNext : products) {
       lNext.addToSortiments((Sortiment) this);
@@ -62,6 +78,8 @@ public class Sortiment {
   /**
    * Class implements builder to create a new instance of class <code>Sortiment</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private Set<Product> products;
 
@@ -82,13 +100,39 @@ public class Sortiment {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Sortiment objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Sortiment objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( Sortiment pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #products}.<br/>
      *
      * @param pProducts Collection to which {@link #products} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setProducts( Set<Product> pProducts ) {
-      products = pProducts;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pProducts != null) {
+        products = new HashSet<Product>(pProducts);
+      }
+      else {
+        products = null;
+      }
       return this;
     }
 
@@ -114,7 +158,9 @@ public class Sortiment {
      * @return Sortiment Created object. The method never returns null.
      */
     public Sortiment build( ) {
-      return new Sortiment(this);
+      Sortiment lObject = new Sortiment(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -133,7 +179,64 @@ public class Sortiment {
         lNext.addToSortiments((Sortiment) this);
       }
     }
-    return products;
+    // Return all Product objects as unmodifiable collection.
+    return Collections.unmodifiableSet(products);
+  }
+
+  /**
+   * Method adds the passed object to {@link #products}.
+   *
+   * @param pProducts Object that should be added to {@link #products}. The parameter must not be null.
+   */
+  public void addToProducts( Product pProducts ) {
+    // Add passed object to collection of associated Product objects.
+    products.add(pProducts);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pProducts != null && pProducts.getSortiments().contains(this) == false) {
+      pProducts.addToSortiments((Sortiment) this);
+    }
+  }
+
+  /**
+   * Method adds all passed objects to {@link #products}.
+   *
+   * @param pProducts Collection with all objects that should be added to {@link #products}. The parameter must not be
+   * null.
+   */
+  public void addToProducts( Collection<Product> pProducts ) {
+    // Add all passed objects.
+    for (Product lNextObject : pProducts) {
+      this.addToProducts(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #products}.<br/>
+   *
+   * @param pProducts Object that should be removed from {@link #products}. The parameter must not be null.
+   */
+  public void removeFromProducts( Product pProducts ) {
+    // Remove passed object from collection of associated Product objects.
+    products.remove(pProducts);
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pProducts.getSortiments().contains(this) == true) {
+      pProducts.removeFromSortiments((Sortiment) this);
+    }
+  }
+
+  /**
+   * Method removes all objects from {@link #products}.
+   */
+  public void clearProducts( ) {
+    // Remove all objects from association "products".
+    Collection<Product> lProducts = new HashSet<Product>(products);
+    Iterator<Product> lIterator = lProducts.iterator();
+    while (lIterator.hasNext()) {
+      // As association is bidirectional we have to clear it in both directions.
+      this.removeFromProducts(lIterator.next());
+    }
   }
 
   @Override

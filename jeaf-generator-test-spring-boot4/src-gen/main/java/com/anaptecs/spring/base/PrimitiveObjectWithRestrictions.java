@@ -9,17 +9,31 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Objects;
 
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Negative;
-import jakarta.validation.constraints.NegativeOrZero;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Negative;
+import javax.validation.constraints.NegativeOrZero;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = PrimitiveObjectWithRestrictions.Builder.class)
 public class PrimitiveObjectWithRestrictions {
   /**
    * Constant for the name of attribute "aBoolean".
@@ -135,72 +149,72 @@ public class PrimitiveObjectWithRestrictions {
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
-  private final boolean aBoolean;
+  private boolean aBoolean;
 
-  private final Boolean bBoolean;
+  private Boolean bBoolean;
 
-  private final boolean cBoolean;
+  private boolean cBoolean;
 
   @Negative
-  private final byte aByte;
+  private byte aByte;
 
   @NegativeOrZero
-  private final Byte bByte;
+  private Byte bByte;
 
   @Min(value = -237)
-  private final short aShort;
+  private short aShort;
 
   @Positive
-  private final Short bShort;
+  private Short bShort;
 
   @PositiveOrZero
-  private final int aInteger;
+  private int aInteger;
 
   @Min(value = 4711)
-  private final Integer bInteger;
+  private Integer bInteger;
 
   @Min(value = 100)
   @Max(value = 1000)
-  private final Integer cInteger;
+  private Integer cInteger;
 
-  private final long aLong;
+  private long aLong;
 
   @DecimalMax(value = "299792458", inclusive = false)
-  private final Long bLong;
+  private Long bLong;
 
   @DecimalMax(value = "3.14159265359", inclusive = true)
   @DecimalMin(value = "-3.14159265359", inclusive = true)
-  private final BigInteger aBigInteger;
+  private BigInteger aBigInteger;
 
-  private final char aCharacter;
+  private char aCharacter;
 
-  private final Character bCharacter;
+  private Character bCharacter;
 
-  private final float aFloat;
+  private float aFloat;
 
-  private final Float bFloat;
+  private Float bFloat;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>42.0</code>
    */
-  private final double aDouble;
+  private double aDouble;
 
-  private final Double bDouble;
+  private Double bDouble;
 
   @DecimalMin(value = "4711.0815", inclusive = true)
-  private final BigDecimal aBigDecimal;
+  private BigDecimal aBigDecimal;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>"Hello OpenAPI"</code>
    */
   @Size(min = 8, max = 32)
-  private final String aString;
+  private String aString;
 
   @NotEmpty
   @Size(min = 0, max = 128)
-  private final String bString;
+  private String bString;
 
   /**
    * Initialize object using the passed builder.
@@ -325,6 +339,8 @@ public class PrimitiveObjectWithRestrictions {
   /**
    * Class implements builder to create a new instance of class <code>PrimitiveObjectWithRestrictions</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <br/>
@@ -436,6 +452,26 @@ public class PrimitiveObjectWithRestrictions {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new PrimitiveObjectWithRestrictions objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new PrimitiveObjectWithRestrictions objects. The
+     * method never returns null.
+     */
+    public static Builder newBuilder( PrimitiveObjectWithRestrictions pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #aBoolean}.<br/>
      *
      * @param pABoolean Value to which {@link #aBoolean} should be set.
@@ -453,7 +489,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBBoolean Value to which {@link #bBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBBoolean( Boolean pBBoolean ) {
+    public Builder setBBoolean( @MyNotNullProperty Boolean pBBoolean ) {
       // Assign value to attribute
       bBoolean = pBBoolean;
       return this;
@@ -489,7 +525,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBByte Value to which {@link #bByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBByte( Byte pBByte ) {
+    public Builder setBByte( @MyNotNullProperty Byte pBByte ) {
       // Assign value to attribute
       bByte = pBByte;
       return this;
@@ -513,7 +549,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBShort Value to which {@link #bShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBShort( Short pBShort ) {
+    public Builder setBShort( @MyNotNullProperty Short pBShort ) {
       // Assign value to attribute
       bShort = pBShort;
       return this;
@@ -537,7 +573,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBInteger Value to which {@link #bInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBInteger( Integer pBInteger ) {
+    public Builder setBInteger( @MyNotNullProperty Integer pBInteger ) {
       // Assign value to attribute
       bInteger = pBInteger;
       return this;
@@ -549,7 +585,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pCInteger Value to which {@link #cInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCInteger( Integer pCInteger ) {
+    public Builder setCInteger( @MyNotNullProperty Integer pCInteger ) {
       // Assign value to attribute
       cInteger = pCInteger;
       return this;
@@ -573,7 +609,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBLong Value to which {@link #bLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBLong( Long pBLong ) {
+    public Builder setBLong( @MyNotNullProperty Long pBLong ) {
       // Assign value to attribute
       bLong = pBLong;
       return this;
@@ -585,7 +621,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pABigInteger Value to which {@link #aBigInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABigInteger( BigInteger pABigInteger ) {
+    public Builder setABigInteger( @MyNotNullProperty BigInteger pABigInteger ) {
       // Assign value to attribute
       aBigInteger = pABigInteger;
       return this;
@@ -609,7 +645,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBCharacter Value to which {@link #bCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBCharacter( Character pBCharacter ) {
+    public Builder setBCharacter( @MyNotNullProperty Character pBCharacter ) {
       // Assign value to attribute
       bCharacter = pBCharacter;
       return this;
@@ -633,7 +669,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBFloat Value to which {@link #bFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBFloat( Float pBFloat ) {
+    public Builder setBFloat( @MyNotNullProperty Float pBFloat ) {
       // Assign value to attribute
       bFloat = pBFloat;
       return this;
@@ -657,7 +693,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBDouble Value to which {@link #bDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBDouble( Double pBDouble ) {
+    public Builder setBDouble( @MyNotNullProperty Double pBDouble ) {
       // Assign value to attribute
       bDouble = pBDouble;
       return this;
@@ -669,7 +705,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABigDecimal( BigDecimal pABigDecimal ) {
+    public Builder setABigDecimal( @MyNotNullProperty BigDecimal pABigDecimal ) {
       // Assign value to attribute
       aBigDecimal = pABigDecimal;
       return this;
@@ -681,7 +717,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pAString Value to which {@link #aString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAString( String pAString ) {
+    public Builder setAString( @MyNotNullProperty String pAString ) {
       // Assign value to attribute
       aString = pAString;
       return this;
@@ -693,7 +729,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBString Value to which {@link #bString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBString( String pBString ) {
+    public Builder setBString( @MyNotNullProperty String pBString ) {
       // Assign value to attribute
       bString = pBString;
       return this;
@@ -706,7 +742,9 @@ public class PrimitiveObjectWithRestrictions {
      * @return PrimitiveObjectWithRestrictions Created object. The method never returns null.
      */
     public PrimitiveObjectWithRestrictions build( ) {
-      return new PrimitiveObjectWithRestrictions(this);
+      PrimitiveObjectWithRestrictions lObject = new PrimitiveObjectWithRestrictions(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -730,12 +768,33 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #aBoolean}.<br/>
+   *
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
+   */
+  public void setABoolean( boolean pABoolean ) {
+    // Assign value to attribute
+    aBoolean = pABoolean;
+  }
+
+  /**
    * Method returns attribute {@link #bBoolean}.<br/>
    *
    * @return {@link Boolean} Value to which {@link #bBoolean} is set.
    */
+  @MyNotNullProperty
   public Boolean getBBoolean( ) {
     return bBoolean;
+  }
+
+  /**
+   * Method sets attribute {@link #bBoolean}.<br/>
+   *
+   * @param pBBoolean Value to which {@link #bBoolean} should be set.
+   */
+  public void setBBoolean( @MyNotNullProperty Boolean pBBoolean ) {
+    // Assign value to attribute
+    bBoolean = pBBoolean;
   }
 
   /**
@@ -758,6 +817,16 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #cBoolean}.<br/>
+   *
+   * @param pCBoolean Value to which {@link #cBoolean} should be set.
+   */
+  public void setCBoolean( boolean pCBoolean ) {
+    // Assign value to attribute
+    cBoolean = pCBoolean;
+  }
+
+  /**
    * Method returns attribute {@link #aByte}.<br/>
    *
    * @return byte Value to which {@link #aByte} is set.
@@ -767,12 +836,33 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #aByte}.<br/>
+   *
+   * @param pAByte Value to which {@link #aByte} should be set.
+   */
+  public void setAByte( byte pAByte ) {
+    // Assign value to attribute
+    aByte = pAByte;
+  }
+
+  /**
    * Method returns attribute {@link #bByte}.<br/>
    *
    * @return {@link Byte} Value to which {@link #bByte} is set.
    */
+  @MyNotNullProperty
   public Byte getBByte( ) {
     return bByte;
+  }
+
+  /**
+   * Method sets attribute {@link #bByte}.<br/>
+   *
+   * @param pBByte Value to which {@link #bByte} should be set.
+   */
+  public void setBByte( @MyNotNullProperty Byte pBByte ) {
+    // Assign value to attribute
+    bByte = pBByte;
   }
 
   /**
@@ -785,12 +875,33 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #aShort}.<br/>
+   *
+   * @param pAShort Value to which {@link #aShort} should be set.
+   */
+  public void setAShort( short pAShort ) {
+    // Assign value to attribute
+    aShort = pAShort;
+  }
+
+  /**
    * Method returns attribute {@link #bShort}.<br/>
    *
    * @return {@link Short} Value to which {@link #bShort} is set.
    */
+  @MyNotNullProperty
   public Short getBShort( ) {
     return bShort;
+  }
+
+  /**
+   * Method sets attribute {@link #bShort}.<br/>
+   *
+   * @param pBShort Value to which {@link #bShort} should be set.
+   */
+  public void setBShort( @MyNotNullProperty Short pBShort ) {
+    // Assign value to attribute
+    bShort = pBShort;
   }
 
   /**
@@ -803,12 +914,33 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #aInteger}.<br/>
+   *
+   * @param pAInteger Value to which {@link #aInteger} should be set.
+   */
+  public void setAInteger( int pAInteger ) {
+    // Assign value to attribute
+    aInteger = pAInteger;
+  }
+
+  /**
    * Method returns attribute {@link #bInteger}.<br/>
    *
    * @return {@link Integer} Value to which {@link #bInteger} is set.
    */
+  @MyNotNullProperty
   public Integer getBInteger( ) {
     return bInteger;
+  }
+
+  /**
+   * Method sets attribute {@link #bInteger}.<br/>
+   *
+   * @param pBInteger Value to which {@link #bInteger} should be set.
+   */
+  public void setBInteger( @MyNotNullProperty Integer pBInteger ) {
+    // Assign value to attribute
+    bInteger = pBInteger;
   }
 
   /**
@@ -816,8 +948,19 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @return {@link Integer} Value to which {@link #cInteger} is set.
    */
+  @MyNotNullProperty
   public Integer getCInteger( ) {
     return cInteger;
+  }
+
+  /**
+   * Method sets attribute {@link #cInteger}.<br/>
+   *
+   * @param pCInteger Value to which {@link #cInteger} should be set.
+   */
+  public void setCInteger( @MyNotNullProperty Integer pCInteger ) {
+    // Assign value to attribute
+    cInteger = pCInteger;
   }
 
   /**
@@ -830,12 +973,33 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #aLong}.<br/>
+   *
+   * @param pALong Value to which {@link #aLong} should be set.
+   */
+  public void setALong( long pALong ) {
+    // Assign value to attribute
+    aLong = pALong;
+  }
+
+  /**
    * Method returns attribute {@link #bLong}.<br/>
    *
    * @return {@link Long} Value to which {@link #bLong} is set.
    */
+  @MyNotNullProperty
   public Long getBLong( ) {
     return bLong;
+  }
+
+  /**
+   * Method sets attribute {@link #bLong}.<br/>
+   *
+   * @param pBLong Value to which {@link #bLong} should be set.
+   */
+  public void setBLong( @MyNotNullProperty Long pBLong ) {
+    // Assign value to attribute
+    bLong = pBLong;
   }
 
   /**
@@ -843,8 +1007,19 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @return {@link BigInteger} Value to which {@link #aBigInteger} is set.
    */
+  @MyNotNullProperty
   public BigInteger getABigInteger( ) {
     return aBigInteger;
+  }
+
+  /**
+   * Method sets attribute {@link #aBigInteger}.<br/>
+   *
+   * @param pABigInteger Value to which {@link #aBigInteger} should be set.
+   */
+  public void setABigInteger( @MyNotNullProperty BigInteger pABigInteger ) {
+    // Assign value to attribute
+    aBigInteger = pABigInteger;
   }
 
   /**
@@ -857,12 +1032,33 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #aCharacter}.<br/>
+   *
+   * @param pACharacter Value to which {@link #aCharacter} should be set.
+   */
+  public void setACharacter( char pACharacter ) {
+    // Assign value to attribute
+    aCharacter = pACharacter;
+  }
+
+  /**
    * Method returns attribute {@link #bCharacter}.<br/>
    *
    * @return {@link Character} Value to which {@link #bCharacter} is set.
    */
+  @MyNotNullProperty
   public Character getBCharacter( ) {
     return bCharacter;
+  }
+
+  /**
+   * Method sets attribute {@link #bCharacter}.<br/>
+   *
+   * @param pBCharacter Value to which {@link #bCharacter} should be set.
+   */
+  public void setBCharacter( @MyNotNullProperty Character pBCharacter ) {
+    // Assign value to attribute
+    bCharacter = pBCharacter;
   }
 
   /**
@@ -875,12 +1071,33 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #aFloat}.<br/>
+   *
+   * @param pAFloat Value to which {@link #aFloat} should be set.
+   */
+  public void setAFloat( float pAFloat ) {
+    // Assign value to attribute
+    aFloat = pAFloat;
+  }
+
+  /**
    * Method returns attribute {@link #bFloat}.<br/>
    *
    * @return {@link Float} Value to which {@link #bFloat} is set.
    */
+  @MyNotNullProperty
   public Float getBFloat( ) {
     return bFloat;
+  }
+
+  /**
+   * Method sets attribute {@link #bFloat}.<br/>
+   *
+   * @param pBFloat Value to which {@link #bFloat} should be set.
+   */
+  public void setBFloat( @MyNotNullProperty Float pBFloat ) {
+    // Assign value to attribute
+    bFloat = pBFloat;
   }
 
   /**
@@ -893,12 +1110,33 @@ public class PrimitiveObjectWithRestrictions {
   }
 
   /**
+   * Method sets attribute {@link #aDouble}.<br/>
+   *
+   * @param pADouble Value to which {@link #aDouble} should be set.
+   */
+  public void setADouble( double pADouble ) {
+    // Assign value to attribute
+    aDouble = pADouble;
+  }
+
+  /**
    * Method returns attribute {@link #bDouble}.<br/>
    *
    * @return {@link Double} Value to which {@link #bDouble} is set.
    */
+  @MyNotNullProperty
   public Double getBDouble( ) {
     return bDouble;
+  }
+
+  /**
+   * Method sets attribute {@link #bDouble}.<br/>
+   *
+   * @param pBDouble Value to which {@link #bDouble} should be set.
+   */
+  public void setBDouble( @MyNotNullProperty Double pBDouble ) {
+    // Assign value to attribute
+    bDouble = pBDouble;
   }
 
   /**
@@ -906,8 +1144,19 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @return {@link BigDecimal} Value to which {@link #aBigDecimal} is set.
    */
+  @MyNotNullProperty
   public BigDecimal getABigDecimal( ) {
     return aBigDecimal;
+  }
+
+  /**
+   * Method sets attribute {@link #aBigDecimal}.<br/>
+   *
+   * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
+   */
+  public void setABigDecimal( @MyNotNullProperty BigDecimal pABigDecimal ) {
+    // Assign value to attribute
+    aBigDecimal = pABigDecimal;
   }
 
   /**
@@ -915,8 +1164,19 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @return {@link String} Value to which {@link #aString} is set.
    */
+  @MyNotNullProperty
   public String getAString( ) {
     return aString;
+  }
+
+  /**
+   * Method sets attribute {@link #aString}.<br/>
+   *
+   * @param pAString Value to which {@link #aString} should be set.
+   */
+  public void setAString( @MyNotNullProperty String pAString ) {
+    // Assign value to attribute
+    aString = pAString;
   }
 
   /**
@@ -924,8 +1184,19 @@ public class PrimitiveObjectWithRestrictions {
    *
    * @return {@link String} Value to which {@link #bString} is set.
    */
+  @MyNotNullProperty
   public String getBString( ) {
     return bString;
+  }
+
+  /**
+   * Method sets attribute {@link #bString}.<br/>
+   *
+   * @param pBString Value to which {@link #bString} should be set.
+   */
+  public void setBString( @MyNotNullProperty String pBString ) {
+    // Assign value to attribute
+    bString = pBString;
   }
 
   @Override

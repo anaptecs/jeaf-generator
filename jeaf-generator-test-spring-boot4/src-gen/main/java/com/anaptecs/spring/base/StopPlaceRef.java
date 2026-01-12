@@ -5,13 +5,23 @@
  */
 package com.anaptecs.spring.base;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public abstract class StopPlaceRef extends PlaceRef {
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected StopPlaceRef( Builder pBuilder ) {
+  protected StopPlaceRef( StopPlaceRefBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
   }
@@ -19,45 +29,22 @@ public abstract class StopPlaceRef extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>StopPlaceRef</code>.
    */
-  public static abstract class Builder extends PlaceRef.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class StopPlaceRefBuilder<T extends StopPlaceRef, B extends StopPlaceRefBuilder<T, B>>
+      extends PlaceRefBuilder<T, B> {
     /**
      * Use {@link StopPlaceRef#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected StopPlaceRefBuilder( ) {
       super();
     }
 
     /**
      * Use {@link StopPlaceRef#builder(StopPlaceRef)} instead of private constructor to create new builder.
      */
-    protected Builder( StopPlaceRef pObject ) {
+    protected StopPlaceRefBuilder( StopPlaceRef pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method sets attribute {@link #name}.<br/>
-     *
-     * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setName( String pName ) {
-      // Call super class implementation.
-      super.setName(pName);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #type}.<br/>
-     *
-     * @param pType Value to which {@link #type} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setType( MyType pType ) {
-      // Call super class implementation.
-      super.setType(pType);
-      return this;
     }
   }
 

@@ -14,6 +14,14 @@ public class DataTypeCustomSerialization extends DataTypeCustomSerializationBase
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  DataTypeCustomSerialization( String pProperty1 ) {
+    super(pProperty1);
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new DataTypeCustomSerialization objects.
@@ -39,6 +47,26 @@ public class DataTypeCustomSerialization extends DataTypeCustomSerializationBase
      */
     protected Builder( DataTypeCustomSerialization pObject ) {
       super(pObject);
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new DataTypeCustomSerialization objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( DataTypeCustomSerialization pObject ) {
+      return new Builder(pObject);
     }
   }
 

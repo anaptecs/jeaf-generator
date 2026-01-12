@@ -7,9 +7,25 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Leg.Builder.class)
 public class Leg {
   /**
    * Constant for the name of attribute "start".
@@ -26,11 +42,11 @@ public class Leg {
    */
   public static final String STOPOVERS = "stopovers";
 
-  private final PlaceRef start;
+  private PlaceRef start;
 
-  private final PlaceRef stop;
+  private PlaceRef stop;
 
-  private final List<PlaceRef> stopovers;
+  private List<PlaceRef> stopovers;
 
   /**
    * Initialize object using the passed builder.
@@ -41,7 +57,7 @@ public class Leg {
     // Read attribute values from builder.
     start = pBuilder.start;
     stop = pBuilder.stop;
-    stopovers = (pBuilder.stopovers == null) ? List.of() : List.copyOf(pBuilder.stopovers);
+    stopovers = (pBuilder.stopovers == null) ? new ArrayList<>() : pBuilder.stopovers;
   }
 
   /**
@@ -73,6 +89,8 @@ public class Leg {
   /**
    * Class implements builder to create a new instance of class <code>Leg</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private PlaceRef start;
 
@@ -99,12 +117,31 @@ public class Leg {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Leg objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Leg objects. The method never returns null.
+     */
+    public static Builder newBuilder( Leg pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #start}.<br/>
      *
      * @param pStart Value to which {@link #start} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStart( PlaceRef pStart ) {
+    public Builder setStart( @MyNotNullProperty PlaceRef pStart ) {
       start = pStart;
       return this;
     }
@@ -115,7 +152,7 @@ public class Leg {
      * @param pStop Value to which {@link #stop} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStop( PlaceRef pStop ) {
+    public Builder setStop( @MyNotNullProperty PlaceRef pStop ) {
       stop = pStop;
       return this;
     }
@@ -127,7 +164,13 @@ public class Leg {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setStopovers( List<PlaceRef> pStopovers ) {
-      stopovers = pStopovers;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pStopovers != null) {
+        stopovers = new ArrayList<PlaceRef>(pStopovers);
+      }
+      else {
+        stopovers = null;
+      }
       return this;
     }
 
@@ -153,7 +196,9 @@ public class Leg {
      * @return Leg Created object. The method never returns null.
      */
     public Leg build( ) {
-      return new Leg(this);
+      Leg lObject = new Leg(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -162,8 +207,25 @@ public class Leg {
    *
    * @return {@link PlaceRef} Value to which {@link #start} is set.
    */
+  @MyNotNullProperty
   public PlaceRef getStart( ) {
     return start;
+  }
+
+  /**
+   * Method sets association {@link #start}.<br/>
+   *
+   * @param pStart Value to which {@link #start} should be set.
+   */
+  public void setStart( @MyNotNullProperty PlaceRef pStart ) {
+    start = pStart;
+  }
+
+  /**
+   * Method unsets {@link #start}.
+   */
+  public final void unsetStart( ) {
+    start = null;
   }
 
   /**
@@ -171,8 +233,25 @@ public class Leg {
    *
    * @return {@link PlaceRef} Value to which {@link #stop} is set.
    */
+  @MyNotNullProperty
   public PlaceRef getStop( ) {
     return stop;
+  }
+
+  /**
+   * Method sets association {@link #stop}.<br/>
+   *
+   * @param pStop Value to which {@link #stop} should be set.
+   */
+  public void setStop( @MyNotNullProperty PlaceRef pStop ) {
+    stop = pStop;
+  }
+
+  /**
+   * Method unsets {@link #stop}.
+   */
+  public final void unsetStop( ) {
+    stop = null;
   }
 
   /**
@@ -182,7 +261,49 @@ public class Leg {
    * returned collection is unmodifiable.
    */
   public List<PlaceRef> getStopovers( ) {
-    return stopovers;
+    // Return all PlaceRef objects as unmodifiable collection.
+    return Collections.unmodifiableList(stopovers);
+  }
+
+  /**
+   * Method adds the passed object to {@link #stopovers}.
+   *
+   * @param pStopovers Object that should be added to {@link #stopovers}. The parameter must not be null.
+   */
+  public void addToStopovers( PlaceRef pStopovers ) {
+    // Add passed object to collection of associated PlaceRef objects.
+    stopovers.add(pStopovers);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #stopovers}.
+   *
+   * @param pStopovers Collection with all objects that should be added to {@link #stopovers}. The parameter must not be
+   * null.
+   */
+  public void addToStopovers( Collection<PlaceRef> pStopovers ) {
+    // Add all passed objects.
+    for (PlaceRef lNextObject : pStopovers) {
+      this.addToStopovers(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #stopovers}.<br/>
+   *
+   * @param pStopovers Object that should be removed from {@link #stopovers}. The parameter must not be null.
+   */
+  public void removeFromStopovers( PlaceRef pStopovers ) {
+    // Remove passed object from collection of associated PlaceRef objects.
+    stopovers.remove(pStopovers);
+  }
+
+  /**
+   * Method removes all objects from {@link #stopovers}.
+   */
+  public void clearStopovers( ) {
+    // Remove all objects from association "stopovers".
+    stopovers.clear();
   }
 
   @Override

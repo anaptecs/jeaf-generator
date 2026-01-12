@@ -7,20 +7,34 @@ package com.anaptecs.spring.base.techbase;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = TechParent.TechParentBuilderImpl.class)
 public class TechParent {
   /**
    * Constant for the name of attribute "techAttribute".
    */
   public static final String TECHATTRIBUTE = "techAttribute";
 
-  private final String techAttribute;
+  private String techAttribute;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected TechParent( Builder pBuilder ) {
+  protected TechParent( TechParentBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     techAttribute = pBuilder.techAttribute;
   }
@@ -28,10 +42,10 @@ public class TechParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new TechParent objects.
+   * @return {@link TechParentBuilder} New builder that can be used to create new TechParent objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static TechParentBuilder<?, ?> builder( ) {
+    return new TechParentBuilderImpl();
   }
 
   /**
@@ -51,19 +65,21 @@ public class TechParent {
   /**
    * Class implements builder to create a new instance of class <code>TechParent</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class TechParentBuilder<T extends TechParent, B extends TechParentBuilder<T, B>> {
     private String techAttribute;
 
     /**
      * Use {@link TechParent#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected TechParentBuilder( ) {
     }
 
     /**
      * Use {@link TechParent#builder(TechParent)} instead of private constructor to create new builder.
      */
-    protected Builder( TechParent pObject ) {
+    protected TechParentBuilder( TechParent pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setTechAttribute(pObject.techAttribute);
@@ -74,21 +90,45 @@ public class TechParent {
      * Method sets attribute {@link #techAttribute}.<br/>
      *
      * @param pTechAttribute Value to which {@link #techAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTechAttribute( String pTechAttribute ) {
+    public B setTechAttribute( @MyNotNullProperty String pTechAttribute ) {
       // Assign value to attribute
       techAttribute = pTechAttribute;
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class TechParent. The object will be initialized with the values of the builder.
      *
      * @return TechParent Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class TechParentBuilderImpl extends TechParentBuilder<TechParent, TechParentBuilderImpl> {
+    protected TechParentBuilderImpl( ) {
+    }
+
+    protected TechParentBuilderImpl( TechParent pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected TechParentBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public TechParent build( ) {
-      return new TechParent(this);
+      TechParent lObject = new TechParent(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -97,8 +137,19 @@ public class TechParent {
    *
    * @return {@link String} Value to which {@link #techAttribute} is set.
    */
+  @MyNotNullProperty
   public String getTechAttribute( ) {
     return techAttribute;
+  }
+
+  /**
+   * Method sets attribute {@link #techAttribute}.<br/>
+   *
+   * @param pTechAttribute Value to which {@link #techAttribute} should be set.
+   */
+  public void setTechAttribute( @MyNotNullProperty String pTechAttribute ) {
+    // Assign value to attribute
+    techAttribute = pTechAttribute;
   }
 
   @Override
@@ -160,10 +211,10 @@ public class TechParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new TechParent objects. The method never returns
-   * null.
+   * @return {@link TechParentBuilder} New builder that can be used to create new TechParent objects. The method never
+   * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public TechParentBuilder<?, ?> toBuilder( ) {
+    return new TechParentBuilderImpl(this);
   }
 }

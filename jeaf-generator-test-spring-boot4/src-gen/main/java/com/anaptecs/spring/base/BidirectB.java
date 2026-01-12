@@ -7,6 +7,20 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = BidirectB.Builder.class)
 public class BidirectB {
   /**
    * Constant for the name of attribute "a".
@@ -16,7 +30,7 @@ public class BidirectB {
   /**
    * the A
    */
-  private final BidirectA a;
+  private BidirectA a;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -65,6 +79,8 @@ public class BidirectB {
   /**
    * Class implements builder to create a new instance of class <code>BidirectB</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * the A
@@ -88,12 +104,32 @@ public class BidirectB {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new BidirectB objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new BidirectB objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( BidirectB pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #a}.<br/>
      *
      * @param pA Value to which {@link #a} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setA( BidirectA pA ) {
+    public Builder setA( @MyNotNullProperty BidirectA pA ) {
       a = pA;
       return this;
     }
@@ -104,7 +140,9 @@ public class BidirectB {
      * @return BidirectB Created object. The method never returns null.
      */
     public BidirectB build( ) {
-      return new BidirectB(this);
+      BidirectB lObject = new BidirectB(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -114,6 +152,7 @@ public class BidirectB {
    *
    * @return {@link BidirectA} Value to which {@link #a} is set.
    */
+  @MyNotNullProperty
   public BidirectA getA( ) {
     // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling
     // after an object was deserialized.
@@ -122,6 +161,38 @@ public class BidirectB {
       a.addToTransientBs((BidirectB) this);
     }
     return a;
+  }
+
+  /**
+   * Method sets association {@link #a}.<br/>
+   * the A
+   *
+   * @param pA Value to which {@link #a} should be set.
+   */
+  public void setA( @MyNotNullProperty BidirectA pA ) {
+    // Release already referenced object before setting a new association.
+    if (a != null) {
+      a.removeFromTransientBs((BidirectB) this);
+    }
+    a = pA;
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    if (pA != null && pA.getTransientBs().contains(this) == false) {
+      pA.addToTransientBs((BidirectB) this);
+    }
+  }
+
+  /**
+   * Method unsets {@link #a}.
+   */
+  public final void unsetA( ) {
+    // The association is set in both directions because within the UML model it is defined to be bidirectional.
+    // In case that one side will be removed from the association the other side will also be removed.
+    BidirectA lBidirectA = a;
+    a = null;
+    if (lBidirectA != null && lBidirectA.getTransientBs().contains(this) == true) {
+      lBidirectA.removeFromTransientBs((BidirectB) this);
+    }
   }
 
   @Override

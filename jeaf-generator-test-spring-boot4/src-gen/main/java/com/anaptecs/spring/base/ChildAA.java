@@ -7,9 +7,23 @@ package com.anaptecs.spring.base;
 
 import java.util.Arrays;
 
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.Size;
+
+import com.anaptecs.annotations.MyNotEmptyProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Deprecated
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = ChildAA.ChildAABuilderImpl.class)
 public class ChildAA extends ChildA {
   /**
    * Constant for the name of attribute "childAAAttribute".
@@ -31,19 +45,19 @@ public class ChildAA extends ChildA {
    * line<br/>
    * docs
    */
-  private final byte childAAAttribute;
+  private byte childAAAttribute;
 
   @Size(min = 10, max = 100)
-  private final int[] sizedArray;
+  private int[] sizedArray;
 
-  private final String[] requiredArray;
+  private String[] requiredArray;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ChildAA( Builder pBuilder ) {
+  protected ChildAA( ChildAABuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -55,10 +69,10 @@ public class ChildAA extends ChildA {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildAA objects.
+   * @return {@link ChildAABuilder} New builder that can be used to create new ChildAA objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ChildAABuilder<?, ?> builder( ) {
+    return new ChildAABuilderImpl();
   }
 
   /**
@@ -89,7 +103,10 @@ public class ChildAA extends ChildA {
    * Class implements builder to create a new instance of class <code>ChildAA</code>.
    */
   @Deprecated
-  public static class Builder extends ChildA.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ChildAABuilder<T extends ChildAA, B extends ChildAABuilder<T, B>>
+      extends ChildABuilder<T, B> {
     /**
      * Multi<br/>
      * line<br/>
@@ -105,14 +122,14 @@ public class ChildAA extends ChildA {
     /**
      * Use {@link ChildAA#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ChildAABuilder( ) {
       super();
     }
 
     /**
      * Use {@link ChildAA#builder(ChildAA)} instead of private constructor to create new builder.
      */
-    protected Builder( ChildAA pObject ) {
+    protected ChildAABuilder( ChildAA pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -123,50 +140,24 @@ public class ChildAA extends ChildA {
     }
 
     /**
-     * Method sets attribute {@link #parentAttribute}.<br/>
-     *
-     * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setParentAttribute( String pParentAttribute ) {
-      // Call super class implementation.
-      super.setParentAttribute(pParentAttribute);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #childAAttribute}.<br/>
-     *
-     * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setChildAAttribute( int pChildAAttribute ) {
-      // Call super class implementation.
-      super.setChildAAttribute(pChildAAttribute);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #childAAAttribute}.<br/>
      *
      * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildAAAttribute( byte pChildAAAttribute ) {
+    public B setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
       childAAAttribute = pChildAAAttribute;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #sizedArray}.<br/>
      *
      * @param pSizedArray Value to which {@link #sizedArray} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setSizedArray( int[] pSizedArray ) {
+    public B setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
       if (pSizedArray != null) {
         sizedArray = new int[pSizedArray.length];
@@ -175,16 +166,16 @@ public class ChildAA extends ChildA {
       else {
         sizedArray = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #requiredArray}.<br/>
      *
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setRequiredArray( String[] pRequiredArray ) {
+    public B setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {
         requiredArray = new String[pRequiredArray.length];
@@ -193,7 +184,7 @@ public class ChildAA extends ChildA {
       else {
         requiredArray = null;
       }
-      return this;
+      return this.self();
     }
 
     /**
@@ -201,8 +192,27 @@ public class ChildAA extends ChildA {
      *
      * @return ChildAA Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ChildAABuilderImpl extends ChildAABuilder<ChildAA, ChildAABuilderImpl> {
+    protected ChildAABuilderImpl( ) {
+    }
+
+    protected ChildAABuilderImpl( ChildAA pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ChildAABuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public ChildAA build( ) {
-      return new ChildAA(this);
+      ChildAA lObject = new ChildAA(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -216,6 +226,19 @@ public class ChildAA extends ChildA {
    */
   public byte getChildAAAttribute( ) {
     return childAAAttribute;
+  }
+
+  /**
+   * Method sets attribute {@link #childAAAttribute}.<br/>
+   * Multi<br/>
+   * line<br/>
+   * docs
+   *
+   * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
+   */
+  public void setChildAAAttribute( byte pChildAAAttribute ) {
+    // Assign value to attribute
+    childAAAttribute = pChildAAAttribute;
   }
 
   /**
@@ -236,10 +259,27 @@ public class ChildAA extends ChildA {
   }
 
   /**
+   * Method sets attribute {@link #sizedArray}.<br/>
+   *
+   * @param pSizedArray Value to which {@link #sizedArray} should be set.
+   */
+  public void setSizedArray( int[] pSizedArray ) {
+    // Assign value to attribute
+    if (pSizedArray != null) {
+      sizedArray = new int[pSizedArray.length];
+      System.arraycopy(pSizedArray, 0, sizedArray, 0, pSizedArray.length);
+    }
+    else {
+      sizedArray = null;
+    }
+  }
+
+  /**
    * Method returns attribute {@link #requiredArray}.<br/>
    *
    * @return {@link String[]} Value to which {@link #requiredArray} is set.
    */
+  @MyNotEmptyProperty
   public String[] getRequiredArray( ) {
     String[] lReturnValue;
     if (requiredArray != null) {
@@ -250,6 +290,22 @@ public class ChildAA extends ChildA {
       lReturnValue = null;
     }
     return lReturnValue;
+  }
+
+  /**
+   * Method sets attribute {@link #requiredArray}.<br/>
+   *
+   * @param pRequiredArray Value to which {@link #requiredArray} should be set.
+   */
+  public void setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
+    // Assign value to attribute
+    if (pRequiredArray != null) {
+      requiredArray = new String[pRequiredArray.length];
+      System.arraycopy(pRequiredArray, 0, requiredArray, 0, pRequiredArray.length);
+    }
+    else {
+      requiredArray = null;
+    }
   }
 
   @Override
@@ -333,9 +389,10 @@ public class ChildAA extends ChildA {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildAA objects. The method never returns null.
+   * @return {@link ChildAABuilder} New builder that can be used to create new ChildAA objects. The method never returns
+   * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ChildAABuilder<?, ?> toBuilder( ) {
+    return new ChildAABuilderImpl(this);
   }
 }

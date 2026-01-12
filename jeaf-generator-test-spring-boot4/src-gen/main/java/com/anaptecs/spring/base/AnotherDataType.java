@@ -7,13 +7,25 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class AnotherDataType implements Comparable<AnotherDataType> {
   /**
    * Constant for the name of attribute "data".
    */
   public static final String DATA = "data";
 
-  public final String data;
+  public String data;
 
   /**
    * Initialize object using the passed builder.
@@ -26,6 +38,14 @@ public class AnotherDataType implements Comparable<AnotherDataType> {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private AnotherDataType( String pData ) {
+    data = pData;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new AnotherDataType objects.
@@ -35,8 +55,22 @@ public class AnotherDataType implements Comparable<AnotherDataType> {
   }
 
   /**
+   * Convenience method to create new instance of class AnotherDataType.
+   *
+   *
+   * @param pData Value to which {@link #data} should be set.
+   *
+   * @return {@link AnotherDataType}
+   */
+  public static AnotherDataType of( String pData ) {
+    return new AnotherDataType(pData);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>AnotherDataType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String data;
 
@@ -57,12 +91,32 @@ public class AnotherDataType implements Comparable<AnotherDataType> {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new AnotherDataType objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new AnotherDataType objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( AnotherDataType pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #data}.<br/>
      *
      * @param pData Value to which {@link #data} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setData( String pData ) {
+    public Builder setData( @MyNotNullProperty String pData ) {
       // Assign value to attribute
       data = pData;
       return this;
@@ -75,7 +129,9 @@ public class AnotherDataType implements Comparable<AnotherDataType> {
      * @return AnotherDataType Created object. The method never returns null.
      */
     public AnotherDataType build( ) {
-      return new AnotherDataType(this);
+      AnotherDataType lObject = new AnotherDataType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -84,8 +140,19 @@ public class AnotherDataType implements Comparable<AnotherDataType> {
    *
    * @return {@link String} Value to which {@link #data} is set.
    */
+  @MyNotNullProperty
   public String getData( ) {
     return data;
+  }
+
+  /**
+   * Method sets attribute {@link #data}.<br/>
+   *
+   * @param pData Value to which {@link #data} should be set.
+   */
+  public void setData( @MyNotNullProperty String pData ) {
+    // Assign value to attribute
+    data = pData;
   }
 
   @Override

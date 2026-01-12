@@ -7,9 +7,12 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCodeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class AdvancedHeader {
   /**
@@ -36,11 +39,11 @@ public class AdvancedHeader {
    * <p/>
    * <b>Header-Param:</b> <code>bookingID</code>
    */
-  private final BookingID bookingID;
+  private BookingID bookingID;
 
-  private final BookingCode bookingCode;
+  private BookingCode bookingCode;
 
-  private final DoubleCodeType doubleCode;
+  private DoubleCodeType doubleCode;
 
   /**
    * Initialize object using the passed builder.
@@ -77,6 +80,8 @@ public class AdvancedHeader {
   /**
    * Class implements builder to create a new instance of class <code>AdvancedHeader</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <br/>
@@ -109,6 +114,26 @@ public class AdvancedHeader {
         this.setBookingCode(pObject.bookingCode);
         this.setDoubleCode(pObject.doubleCode);
       }
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new AdvancedHeader objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( AdvancedHeader pObject ) {
+      return new Builder(pObject);
     }
 
     /**
@@ -154,7 +179,9 @@ public class AdvancedHeader {
      * @return AdvancedHeader Created object. The method never returns null.
      */
     public AdvancedHeader build( ) {
-      return new AdvancedHeader(this);
+      AdvancedHeader lObject = new AdvancedHeader(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -168,6 +195,16 @@ public class AdvancedHeader {
   }
 
   /**
+   * Method sets attribute {@link #bookingID}.<br/>
+   *
+   * @param pBookingID Value to which {@link #bookingID} should be set.
+   */
+  public void setBookingID( BookingID pBookingID ) {
+    // Assign value to attribute
+    bookingID = pBookingID;
+  }
+
+  /**
    * Method returns attribute {@link #bookingCode}.<br/>
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
@@ -177,12 +214,32 @@ public class AdvancedHeader {
   }
 
   /**
+   * Method sets attribute {@link #bookingCode}.<br/>
+   *
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
+   */
+  public void setBookingCode( BookingCode pBookingCode ) {
+    // Assign value to attribute
+    bookingCode = pBookingCode;
+  }
+
+  /**
    * Method returns attribute {@link #doubleCode}.<br/>
    *
    * @return {@link DoubleCodeType} Value to which {@link #doubleCode} is set.
    */
   public DoubleCodeType getDoubleCode( ) {
     return doubleCode;
+  }
+
+  /**
+   * Method sets attribute {@link #doubleCode}.<br/>
+   *
+   * @param pDoubleCode Value to which {@link #doubleCode} should be set.
+   */
+  public void setDoubleCode( DoubleCodeType pDoubleCode ) {
+    // Assign value to attribute
+    doubleCode = pDoubleCode;
   }
 
   @Override

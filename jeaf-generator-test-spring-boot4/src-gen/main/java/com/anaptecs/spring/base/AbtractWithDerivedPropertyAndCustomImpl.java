@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+
 public abstract class AbtractWithDerivedPropertyAndCustomImpl extends AbtractWithDerivedPropertyAndCustomImplBase {
   /**
    * Initialize object. Nothing special to do.
@@ -40,6 +42,7 @@ public abstract class AbtractWithDerivedPropertyAndCustomImpl extends AbtractWit
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+  @MyNotNullProperty
   @Override
   public String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".

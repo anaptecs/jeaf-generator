@@ -7,8 +7,22 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Problem.Builder.class)
 public class Problem {
   /**
    * Constant for the name of attribute "title".
@@ -100,6 +114,8 @@ public class Problem {
   /**
    * Class implements builder to create a new instance of class <code>Problem</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     @NotNull
     private String title;
@@ -135,12 +151,32 @@ public class Problem {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Problem objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Problem objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( Problem pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #title}.<br/>
      *
      * @param pTitle Value to which {@link #title} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTitle( String pTitle ) {
+    public Builder setTitle( @MyNotNullProperty String pTitle ) {
       // Assign value to attribute
       title = pTitle;
       return this;
@@ -164,7 +200,7 @@ public class Problem {
      * @param pType Value to which {@link #type} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setType( String pType ) {
+    public Builder setType( @MyNotNullProperty String pType ) {
       // Assign value to attribute
       type = pType;
       return this;
@@ -176,7 +212,7 @@ public class Problem {
      * @param pDetail Value to which {@link #detail} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setDetail( String pDetail ) {
+    public Builder setDetail( @MyNotNullProperty String pDetail ) {
       // Assign value to attribute
       detail = pDetail;
       return this;
@@ -188,7 +224,7 @@ public class Problem {
      * @param pInstance Value to which {@link #instance} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setInstance( String pInstance ) {
+    public Builder setInstance( @MyNotNullProperty String pInstance ) {
       // Assign value to attribute
       instance = pInstance;
       return this;
@@ -200,7 +236,9 @@ public class Problem {
      * @return Problem Created object. The method never returns null.
      */
     public Problem build( ) {
-      return new Problem(this);
+      Problem lObject = new Problem(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -209,6 +247,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #title} is set.
    */
+  @MyNotNullProperty
   public String getTitle( ) {
     return title;
   }
@@ -227,6 +266,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #type} is set.
    */
+  @MyNotNullProperty
   public String getType( ) {
     return type;
   }
@@ -236,6 +276,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #detail} is set.
    */
+  @MyNotNullProperty
   public String getDetail( ) {
     return detail;
   }
@@ -245,6 +286,7 @@ public class Problem {
    *
    * @return {@link String} Value to which {@link #instance} is set.
    */
+  @MyNotNullProperty
   public String getInstance( ) {
     return instance;
   }

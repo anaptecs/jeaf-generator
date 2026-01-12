@@ -7,6 +7,11 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class LocalBeanParamType {
   /**
    * Constant for the name of attribute "localKey".
@@ -18,9 +23,9 @@ public class LocalBeanParamType {
    */
   public static final String LOCALID = "localID";
 
-  private final String localKey;
+  private String localKey;
 
-  private final String localID;
+  private String localID;
 
   /**
    * Initialize object using the passed builder.
@@ -62,6 +67,8 @@ public class LocalBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>LocalBeanParamType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String localKey;
 
@@ -85,12 +92,32 @@ public class LocalBeanParamType {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new LocalBeanParamType objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new LocalBeanParamType objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( LocalBeanParamType pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #localKey}.<br/>
      *
      * @param pLocalKey Value to which {@link #localKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalKey( String pLocalKey ) {
+    public Builder setLocalKey( @MyNotNullProperty String pLocalKey ) {
       // Assign value to attribute
       localKey = pLocalKey;
       return this;
@@ -102,7 +129,7 @@ public class LocalBeanParamType {
      * @param pLocalID Value to which {@link #localID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLocalID( String pLocalID ) {
+    public Builder setLocalID( @MyNotNullProperty String pLocalID ) {
       // Assign value to attribute
       localID = pLocalID;
       return this;
@@ -115,7 +142,9 @@ public class LocalBeanParamType {
      * @return LocalBeanParamType Created object. The method never returns null.
      */
     public LocalBeanParamType build( ) {
-      return new LocalBeanParamType(this);
+      LocalBeanParamType lObject = new LocalBeanParamType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -124,8 +153,19 @@ public class LocalBeanParamType {
    *
    * @return {@link String} Value to which {@link #localKey} is set.
    */
+  @MyNotNullProperty
   public String getLocalKey( ) {
     return localKey;
+  }
+
+  /**
+   * Method sets attribute {@link #localKey}.<br/>
+   *
+   * @param pLocalKey Value to which {@link #localKey} should be set.
+   */
+  public void setLocalKey( @MyNotNullProperty String pLocalKey ) {
+    // Assign value to attribute
+    localKey = pLocalKey;
   }
 
   /**
@@ -133,8 +173,19 @@ public class LocalBeanParamType {
    *
    * @return {@link String} Value to which {@link #localID} is set.
    */
+  @MyNotNullProperty
   public String getLocalID( ) {
     return localID;
+  }
+
+  /**
+   * Method sets attribute {@link #localID}.<br/>
+   *
+   * @param pLocalID Value to which {@link #localID} should be set.
+   */
+  public void setLocalID( @MyNotNullProperty String pLocalID ) {
+    // Assign value to attribute
+    localID = pLocalID;
   }
 
   @Override

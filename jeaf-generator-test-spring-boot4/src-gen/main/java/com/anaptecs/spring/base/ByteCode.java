@@ -7,13 +7,25 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class ByteCode {
   /**
    * Constant for the name of attribute "code".
    */
   public static final String CODE = "code";
 
-  private final Byte code;
+  private Byte code;
 
   /**
    * Initialize object using the passed builder.
@@ -26,6 +38,14 @@ public class ByteCode {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private ByteCode( Byte pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new ByteCode objects.
@@ -35,8 +55,22 @@ public class ByteCode {
   }
 
   /**
+   * Convenience method to create new instance of class ByteCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link ByteCode}
+   */
+  public static ByteCode of( Byte pCode ) {
+    return new ByteCode(pCode);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ByteCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private Byte code;
 
@@ -57,12 +91,32 @@ public class ByteCode {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new ByteCode objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ByteCode objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( ByteCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( Byte pCode ) {
+    public Builder setCode( @MyNotNullProperty Byte pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -74,7 +128,9 @@ public class ByteCode {
      * @return ByteCode Created object. The method never returns null.
      */
     public ByteCode build( ) {
-      return new ByteCode(this);
+      ByteCode lObject = new ByteCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -83,8 +139,19 @@ public class ByteCode {
    *
    * @return {@link Byte} Value to which {@link #code} is set.
    */
+  @MyNotNullProperty
   public Byte getCode( ) {
     return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( @MyNotNullProperty Byte pCode ) {
+    // Assign value to attribute
+    code = pCode;
   }
 
   @Override

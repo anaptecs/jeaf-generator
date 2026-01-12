@@ -5,23 +5,36 @@
  */
 package com.anaptecs.spring.base;
 
-import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Company.CompanyBuilderImpl.class)
 public class Company extends Partner {
   /**
    * Constant for the name of attribute "name".
    */
   public static final String NAME = "name";
 
-  private final String name;
+  private String name;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Company( Builder pBuilder ) {
+  protected Company( CompanyBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -31,29 +44,32 @@ public class Company extends Partner {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Company objects.
+   * @return {@link CompanyBuilder} New builder that can be used to create new Company objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static CompanyBuilder<?, ?> builder( ) {
+    return new CompanyBuilderImpl();
   }
 
   /**
    * Class implements builder to create a new instance of class <code>Company</code>.
    */
-  public static class Builder extends Partner.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class CompanyBuilder<T extends Company, B extends CompanyBuilder<T, B>>
+      extends PartnerBuilder<T, B> {
     private String name;
 
     /**
      * Use {@link Company#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected CompanyBuilder( ) {
       super();
     }
 
     /**
      * Use {@link Company#builder(Company)} instead of private constructor to create new builder.
      */
-    protected Builder( Company pObject ) {
+    protected CompanyBuilder( Company pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -62,41 +78,15 @@ public class Company extends Partner {
     }
 
     /**
-     * Method sets association {@link #postalAddresses}.<br/>
-     *
-     * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
-      // Call super class implementation.
-      super.setPostalAddresses(pPostalAddresses);
-      return this;
-    }
-
-    /**
-     * Method adds the passed objects to association {@link #postalAddresses}.<br/>
-     *
-     * @param pPostalAddresses Array of objects that should be added to {@link #postalAddresses}. The parameter may be
-     * null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
-     */
-    public Builder addToPostalAddresses( PostalAddress... pPostalAddresses ) {
-      // Call super class implementation.
-      super.addToPostalAddresses(pPostalAddresses);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public B setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
@@ -104,8 +94,27 @@ public class Company extends Partner {
      *
      * @return Company Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class CompanyBuilderImpl extends CompanyBuilder<Company, CompanyBuilderImpl> {
+    protected CompanyBuilderImpl( ) {
+    }
+
+    protected CompanyBuilderImpl( Company pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected CompanyBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Company build( ) {
-      return new Company(this);
+      Company lObject = new Company(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -114,8 +123,19 @@ public class Company extends Partner {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNullProperty
   public String getName( ) {
     return name;
+  }
+
+  /**
+   * Method sets attribute {@link #name}.<br/>
+   *
+   * @param pName Value to which {@link #name} should be set.
+   */
+  public void setName( @MyNotNullProperty String pName ) {
+    // Assign value to attribute
+    name = pName;
   }
 
   @Override
@@ -178,9 +198,10 @@ public class Company extends Partner {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Company objects. The method never returns null.
+   * @return {@link CompanyBuilder} New builder that can be used to create new Company objects. The method never returns
+   * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public CompanyBuilder<?, ?> toBuilder( ) {
+    return new CompanyBuilderImpl(this);
   }
 }

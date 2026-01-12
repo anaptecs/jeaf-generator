@@ -5,13 +5,26 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = UICStopPlace.UICStopPlaceBuilderImpl.class)
 public class UICStopPlace extends StopPlaceRef {
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected UICStopPlace( Builder pBuilder ) {
+  protected UICStopPlace( UICStopPlaceBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
   }
@@ -19,10 +32,10 @@ public class UICStopPlace extends StopPlaceRef {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new UICStopPlace objects.
+   * @return {@link UICStopPlaceBuilder} New builder that can be used to create new UICStopPlace objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static UICStopPlaceBuilder<?, ?> builder( ) {
+    return new UICStopPlaceBuilderImpl();
   }
 
   /**
@@ -45,45 +58,22 @@ public class UICStopPlace extends StopPlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>UICStopPlace</code>.
    */
-  public static class Builder extends StopPlaceRef.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class UICStopPlaceBuilder<T extends UICStopPlace, B extends UICStopPlaceBuilder<T, B>>
+      extends StopPlaceRefBuilder<T, B> {
     /**
      * Use {@link UICStopPlace#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected UICStopPlaceBuilder( ) {
       super();
     }
 
     /**
      * Use {@link UICStopPlace#builder(UICStopPlace)} instead of private constructor to create new builder.
      */
-    protected Builder( UICStopPlace pObject ) {
+    protected UICStopPlaceBuilder( UICStopPlace pObject ) {
       super(pObject);
-    }
-
-    /**
-     * Method sets attribute {@link #name}.<br/>
-     *
-     * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setName( String pName ) {
-      // Call super class implementation.
-      super.setName(pName);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #type}.<br/>
-     *
-     * @param pType Value to which {@link #type} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setType( MyType pType ) {
-      // Call super class implementation.
-      super.setType(pType);
-      return this;
     }
 
     /**
@@ -92,8 +82,27 @@ public class UICStopPlace extends StopPlaceRef {
      *
      * @return UICStopPlace Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class UICStopPlaceBuilderImpl extends UICStopPlaceBuilder<UICStopPlace, UICStopPlaceBuilderImpl> {
+    protected UICStopPlaceBuilderImpl( ) {
+    }
+
+    protected UICStopPlaceBuilderImpl( UICStopPlace pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected UICStopPlaceBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public UICStopPlace build( ) {
-      return new UICStopPlace(this);
+      UICStopPlace lObject = new UICStopPlace(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -126,10 +135,10 @@ public class UICStopPlace extends StopPlaceRef {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new UICStopPlace objects. The method never returns
-   * null.
+   * @return {@link UICStopPlaceBuilder} New builder that can be used to create new UICStopPlace objects. The method
+   * never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public UICStopPlaceBuilder<?, ?> toBuilder( ) {
+    return new UICStopPlaceBuilderImpl(this);
   }
 }

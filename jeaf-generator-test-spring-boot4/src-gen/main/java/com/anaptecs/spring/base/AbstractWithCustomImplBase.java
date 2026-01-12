@@ -5,13 +5,23 @@
  */
 package com.anaptecs.spring.base;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public abstract class AbstractWithCustomImplBase {
   /**
    * Constant for the name of attribute "justAProperty".
    */
   public static final String JUSTAPROPERTY = "justAProperty";
 
-  private final int justAProperty;
+  private int justAProperty;
 
   /**
    * Initialize object using the passed builder.
@@ -27,6 +37,8 @@ public abstract class AbstractWithCustomImplBase {
    * Class implements builder to create a new instance of class AbstractWithCustomImpl. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private int justAProperty;
 
@@ -67,6 +79,16 @@ public abstract class AbstractWithCustomImplBase {
    */
   public int getJustAProperty( ) {
     return justAProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #justAProperty}.<br/>
+   *
+   * @param pJustAProperty Value to which {@link #justAProperty} should be set.
+   */
+  public void setJustAProperty( int pJustAProperty ) {
+    // Assign value to attribute
+    justAProperty = pJustAProperty;
   }
 
   @Override

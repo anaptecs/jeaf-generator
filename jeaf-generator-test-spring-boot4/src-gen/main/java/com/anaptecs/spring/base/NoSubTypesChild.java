@@ -7,6 +7,20 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = NoSubTypesChild.NoSubTypesChildBuilderImpl.class)
 public class NoSubTypesChild extends NoSubTypesParent {
   /**
    * Constant for the name of attribute "myProperty".
@@ -42,14 +56,14 @@ public class NoSubTypesChild extends NoSubTypesParent {
    * <br/>
    * So far I think it is at least funny.
    */
-  private final String myProperty;
+  private String myProperty;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected NoSubTypesChild( Builder pBuilder ) {
+  protected NoSubTypesChild( NoSubTypesChildBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -59,10 +73,10 @@ public class NoSubTypesChild extends NoSubTypesParent {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new NoSubTypesChild objects.
+   * @return {@link NoSubTypesChildBuilder} New builder that can be used to create new NoSubTypesChild objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static NoSubTypesChildBuilder<?, ?> builder( ) {
+    return new NoSubTypesChildBuilderImpl();
   }
 
   /**
@@ -82,7 +96,10 @@ public class NoSubTypesChild extends NoSubTypesParent {
   /**
    * Class implements builder to create a new instance of class <code>NoSubTypesChild</code>.
    */
-  public static class Builder extends NoSubTypesParent.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class NoSubTypesChildBuilder<T extends NoSubTypesChild, B extends NoSubTypesChildBuilder<T, B>>
+      extends NoSubTypesParentBuilder<T, B> {
     /**
      * Hello World!<br/>
      * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
@@ -117,14 +134,14 @@ public class NoSubTypesChild extends NoSubTypesParent {
     /**
      * Use {@link NoSubTypesChild#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected NoSubTypesChildBuilder( ) {
       super();
     }
 
     /**
      * Use {@link NoSubTypesChild#builder(NoSubTypesChild)} instead of private constructor to create new builder.
      */
-    protected Builder( NoSubTypesChild pObject ) {
+    protected NoSubTypesChildBuilder( NoSubTypesChild pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -136,12 +153,12 @@ public class NoSubTypesChild extends NoSubTypesParent {
      * Method sets attribute {@link #myProperty}.<br/>
      *
      * @param pMyProperty Value to which {@link #myProperty} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setMyProperty( String pMyProperty ) {
+    public B setMyProperty( @MyNotNullProperty String pMyProperty ) {
       // Assign value to attribute
       myProperty = pMyProperty;
-      return this;
+      return this.self();
     }
 
     /**
@@ -150,8 +167,28 @@ public class NoSubTypesChild extends NoSubTypesParent {
      *
      * @return NoSubTypesChild Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class NoSubTypesChildBuilderImpl
+      extends NoSubTypesChildBuilder<NoSubTypesChild, NoSubTypesChildBuilderImpl> {
+    protected NoSubTypesChildBuilderImpl( ) {
+    }
+
+    protected NoSubTypesChildBuilderImpl( NoSubTypesChild pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected NoSubTypesChildBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public NoSubTypesChild build( ) {
-      return new NoSubTypesChild(this);
+      NoSubTypesChild lObject = new NoSubTypesChild(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -187,8 +224,46 @@ public class NoSubTypesChild extends NoSubTypesParent {
    *
    * @return {@link String} Value to which {@link #myProperty} is set.
    */
+  @MyNotNullProperty
   public String getMyProperty( ) {
     return myProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #myProperty}.<br/>
+   * Hello World!<br/>
+   * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+   * height="20" width="20" align="absmiddle" />
+   * </p>
+   * <table>
+   * <thead>
+   * <tr>
+   * <th>Syntax</th>
+   * <th>Description</th>
+   * </tr>
+   * </thead> <tbody>
+   * <tr>
+   * <td>Header</td>
+   * <td>Title</td>
+   * </tr>
+   * <tr>
+   * <td>Paragraph</td>
+   * <td>Text</td>
+   * </tr>
+   * </tbody>
+   * </table>
+   * <p>
+   * Let's have an additional discussion about how much sense it makes to add
+   * <img src="https://raw.githubusercontent.com/anaptecs/emoji-images/master/imgs/1f428.png" alt="emoji github:koala"
+   * height="20" width="20" align="absmiddle" /> to your documentation.<br/>
+   * <br/>
+   * So far I think it is at least funny.
+   *
+   * @param pMyProperty Value to which {@link #myProperty} should be set.
+   */
+  public void setMyProperty( @MyNotNullProperty String pMyProperty ) {
+    // Assign value to attribute
+    myProperty = pMyProperty;
   }
 
   @Override
@@ -251,10 +326,10 @@ public class NoSubTypesChild extends NoSubTypesParent {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new NoSubTypesChild objects. The method never
-   * returns null.
+   * @return {@link NoSubTypesChildBuilder} New builder that can be used to create new NoSubTypesChild objects. The
+   * method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public NoSubTypesChildBuilder<?, ?> toBuilder( ) {
+    return new NoSubTypesChildBuilderImpl(this);
   }
 }

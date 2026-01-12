@@ -5,13 +5,24 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class BooleanCodeType {
   /**
    * Constant for the name of attribute "code".
    */
   public static final String CODE = "code";
 
-  private final boolean code;
+  private boolean code;
 
   /**
    * Initialize object using the passed builder.
@@ -24,6 +35,14 @@ public class BooleanCodeType {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private BooleanCodeType( boolean pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new BooleanCodeType objects.
@@ -33,8 +52,22 @@ public class BooleanCodeType {
   }
 
   /**
+   * Convenience method to create new instance of class BooleanCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link BooleanCodeType}
+   */
+  public static BooleanCodeType of( boolean pCode ) {
+    return new BooleanCodeType(pCode);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>BooleanCodeType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private boolean code;
 
@@ -52,6 +85,26 @@ public class BooleanCodeType {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
       }
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new BooleanCodeType objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new BooleanCodeType objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( BooleanCodeType pObject ) {
+      return new Builder(pObject);
     }
 
     /**
@@ -73,7 +126,9 @@ public class BooleanCodeType {
      * @return BooleanCodeType Created object. The method never returns null.
      */
     public BooleanCodeType build( ) {
-      return new BooleanCodeType(this);
+      BooleanCodeType lObject = new BooleanCodeType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -94,6 +149,16 @@ public class BooleanCodeType {
    */
   public boolean isCode( ) {
     return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( boolean pCode ) {
+    // Assign value to attribute
+    code = pCode;
   }
 
   @Override

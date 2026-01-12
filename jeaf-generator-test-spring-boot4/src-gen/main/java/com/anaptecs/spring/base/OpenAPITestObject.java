@@ -7,6 +7,20 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = OpenAPITestObject.Builder.class)
 public class OpenAPITestObject {
   /**
    * Constant for the name of attribute "readOnlyAttribute".
@@ -58,25 +72,25 @@ public class OpenAPITestObject {
    */
   public static final String NOTNULLABLEARRAY = "notNullableArray";
 
-  private final String readOnlyAttribute;
+  private String readOnlyAttribute;
 
-  private final String readWriteAttribute;
+  private String readWriteAttribute;
 
-  private final int writeOnlyAttribute;
+  private int writeOnlyAttribute;
 
-  private final Boolean nullableAttribute;
+  private Boolean nullableAttribute;
 
-  private final double notNullableAttribute;
+  private double notNullableAttribute;
 
-  private final String readOnlyArray;
+  private String readOnlyArray;
 
-  private final String readWriteArray;
+  private String readWriteArray;
 
-  private final int writeOnlyArray;
+  private int writeOnlyArray;
 
-  private final double nullableArray;
+  private double nullableArray;
 
-  private final double notNullableArray;
+  private double notNullableArray;
 
   /**
    * Initialize object using the passed builder.
@@ -152,6 +166,8 @@ public class OpenAPITestObject {
   /**
    * Class implements builder to create a new instance of class <code>OpenAPITestObject</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String readOnlyAttribute;
 
@@ -199,12 +215,32 @@ public class OpenAPITestObject {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new OpenAPITestObject objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( OpenAPITestObject pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #readOnlyAttribute}.<br/>
      *
      * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadOnlyAttribute( String pReadOnlyAttribute ) {
+    public Builder setReadOnlyAttribute( @MyNotNullProperty String pReadOnlyAttribute ) {
       // Assign value to attribute
       readOnlyAttribute = pReadOnlyAttribute;
       return this;
@@ -216,7 +252,7 @@ public class OpenAPITestObject {
      * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadWriteAttribute( String pReadWriteAttribute ) {
+    public Builder setReadWriteAttribute( @MyNotNullProperty String pReadWriteAttribute ) {
       // Assign value to attribute
       readWriteAttribute = pReadWriteAttribute;
       return this;
@@ -240,7 +276,7 @@ public class OpenAPITestObject {
      * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setNullableAttribute( Boolean pNullableAttribute ) {
+    public Builder setNullableAttribute( @MyNotNullProperty Boolean pNullableAttribute ) {
       // Assign value to attribute
       nullableAttribute = pNullableAttribute;
       return this;
@@ -264,7 +300,7 @@ public class OpenAPITestObject {
      * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadOnlyArray( String pReadOnlyArray ) {
+    public Builder setReadOnlyArray( @MyNotNullProperty String pReadOnlyArray ) {
       // Assign value to attribute
       readOnlyArray = pReadOnlyArray;
       return this;
@@ -276,7 +312,7 @@ public class OpenAPITestObject {
      * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReadWriteArray( String pReadWriteArray ) {
+    public Builder setReadWriteArray( @MyNotNullProperty String pReadWriteArray ) {
       // Assign value to attribute
       readWriteArray = pReadWriteArray;
       return this;
@@ -325,7 +361,9 @@ public class OpenAPITestObject {
      * @return OpenAPITestObject Created object. The method never returns null.
      */
     public OpenAPITestObject build( ) {
-      return new OpenAPITestObject(this);
+      OpenAPITestObject lObject = new OpenAPITestObject(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -334,8 +372,19 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readOnlyAttribute} is set.
    */
+  @MyNotNullProperty
   public String getReadOnlyAttribute( ) {
     return readOnlyAttribute;
+  }
+
+  /**
+   * Method sets attribute {@link #readOnlyAttribute}.<br/>
+   *
+   * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
+   */
+  public void setReadOnlyAttribute( @MyNotNullProperty String pReadOnlyAttribute ) {
+    // Assign value to attribute
+    readOnlyAttribute = pReadOnlyAttribute;
   }
 
   /**
@@ -343,8 +392,19 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readWriteAttribute} is set.
    */
+  @MyNotNullProperty
   public String getReadWriteAttribute( ) {
     return readWriteAttribute;
+  }
+
+  /**
+   * Method sets attribute {@link #readWriteAttribute}.<br/>
+   *
+   * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
+   */
+  public void setReadWriteAttribute( @MyNotNullProperty String pReadWriteAttribute ) {
+    // Assign value to attribute
+    readWriteAttribute = pReadWriteAttribute;
   }
 
   /**
@@ -357,12 +417,33 @@ public class OpenAPITestObject {
   }
 
   /**
+   * Method sets attribute {@link #writeOnlyAttribute}.<br/>
+   *
+   * @param pWriteOnlyAttribute Value to which {@link #writeOnlyAttribute} should be set.
+   */
+  public void setWriteOnlyAttribute( int pWriteOnlyAttribute ) {
+    // Assign value to attribute
+    writeOnlyAttribute = pWriteOnlyAttribute;
+  }
+
+  /**
    * Method returns attribute {@link #nullableAttribute}.<br/>
    *
    * @return {@link Boolean} Value to which {@link #nullableAttribute} is set.
    */
+  @MyNotNullProperty
   public Boolean getNullableAttribute( ) {
     return nullableAttribute;
+  }
+
+  /**
+   * Method sets attribute {@link #nullableAttribute}.<br/>
+   *
+   * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
+   */
+  public void setNullableAttribute( @MyNotNullProperty Boolean pNullableAttribute ) {
+    // Assign value to attribute
+    nullableAttribute = pNullableAttribute;
   }
 
   /**
@@ -375,12 +456,33 @@ public class OpenAPITestObject {
   }
 
   /**
+   * Method sets attribute {@link #notNullableAttribute}.<br/>
+   *
+   * @param pNotNullableAttribute Value to which {@link #notNullableAttribute} should be set.
+   */
+  public void setNotNullableAttribute( double pNotNullableAttribute ) {
+    // Assign value to attribute
+    notNullableAttribute = pNotNullableAttribute;
+  }
+
+  /**
    * Method returns attribute {@link #readOnlyArray}.<br/>
    *
    * @return {@link String} Value to which {@link #readOnlyArray} is set.
    */
+  @MyNotNullProperty
   public String getReadOnlyArray( ) {
     return readOnlyArray;
+  }
+
+  /**
+   * Method sets attribute {@link #readOnlyArray}.<br/>
+   *
+   * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
+   */
+  public void setReadOnlyArray( @MyNotNullProperty String pReadOnlyArray ) {
+    // Assign value to attribute
+    readOnlyArray = pReadOnlyArray;
   }
 
   /**
@@ -388,8 +490,19 @@ public class OpenAPITestObject {
    *
    * @return {@link String} Value to which {@link #readWriteArray} is set.
    */
+  @MyNotNullProperty
   public String getReadWriteArray( ) {
     return readWriteArray;
+  }
+
+  /**
+   * Method sets attribute {@link #readWriteArray}.<br/>
+   *
+   * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
+   */
+  public void setReadWriteArray( @MyNotNullProperty String pReadWriteArray ) {
+    // Assign value to attribute
+    readWriteArray = pReadWriteArray;
   }
 
   /**
@@ -402,6 +515,16 @@ public class OpenAPITestObject {
   }
 
   /**
+   * Method sets attribute {@link #writeOnlyArray}.<br/>
+   *
+   * @param pWriteOnlyArray Value to which {@link #writeOnlyArray} should be set.
+   */
+  public void setWriteOnlyArray( int pWriteOnlyArray ) {
+    // Assign value to attribute
+    writeOnlyArray = pWriteOnlyArray;
+  }
+
+  /**
    * Method returns attribute {@link #nullableArray}.<br/>
    *
    * @return double Value to which {@link #nullableArray} is set.
@@ -411,12 +534,32 @@ public class OpenAPITestObject {
   }
 
   /**
+   * Method sets attribute {@link #nullableArray}.<br/>
+   *
+   * @param pNullableArray Value to which {@link #nullableArray} should be set.
+   */
+  public void setNullableArray( double pNullableArray ) {
+    // Assign value to attribute
+    nullableArray = pNullableArray;
+  }
+
+  /**
    * Method returns attribute {@link #notNullableArray}.<br/>
    *
    * @return double Value to which {@link #notNullableArray} is set.
    */
   public double getNotNullableArray( ) {
     return notNullableArray;
+  }
+
+  /**
+   * Method sets attribute {@link #notNullableArray}.<br/>
+   *
+   * @param pNotNullableArray Value to which {@link #notNullableArray} should be set.
+   */
+  public void setNotNullableArray( double pNotNullableArray ) {
+    // Assign value to attribute
+    notNullableArray = pNotNullableArray;
   }
 
   @Override

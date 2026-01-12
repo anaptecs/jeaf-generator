@@ -7,8 +7,12 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.ParentBeanParamType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class ChildBeanParameterType extends ParentBeanParamType {
   /**
@@ -16,14 +20,14 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String CHILDPROPERTY = "childProperty";
 
-  private final String childProperty;
+  private String childProperty;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected ChildBeanParameterType( Builder pBuilder ) {
+  protected ChildBeanParameterType( ChildBeanParameterTypeBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -33,10 +37,11 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildBeanParameterType objects.
+   * @return {@link ChildBeanParameterTypeBuilder} New builder that can be used to create new ChildBeanParameterType
+   * objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ChildBeanParameterTypeBuilder<?, ?> builder( ) {
+    return new ChildBeanParameterTypeBuilderImpl();
   }
 
   /**
@@ -65,13 +70,16 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
-  public static class Builder extends ParentBeanParamType.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ChildBeanParameterTypeBuilder<T extends ChildBeanParameterType, B extends ChildBeanParameterTypeBuilder<T, B>>
+      extends ParentBeanParamTypeBuilder<T, B> {
     private String childProperty;
 
     /**
      * Use {@link ChildBeanParameterType#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ChildBeanParameterTypeBuilder( ) {
       super();
     }
 
@@ -79,7 +87,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      * Use {@link ChildBeanParameterType#builder(ChildBeanParameterType)} instead of private constructor to create new
      * builder.
      */
-    protected Builder( ChildBeanParameterType pObject ) {
+    protected ChildBeanParameterTypeBuilder( ChildBeanParameterType pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -88,54 +96,15 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
 
     /**
-     * Method sets attribute {@link #novaKey}.<br/>
-     *
-     * @param pNovaKey Value to which {@link #novaKey} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setNovaKey( String pNovaKey ) {
-      // Call super class implementation.
-      super.setNovaKey(pNovaKey);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #tkID}.<br/>
-     *
-     * @param pTkID Value to which {@link #tkID} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setTkID( String pTkID ) {
-      // Call super class implementation.
-      super.setTkID(pTkID);
-      return this;
-    }
-
-    /**
-     * Method sets attribute {@link #code}.<br/>
-     *
-     * @param pCode Value to which {@link #code} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setCode( DoubleCode pCode ) {
-      // Call super class implementation.
-      super.setCode(pCode);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #childProperty}.<br/>
      *
      * @param pChildProperty Value to which {@link #childProperty} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChildProperty( String pChildProperty ) {
+    public B setChildProperty( @MyNotNullProperty String pChildProperty ) {
       // Assign value to attribute
       childProperty = pChildProperty;
-      return this;
+      return this.self();
     }
 
     /**
@@ -144,8 +113,28 @@ public class ChildBeanParameterType extends ParentBeanParamType {
      *
      * @return ChildBeanParameterType Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ChildBeanParameterTypeBuilderImpl
+      extends ChildBeanParameterTypeBuilder<ChildBeanParameterType, ChildBeanParameterTypeBuilderImpl> {
+    protected ChildBeanParameterTypeBuilderImpl( ) {
+    }
+
+    protected ChildBeanParameterTypeBuilderImpl( ChildBeanParameterType pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ChildBeanParameterTypeBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public ChildBeanParameterType build( ) {
-      return new ChildBeanParameterType(this);
+      ChildBeanParameterType lObject = new ChildBeanParameterType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -154,8 +143,19 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @return {@link String} Value to which {@link #childProperty} is set.
    */
+  @MyNotNullProperty
   public String getChildProperty( ) {
     return childProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #childProperty}.<br/>
+   *
+   * @param pChildProperty Value to which {@link #childProperty} should be set.
+   */
+  public void setChildProperty( @MyNotNullProperty String pChildProperty ) {
+    // Assign value to attribute
+    childProperty = pChildProperty;
   }
 
   @Override
@@ -218,10 +218,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new ChildBeanParameterType objects. The method never
-   * returns null.
+   * @return {@link ChildBeanParameterTypeBuilder} New builder that can be used to create new ChildBeanParameterType
+   * objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ChildBeanParameterTypeBuilder<?, ?> toBuilder( ) {
+    return new ChildBeanParameterTypeBuilderImpl(this);
   }
 }

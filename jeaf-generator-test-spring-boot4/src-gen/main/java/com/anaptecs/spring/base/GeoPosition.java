@@ -5,6 +5,19 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = GeoPosition.GeoPositionBuilderImpl.class)
 public class GeoPosition extends PlaceRef {
   /**
    * Constant for the name of attribute "longitude".
@@ -16,16 +29,16 @@ public class GeoPosition extends PlaceRef {
    */
   public static final String LATITUDE = "latitude";
 
-  private final int longitude;
+  private int longitude;
 
-  private final int latitude;
+  private int latitude;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected GeoPosition( Builder pBuilder ) {
+  protected GeoPosition( GeoPositionBuilder<?, ?> pBuilder ) {
     // Call constructor of super class.
     super(pBuilder);
     // Read attribute values from builder.
@@ -36,10 +49,10 @@ public class GeoPosition extends PlaceRef {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new GeoPosition objects.
+   * @return {@link GeoPositionBuilder} New builder that can be used to create new GeoPosition objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static GeoPositionBuilder<?, ?> builder( ) {
+    return new GeoPositionBuilderImpl();
   }
 
   /**
@@ -68,7 +81,10 @@ public class GeoPosition extends PlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>GeoPosition</code>.
    */
-  public static class Builder extends PlaceRef.Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class GeoPositionBuilder<T extends GeoPosition, B extends GeoPositionBuilder<T, B>>
+      extends PlaceRefBuilder<T, B> {
     private int longitude;
 
     private int latitude;
@@ -76,14 +92,14 @@ public class GeoPosition extends PlaceRef {
     /**
      * Use {@link GeoPosition#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected GeoPositionBuilder( ) {
       super();
     }
 
     /**
      * Use {@link GeoPosition#builder(GeoPosition)} instead of private constructor to create new builder.
      */
-    protected Builder( GeoPosition pObject ) {
+    protected GeoPositionBuilder( GeoPosition pObject ) {
       super(pObject);
       if (pObject != null) {
         // Read attribute values from passed object.
@@ -93,53 +109,27 @@ public class GeoPosition extends PlaceRef {
     }
 
     /**
-     * Method sets attribute {@link #name}.<br/>
-     *
-     * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setName( String pName ) {
-      // Call super class implementation.
-      super.setName(pName);
-      return this;
-    }
-
-    /**
-     * Method sets association {@link #type}.<br/>
-     *
-     * @param pType Value to which {@link #type} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     */
-    @Override
-    public Builder setType( MyType pType ) {
-      // Call super class implementation.
-      super.setType(pType);
-      return this;
-    }
-
-    /**
      * Method sets attribute {@link #longitude}.<br/>
      *
      * @param pLongitude Value to which {@link #longitude} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLongitude( int pLongitude ) {
+    public B setLongitude( int pLongitude ) {
       // Assign value to attribute
       longitude = pLongitude;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #latitude}.<br/>
      *
      * @param pLatitude Value to which {@link #latitude} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLatitude( int pLatitude ) {
+    public B setLatitude( int pLatitude ) {
       // Assign value to attribute
       latitude = pLatitude;
-      return this;
+      return this.self();
     }
 
     /**
@@ -148,8 +138,27 @@ public class GeoPosition extends PlaceRef {
      *
      * @return GeoPosition Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class GeoPositionBuilderImpl extends GeoPositionBuilder<GeoPosition, GeoPositionBuilderImpl> {
+    protected GeoPositionBuilderImpl( ) {
+    }
+
+    protected GeoPositionBuilderImpl( GeoPosition pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected GeoPositionBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public GeoPosition build( ) {
-      return new GeoPosition(this);
+      GeoPosition lObject = new GeoPosition(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -163,12 +172,32 @@ public class GeoPosition extends PlaceRef {
   }
 
   /**
+   * Method sets attribute {@link #longitude}.<br/>
+   *
+   * @param pLongitude Value to which {@link #longitude} should be set.
+   */
+  public void setLongitude( int pLongitude ) {
+    // Assign value to attribute
+    longitude = pLongitude;
+  }
+
+  /**
    * Method returns attribute {@link #latitude}.<br/>
    *
    * @return int Value to which {@link #latitude} is set.
    */
   public int getLatitude( ) {
     return latitude;
+  }
+
+  /**
+   * Method sets attribute {@link #latitude}.<br/>
+   *
+   * @param pLatitude Value to which {@link #latitude} should be set.
+   */
+  public void setLatitude( int pLatitude ) {
+    // Assign value to attribute
+    latitude = pLatitude;
   }
 
   @Override
@@ -236,10 +265,10 @@ public class GeoPosition extends PlaceRef {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new GeoPosition objects. The method never returns
-   * null.
+   * @return {@link GeoPositionBuilder} New builder that can be used to create new GeoPosition objects. The method never
+   * returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public GeoPositionBuilder<?, ?> toBuilder( ) {
+    return new GeoPositionBuilderImpl(this);
   }
 }

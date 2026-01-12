@@ -10,6 +10,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = TheReadOnlyPOJO.Builder.class)
 public class TheReadOnlyPOJO {
   /**
    * Constant for the name of attribute "dataUnit".
@@ -78,6 +92,8 @@ public class TheReadOnlyPOJO {
   /**
    * Class implements builder to create a new instance of class <code>TheReadOnlyPOJO</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private DataUnit dataUnit;
 
@@ -107,6 +123,26 @@ public class TheReadOnlyPOJO {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new TheReadOnlyPOJO objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( TheReadOnlyPOJO pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #dataUnit}.<br/>
      *
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
@@ -123,7 +159,7 @@ public class TheReadOnlyPOJO {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public Builder setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
       return this;
@@ -154,7 +190,13 @@ public class TheReadOnlyPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setEntities( List<Entity> pEntities ) {
-      entities = pEntities;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pEntities != null) {
+        entities = new ArrayList<Entity>(pEntities);
+      }
+      else {
+        entities = null;
+      }
       return this;
     }
 
@@ -198,7 +240,9 @@ public class TheReadOnlyPOJO {
      * @return TheReadOnlyPOJO Created object. The method never returns null.
      */
     public TheReadOnlyPOJO build( ) {
-      return new TheReadOnlyPOJO(this);
+      TheReadOnlyPOJO lObject = new TheReadOnlyPOJO(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -216,6 +260,7 @@ public class TheReadOnlyPOJO {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNullProperty
   public String getName( ) {
     return name;
   }

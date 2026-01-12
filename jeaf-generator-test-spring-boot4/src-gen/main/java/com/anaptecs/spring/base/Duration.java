@@ -7,6 +7,13 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 /**
  * Type represents a duration.<br/>
  * <br/>
@@ -19,6 +26,13 @@ import java.util.Objects;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Duration.Builder.class)
 public class Duration {
   /**
    * Constant for the name of attribute "value".
@@ -30,13 +44,13 @@ public class Duration {
    */
   public static final String TIMEUNIT = "timeUnit";
 
-  private final int value;
+  private int value;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>DAY</code>
    */
-  private final TimeUnit timeUnit;
+  private TimeUnit timeUnit;
 
   /**
    * Initialize object using the passed builder.
@@ -78,6 +92,8 @@ public class Duration {
   /**
    * Class implements builder to create a new instance of class <code>Duration</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private int value;
 
@@ -105,6 +121,26 @@ public class Duration {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Duration objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Duration objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( Duration pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #value}.<br/>
      *
      * @param pValue Value to which {@link #value} should be set.
@@ -122,7 +158,7 @@ public class Duration {
      * @param pTimeUnit Value to which {@link #timeUnit} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTimeUnit( TimeUnit pTimeUnit ) {
+    public Builder setTimeUnit( @MyNotNullProperty TimeUnit pTimeUnit ) {
       // Assign value to attribute
       timeUnit = pTimeUnit;
       return this;
@@ -134,7 +170,9 @@ public class Duration {
      * @return Duration Created object. The method never returns null.
      */
     public Duration build( ) {
-      return new Duration(this);
+      Duration lObject = new Duration(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -148,12 +186,33 @@ public class Duration {
   }
 
   /**
+   * Method sets attribute {@link #value}.<br/>
+   *
+   * @param pValue Value to which {@link #value} should be set.
+   */
+  public void setValue( int pValue ) {
+    // Assign value to attribute
+    value = pValue;
+  }
+
+  /**
    * Method returns attribute {@link #timeUnit}.<br/>
    *
    * @return {@link TimeUnit} Value to which {@link #timeUnit} is set.
    */
+  @MyNotNullProperty
   public TimeUnit getTimeUnit( ) {
     return timeUnit;
+  }
+
+  /**
+   * Method sets attribute {@link #timeUnit}.<br/>
+   *
+   * @param pTimeUnit Value to which {@link #timeUnit} should be set.
+   */
+  public void setTimeUnit( @MyNotNullProperty TimeUnit pTimeUnit ) {
+    // Assign value to attribute
+    timeUnit = pTimeUnit;
   }
 
   @Override

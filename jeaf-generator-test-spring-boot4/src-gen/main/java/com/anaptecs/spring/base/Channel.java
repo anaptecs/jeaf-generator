@@ -7,6 +7,20 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Channel.Builder.class)
 public class Channel {
   /**
    * Constant for the name of attribute "channelType".
@@ -37,12 +51,12 @@ public class Channel {
   /**
    * Type of the channel
    */
-  private final ChannelType channelType;
+  private ChannelType channelType;
 
   /**
    * The business code of the channel
    */
-  private final ChannelCode channelCode;
+  private ChannelCode channelCode;
 
   private final int code;
 
@@ -104,6 +118,8 @@ public class Channel {
   /**
    * Class implements builder to create a new instance of class <code>Channel</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Type of the channel
@@ -144,12 +160,32 @@ public class Channel {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Channel objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Channel objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( Channel pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #channelType}.<br/>
      *
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelType( ChannelType pChannelType ) {
+    public Builder setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       channelType = pChannelType;
       return this;
     }
@@ -160,7 +196,7 @@ public class Channel {
      * @param pChannelCode Value to which {@link #channelCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setChannelCode( ChannelCode pChannelCode ) {
+    public Builder setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
       channelCode = pChannelCode;
       return this;
     }
@@ -196,7 +232,9 @@ public class Channel {
      * @return Channel Created object. The method never returns null.
      */
     public Channel build( ) {
-      return new Channel(this);
+      Channel lObject = new Channel(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -206,8 +244,26 @@ public class Channel {
    *
    * @return {@link ChannelType} Value to which {@link #channelType} is set.
    */
+  @MyNotNullProperty
   public ChannelType getChannelType( ) {
     return channelType;
+  }
+
+  /**
+   * Method sets association {@link #channelType}.<br/>
+   * Type of the channel
+   *
+   * @param pChannelType Value to which {@link #channelType} should be set.
+   */
+  public void setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
+    channelType = pChannelType;
+  }
+
+  /**
+   * Method unsets {@link #channelType}.
+   */
+  public final void unsetChannelType( ) {
+    channelType = null;
   }
 
   /**
@@ -216,8 +272,26 @@ public class Channel {
    *
    * @return {@link ChannelCode} Value to which {@link #channelCode} is set.
    */
+  @MyNotNullProperty
   public ChannelCode getChannelCode( ) {
     return channelCode;
+  }
+
+  /**
+   * Method sets association {@link #channelCode}.<br/>
+   * The business code of the channel
+   *
+   * @param pChannelCode Value to which {@link #channelCode} should be set.
+   */
+  public void setChannelCode( @MyNotNullProperty ChannelCode pChannelCode ) {
+    channelCode = pChannelCode;
+  }
+
+  /**
+   * Method unsets {@link #channelCode}.
+   */
+  public final void unsetChannelCode( ) {
+    channelCode = null;
   }
 
   /**
@@ -254,6 +328,7 @@ public class Channel {
    *
    * @return {@link Reseller} Value to which {@link #reseller} is set.
    */
+  @MyNotNullProperty
   public Reseller getReseller( ) {
     return reseller;
   }
@@ -263,8 +338,19 @@ public class Channel {
    *
    * @param pReseller Value to which {@link #reseller} should be set.
    */
-  void setReseller( Reseller pReseller ) {
+  void setReseller( @MyNotNullProperty Reseller pReseller ) {
+    // Release already referenced object before setting a new association.
+    if (reseller != null) {
+      reseller.removeFromChannels((Channel) this);
+    }
     reseller = pReseller;
+  }
+
+  /**
+   * Method unsets {@link #reseller}.
+   */
+  final void unsetReseller( ) {
+    reseller = null;
   }
 
   @Override

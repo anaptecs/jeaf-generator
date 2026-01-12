@@ -7,6 +7,18 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class CharacterCode {
   /**
    * Constant for the name of attribute "code".
@@ -16,7 +28,7 @@ public class CharacterCode {
   /**
    * Just a character
    */
-  private final Character code;
+  private Character code;
 
   /**
    * Initialize object using the passed builder.
@@ -29,6 +41,14 @@ public class CharacterCode {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private CharacterCode( Character pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new CharacterCode objects.
@@ -38,8 +58,22 @@ public class CharacterCode {
   }
 
   /**
+   * Convenience method to create new instance of class CharacterCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link CharacterCode}
+   */
+  public static CharacterCode of( Character pCode ) {
+    return new CharacterCode(pCode);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>CharacterCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Just a character
@@ -63,12 +97,32 @@ public class CharacterCode {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new CharacterCode objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new CharacterCode objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( CharacterCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( Character pCode ) {
+    public Builder setCode( @MyNotNullProperty Character pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -81,7 +135,9 @@ public class CharacterCode {
      * @return CharacterCode Created object. The method never returns null.
      */
     public CharacterCode build( ) {
-      return new CharacterCode(this);
+      CharacterCode lObject = new CharacterCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -91,8 +147,20 @@ public class CharacterCode {
    *
    * @return {@link Character} Value to which {@link #code} is set.
    */
+  @MyNotNullProperty
   public Character getCode( ) {
     return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   * Just a character
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( @MyNotNullProperty Character pCode ) {
+    // Assign value to attribute
+    code = pCode;
   }
 
   @Override

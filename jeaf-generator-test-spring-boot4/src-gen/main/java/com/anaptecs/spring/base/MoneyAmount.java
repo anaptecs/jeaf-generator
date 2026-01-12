@@ -8,7 +8,14 @@ package com.anaptecs.spring.base;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
+
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Type represents an amount of money.<br/>
@@ -22,6 +29,13 @@ import jakarta.validation.constraints.NotNull;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = MoneyAmount.Builder.class)
 public class MoneyAmount {
   /**
    * Constant for the name of attribute "amount".
@@ -82,6 +96,8 @@ public class MoneyAmount {
   /**
    * Class implements builder to create a new instance of class <code>MoneyAmount</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * The amount of money. Attribute is always set.
@@ -110,12 +126,32 @@ public class MoneyAmount {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new MoneyAmount objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new MoneyAmount objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( MoneyAmount pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #amount}.<br/>
      *
      * @param pAmount Value to which {@link #amount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAmount( BigDecimal pAmount ) {
+    public Builder setAmount( @MyNotNullProperty BigDecimal pAmount ) {
       // Assign value to attribute
       amount = pAmount;
       return this;
@@ -127,7 +163,7 @@ public class MoneyAmount {
      * @param pCurrencyCode Value to which {@link #currencyCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCurrencyCode( CurrencyCode pCurrencyCode ) {
+    public Builder setCurrencyCode( @MyNotNullProperty CurrencyCode pCurrencyCode ) {
       // Assign value to attribute
       currencyCode = pCurrencyCode;
       return this;
@@ -140,7 +176,9 @@ public class MoneyAmount {
      * @return MoneyAmount Created object. The method never returns null.
      */
     public MoneyAmount build( ) {
-      return new MoneyAmount(this);
+      MoneyAmount lObject = new MoneyAmount(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -150,6 +188,7 @@ public class MoneyAmount {
    *
    * @return {@link BigDecimal} Value to which {@link #amount} is set.
    */
+  @MyNotNullProperty
   public BigDecimal getAmount( ) {
     return amount;
   }
@@ -159,6 +198,7 @@ public class MoneyAmount {
    *
    * @return {@link CurrencyCode} Value to which {@link #currencyCode} is set.
    */
+  @MyNotNullProperty
   public CurrencyCode getCurrencyCode( ) {
     return currencyCode;
   }

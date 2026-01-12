@@ -7,11 +7,26 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.composite.ComplexBookingID;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = WeirdBooking.Builder.class)
 public class WeirdBooking {
   /**
    * Constant for the name of attribute "booking".
@@ -23,9 +38,9 @@ public class WeirdBooking {
    */
   public static final String ADDITIONALBOOKINGS = "additionalBookings";
 
-  private final ComplexBookingID booking;
+  private ComplexBookingID booking;
 
-  private final List<ComplexBookingID> additionalBookings;
+  private List<ComplexBookingID> additionalBookings;
 
   /**
    * Initialize object using the passed builder.
@@ -35,7 +50,7 @@ public class WeirdBooking {
   protected WeirdBooking( Builder pBuilder ) {
     // Read attribute values from builder.
     booking = pBuilder.booking;
-    additionalBookings = (pBuilder.additionalBookings == null) ? List.of() : List.copyOf(pBuilder.additionalBookings);
+    additionalBookings = (pBuilder.additionalBookings == null) ? new ArrayList<>() : pBuilder.additionalBookings;
   }
 
   /**
@@ -64,6 +79,8 @@ public class WeirdBooking {
   /**
    * Class implements builder to create a new instance of class <code>WeirdBooking</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private ComplexBookingID booking;
 
@@ -87,12 +104,32 @@ public class WeirdBooking {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new WeirdBooking objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new WeirdBooking objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( WeirdBooking pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #booking}.<br/>
      *
      * @param pBooking Value to which {@link #booking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBooking( ComplexBookingID pBooking ) {
+    public Builder setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
       booking = pBooking;
       return this;
     }
@@ -104,7 +141,13 @@ public class WeirdBooking {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setAdditionalBookings( List<ComplexBookingID> pAdditionalBookings ) {
-      additionalBookings = pAdditionalBookings;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pAdditionalBookings != null) {
+        additionalBookings = new ArrayList<ComplexBookingID>(pAdditionalBookings);
+      }
+      else {
+        additionalBookings = null;
+      }
       return this;
     }
 
@@ -132,7 +175,9 @@ public class WeirdBooking {
      * @return WeirdBooking Created object. The method never returns null.
      */
     public WeirdBooking build( ) {
-      return new WeirdBooking(this);
+      WeirdBooking lObject = new WeirdBooking(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -141,8 +186,25 @@ public class WeirdBooking {
    *
    * @return {@link ComplexBookingID} Value to which {@link #booking} is set.
    */
+  @MyNotNullProperty
   public ComplexBookingID getBooking( ) {
     return booking;
+  }
+
+  /**
+   * Method sets association {@link #booking}.<br/>
+   *
+   * @param pBooking Value to which {@link #booking} should be set.
+   */
+  public void setBooking( @MyNotNullProperty ComplexBookingID pBooking ) {
+    booking = pBooking;
+  }
+
+  /**
+   * Method unsets {@link #booking}.
+   */
+  public final void unsetBooking( ) {
+    booking = null;
   }
 
   /**
@@ -152,7 +214,51 @@ public class WeirdBooking {
    * null and the returned collection is unmodifiable.
    */
   public List<ComplexBookingID> getAdditionalBookings( ) {
-    return additionalBookings;
+    // Return all ComplexBookingID objects as unmodifiable collection.
+    return Collections.unmodifiableList(additionalBookings);
+  }
+
+  /**
+   * Method adds the passed object to {@link #additionalBookings}.
+   *
+   * @param pAdditionalBookings Object that should be added to {@link #additionalBookings}. The parameter must not be
+   * null.
+   */
+  public void addToAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
+    // Add passed object to collection of associated ComplexBookingID objects.
+    additionalBookings.add(pAdditionalBookings);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #additionalBookings}.
+   *
+   * @param pAdditionalBookings Collection with all objects that should be added to {@link #additionalBookings}. The
+   * parameter must not be null.
+   */
+  public void addToAdditionalBookings( Collection<ComplexBookingID> pAdditionalBookings ) {
+    // Add all passed objects.
+    for (ComplexBookingID lNextObject : pAdditionalBookings) {
+      this.addToAdditionalBookings(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #additionalBookings}.<br/>
+   *
+   * @param pAdditionalBookings Object that should be removed from {@link #additionalBookings}. The parameter must not
+   * be null.
+   */
+  public void removeFromAdditionalBookings( ComplexBookingID pAdditionalBookings ) {
+    // Remove passed object from collection of associated ComplexBookingID objects.
+    additionalBookings.remove(pAdditionalBookings);
+  }
+
+  /**
+   * Method removes all objects from {@link #additionalBookings}.
+   */
+  public void clearAdditionalBookings( ) {
+    // Remove all objects from association "additionalBookings".
+    additionalBookings.clear();
   }
 
   @Override

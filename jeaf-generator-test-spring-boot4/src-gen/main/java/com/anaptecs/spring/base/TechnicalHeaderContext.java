@@ -10,13 +10,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class TechnicalHeaderContext {
   /**
    * Constant for the name of attribute "reseller".
    */
   public static final String RESELLER = "reseller";
 
-  private final String reseller;
+  private String reseller;
 
   /**
    * Map contains all custom headers that were set on the object.
@@ -61,6 +66,8 @@ public class TechnicalHeaderContext {
   /**
    * Class implements builder to create a new instance of class <code>TechnicalHeaderContext</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String reseller;
 
@@ -88,12 +95,32 @@ public class TechnicalHeaderContext {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new TechnicalHeaderContext objects. The method
+     * never returns null.
+     */
+    public static Builder newBuilder( TechnicalHeaderContext pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #reseller}.<br/>
      *
      * @param pReseller Value to which {@link #reseller} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setReseller( String pReseller ) {
+    public Builder setReseller( @MyNotNullProperty String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;
       return this;
@@ -123,7 +150,9 @@ public class TechnicalHeaderContext {
      * @return TechnicalHeaderContext Created object. The method never returns null.
      */
     public TechnicalHeaderContext build( ) {
-      return new TechnicalHeaderContext(this);
+      TechnicalHeaderContext lObject = new TechnicalHeaderContext(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -132,8 +161,19 @@ public class TechnicalHeaderContext {
    *
    * @return {@link String} Value to which {@link #reseller} is set.
    */
+  @MyNotNullProperty
   public String getReseller( ) {
     return reseller;
+  }
+
+  /**
+   * Method sets attribute {@link #reseller}.<br/>
+   *
+   * @param pReseller Value to which {@link #reseller} should be set.
+   */
+  public void setReseller( @MyNotNullProperty String pReseller ) {
+    // Assign value to attribute
+    reseller = pReseller;
   }
 
   /**
@@ -143,6 +183,22 @@ public class TechnicalHeaderContext {
    */
   public Map<String, String> getCustomHeaders( ) {
     return Collections.unmodifiableMap(customHeaders);
+  }
+
+  /**
+   * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+   * with guidelines about http headers.
+   *
+   * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+   * @param pHeaderValue Value of the http header the parameter may be null.
+   */
+  public void addCustomHeader( String pHeaderName, String pHeaderValue ) {
+    if (pHeaderName != null) {
+      customHeaders.put(pHeaderName, pHeaderValue);
+    }
+    else {
+      throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+    }
   }
 
   @Override

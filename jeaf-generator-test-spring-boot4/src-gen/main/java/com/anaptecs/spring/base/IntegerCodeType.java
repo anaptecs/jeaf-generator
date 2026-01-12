@@ -5,13 +5,24 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class IntegerCodeType {
   /**
    * Constant for the name of attribute "code".
    */
   public static final String CODE = "code";
 
-  private final int code;
+  private int code;
 
   /**
    * Initialize object using the passed builder.
@@ -24,6 +35,14 @@ public class IntegerCodeType {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private IntegerCodeType( int pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects.
@@ -33,8 +52,22 @@ public class IntegerCodeType {
   }
 
   /**
+   * Convenience method to create new instance of class IntegerCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link IntegerCodeType}
+   */
+  public static IntegerCodeType of( int pCode ) {
+    return new IntegerCodeType(pCode);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>IntegerCodeType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private int code;
 
@@ -52,6 +85,26 @@ public class IntegerCodeType {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
       }
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new IntegerCodeType objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( IntegerCodeType pObject ) {
+      return new Builder(pObject);
     }
 
     /**
@@ -73,7 +126,9 @@ public class IntegerCodeType {
      * @return IntegerCodeType Created object. The method never returns null.
      */
     public IntegerCodeType build( ) {
-      return new IntegerCodeType(this);
+      IntegerCodeType lObject = new IntegerCodeType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -84,6 +139,16 @@ public class IntegerCodeType {
    */
   public int getCode( ) {
     return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( int pCode ) {
+    // Assign value to attribute
+    code = pCode;
   }
 
   @Override

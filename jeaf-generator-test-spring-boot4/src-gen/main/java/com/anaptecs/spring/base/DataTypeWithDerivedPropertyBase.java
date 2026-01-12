@@ -5,13 +5,25 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public abstract class DataTypeWithDerivedPropertyBase {
   /**
    * Constant for the name of attribute "property".
    */
   public static final String PROPERTY = "property";
 
-  private final int property;
+  private int property;
 
   /**
    * Initialize object using the passed builder.
@@ -24,9 +36,19 @@ public abstract class DataTypeWithDerivedPropertyBase {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  DataTypeWithDerivedPropertyBase( int pProperty ) {
+    property = pProperty;
+  }
+
+  /**
    * Class implements builder to create a new instance of class DataTypeWithDerivedProperty. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private int property;
 
@@ -66,7 +88,9 @@ public abstract class DataTypeWithDerivedPropertyBase {
      * @return DataTypeWithDerivedProperty Created object. The method never returns null.
      */
     public DataTypeWithDerivedProperty build( ) {
-      return new DataTypeWithDerivedProperty(this);
+      DataTypeWithDerivedProperty lObject = new DataTypeWithDerivedProperty(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -80,10 +104,33 @@ public abstract class DataTypeWithDerivedPropertyBase {
   }
 
   /**
+   * Method sets attribute {@link #property}.<br/>
+   *
+   * @param pProperty Value to which {@link #property} should be set.
+   */
+  public void setProperty( int pProperty ) {
+    // Assign value to attribute
+    property = pProperty;
+  }
+
+  /**
+   * Convenience method to create new instance of class DataTypeWithDerivedProperty.
+   *
+   *
+   * @param pProperty Value to which {@link #property} should be set.
+   *
+   * @return {@link DataTypeWithDerivedProperty}
+   */
+  public static DataTypeWithDerivedProperty of( int pProperty ) {
+    return new DataTypeWithDerivedProperty(pProperty);
+  }
+
+  /**
    * Method returns attribute {@link #derivedProperty}.<br/>
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+  @MyNotNullProperty
   public abstract String getDerivedProperty( );
 
   @Override

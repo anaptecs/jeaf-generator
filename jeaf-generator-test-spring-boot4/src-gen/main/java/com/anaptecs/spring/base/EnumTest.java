@@ -7,6 +7,20 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = EnumTest.Builder.class)
 public class EnumTest {
   /**
    * Constant for the name of attribute "property".
@@ -22,13 +36,13 @@ public class EnumTest {
    * <br/>
    * <b>Default Value:</b> <code>GREEN</code>
    */
-  private final ExtensibleEnum property;
+  private ExtensibleEnum property;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>RED</code>
    */
-  private final ExtensibleEnum enumRef;
+  private ExtensibleEnum enumRef;
 
   /**
    * Initialize object using the passed builder.
@@ -70,6 +84,8 @@ public class EnumTest {
   /**
    * Class implements builder to create a new instance of class <code>EnumTest</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * <br/>
@@ -101,12 +117,32 @@ public class EnumTest {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new EnumTest objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new EnumTest objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( EnumTest pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #property}.<br/>
      *
      * @param pProperty Value to which {@link #property} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setProperty( ExtensibleEnum pProperty ) {
+    public Builder setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
       // Assign value to attribute
       property = pProperty;
       return this;
@@ -118,7 +154,7 @@ public class EnumTest {
      * @param pEnumRef Value to which {@link #enumRef} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEnumRef( ExtensibleEnum pEnumRef ) {
+    public Builder setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
       return this;
     }
@@ -129,7 +165,9 @@ public class EnumTest {
      * @return EnumTest Created object. The method never returns null.
      */
     public EnumTest build( ) {
-      return new EnumTest(this);
+      EnumTest lObject = new EnumTest(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -138,8 +176,19 @@ public class EnumTest {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #property} is set.
    */
+  @MyNotNullProperty
   public ExtensibleEnum getProperty( ) {
     return property;
+  }
+
+  /**
+   * Method sets attribute {@link #property}.<br/>
+   *
+   * @param pProperty Value to which {@link #property} should be set.
+   */
+  public void setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
+    // Assign value to attribute
+    property = pProperty;
   }
 
   /**
@@ -147,8 +196,25 @@ public class EnumTest {
    *
    * @return {@link ExtensibleEnum} Value to which {@link #enumRef} is set.
    */
+  @MyNotNullProperty
   public ExtensibleEnum getEnumRef( ) {
     return enumRef;
+  }
+
+  /**
+   * Method sets association {@link #enumRef}.<br/>
+   *
+   * @param pEnumRef Value to which {@link #enumRef} should be set.
+   */
+  public void setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
+    enumRef = pEnumRef;
+  }
+
+  /**
+   * Method unsets {@link #enumRef}.
+   */
+  public final void unsetEnumRef( ) {
+    enumRef = null;
   }
 
   @Override

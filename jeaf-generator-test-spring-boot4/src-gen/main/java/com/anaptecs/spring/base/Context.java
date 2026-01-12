@@ -11,7 +11,12 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import jakarta.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
+
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * Type with default comment.
@@ -56,7 +61,7 @@ public class Context {
   public static final String INTCODE = "intCode";
 
   @NotEmpty
-  private final String accessToken;
+  private String accessToken;
 
   /**
    * <br/>
@@ -67,17 +72,17 @@ public class Context {
    * <p/>
    * <b>Header-Param:</b> <code>lang</code>
    */
-  private final Locale language;
+  private Locale language;
 
-  private final long resellerID;
+  private long resellerID;
 
-  private final long pathParam;
+  private long pathParam;
 
-  private final String queryParam;
+  private String queryParam;
 
-  private final String lang;
+  private String lang;
 
-  private final IntegerCodeType intCode;
+  private IntegerCodeType intCode;
 
   /**
    * Map contains all custom headers that were set on the object.
@@ -89,7 +94,7 @@ public class Context {
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Context( Builder pBuilder ) {
+  protected Context( ContextBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     accessToken = pBuilder.accessToken;
     language = pBuilder.language;
@@ -105,10 +110,10 @@ public class Context {
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Context objects.
+   * @return {@link ContextBuilder} New builder that can be used to create new Context objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static ContextBuilder<?, ?> builder( ) {
+    return new ContextBuilderImpl();
   }
 
   /**
@@ -147,7 +152,9 @@ public class Context {
   /**
    * Class implements builder to create a new instance of class <code>Context</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class ContextBuilder<T extends Context, B extends ContextBuilder<T, B>> {
     @NotEmpty
     private String accessToken;
 
@@ -180,13 +187,13 @@ public class Context {
     /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected ContextBuilder( ) {
     }
 
     /**
      * Use {@link Context#builder(Context)} instead of private constructor to create new builder.
      */
-    protected Builder( Context pObject ) {
+    protected ContextBuilder( Context pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setAccessToken(pObject.accessToken);
@@ -204,84 +211,84 @@ public class Context {
      * Method sets attribute {@link #accessToken}.<br/>
      *
      * @param pAccessToken Value to which {@link #accessToken} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAccessToken( String pAccessToken ) {
+    public B setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #language}.<br/>
      *
      * @param pLanguage Value to which {@link #language} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLanguage( Locale pLanguage ) {
+    public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #resellerID}.<br/>
      *
      * @param pResellerID Value to which {@link #resellerID} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setResellerID( long pResellerID ) {
+    public B setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #pathParam}.<br/>
      *
      * @param pPathParam Value to which {@link #pathParam} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setPathParam( long pPathParam ) {
+    public B setPathParam( long pPathParam ) {
       // Assign value to attribute
       pathParam = pPathParam;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #queryParam}.<br/>
      *
      * @param pQueryParam Value to which {@link #queryParam} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setQueryParam( String pQueryParam ) {
+    public B setQueryParam( @MyNotNullProperty String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #lang}.<br/>
      *
      * @param pLang Value to which {@link #lang} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLang( String pLang ) {
+    public B setLang( @MyNotNullProperty String pLang ) {
       // Assign value to attribute
       lang = pLang;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets attribute {@link #intCode}.<br/>
      *
      * @param pIntCode Value to which {@link #intCode} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setIntCode( IntegerCodeType pIntCode ) {
+    public B setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
       // Assign value to attribute
       intCode = pIntCode;
-      return this;
+      return this.self();
     }
 
     /**
@@ -291,10 +298,10 @@ public class Context {
      * @param pHeaderName Name of the HTTP header. The parameter must not be null,
      * @param pHeaderValue Value of the http header the parameter may be null.
      */
-    public Builder addCustomHeader( String pHeaderName, String pHeaderValue ) {
+    public B addCustomHeader( String pHeaderName, String pHeaderValue ) {
       if (pHeaderName != null) {
         customHeaders.put(pHeaderName, pHeaderValue);
-        return this;
+        return this.self();
       }
       else {
         throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
@@ -302,12 +309,36 @@ public class Context {
     }
 
     /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
+
+    /**
      * Method creates a new instance of class Context. The object will be initialized with the values of the builder.
      *
      * @return Context Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class ContextBuilderImpl extends ContextBuilder<Context, ContextBuilderImpl> {
+    protected ContextBuilderImpl( ) {
+    }
+
+    protected ContextBuilderImpl( Context pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected ContextBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Context build( ) {
-      return new Context(this);
+      Context lObject = new Context(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -316,8 +347,19 @@ public class Context {
    *
    * @return {@link String} Value to which {@link #accessToken} is set.
    */
+  @MyNotNullProperty
   public String getAccessToken( ) {
     return accessToken;
+  }
+
+  /**
+   * Method sets attribute {@link #accessToken}.<br/>
+   *
+   * @param pAccessToken Value to which {@link #accessToken} should be set.
+   */
+  public void setAccessToken( @MyNotNullProperty String pAccessToken ) {
+    // Assign value to attribute
+    accessToken = pAccessToken;
   }
 
   /**
@@ -325,8 +367,19 @@ public class Context {
    *
    * @return {@link Locale} Value to which {@link #language} is set.
    */
+  @MyNotNullProperty
   public Locale getLanguage( ) {
     return language;
+  }
+
+  /**
+   * Method sets attribute {@link #language}.<br/>
+   *
+   * @param pLanguage Value to which {@link #language} should be set.
+   */
+  public void setLanguage( @MyNotNullProperty Locale pLanguage ) {
+    // Assign value to attribute
+    language = pLanguage;
   }
 
   /**
@@ -339,6 +392,16 @@ public class Context {
   }
 
   /**
+   * Method sets attribute {@link #resellerID}.<br/>
+   *
+   * @param pResellerID Value to which {@link #resellerID} should be set.
+   */
+  public void setResellerID( long pResellerID ) {
+    // Assign value to attribute
+    resellerID = pResellerID;
+  }
+
+  /**
    * Method returns attribute {@link #pathParam}.<br/>
    *
    * @return long Value to which {@link #pathParam} is set.
@@ -348,12 +411,33 @@ public class Context {
   }
 
   /**
+   * Method sets attribute {@link #pathParam}.<br/>
+   *
+   * @param pPathParam Value to which {@link #pathParam} should be set.
+   */
+  public void setPathParam( long pPathParam ) {
+    // Assign value to attribute
+    pathParam = pPathParam;
+  }
+
+  /**
    * Method returns attribute {@link #queryParam}.<br/>
    *
    * @return {@link String} Value to which {@link #queryParam} is set.
    */
+  @MyNotNullProperty
   public String getQueryParam( ) {
     return queryParam;
+  }
+
+  /**
+   * Method sets attribute {@link #queryParam}.<br/>
+   *
+   * @param pQueryParam Value to which {@link #queryParam} should be set.
+   */
+  public void setQueryParam( @MyNotNullProperty String pQueryParam ) {
+    // Assign value to attribute
+    queryParam = pQueryParam;
   }
 
   /**
@@ -361,8 +445,19 @@ public class Context {
    *
    * @return {@link String} Value to which {@link #lang} is set.
    */
+  @MyNotNullProperty
   public String getLang( ) {
     return lang;
+  }
+
+  /**
+   * Method sets attribute {@link #lang}.<br/>
+   *
+   * @param pLang Value to which {@link #lang} should be set.
+   */
+  public void setLang( @MyNotNullProperty String pLang ) {
+    // Assign value to attribute
+    lang = pLang;
   }
 
   /**
@@ -370,8 +465,19 @@ public class Context {
    *
    * @return {@link IntegerCodeType} Value to which {@link #intCode} is set.
    */
+  @MyNotNullProperty
   public IntegerCodeType getIntCode( ) {
     return intCode;
+  }
+
+  /**
+   * Method sets attribute {@link #intCode}.<br/>
+   *
+   * @param pIntCode Value to which {@link #intCode} should be set.
+   */
+  public void setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
+    // Assign value to attribute
+    intCode = pIntCode;
   }
 
   /**
@@ -381,6 +487,22 @@ public class Context {
    */
   public Map<String, String> getCustomHeaders( ) {
     return Collections.unmodifiableMap(customHeaders);
+  }
+
+  /**
+   * Method adds the passed values as custom headers. The passed name and value of the http header must be compliant
+   * with guidelines about http headers.
+   *
+   * @param pHeaderName Name of the HTTP header. The parameter must not be null,
+   * @param pHeaderValue Value of the http header the parameter may be null.
+   */
+  public void addCustomHeader( String pHeaderName, String pHeaderValue ) {
+    if (pHeaderName != null) {
+      customHeaders.put(pHeaderName, pHeaderValue);
+    }
+    else {
+      throw new IllegalArgumentException("Parameter 'pHeaderName' must not be null.");
+    }
   }
 
   @Override
@@ -476,9 +598,10 @@ public class Context {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Context objects. The method never returns null.
+   * @return {@link ContextBuilder} New builder that can be used to create new Context objects. The method never returns
+   * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public ContextBuilder<?, ?> toBuilder( ) {
+    return new ContextBuilderImpl(this);
   }
 }

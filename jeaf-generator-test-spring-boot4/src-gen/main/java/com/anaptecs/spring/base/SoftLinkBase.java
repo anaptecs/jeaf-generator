@@ -7,6 +7,17 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public abstract class SoftLinkBase {
   /**
    * Constant for the name of attribute "objectID".
@@ -30,9 +41,9 @@ public abstract class SoftLinkBase {
 
   private final long objectID;
 
-  private final DataUnit dataUnit;
+  private DataUnit dataUnit;
 
-  private final Entity entity;
+  private Entity entity;
 
   private final String refrenceID;
 
@@ -50,9 +61,21 @@ public abstract class SoftLinkBase {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  SoftLinkBase( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
+    objectID = pObjectID;
+    dataUnit = pDataUnit;
+    entity = pEntity;
+    refrenceID = pRefrenceID;
+  }
+
+  /**
    * Class implements builder to create a new instance of class SoftLink. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private long objectID;
 
@@ -99,7 +122,7 @@ public abstract class SoftLinkBase {
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setDataUnit( DataUnit pDataUnit ) {
+    public BuilderBase setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
       return this;
     }
@@ -110,7 +133,7 @@ public abstract class SoftLinkBase {
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setEntity( Entity pEntity ) {
+    public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
       return this;
     }
@@ -121,7 +144,7 @@ public abstract class SoftLinkBase {
      * @param pRefrenceID Value to which {@link #refrenceID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setRefrenceID( String pRefrenceID ) {
+    public BuilderBase setRefrenceID( @MyNotNullProperty String pRefrenceID ) {
       // Assign value to attribute
       refrenceID = pRefrenceID;
       return this;
@@ -133,7 +156,9 @@ public abstract class SoftLinkBase {
      * @return SoftLink Created object. The method never returns null.
      */
     public SoftLink build( ) {
-      return new SoftLink(this);
+      SoftLink lObject = new SoftLink(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -151,8 +176,25 @@ public abstract class SoftLinkBase {
    *
    * @return {@link DataUnit} Value to which {@link #dataUnit} is set.
    */
+  @MyNotNullProperty
   public DataUnit getDataUnit( ) {
     return dataUnit;
+  }
+
+  /**
+   * Method sets association {@link #dataUnit}.<br/>
+   *
+   * @param pDataUnit Value to which {@link #dataUnit} should be set.
+   */
+  public void setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
+    dataUnit = pDataUnit;
+  }
+
+  /**
+   * Method unsets {@link #dataUnit}.
+   */
+  public final void unsetDataUnit( ) {
+    dataUnit = null;
   }
 
   /**
@@ -160,8 +202,25 @@ public abstract class SoftLinkBase {
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
+  @MyNotNullProperty
   public Entity getEntity( ) {
     return entity;
+  }
+
+  /**
+   * Method sets association {@link #entity}.<br/>
+   *
+   * @param pEntity Value to which {@link #entity} should be set.
+   */
+  public void setEntity( @MyNotNullProperty Entity pEntity ) {
+    entity = pEntity;
+  }
+
+  /**
+   * Method unsets {@link #entity}.
+   */
+  public final void unsetEntity( ) {
+    entity = null;
   }
 
   /**
@@ -169,8 +228,27 @@ public abstract class SoftLinkBase {
    *
    * @return {@link String} Value to which {@link #refrenceID} is set.
    */
+  @MyNotNullProperty
   public String getRefrenceID( ) {
     return refrenceID;
+  }
+
+  /**
+   * Convenience method to create new instance of class SoftLink.
+   *
+   *
+   * @param pObjectID Value to which {@link #objectID} should be set.
+   *
+   * @param pDataUnit Value to which {@link #dataUnit} should be set.
+   *
+   * @param pEntity Value to which {@link #entity} should be set.
+   *
+   * @param pRefrenceID Value to which {@link #refrenceID} should be set.
+   *
+   * @return {@link SoftLink}
+   */
+  public static SoftLink of( long pObjectID, DataUnit pDataUnit, Entity pEntity, String pRefrenceID ) {
+    return new SoftLink(pObjectID, pDataUnit, pEntity, pRefrenceID);
   }
 
   @Override

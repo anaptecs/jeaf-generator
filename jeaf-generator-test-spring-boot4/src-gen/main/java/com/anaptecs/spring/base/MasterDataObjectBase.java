@@ -7,9 +7,30 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonPropertyOrder(
+    value = { "dataUnits", "entity", "objectID", "internalProperty", "derivedDataUnits", "derivedEntity" })
+@JsonDeserialize(builder = MasterDataObject.Builder.class)
 public abstract class MasterDataObjectBase {
   /**
    * Constant for the name of attribute "dataUnits".
@@ -31,13 +52,13 @@ public abstract class MasterDataObjectBase {
    */
   public static final String INTERNALPROPERTY = "internalProperty";
 
-  private final List<DataUnit> dataUnits;
+  private List<DataUnit> dataUnits;
 
-  private final Entity entity;
+  private Entity entity;
 
-  private final String objectID;
+  private String objectID;
 
-  private final String internalProperty;
+  private String internalProperty;
 
   /**
    * Initialize object using the passed builder.
@@ -46,7 +67,7 @@ public abstract class MasterDataObjectBase {
    */
   protected MasterDataObjectBase( BuilderBase pBuilder ) {
     // Read attribute values from builder.
-    dataUnits = (pBuilder.dataUnits == null) ? List.of() : List.copyOf(pBuilder.dataUnits);
+    dataUnits = (pBuilder.dataUnits == null) ? new ArrayList<>() : pBuilder.dataUnits;
     entity = pBuilder.entity;
     objectID = pBuilder.objectID;
     internalProperty = pBuilder.internalProperty;
@@ -56,6 +77,8 @@ public abstract class MasterDataObjectBase {
    * Class implements builder to create a new instance of class MasterDataObject. As the class has read only attributes
    * or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private List<DataUnit> dataUnits;
 
@@ -91,7 +114,13 @@ public abstract class MasterDataObjectBase {
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
     public BuilderBase setDataUnits( List<DataUnit> pDataUnits ) {
-      dataUnits = pDataUnits;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pDataUnits != null) {
+        dataUnits = new ArrayList<DataUnit>(pDataUnits);
+      }
+      else {
+        dataUnits = null;
+      }
       return this;
     }
 
@@ -134,7 +163,7 @@ public abstract class MasterDataObjectBase {
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setEntity( Entity pEntity ) {
+    public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
       return this;
     }
@@ -145,7 +174,7 @@ public abstract class MasterDataObjectBase {
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setObjectID( String pObjectID ) {
+    public BuilderBase setObjectID( @MyNotNullProperty String pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
       return this;
@@ -157,7 +186,7 @@ public abstract class MasterDataObjectBase {
      * @param pInternalProperty Value to which {@link #internalProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setInternalProperty( String pInternalProperty ) {
+    public BuilderBase setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
       // Assign value to attribute
       internalProperty = pInternalProperty;
       return this;
@@ -170,7 +199,9 @@ public abstract class MasterDataObjectBase {
      * @return MasterDataObject Created object. The method never returns null.
      */
     public MasterDataObject build( ) {
-      return new MasterDataObject(this);
+      MasterDataObject lObject = new MasterDataObject(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -181,7 +212,49 @@ public abstract class MasterDataObjectBase {
    * returned collection is unmodifiable.
    */
   List<DataUnit> getDataUnits( ) {
-    return dataUnits;
+    // Return all DataUnit objects as unmodifiable collection.
+    return Collections.unmodifiableList(dataUnits);
+  }
+
+  /**
+   * Method adds the passed object to {@link #dataUnits}.
+   *
+   * @param pDataUnits Object that should be added to {@link #dataUnits}. The parameter must not be null.
+   */
+  void addToDataUnits( DataUnit pDataUnits ) {
+    // Add passed object to collection of associated DataUnit objects.
+    dataUnits.add(pDataUnits);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #dataUnits}.
+   *
+   * @param pDataUnits Collection with all objects that should be added to {@link #dataUnits}. The parameter must not be
+   * null.
+   */
+  void addToDataUnits( Collection<DataUnit> pDataUnits ) {
+    // Add all passed objects.
+    for (DataUnit lNextObject : pDataUnits) {
+      this.addToDataUnits(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #dataUnits}.<br/>
+   *
+   * @param pDataUnits Object that should be removed from {@link #dataUnits}. The parameter must not be null.
+   */
+  void removeFromDataUnits( DataUnit pDataUnits ) {
+    // Remove passed object from collection of associated DataUnit objects.
+    dataUnits.remove(pDataUnits);
+  }
+
+  /**
+   * Method removes all objects from {@link #dataUnits}.
+   */
+  void clearDataUnits( ) {
+    // Remove all objects from association "dataUnits".
+    dataUnits.clear();
   }
 
   /**
@@ -189,8 +262,25 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link Entity} Value to which {@link #entity} is set.
    */
+  @MyNotNullProperty
   Entity getEntity( ) {
     return entity;
+  }
+
+  /**
+   * Method sets association {@link #entity}.<br/>
+   *
+   * @param pEntity Value to which {@link #entity} should be set.
+   */
+  void setEntity( @MyNotNullProperty Entity pEntity ) {
+    entity = pEntity;
+  }
+
+  /**
+   * Method unsets {@link #entity}.
+   */
+  final void unsetEntity( ) {
+    entity = null;
   }
 
   /**
@@ -198,8 +288,19 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #objectID} is set.
    */
+  @MyNotNullProperty
   public String getObjectID( ) {
     return objectID;
+  }
+
+  /**
+   * Method sets attribute {@link #objectID}.<br/>
+   *
+   * @param pObjectID Value to which {@link #objectID} should be set.
+   */
+  public void setObjectID( @MyNotNullProperty String pObjectID ) {
+    // Assign value to attribute
+    objectID = pObjectID;
   }
 
   /**
@@ -207,8 +308,19 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #internalProperty} is set.
    */
+  @MyNotNullProperty
   String getInternalProperty( ) {
     return internalProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #internalProperty}.<br/>
+   *
+   * @param pInternalProperty Value to which {@link #internalProperty} should be set.
+   */
+  void setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
+    // Assign value to attribute
+    internalProperty = pInternalProperty;
   }
 
   /**
@@ -236,6 +348,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+  @MyNotNullProperty
   public abstract String getDerivedProperty( );
 
   /**
@@ -244,13 +357,21 @@ public abstract class MasterDataObjectBase {
    * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
+  @JsonGetter
   public abstract List<DataUnit> getDerivedDataUnits( );
+
+  @JsonSetter
+  private void setDerivedDataUnits( List<DataUnit> pDerivedDataUnits ) {
+    // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant
+    // to not run into problems during deserialization.
+  }
 
   /**
    * Method returns association {@link #derivedEntity}.<br/>
    *
    * @return {@link Entity} Value to which {@link #derivedEntity} is set.
    */
+  @JsonGetter
   public abstract Entity getDerivedEntity( );
 
   /**
@@ -279,6 +400,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
+  @MyNotNullProperty
   public abstract String getDerivedString( );
 
   @Override

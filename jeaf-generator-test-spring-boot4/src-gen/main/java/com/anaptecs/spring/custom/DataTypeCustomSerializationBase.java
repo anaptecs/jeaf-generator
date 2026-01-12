@@ -7,13 +7,24 @@ package com.anaptecs.spring.custom;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public abstract class DataTypeCustomSerializationBase {
   /**
    * Constant for the name of attribute "property1".
    */
   public static final String PROPERTY1 = "property1";
 
-  private final String property1;
+  private String property1;
 
   /**
    * Initialize object using the passed builder.
@@ -26,9 +37,18 @@ public abstract class DataTypeCustomSerializationBase {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  DataTypeCustomSerializationBase( String pProperty1 ) {
+    property1 = pProperty1;
+  }
+
+  /**
    * Class implements builder to create a new instance of class DataTypeCustomSerialization. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private String property1;
 
@@ -55,7 +75,7 @@ public abstract class DataTypeCustomSerializationBase {
      * @param pProperty1 Value to which {@link #property1} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public BuilderBase setProperty1( String pProperty1 ) {
+    public BuilderBase setProperty1( @MyNotNullProperty String pProperty1 ) {
       // Assign value to attribute
       property1 = pProperty1;
       return this;
@@ -68,7 +88,9 @@ public abstract class DataTypeCustomSerializationBase {
      * @return DataTypeCustomSerialization Created object. The method never returns null.
      */
     public DataTypeCustomSerialization build( ) {
-      return new DataTypeCustomSerialization(this);
+      DataTypeCustomSerialization lObject = new DataTypeCustomSerialization(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -77,8 +99,31 @@ public abstract class DataTypeCustomSerializationBase {
    *
    * @return {@link String} Value to which {@link #property1} is set.
    */
+  @MyNotNullProperty
   public String getProperty1( ) {
     return property1;
+  }
+
+  /**
+   * Method sets attribute {@link #property1}.<br/>
+   *
+   * @param pProperty1 Value to which {@link #property1} should be set.
+   */
+  public void setProperty1( @MyNotNullProperty String pProperty1 ) {
+    // Assign value to attribute
+    property1 = pProperty1;
+  }
+
+  /**
+   * Convenience method to create new instance of class DataTypeCustomSerialization.
+   *
+   *
+   * @param pProperty1 Value to which {@link #property1} should be set.
+   *
+   * @return {@link DataTypeCustomSerialization}
+   */
+  public static DataTypeCustomSerialization of( String pProperty1 ) {
+    return new DataTypeCustomSerialization(pProperty1);
   }
 
   @Override

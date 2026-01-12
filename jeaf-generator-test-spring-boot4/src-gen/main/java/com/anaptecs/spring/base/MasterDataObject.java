@@ -7,6 +7,9 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Initialize object. Nothing special to do.
@@ -41,6 +44,26 @@ public class MasterDataObject extends MasterDataObjectBase {
     protected Builder( MasterDataObject pObject ) {
       super(pObject);
     }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new MasterDataObject objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( MasterDataObject pObject ) {
+      return new Builder(pObject);
+    }
   }
 
   /**
@@ -48,6 +71,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+  @MyNotNullProperty
   @Override
   public String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
@@ -60,6 +84,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
+  @JsonGetter
   @Override
   public List<DataUnit> getDerivedDataUnits( ) {
     // TODO Implement method for derived property "derivedDataUnits".
@@ -71,6 +96,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link Entity} Value to which {@link #derivedEntity} is set.
    */
+  @JsonGetter
   @Override
   public Entity getDerivedEntity( ) {
     // TODO Implement method for derived property "derivedEntity".
@@ -115,6 +141,7 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
+  @MyNotNullProperty
   @Override
   public String getDerivedString( ) {
     // TODO Implement method for derived property "derivedString".

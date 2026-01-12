@@ -5,13 +5,24 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class LongCodeType {
   /**
    * Constant for the name of attribute "code".
    */
   public static final String CODE = "code";
 
-  private final long code;
+  private long code;
 
   /**
    * Initialize object using the passed builder.
@@ -24,6 +35,14 @@ public class LongCodeType {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private LongCodeType( long pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new LongCodeType objects.
@@ -33,8 +52,22 @@ public class LongCodeType {
   }
 
   /**
+   * Convenience method to create new instance of class LongCodeType.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link LongCodeType}
+   */
+  public static LongCodeType of( long pCode ) {
+    return new LongCodeType(pCode);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>LongCodeType</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private long code;
 
@@ -52,6 +85,26 @@ public class LongCodeType {
         // Read attribute values from passed object.
         this.setCode(pObject.code);
       }
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new LongCodeType objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new LongCodeType objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( LongCodeType pObject ) {
+      return new Builder(pObject);
     }
 
     /**
@@ -73,7 +126,9 @@ public class LongCodeType {
      * @return LongCodeType Created object. The method never returns null.
      */
     public LongCodeType build( ) {
-      return new LongCodeType(this);
+      LongCodeType lObject = new LongCodeType(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -84,6 +139,16 @@ public class LongCodeType {
    */
   public long getCode( ) {
     return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( long pCode ) {
+    // Assign value to attribute
+    code = pCode;
   }
 
   @Override

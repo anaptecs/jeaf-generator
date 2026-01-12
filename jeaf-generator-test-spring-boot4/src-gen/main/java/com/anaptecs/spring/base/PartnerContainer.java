@@ -7,16 +7,31 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = PartnerContainer.Builder.class)
 public class PartnerContainer {
   /**
    * Constant for the name of attribute "partners".
    */
   public static final String PARTNERS = "partners";
 
-  private final List<Partner> partners;
+  private List<Partner> partners;
 
   /**
    * Initialize object using the passed builder.
@@ -25,7 +40,7 @@ public class PartnerContainer {
    */
   protected PartnerContainer( Builder pBuilder ) {
     // Read attribute values from builder.
-    partners = (pBuilder.partners == null) ? List.of() : List.copyOf(pBuilder.partners);
+    partners = (pBuilder.partners == null) ? new ArrayList<>() : pBuilder.partners;
   }
 
   /**
@@ -51,6 +66,8 @@ public class PartnerContainer {
   /**
    * Class implements builder to create a new instance of class <code>PartnerContainer</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private List<Partner> partners;
 
@@ -71,13 +88,39 @@ public class PartnerContainer {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new PartnerContainer objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new PartnerContainer objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( PartnerContainer pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #partners}.<br/>
      *
      * @param pPartners Collection to which {@link #partners} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setPartners( List<Partner> pPartners ) {
-      partners = pPartners;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pPartners != null) {
+        partners = new ArrayList<Partner>(pPartners);
+      }
+      else {
+        partners = null;
+      }
       return this;
     }
 
@@ -104,7 +147,9 @@ public class PartnerContainer {
      * @return PartnerContainer Created object. The method never returns null.
      */
     public PartnerContainer build( ) {
-      return new PartnerContainer(this);
+      PartnerContainer lObject = new PartnerContainer(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -115,7 +160,49 @@ public class PartnerContainer {
    * returned collection is unmodifiable.
    */
   public List<Partner> getPartners( ) {
-    return partners;
+    // Return all Partner objects as unmodifiable collection.
+    return Collections.unmodifiableList(partners);
+  }
+
+  /**
+   * Method adds the passed object to {@link #partners}.
+   *
+   * @param pPartners Object that should be added to {@link #partners}. The parameter must not be null.
+   */
+  public void addToPartners( Partner pPartners ) {
+    // Add passed object to collection of associated Partner objects.
+    partners.add(pPartners);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #partners}.
+   *
+   * @param pPartners Collection with all objects that should be added to {@link #partners}. The parameter must not be
+   * null.
+   */
+  public void addToPartners( Collection<Partner> pPartners ) {
+    // Add all passed objects.
+    for (Partner lNextObject : pPartners) {
+      this.addToPartners(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #partners}.<br/>
+   *
+   * @param pPartners Object that should be removed from {@link #partners}. The parameter must not be null.
+   */
+  public void removeFromPartners( Partner pPartners ) {
+    // Remove passed object from collection of associated Partner objects.
+    partners.remove(pPartners);
+  }
+
+  /**
+   * Method removes all objects from {@link #partners}.
+   */
+  public void clearPartners( ) {
+    // Remove all objects from association "partners".
+    partners.clear();
   }
 
   @Override

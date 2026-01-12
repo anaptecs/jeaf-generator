@@ -5,8 +5,19 @@
  */
 package com.anaptecs.spring.base;
 
-import jakarta.validation.constraints.Positive;
+import javax.validation.constraints.Positive;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class ProductCode {
   /**
    * Constant for the name of attribute "code".
@@ -17,7 +28,7 @@ public class ProductCode {
    * the product code.
    */
   @Positive
-  private final int code;
+  private int code;
 
   /**
    * Initialize object using the passed builder.
@@ -30,6 +41,14 @@ public class ProductCode {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private ProductCode( int pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new ProductCode objects.
@@ -39,8 +58,22 @@ public class ProductCode {
   }
 
   /**
+   * Convenience method to create new instance of class ProductCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link ProductCode}
+   */
+  public static ProductCode of( int pCode ) {
+    return new ProductCode(pCode);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>ProductCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * the product code.
@@ -65,6 +98,26 @@ public class ProductCode {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new ProductCode objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ProductCode objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( ProductCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
@@ -83,7 +136,9 @@ public class ProductCode {
      * @return ProductCode Created object. The method never returns null.
      */
     public ProductCode build( ) {
-      return new ProductCode(this);
+      ProductCode lObject = new ProductCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -95,6 +150,17 @@ public class ProductCode {
    */
   public int getCode( ) {
     return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   * the product code.
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( int pCode ) {
+    // Assign value to attribute
+    code = pCode;
   }
 
   @Override

@@ -5,12 +5,26 @@
  */
 package com.anaptecs.spring.composite;
 
+import java.util.List;
+
+import com.anaptecs.spring.base.BookingID;
+import com.anaptecs.spring.base.ComplexBookingType;
+
 public class ComplexBookingID extends ComplexBookingIDBase {
   /**
    * Initialize object. Nothing special to do.
    */
   protected ComplexBookingID( ComplexBookingID.BuilderBase pBuilder ) {
     super(pBuilder);
+  }
+
+  /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  ComplexBookingID( long pInternalID, String pReferenceID, List<BookingID> pBookingIDs,
+      ComplexBookingType pComplexBookingType, Integer pAnotherID ) {
+    super(pInternalID, pReferenceID, pBookingIDs, pComplexBookingType, pAnotherID);
   }
 
   /**
@@ -38,6 +52,26 @@ public class ComplexBookingID extends ComplexBookingIDBase {
      */
     protected Builder( ComplexBookingID pObject ) {
       super(pObject);
+    }
+
+    /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new ComplexBookingID objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new POJOWithIDnMethod objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( ComplexBookingID pObject ) {
+      return new Builder(pObject);
     }
   }
 }

@@ -7,13 +7,27 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = IgnoringClass.Builder.class)
 public class IgnoringClass {
   /**
    * Constant for the name of attribute "age".
    */
   public static final String AGE = "age";
 
-  private final Integer age;
+  private Integer age;
 
   /**
    * Initialize object using the passed builder.
@@ -51,6 +65,8 @@ public class IgnoringClass {
   /**
    * Class implements builder to create a new instance of class <code>IgnoringClass</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private Integer age;
 
@@ -71,12 +87,32 @@ public class IgnoringClass {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new IgnoringClass objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new IgnoringClass objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( IgnoringClass pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #age}.<br/>
      *
      * @param pAge Value to which {@link #age} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAge( Integer pAge ) {
+    public Builder setAge( @MyNotNullProperty Integer pAge ) {
       // Assign value to attribute
       age = pAge;
       return this;
@@ -89,7 +125,9 @@ public class IgnoringClass {
      * @return IgnoringClass Created object. The method never returns null.
      */
     public IgnoringClass build( ) {
-      return new IgnoringClass(this);
+      IgnoringClass lObject = new IgnoringClass(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -98,8 +136,19 @@ public class IgnoringClass {
    *
    * @return {@link Integer} Value to which {@link #age} is set.
    */
+  @MyNotNullProperty
   public Integer getAge( ) {
     return age;
+  }
+
+  /**
+   * Method sets attribute {@link #age}.<br/>
+   *
+   * @param pAge Value to which {@link #age} should be set.
+   */
+  public void setAge( @MyNotNullProperty Integer pAge ) {
+    // Assign value to attribute
+    age = pAge;
   }
 
   @Override

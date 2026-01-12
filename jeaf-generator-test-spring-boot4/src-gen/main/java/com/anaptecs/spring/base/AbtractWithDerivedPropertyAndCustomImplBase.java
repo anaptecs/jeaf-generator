@@ -5,6 +5,17 @@
  */
 package com.anaptecs.spring.base;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public abstract class AbtractWithDerivedPropertyAndCustomImplBase {
   /**
    * Initialize object using the passed builder.
@@ -20,6 +31,8 @@ public abstract class AbtractWithDerivedPropertyAndCustomImplBase {
    * has read only attributes or associations instances can not be created directly. Instead this builder class has to
    * be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     /**
      * Use {@link AbtractWithDerivedPropertyAndCustomImpl.builder()} instead of protected constructor to create new
@@ -44,6 +57,7 @@ public abstract class AbtractWithDerivedPropertyAndCustomImplBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
+  @MyNotNullProperty
   public abstract String getDerivedProperty( );
 
   @Override

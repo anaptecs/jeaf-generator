@@ -7,6 +7,20 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = PostalAddress.Builder.class)
 public class PostalAddress {
   /**
    * Constant for the name of attribute "street".
@@ -33,19 +47,19 @@ public class PostalAddress {
    */
   public static final String COUNTRY = "country";
 
-  private final String street;
+  private String street;
 
-  private final String houseNumber;
+  private String houseNumber;
 
-  private final String city;
+  private String city;
 
-  private final int postalCode;
+  private int postalCode;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>"Germany"</code>
    */
-  private final String country;
+  private String country;
 
   /**
    * Initialize object using the passed builder.
@@ -100,6 +114,8 @@ public class PostalAddress {
   /**
    * Class implements builder to create a new instance of class <code>PostalAddress</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String street;
 
@@ -136,12 +152,32 @@ public class PostalAddress {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new PostalAddress objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new PostalAddress objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( PostalAddress pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #street}.<br/>
      *
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setStreet( String pStreet ) {
+    public Builder setStreet( @MyNotNullProperty String pStreet ) {
       // Assign value to attribute
       street = pStreet;
       return this;
@@ -153,7 +189,7 @@ public class PostalAddress {
      * @param pHouseNumber Value to which {@link #houseNumber} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHouseNumber( String pHouseNumber ) {
+    public Builder setHouseNumber( @MyNotNullProperty String pHouseNumber ) {
       // Assign value to attribute
       houseNumber = pHouseNumber;
       return this;
@@ -165,7 +201,7 @@ public class PostalAddress {
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCity( String pCity ) {
+    public Builder setCity( @MyNotNullProperty String pCity ) {
       // Assign value to attribute
       city = pCity;
       return this;
@@ -189,7 +225,7 @@ public class PostalAddress {
      * @param pCountry Value to which {@link #country} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCountry( String pCountry ) {
+    public Builder setCountry( @MyNotNullProperty String pCountry ) {
       // Assign value to attribute
       country = pCountry;
       return this;
@@ -202,7 +238,9 @@ public class PostalAddress {
      * @return PostalAddress Created object. The method never returns null.
      */
     public PostalAddress build( ) {
-      return new PostalAddress(this);
+      PostalAddress lObject = new PostalAddress(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -211,8 +249,19 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #street} is set.
    */
+  @MyNotNullProperty
   public String getStreet( ) {
     return street;
+  }
+
+  /**
+   * Method sets attribute {@link #street}.<br/>
+   *
+   * @param pStreet Value to which {@link #street} should be set.
+   */
+  public void setStreet( @MyNotNullProperty String pStreet ) {
+    // Assign value to attribute
+    street = pStreet;
   }
 
   /**
@@ -220,8 +269,19 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #houseNumber} is set.
    */
+  @MyNotNullProperty
   public String getHouseNumber( ) {
     return houseNumber;
+  }
+
+  /**
+   * Method sets attribute {@link #houseNumber}.<br/>
+   *
+   * @param pHouseNumber Value to which {@link #houseNumber} should be set.
+   */
+  public void setHouseNumber( @MyNotNullProperty String pHouseNumber ) {
+    // Assign value to attribute
+    houseNumber = pHouseNumber;
   }
 
   /**
@@ -229,8 +289,19 @@ public class PostalAddress {
    *
    * @return {@link String} Value to which {@link #city} is set.
    */
+  @MyNotNullProperty
   public String getCity( ) {
     return city;
+  }
+
+  /**
+   * Method sets attribute {@link #city}.<br/>
+   *
+   * @param pCity Value to which {@link #city} should be set.
+   */
+  public void setCity( @MyNotNullProperty String pCity ) {
+    // Assign value to attribute
+    city = pCity;
   }
 
   /**
@@ -243,12 +314,33 @@ public class PostalAddress {
   }
 
   /**
+   * Method sets attribute {@link #postalCode}.<br/>
+   *
+   * @param pPostalCode Value to which {@link #postalCode} should be set.
+   */
+  public void setPostalCode( int pPostalCode ) {
+    // Assign value to attribute
+    postalCode = pPostalCode;
+  }
+
+  /**
    * Method returns attribute {@link #country}.<br/>
    *
    * @return {@link String} Value to which {@link #country} is set.
    */
+  @MyNotNullProperty
   public String getCountry( ) {
     return country;
+  }
+
+  /**
+   * Method sets attribute {@link #country}.<br/>
+   *
+   * @param pCountry Value to which {@link #country} should be set.
+   */
+  public void setCountry( @MyNotNullProperty String pCountry ) {
+    // Assign value to attribute
+    country = pCountry;
   }
 
   @Override

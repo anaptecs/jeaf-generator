@@ -7,8 +7,21 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = DirectedEdge.Builder.class)
 public class DirectedEdge {
   /**
    * Constant for the name of attribute "start".
@@ -28,14 +41,15 @@ public class DirectedEdge {
   /**
    * The start
    */
-  private final Stop start;
+  private Stop start;
 
   /**
    * The end
    */
-  private final Stop end;
+  private Stop end;
 
-  private final String link;
+  @JsonProperty("previousName")
+  private String link;
 
   /**
    * Initialize object using the passed builder.
@@ -78,6 +92,8 @@ public class DirectedEdge {
   /**
    * Class implements builder to create a new instance of class <code>DirectedEdge</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * The start
@@ -89,6 +105,7 @@ public class DirectedEdge {
      */
     private Stop end;
 
+    @JsonProperty("previousName")
     private String link;
 
     /**
@@ -110,6 +127,26 @@ public class DirectedEdge {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new DirectedEdge objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( DirectedEdge pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets association {@link #start}.<br/>
      *
      * @param pStart Value to which {@link #start} should be set.
@@ -126,7 +163,7 @@ public class DirectedEdge {
      * @param pEnd Value to which {@link #end} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setEnd( Stop pEnd ) {
+    public Builder setEnd( @MyNotNullProperty Stop pEnd ) {
       end = pEnd;
       return this;
     }
@@ -137,7 +174,7 @@ public class DirectedEdge {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLink( String pLink ) {
+    public Builder setLink( @MyNotNullProperty String pLink ) {
       // Assign value to attribute
       link = pLink;
       return this;
@@ -167,13 +204,48 @@ public class DirectedEdge {
   }
 
   /**
+   * Method sets association {@link #start}.<br/>
+   * The start
+   *
+   * @param pStart Value to which {@link #start} should be set.
+   */
+  public void setStart( Stop pStart ) {
+    start = pStart;
+  }
+
+  /**
+   * Method unsets {@link #start}.
+   */
+  public final void unsetStart( ) {
+    start = null;
+  }
+
+  /**
    * Method returns association {@link #end}.<br/>
    * The end
    *
    * @return {@link Stop} Value to which {@link #end} is set.
    */
+  @MyNotNullProperty
   public Stop getEnd( ) {
     return end;
+  }
+
+  /**
+   * Method sets association {@link #end}.<br/>
+   * The end
+   *
+   * @param pEnd Value to which {@link #end} should be set.
+   */
+  public void setEnd( @MyNotNullProperty Stop pEnd ) {
+    end = pEnd;
+  }
+
+  /**
+   * Method unsets {@link #end}.
+   */
+  public final void unsetEnd( ) {
+    end = null;
   }
 
   /**
@@ -181,8 +253,19 @@ public class DirectedEdge {
    *
    * @return {@link String} Value to which {@link #link} is set.
    */
+  @MyNotNullProperty
   public String getLink( ) {
     return link;
+  }
+
+  /**
+   * Method sets attribute {@link #link}.<br/>
+   *
+   * @param pLink Value to which {@link #link} should be set.
+   */
+  public void setLink( @MyNotNullProperty String pLink ) {
+    // Assign value to attribute
+    link = pLink;
   }
 
   @Override

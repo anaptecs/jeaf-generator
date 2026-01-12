@@ -7,6 +7,11 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class ContextWithPrimitives {
   /**
    * Constant for the name of attribute "aBoolean".
@@ -38,17 +43,17 @@ public class ContextWithPrimitives {
    */
   public static final String AVERYLONG = "aVeryLong";
 
-  private final boolean aBoolean;
+  private boolean aBoolean;
 
-  private final Boolean aBooleanWrapper;
+  private Boolean aBooleanWrapper;
 
-  private final int anInt;
+  private int anInt;
 
-  private final Integer anInteger;
+  private Integer anInteger;
 
-  private final long aLong;
+  private long aLong;
 
-  private final Long aVeryLong;
+  private Long aVeryLong;
 
   /**
    * Initialize object using the passed builder.
@@ -107,6 +112,8 @@ public class ContextWithPrimitives {
   /**
    * Class implements builder to create a new instance of class <code>ContextWithPrimitives</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private boolean aBoolean;
 
@@ -143,6 +150,26 @@ public class ContextWithPrimitives {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new ContextWithPrimitives objects. The method
+     * never returns null.
+     */
+    public static Builder newBuilder( ContextWithPrimitives pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #aBoolean}.<br/>
      *
      * @param pABoolean Value to which {@link #aBoolean} should be set.
@@ -160,7 +187,7 @@ public class ContextWithPrimitives {
      * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setABooleanWrapper( Boolean pABooleanWrapper ) {
+    public Builder setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
       // Assign value to attribute
       aBooleanWrapper = pABooleanWrapper;
       return this;
@@ -184,7 +211,7 @@ public class ContextWithPrimitives {
      * @param pAnInteger Value to which {@link #anInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAnInteger( Integer pAnInteger ) {
+    public Builder setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
       // Assign value to attribute
       anInteger = pAnInteger;
       return this;
@@ -208,7 +235,7 @@ public class ContextWithPrimitives {
      * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setAVeryLong( Long pAVeryLong ) {
+    public Builder setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
       // Assign value to attribute
       aVeryLong = pAVeryLong;
       return this;
@@ -221,7 +248,9 @@ public class ContextWithPrimitives {
      * @return ContextWithPrimitives Created object. The method never returns null.
      */
     public ContextWithPrimitives build( ) {
-      return new ContextWithPrimitives(this);
+      ContextWithPrimitives lObject = new ContextWithPrimitives(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -245,12 +274,33 @@ public class ContextWithPrimitives {
   }
 
   /**
+   * Method sets attribute {@link #aBoolean}.<br/>
+   *
+   * @param pABoolean Value to which {@link #aBoolean} should be set.
+   */
+  public void setABoolean( boolean pABoolean ) {
+    // Assign value to attribute
+    aBoolean = pABoolean;
+  }
+
+  /**
    * Method returns attribute {@link #aBooleanWrapper}.<br/>
    *
    * @return {@link Boolean} Value to which {@link #aBooleanWrapper} is set.
    */
+  @MyNotNullProperty
   public Boolean getABooleanWrapper( ) {
     return aBooleanWrapper;
+  }
+
+  /**
+   * Method sets attribute {@link #aBooleanWrapper}.<br/>
+   *
+   * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
+   */
+  public void setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
+    // Assign value to attribute
+    aBooleanWrapper = pABooleanWrapper;
   }
 
   /**
@@ -263,12 +313,33 @@ public class ContextWithPrimitives {
   }
 
   /**
+   * Method sets attribute {@link #anInt}.<br/>
+   *
+   * @param pAnInt Value to which {@link #anInt} should be set.
+   */
+  public void setAnInt( int pAnInt ) {
+    // Assign value to attribute
+    anInt = pAnInt;
+  }
+
+  /**
    * Method returns attribute {@link #anInteger}.<br/>
    *
    * @return {@link Integer} Value to which {@link #anInteger} is set.
    */
+  @MyNotNullProperty
   public Integer getAnInteger( ) {
     return anInteger;
+  }
+
+  /**
+   * Method sets attribute {@link #anInteger}.<br/>
+   *
+   * @param pAnInteger Value to which {@link #anInteger} should be set.
+   */
+  public void setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
+    // Assign value to attribute
+    anInteger = pAnInteger;
   }
 
   /**
@@ -281,12 +352,33 @@ public class ContextWithPrimitives {
   }
 
   /**
+   * Method sets attribute {@link #aLong}.<br/>
+   *
+   * @param pALong Value to which {@link #aLong} should be set.
+   */
+  public void setALong( long pALong ) {
+    // Assign value to attribute
+    aLong = pALong;
+  }
+
+  /**
    * Method returns attribute {@link #aVeryLong}.<br/>
    *
    * @return {@link Long} Value to which {@link #aVeryLong} is set.
    */
+  @MyNotNullProperty
   public Long getAVeryLong( ) {
     return aVeryLong;
+  }
+
+  /**
+   * Method sets attribute {@link #aVeryLong}.<br/>
+   *
+   * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
+   */
+  public void setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
+    // Assign value to attribute
+    aVeryLong = pAVeryLong;
   }
 
   @Override

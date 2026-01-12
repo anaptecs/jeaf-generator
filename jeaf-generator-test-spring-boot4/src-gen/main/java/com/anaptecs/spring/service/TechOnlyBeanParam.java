@@ -5,6 +5,10 @@
  */
 package com.anaptecs.spring.service;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
 public class TechOnlyBeanParam {
   /**
    * Initialize object using the passed builder.
@@ -38,6 +42,8 @@ public class TechOnlyBeanParam {
   /**
    * Class implements builder to create a new instance of class <code>TechOnlyBeanParam</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Use {@link TechOnlyBeanParam#builder()} instead of private constructor to create new builder.
@@ -52,13 +58,35 @@ public class TechOnlyBeanParam {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new TechOnlyBeanParam objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new TechOnlyBeanParam objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( TechOnlyBeanParam pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method creates a new instance of class TechOnlyBeanParam. The object will be initialized with the values of the
      * builder.
      *
      * @return TechOnlyBeanParam Created object. The method never returns null.
      */
     public TechOnlyBeanParam build( ) {
-      return new TechOnlyBeanParam(this);
+      TechOnlyBeanParam lObject = new TechOnlyBeanParam(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 

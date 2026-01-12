@@ -7,10 +7,16 @@ package com.anaptecs.spring.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class QueryBeanParam {
   /**
@@ -28,15 +34,15 @@ public class QueryBeanParam {
    */
   public static final String SORTCRITERIA = "sortCriteria";
 
-  private final BookingCode bookingCode;
+  private BookingCode bookingCode;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>47</code>
    */
-  private final int maxResults;
+  private int maxResults;
 
-  private final List<MySortCriteria> sortCriteria;
+  private List<MySortCriteria> sortCriteria;
 
   /**
    * Initialize object using the passed builder.
@@ -47,7 +53,7 @@ public class QueryBeanParam {
     // Read attribute values from builder.
     bookingCode = pBuilder.bookingCode;
     maxResults = pBuilder.maxResults;
-    sortCriteria = (pBuilder.sortCriteria == null) ? List.of() : List.copyOf(pBuilder.sortCriteria);
+    sortCriteria = (pBuilder.sortCriteria == null) ? new ArrayList<>() : pBuilder.sortCriteria;
   }
 
   /**
@@ -79,6 +85,8 @@ public class QueryBeanParam {
   /**
    * Class implements builder to create a new instance of class <code>QueryBeanParam</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private BookingCode bookingCode;
 
@@ -109,12 +117,32 @@ public class QueryBeanParam {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new QueryBeanParam objects. The method never
+     * returns null.
+     */
+    public static Builder newBuilder( QueryBeanParam pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #bookingCode}.<br/>
      *
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setBookingCode( BookingCode pBookingCode ) {
+    public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
       return this;
@@ -139,7 +167,13 @@ public class QueryBeanParam {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     public Builder setSortCriteria( List<MySortCriteria> pSortCriteria ) {
-      sortCriteria = pSortCriteria;
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pSortCriteria != null) {
+        sortCriteria = new ArrayList<MySortCriteria>(pSortCriteria);
+      }
+      else {
+        sortCriteria = null;
+      }
       return this;
     }
 
@@ -166,7 +200,9 @@ public class QueryBeanParam {
      * @return QueryBeanParam Created object. The method never returns null.
      */
     public QueryBeanParam build( ) {
-      return new QueryBeanParam(this);
+      QueryBeanParam lObject = new QueryBeanParam(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -175,8 +211,19 @@ public class QueryBeanParam {
    *
    * @return {@link BookingCode} Value to which {@link #bookingCode} is set.
    */
+  @MyNotNullProperty
   public BookingCode getBookingCode( ) {
     return bookingCode;
+  }
+
+  /**
+   * Method sets attribute {@link #bookingCode}.<br/>
+   *
+   * @param pBookingCode Value to which {@link #bookingCode} should be set.
+   */
+  public void setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
+    // Assign value to attribute
+    bookingCode = pBookingCode;
   }
 
   /**
@@ -189,13 +236,65 @@ public class QueryBeanParam {
   }
 
   /**
+   * Method sets attribute {@link #maxResults}.<br/>
+   *
+   * @param pMaxResults Value to which {@link #maxResults} should be set.
+   */
+  public void setMaxResults( int pMaxResults ) {
+    // Assign value to attribute
+    maxResults = pMaxResults;
+  }
+
+  /**
    * Method returns association {@link #sortCriteria}.<br/>
    *
    * @return {@link List<MySortCriteria>} Value to which {@link #sortCriteria} is set. The method never returns null and
    * the returned collection is unmodifiable.
    */
   public List<MySortCriteria> getSortCriteria( ) {
-    return sortCriteria;
+    // Return all MySortCriteria objects as unmodifiable collection.
+    return Collections.unmodifiableList(sortCriteria);
+  }
+
+  /**
+   * Method adds the passed object to {@link #sortCriteria}.
+   *
+   * @param pSortCriteria Object that should be added to {@link #sortCriteria}. The parameter must not be null.
+   */
+  public void addToSortCriteria( MySortCriteria pSortCriteria ) {
+    // Add passed object to collection of associated MySortCriteria objects.
+    sortCriteria.add(pSortCriteria);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #sortCriteria}.
+   *
+   * @param pSortCriteria Collection with all objects that should be added to {@link #sortCriteria}. The parameter must
+   * not be null.
+   */
+  public void addToSortCriteria( Collection<MySortCriteria> pSortCriteria ) {
+    // Add all passed objects.
+    for (MySortCriteria lNextObject : pSortCriteria) {
+      this.addToSortCriteria(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #sortCriteria}.<br/>
+   *
+   * @param pSortCriteria Object that should be removed from {@link #sortCriteria}. The parameter must not be null.
+   */
+  public void removeFromSortCriteria( MySortCriteria pSortCriteria ) {
+    // Remove passed object from collection of associated MySortCriteria objects.
+    sortCriteria.remove(pSortCriteria);
+  }
+
+  /**
+   * Method removes all objects from {@link #sortCriteria}.
+   */
+  public void clearSortCriteria( ) {
+    // Remove all objects from association "sortCriteria".
+    sortCriteria.clear();
   }
 
   @Override

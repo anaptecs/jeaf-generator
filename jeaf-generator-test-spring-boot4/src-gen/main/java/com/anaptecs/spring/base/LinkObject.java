@@ -7,13 +7,27 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = LinkObject.Builder.class)
 public class LinkObject {
   /**
    * Constant for the name of attribute "href".
    */
   public static final String HREF = "href";
 
-  private final String href;
+  private String href;
 
   /**
    * Initialize object using the passed builder.
@@ -51,6 +65,8 @@ public class LinkObject {
   /**
    * Class implements builder to create a new instance of class <code>LinkObject</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String href;
 
@@ -71,12 +87,32 @@ public class LinkObject {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new LinkObject objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new LinkObject objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( LinkObject pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #href}.<br/>
      *
      * @param pHref Value to which {@link #href} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setHref( String pHref ) {
+    public Builder setHref( @MyNotNullProperty String pHref ) {
       // Assign value to attribute
       href = pHref;
       return this;
@@ -88,7 +124,9 @@ public class LinkObject {
      * @return LinkObject Created object. The method never returns null.
      */
     public LinkObject build( ) {
-      return new LinkObject(this);
+      LinkObject lObject = new LinkObject(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -97,8 +135,19 @@ public class LinkObject {
    *
    * @return {@link String} Value to which {@link #href} is set.
    */
+  @MyNotNullProperty
   public String getHref( ) {
     return href;
+  }
+
+  /**
+   * Method sets attribute {@link #href}.<br/>
+   *
+   * @param pHref Value to which {@link #href} should be set.
+   */
+  public void setHref( @MyNotNullProperty String pHref ) {
+    // Assign value to attribute
+    href = pHref;
   }
 
   @Override

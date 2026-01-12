@@ -7,9 +7,32 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = POI.class, name = "POI"),
+  @JsonSubTypes.Type(value = UICStop.class, name = "UICStop") })
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Stop.StopBuilderImpl.class)
 public class Stop {
   /**
    * Constant for the name of attribute "name".
@@ -21,28 +44,30 @@ public class Stop {
    */
   public static final String LINKS = "links";
 
-  private final String name;
+  @JsonAlias({ "bavName", "stopName" })
+  private String name;
 
-  private final List<LinkObject> links;
+  @JsonProperty("_links")
+  private List<LinkObject> links;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Stop( Builder pBuilder ) {
+  protected Stop( StopBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
     name = pBuilder.name;
-    links = (pBuilder.links == null) ? List.of() : List.copyOf(pBuilder.links);
+    links = (pBuilder.links == null) ? new ArrayList<>() : pBuilder.links;
   }
 
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Stop objects.
+   * @return {@link StopBuilder} New builder that can be used to create new Stop objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static StopBuilder<?, ?> builder( ) {
+    return new StopBuilderImpl();
   }
 
   /**
@@ -62,21 +87,25 @@ public class Stop {
   /**
    * Class implements builder to create a new instance of class <code>Stop</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class StopBuilder<T extends Stop, B extends StopBuilder<T, B>> {
+    @JsonAlias({ "bavName", "stopName" })
     private String name;
 
+    @JsonProperty("_links")
     private List<LinkObject> links;
 
     /**
      * Use {@link Stop#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected StopBuilder( ) {
     }
 
     /**
      * Use {@link Stop#builder(Stop)} instead of private constructor to create new builder.
      */
-    protected Builder( Stop pObject ) {
+    protected StopBuilder( Stop pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setName(pObject.name);
@@ -88,48 +117,78 @@ public class Stop {
      * Method sets attribute {@link #name}.<br/>
      *
      * @param pName Value to which {@link #name} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setName( String pName ) {
+    public B setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
-      return this;
+      return this.self();
     }
 
     /**
      * Method sets association {@link #links}.<br/>
      *
      * @param pLinks Collection to which {@link #links} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setLinks( List<LinkObject> pLinks ) {
-      links = pLinks;
-      return this;
+    public B setLinks( List<LinkObject> pLinks ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pLinks != null) {
+        links = new ArrayList<LinkObject>(pLinks);
+      }
+      else {
+        links = null;
+      }
+      return this.self();
     }
 
     /**
      * Method adds the passed objects to association {@link #links}.<br/>
      *
      * @param pLinks Array of objects that should be added to {@link #links}. The parameter may be null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToLinks( LinkObject... pLinks ) {
+    public B addToLinks( LinkObject... pLinks ) {
       if (pLinks != null) {
         if (links == null) {
           links = new ArrayList<LinkObject>();
         }
         links.addAll(Arrays.asList(pLinks));
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Stop. The object will be initialized with the values of the builder.
      *
      * @return Stop Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class StopBuilderImpl extends StopBuilder<Stop, StopBuilderImpl> {
+    protected StopBuilderImpl( ) {
+    }
+
+    protected StopBuilderImpl( Stop pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected StopBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Stop build( ) {
-      return new Stop(this);
+      Stop lObject = new Stop(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -138,8 +197,19 @@ public class Stop {
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
+  @MyNotNullProperty
   public String getName( ) {
     return name;
+  }
+
+  /**
+   * Method sets attribute {@link #name}.<br/>
+   *
+   * @param pName Value to which {@link #name} should be set.
+   */
+  public void setName( @MyNotNullProperty String pName ) {
+    // Assign value to attribute
+    name = pName;
   }
 
   /**
@@ -149,7 +219,48 @@ public class Stop {
    * returned collection is unmodifiable.
    */
   public List<LinkObject> getLinks( ) {
-    return links;
+    // Return all LinkObject objects as unmodifiable collection.
+    return Collections.unmodifiableList(links);
+  }
+
+  /**
+   * Method adds the passed object to {@link #links}.
+   *
+   * @param pLinks Object that should be added to {@link #links}. The parameter must not be null.
+   */
+  public void addToLinks( LinkObject pLinks ) {
+    // Add passed object to collection of associated LinkObject objects.
+    links.add(pLinks);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #links}.
+   *
+   * @param pLinks Collection with all objects that should be added to {@link #links}. The parameter must not be null.
+   */
+  public void addToLinks( Collection<LinkObject> pLinks ) {
+    // Add all passed objects.
+    for (LinkObject lNextObject : pLinks) {
+      this.addToLinks(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #links}.<br/>
+   *
+   * @param pLinks Object that should be removed from {@link #links}. The parameter must not be null.
+   */
+  public void removeFromLinks( LinkObject pLinks ) {
+    // Remove passed object from collection of associated LinkObject objects.
+    links.remove(pLinks);
+  }
+
+  /**
+   * Method removes all objects from {@link #links}.
+   */
+  public void clearLinks( ) {
+    // Remove all objects from association "links".
+    links.clear();
   }
 
   @Override
@@ -228,9 +339,9 @@ public class Stop {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Stop objects. The method never returns null.
+   * @return {@link StopBuilder} New builder that can be used to create new Stop objects. The method never returns null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public StopBuilder<?, ?> toBuilder( ) {
+    return new StopBuilderImpl(this);
   }
 }

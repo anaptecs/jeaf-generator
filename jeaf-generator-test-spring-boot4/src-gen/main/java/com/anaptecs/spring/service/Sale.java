@@ -8,8 +8,21 @@ package com.anaptecs.spring.service;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.Channel;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Sale.Builder.class)
 public class Sale {
   /**
    * Constant for the name of attribute "transactionAmount".
@@ -21,9 +34,9 @@ public class Sale {
    */
   public static final String SALE = "sale";
 
-  private final BigDecimal transactionAmount;
+  private BigDecimal transactionAmount;
 
-  private final Channel sale;
+  private Channel sale;
 
   /**
    * Initialize object using the passed builder.
@@ -62,6 +75,8 @@ public class Sale {
   /**
    * Class implements builder to create a new instance of class <code>Sale</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private BigDecimal transactionAmount;
 
@@ -85,12 +100,31 @@ public class Sale {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new Sale objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new Sale objects. The method never returns null.
+     */
+    public static Builder newBuilder( Sale pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #transactionAmount}.<br/>
      *
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setTransactionAmount( BigDecimal pTransactionAmount ) {
+    public Builder setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
       return this;
@@ -113,7 +147,9 @@ public class Sale {
      * @return Sale Created object. The method never returns null.
      */
     public Sale build( ) {
-      return new Sale(this);
+      Sale lObject = new Sale(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -122,8 +158,19 @@ public class Sale {
    *
    * @return {@link BigDecimal} Value to which {@link #transactionAmount} is set.
    */
+  @MyNotNullProperty
   public BigDecimal getTransactionAmount( ) {
     return transactionAmount;
+  }
+
+  /**
+   * Method sets attribute {@link #transactionAmount}.<br/>
+   *
+   * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
+   */
+  public void setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
+    // Assign value to attribute
+    transactionAmount = pTransactionAmount;
   }
 
   /**
@@ -133,6 +180,22 @@ public class Sale {
    */
   public Channel getSale( ) {
     return sale;
+  }
+
+  /**
+   * Method sets association {@link #sale}.<br/>
+   *
+   * @param pSale Value to which {@link #sale} should be set.
+   */
+  public void setSale( Channel pSale ) {
+    sale = pSale;
+  }
+
+  /**
+   * Method unsets {@link #sale}.
+   */
+  public final void unsetSale( ) {
+    sale = null;
   }
 
   @Override

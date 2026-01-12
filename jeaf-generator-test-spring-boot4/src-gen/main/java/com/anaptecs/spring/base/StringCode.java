@@ -7,13 +7,25 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class StringCode {
   /**
    * Constant for the name of attribute "code".
    */
   public static final String CODE = "code";
 
-  private final String code;
+  private String code;
 
   /**
    * Initialize object using the passed builder.
@@ -26,6 +38,14 @@ public class StringCode {
   }
 
   /**
+   * Constructor is intended to be used by <code>of(...)</code> operation to efficiently create new objects by avoiding
+   * usage of builder.
+   */
+  private StringCode( String pCode ) {
+    code = pCode;
+  }
+
+  /**
    * Method returns a new builder.
    *
    * @return {@link Builder} New builder that can be used to create new StringCode objects.
@@ -35,8 +55,22 @@ public class StringCode {
   }
 
   /**
+   * Convenience method to create new instance of class StringCode.
+   *
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   *
+   * @return {@link StringCode}
+   */
+  public static StringCode of( String pCode ) {
+    return new StringCode(pCode);
+  }
+
+  /**
    * Class implements builder to create a new instance of class <code>StringCode</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String code;
 
@@ -57,12 +91,32 @@ public class StringCode {
     }
 
     /**
+     * Method returns a new builder.
+     *
+     * @return {@link Builder} New builder that can be used to create new StringCode objects.
+     */
+    public static Builder newBuilder( ) {
+      return new Builder();
+    }
+
+    /**
+     * Method creates a new builder and initialize it with the data from the passed object.
+     *
+     * @param pObject Object that should be used to initialize the builder. The parameter may be null.
+     * @return {@link Builder} New builder that can be used to create new StringCode objects. The method never returns
+     * null.
+     */
+    public static Builder newBuilder( StringCode pObject ) {
+      return new Builder(pObject);
+    }
+
+    /**
      * Method sets attribute {@link #code}.<br/>
      *
      * @param pCode Value to which {@link #code} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setCode( String pCode ) {
+    public Builder setCode( @MyNotNullProperty String pCode ) {
       // Assign value to attribute
       code = pCode;
       return this;
@@ -74,7 +128,9 @@ public class StringCode {
      * @return StringCode Created object. The method never returns null.
      */
     public StringCode build( ) {
-      return new StringCode(this);
+      StringCode lObject = new StringCode(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -83,8 +139,19 @@ public class StringCode {
    *
    * @return {@link String} Value to which {@link #code} is set.
    */
+  @MyNotNullProperty
   public String getCode( ) {
     return code;
+  }
+
+  /**
+   * Method sets attribute {@link #code}.<br/>
+   *
+   * @param pCode Value to which {@link #code} should be set.
+   */
+  public void setCode( @MyNotNullProperty String pCode ) {
+    // Assign value to attribute
+    code = pCode;
   }
 
   @Override

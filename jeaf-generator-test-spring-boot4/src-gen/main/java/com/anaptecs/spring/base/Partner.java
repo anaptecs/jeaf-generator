@@ -7,34 +7,54 @@ package com.anaptecs.spring.base;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonSubTypes({ @JsonSubTypes.Type(value = Company.class, name = "Company"),
+  @JsonSubTypes.Type(value = Person.class, name = "Person") })
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.NONE,
+    isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+    setterVisibility = JsonAutoDetect.Visibility.NONE,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonDeserialize(builder = Partner.PartnerBuilderImpl.class)
 public class Partner {
   /**
    * Constant for the name of attribute "postalAddresses".
    */
   public static final String POSTALADDRESSES = "postalAddresses";
 
-  private final List<PostalAddress> postalAddresses;
+  private List<PostalAddress> postalAddresses;
 
   /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
    */
-  protected Partner( Builder pBuilder ) {
+  protected Partner( PartnerBuilder<?, ?> pBuilder ) {
     // Read attribute values from builder.
-    postalAddresses = (pBuilder.postalAddresses == null) ? List.of() : List.copyOf(pBuilder.postalAddresses);
+    postalAddresses = (pBuilder.postalAddresses == null) ? new ArrayList<>() : pBuilder.postalAddresses;
   }
 
   /**
    * Method returns a new builder.
    *
-   * @return {@link Builder} New builder that can be used to create new Partner objects.
+   * @return {@link PartnerBuilder} New builder that can be used to create new Partner objects.
    */
-  public static Builder builder( ) {
-    return new Builder();
+  public static PartnerBuilder<?, ?> builder( ) {
+    return new PartnerBuilderImpl();
   }
 
   /**
@@ -51,19 +71,21 @@ public class Partner {
   /**
    * Class implements builder to create a new instance of class <code>Partner</code>.
    */
-  public static class Builder {
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class PartnerBuilder<T extends Partner, B extends PartnerBuilder<T, B>> {
     private List<PostalAddress> postalAddresses;
 
     /**
      * Use {@link Partner#builder()} instead of private constructor to create new builder.
      */
-    protected Builder( ) {
+    protected PartnerBuilder( ) {
     }
 
     /**
      * Use {@link Partner#builder(Partner)} instead of private constructor to create new builder.
      */
-    protected Builder( Partner pObject ) {
+    protected PartnerBuilder( Partner pObject ) {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setPostalAddresses(pObject.postalAddresses);
@@ -74,11 +96,17 @@ public class Partner {
      * Method sets association {@link #postalAddresses}.<br/>
      *
      * @param pPostalAddresses Collection to which {@link #postalAddresses} should be set.
-     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
-    public Builder setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
-      postalAddresses = pPostalAddresses;
-      return this;
+    public B setPostalAddresses( List<PostalAddress> pPostalAddresses ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pPostalAddresses != null) {
+        postalAddresses = new ArrayList<PostalAddress>(pPostalAddresses);
+      }
+      else {
+        postalAddresses = null;
+      }
+      return this.self();
     }
 
     /**
@@ -86,25 +114,49 @@ public class Partner {
      *
      * @param pPostalAddresses Array of objects that should be added to {@link #postalAddresses}. The parameter may be
      * null.
-     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     * @return {@link B} Instance of this builder to support chaining. Method never returns null.
      */
-    public Builder addToPostalAddresses( PostalAddress... pPostalAddresses ) {
+    public B addToPostalAddresses( PostalAddress... pPostalAddresses ) {
       if (pPostalAddresses != null) {
         if (postalAddresses == null) {
           postalAddresses = new ArrayList<PostalAddress>();
         }
         postalAddresses.addAll(Arrays.asList(pPostalAddresses));
       }
-      return this;
+      return this.self();
     }
+
+    /**
+     * Method returns instance of this builder. Operation is part of generic builder pattern.
+     */
+    protected abstract B self( );
 
     /**
      * Method creates a new instance of class Partner. The object will be initialized with the values of the builder.
      *
      * @return Partner Created object. The method never returns null.
      */
+    public abstract T build( );
+  }
+
+  static final class PartnerBuilderImpl extends PartnerBuilder<Partner, PartnerBuilderImpl> {
+    protected PartnerBuilderImpl( ) {
+    }
+
+    protected PartnerBuilderImpl( Partner pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected PartnerBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
     public Partner build( ) {
-      return new Partner(this);
+      Partner lObject = new Partner(this);
+      SpringValidationExecutor.getValidationExecutor().validateObject(lObject);
+      return lObject;
     }
   }
 
@@ -115,7 +167,50 @@ public class Partner {
    * and the returned collection is unmodifiable.
    */
   public List<PostalAddress> getPostalAddresses( ) {
-    return postalAddresses;
+    // Return all PostalAddress objects as unmodifiable collection.
+    return Collections.unmodifiableList(postalAddresses);
+  }
+
+  /**
+   * Method adds the passed object to {@link #postalAddresses}.
+   *
+   * @param pPostalAddresses Object that should be added to {@link #postalAddresses}. The parameter must not be null.
+   */
+  public void addToPostalAddresses( PostalAddress pPostalAddresses ) {
+    // Add passed object to collection of associated PostalAddress objects.
+    postalAddresses.add(pPostalAddresses);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #postalAddresses}.
+   *
+   * @param pPostalAddresses Collection with all objects that should be added to {@link #postalAddresses}. The parameter
+   * must not be null.
+   */
+  public void addToPostalAddresses( Collection<PostalAddress> pPostalAddresses ) {
+    // Add all passed objects.
+    for (PostalAddress lNextObject : pPostalAddresses) {
+      this.addToPostalAddresses(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #postalAddresses}.<br/>
+   *
+   * @param pPostalAddresses Object that should be removed from {@link #postalAddresses}. The parameter must not be
+   * null.
+   */
+  public void removeFromPostalAddresses( PostalAddress pPostalAddresses ) {
+    // Remove passed object from collection of associated PostalAddress objects.
+    postalAddresses.remove(pPostalAddresses);
+  }
+
+  /**
+   * Method removes all objects from {@link #postalAddresses}.
+   */
+  public void clearPostalAddresses( ) {
+    // Remove all objects from association "postalAddresses".
+    postalAddresses.clear();
   }
 
   @Override
@@ -189,9 +284,10 @@ public class Partner {
   /**
    * Method creates a new builder and initializes it with the data of this object.
    *
-   * @return {@link Builder} New builder that can be used to create new Partner objects. The method never returns null.
+   * @return {@link PartnerBuilder} New builder that can be used to create new Partner objects. The method never returns
+   * null.
    */
-  public Builder toBuilder( ) {
-    return new Builder(this);
+  public PartnerBuilder<?, ?> toBuilder( ) {
+    return new PartnerBuilderImpl(this);
   }
 }
