@@ -37,6 +37,12 @@
 		    <version>${jackson2.version}</version>
 		</dependency>
 
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson3.version}</version>
+        </dependency>
+
 		<dependency>
 			<groupId>com.anaptecs.jeaf.workload</groupId>
 			<artifactId>jeaf-workload-rest-api</artifactId>
