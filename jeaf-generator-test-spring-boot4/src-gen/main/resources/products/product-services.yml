@@ -1,0 +1,3123 @@
+openapi: 3.1.0
+
+info:
+  title: Product Services
+  version: 1.28.1-SNAPSHOT
+  description: |
+    This component represents the OpenAPI interface of the accounting service.<br>
+    <br>
+    Dear Developers, please be aware that multi line comments can also be used.
+  termsOfService: https://www.anaptecs.de/jeaf/TermsOfUse
+  contact:
+    name: JEAF Development Team
+    url: 'https://www.anaptecs.de/jeaf'
+    email: jeaf@anaptecs.de
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+
+servers:
+  - url: https://accounting.jeaf.de
+  - url: http://localhost:8080/test
+  - url: https://demo-jeaf.anaptecs.de
+  - url: https://test-jeaf.anaptecs.de
+  - url: https://jeaf.anaptecs.de
+    description: |
+      This is our lovely production environment<br>
+      <br>
+      It can stand any load, until it crashes ;-)
+
+tags:
+  - name: Products
+    description: |
+      Tag groups all product related operations together.
+      url: https//jeaf.anaptecs.de/link1
+  - name: MasterData
+    description: |
+      Tag marks all operations that are connected with Master Data.
+  - name: Another Tag
+  - name: B Tag
+
+paths:
+  # ProductService
+  /products/:
+    get:
+      tags:
+        - MasterData
+        - Products
+      description: |
+        Operation returns all available product.
+      operationId: getProducts
+      externalDocs:
+        url: https://jeaf.anaptecs.de/link2
+      responses:
+        '200':
+          description: |
+            My default comment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../base/product-base.yml#/components/schemas/Product'
+                minItems: 1
+                maxItems: 4711
+          headers:
+            Cache-Control:
+              schema:
+                type: string
+                default: 'public, max-age=10000'
+                description: |
+                  Results for this call are cacheable for the duration as it is defined in this header field
+            Max-TTL:
+              schema:
+                type: integer
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+            Yet-Another-Header:
+              schema:
+                type: boolean
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    post:
+      tags:
+        - Products
+      operationId: createProduct
+      requestBody:
+        description: |
+          My default comment
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../base/product-base.yml#/components/schemas/Product'
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: boolean
+                examples:
+                 - true
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    head:
+      operationId: ping
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/{id}:
+    get:
+      tags:
+        - MasterData
+        - Products
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 1
+            examples:
+             - 1234-345
+      responses:
+        '200':
+          description: |
+            My default comment
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Product'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/sortiment/{id}:
+    get:
+      tags:
+        - MasterData
+        - Products
+      operationId: getSortiment
+      parameters:
+        - name: token
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 1
+        - name: lang
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            examples:
+             - en
+        - name: reseller
+          in: cookie
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: q1
+          in: query
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: intCode
+          in: header
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType' 
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Sortiment'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/ChannelCode:
+    post:
+      operationId: createChannelCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              examples:
+               - MOBILE_APP
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                description: |
+                  channel code
+                type: string
+                default: 'WEBSHOP'
+                examples:
+                 - MOBILE_APP
+                nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/deprecated/operation:
+    get:
+      operationId: deprecatedOperation
+      deprecated: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/deprecated/context:
+    post:
+      operationId: deprecatedContext
+      parameters:
+        - name: token
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 1
+        - name: lang
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            examples:
+             - en
+        - name: reseller
+          in: cookie
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: q1
+          in: query
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/deprecated/beanParams:
+    post:
+      operationId: deprecatedBeanParam
+      parameters:
+        - name: token
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: lang
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: q2
+          in: query
+          required: true
+          deprecated: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/deprecated/params:
+    post:
+      operationId: deprecatedParams
+      parameters:
+        - name: param1
+          in: header
+          required: true
+          deprecated: true
+          schema:
+            type: integer
+            format: int32
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+                deprecated: true
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/deprecated/body:
+    post:
+      operationId: deprecatedBody
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              deprecated: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/deprecated/complexBody:
+    post:
+      description: |
+        Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
+      operationId: deprectedComplexRequestBody
+      requestBody:
+        description: |
+          My default comment
+          Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../base/product-base.yml#/components/schemas/Product'
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/deprecated/complexReturn:
+    get:
+      operationId: deprecatedComplexReturn
+      responses:
+        '200':
+          description: |
+            My default comment
+            Operation has deprected return type. Please be aware that deprecations on complex return types are not supported. Instead the whole operation needs to be set to deprecated.
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Product'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/specific/{id}:
+    patch:
+      summary: |
+        Load
+        specific things
+        from multiple
+        lines
+      operationId: loadSpecificThings
+      parameters:
+        - name: token
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 1
+        - name: lang
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            examples:
+             - en
+        - name: reseller
+          in: cookie
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: q1
+          in: query
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: intCode
+          in: header
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType' 
+        - name: specificHeader
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: Channel-Type
+          in: cookie
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/ChannelType' 
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/ChannelCodeObject:
+    post:
+      operationId: createChannelCodeFromObject
+      requestBody:
+        description: |
+          Channel Code that should be created.
+        required: true
+        content:
+          application/json:
+            schema:
+                description: |
+                  channel code
+                type: string
+                default: 'WEBSHOP'
+                examples:
+                 - MOBILE_APP
+                nullable: false
+      responses:
+        '200':
+          description: |
+            Created channel code
+          content:
+            application/json:
+              schema:
+                description: |
+                  channel code
+                type: string
+                default: 'WEBSHOP'
+                examples:
+                 - MOBILE_APP
+                nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/currencies:
+    post:
+      tags:
+        - B Tag
+      operationId: addCurrencies
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+                description: |
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  examples:
+                   - CHF
+                minItems: 1
+                nullable: false
+                examples:
+                 - ["CHF", "EUR", "USD"]
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                description: |
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  examples:
+                   - CHF
+                minItems: 1
+                maxItems: 20
+                nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/currencies/valid:
+    post:
+      tags:
+        - Another Tag
+      operationId: isCurrencySupported
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+                description: |
+                  ISO 4217 currency code.
+                type: string
+                default: 'CHF'
+                minLength: 3
+                maxLength: 3
+                examples:
+                 - CHF
+                nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                description: |
+                  ISO 4217 currency code.
+                type: string
+                default: 'CHF'
+                minLength: 3
+                maxLength: 3
+                examples:
+                 - CHF
+                nullable: false
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/codeTypeUsages:
+    post:
+      operationId: testCodeTypeUsage
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../base/product-base.yml#/components/schemas/StringCodeType'
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType'
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/LocalBeanParam:
+    get:
+      operationId: testLocalBeanParamType
+      parameters:
+        - $ref: '#/components/parameters/localKey'
+        - $ref: '#/components/parameters/localID'
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+                minLength: 111
+                maxLength: 666
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/ExternalBeanParam:
+    get:
+      operationId: testExternalBeanParameterType
+      parameters:
+        - $ref: '../base/product-base.yml#/components/parameters/novaKey'
+        - $ref: '../base/product-base.yml#/components/parameters/tkID'
+        - $ref: '../base/product-base.yml#/components/parameters/code'
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/ChildBeanParam:
+    get:
+      operationId: testChildBeanParameter
+      parameters:
+        - $ref: '../base/product-base.yml#/components/parameters/novaKey'
+        - $ref: '../base/product-base.yml#/components/parameters/tkID'
+        - $ref: '../base/product-base.yml#/components/parameters/code'
+        - $ref: '#/components/parameters/childProperty'
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/test-date-query-params/{path}:
+    get:
+      operationId: testDateQueryParams
+      parameters:
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: startTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: startTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localStartTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: localStartTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localStartDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: calendar
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: utilDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: sqlTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: sqlTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: sqlDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/test-date-query-params-beans/{path}:
+    get:
+      operationId: testDateQueryParamsBean
+      parameters:
+        - name: offsetDateTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: offsetTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localDateTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: localTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: utilDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: calendar
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: sqlTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: sqlTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: sqlDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/test-date-header-params/{path}:
+    get:
+      operationId: testDateHeaderParams
+      parameters:
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: Offset-Date-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Offset-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: Local-Date-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Local-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: Local-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: Calendar
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Util-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: SQL-Timestamp
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: SQL-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: SQL-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/test-date-header-params-beans/{path}:
+    get:
+      operationId: testDateHeaderParamsBean
+      parameters:
+        - name: Offset-Date-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Offset-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: Local-Date-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Local-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: Local-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: Util-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Calendar
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: SQL-Timestamp
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: SQL-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: SQL-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/technicalHeaderParam:
+    get:
+      operationId: testTechnicalHeaderParam
+      parameters:
+        - name: Reseller
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: Authentication
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/technicalHeaderBeanParam:
+    get:
+      operationId: testTechnicalHeaderBean
+      parameters:
+        - name: Reseller
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: Authentication
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/product-codes:
+    get:
+      operationId: processDataTypes
+      parameters:
+        - name: pCodes
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            nullable: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+          headers:
+            X-Global-Response-Header:
+              schema:
+                type: string
+                default: 'Hello World'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /products/info:
+    get:
+      operationId: getVersionInfo
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  # RESTProductService
+  /rest-products:
+    get:
+      description: |
+        Operation returns all available product.
+        <br><br>
+        Authorized Roles: `Customer`, `Sales Agent`
+      operationId: rest.getProducts
+      externalDocs:
+        url: https://jeaf.anaptecs.de/link2
+      parameters:
+        - name: maxResult
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: |
+            My default comment
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../base/product-base.yml#/components/schemas/Product'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    post:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: rest.createProduct
+      requestBody:
+        description: |
+          My default comment
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '../base/product-base.yml#/components/schemas/Product'
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: boolean
+                examples:
+                 - true
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+    head:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Customer`, `Sales Agent`
+      operationId: rest.ping
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/{id}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: rest.getProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 1
+            examples:
+             - 1234-345
+      responses:
+        '200':
+          description: |
+            My default comment
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Product'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/sortiment/{id}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: rest.getSortiment
+      parameters:
+        - name: token
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 1
+        - name: lang
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            examples:
+             - en
+        - name: reseller
+          in: cookie
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: q1
+          in: query
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: intCode
+          in: header
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType' 
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '../base/product-base.yml#/components/schemas/Sortiment'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/ChannelCode:
+    post:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: rest.createChannelCode
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              examples:
+               - MOBILE_APP
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                description: |
+                  channel code
+                type: string
+                default: 'WEBSHOP'
+                examples:
+                 - MOBILE_APP
+                nullable: false
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-init:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testInit
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/currencies/{channelCode}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: getSupportedCurrencies
+      parameters:
+        - name: channelCode
+          in: path
+          required: true
+          schema:
+            description: |
+              channel code
+            type: string
+            default: 'WEBSHOP'
+            examples:
+             - MOBILE_APP
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                description: |
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  examples:
+                   - CHF
+                nullable: true
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/async-currencies/{channelCode}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: getSupportedCurrenciesAsync
+      parameters:
+        - name: channelCode
+          in: path
+          required: true
+          schema:
+            description: |
+              channel code
+            type: string
+            default: 'WEBSHOP'
+            examples:
+             - MOBILE_APP
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                description: |
+                  ISO 4217 currency code.
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  examples:
+                   - CHF
+                nullable: true
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-params:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testParams
+      parameters:
+        - name: Big-Header
+          in: header
+          required: true
+          schema:
+            type: number
+            format: double
+            nullable: false
+        - name: giveMeMoreCookies
+          in: cookie
+          required: true
+          schema:
+            type: integer
+            format: int32
+            nullable: false
+        - name: locale
+          in: query
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-enum-params/{channelType}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testEnumParams
+      parameters:
+        - name: channelType
+          in: path
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/ChannelType' 
+        - name: timeUnit
+          in: query
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/TimeUnit' 
+        - name: extensibleEnum
+          in: query
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/ExtensibleEnum' 
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-enum-header-params:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testEnumHeaderParams
+      parameters:
+        - name: Channel-Type
+          in: header
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/ChannelType' 
+        - name: Time-Unit
+          in: header
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/TimeUnit' 
+        - name: Extensible-Enum
+          in: header
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/ExtensibleEnum' 
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-date-query-params/{path}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: rest.testDateQueryParams
+      parameters:
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: startTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: startTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localStartTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: localStartTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localStartDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: calendar
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: utilDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: sqlTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: sqlTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: sqlDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: calendars
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+            uniqueItems: true
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-date-query-params-beans/{path}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: rest.testDateQueryParamsBean
+      parameters:
+        - name: offsetDateTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: offsetTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localDateTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: localTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: utilDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: calendar
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: sqlTimestamp
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: sqlTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: sqlDate
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-date-header-params/{path}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: rest.testDateHeaderParams
+      parameters:
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: Offset-Date-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Offset-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: Local-Date-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Local-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: Local-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: Calendar
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Util-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: SQL-Timestamp
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: SQL-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: SQL-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: util-dates
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+            uniqueItems: true
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-date-header-params-beans/{path}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: rest.testDateHeaderParamsBean
+      parameters:
+        - name: Offset-Date-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Offset-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: Local-Date-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Local-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: Local-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: Util-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: Calendar
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: SQL-Timestamp
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: SQL-Time
+          in: header
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: SQL-Date
+          in: header
+          required: true
+          schema:
+            type: string
+            format: date
+            nullable: false
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/cookies:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testCookieParams
+      parameters:
+        - name: token
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 1
+        - name: lang
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+            examples:
+             - en
+        - name: reseller
+          in: cookie
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: q1
+          in: query
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: intCode
+          in: header
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType' 
+        - name: specificHeader
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: Channel-Type
+          in: cookie
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/ChannelType' 
+        - name: Channel-Type-Param
+          in: cookie
+          required: true
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/ChannelType' 
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-optional-query-params:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testOptionalQueryParams
+      parameters:
+        - name: query1
+          in: query
+          schema:
+            type: string
+            default: Just a default value
+        - name: query2
+          in: query
+          schema:
+            type: integer
+            format: int32
+            default: 4711
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/complex/{bookingID}:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: processComplexBookingID
+      parameters:
+        - name: bookingID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: boolean
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/dataTypesInHeader:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testDataTypesAsHeaderParam
+      parameters:
+        - name: BookingID
+          in: header
+          schema:
+            type: string
+            nullable: true
+        - name: BookingCode
+          in: header
+          schema:
+            type: string
+            nullable: true
+        - name: DoubleCode
+          in: header
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/DoubleCodeType' 
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/dataTypesInBeanHeader:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testDataTypesAsHeaderBeanParam
+      parameters:
+        - name: bookingID
+          in: header
+          schema:
+            type: string
+            examples:
+             - BOOK-12345
+        - name: bookingCode
+          in: header
+          schema:
+            type: string
+        - name: DoubleCode
+          in: header
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/DoubleCodeType' 
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testPrimitiveArrayAsBody:
+    post:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testPrimitiveArrays
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int32
+              uniqueItems: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testDataTypeAsQueryParam:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testDataTypeAsQueryParam
+      parameters:
+        - name: bookingCode
+          in: query
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testDataTypeAsBeanQueryParam:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testDataTypeAsBeanQueryParam
+      parameters:
+        - name: bookingCode
+          in: query
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: maxResults
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+            nullable: false
+            default: '47'
+        - name: sortCriteria
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testPrimitiveArrayAsQueryParam:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testPrimitiveArrayAsQueryParam
+      parameters:
+        - name: intValues
+          in: query
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+            uniqueItems: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testSimpleTypesAsQueryParams:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testSimpleTypesAsQueryParams
+      parameters:
+        - name: strings
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testPrimitiveWrapperArrayAsQueryParam:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testPrimitiveWrapperArrayAsQueryParam
+      parameters:
+        - name: integers
+          in: query
+          required: true
+          schema:
+            type: array
+            nullable: false
+            items:
+              type: integer
+              format: int32
+              minItems: 1
+            uniqueItems: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testMultivaluedQueryParamsBean:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testMultivaluedQueryParamsBean
+      parameters:
+        - name: intArray
+          in: query
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+            uniqueItems: true
+        - name: strings
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            uniqueItems: true
+        - name: integers
+          in: query
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int32
+            uniqueItems: true
+        - name: timeUnits
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+            uniqueItems: true
+        - name: timeUnitArray
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+            uniqueItems: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testMulitvaluedDataTypeAsQueryParam:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testMulitvaluedDataTypeAsQueryParam
+      parameters:
+        - name: codes
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType'
+        - name: longCodes
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+            minItems: 1
+            uniqueItems: true
+            nullable: false
+        - name: bookingIDs
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            nullable: true
+        - name: timestamps
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+        - name: localDates
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              format: date
+            uniqueItems: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testMulitvaluedDataTypeAsBeanQueryParam:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testMulitvaluedDataTypeAsBeanQueryParam
+      parameters:
+        - name: longCodes
+          in: query
+          schema:
+            type: array
+            items:
+              type: integer
+              format: int64
+            uniqueItems: true
+        - name: codes
+          in: query
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/IntegerCodeType'
+            uniqueItems: true
+        - name: doubleCodes
+          in: query
+          schema:
+            type: array
+            items:
+              type: number
+              format: double
+            uniqueItems: true
+        - name: bookingIDs
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            uniqueItems: true
+        - name: bookingIDsArray
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+            uniqueItems: true
+        - name: offsetDateTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: offsetTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: localDateTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            nullable: false
+        - name: localTime
+          in: query
+          required: true
+          schema:
+            type: string
+            format: time
+            nullable: false
+        - name: timestamps
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+        - name: times
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              format: time
+            uniqueItems: true
+        - name: startTimestamps
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+            uniqueItems: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testMultiValuedHeaderFieldsInBeanParam:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testMultiValuedHeaderFieldsInBeanParam
+      parameters:
+        - name: names
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+            uniqueItems: true
+        - name: ints
+          in: header
+          required: true
+          schema:
+            type: array
+            minItems: 1
+            items:
+              type: integer
+              format: int32
+              nullable: false
+            uniqueItems: true
+        - name: doubles
+          in: header
+          schema:
+            type: array
+            items:
+              type: number
+              format: double
+            uniqueItems: true
+        - name: codes
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+            uniqueItems: true
+        - name: stringCodeList
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+            uniqueItems: true
+        - name: startDate
+          in: header
+          schema:
+            type: string
+            format: date
+        - name: dates
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+              format: date
+            uniqueItems: true
+        - name: timestamps
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+            uniqueItems: true
+        - name: calendars
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+            uniqueItems: true
+        - name: utilDates
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+            uniqueItems: true
+        - name: sqlTimestamps
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+            uniqueItems: true
+        - name: timeUnits
+          in: header
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+            uniqueItems: true
+        - name: timeUnitArray
+          in: header
+          schema:
+            type: array
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/TimeUnit'
+            uniqueItems: true
+        - name: base64
+          in: header
+          schema:
+            type: string
+            format: byte
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/testMultiValuedHeaderFields:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testMultiValuedHeaderFields
+      parameters:
+        - name: names
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+            uniqueItems: true
+        - name: ints
+          in: header
+          required: true
+          schema:
+            type: array
+            nullable: false
+            items:
+              type: integer
+              format: int32
+              minItems: 1
+            uniqueItems: true
+        - name: doubles
+          in: header
+          schema:
+            type: array
+            items:
+              type: number
+              format: double
+            uniqueItems: true
+        - name: codes
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+            uniqueItems: true
+            nullable: true
+        - name: startDate
+          in: header
+          schema:
+            type: string
+            format: date-time
+        - name: timestamps
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+              format: date-time
+            uniqueItems: true
+        - name: times
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+              format: time
+            uniqueItems: true
+        - name: BASE_64
+          in: header
+          schema:
+            type: string
+            format: byte
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/booking-id-as-path-param/{bookingID}:
+    patch:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testBookingIDAsPathParam
+      parameters:
+        - name: bookingID
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/booking-id-as-header-param:
+    patch:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testBookingIDAsHeaderParam
+      parameters:
+        - name: bookingID
+          in: header
+          schema:
+            type: string
+            nullable: true
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-context-with-primitives:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testContextWithPrimitives
+      parameters:
+        - name: aBoolean
+          in: header
+          required: true
+          schema:
+            type: boolean
+            nullable: false
+        - name: aBooleanWrapper
+          in: header
+          required: true
+          schema:
+            type: boolean
+            nullable: false
+        - name: anInt
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+            nullable: false
+        - name: anInteger
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+            nullable: false
+        - name: aLong
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: aVeryLong
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+  /rest-products/test-primitives-as-params:
+    get:
+      description: |
+        
+        <br><br>
+        Authorized Roles: `Sales Agent`
+      operationId: testPrimitivesAsParams
+      parameters:
+        - name: pAnInt
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+            nullable: false
+        - name: pAnInteger
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+            nullable: false
+        - name: pABoolean
+          in: header
+          required: true
+          schema:
+            type: boolean
+            nullable: false
+        - name: pBooleanWrapper
+          in: header
+          required: true
+          schema:
+            type: boolean
+            nullable: false
+        - name: pALong
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+        - name: pVeryLong
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+            nullable: false
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+
+security:
+  - {}
+  - MyOAuthSecuritySchema: [read:pets,write:pets]
+
+components:
+  securitySchemes:
+    MyOAuthSecuritySchema:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'https://example.com/api/oauth/dialog'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+        implicit:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'TODO Please add required token URL'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+  parameters:
+    # com.anaptecs.spring.service.ChildBeanParameterType.childProperty
+    childProperty:
+      name: X-Child-Property
+      in: header
+      schema:
+        type: string
+        nullable: false
+      required: true
+
+    # com.anaptecs.spring.service.LocalBeanParamType.localID
+    localID:
+      name: localID
+      in: header
+      schema:
+        type: string
+        nullable: false
+      required: true
+
+    # com.anaptecs.spring.service.LocalBeanParamType.localKey
+    localKey:
+      name: localKey
+      in: header
+      schema:
+        type: string
+        nullable: false
+      required: true
+
+  responses:
+    # com.anaptecs.spring.service.CustomErrorResponse
+    CustomErrorResponse:
+      description: TODO Please add comment to error response type
+      content:
+        text/plain:
+          schema:
+            $ref: '../base/product-base.yml#/components/schemas/Problem'
+
+
+  schemas:
+    # com.anaptecs.spring.service.Sale
+    Sale:
+      type: object
+      additionalProperties: false
+      required:
+        - transactionAmount
+      properties:
+        transactionAmount:
+          type: number
+          format: double
+          nullable: false
+        sale:
+          $ref: '../base/product-base.yml#/components/schemas/Channel'
+
+    # com.anaptecs.spring.service.MySortProperty
+    MySortProperty:
+      type: string
+      enum:
+        - HELLO
+        - WORLD
+
+    # com.anaptecs.spring.service.SortOrder
+    SortOrder:
+      type: string
+      enum:
+        - ASCENDING
+        - DESCENDING
+
+      
