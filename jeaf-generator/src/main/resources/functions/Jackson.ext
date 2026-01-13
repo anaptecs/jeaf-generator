@@ -1,0 +1,130 @@
+extension functions::SystemProperties;
+
+String getJacksonVersionSuffix(String jacksonVersion):
+	if jacksonVersion.isJacksonVersion2()
+	then ""
+	else "V3";
+
+String getJsonIgnorePropertiesFQN():
+	"com.fasterxml.jackson.annotation.JsonIgnoreProperties";
+
+String getJsonTypeInfoFQN():
+	"com.fasterxml.jackson.annotation.JsonTypeInfo";
+
+String getJsonSubTypesFQN():
+	"com.fasterxml.jackson.annotation.JsonSubTypes";
+
+String getJsonIdentityInfoFQN():
+	"com.fasterxml.jackson.annotation.JsonIdentityInfo";
+
+String getJsonAutoDetectFQN():
+	"com.fasterxml.jackson.annotation.JsonAutoDetect";
+
+String getJsonPropertyOrderFQN():
+	"com.fasterxml.jackson.annotation.JsonPropertyOrder";
+
+String getJsonPropertyFQN():
+	"com.fasterxml.jackson.annotation.JsonProperty";
+
+String getJsonAliasFQN():
+	"com.fasterxml.jackson.annotation.JsonAlias";
+
+String getJsonIncludeFQN():
+	"com.fasterxml.jackson.annotation.JsonInclude";
+
+String getJsonSetterFQN():
+	"com.fasterxml.jackson.annotation.JsonSetter";
+
+String getNullsFQN():
+	"com.fasterxml.jackson.annotation.Nulls";
+
+String getJsonGetterFQN():
+	"com.fasterxml.jackson.annotation.JsonGetter";
+
+String getObjectIdGeneratorsFQN():
+	"com.fasterxml.jackson.annotation.ObjectIdGenerators";
+
+String getJsonPOJOBuilderNameFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder";
+
+String getJsonDeserializeFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.annotation.JsonDeserialize";
+
+String getJacksonModuleFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.Module";
+
+String getSimpleModuleFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.module.SimpleModule";
+
+String getObjectMapperFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.ObjectMapper";
+
+String getVisibilityCheckerFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.introspect.VisibilityChecker";
+
+String getJsonMapperFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.json.JsonMapper";
+
+String getMapperFeatureFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.MapperFeature";
+
+String getSerializationFeatureFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.SerializationFeature";
+
+String getDeserializationFeatureFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.DeserializationFeature";
+
+String getJsonSerializerFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.JsonSerializer";
+
+String getJsonGeneratorFQN(String jacksonVersion):
+	"com.fasterxml.jackson.core.JsonGenerator";
+
+String getSerializerProviderFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.SerializerProvider";
+
+String getJsonDeserializerFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.JsonDeserializer";
+
+String getJsonParserFQN(String jacksonVersion):
+	"com.fasterxml.jackson.core.JsonParser";
+
+String getJsonNodeFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.JsonNode";
+
+String getTextNodeFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.node.TextNode";
+
+String getBooleanNodeFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.node.BooleanNode";
+
+String getNumericNodeFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.node.NumericNode";
+
+String getObjectMapperFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.ObjectMapper";
+
+String getJsonProcessingExceptionFQN(String jacksonVersion):
+	"com.fasterxml.jackson.core.JsonProcessingException";
+
+String getDeserializationContextFQN(String jacksonVersion):
+	"com.fasterxml.jackson.databind.DeserializationContext";
+
+String getJacksonExceptionFQN(String jacksonVersion):
+	"com.fasterxml.jackson.core.JsonProcessingException";
+
+boolean isJacksonVersion2(String jacksonVersion):
+	jacksonVersion == "JACKSON_2";
+
+boolean isJacksonVersion3(String jacksonVersion):
+	jacksonVersion == "JACKSON_3";
+
+cached boolean isJackson2Enabled():
+	getJacksonVersions().contains("JACKSON_2");
+
+cached boolean isJackson3Enabled():
+	getJacksonVersions().contains("JACKSON_3");
+
+String getFQN(String jacksonVersion):
+	"";
+

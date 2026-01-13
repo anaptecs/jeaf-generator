@@ -13,6 +13,7 @@
 «EXTENSION functions::Builder»
 «EXTENSION functions::Class»
 «EXTENSION functions::Property»
+«EXTENSION functions::Jackson»
 
 // this properties should be processed
 // for now all properties should be processed
@@ -69,7 +70,7 @@
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
             «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().isPOJO() == false»
-            @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
+            @«getJsonSetterFQN()»(nulls = «getNullsFQN()».SKIP)
             «ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
@@ -103,7 +104,7 @@
 		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
             «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().isPOJO() == false»
-            @com.fasterxml.jackson.annotation.JsonSetter(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP)
+            @«getJsonSetterFQN()»(nulls = «getNullsFQN()».SKIP)
             «ENDIF»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
@@ -143,7 +144,7 @@
     @Deprecated
     «ENDIF-»	
 	«IF generateJacksonAnnotations() && this.generateBackwardCompatibility()»
-	@com.fasterxml.jackson.annotation.JsonGetter
+	@«getJsonGetterFQN()»
 	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     «EXPAND java::Helper::OverrideAnnotation»
@@ -196,7 +197,7 @@
 «DEFINE AbstractGetterForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
-    «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    «IF generateJacksonAnnotations() && this.isAddToJSON()»@«getJsonGetterFQN()»«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     «IF this.isSoftLink()»
     	«IF this.isMultivalued()»
@@ -208,7 +209,7 @@
     	«IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false»is«name.toFirstUpper()»«ELSE»«asGetter()»«ENDIF»();
     «ENDIF»
     «IF generateJacksonAnnotations() && this.isAddToJSON() && this.isMultivalued()»
-        @com.fasterxml.jackson.annotation.JsonSetter
+        @«getJsonSetterFQN()»
         private void set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
           // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant to not run into problems during deserialization.
         }
@@ -218,7 +219,7 @@
 «DEFINE EmptyGetterImplForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
-    «IF generateJacksonAnnotations() && this.isAddToJSON()»@com.fasterxml.jackson.annotation.JsonGetter«ENDIF»
+    «IF generateJacksonAnnotations() && this.isAddToJSON()»@«getJsonGetterFQN()»«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     @Override
     «IF this.isSoftLink()»
@@ -454,7 +455,7 @@
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
 	«IF generateJacksonAnnotations() && this.generateBackwardCompatibility()»
-	@com.fasterxml.jackson.annotation.JsonGetter
+	@«getJsonGetterFQN()»
 	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     «EXPAND java::Helper::OverrideAnnotation»
@@ -543,7 +544,7 @@
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
 	«IF generateJacksonAnnotations() && this.generateBackwardCompatibility()»
-	@com.fasterxml.jackson.annotation.JsonGetter
+	@«getJsonGetterFQN()»
 	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     «EXPAND java::Helper::OverrideAnnotation»

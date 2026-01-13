@@ -5,6 +5,7 @@
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::Builder»
 «EXTENSION functions::Class»
+«EXTENSION functions::Jackson»
 
 
 «IMPORT uml»
@@ -236,273 +237,276 @@
 «ENDDEFINE»
 
 «DEFINE GenerateDataTypeSerializer FOR OpenAPIDataType -»
-	«FILE packagePath() + "/serializers/" + name +"Serializer.java" src_gen»
-		«getFileHeader()»
-		package «this.packageName()».serializers;
-		
-		«EXPAND java::Helper::GenerateAnnotations-»
-		/**
-		 * Class implements a JSON / Jackson serializer for class «name».
-		 */
-		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«this.fqn()»> {		
-		  «IF this.generateInternalViewOfCompositeDataType()»
-			«IF this.hasCompositeDateTypeCustomSerialization() == false»
-				/**
-				 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
-				 */
-				private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
-				
-				static {
-				  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
-				  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
-				}
-	
-				/**
-				 * Serializer is used to convert composite data type «name» into a String representation.
-				 */
-				private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter serializer;
-				
-				«IF isTargetRuntimeJEAF() == false»
-				/**
-				 * Initialize object.
-				 * 
-				 * @param pSerializer Implementation of {@link CompositeTypeConverter} that should be used to create a String representation of «name». The parameter must not be null.
-				 */
-				public «name»Serializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pSerializer ) {
-				  serializer = pSerializer;
-				}
-				«ENDIF»
-			«ENDIF»
-		  «ENDIF»
-
-		  @Override
-		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers )
-		    throws java.io.IOException {
-		    
-		  «IF this.isCompositeDataType()»
-		  	  pGenerator.writeString(pObject.get«this.getCompositeDateTypePublicFieldName().toFirstUpper()»());
-		  «ELSE»
-			  «IF this.generateInternalViewOfCompositeDataType()»
-					// Convert «name» into an public string only representation.
-			  	«IF this.hasCompositeDateTypeCustomSerialization()»
-			  		pGenerator.writeString(pObject.serialize());
-			  	«ELSE»
-					«IF isTargetRuntimeJEAF()»
-					pGenerator.writeString(this.getSerializer().serializeObject(pObject, SERIALIZED_CLASSES));
-					«ELSE»
-					pGenerator.writeString(serializer.serializeObject(pObject, SERIALIZED_CLASSES));
-					«ENDIF»
-			  	«ENDIF»
-			  «ELSE»
-				  «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attr»
-				    // Write value directly to JSON and avoid nesting object structures
-				    «IF attr.type.isStringType()»
-				    pGenerator.writeString(pObject.«attr.asGetter()»());
-				    «ELSE»«IF attr.type.isCharacterType()»
-				    	«IF attr.type.isPrimitiveType()»
-				    		pGenerator.writeString(Character.toString(pObject.«attr.asGetter()»()));
-				    	«ELSE»
-				    		pGenerator.writeString(pObject.«attr.asGetter()»().toString());
-				    	«ENDIF»
-				    «ELSE»«IF attr.type.isBooleanType()»
-				    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
-				    «ELSE»
-				    pGenerator.writeNumber(pObject.«attr.asGetter()»());
-				    «ENDIF»   
-				    «ENDIF»
-				    «ENDIF»
-				  «ENDLET»
-			  «ENDIF»
-		  «ENDIF»
-		  }
-		  
-		  «IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF() && hasCompositeDateTypeCustomSerialization() == false»
+	«FOREACH getJacksonVersions() AS jacksonVersion»
+		«FILE packagePath() + "/serializers/" + name +"Serializer" + getJacksonVersionSuffix(jacksonVersion) + ".java" src_gen»
+			«getFileHeader()»
+			package «this.packageName()».serializers;
+			
+			«EXPAND java::Helper::GenerateAnnotations-»
 			/**
-			 * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
-			 * 
-			 * @return {@link CompositeTypeConverter} Serializer that should be used. The method never returns null.
+			 * Class implements a JSON / Jackson serializer for class «name».
 			 */
-			private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getSerializer( ) {
-			  if (serializer == null) {
-			    serializer = com.anaptecs.jeaf.core.api.JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
+			public class «name»Serializer«getJacksonVersionSuffix(jacksonVersion)» extends «getJsonSerializerFQN(jacksonVersion)»<«this.fqn()»> {		
+			  «IF this.generateInternalViewOfCompositeDataType()»
+				«IF this.hasCompositeDateTypeCustomSerialization() == false»
+					/**
+					 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
+					 */
+					private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
+					
+					static {
+					  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
+					  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
+					}
+		
+					/**
+					 * Serializer is used to convert composite data type «name» into a String representation.
+					 */
+					private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter serializer;
+					
+					«IF isTargetRuntimeJEAF() == false»
+					/**
+					 * Initialize object.
+					 * 
+					 * @param pSerializer Implementation of {@link CompositeTypeConverter} that should be used to create a String representation of «name». The parameter must not be null.
+					 */
+					public «name»Serializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pSerializer ) {
+					  serializer = pSerializer;
+					}
+					«ENDIF»
+				«ENDIF»
+			  «ENDIF»
+	
+			  @Override
+			  public void serialize( «this.fqn()» pObject, «getJsonGeneratorFQN(jacksonVersion)» pGenerator, «getSerializerProviderFQN(jacksonVersion)» pSerializers )
+			    throws java.io.IOException {
+			    
+			  «IF this.isCompositeDataType()»
+			  	  pGenerator.writeString(pObject.get«this.getCompositeDateTypePublicFieldName().toFirstUpper()»());
+			  «ELSE»
+				  «IF this.generateInternalViewOfCompositeDataType()»
+						// Convert «name» into an public string only representation.
+				  	«IF this.hasCompositeDateTypeCustomSerialization()»
+				  		pGenerator.writeString(pObject.serialize());
+				  	«ELSE»
+						«IF isTargetRuntimeJEAF()»
+						pGenerator.writeString(this.getSerializer().serializeObject(pObject, SERIALIZED_CLASSES));
+						«ELSE»
+						pGenerator.writeString(serializer.serializeObject(pObject, SERIALIZED_CLASSES));
+						«ENDIF»
+				  	«ENDIF»
+				  «ELSE»
+					  «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attr»
+					    // Write value directly to JSON and avoid nesting object structures
+					    «IF attr.type.isStringType()»
+					    pGenerator.writeString(pObject.«attr.asGetter()»());
+					    «ELSE»«IF attr.type.isCharacterType()»
+					    	«IF attr.type.isPrimitiveType()»
+					    		pGenerator.writeString(Character.toString(pObject.«attr.asGetter()»()));
+					    	«ELSE»
+					    		pGenerator.writeString(pObject.«attr.asGetter()»().toString());
+					    	«ENDIF»
+					    «ELSE»«IF attr.type.isBooleanType()»
+					    pGenerator.writeBoolean(pObject.«attr.asGetter()»());
+					    «ELSE»
+					    pGenerator.writeNumber(pObject.«attr.asGetter()»());
+					    «ENDIF»   
+					    «ENDIF»
+					    «ENDIF»
+					  «ENDLET»
+				  «ENDIF»
+			  «ENDIF»
 			  }
-			  return serializer;
+			  
+			  «IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF() && hasCompositeDateTypeCustomSerialization() == false»
+				/**
+				 * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
+				 * 
+				 * @return {@link CompositeTypeConverter} Serializer that should be used. The method never returns null.
+				 */
+				private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getSerializer( ) {
+				  if (serializer == null) {
+				    serializer = com.anaptecs.jeaf.core.api.JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
+				  }
+				  return serializer;
+				}
+			  «ENDIF»
 			}
-		  «ENDIF»
-		}
-	«ENDFILE»
+		«ENDFILE»
+	«ENDFOREACH»
 «ENDDEFINE»
 
 «DEFINE GenerateDataTypeDeserializer FOR OpenAPIDataType -»
-	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" src_gen»
-		«getFileHeader()»
-		package «this.packageName()».serializers;
+	«FOREACH getJacksonVersions() AS jacksonVersion»
+		«FILE packagePath() + "/serializers/" + name +"Deserializer" + getJacksonVersionSuffix(jacksonVersion) + ".java" src_gen»
+			«getFileHeader()»
+			package «this.packageName()».serializers;
+			
+			«EXPAND java::Helper::GenerateAnnotations-»
+			/**
+			 * Class implements a JSON / Jackson deserializer for class «name».
+			 */
+			public class «name»Deserializer«getJacksonVersionSuffix(jacksonVersion)» extends «getJsonDeserializerFQN(jacksonVersion)»<«this.fqn()»> {
+			  «IF this.generateInternalViewOfCompositeDataType()»
+				«IF this.hasCompositeDateTypeCustomSerialization() == false»
+					/**
+					 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
+					 */
+					private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
 		
-		«EXPAND java::Helper::GenerateAnnotations-»
-		/**
-		 * Class implements a JSON / Jackson deserializer for class «name».
-		 */
-		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
-
-		  «IF this.generateInternalViewOfCompositeDataType()»
-			«IF this.hasCompositeDateTypeCustomSerialization() == false»
-				/**
-				 * List contains all classes that are involved in the serialization process. This information is required by some serialization mechanisms for efficiency and security reasons.
-				 */
-				private static final java.util.List<Class<?>> SERIALIZED_CLASSES;
-	
-				static {
-				  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
-				  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
-				}
-	
-				/**
-				 * Deserializer is used to convert a String representation of composite data type «name» back into an real object.
-				 */
-				private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter deserializer;
-				
-				«IF isTargetRuntimeJEAF() == false»
-				/**
-				 * Initialize object.
-				 * 
-				 * @param pDeserializer Implementation of {@link CompositeTypeConverter} that should be used to create a «name» object from its String representation. The parameter must not be null.
-				 */
-				public «name»Deserializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pDeserializer ) {
-				  deserializer = pDeserializer;
-				}
-				«ENDIF»				
-		  	«ENDIF»
-		  «ENDIF»
-
-
-
-		@Override
-		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException {
-			// Parse JSON content.
-			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
+					static {
+					  java.util.List<Class<?>> lClasses = java.util.Arrays.asList(«FOREACH collectSerializedClassNames() AS className SEPARATOR ", "»«className».class«ENDFOREACH»);
+					  SERIALIZED_CLASSES = java.util.Collections.unmodifiableList(lClasses);
+					}
 		
-		    «IF this.isCompositeDataType()»
-		    	if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-		    	return «this.fqn()».builder().set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(lNode.asText()).build();
-		    «ELSE»		    
-				«IF this.generateInternalViewOfCompositeDataType()»
-					if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-						// Convert public string representation of «name» into real object.
-				  	«IF this.hasCompositeDateTypeCustomSerialization()»
-				  		return «this.fqn()».deserialize(lNode.asText());
-				  	«ELSE»
-						«IF this.hasCompositePublicFieldProperties()»
-							«IF isTargetRuntimeJEAF()»
-								«this.fqn()» lDeserializedObject = this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
-							«ELSE»						
-								«this.fqn()» lDeserializedObject = deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
-							«ENDIF»
-							«IF this.hasGenericBuilder()»
-							«this.fqn()».«this.builderName()»<?, ?>
+					/**
+					 * Deserializer is used to convert a String representation of composite data type «name» back into an real object.
+					 */
+					private «IF isTargetRuntimeJEAF() == false»final «ENDIF» com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter deserializer;
+					
+					«IF isTargetRuntimeJEAF() == false»
+					/**
+					 * Initialize object.
+					 * 
+					 * @param pDeserializer Implementation of {@link CompositeTypeConverter} that should be used to create a «name» object from its String representation. The parameter must not be null.
+					 */
+					public «name»Deserializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pDeserializer ) {
+					  deserializer = pDeserializer;
+					}
+					«ENDIF»				
+			  	«ENDIF»
+			  «ENDIF»
+	
+	
+	
+			@Override
+			public «this.fqn()» deserialize( «getJsonParserFQN(jacksonVersion)» pParser, «getDeserializationContextFQN(jacksonVersion)» pContext ) throws java.io.IOException {
+				// Parse JSON content.
+				«getJsonNodeFQN(jacksonVersion)» lNode = pParser.getCodec().readTree(pParser);
+			
+			    «IF this.isCompositeDataType()»
+			    	if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
+			    	return «this.fqn()».builder().set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(lNode.asText()).build();
+			    «ELSE»		    
+					«IF this.generateInternalViewOfCompositeDataType()»
+						if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
+							// Convert public string representation of «name» into real object.
+					  	«IF this.hasCompositeDateTypeCustomSerialization()»
+					  		return «this.fqn()».deserialize(lNode.asText());
+					  	«ELSE»
+							«IF this.hasCompositePublicFieldProperties()»
+								«IF isTargetRuntimeJEAF()»
+									«this.fqn()» lDeserializedObject = this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+								«ELSE»						
+									«this.fqn()» lDeserializedObject = deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+								«ENDIF»
+								«IF this.hasGenericBuilder()»
+								«this.fqn()».«this.builderName()»<?, ?>
+								«ELSE»
+								«this.fqn()».Builder
+								«ENDIF»
+								lBuilder;
+								if(lDeserializedObject != null) {
+								  lBuilder = lDeserializedObject.toBuilder();
+								}
+								else {
+								  lBuilder = «this.fqn()».builder();
+								}
+								«FOREACH this.getCompositePublicFieldProperties() AS property»
+								lBuilder.«property.asSetter()»(lNode.asText());
+								«ENDFOREACH»
+								return lBuilder.build();
 							«ELSE»
-							«this.fqn()».Builder
-							«ENDIF»
-							lBuilder;
-							if(lDeserializedObject != null) {
-							  lBuilder = lDeserializedObject.toBuilder();
-							}
-							else {
-							  lBuilder = «this.fqn()».builder();
-							}
-							«FOREACH this.getCompositePublicFieldProperties() AS property»
-							lBuilder.«property.asSetter()»(lNode.asText());
-							«ENDFOREACH»
-							return lBuilder.build();
-						«ELSE»
-							«IF isTargetRuntimeJEAF()»
-								return this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
-							«ELSE»						
-								return deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+								«IF isTargetRuntimeJEAF()»
+									return this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+								«ELSE»						
+									return deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+								«ENDIF»
 							«ENDIF»
 						«ENDIF»
-					«ENDIF»
-				«ELSE»
-				    «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attr»
-					    «IF attr.type.isBooleanType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.BooleanNode) {
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asBoolean())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-					    «IF attr.type.isStringType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asText())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-					    «IF attr.type.isCharacterType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asText().charAt(0))«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				        «IF attr.type.isByteType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
-					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((byte)lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				        «IF attr.type.isShortType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
-					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((short)lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				        «IF attr.type.isIntegerType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
-					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				        «IF attr.type.isLongType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
-					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.longValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				        «IF attr.type.isFloatType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
-					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((float)lNumericNode.doubleValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				        «IF attr.type.isDoubleType()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
-					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.doubleValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				        «IF attr.type.isBigInteger()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
-					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.bigIntegerValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				        «IF attr.type.isBigDecimal()»
-					    if (lNode instanceof com.fasterxml.jackson.databind.node.NumericNode) {
-					    com.fasterxml.jackson.databind.node.NumericNode lNumericNode = (com.fasterxml.jackson.databind.node.NumericNode) lNode;
-				        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.decimalValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
-				        «ENDIF»
-				    «ENDLET»
-		    	«ENDIF»
-		    «ENDIF»
-		    }
-		    // Node is not of expected type.
-		    else {
-		      «IF isTargetRuntimeJEAF()»
-		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());
-		      «ELSE»
-		      throw new java.io.IOException("Unable to deserialize object of type «this.fqn()». Expected node type that matches to data type but received other JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
-		      «ENDIF»
-		    }
-		}
-
-		«IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF() && hasCompositeDateTypeCustomSerialization() == false»
-			/**
-			 * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
-			 * 
-			 * @return {@link CompositeTypeConverter} Deserializer that should be used. The method never returns null.
-			 */
-			private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getDeserializer( ) {
-			  if (deserializer == null) {
-			    deserializer = com.anaptecs.jeaf.core.api.JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
-			  }
-			  return deserializer;
+					«ELSE»
+					    «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attr»
+						    «IF attr.type.isBooleanType()»
+						    if (lNode instanceof «getBooleanNodeFQN(jacksonVersion)») {
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asBoolean())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+						    «IF attr.type.isStringType()»
+						    if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asText())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+						    «IF attr.type.isCharacterType()»
+						    if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asText().charAt(0))«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					        «IF attr.type.isByteType()»
+						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
+						    «getNumericNodeFQN(jacksonVersion)» lNumericNode = («getNumericNodeFQN(jacksonVersion)») lNode;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((byte)lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					        «IF attr.type.isShortType()»
+						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
+						    «getNumericNodeFQN(jacksonVersion)» lNumericNode = («getNumericNodeFQN(jacksonVersion)») lNode;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((short)lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					        «IF attr.type.isIntegerType()»
+						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
+						    «getNumericNodeFQN(jacksonVersion)» lNumericNode = («getNumericNodeFQN(jacksonVersion)») lNode;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.intValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					        «IF attr.type.isLongType()»
+						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
+						    «getNumericNodeFQN(jacksonVersion)» lNumericNode = («getNumericNodeFQN(jacksonVersion)») lNode;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.longValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					        «IF attr.type.isFloatType()»
+						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
+						    «getNumericNodeFQN(jacksonVersion)» lNumericNode = («getNumericNodeFQN(jacksonVersion)») lNode;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»((float)lNumericNode.doubleValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					        «IF attr.type.isDoubleType()»
+						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
+						    «getNumericNodeFQN(jacksonVersion)» lNumericNode = («getNumericNodeFQN(jacksonVersion)») lNode;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.doubleValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					        «IF attr.type.isBigInteger()»
+						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
+						    «getNumericNodeFQN(jacksonVersion)» lNumericNode = («getNumericNodeFQN(jacksonVersion)») lNode;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.bigIntegerValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					        «IF attr.type.isBigDecimal()»
+						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
+						    «getNumericNodeFQN(jacksonVersion)» lNumericNode = («getNumericNodeFQN(jacksonVersion)») lNode;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNumericNode.decimalValue())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        «ENDIF»
+					    «ENDLET»
+			    	«ENDIF»
+			    «ENDIF»
+			    }
+			    // Node is not of expected type.
+			    else {
+			      «IF isTargetRuntimeJEAF()»
+			      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());
+			      «ELSE»
+			      throw new java.io.IOException("Unable to deserialize object of type «this.fqn()». Expected node type that matches to data type but received other JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
+			      «ENDIF»
+			    }
 			}
-		«ENDIF»
-	}
-	«ENDFILE»
+	
+			«IF this.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF() && hasCompositeDateTypeCustomSerialization() == false»
+				/**
+				 * Method returns the {@link CompositeTypeConverter} that should be used to serialize objects.
+				 * 
+				 * @return {@link CompositeTypeConverter} Deserializer that should be used. The method never returns null.
+				 */
+				private com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter getDeserializer( ) {
+				  if (deserializer == null) {
+				    deserializer = com.anaptecs.jeaf.core.api.JEAF.getServiceProvider(com.anaptecs.jeaf.rest.composite.api.jeaf.CompositeTypeConverterServiceProvider.class);
+				  }
+				  return deserializer;
+				}
+			«ENDIF»
+		}
+		«ENDFILE»
+	«ENDFOREACH»
 «ENDDEFINE»
 

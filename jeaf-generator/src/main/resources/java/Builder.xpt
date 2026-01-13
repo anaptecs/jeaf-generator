@@ -12,6 +12,7 @@
 «EXTENSION functions::BeanParam»
 «EXTENSION functions::Builder»
 «EXTENSION functions::POJO»
+«EXTENSION functions::Jackson»
 
 
 «IMPORT uml»
@@ -24,9 +25,11 @@
  
 «IF generateJacksonAnnotations() && this.hasTemplateParameter() == false && this.hasCustomSerialization() == false && this.isCompositeDataType() == false»
 	«IF this.isPOJO()  && this.asPOJO().compositeDataTypeCustomSerialization == false»
-	@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
+		«FOREACH getJacksonVersions() AS jacksonVersion»
+			@«getJsonPOJOBuilderNameFQN(jacksonVersion)»(withPrefix = "set")
+		«ENDFOREACH»
 	«ENDIF»
-@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+@«getJsonIgnorePropertiesFQN()»(ignoreUnknown = true)
 «ENDIF»
 «EXPAND java::Helper::GenerateAnnotations-»
 public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqnWithoutGenerics()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
@@ -227,9 +230,11 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
  */
 «IF generateJacksonAnnotations() && this.hasTemplateParameter() == false && this.hasCustomSerialization() == false»
 	«IF this.isPOJO() && this.asPOJO().compositeDataTypeCustomSerialization == false»
-	@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
+		«FOREACH getJacksonVersions() AS jacksonVersion»
+			@«getJsonPOJOBuilderNameFQN(jacksonVersion)»(withPrefix = "set")
+		«ENDFOREACH»
 	«ENDIF»
-@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+@«getJsonIgnorePropertiesFQN()»(ignoreUnknown = true)
 «ENDIF»
 public static abstract class BuilderBase«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqnWithoutGenerics()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»

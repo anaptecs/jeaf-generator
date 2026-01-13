@@ -1,5 +1,4 @@
 
-
 cached String getSystemProperty(String propertyName):
    JAVA java.lang.System.getProperty(java.lang.String);
 
@@ -13,6 +12,15 @@ cached boolean getBooleanSystemProperty(String propertyName, boolean defaultValu
     then true
     else false;
     
+cached List[String] getSystemPropertyValues(String propertyName):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.SystemProperties.getPropertiesList(java.lang.String);    
+    
+cached List[String] getSystemPropertyValues(String propertyName, String defaultValue):
+	if propertyName.getSystemPropertyValues().isEmpty
+	then {defaultValue}.toList()
+	else propertyName.getSystemPropertyValues();
+    
+
 cached boolean generateJSONAutoDetectAnnotationOnClass():
    getBooleanSystemProperty("switch.gen.jackson.jsonautodetect.on.class", false);
 
@@ -101,7 +109,9 @@ cached boolean implementCompareableForOpenAPIDataTypes():
 cached boolean enforceExplicitDefaultValueForOptionalPrimitives():
    getBooleanSystemProperty("jeaf.generator.enforceExplicitDefaultValueForOptionalPrimitives", false);
    
-
+cached List[String] getJacksonVersions():
+	//{"JACKSON_2"}.toList();
+	getSystemPropertyValues("jeaf.generator.jacksonVersions", "JACKSON_2");
 
 cached String openAPILiteralQuotationCharacter():
    getSystemProperty("jeaf.generator.openAPILiteralQuotationCharacter", ""); 
