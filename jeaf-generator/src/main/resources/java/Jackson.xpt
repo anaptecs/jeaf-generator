@@ -127,25 +127,25 @@
 				@Override
 				public «getJacksonModuleFQN(jacksonVersion)» createModule( ) {
 					// Create module for serializers / deserializers that are located in this package
-					«getSimpleModuleFQN(jacksonVersion)» lModule = new «getSimpleModuleFQN(jacksonVersion)»(«fqn()».class.getName());
+					«getSimpleModuleFQN(jacksonVersion)» lModule = new «getSimpleModuleFQN(jacksonVersion)»(«fqn()»«getJacksonVersionSuffix(jacksonVersion)».class.getName());
 					
 					// Add serializers and deserializers for datatypes				
 					«FOREACH this.getOpenAPIDataTypes() AS datatype»
 						«IF datatype.isStereotypeApplied("Ignore") == false»
 							«IF datatype.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()== false && datatype.hasCompositeDateTypeCustomSerialization() == false»
-								lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer(compositeTypeConverter));
-								lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer(compositeTypeConverter));
+								lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer«getJacksonVersionSuffix(jacksonVersion)»(compositeTypeConverter));
+								lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer«getJacksonVersionSuffix(jacksonVersion)»(compositeTypeConverter));
 							«ELSE»
-								lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer());
-								lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer());
+								lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer«getJacksonVersionSuffix(jacksonVersion)»());
+								lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer«getJacksonVersionSuffix(jacksonVersion)»());
 							«ENDIF»
 						«ENDIF»
 					«ENDFOREACH»
 					
 					// Add serializers and deserializers for enumerations				
 					«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum && e.ignore() == false).sortBy(e|e.name) AS enum»
-					lModule.addSerializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Serializer());
-					lModule.addDeserializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Deserializer());
+					lModule.addSerializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Serializer«getJacksonVersionSuffix(jacksonVersion)»());
+					lModule.addDeserializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Deserializer«getJacksonVersionSuffix(jacksonVersion)»());
 					«ENDFOREACH»
 					
 					// Return created module.
@@ -158,15 +158,15 @@
 				 */
 				public static «getJacksonModuleFQN(jacksonVersion)» createDataTypeSerializerModule( ) {
 					// Create module for serializers / deserializers that are located in this package
-					«getSimpleModuleFQN(jacksonVersion)» lModule = new «getSimpleModuleFQN(jacksonVersion)»("DataTypeSerializerModule." + «fqn()».class.getName());
+					«getSimpleModuleFQN(jacksonVersion)» lModule = new «getSimpleModuleFQN(jacksonVersion)»("DataTypeSerializerModule." + «fqn()»«getJacksonVersionSuffix(jacksonVersion)».class.getName());
 					
 					// Add serializers and deserializers for data types				
 					«FOREACH this.getOpenAPIDataTypes() AS datatype»
 						«IF datatype.isStereotypeApplied("Ignore") == false»
 							«IF datatype.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()== false && datatype.hasCompositeDateTypeCustomSerialization() == false»
 							«ELSE»
-								lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer());
-								lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer());
+								lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer«getJacksonVersionSuffix(jacksonVersion)»());
+								lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer«getJacksonVersionSuffix(jacksonVersion)»());
 							«ENDIF»
 						«ENDIF»
 					«ENDFOREACH»
@@ -181,14 +181,14 @@
 				 */
 				public static «getJacksonModuleFQN(jacksonVersion)» createCompositeDataTypeSerializerModule(com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pCompositeTypeConverter) {
 					// Create module for serializers / deserializers that are located in this package
-					«getSimpleModuleFQN(jacksonVersion)» lModule = new «getSimpleModuleFQN(jacksonVersion)»("CompositeDataTypeSerializerModule." + «fqn()».class.getName());
+					«getSimpleModuleFQN(jacksonVersion)» lModule = new «getSimpleModuleFQN(jacksonVersion)»("CompositeDataTypeSerializerModule." + «fqn()»«getJacksonVersionSuffix(jacksonVersion)».class.getName());
 					
 					// Add serializers and deserializers for composite data types				
 					«FOREACH this.getOpenAPIDataTypes() AS datatype»
 						«IF datatype.isStereotypeApplied("Ignore") == false»
 							«IF datatype.generateInternalViewOfCompositeDataType() && isTargetRuntimeJEAF()== false && datatype.hasCompositeDateTypeCustomSerialization() == false»
-								lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer(pCompositeTypeConverter));
-								lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer(pCompositeTypeConverter));
+								lModule.addSerializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Serializer«getJacksonVersionSuffix(jacksonVersion)»(pCompositeTypeConverter));
+								lModule.addDeserializer(«datatype.fqn()».class, new «datatype.packageName()».serializers.«datatype.name»Deserializer«getJacksonVersionSuffix(jacksonVersion)»(pCompositeTypeConverter));
 							«ENDIF»
 						«ENDIF»
 					«ENDFOREACH»
@@ -203,12 +203,12 @@
 				 */
 				public static «getJacksonModuleFQN(jacksonVersion)» createEnumSerializerModule( ) {
 					// Create module for serializers / deserializers that are located in this package
-					«getSimpleModuleFQN(jacksonVersion)» lModule = new «getSimpleModuleFQN(jacksonVersion)»("EnumSerializerModule." + «fqn()».class.getName());
+					«getSimpleModuleFQN(jacksonVersion)» lModule = new «getSimpleModuleFQN(jacksonVersion)»("EnumSerializerModule." + «fqn()»«getJacksonVersionSuffix(jacksonVersion)».class.getName());
 					
 					// Add serializers and deserializers for enumerations				
 					«FOREACH this.clientDependency.supplier.typeSelect(uml::Package).allOwnedElements().typeSelect(JEAFEnumeration).select(e|e.extensibleEnum && e.ignore() == false).sortBy(e|e.name) AS enum»
-					lModule.addSerializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Serializer());
-					lModule.addDeserializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Deserializer());
+					lModule.addSerializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Serializer«getJacksonVersionSuffix(jacksonVersion)»());
+					lModule.addDeserializer(«enum.fqn()».class, new «enum.packageName()».serializers.«enum.name»Deserializer«getJacksonVersionSuffix(jacksonVersion)»());
 					«ENDFOREACH»
 					
 					// Return created module.
@@ -288,11 +288,11 @@
 			
 				    // Create configured modules and add them as well.
 				    «FOREACH this.clientDependency.supplier.typeSelect(ModuleFactory).sortBy(e|e.name) AS moduleFactory»
-				    	lBuilder.addModule(«moduleFactory.fqn()».createDataTypeSerializerModule());
+				    	lBuilder.addModule(«moduleFactory.fqn()»«getJacksonVersionSuffix(jacksonVersion)».createDataTypeSerializerModule());
 					    «IF moduleFactory.requiresCompositeDataTypeConverter()»
-				    	lBuilder.addModule(«moduleFactory.fqn()».createCompositeDataTypeSerializerModule(pCompositeTypeConverter));
+				    	lBuilder.addModule(«moduleFactory.fqn()»«getJacksonVersionSuffix(jacksonVersion)».createCompositeDataTypeSerializerModule(pCompositeTypeConverter));
 					    «ENDIF»
-				    	lBuilder.addModule(«moduleFactory.fqn()».createEnumSerializerModule());
+				    	lBuilder.addModule(«moduleFactory.fqn()»«getJacksonVersionSuffix(jacksonVersion)».createEnumSerializerModule());
 				    «ENDFOREACH»
 			
 				    // Create object mapper and return it

@@ -270,7 +270,7 @@
 					 * 
 					 * @param pSerializer Implementation of {@link CompositeTypeConverter} that should be used to create a String representation of «name». The parameter must not be null.
 					 */
-					public «name»Serializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pSerializer ) {
+					public «name»Serializer«getJacksonVersionSuffix(jacksonVersion)»( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pSerializer ) {
 					  serializer = pSerializer;
 					}
 					«ENDIF»
@@ -370,7 +370,7 @@
 					 * 
 					 * @param pDeserializer Implementation of {@link CompositeTypeConverter} that should be used to create a «name» object from its String representation. The parameter must not be null.
 					 */
-					public «name»Deserializer( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pDeserializer ) {
+					public «name»Deserializer«getJacksonVersionSuffix(jacksonVersion)»( com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter pDeserializer ) {
 					  deserializer = pDeserializer;
 					}
 					«ENDIF»				
