@@ -2,8 +2,8 @@ extension functions::SystemProperties;
 
 String getJacksonVersionSuffix(String jacksonVersion):
 	if jacksonVersion.isJacksonVersion2()
-	then ""
-	else "V3";
+	then getJackson2Suffix()
+	else getJackson3Suffix();
 
 String getJsonIgnorePropertiesFQN():
 	"com.fasterxml.jackson.annotation.JsonIgnoreProperties";
