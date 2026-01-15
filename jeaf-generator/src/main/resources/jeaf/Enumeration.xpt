@@ -373,7 +373,7 @@ public final class «name» {
 			 */
 			public class «name»Serializer«getJacksonVersionSuffix(jacksonVersion)» extends «getJsonSerializerFQN(jacksonVersion)»<«this.fqn()»> {
 			  @Override
-			  public void serialize( «this.fqn()» pObject, «getJsonGeneratorFQN(jacksonVersion)» pGenerator, «getSerializerProviderFQN(jacksonVersion)» pSerializers ) throws java.io.IOException {
+			  public void serialize( «this.fqn()» pObject, «getJsonGeneratorFQN(jacksonVersion)» pGenerator, «getSerializerProviderFQN(jacksonVersion)» pSerializers ) «IF jacksonVersion.isJacksonVersion2()»throws java.io.IOException«ENDIF» {
 			    «IF this.requiresNonStandardSerializer()»
 				    String lLiteralName;
 				    switch (pObject) {
@@ -410,19 +410,19 @@ public final class «name» {
 			public class «name»Deserializer«getJacksonVersionSuffix(jacksonVersion)» extends «getJsonDeserializerFQN(jacksonVersion)»<«this.fqn()»> {
 	
 			@Override
-			public «this.fqn()» deserialize( «getJsonParserFQN(jacksonVersion)» pParser, «getDeserializationContextFQN(jacksonVersion)» pContext ) throws java.io.IOException {
+			public «this.fqn()» deserialize( «getJsonParserFQN(jacksonVersion)» pParser, «getDeserializationContextFQN(jacksonVersion)» pContext ) «IF jacksonVersion.isJacksonVersion2()»throws java.io.IOException«ENDIF» {
 				// Parse JSON content.
-				«getJsonNodeFQN(jacksonVersion)» lNode = pParser.getCodec().readTree(pParser);
+				«getJsonNodeFQN(jacksonVersion)» lNode = pParser.«IF jacksonVersion.isJacksonVersion2()»getCodec()«ELSE»objectReadContext()«ENDIF».readTree(pParser);
 			
 			    // We expect that enumerations are always serialized as plain text which will result in a TextNode.
 			    if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
 			        «IF generateHeavyStyleExtensibleEnums() && this.extensibleEnum»
-						String lLiteralName = lNode.asText();
+						String lLiteralName = lNode.«jacksonVersion.asString()»;
 						return «this.fqn()».valueOf(lLiteralName);
 	                «ELSE»
 						«this.fqn()» lLiteral;
 						try {
-						  String lLiteralName = lNode.asText();
+						  String lLiteralName = lNode.«jacksonVersion.asString()»;
 						  «IF this.requiresNonStandardSerializer()»
 				          switch (lLiteralName) {
 	                        «FOREACH this.getOpenAPILiterals() AS literal»
@@ -442,7 +442,11 @@ public final class «name» {
 						  «IF this.extensibleEnum»
 						  lLiteral = «this.fqn()».UNKNOWN;
 						  «ELSE»
-	                      throw new java.io.IOException("Unable to deserialize object of type '«this.fqn()»'. Literal name '" + lNode.asText() + "' does not match to expected vales of enum '«this.fqn()»'.");
+	                      	«IF jacksonVersion.isJacksonVersion2()»
+	                      		throw new java.io.IOException("Unable to deserialize object of type '«this.fqn()»'. Literal name '" + lNode.«jacksonVersion.asString()» + "' does not match to expected vales of enum '«this.fqn()»'.");
+	                      	«ELSE»
+	                      		throw tools.jackson.databind.DatabindException.from(pContext, "Unable to deserialize object of type '«this.fqn()»'. Literal name '" + lNode.«jacksonVersion.asString()» + "' does not match to expected vales of enum '«this.fqn()»'.");
+	                      	«ENDIF»
 						  «ENDIF»
 						}
 						return lLiteral;
@@ -453,7 +457,11 @@ public final class «name» {
 			      «IF isTargetRuntimeJEAF()»
 			      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());
 			      «ELSE»
-			      throw new java.io.IOException("Unable to deserialize object of type ''«this.fqn()»''. Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+  lNode.getClass().getName() + "''.");
+			      	«IF jacksonVersion.isJacksonVersion2()»
+			      		throw new java.io.IOException("Unable to deserialize object of type ''«this.fqn()»''. Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+  lNode.getClass().getName() + "''.");
+			      	«ELSE»
+			      		throw tools.jackson.databind.DatabindException.from(pContext, "Unable to deserialize object of type ''«this.fqn()»''. Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+  lNode.getClass().getName() + "''.");
+			      	«ENDIF»
 			      «ENDIF»
 			    }
 			}

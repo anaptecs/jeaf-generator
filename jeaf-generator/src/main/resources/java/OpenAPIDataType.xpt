@@ -278,8 +278,7 @@
 			  «ENDIF»
 	
 			  @Override
-			  public void serialize( «this.fqn()» pObject, «getJsonGeneratorFQN(jacksonVersion)» pGenerator, «getSerializerProviderFQN(jacksonVersion)» pSerializers )
-			    throws java.io.IOException {
+			  public void serialize( «this.fqn()» pObject, «getJsonGeneratorFQN(jacksonVersion)» pGenerator, «getSerializerProviderFQN(jacksonVersion)» pSerializers ) «IF jacksonVersion.isJacksonVersion2()»throws java.io.IOException«ENDIF» {
 			    
 			  «IF this.isCompositeDataType()»
 			  	  pGenerator.writeString(pObject.get«this.getCompositeDateTypePublicFieldName().toFirstUpper()»());
@@ -380,25 +379,25 @@
 	
 	
 			@Override
-			public «this.fqn()» deserialize( «getJsonParserFQN(jacksonVersion)» pParser, «getDeserializationContextFQN(jacksonVersion)» pContext ) throws java.io.IOException {
+			public «this.fqn()» deserialize( «getJsonParserFQN(jacksonVersion)» pParser, «getDeserializationContextFQN(jacksonVersion)» pContext ) «IF jacksonVersion.isJacksonVersion2()»throws java.io.IOException«ENDIF» {
 				// Parse JSON content.
-				«getJsonNodeFQN(jacksonVersion)» lNode = pParser.getCodec().readTree(pParser);
+				«getJsonNodeFQN(jacksonVersion)» lNode = pParser.«IF jacksonVersion.isJacksonVersion2()»getCodec()«ELSE»objectReadContext()«ENDIF».readTree(pParser);
 			
 			    «IF this.isCompositeDataType()»
 			    	if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
-			    	return «this.fqn()».builder().set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(lNode.asText()).build();
+			    	return «this.fqn()».builder().set«this.getCompositeDateTypePublicFieldName().toFirstUpper()»(lNode.«jacksonVersion.asString()»).build();
 			    «ELSE»		    
 					«IF this.generateInternalViewOfCompositeDataType()»
 						if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
 							// Convert public string representation of «name» into real object.
 					  	«IF this.hasCompositeDateTypeCustomSerialization()»
-					  		return «this.fqn()».deserialize(lNode.asText());
+					  		return «this.fqn()».deserialize(lNode.«jacksonVersion.asString()»);
 					  	«ELSE»
 							«IF this.hasCompositePublicFieldProperties()»
 								«IF isTargetRuntimeJEAF()»
-									«this.fqn()» lDeserializedObject = this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+									«this.fqn()» lDeserializedObject = this.getDeserializer().deserializeObject(lNode.«jacksonVersion.asString()», «this.fqn()».class, SERIALIZED_CLASSES);
 								«ELSE»						
-									«this.fqn()» lDeserializedObject = deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+									«this.fqn()» lDeserializedObject = deserializer.deserializeObject(lNode.«jacksonVersion.asString()», «this.fqn()».class, SERIALIZED_CLASSES);
 								«ENDIF»
 								«IF this.hasGenericBuilder()»
 								«this.fqn()».«this.builderName()»<?, ?>
@@ -413,14 +412,14 @@
 								  lBuilder = «this.fqn()».builder();
 								}
 								«FOREACH this.getCompositePublicFieldProperties() AS property»
-								lBuilder.«property.asSetter()»(lNode.asText());
+								lBuilder.«property.asSetter()»(lNode.«jacksonVersion.asString()»);
 								«ENDFOREACH»
 								return lBuilder.build();
 							«ELSE»
 								«IF isTargetRuntimeJEAF()»
-									return this.getDeserializer().deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+									return this.getDeserializer().deserializeObject(lNode.«jacksonVersion.asString()», «this.fqn()».class, SERIALIZED_CLASSES);
 								«ELSE»						
-									return deserializer.deserializeObject(lNode.asText(), «this.fqn()».class, SERIALIZED_CLASSES);
+									return deserializer.deserializeObject(lNode.«jacksonVersion.asString()», «this.fqn()».class, SERIALIZED_CLASSES);
 								«ENDIF»
 							«ENDIF»
 						«ENDIF»
@@ -432,11 +431,11 @@
 					        «ENDIF»
 						    «IF attr.type.isStringType()»
 						    if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
-					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asText())«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.«jacksonVersion.asString()»)«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 					        «ENDIF»
 						    «IF attr.type.isCharacterType()»
 						    if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
-					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.asText().charAt(0))«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
+					        return «this.fqn()»«IF this.generateOfOperationForClass()».of«ELSE».builder().«attr.asSetter()»«ENDIF»(lNode.«jacksonVersion.asString()».charAt(0))«IF this.generateOfOperationForClass() == false».build()«ENDIF»;
 					        «ENDIF»
 					        «IF attr.type.isByteType()»
 						    if (lNode instanceof «getNumericNodeFQN(jacksonVersion)») {
@@ -487,7 +486,11 @@
 			      «IF isTargetRuntimeJEAF()»
 			      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());
 			      «ELSE»
-			      throw new java.io.IOException("Unable to deserialize object of type «this.fqn()». Expected node type that matches to data type but received other JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
+				      «IF jacksonVersion.isJacksonVersion2()»
+					      throw new java.io.IOException("Unable to deserialize object of type «this.fqn()». Expected node type that matches to data type but received other JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
+				      «ELSE»
+				      	  throw tools.jackson.databind.DatabindException.from(pContext, "Unable to deserialize object of type «this.fqn()». Expected node type that matches to data type but received other JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+ lNode.getClass().getName() + "''.");
+				      «ENDIF»
 			      «ENDIF»
 			    }
 			}

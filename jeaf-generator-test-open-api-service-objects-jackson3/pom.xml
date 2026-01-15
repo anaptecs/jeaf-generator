@@ -10,6 +10,11 @@
 	<name>JEAF Generator Test OpenAPI Service Objects (Jackson 3)</name>
 	<artifactId>jeaf-generator-test-open-api-service-objects-jackson3</artifactId>
 	<packaging>jar</packaging>
+	
+	<properties>
+	   <jeaf.json.api.version>1.8.1-SNAPSHOT</jeaf.json.api.version>
+	   <jeaf.json.impl.version>1.8.1-SNAPSHOT</jeaf.json.impl.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
@@ -31,11 +36,13 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!--
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
 		    <version>${jackson2.version}</version>
 		</dependency>
+		-->
 
         <dependency>
             <groupId>tools.jackson.core</groupId>
@@ -129,16 +136,22 @@
 					<packages>
 						<package>com.anaptecs.jeaf.junit.openapi</package>
 						<package>com.anaptecs.jeaf.junit.rest.generics</package>
+						<package>com.anaptecs.spring.base</package>
+						<package>com.anaptecs.spring.composite</package>
+						<package>com.anaptecs.spring.custom</package>
 					</packages>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateServiceObjects>true</generateServiceObjects>
+					<generatePOJOs>true</generatePOJOs>
+					<useGenericBuilderPattern>false</useGenericBuilderPattern>
 					<generateEqualsAndHashCodeForCompositeDataTypes>true</generateEqualsAndHashCodeForCompositeDataTypes>
 					<generateEqualsAndHashCodeForOpenAPIDataTypes>true</generateEqualsAndHashCodeForOpenAPIDataTypes>
 					<generateServiceInterfaces>true</generateServiceInterfaces>
 					<generateRESTResources>true</generateRESTResources>
 					<generateJAXRSAnnotations>true</generateJAXRSAnnotations>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
+					<jacksonVersions>JACKSON_3</jacksonVersions>
 					<enableSemVerForJSON>false</enableSemVerForJSON>
 					<generateConstantsForAttributeNames>false</generateConstantsForAttributeNames>
 					<generateJSONSerializers>true</generateJSONSerializers>

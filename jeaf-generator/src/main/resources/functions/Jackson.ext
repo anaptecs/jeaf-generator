@@ -45,28 +45,42 @@ String getObjectIdGeneratorsFQN():
 	"com.fasterxml.jackson.annotation.ObjectIdGenerators";
 
 String getJsonPOJOBuilderNameFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder"
+	else "tools.jackson.databind.annotation.JsonPOJOBuilder";
 
 String getJsonDeserializeFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.annotation.JsonDeserialize";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.annotation.JsonDeserialize"
+	else "tools.jackson.databind.annotation.JsonDeserialize";
 
 String getJacksonModuleFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.Module";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.Module"
+	else "tools.jackson.databind.JacksonModule";
 
 String getSimpleModuleFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.module.SimpleModule";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.module.SimpleModule"
+	else "tools.jackson.databind.module.SimpleModule";
 
 String getObjectMapperFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.ObjectMapper";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.ObjectMapper"
+	else "tools.jackson.databind.ObjectMapper";
 
 String getVisibilityCheckerFQN(String jacksonVersion):
 	"com.fasterxml.jackson.databind.introspect.VisibilityChecker";
 
 String getJsonMapperFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.json.JsonMapper";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.json.JsonMapper"
+	else "tools.jackson.databind.json.JsonMapper";
 
 String getMapperFeatureFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.MapperFeature";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.MapperFeature"
+	else "tools.jackson.databind.MapperFeature";
 
 String getSerializationFeatureFQN(String jacksonVersion):
 	"com.fasterxml.jackson.databind.SerializationFeature";
@@ -75,40 +89,62 @@ String getDeserializationFeatureFQN(String jacksonVersion):
 	"com.fasterxml.jackson.databind.DeserializationFeature";
 
 String getJsonSerializerFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.JsonSerializer";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.JsonSerializer"
+	else "tools.jackson.databind.ValueSerializer";
 
 String getJsonGeneratorFQN(String jacksonVersion):
-	"com.fasterxml.jackson.core.JsonGenerator";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.core.JsonGenerator"
+	else "tools.jackson.core.JsonGenerator";
 
 String getSerializerProviderFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.SerializerProvider";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.SerializerProvider"
+	else "tools.jackson.databind.SerializationContext";
 
 String getJsonDeserializerFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.JsonDeserializer";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.JsonDeserializer"
+	else "tools.jackson.databind.ValueDeserializer";
 
 String getJsonParserFQN(String jacksonVersion):
-	"com.fasterxml.jackson.core.JsonParser";
+if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.core.JsonParser"
+	else "tools.jackson.core.JsonParser";
 
 String getJsonNodeFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.JsonNode";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.JsonNode"
+	else "tools.jackson.databind.JsonNode";
 
 String getTextNodeFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.node.TextNode";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.node.TextNode"
+	else "tools.jackson.databind.node.StringNode";
 
 String getBooleanNodeFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.node.BooleanNode";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.node.BooleanNode"
+	else "tools.jackson.databind.node.BooleanNode";
 
 String getNumericNodeFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.node.NumericNode";
-
-String getObjectMapperFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.ObjectMapper";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.node.NumericNode"
+	else "tools.jackson.databind.node.NumericNode";
+	
+String asString(String jacksonVersion):
+	if jacksonVersion.isJacksonVersion2()
+	then "asText()"
+	else "asString()";
 
 String getJsonProcessingExceptionFQN(String jacksonVersion):
 	"com.fasterxml.jackson.core.JsonProcessingException";
 
 String getDeserializationContextFQN(String jacksonVersion):
-	"com.fasterxml.jackson.databind.DeserializationContext";
+	if jacksonVersion.isJacksonVersion2()
+	then "com.fasterxml.jackson.databind.DeserializationContext"
+	else "tools.jackson.databind.DeserializationContext";
 
 String getJacksonExceptionFQN(String jacksonVersion):
 	"com.fasterxml.jackson.core.JsonProcessingException";

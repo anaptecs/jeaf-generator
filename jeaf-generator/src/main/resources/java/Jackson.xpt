@@ -251,6 +251,7 @@
 				    Builder lBuilder = JsonMapper.builder();
 			
 				    // Set default visibilities so that they match to the generated classes that are intended to be serialized using Jackson
+				    «IF jacksonVersion.isJacksonVersion2()»
 				    VisibilityChecker<?> lVisibilityChecker = VisibilityChecker.Std.defaultInstance();
 				    lVisibilityChecker = lVisibilityChecker.withFieldVisibility(JsonAutoDetect.Visibility.ANY);
 				    lVisibilityChecker = lVisibilityChecker.withGetterVisibility(JsonAutoDetect.Visibility.NONE);
@@ -258,7 +259,24 @@
 				    lVisibilityChecker = lVisibilityChecker.withSetterVisibility(JsonAutoDetect.Visibility.NONE);
 				    lVisibilityChecker = lVisibilityChecker.withCreatorVisibility(JsonAutoDetect.Visibility.ANY);
 				    lBuilder.visibility(lVisibilityChecker);
-			
+					«ELSE»
+					lBuilder.changeDefaultVisibility(v -> v.withFieldVisibility(JsonAutoDetect.Visibility.ANY));
+					lBuilder.changeDefaultVisibility(v -> v.withGetterVisibility(JsonAutoDetect.Visibility.NONE));
+					lBuilder.changeDefaultVisibility(v -> v.withIsGetterVisibility(JsonAutoDetect.Visibility.NONE));
+					lBuilder.changeDefaultVisibility(v -> v.withSetterVisibility(JsonAutoDetect.Visibility.NONE));
+					lBuilder.changeDefaultVisibility(v -> v.withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
+
+					// Configure which properties should be included by default.
+					lBuilder.changeDefaultPropertyInclusion(i -> i.withValueInclusion(Include.«defaultPropertyInclusion.name»));
+					lBuilder.changeDefaultPropertyInclusion(i -> i.withContentInclusion(Include.«defaultPropertyInclusion.name»));
+					
+					// For better backward compatibility with Jackson 2 we preserve the following settings as there were in Jackson 2
+					//
+					// For further details please have a look here: https://github.com/FasterXML/jackson/blob/main/jackson3/MIGRATING_TO_JACKSON_3.md
+					lBuilder.disable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
+					lBuilder.enable(MapperFeature.ALLOW_FINAL_FIELDS_AS_MUTATORS);
+					«ENDIF»
+
 				    // Configure mapper features
 				    «FOREACH enabledMapperFeatures AS feature»
 				    lBuilder.enable(«getMapperFeatureFQN(jacksonVersion)».«feature.toString()»);
@@ -296,9 +314,13 @@
 				    «ENDFOREACH»
 			
 				    // Create object mapper and return it
-				    JsonMapper lObjectMapper = lBuilder.build();
-				    lObjectMapper.setDefaultPropertyInclusion(Include.«defaultPropertyInclusion.name»);
-				    return lObjectMapper;
+				    «IF jacksonVersion.isJacksonVersion2()»
+					    JsonMapper lObjectMapper = lBuilder.build();
+					    lObjectMapper.setDefaultPropertyInclusion(Include.«defaultPropertyInclusion.name»);
+					    return lObjectMapper;
+				    «ELSE»
+					    return lBuilder.build();
+				    «ENDIF»
 				}
 			}
 		«ENDFILE»

@@ -40,16 +40,15 @@ import com.anaptecs.jeaf.junit.openapi.base.Reseller;
 import com.anaptecs.jeaf.junit.openapi.base.SwissGeoPosition;
 import com.anaptecs.jeaf.junit.openapi.base.TopoRef;
 import com.anaptecs.jeaf.junit.openapi.base.UICStopPlace;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectWriter;
+import tools.jackson.databind.type.CollectionType;
 
 public class JSONSerializationTest {
 
   @Test
-  public void testSimpleJSONSerialization( ) throws JsonProcessingException {
+  public void testSimpleJSONSerialization( ) {
     ChannelCode lChannelCode = ChannelCode.builder().setCode("POS").build();
     JSONTools lTools = JSON.getJSONTools();
     String lJSONString = lTools.writeObjectToString(lChannelCode);
@@ -91,7 +90,7 @@ public class JSONSerializationTest {
   }
 
   @Test
-  public void testInheritanceSerialization( ) throws JsonProcessingException {
+  public void testInheritanceSerialization( ) {
     ParentClass lParentClass = ParentClass.builder().setParentAttribute("parent").build();
     JSONTools lTools = JSON.getJSONTools();
     String lValue = lTools.writeObjectToString(lParentClass);
@@ -197,7 +196,7 @@ public class JSONSerializationTest {
   }
 
   @Test
-  void testInheritance( ) throws JsonProcessingException {
+  void testInheritance( ) {
     JSONTools lTools = JSON.getJSONTools();
     Company lCompany = Company.builder().setID(new ServiceObjectID("123456", 2)).setName("anaptecs GmbH").build();
     String lJSON = lTools.writeObjectToString(lCompany);
@@ -286,7 +285,7 @@ public class JSONSerializationTest {
   }
 
   @Test
-  void testBidirectionalAssociationsforServiceObjects( ) throws JsonProcessingException {
+  void testBidirectionalAssociationsforServiceObjects( ) {
     BidirectA lBidirectA = BidirectA.builder().build();
     BidirectA lChild = BidirectA.builder().build();
     BidirectB lBidirectB = BidirectB.builder().build();

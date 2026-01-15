@@ -10,8 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import org.junit.jupiter.api.Test;
-
 import com.anaptecs.jeaf.json.annotations.ObjectMapperConfig;
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
@@ -24,7 +22,8 @@ import com.anaptecs.jeaf.junit.openapi.base.FloatCode;
 import com.anaptecs.jeaf.junit.openapi.base.HeavyDataTypeUser;
 import com.anaptecs.jeaf.junit.openapi.base.IntegerCode;
 import com.anaptecs.jeaf.junit.openapi.base.ShortCode;
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import org.junit.jupiter.api.Test;
+import tools.jackson.databind.DeserializationFeature;
 
 @ObjectMapperConfig(
     enabledDeserializationFeatures = { DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS,
@@ -35,11 +34,15 @@ public class DataTypeSerializationTest {
   void testDataTypeSerialization( ) {
     HeavyDataTypeUser lHeavyDataTypeUser = HeavyDataTypeUser.builder().setBooleanCode(BooleanCode.builder().setCode(
         true).build()).setByteCode(ByteCode
-            .builder().setCode((byte) 127).build()).setShortCode(ShortCode.builder().setCode((short) 1024).build())
+            .builder().setCode((byte) 127).build())
+        .setShortCode(ShortCode.builder().setCode((short) 1024).build())
         .setIntegerCode(IntegerCode.builder().setCode(324567).build()).setFloatCode(FloatCode.builder().setCode(
-            (float) 1.2345).build()).setDoubleCode(DoubleCode.builder().setCode(3.123456789).build()).setBigInegerCode(
-                BigIntegerCode.builder().setCode(new BigInteger("1234567890987654321")).build()).setBigDecimalCode(
-                    BigDecimalCode.builder().setCode(new BigDecimal("3.1234567890987654321")).build()).build();
+            (float) 1.2345).build())
+        .setDoubleCode(DoubleCode.builder().setCode(3.123456789).build()).setBigInegerCode(
+            BigIntegerCode.builder().setCode(new BigInteger("1234567890987654321")).build())
+        .setBigDecimalCode(
+            BigDecimalCode.builder().setCode(new BigDecimal("3.1234567890987654321")).build())
+        .build();
 
     JSONTools lTools = JSON.getJSONTools();
     String lJSONString = lTools.writeObjectToString(lHeavyDataTypeUser);

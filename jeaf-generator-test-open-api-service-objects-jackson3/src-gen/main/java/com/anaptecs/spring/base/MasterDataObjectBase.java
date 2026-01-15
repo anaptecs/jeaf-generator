@@ -1,0 +1,468 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ *
+ * Copyright 2004 - 2021. All rights reserved.
+ */
+package com.anaptecs.spring.base;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
+import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonPOJOBuilder;
+
+@Valid
+@JsonPropertyOrder(
+    value = { "dataUnits", "entity", "objectID", "internalProperty", "derivedDataUnits", "derivedEntity" })
+@JsonDeserialize(builder = MasterDataObject.Builder.class)
+public abstract class MasterDataObjectBase {
+  private List<DataUnit> dataUnits;
+
+  @NotNull
+  private Entity entity;
+
+  @NotNull
+  private String objectID;
+
+  @NotNull
+  private String internalProperty;
+
+  /**
+   * Initialize object using the passed builder.
+   *
+   * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
+   */
+  protected MasterDataObjectBase( BuilderBase pBuilder ) {
+    // Ensure that builder is not null.
+    Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Read attribute values from builder.
+    dataUnits = (pBuilder.dataUnits == null) ? new ArrayList<>() : pBuilder.dataUnits;
+    entity = pBuilder.entity;
+    objectID = pBuilder.objectID;
+    internalProperty = pBuilder.internalProperty;
+  }
+
+  /**
+   * Class implements builder to create a new instance of class MasterDataObject. As the class has read only attributes
+   * or associations instances can not be created directly. Instead this builder class has to be used.
+   */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class BuilderBase {
+    private List<DataUnit> dataUnits;
+
+    private Entity entity;
+
+    private String objectID;
+
+    private String internalProperty;
+
+    /**
+     * Use {@link MasterDataObject.builder()} instead of protected constructor to create new builder.
+     */
+    protected BuilderBase( ) {
+    }
+
+    /**
+     * Use {@link MasterDataObject.builder(MasterDataObject)} instead of protected constructor to create new builder.
+     */
+    protected BuilderBase( MasterDataObjectBase pObject ) {
+      if (pObject != null) {
+        // Read attribute values from passed object.
+        this.setDataUnits(pObject.dataUnits);
+        this.setEntity(pObject.entity);
+        this.setObjectID(pObject.objectID);
+        this.setInternalProperty(pObject.internalProperty);
+      }
+    }
+
+    /**
+     * Method sets association {@link #dataUnits}.<br/>
+     *
+     * @param pDataUnits Collection to which {@link #dataUnits} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setDataUnits( List<DataUnit> pDataUnits ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pDataUnits != null) {
+        dataUnits = new ArrayList<DataUnit>(pDataUnits);
+      }
+      else {
+        dataUnits = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #dataUnits}.<br/>
+     *
+     * @param pDataUnits Array of objects that should be added to {@link #dataUnits}. The parameter may be null.
+     * @return {@link BuilderBase} Instance of this builder to support chaining. Method never returns null.
+     */
+    public BuilderBase addToDataUnits( DataUnit... pDataUnits ) {
+      if (pDataUnits != null) {
+        if (dataUnits == null) {
+          dataUnits = new ArrayList<DataUnit>();
+        }
+        dataUnits.addAll(Arrays.asList(pDataUnits));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #dataUnits}.<br/>
+     *
+     * @param pDataUnits Array with objects to which {@link #dataUnits} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setDataUnits( DataUnit... pDataUnits ) {
+      // Copy the content of the passed array.
+      if (pDataUnits != null) {
+        dataUnits = new ArrayList<DataUnit>(Arrays.asList(pDataUnits));
+      }
+      else {
+        dataUnits = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #entity}.<br/>
+     *
+     * @param pEntity Value to which {@link #entity} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
+      entity = pEntity;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #objectID}.<br/>
+     *
+     * @param pObjectID Value to which {@link #objectID} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setObjectID( @MyNotNullProperty String pObjectID ) {
+      // Assign value to attribute
+      objectID = pObjectID;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #internalProperty}.<br/>
+     *
+     * @param pInternalProperty Value to which {@link #internalProperty} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
+      // Assign value to attribute
+      internalProperty = pInternalProperty;
+      return this;
+    }
+
+    /**
+     * Method creates a new instance of class MasterDataObject. The object will be initialized with the values of the
+     * builder.
+     *
+     * @return MasterDataObject Created object. The method never returns null.
+     */
+    public MasterDataObject build( ) {
+      return new MasterDataObject(this);
+    }
+
+    /**
+     * Method creates a new validated instance of class MasterDataObject. The object will be initialized with the values
+     * of the builder and validated afterwards.
+     *
+     * @return MasterDataObject Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
+     */
+    public MasterDataObject buildValidated( ) throws ConstraintViolationException {
+      MasterDataObject lPOJO = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lPOJO);
+      return lPOJO;
+    }
+  }
+
+  /**
+   * Method returns association {@link #dataUnits}.<br/>
+   *
+   * @return {@link List<DataUnit>} Value to which {@link #dataUnits} is set. The method never returns null and the
+   * returned collection is modifiable.
+   */
+  List<DataUnit> getDataUnits( ) {
+    // Return all DataUnit objects directly without any protection against modification.
+    return dataUnits;
+  }
+
+  /**
+   * Method adds the passed object to {@link #dataUnits}.
+   *
+   * @param pDataUnits Object that should be added to {@link #dataUnits}. The parameter must not be null.
+   */
+  void addToDataUnits( DataUnit pDataUnits ) {
+    // Check parameter "pDataUnits" for invalid value null.
+    Check.checkInvalidParameterNull(pDataUnits, "pDataUnits");
+    // Add passed object to collection of associated DataUnit objects.
+    dataUnits.add(pDataUnits);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #dataUnits}.
+   *
+   * @param pDataUnits Collection with all objects that should be added to {@link #dataUnits}. The parameter must not be
+   * null.
+   */
+  void addToDataUnits( Collection<DataUnit> pDataUnits ) {
+    // Check parameter "pDataUnits" for invalid value null.
+    Check.checkInvalidParameterNull(pDataUnits, "pDataUnits");
+    // Add all passed objects.
+    for (DataUnit lNextObject : pDataUnits) {
+      this.addToDataUnits(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #dataUnits}.<br/>
+   *
+   * @param pDataUnits Object that should be removed from {@link #dataUnits}. The parameter must not be null.
+   */
+  void removeFromDataUnits( DataUnit pDataUnits ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pDataUnits, "pDataUnits");
+    // Remove passed object from collection of associated DataUnit objects.
+    dataUnits.remove(pDataUnits);
+  }
+
+  /**
+   * Method removes all objects from {@link #dataUnits}.
+   */
+  void clearDataUnits( ) {
+    // Remove all objects from association "dataUnits".
+    dataUnits.clear();
+  }
+
+  /**
+   * Method returns association {@link #entity}.<br/>
+   *
+   * @return {@link Entity} Value to which {@link #entity} is set.
+   */
+  @MyNotNullProperty
+  Entity getEntity( ) {
+    return entity;
+  }
+
+  /**
+   * Method sets association {@link #entity}.<br/>
+   *
+   * @param pEntity Value to which {@link #entity} should be set.
+   */
+  void setEntity( @MyNotNullProperty Entity pEntity ) {
+    entity = pEntity;
+  }
+
+  /**
+   * Method unsets {@link #entity}.
+   */
+  final void unsetEntity( ) {
+    entity = null;
+  }
+
+  /**
+   * Method returns attribute {@link #objectID}.<br/>
+   *
+   * @return {@link String} Value to which {@link #objectID} is set.
+   */
+  @MyNotNullProperty
+  public String getObjectID( ) {
+    return objectID;
+  }
+
+  /**
+   * Method sets attribute {@link #objectID}.<br/>
+   *
+   * @param pObjectID Value to which {@link #objectID} should be set.
+   */
+  public void setObjectID( @MyNotNullProperty String pObjectID ) {
+    // Assign value to attribute
+    objectID = pObjectID;
+  }
+
+  /**
+   * Method returns attribute {@link #internalProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #internalProperty} is set.
+   */
+  @MyNotNullProperty
+  String getInternalProperty( ) {
+    return internalProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #internalProperty}.<br/>
+   *
+   * @param pInternalProperty Value to which {@link #internalProperty} should be set.
+   */
+  void setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
+    // Assign value to attribute
+    internalProperty = pInternalProperty;
+  }
+
+  /**
+   * Convenience method to create new instance of class MasterDataObject.
+   *
+   *
+   * @param pEntity Value to which {@link #entity} should be set.
+   *
+   * @param pObjectID Value to which {@link #objectID} should be set.
+   *
+   * @param pInternalProperty Value to which {@link #internalProperty} should be set.
+   *
+   * @return {@link MasterDataObject}
+   */
+  public static MasterDataObject of( Entity pEntity, String pObjectID, String pInternalProperty ) {
+    var lBuilder = MasterDataObject.builder();
+    lBuilder.setEntity(pEntity);
+    lBuilder.setObjectID(pObjectID);
+    lBuilder.setInternalProperty(pInternalProperty);
+    return lBuilder.build();
+  }
+
+  /**
+   * Method returns attribute {@link #derivedProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #derivedProperty} is set.
+   */
+  @MyNotNullProperty
+  public abstract String getDerivedProperty( );
+
+  /**
+   * Method returns association {@link #derivedDataUnits}.<br/>
+   *
+   * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
+   * the returned collection is modifiable.
+   */
+  @JsonGetter
+  public abstract List<DataUnit> getDerivedDataUnits( );
+
+  @JsonSetter
+  private void setDerivedDataUnits( List<DataUnit> pDerivedDataUnits ) {
+    // Actively ignore passed objects as this is just a derived property. Unfortunately there is no more elegant variant
+    // to not run into problems during deserialization.
+  }
+
+  /**
+   * Method returns association {@link #derivedEntity}.<br/>
+   *
+   * @return {@link Entity} Value to which {@link #derivedEntity} is set.
+   */
+  @JsonGetter
+  public abstract Entity getDerivedEntity( );
+
+  /**
+   * Method returns attribute {@link #derivedArray}.<br/>
+   *
+   * @return int[] Value to which {@link #derivedArray} is set.
+   */
+  public abstract int[] getDerivedArray( );
+
+  /**
+   * Method returns attribute {@link #derivedBoolean}.<br/>
+   *
+   * @return boolean Value to which {@link #derivedBoolean} is set.
+   */
+  public abstract boolean isDerivedBoolean( );
+
+  /**
+   * Method returns attribute {@link #derivedInt}.<br/>
+   *
+   * @return int Value to which {@link #derivedInt} is set.
+   */
+  public abstract int getDerivedInt( );
+
+  /**
+   * Method returns attribute {@link #derivedString}.<br/>
+   *
+   * @return {@link String} Value to which {@link #derivedString} is set.
+   */
+  @MyNotNullProperty
+  public abstract String getDerivedString( );
+
+  /**
+   * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
+   * StringBuilder also takes care about attributes of super classes.
+   *
+   * @return {@link StringBuilder} StringBuilder representing this object. The method never returns null.
+   */
+  public StringBuilder toStringBuilder( String pIndent ) {
+    StringBuilder lBuilder = new StringBuilder();
+    lBuilder.append(pIndent);
+    lBuilder.append(this.getClass().getName());
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("dataUnits: ");
+    if (dataUnits != null) {
+      lBuilder.append(dataUnits.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (dataUnits != null) {
+      for (DataUnit lNext : dataUnits) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("entity: ");
+    lBuilder.append(entity);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("objectID: ");
+    lBuilder.append(objectID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("internalProperty: ");
+    lBuilder.append(internalProperty);
+    lBuilder.append(System.lineSeparator());
+    return lBuilder;
+  }
+
+  /**
+   * Method creates a new String with the values of all attributes of this class. All references to other objects will
+   * be ignored.
+   *
+   * @return {@link String} String representation of this object. The method never returns null.
+   */
+  @Override
+  public String toString( ) {
+    return this.toStringBuilder("").toString();
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link Builder} New builder that can be used to create new MasterDataObject objects. The method never
+   * returns null.
+   */
+  public MasterDataObject.Builder toBuilder( ) {
+    return new MasterDataObject.Builder((MasterDataObject) this);
+  }
+}
