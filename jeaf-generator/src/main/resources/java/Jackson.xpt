@@ -228,7 +228,6 @@
 			import «getJsonAutoDetectFQN()»;
 			import «getJsonIncludeFQN()».Include;		
 			import «getObjectMapperFQN(jacksonVersion)»;
-			import «getVisibilityCheckerFQN(jacksonVersion)»;
 			import «getJsonMapperFQN(jacksonVersion)»;
 			import «getJsonMapperFQN(jacksonVersion)».Builder;
 	
@@ -252,7 +251,7 @@
 			
 				    // Set default visibilities so that they match to the generated classes that are intended to be serialized using Jackson
 				    «IF jacksonVersion.isJacksonVersion2()»
-				    VisibilityChecker<?> lVisibilityChecker = VisibilityChecker.Std.defaultInstance();
+				    com.fasterxml.jackson.databind.introspect.VisibilityChecker<?> lVisibilityChecker = VisibilityChecker.Std.defaultInstance();
 				    lVisibilityChecker = lVisibilityChecker.withFieldVisibility(JsonAutoDetect.Visibility.ANY);
 				    lVisibilityChecker = lVisibilityChecker.withGetterVisibility(JsonAutoDetect.Visibility.NONE);
 				    lVisibilityChecker = lVisibilityChecker.withIsGetterVisibility(JsonAutoDetect.Visibility.NONE);
