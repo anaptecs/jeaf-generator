@@ -154,7 +154,7 @@ String getJacksonSubpackage(String jacksonVersion):
 	then getJackson2Subpackage().toSubpackage()
 	else getJackson3Subpackage().toSubpackage(); 
 		
-private String toSubpackage(String subpackageName):
+String toSubpackage(String subpackageName):
 	if subpackageName.trim().length > 0
 	then "." + subpackageName
 	else "";
@@ -164,7 +164,7 @@ String getJacksonSubpackagePath(String jacksonVersion):
 	then getJackson2Subpackage().toSubpackagePath()
 	else getJackson3Subpackage().toSubpackagePath(); 
 		
-private String toSubpackagePath(String subpackageName):
+String toSubpackagePath(String subpackageName):
 	if subpackageName.trim().length > 0
 	then "/" + subpackageName
 	else "";
