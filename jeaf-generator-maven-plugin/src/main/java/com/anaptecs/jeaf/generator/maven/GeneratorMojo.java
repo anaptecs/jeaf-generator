@@ -1093,6 +1093,9 @@ public class GeneratorMojo extends AbstractMojo {
    * Parameter can be used to define a suffix for generated Jackson 2 specific classes.
    *
    * In order to ensure backward compatibility with current generated code for Jackson 2 there is no suffix by default.
+   *
+   * Please be aware that in case that you want to used Jackson 2 and 3 in parallel at least for one of them a suffix
+   * needs to be defined.
    */
   @Parameter(required = false, defaultValue = " ")
   private String jackson2Suffix;
@@ -1100,9 +1103,12 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Parameter can be used to define a suffix for generated Jackson 3 specific classes.
    *
-   * By default <code>V3</code> is used as suffix.
+   * By default no suffix is used as suffix.
+   *
+   * Please be aware that in case that you want to used Jackson 2 and 3 in parallel at least for one of them a suffix
+   * needs to be defined.
    */
-  @Parameter(required = false, defaultValue = "V3")
+  @Parameter(required = false, defaultValue = " ")
   private String jackson3Suffix;
 
   /**

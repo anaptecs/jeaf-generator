@@ -1,0 +1,21 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ *
+ * Copyright 2004 - 2021. All rights reserved.
+ */
+package com.anaptecs.spring.base.serializers;
+
+import com.anaptecs.spring.base.SoftLink;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+
+/**
+ * Class implements a JSON / Jackson serializer for class SoftLink.
+ */
+public class SoftLinkSerializer extends ValueSerializer<SoftLink> {
+  @Override
+  public void serialize( SoftLink pObject, JsonGenerator pGenerator, SerializationContext pSerializers ) {
+    pGenerator.writeString(pObject.getOpenID());
+  }
+}
