@@ -2,7 +2,7 @@ package com.anaptecs.spring.impl;
 
 import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
 import com.anaptecs.jeaf.rest.composite.impl.kryo.KryoCompositeTypeConverter;
-import com.anaptecs.spring.base.serializers.ObjectMapperFactoryV3;
+import com.anaptecs.spring.base.serializers.v3.ObjectMapperFactoryV3;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;

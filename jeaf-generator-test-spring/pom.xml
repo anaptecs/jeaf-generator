@@ -10,7 +10,7 @@
 	<name>JEAF Generator Test Spring</name>
 	<artifactId>jeaf-generator-test-spring</artifactId>
 	<packaging>jar</packaging>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.anaptecs.jeaf.validation</groupId>
@@ -213,6 +213,7 @@
 					<generateHeavyExtensibleEnums>false</generateHeavyExtensibleEnums>
 					<generateJSONSerializers>true</generateJSONSerializers>
 					<generateJacksonAnnotations>true</generateJacksonAnnotations>
+					<jackson2Subpackage>v2</jackson2Subpackage>
 					<generateJSONAutoDetectAnnotationOnClass>true</generateJSONAutoDetectAnnotationOnClass>
 					<enableLegacyBuilderStyle>true</enableLegacyBuilderStyle>
 					<enableDetailedToStringMethod>true</enableDetailedToStringMethod>

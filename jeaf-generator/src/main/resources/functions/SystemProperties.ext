@@ -117,6 +117,12 @@ cached String getJackson2Suffix():
 
 cached String getJackson3Suffix():
 	getSystemProperty("jeaf.generator.jackson3Suffix");
+	
+cached String getJackson2Subpackage():
+	getSystemProperty("jeaf.generator.jackson2Subpackage", "");
+
+cached String getJackson3Subpackage():
+	getSystemProperty("jeaf.generator.jackson3Subpackage", "");
 
 cached String openAPILiteralQuotationCharacter():
    getSystemProperty("jeaf.generator.openAPILiteralQuotationCharacter", ""); 

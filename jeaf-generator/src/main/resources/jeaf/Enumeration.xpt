@@ -363,9 +363,9 @@ public final class «name» {
 
 «DEFINE GenerateEnumSerializer FOR JEAFEnumeration -»
 	«FOREACH getJacksonVersions() AS jacksonVersion»
-		«FILE packagePath() + "/serializers/" + name +"Serializer" + getJacksonVersionSuffix(jacksonVersion) + ".java" src_gen»
+		«FILE packagePath() + "/serializers" + jacksonVersion.getJacksonSubpackagePath() + "/" + name +"Serializer" + getJacksonVersionSuffix(jacksonVersion) + ".java" src_gen»
 			«getFileHeader()»
-			package «this.packageName()».serializers;
+			package «this.packageName()».serializers«jacksonVersion.getJacksonSubpackage()»;
 			
 			«EXPAND java::Helper::GenerateAnnotations-»
 			/**
@@ -399,9 +399,9 @@ public final class «name» {
 
 «DEFINE GenerateEnumDeserializer FOR JEAFEnumeration -»
 	«FOREACH getJacksonVersions() AS jacksonVersion»
-		«FILE packagePath() + "/serializers/" + name +"Deserializer" + getJacksonVersionSuffix(jacksonVersion) + ".java" src_gen»
+		«FILE packagePath() + "/serializers" + jacksonVersion.getJacksonSubpackagePath() + "/" + name +"Deserializer" + getJacksonVersionSuffix(jacksonVersion) + ".java" src_gen»
 			«getFileHeader()»
-			package «this.packageName()».serializers;
+			package «this.packageName()».serializers«jacksonVersion.getJacksonSubpackage()»;
 			
 			«EXPAND java::Helper::GenerateAnnotations-»
 			/**

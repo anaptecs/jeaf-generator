@@ -1,6 +1,6 @@
 package com.anaptecs.spring.test;
 
-import com.anaptecs.spring.base.serializers.ObjectMapperFactory;
+import com.anaptecs.spring.base.serializers.v2.ObjectMapperFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

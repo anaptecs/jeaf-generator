@@ -148,6 +148,26 @@ String getJacksonExceptionFQN(String jacksonVersion):
 	if jacksonVersion.isJacksonVersion2()
 	then "com.fasterxml.jackson.core.JsonProcessingException"
 	else "tools.jackson.core.JacksonException";
+	
+String getJacksonSubpackage(String jacksonVersion):
+	if jacksonVersion.isJacksonVersion2()
+	then getJackson2Subpackage().toSubpackage()
+	else getJackson3Subpackage().toSubpackage(); 
+		
+private String toSubpackage(String subpackageName):
+	if subpackageName.trim().length > 0
+	then "." + subpackageName
+	else "";
+	
+String getJacksonSubpackagePath(String jacksonVersion):
+	if jacksonVersion.isJacksonVersion2()
+	then getJackson2Subpackage().toSubpackagePath()
+	else getJackson3Subpackage().toSubpackagePath(); 
+		
+private String toSubpackagePath(String subpackageName):
+	if subpackageName.trim().length > 0
+	then "/" + subpackageName
+	else "";
 
 boolean isJacksonVersion2(String jacksonVersion):
 	jacksonVersion == "JACKSON_2";

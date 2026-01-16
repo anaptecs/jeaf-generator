@@ -2,7 +2,7 @@ package com.anaptecs.spring.impl;
 
 import com.anaptecs.jeaf.rest.composite.api.CompositeTypeConverter;
 import com.anaptecs.jeaf.rest.composite.impl.kryo.KryoCompositeTypeConverter;
-import com.anaptecs.spring.base.serializers.ObjectMapperFactory;
+import com.anaptecs.spring.base.serializers.v2.ObjectMapperFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;

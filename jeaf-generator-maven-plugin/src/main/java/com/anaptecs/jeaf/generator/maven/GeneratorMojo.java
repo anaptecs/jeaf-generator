@@ -1090,26 +1090,77 @@ public class GeneratorMojo extends AbstractMojo {
   private List<JacksonVersion> jacksonVersions = new ArrayList<JacksonVersion>();
 
   /**
-   * Parameter can be used to define a suffix for generated Jackson 2 specific classes.
-   *
-   * In order to ensure backward compatibility with current generated code for Jackson 2 there is no suffix by default.
-   *
-   * Please be aware that in case that you want to used Jackson 2 and 3 in parallel at least for one of them a suffix
-   * needs to be defined.
+   * Parameter can be used to define a suffix for generated Jackson 2 specific classes.<br>
+   * <br>
+   * In order to ensure backward compatibility with current generated code for Jackson 2 there is no suffix by
+   * default.<br>
+   * <br>
+   * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
+   * sub-package needs to be defined.<br>
+   * <br>
+   * Please also see:
+   * <ul>
+   * <li>{@link #jackson2Suffix}</li>
+   * <li>{@link #jackson2Subpackage}</li>
+   * <li>{@link #jackson3Suffix}</li>
+   * <li>{@link #jackson3Subpackage}</li>
+   * </ul>
    */
   @Parameter(required = false, defaultValue = " ")
   private String jackson2Suffix;
 
   /**
-   * Parameter can be used to define a suffix for generated Jackson 3 specific classes.
-   *
-   * By default no suffix is used as suffix.
-   *
-   * Please be aware that in case that you want to used Jackson 2 and 3 in parallel at least for one of them a suffix
-   * needs to be defined.
+   * Parameter can be used to define a sub-package where all Jackson 2 specific classes will be located.<br>
+   * <br>
+   * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
+   * sub-package needs to be defined.<br>
+   * <br>
+   * Please also see:
+   * <ul>
+   * <li>{@link #jackson2Suffix}</li>
+   * <li>{@link #jackson2Subpackage}</li>
+   * <li>{@link #jackson3Suffix}</li>
+   * <li>{@link #jackson3Subpackage}</li>
+   * </ul>
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String jackson2Subpackage;
+
+  /**
+   * Parameter can be used to define a suffix for generated Jackson 3 specific classes.<br>
+   * <br>
+   * By default no suffix is used as suffix.<br>
+   * <br>
+   * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
+   * sub-package needs to be defined.<br>
+   * <br>
+   * Please also see:
+   * <ul>
+   * <li>{@link #jackson2Suffix}</li>
+   * <li>{@link #jackson2Subpackage}</li>
+   * <li>{@link #jackson3Suffix}</li>
+   * <li>{@link #jackson3Subpackage}</li>
+   * </ul>
    */
   @Parameter(required = false, defaultValue = " ")
   private String jackson3Suffix;
+
+  /**
+   * Parameter can be used to define a sub-package where all Jackson 2 specific classes will be located.<br>
+   * <br>
+   * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
+   * sub-package needs to be defined.<br>
+   * <br>
+   * Please also see:
+   * <ul>
+   * <li>{@link #jackson2Suffix}</li>
+   * <li>{@link #jackson2Subpackage}</li>
+   * <li>{@link #jackson3Suffix}</li>
+   * <li>{@link #jackson3Subpackage}</li>
+   * </ul>
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String jackson3Subpackage;
 
   /**
    * Switch is used to generate @JsonAutoDetect annotation directly on generated classes. This annotation is required
@@ -1849,7 +1900,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateNotNullAnnotationForSingleValuedRESTParameters) {
       lLog.info("Generate NotNull annotation for                   ");
       lLog.info(
-          "single valued REST parameters:                          "
+          "single valued REST parameters:                    "
               + generateNotNullAnnotationForSingleValuedRESTParameters);
       lLog.info(
           "NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedRESTParameters);
@@ -2012,7 +2063,9 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
       lLog.info("Supported Jackson versions:                       " + this.toString(jacksonVersions));
       lLog.info("Suffix for Jackson 2 specific classes:            " + jackson2Suffix.trim());
+      lLog.info("Sub-package for Jackson 2 specific classes:       " + jackson2Subpackage.trim());
       lLog.info("Suffix for Jackson 3 specific classes:            " + jackson3Suffix.trim());
+      lLog.info("Sub-package for Jackson 3 specific classes:       " + jackson3Subpackage.trim());
     }
 
     if (generateJSONSerializers) {
@@ -2369,7 +2422,9 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty(PROPERTY_PREFIX + "jacksonVersions", this.toString(jacksonVersions));
       System.setProperty(PROPERTY_PREFIX + "jackson2Suffix", jackson2Suffix.trim());
+      System.setProperty(PROPERTY_PREFIX + "jackson2Subpackage", jackson2Subpackage.trim());
       System.setProperty(PROPERTY_PREFIX + "jackson3Suffix", jackson3Suffix.trim());
+      System.setProperty(PROPERTY_PREFIX + "jackson3Subpackage", jackson3Subpackage.trim());
 
       System.setProperty("switch.gen.jackson.jsonautodetect.on.class",
           generateJSONAutoDetectAnnotationOnClass.toString());
