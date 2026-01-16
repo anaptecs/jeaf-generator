@@ -1,5 +1,4 @@
 
-
 cached String getSystemProperty(String propertyName):
    JAVA java.lang.System.getProperty(java.lang.String);
 
@@ -13,6 +12,15 @@ cached boolean getBooleanSystemProperty(String propertyName, boolean defaultValu
     then true
     else false;
     
+cached List[String] getSystemPropertyValues(String propertyName):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.SystemProperties.getPropertiesList(java.lang.String);    
+    
+cached List[String] getSystemPropertyValues(String propertyName, String defaultValue):
+	if propertyName.getSystemPropertyValues().isEmpty
+	then {defaultValue}.toList()
+	else propertyName.getSystemPropertyValues();
+    
+
 cached boolean generateJSONAutoDetectAnnotationOnClass():
    getBooleanSystemProperty("switch.gen.jackson.jsonautodetect.on.class", false);
 
@@ -101,7 +109,20 @@ cached boolean implementCompareableForOpenAPIDataTypes():
 cached boolean enforceExplicitDefaultValueForOptionalPrimitives():
    getBooleanSystemProperty("jeaf.generator.enforceExplicitDefaultValueForOptionalPrimitives", false);
    
+cached List[String] getJacksonVersions():
+	getSystemPropertyValues("jeaf.generator.jacksonVersions");
 
+cached String getJackson2Suffix():
+	getSystemProperty("jeaf.generator.jackson2Suffix");
+
+cached String getJackson3Suffix():
+	getSystemProperty("jeaf.generator.jackson3Suffix");
+	
+cached String getJackson2Subpackage():
+	getSystemProperty("jeaf.generator.jackson2Subpackage", "");
+
+cached String getJackson3Subpackage():
+	getSystemProperty("jeaf.generator.jackson3Subpackage", "");
 
 cached String openAPILiteralQuotationCharacter():
    getSystemProperty("jeaf.generator.openAPILiteralQuotationCharacter", ""); 

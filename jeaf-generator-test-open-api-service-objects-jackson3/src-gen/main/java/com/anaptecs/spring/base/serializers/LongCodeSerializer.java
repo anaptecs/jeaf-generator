@@ -1,0 +1,22 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ *
+ * Copyright 2004 - 2021. All rights reserved.
+ */
+package com.anaptecs.spring.base.serializers;
+
+import com.anaptecs.spring.base.LongCode;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+
+/**
+ * Class implements a JSON / Jackson serializer for class LongCode.
+ */
+public class LongCodeSerializer extends ValueSerializer<LongCode> {
+  @Override
+  public void serialize( LongCode pObject, JsonGenerator pGenerator, SerializationContext pSerializers ) {
+    // Write value directly to JSON and avoid nesting object structures
+    pGenerator.writeNumber(pObject.getCode());
+  }
+}

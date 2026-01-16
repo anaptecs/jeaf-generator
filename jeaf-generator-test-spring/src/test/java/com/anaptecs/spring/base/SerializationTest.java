@@ -12,7 +12,7 @@ import java.nio.ByteBuffer;
 
 import com.anaptecs.jeaf.rest.composite.impl.kryo.KryoCompositeTypeConverter;
 import com.anaptecs.spring.base.backward.SimpleBackwardCompatibility;
-import com.anaptecs.spring.base.serializers.ObjectMapperFactory;
+import com.anaptecs.spring.base.serializers.v2.ObjectMapperFactory;
 import com.anaptecs.spring.base.techbase.BusinessA;
 import com.anaptecs.spring.base.techbase.BusinessChild;
 import com.anaptecs.spring.base.techbase.BusinessParent;

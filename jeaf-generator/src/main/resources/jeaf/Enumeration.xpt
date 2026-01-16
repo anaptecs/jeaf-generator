@@ -3,6 +3,8 @@
 «EXTENSION entity::ModelProperties»
 «EXTENSION functions::Enumeration»
 «EXTENSION functions::JEAFEnumeration»
+«EXTENSION functions::Jackson»
+«EXTENSION functions::SystemProperties»
 
 «IMPORT uml»
 «IMPORT java»
@@ -360,98 +362,110 @@ public final class «name» {
 «ENDDEFINE»
 
 «DEFINE GenerateEnumSerializer FOR JEAFEnumeration -»
-	«FILE packagePath() + "/serializers/" + name +"Serializer.java" src_gen»
-		«getFileHeader()»
-		package «this.packageName()».serializers;
-		
-		«EXPAND java::Helper::GenerateAnnotations-»
-		/**
-		 * Class implements a JSON / Jackson serializer for class «name».
-		 */
-		public class «name»Serializer extends com.fasterxml.jackson.databind.JsonSerializer<«this.fqn()»> {
-		  @Override
-		  public void serialize( «this.fqn()» pObject, com.fasterxml.jackson.core.JsonGenerator pGenerator, com.fasterxml.jackson.databind.SerializerProvider pSerializers ) throws java.io.IOException {
-		    «IF this.requiresNonStandardSerializer()»
-			    String lLiteralName;
-			    switch (pObject) {
-			    «FOREACH this.getOpenAPILiterals() AS literal»
-			      case «literal.name»:
-			        lLiteralName = "«literal.getLiteralNameForOpenAPI()»";
-			        break;
-			    «ENDFOREACH»
+	«FOREACH getJacksonVersions() AS jacksonVersion»
+		«FILE packagePath() + "/serializers" + jacksonVersion.getJacksonSubpackagePath() + "/" + name +"Serializer" + getJacksonVersionSuffix(jacksonVersion) + ".java" src_gen»
+			«getFileHeader()»
+			package «this.packageName()».serializers«jacksonVersion.getJacksonSubpackage()»;
 			
-			      default:
-			        lLiteralName = pObject.name();
-			    }
-			    pGenerator.writeString(lLiteralName);
-		    «ELSE»
-		    // Write value directly to JSON and avoid nesting object structures. Existing toString() operation is exactly what we need.
-		    pGenerator.writeString(pObject.toString());
-		    «ENDIF»
-		  }		    
-		}
-	«ENDFILE»
+			«EXPAND java::Helper::GenerateAnnotations-»
+			/**
+			 * Class implements a JSON / Jackson serializer for class «name».
+			 */
+			public class «name»Serializer«getJacksonVersionSuffix(jacksonVersion)» extends «getJsonSerializerFQN(jacksonVersion)»<«this.fqn()»> {
+			  @Override
+			  public void serialize( «this.fqn()» pObject, «getJsonGeneratorFQN(jacksonVersion)» pGenerator, «getSerializerProviderFQN(jacksonVersion)» pSerializers ) «IF jacksonVersion.isJacksonVersion2()»throws java.io.IOException«ENDIF» {
+			    «IF this.requiresNonStandardSerializer()»
+				    String lLiteralName;
+				    switch (pObject) {
+				    «FOREACH this.getOpenAPILiterals() AS literal»
+				      case «literal.name»:
+				        lLiteralName = "«literal.getLiteralNameForOpenAPI()»";
+				        break;
+				    «ENDFOREACH»
+				
+				      default:
+				        lLiteralName = pObject.name();
+				    }
+				    pGenerator.writeString(lLiteralName);
+			    «ELSE»
+			    // Write value directly to JSON and avoid nesting object structures. Existing toString() operation is exactly what we need.
+			    pGenerator.writeString(pObject.toString());
+			    «ENDIF»
+			  }		    
+			}
+		«ENDFILE»
+	«ENDFOREACH»
 «ENDDEFINE»
 
 «DEFINE GenerateEnumDeserializer FOR JEAFEnumeration -»
-	«FILE packagePath() + "/serializers/" + name +"Deserializer.java" src_gen»
-		«getFileHeader()»
-		package «this.packageName()».serializers;
-		
-		«EXPAND java::Helper::GenerateAnnotations-»
-		/**
-		 * Class implements a JSON / Jackson deserializer for class «name».
-		 */
-		public class «name»Deserializer extends com.fasterxml.jackson.databind.JsonDeserializer<«this.fqn()»> {
-
-		@Override
-		public «this.fqn()» deserialize( com.fasterxml.jackson.core.JsonParser pParser, com.fasterxml.jackson.databind.DeserializationContext pContext ) throws java.io.IOException {
-			// Parse JSON content.
-			com.fasterxml.jackson.databind.JsonNode lNode = pParser.getCodec().readTree(pParser);
-		
-		    // We expect that enumerations are always serialized as plain text which will result in a TextNode.
-		    if (lNode instanceof com.fasterxml.jackson.databind.node.TextNode) {
-		        «IF generateHeavyStyleExtensibleEnums() && this.extensibleEnum»
-					String lLiteralName = lNode.asText();
-					return «this.fqn()».valueOf(lLiteralName);
-                «ELSE»
-					«this.fqn()» lLiteral;
-					try {
-					  String lLiteralName = lNode.asText();
-					  «IF this.requiresNonStandardSerializer()»
-			          switch (lLiteralName) {
-                        «FOREACH this.getOpenAPILiterals() AS literal»
-                        case "«literal.getLiteralNameForOpenAPI()»":
-                          lLiteral = «this.fqn()».«literal.name»;
-                          break;
-                        «ENDFOREACH»
-			            default:
-			              lLiteral = «this.fqn()».valueOf(lLiteralName);
-			          }
-					  «ELSE»
-					  lLiteral = «this.fqn()».valueOf(lLiteralName);
-					  «ENDIF»
-					}
-					// Literal is unknown.
-					catch (IllegalArgumentException e) {
-					  «IF this.extensibleEnum»
-					  lLiteral = «this.fqn()».UNKNOWN;
-					  «ELSE»
-                      throw new java.io.IOException("Unable to deserialize object of type '«this.fqn()»'. Literal name '" + lNode.asText() + "' does not match to expected vales of enum '«this.fqn()»'.");
-					  «ENDIF»
-					}
-					return lLiteral;
-	            «ENDIF»
-		    }
-		    // Node is not a TextNode
-		    else {
-		      «IF isTargetRuntimeJEAF()»
-		      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());
-		      «ELSE»
-		      throw new java.io.IOException("Unable to deserialize object of type ''«this.fqn()»''. Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+  lNode.getClass().getName() + "''.");
-		      «ENDIF»
-		    }
+	«FOREACH getJacksonVersions() AS jacksonVersion»
+		«FILE packagePath() + "/serializers" + jacksonVersion.getJacksonSubpackagePath() + "/" + name +"Deserializer" + getJacksonVersionSuffix(jacksonVersion) + ".java" src_gen»
+			«getFileHeader()»
+			package «this.packageName()».serializers«jacksonVersion.getJacksonSubpackage()»;
+			
+			«EXPAND java::Helper::GenerateAnnotations-»
+			/**
+			 * Class implements a JSON / Jackson deserializer for class «name».
+			 */
+			public class «name»Deserializer«getJacksonVersionSuffix(jacksonVersion)» extends «getJsonDeserializerFQN(jacksonVersion)»<«this.fqn()»> {
+	
+			@Override
+			public «this.fqn()» deserialize( «getJsonParserFQN(jacksonVersion)» pParser, «getDeserializationContextFQN(jacksonVersion)» pContext ) «IF jacksonVersion.isJacksonVersion2()»throws java.io.IOException«ENDIF» {
+				// Parse JSON content.
+				«getJsonNodeFQN(jacksonVersion)» lNode = pParser.«IF jacksonVersion.isJacksonVersion2()»getCodec()«ELSE»objectReadContext()«ENDIF».readTree(pParser);
+			
+			    // We expect that enumerations are always serialized as plain text which will result in a TextNode.
+			    if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {
+			        «IF generateHeavyStyleExtensibleEnums() && this.extensibleEnum»
+						String lLiteralName = lNode.«jacksonVersion.asString()»;
+						return «this.fqn()».valueOf(lLiteralName);
+	                «ELSE»
+						«this.fqn()» lLiteral;
+						try {
+						  String lLiteralName = lNode.«jacksonVersion.asString()»;
+						  «IF this.requiresNonStandardSerializer()»
+				          switch (lLiteralName) {
+	                        «FOREACH this.getOpenAPILiterals() AS literal»
+	                        case "«literal.getLiteralNameForOpenAPI()»":
+	                          lLiteral = «this.fqn()».«literal.name»;
+	                          break;
+	                        «ENDFOREACH»
+				            default:
+				              lLiteral = «this.fqn()».valueOf(lLiteralName);
+				          }
+						  «ELSE»
+						  lLiteral = «this.fqn()».valueOf(lLiteralName);
+						  «ENDIF»
+						}
+						// Literal is unknown.
+						catch (IllegalArgumentException e) {
+						  «IF this.extensibleEnum»
+						  lLiteral = «this.fqn()».UNKNOWN;
+						  «ELSE»
+	                      	«IF jacksonVersion.isJacksonVersion2()»
+	                      		throw new java.io.IOException("Unable to deserialize object of type '«this.fqn()»'. Literal name '" + lNode.«jacksonVersion.asString()» + "' does not match to expected vales of enum '«this.fqn()»'.");
+	                      	«ELSE»
+	                      		throw tools.jackson.databind.DatabindException.from(pContext, "Unable to deserialize object of type '«this.fqn()»'. Literal name '" + lNode.«jacksonVersion.asString()» + "' does not match to expected vales of enum '«this.fqn()»'.");
+	                      	«ENDIF»
+						  «ENDIF»
+						}
+						return lLiteral;
+		            «ENDIF»
+			    }
+			    // Node is not a TextNode
+			    else {
+			      «IF isTargetRuntimeJEAF()»
+			      throw new com.anaptecs.jeaf.xfun.api.errorhandling.JEAFSystemException(com.anaptecs.jeaf.json.api.JSONMessages.UNEXPECTED_NODE_TYPE_FOR_DESERIALIZATION, «this.fqn()».class.getName(), lNode.toString(), lNode.getClass().getName());
+			      «ELSE»
+			      	«IF jacksonVersion.isJacksonVersion2()»
+			      		throw new java.io.IOException("Unable to deserialize object of type ''«this.fqn()»''. Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+  lNode.getClass().getName() + "''.");
+			      	«ELSE»
+			      		throw tools.jackson.databind.DatabindException.from(pContext, "Unable to deserialize object of type ''«this.fqn()»''. Expected text node but received other type of JSON content. Current JSON node ''" + lNode.toString() + "'' is of type ''"+  lNode.getClass().getName() + "''.");
+			      	«ENDIF»
+			      «ENDIF»
+			    }
+			}
 		}
-	}
-	«ENDFILE»
+		«ENDFILE»
+	«ENDFOREACH»
 «ENDDEFINE»

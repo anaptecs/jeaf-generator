@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.anaptecs.jeaf.fwk.generator.util.EnterpriseJavaType;
+import com.anaptecs.jeaf.fwk.generator.util.JacksonVersion;
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
 import com.anaptecs.jeaf.fwk.generator.util.OpenAPIVersion;
 import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
@@ -1079,6 +1080,89 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJacksonAnnotations;
 
   /**
+   * Parameter can be used to define for which Jackson versions annotations, serializers, modules etc. should be
+   * generated.
+   *
+   * By default only code for Jackson 2 will be generated. Please be aware that it is possible to generate code for
+   * Jackson 2 and 3 within the same Maven module.
+   */
+  @Parameter(required = false, defaultValue = "JACKSON_2")
+  private List<JacksonVersion> jacksonVersions = new ArrayList<JacksonVersion>();
+
+  /**
+   * Parameter can be used to define a suffix for generated Jackson 2 specific classes.<br>
+   * <br>
+   * In order to ensure backward compatibility with current generated code for Jackson 2 there is no suffix by
+   * default.<br>
+   * <br>
+   * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
+   * sub-package needs to be defined.<br>
+   * <br>
+   * Please also see:
+   * <ul>
+   * <li>{@link #jackson2Suffix}</li>
+   * <li>{@link #jackson2Subpackage}</li>
+   * <li>{@link #jackson3Suffix}</li>
+   * <li>{@link #jackson3Subpackage}</li>
+   * </ul>
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String jackson2Suffix;
+
+  /**
+   * Parameter can be used to define a sub-package where all Jackson 2 specific classes will be located.<br>
+   * <br>
+   * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
+   * sub-package needs to be defined.<br>
+   * <br>
+   * Please also see:
+   * <ul>
+   * <li>{@link #jackson2Suffix}</li>
+   * <li>{@link #jackson2Subpackage}</li>
+   * <li>{@link #jackson3Suffix}</li>
+   * <li>{@link #jackson3Subpackage}</li>
+   * </ul>
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String jackson2Subpackage;
+
+  /**
+   * Parameter can be used to define a suffix for generated Jackson 3 specific classes.<br>
+   * <br>
+   * By default no suffix is used as suffix.<br>
+   * <br>
+   * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
+   * sub-package needs to be defined.<br>
+   * <br>
+   * Please also see:
+   * <ul>
+   * <li>{@link #jackson2Suffix}</li>
+   * <li>{@link #jackson2Subpackage}</li>
+   * <li>{@link #jackson3Suffix}</li>
+   * <li>{@link #jackson3Subpackage}</li>
+   * </ul>
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String jackson3Suffix;
+
+  /**
+   * Parameter can be used to define a sub-package where all Jackson 2 specific classes will be located.<br>
+   * <br>
+   * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
+   * sub-package needs to be defined.<br>
+   * <br>
+   * Please also see:
+   * <ul>
+   * <li>{@link #jackson2Suffix}</li>
+   * <li>{@link #jackson2Subpackage}</li>
+   * <li>{@link #jackson3Suffix}</li>
+   * <li>{@link #jackson3Subpackage}</li>
+   * </ul>
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String jackson3Subpackage;
+
+  /**
    * Switch is used to generate @JsonAutoDetect annotation directly on generated classes. This annotation is required
    * for proper JSON serialization of POJOs and ServiceObjects. However, by default it is assumed that this
    * configuration is done on the Jackson ObjectMapperFactory. If you prefer to have it directly on the generated
@@ -1816,7 +1900,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateNotNullAnnotationForSingleValuedRESTParameters) {
       lLog.info("Generate NotNull annotation for                   ");
       lLog.info(
-          "single valued REST parameters:                          "
+          "single valued REST parameters:                    "
               + generateNotNullAnnotationForSingleValuedRESTParameters);
       lLog.info(
           "NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedRESTParameters);
@@ -1977,6 +2061,11 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Generate Jackson annotations:                     " + generateJacksonAnnotations);
       lLog.info("Generate @JsonAutoDetect on class:                " + generateJSONAutoDetectAnnotationOnClass);
       lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
+      lLog.info("Supported Jackson versions:                       " + this.toString(jacksonVersions));
+      lLog.info("Suffix for Jackson 2 specific classes:            " + jackson2Suffix.trim());
+      lLog.info("Sub-package for Jackson 2 specific classes:       " + jackson2Subpackage.trim());
+      lLog.info("Suffix for Jackson 3 specific classes:            " + jackson3Suffix.trim());
+      lLog.info("Sub-package for Jackson 3 specific classes:       " + jackson3Subpackage.trim());
     }
 
     if (generateJSONSerializers) {
@@ -2330,6 +2419,13 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.jaxrs.annotations", generateJAXRSAnnotations.toString());
       System.setProperty("switch.gen.jackson.annotations", generateJacksonAnnotations.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "jacksonVersions", this.toString(jacksonVersions));
+      System.setProperty(PROPERTY_PREFIX + "jackson2Suffix", jackson2Suffix.trim());
+      System.setProperty(PROPERTY_PREFIX + "jackson2Subpackage", jackson2Subpackage.trim());
+      System.setProperty(PROPERTY_PREFIX + "jackson3Suffix", jackson3Suffix.trim());
+      System.setProperty(PROPERTY_PREFIX + "jackson3Subpackage", jackson3Subpackage.trim());
+
       System.setProperty("switch.gen.jackson.jsonautodetect.on.class",
           generateJSONAutoDetectAnnotationOnClass.toString());
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
@@ -3143,5 +3239,9 @@ public class GeneratorMojo extends AbstractMojo {
       }
     }
     return lFiles;
+  }
+
+  private String toString(List<? extends Enum<?>> pVersions) {
+    return pVersions.stream().map(t -> t.name()).collect(Collectors.joining("; "));
   }
 }

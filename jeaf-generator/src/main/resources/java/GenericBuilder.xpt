@@ -12,7 +12,7 @@
 «EXTENSION functions::BeanParam»
 «EXTENSION functions::Builder»
 «EXTENSION functions::POJO»
-
+«EXTENSION functions::Jackson»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -23,8 +23,10 @@
  */
 «EXPAND java::Helper::GenerateAnnotations-»
 «IF generateJacksonAnnotations()»
-@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
-@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+	«FOREACH getJacksonVersions() AS jacksonVersion»
+		@«getJsonPOJOBuilderNameFQN(jacksonVersion)»(withPrefix = "set")
+	«ENDFOREACH»
+	@«getJsonIgnorePropertiesFQN()»(ignoreUnknown = true)
 «ENDIF»
 public static abstract class «this.abstractBuilderName()»<T extends «name», B extends «this.abstractBuilderName()»<T, B>> «IF superClass.isEmpty == false»extends «superClass.get(0).builderName()»<T, B>«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»
@@ -215,8 +217,10 @@ static final class «this.genericBuilderImplName()» extends «IF this.customize
  * This class is intended to contain additional custom implementations inside the builder. 
  */
 «IF generateJacksonAnnotations()»
-@com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder(withPrefix = "set")
-@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+	«FOREACH getJacksonVersions() AS jacksonVersion»
+		@«getJsonPOJOBuilderNameFQN(jacksonVersion)»(withPrefix = "set")
+	«ENDFOREACH»
+	@«getJsonIgnorePropertiesFQN()»(ignoreUnknown = true)
 «ENDIF»
 public static abstract class «this.builderName()»<T extends «name», B extends «this.builderName()»<T, B>> extends «this.abstractBuilderName()»<T, B> {
     /**
