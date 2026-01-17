@@ -1110,10 +1110,10 @@ public class GeneratorMojo extends AbstractMojo {
   private String jackson2Suffix;
 
   /**
-   * Parameter can be used to define a sub-package where all Jackson 2 specific classes will be located.<br>
+   * Parameter can be used to define a sub package where all Jackson 2 specific classes will be located.<br>
    * <br>
    * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
-   * sub-package needs to be defined.<br>
+   * sub package needs to be defined.<br>
    * <br>
    * Please also see:
    * <ul>
@@ -1146,7 +1146,7 @@ public class GeneratorMojo extends AbstractMojo {
   private String jackson3Suffix;
 
   /**
-   * Parameter can be used to define a sub-package where all Jackson 2 specific classes will be located.<br>
+   * Parameter can be used to define a sub package where all Jackson 2 specific classes will be located.<br>
    * <br>
    * Please be aware that in case that you want to use Jackson 2 and 3 in parallel for at least one of them a suffix or
    * sub-package needs to be defined.<br>
@@ -2063,9 +2063,9 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
       lLog.info("Supported Jackson versions:                       " + this.toString(jacksonVersions));
       lLog.info("Suffix for Jackson 2 specific classes:            " + jackson2Suffix.trim());
-      lLog.info("Sub-package for Jackson 2 specific classes:       " + jackson2Subpackage.trim());
+      lLog.info("Sub package for Jackson 2 specific classes:       " + jackson2Subpackage.trim());
       lLog.info("Suffix for Jackson 3 specific classes:            " + jackson3Suffix.trim());
-      lLog.info("Sub-package for Jackson 3 specific classes:       " + jackson3Subpackage.trim());
+      lLog.info("Sub package for Jackson 3 specific classes:       " + jackson3Subpackage.trim());
     }
 
     if (generateJSONSerializers) {
