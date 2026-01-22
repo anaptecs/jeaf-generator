@@ -31,6 +31,7 @@ public class Response<T> implements ServiceObject {
   @JsonSetter(nulls = Nulls.SKIP)
   private List<Message> messages;
 
+  @Valid
   private T data;
 
   /**

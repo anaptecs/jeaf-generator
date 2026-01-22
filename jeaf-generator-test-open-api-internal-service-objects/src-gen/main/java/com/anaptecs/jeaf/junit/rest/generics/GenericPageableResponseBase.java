@@ -26,6 +26,7 @@ public abstract class GenericPageableResponseBase<T> extends AbstractResponse<T>
    */
   private static final long serialVersionUID = 1L;
 
+  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
   private List<T> values;
 
