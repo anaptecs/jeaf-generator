@@ -19,6 +19,8 @@ import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ComplexBookingType;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonAutoDetect(
@@ -144,6 +146,7 @@ public abstract class ComplexBookingIDBase {
      * @param pInternalID Value to which {@link #internalID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setInternalID( long pInternalID ) {
       // Assign value to attribute
       internalID = pInternalID;
@@ -156,6 +159,7 @@ public abstract class ComplexBookingIDBase {
      * @param pReferenceID Value to which {@link #referenceID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setReferenceID( @MyNotNullProperty String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
@@ -168,6 +172,7 @@ public abstract class ComplexBookingIDBase {
      * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase setBookingIDs( @MyNotEmptyProperty List<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingIDs != null) {
@@ -201,6 +206,7 @@ public abstract class ComplexBookingIDBase {
      * @param pComplexBookingType Value to which {@link #complexBookingType} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setComplexBookingType( @MyNotNullProperty ComplexBookingType pComplexBookingType ) {
       complexBookingType = pComplexBookingType;
       return this;
@@ -212,6 +218,7 @@ public abstract class ComplexBookingIDBase {
      * @param pAnotherID Value to which {@link #anotherID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setAnotherID( @MyNotNullProperty Integer pAnotherID ) {
       // Assign value to attribute
       anotherID = pAnotherID;
@@ -224,6 +231,7 @@ public abstract class ComplexBookingIDBase {
      * @param pStrings Collection to which {@link #strings} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase setStrings( String[] pStrings ) {
       // Assign value to attribute
       if (pStrings != null) {

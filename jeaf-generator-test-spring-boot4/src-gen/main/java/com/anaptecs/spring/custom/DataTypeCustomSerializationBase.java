@@ -11,6 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
@@ -75,6 +77,7 @@ public abstract class DataTypeCustomSerializationBase {
      * @param pProperty1 Value to which {@link #property1} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setProperty1( @MyNotNullProperty String pProperty1 ) {
       // Assign value to attribute
       property1 = pProperty1;

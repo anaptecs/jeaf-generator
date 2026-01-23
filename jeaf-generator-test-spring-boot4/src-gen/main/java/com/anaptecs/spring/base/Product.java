@@ -22,6 +22,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -311,6 +313,7 @@ public class Product implements IProduct {
      * @param pResellers Collection to which {@link #resellers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setResellers( Set<Reseller> pResellers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pResellers != null) {
@@ -344,6 +347,7 @@ public class Product implements IProduct {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
@@ -356,6 +360,7 @@ public class Product implements IProduct {
      * @param pImage Value to which {@link #image} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setImage( byte[] pImage ) {
       // Assign value to attribute
       if (pImage != null) {
@@ -374,6 +379,7 @@ public class Product implements IProduct {
      * @param pLink Value to which {@link #link} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setLink( @MyNotNullProperty URL pLink ) {
       // Assign value to attribute
       link = pLink;
@@ -386,6 +392,7 @@ public class Product implements IProduct {
      * @param pProductID Value to which {@link #productID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setProductID( @MyNotNullProperty UUID pProductID ) {
       // Assign value to attribute
       productID = pProductID;
@@ -398,6 +405,7 @@ public class Product implements IProduct {
      * @param pSupportedCurrencies Collection to which {@link #supportedCurrencies} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setSupportedCurrencies( @MyNotEmptyProperty Set<CurrencyCode> pSupportedCurrencies ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSupportedCurrencies != null) {
@@ -432,6 +440,7 @@ public class Product implements IProduct {
      * @param pProductCodes Collection to which {@link #productCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setProductCodes( @MyNotEmptyProperty Set<ProductCode> pProductCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pProductCodes != null) {
@@ -466,6 +475,7 @@ public class Product implements IProduct {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setDescription( @MyNotNullProperty String pDescription ) {
       // Assign value to attribute
       description = pDescription;
@@ -478,6 +488,7 @@ public class Product implements IProduct {
      * @param pUri Value to which {@link #uri} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setUri( @MyNotNullProperty String pUri ) {
       // Assign value to attribute
       uri = pUri;

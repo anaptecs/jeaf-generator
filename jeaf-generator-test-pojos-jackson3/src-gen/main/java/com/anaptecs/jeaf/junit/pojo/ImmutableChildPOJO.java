@@ -12,6 +12,8 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -118,6 +120,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setChildAttribute( String pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;
@@ -130,6 +133,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * @param pAnotherChildAttribute Value to which {@link #anotherChildAttribute} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setAnotherChildAttribute( Double pAnotherChildAttribute ) {
       // Assign value to attribute
       anotherChildAttribute = pAnotherChildAttribute;

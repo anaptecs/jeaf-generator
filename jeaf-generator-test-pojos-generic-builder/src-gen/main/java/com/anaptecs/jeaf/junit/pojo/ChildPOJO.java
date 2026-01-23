@@ -13,6 +13,8 @@ import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -119,6 +121,7 @@ public class ChildPOJO extends ParentPOJO {
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setChildAttribute( Integer pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;

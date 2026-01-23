@@ -16,6 +16,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
@@ -102,6 +104,7 @@ public abstract class GenericResponsePOJOBase<T> {
      * @param pErrors Collection to which {@link #errors} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase<T> setErrors( List<Message> pErrors ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pErrors != null) {
@@ -135,6 +138,7 @@ public abstract class GenericResponsePOJOBase<T> {
      * @param pWarnings Collection to which {@link #warnings} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase<T> setWarnings( List<Message> pWarnings ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pWarnings != null) {
@@ -168,6 +172,7 @@ public abstract class GenericResponsePOJOBase<T> {
      * @param pValue Value to which {@link #value} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase<T> setValue( T pValue ) {
       // Assign value to attribute
       value = pValue;

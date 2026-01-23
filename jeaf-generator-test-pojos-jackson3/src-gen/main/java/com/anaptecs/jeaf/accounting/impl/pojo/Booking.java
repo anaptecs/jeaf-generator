@@ -16,6 +16,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -152,6 +154,7 @@ public class Booking {
      * @param pSourceAccount Value to which {@link #sourceAccount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setSourceAccount( Account pSourceAccount ) {
       sourceAccount = pSourceAccount;
       return this;
@@ -163,6 +166,7 @@ public class Booking {
      * @param pTargetAccount Value to which {@link #targetAccount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setTargetAccount( Account pTargetAccount ) {
       targetAccount = pTargetAccount;
       return this;
@@ -174,6 +178,7 @@ public class Booking {
      * @param pAmount Value to which {@link #amount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAmount( BigDecimal pAmount ) {
       // Assign value to attribute
       amount = pAmount;
@@ -186,6 +191,7 @@ public class Booking {
      * @param pCurrency Value to which {@link #currency} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCurrency( Currency pCurrency ) {
       // Assign value to attribute
       currency = pCurrency;
@@ -198,6 +204,7 @@ public class Booking {
      * @param pExecutionTimestamp Value to which {@link #executionTimestamp} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setExecutionTimestamp( Calendar pExecutionTimestamp ) {
       // Assign value to attribute
       executionTimestamp = pExecutionTimestamp;

@@ -1174,6 +1174,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateJSONAutoDetectAnnotationOnClass;
 
   /**
+   * Switch can be used to add @JsonSetter annotation on every set operation of a builder.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateJsonSetterAnnotationOnBuilderOperations;
+
+  /**
    * Switch defines if Java Validation Annotation @Valid will be generated for all generated POJO, ServiceObjects,
    * DomainObject and PersistentObjects even in cases when it is not defined in the UML model.
    */
@@ -2060,6 +2066,7 @@ public class GeneratorMojo extends AbstractMojo {
     if (generateJacksonAnnotations) {
       lLog.info("Generate Jackson annotations:                     " + generateJacksonAnnotations);
       lLog.info("Generate @JsonAutoDetect on class:                " + generateJSONAutoDetectAnnotationOnClass);
+      lLog.info("Generate @JsonSetter for builders:                " + generateJsonSetterAnnotationOnBuilderOperations);
       lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
       lLog.info("Supported Jackson versions:                       " + this.toString(jacksonVersions));
       lLog.info("Suffix for Jackson 2 specific classes:            " + jackson2Suffix.trim());
@@ -2428,6 +2435,9 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.jackson.jsonautodetect.on.class",
           generateJSONAutoDetectAnnotationOnClass.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateJsonSetterAnnotationOnBuilderOperations",
+          generateJsonSetterAnnotationOnBuilderOperations.toString());
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());

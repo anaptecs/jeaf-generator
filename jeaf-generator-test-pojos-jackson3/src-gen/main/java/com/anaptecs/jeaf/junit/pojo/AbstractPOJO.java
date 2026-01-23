@@ -11,8 +11,10 @@ import javax.annotation.Generated;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
@@ -71,6 +73,7 @@ public abstract class AbstractPOJO {
      * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setAbtractAttr( String pAbtractAttr ) {
       // Assign value to attribute
       abtractAttr = pAbtractAttr;

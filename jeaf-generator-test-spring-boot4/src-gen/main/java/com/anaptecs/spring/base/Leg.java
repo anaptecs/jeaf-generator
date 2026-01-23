@@ -16,6 +16,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -141,6 +143,7 @@ public class Leg {
      * @param pStart Value to which {@link #start} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setStart( @MyNotNullProperty PlaceRef pStart ) {
       start = pStart;
       return this;
@@ -152,6 +155,7 @@ public class Leg {
      * @param pStop Value to which {@link #stop} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setStop( @MyNotNullProperty PlaceRef pStop ) {
       stop = pStop;
       return this;
@@ -163,6 +167,7 @@ public class Leg {
      * @param pStopovers Collection to which {@link #stopovers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setStopovers( List<PlaceRef> pStopovers ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStopovers != null) {

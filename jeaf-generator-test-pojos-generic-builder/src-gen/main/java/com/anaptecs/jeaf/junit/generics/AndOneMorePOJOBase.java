@@ -16,6 +16,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -106,6 +108,7 @@ public abstract class AndOneMorePOJOBase {
      * @param pGenericProperty Value to which {@link #genericProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setGenericProperty( GenericResponsePOJO<MyBusinessObject> pGenericProperty ) {
       // Assign value to attribute
       genericProperty = pGenericProperty;
@@ -118,6 +121,7 @@ public abstract class AndOneMorePOJOBase {
      * @param pGenericResponses Collection to which {@link #genericResponses} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase setGenericResponses( Set<GenericResponsePOJO<MyBusinessObject>> pGenericResponses ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pGenericResponses != null) {
@@ -152,6 +156,7 @@ public abstract class AndOneMorePOJOBase {
      * @param pMultiTemplateClassImpl Value to which {@link #multiTemplateClassImpl} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setMultiTemplateClassImpl(
         MultiTemplateClass<Message, TemplateEnumTest> pMultiTemplateClassImpl ) {
       multiTemplateClassImpl = pMultiTemplateClassImpl;
@@ -164,6 +169,7 @@ public abstract class AndOneMorePOJOBase {
      * @param pMany Collection to which {@link #many} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase setMany( Set<MultiTemplateClass<Message, TemplateEnumTest>> pMany ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pMany != null) {

@@ -11,6 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
@@ -86,6 +88,7 @@ public abstract class MySortCriteriaBase {
      * @param pSortOrder Value to which {@link #sortOrder} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setSortOrder( @MyNotNullProperty SortOrder pSortOrder ) {
       sortOrder = pSortOrder;
       return this;
@@ -97,6 +100,7 @@ public abstract class MySortCriteriaBase {
      * @param pSortProperty Value to which {@link #sortProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setSortProperty( @MyNotNullProperty MySortProperty pSortProperty ) {
       sortProperty = pSortProperty;
       return this;

@@ -8,6 +8,8 @@ package com.anaptecs.spring.base.techbase;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -97,6 +99,7 @@ public class BusinessA extends TechParent {
      * @param pBusinessAttribute Value to which {@link #businessAttribute} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setBusinessAttribute( int pBusinessAttribute ) {
       // Assign value to attribute
       businessAttribute = pBusinessAttribute;

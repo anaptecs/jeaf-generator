@@ -13,6 +13,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -176,6 +178,7 @@ public class Problem {
      * @param pTitle Value to which {@link #title} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setTitle( @MyNotNullProperty String pTitle ) {
       // Assign value to attribute
       title = pTitle;
@@ -188,6 +191,7 @@ public class Problem {
      * @param pStatus Value to which {@link #status} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setStatus( int pStatus ) {
       // Assign value to attribute
       status = pStatus;
@@ -200,6 +204,7 @@ public class Problem {
      * @param pType Value to which {@link #type} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setType( @MyNotNullProperty String pType ) {
       // Assign value to attribute
       type = pType;
@@ -212,6 +217,7 @@ public class Problem {
      * @param pDetail Value to which {@link #detail} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setDetail( @MyNotNullProperty String pDetail ) {
       // Assign value to attribute
       detail = pDetail;
@@ -224,6 +230,7 @@ public class Problem {
      * @param pInstance Value to which {@link #instance} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setInstance( @MyNotNullProperty String pInstance ) {
       // Assign value to attribute
       instance = pInstance;

@@ -18,6 +18,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -168,6 +170,7 @@ public class ChildBB extends ChildB {
      * @param pChildBBAttribute Value to which {@link #childBBAttribute} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setChildBBAttribute( @MyNotNullProperty Long pChildBBAttribute ) {
       // Assign value to attribute
       childBBAttribute = pChildBBAttribute;
@@ -181,6 +184,7 @@ public class ChildBB extends ChildB {
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setDeprecatedAttribute( int pDeprecatedAttribute ) {
       // Assign value to attribute
       deprecatedAttribute = pDeprecatedAttribute;
@@ -194,6 +198,7 @@ public class ChildBB extends ChildB {
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public B setDeprecatedBs( Set<ChildB> pDeprecatedBs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDeprecatedBs != null) {
@@ -229,6 +234,7 @@ public class ChildBB extends ChildB {
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setDeprecatedParent( ParentClass pDeprecatedParent ) {
       deprecatedParent = pDeprecatedParent;
       return this.self();
@@ -241,6 +247,7 @@ public class ChildBB extends ChildB {
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public B setDeprecatedArray( byte[] pDeprecatedArray ) {
       // Assign value to attribute
       if (pDeprecatedArray != null) {

@@ -16,6 +16,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -202,6 +204,7 @@ public class DateObject {
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
@@ -214,6 +217,7 @@ public class DateObject {
      * @param pLocalDate Value to which {@link #localDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setLocalDate( @MyNotNullProperty LocalDate pLocalDate ) {
       // Assign value to attribute
       localDate = pLocalDate;
@@ -226,6 +230,7 @@ public class DateObject {
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
@@ -238,6 +243,7 @@ public class DateObject {
      * @param pCalendar Value to which {@link #calendar} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCalendar( @MyNotNullProperty Calendar pCalendar ) {
       // Assign value to attribute
       calendar = pCalendar;
@@ -250,6 +256,7 @@ public class DateObject {
      * @param pSqlDate Value to which {@link #sqlDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setSqlDate( @MyNotNullProperty Date pSqlDate ) {
       // Assign value to attribute
       sqlDate = pSqlDate;
@@ -262,6 +269,7 @@ public class DateObject {
      * @param pUtilDate Value to which {@link #utilDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setUtilDate( @MyNotNullProperty java.util.Date pUtilDate ) {
       // Assign value to attribute
       utilDate = pUtilDate;

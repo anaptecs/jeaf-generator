@@ -25,6 +25,8 @@ import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
 import com.anaptecs.spring.base.LongCode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class DataTypesQueryBean {
@@ -249,6 +251,7 @@ public class DataTypesQueryBean {
      * @param pLongCodes Collection to which {@link #longCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setLongCodes( LongCode[] pLongCodes ) {
       // Assign value to attribute
       if (pLongCodes != null) {
@@ -267,6 +270,7 @@ public class DataTypesQueryBean {
      * @param pCodes Collection to which {@link #codes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setCodes( IntegerCodeType[] pCodes ) {
       // Assign value to attribute
       if (pCodes != null) {
@@ -285,6 +289,7 @@ public class DataTypesQueryBean {
      * @param pDoubleCodes Collection to which {@link #doubleCodes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setDoubleCodes( Set<DoubleCode> pDoubleCodes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDoubleCodes != null) {
@@ -318,6 +323,7 @@ public class DataTypesQueryBean {
      * @param pBookingIDs Collection to which {@link #bookingIDs} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setBookingIDs( Set<BookingID> pBookingIDs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBookingIDs != null) {
@@ -351,6 +357,7 @@ public class DataTypesQueryBean {
      * @param pBookingIDsArray Collection to which {@link #bookingIDsArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setBookingIDsArray( BookingID[] pBookingIDsArray ) {
       // Assign value to attribute
       if (pBookingIDsArray != null) {
@@ -369,6 +376,7 @@ public class DataTypesQueryBean {
      * @param pOffsetDateTime Value to which {@link #offsetDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setOffsetDateTime( @MyNotNullProperty OffsetDateTime pOffsetDateTime ) {
       // Assign value to attribute
       offsetDateTime = pOffsetDateTime;
@@ -381,6 +389,7 @@ public class DataTypesQueryBean {
      * @param pOffsetTime Value to which {@link #offsetTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setOffsetTime( @MyNotNullProperty OffsetTime pOffsetTime ) {
       offsetTime = pOffsetTime;
       return this;
@@ -392,6 +401,7 @@ public class DataTypesQueryBean {
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setLocalDateTime( @MyNotNullProperty LocalDateTime pLocalDateTime ) {
       // Assign value to attribute
       localDateTime = pLocalDateTime;
@@ -404,6 +414,7 @@ public class DataTypesQueryBean {
      * @param pLocalTime Value to which {@link #localTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setLocalTime( @MyNotNullProperty LocalTime pLocalTime ) {
       // Assign value to attribute
       localTime = pLocalTime;
@@ -416,6 +427,7 @@ public class DataTypesQueryBean {
      * @param pTimestamps Collection to which {@link #timestamps} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setTimestamps( List<LocalDateTime> pTimestamps ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimestamps != null) {
@@ -449,6 +461,7 @@ public class DataTypesQueryBean {
      * @param pTimes Collection to which {@link #times} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setTimes( Set<OffsetTime> pTimes ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimes != null) {
@@ -482,6 +495,7 @@ public class DataTypesQueryBean {
      * @param pStartTimestamps Collection to which {@link #startTimestamps} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setStartTimestamps( OffsetDateTime[] pStartTimestamps ) {
       // Assign value to attribute
       if (pStartTimestamps != null) {

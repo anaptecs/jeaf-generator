@@ -13,6 +13,8 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.Channel;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -124,6 +126,7 @@ public class Sale {
      * @param pTransactionAmount Value to which {@link #transactionAmount} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setTransactionAmount( @MyNotNullProperty BigDecimal pTransactionAmount ) {
       // Assign value to attribute
       transactionAmount = pTransactionAmount;
@@ -136,6 +139,7 @@ public class Sale {
      * @param pSale Value to which {@link #sale} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setSale( Channel pSale ) {
       sale = pSale;
       return this;

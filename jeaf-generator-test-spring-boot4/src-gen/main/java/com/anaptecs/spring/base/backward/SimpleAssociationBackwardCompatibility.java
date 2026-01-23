@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -149,6 +151,7 @@ public class SimpleAssociationBackwardCompatibility {
      * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setDeprecatedLinks( List<SimpleBackwardCompatibility> pDeprecatedLinks ) {
       // Delegate call to setNewLinks(...)
       this.setNewLinks(pDeprecatedLinks);
@@ -176,6 +179,7 @@ public class SimpleAssociationBackwardCompatibility {
      * @param pNewLinks Collection to which {@link #newLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setNewLinks( List<SimpleBackwardCompatibility> pNewLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pNewLinks != null) {
@@ -210,6 +214,7 @@ public class SimpleAssociationBackwardCompatibility {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setOldSingleLink( SimpleBackwardCompatibility pOldSingleLink ) {
       // Delegate call to setNewSingleLink(...)
       this.setNewSingleLink(pOldSingleLink);
@@ -222,6 +227,7 @@ public class SimpleAssociationBackwardCompatibility {
      * @param pNewSingleLink Value to which {@link #newSingleLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setNewSingleLink( SimpleBackwardCompatibility pNewSingleLink ) {
       newSingleLink = pNewSingleLink;
       return this;

@@ -12,6 +12,8 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -117,6 +119,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * @param pAbtractAttr Value to which {@link #abtractAttr} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public Builder setAbtractAttr( String pAbtractAttr ) {
       // Call super class implementation.
@@ -130,6 +133,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * @param pParentAttribute Value to which {@link #parentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public Builder setParentAttribute( String pParentAttribute ) {
       // Call super class implementation.
@@ -143,6 +147,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * @param pAnotherParentAttribute Value to which {@link #anotherParentAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public Builder setAnotherParentAttribute( Integer pAnotherParentAttribute ) {
       // Call super class implementation.
@@ -156,6 +161,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * @param pChildAttribute Value to which {@link #childAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setChildAttribute( String pChildAttribute ) {
       // Assign value to attribute
       childAttribute = pChildAttribute;
@@ -168,6 +174,7 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
      * @param pAnotherChildAttribute Value to which {@link #anotherChildAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAnotherChildAttribute( Double pAnotherChildAttribute ) {
       // Assign value to attribute
       anotherChildAttribute = pAnotherChildAttribute;

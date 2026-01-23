@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
@@ -74,6 +76,7 @@ public abstract class ChildA extends ParentClass {
      * @param pChildAAttribute Value to which {@link #childAAttribute} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setChildAAttribute( int pChildAAttribute ) {
       // Assign value to attribute
       childAAttribute = pChildAAttribute;

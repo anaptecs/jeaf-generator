@@ -11,6 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -142,6 +144,7 @@ public class EnumTest {
      * @param pProperty Value to which {@link #property} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setProperty( @MyNotNullProperty ExtensibleEnum pProperty ) {
       // Assign value to attribute
       property = pProperty;
@@ -154,6 +157,7 @@ public class EnumTest {
      * @param pEnumRef Value to which {@link #enumRef} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setEnumRef( @MyNotNullProperty ExtensibleEnum pEnumRef ) {
       enumRef = pEnumRef;
       return this;

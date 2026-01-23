@@ -15,6 +15,8 @@ import java.util.Set;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultivaluedQueryParamsBean {
@@ -150,6 +152,7 @@ public class MultivaluedQueryParamsBean {
      * @param pIntArray Value to which {@link #intArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setIntArray( int[] pIntArray ) {
       // Assign value to attribute
       if (pIntArray != null) {
@@ -168,6 +171,7 @@ public class MultivaluedQueryParamsBean {
      * @param pStrings Collection to which {@link #strings} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setStrings( String[] pStrings ) {
       // Assign value to attribute
       if (pStrings != null) {
@@ -186,6 +190,7 @@ public class MultivaluedQueryParamsBean {
      * @param pIntegers Collection to which {@link #integers} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setIntegers( Integer[] pIntegers ) {
       // Assign value to attribute
       if (pIntegers != null) {
@@ -204,6 +209,7 @@ public class MultivaluedQueryParamsBean {
      * @param pTimeUnits Collection to which {@link #timeUnits} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setTimeUnits( Set<TimeUnit> pTimeUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimeUnits != null) {
@@ -254,6 +260,7 @@ public class MultivaluedQueryParamsBean {
      * @param pTimeUnitArray Collection to which {@link #timeUnitArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
       // Assign value to attribute
       if (pTimeUnitArray != null) {

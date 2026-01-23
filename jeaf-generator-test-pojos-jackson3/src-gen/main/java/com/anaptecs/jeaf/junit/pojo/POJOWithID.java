@@ -17,6 +17,8 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectID;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
@@ -162,6 +164,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
      * @param pAttr Value to which {@link #attr} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAttr( Double pAttr ) {
       // Assign value to attribute
       attr = pAttr;
@@ -174,6 +177,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -186,6 +190,7 @@ public class POJOWithID implements Identifiable<ObjectID> {
      * @param pIntegerWithDefault Value to which {@link #integerWithDefault} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setIntegerWithDefault( Integer pIntegerWithDefault ) {
       // Assign value to attribute
       integerWithDefault = pIntegerWithDefault;

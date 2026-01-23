@@ -13,6 +13,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
@@ -130,6 +132,7 @@ public class MultiTemplateClass<T, E> {
      * @param pObject Value to which {@link #object} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder<T, E> setObject( T pObject ) {
       object = pObject;
       return this;
@@ -141,6 +144,7 @@ public class MultiTemplateClass<T, E> {
      * @param pPreviousState Value to which {@link #previousState} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder<T, E> setPreviousState( E pPreviousState ) {
       previousState = pPreviousState;
       return this;
@@ -152,6 +156,7 @@ public class MultiTemplateClass<T, E> {
      * @param pNewState Value to which {@link #newState} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder<T, E> setNewState( E pNewState ) {
       newState = pNewState;
       return this;

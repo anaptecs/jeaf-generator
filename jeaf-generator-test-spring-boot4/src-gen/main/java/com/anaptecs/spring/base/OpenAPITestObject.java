@@ -11,6 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -240,6 +242,7 @@ public class OpenAPITestObject {
      * @param pReadOnlyAttribute Value to which {@link #readOnlyAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setReadOnlyAttribute( @MyNotNullProperty String pReadOnlyAttribute ) {
       // Assign value to attribute
       readOnlyAttribute = pReadOnlyAttribute;
@@ -252,6 +255,7 @@ public class OpenAPITestObject {
      * @param pReadWriteAttribute Value to which {@link #readWriteAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setReadWriteAttribute( @MyNotNullProperty String pReadWriteAttribute ) {
       // Assign value to attribute
       readWriteAttribute = pReadWriteAttribute;
@@ -264,6 +268,7 @@ public class OpenAPITestObject {
      * @param pWriteOnlyAttribute Value to which {@link #writeOnlyAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setWriteOnlyAttribute( int pWriteOnlyAttribute ) {
       // Assign value to attribute
       writeOnlyAttribute = pWriteOnlyAttribute;
@@ -276,6 +281,7 @@ public class OpenAPITestObject {
      * @param pNullableAttribute Value to which {@link #nullableAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setNullableAttribute( @MyNotNullProperty Boolean pNullableAttribute ) {
       // Assign value to attribute
       nullableAttribute = pNullableAttribute;
@@ -288,6 +294,7 @@ public class OpenAPITestObject {
      * @param pNotNullableAttribute Value to which {@link #notNullableAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setNotNullableAttribute( double pNotNullableAttribute ) {
       // Assign value to attribute
       notNullableAttribute = pNotNullableAttribute;
@@ -300,6 +307,7 @@ public class OpenAPITestObject {
      * @param pReadOnlyArray Value to which {@link #readOnlyArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setReadOnlyArray( @MyNotNullProperty String pReadOnlyArray ) {
       // Assign value to attribute
       readOnlyArray = pReadOnlyArray;
@@ -312,6 +320,7 @@ public class OpenAPITestObject {
      * @param pReadWriteArray Value to which {@link #readWriteArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setReadWriteArray( @MyNotNullProperty String pReadWriteArray ) {
       // Assign value to attribute
       readWriteArray = pReadWriteArray;
@@ -324,6 +333,7 @@ public class OpenAPITestObject {
      * @param pWriteOnlyArray Value to which {@link #writeOnlyArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setWriteOnlyArray( int pWriteOnlyArray ) {
       // Assign value to attribute
       writeOnlyArray = pWriteOnlyArray;
@@ -336,6 +346,7 @@ public class OpenAPITestObject {
      * @param pNullableArray Value to which {@link #nullableArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setNullableArray( double pNullableArray ) {
       // Assign value to attribute
       nullableArray = pNullableArray;
@@ -348,6 +359,7 @@ public class OpenAPITestObject {
      * @param pNotNullableArray Value to which {@link #notNullableArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setNotNullableArray( double pNotNullableArray ) {
       // Assign value to attribute
       notNullableArray = pNotNullableArray;

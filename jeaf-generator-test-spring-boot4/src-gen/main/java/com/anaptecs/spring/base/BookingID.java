@@ -11,6 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonAutoDetect(
@@ -180,6 +182,7 @@ public class BookingID {
      * @param pPublicBookingID Value to which {@link #publicBookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setPublicBookingID( @MyNotNullProperty String pPublicBookingID ) {
       // Assign value to attribute
       publicBookingID = pPublicBookingID;
@@ -192,6 +195,7 @@ public class BookingID {
      * @param pReferenceID Value to which {@link #referenceID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setReferenceID( @MyNotNullProperty String pReferenceID ) {
       // Assign value to attribute
       referenceID = pReferenceID;
@@ -204,6 +208,7 @@ public class BookingID {
      * @param pExternalRefID Value to which {@link #externalRefID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setExternalRefID( @MyNotNullProperty String pExternalRefID ) {
       // Assign value to attribute
       externalRefID = pExternalRefID;
@@ -216,6 +221,7 @@ public class BookingID {
      * @param pInventory Value to which {@link #inventory} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setInventory( @MyNotNullProperty InventoryType pInventory ) {
       inventory = pInventory;
       return this;
@@ -227,6 +233,7 @@ public class BookingID {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       bookingCode = pBookingCode;
       return this;

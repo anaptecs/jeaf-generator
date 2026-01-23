@@ -470,6 +470,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE CreateBuilderPropertySetter(String builderClassName) FOR Property»
 	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	«EXPAND java::Helper::GenerateAnnotations-»
+	«EXPAND JsonSetterAnnotation»
 	public «builderClassName»«owner.asClass().getTemplateParams()» «asSetter()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
 		«IF this.generateBackwardCompatibility() == false»
 			// Assign value to attribute
@@ -508,6 +509,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	«IF isNavigable()»
         «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
         «EXPAND java::Helper::GenerateAnnotations-»
+		«EXPAND JsonSetterAnnotation»
 		«IF isMultivalued()»
 			public «builderClassName»«owner.asClass().getTemplateParams()» set«name.toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.fqn()» «asParameter()») {
 			    «IF this.generateBackwardCompatibility() == false»
@@ -560,6 +562,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     «IF isNavigable()»
         «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
         «EXPAND java::Helper::GenerateAnnotations-»
+        «EXPAND JsonSetterAnnotation»
         «IF isMultivalued()»
             public «builderClassName»«owner.asClass().getTemplateParams()» set«this.getSoftLinkPropertyName().toFirstUpper()»(«EXPAND java::Helper::NotNullAnnotationForProperty» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
                 «IF disableSaveCopyOfCollectionsInBuilders()»
@@ -620,6 +623,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE OverwriteBuilderPropertySetter(String builderClassName) FOR Property»
 	«EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	«EXPAND java::Helper::GenerateAnnotations-»
+	«EXPAND JsonSetterAnnotation»
 	@Override
 	public «builderClassName» «asSetter()»(«this.fqn()» «asParameter()») {
 		// Call super class implementation.
@@ -632,6 +636,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	«IF isNavigable()»
 	    «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	    «EXPAND java::Helper::GenerateAnnotations-»
+		«EXPAND JsonSetterAnnotation»
 		«IF isMultivalued()»
 			@Override
 			public «builderClassName» set«name.toFirstUpper()»(«this.fqn()» «asParameter()») {
@@ -673,6 +678,7 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
     «IF isNavigable()»
 	    «EXPAND functions::Javadoc::JavadocForBuilderSetter(builderClassName)»
 	    «EXPAND java::Helper::GenerateAnnotations-»
+        «EXPAND JsonSetterAnnotation»
         «IF isMultivalued()»
             @Override
             public «builderClassName» set«this.getSoftLinkPropertyName().toFirstUpper()»(«this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «asParameter()») {
@@ -911,6 +917,12 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
             // Add request headers.
             customHeaders = pBuilder.customHeaders;
         «ENDIF»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE JsonSetterAnnotation FOR Property»
+	«IF generateJacksonAnnotations() && generateJsonSetterAnnotationOnBuilderOperations()»
+		@«getJsonSetterFQN()»(nulls = com.fasterxml.jackson.annotation.Nulls.SKIP«IF this.isMultivalued()», contentNulls = com.fasterxml.jackson.annotation.Nulls.SKIP«ENDIF»)
 	«ENDIF»
 «ENDDEFINE»
 

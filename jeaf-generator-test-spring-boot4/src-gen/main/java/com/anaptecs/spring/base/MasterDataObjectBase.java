@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -113,6 +114,7 @@ public abstract class MasterDataObjectBase {
      * @param pDataUnits Collection to which {@link #dataUnits} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase setDataUnits( List<DataUnit> pDataUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDataUnits != null) {
@@ -163,6 +165,7 @@ public abstract class MasterDataObjectBase {
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
       return this;
@@ -174,6 +177,7 @@ public abstract class MasterDataObjectBase {
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setObjectID( @MyNotNullProperty String pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
@@ -186,6 +190,7 @@ public abstract class MasterDataObjectBase {
      * @param pInternalProperty Value to which {@link #internalProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setInternalProperty( @MyNotNullProperty String pInternalProperty ) {
       // Assign value to attribute
       internalProperty = pInternalProperty;

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -132,6 +133,7 @@ public abstract class SoftLinkPartnerBase {
      * @param pTheBackLink Value to which {@link #theBackLink} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setTheBackLinkID( String pTheBackLink ) {
       theBackLinkID = pTheBackLink;
       return this;
@@ -143,6 +145,7 @@ public abstract class SoftLinkPartnerBase {
      * @param pChildLinks Collection to which {@link #childLinks} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase setChildLinkIDs( Set<SoftLinkID> pChildLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pChildLinks != null) {
@@ -160,6 +163,7 @@ public abstract class SoftLinkPartnerBase {
      * @param pLongLinks Collection to which {@link #longLinks} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase setLongLinkIDs( List<Long> pLongLinks ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pLongLinks != null) {

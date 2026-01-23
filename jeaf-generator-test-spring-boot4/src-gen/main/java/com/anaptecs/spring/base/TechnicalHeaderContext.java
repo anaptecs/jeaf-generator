@@ -13,6 +13,8 @@ import java.util.Objects;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class TechnicalHeaderContext {
@@ -120,6 +122,7 @@ public class TechnicalHeaderContext {
      * @param pReseller Value to which {@link #reseller} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setReseller( @MyNotNullProperty String pReseller ) {
       // Assign value to attribute
       reseller = pReseller;

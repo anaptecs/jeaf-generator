@@ -12,6 +12,8 @@ import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCodeType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class AdvancedHeader {
@@ -142,6 +144,7 @@ public class AdvancedHeader {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBookingID( BookingID pBookingID ) {
       // Assign value to attribute
       bookingID = pBookingID;
@@ -154,6 +157,7 @@ public class AdvancedHeader {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBookingCode( BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
@@ -166,6 +170,7 @@ public class AdvancedHeader {
      * @param pDoubleCode Value to which {@link #doubleCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setDoubleCode( DoubleCodeType pDoubleCode ) {
       // Assign value to attribute
       doubleCode = pDoubleCode;

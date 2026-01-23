@@ -20,6 +20,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -143,6 +145,7 @@ public class MasterClass {
      * @param pClients Collection to which {@link #clients} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setClients( List<ClientClass> pClients ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pClients != null) {
@@ -176,6 +179,7 @@ public class MasterClass {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -188,6 +192,7 @@ public class MasterClass {
      * @param pSingleClient Value to which {@link #singleClient} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setSingleClient( ClientClass pSingleClient ) {
       singleClient = pSingleClient;
       return this;

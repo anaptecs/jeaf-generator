@@ -10,6 +10,8 @@ import java.util.Objects;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class ContextWithPrimitives {
@@ -175,6 +177,7 @@ public class ContextWithPrimitives {
      * @param pABoolean Value to which {@link #aBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
       aBoolean = pABoolean;
@@ -187,6 +190,7 @@ public class ContextWithPrimitives {
      * @param pABooleanWrapper Value to which {@link #aBooleanWrapper} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setABooleanWrapper( @MyNotNullProperty Boolean pABooleanWrapper ) {
       // Assign value to attribute
       aBooleanWrapper = pABooleanWrapper;
@@ -199,6 +203,7 @@ public class ContextWithPrimitives {
      * @param pAnInt Value to which {@link #anInt} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAnInt( int pAnInt ) {
       // Assign value to attribute
       anInt = pAnInt;
@@ -211,6 +216,7 @@ public class ContextWithPrimitives {
      * @param pAnInteger Value to which {@link #anInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAnInteger( @MyNotNullProperty Integer pAnInteger ) {
       // Assign value to attribute
       anInteger = pAnInteger;
@@ -223,6 +229,7 @@ public class ContextWithPrimitives {
      * @param pALong Value to which {@link #aLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setALong( long pALong ) {
       // Assign value to attribute
       aLong = pALong;
@@ -235,6 +242,7 @@ public class ContextWithPrimitives {
      * @param pAVeryLong Value to which {@link #aVeryLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAVeryLong( @MyNotNullProperty Long pAVeryLong ) {
       // Assign value to attribute
       aVeryLong = pAVeryLong;

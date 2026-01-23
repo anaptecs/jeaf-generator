@@ -19,6 +19,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -150,6 +152,7 @@ public class ImmutableAssociationPOJO {
      * @param pYetAnotherAttribute Value to which {@link #yetAnotherAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setYetAnotherAttribute( boolean pYetAnotherAttribute ) {
       // Assign value to attribute
       yetAnotherAttribute = pYetAnotherAttribute;
@@ -162,6 +165,7 @@ public class ImmutableAssociationPOJO {
      * @param pReadonlyAssociation Collection to which {@link #readonlyAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setReadonlyAssociation( SortedSet<ImmutablePOJO> pReadonlyAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pReadonlyAssociation != null) {
@@ -196,6 +200,7 @@ public class ImmutableAssociationPOJO {
      * @param pImmutableChildPOJO Value to which {@link #immutableChildPOJO} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setImmutableChildPOJO( ImmutableChildPOJO pImmutableChildPOJO ) {
       immutableChildPOJO = pImmutableChildPOJO;
       return this;
@@ -208,6 +213,7 @@ public class ImmutableAssociationPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pDeprecatedRefs != null) {
@@ -244,6 +250,7 @@ public class ImmutableAssociationPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setDeprecatedRef( ChildPOJO pDeprecatedRef ) {
       deprecatedRef = pDeprecatedRef;
       return this;

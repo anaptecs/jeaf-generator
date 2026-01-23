@@ -14,6 +14,8 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -154,6 +156,7 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @param pHeyBrother Value to which {@link #heyBrother} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setHeyBrotherID( String pHeyBrother ) {
       heyBrotherID = pHeyBrother;
       return this.self();
@@ -165,6 +168,7 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @param pSoftLinkPartners Collection to which {@link #softLinkPartners} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public B setSoftLinkPartnerIDs( Set<String> pSoftLinkPartners ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSoftLinkPartners != null) {
@@ -182,6 +186,7 @@ public class SoftLinkChildB extends SoftLinkParent {
      * @param pOneLink Value to which {@link #oneLink} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setOneLinkID( SoftLinkID pOneLink ) {
       oneLinkID = pOneLink;
       return this.self();
