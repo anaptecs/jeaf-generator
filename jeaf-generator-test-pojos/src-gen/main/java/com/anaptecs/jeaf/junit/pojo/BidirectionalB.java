@@ -20,6 +20,8 @@ import javax.validation.ConstraintViolationException;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -129,6 +131,7 @@ public class BidirectionalB {
      * @param pAs Collection to which {@link #as} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setAs( List<BidirectionalA> pAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAs != null) {
@@ -162,6 +165,7 @@ public class BidirectionalB {
      * @param pTheAs Collection to which {@link #theAs} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setTheAs( List<BidirectionalA> pTheAs ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTheAs != null) {

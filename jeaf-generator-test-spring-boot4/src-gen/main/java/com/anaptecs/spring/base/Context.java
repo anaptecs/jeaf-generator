@@ -16,6 +16,8 @@ import javax.validation.constraints.NotEmpty;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
@@ -213,6 +215,7 @@ public class Context {
      * @param pAccessToken Value to which {@link #accessToken} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setAccessToken( @MyNotNullProperty String pAccessToken ) {
       // Assign value to attribute
       accessToken = pAccessToken;
@@ -225,6 +228,7 @@ public class Context {
      * @param pLanguage Value to which {@link #language} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setLanguage( @MyNotNullProperty Locale pLanguage ) {
       // Assign value to attribute
       language = pLanguage;
@@ -237,6 +241,7 @@ public class Context {
      * @param pResellerID Value to which {@link #resellerID} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setResellerID( long pResellerID ) {
       // Assign value to attribute
       resellerID = pResellerID;
@@ -249,6 +254,7 @@ public class Context {
      * @param pPathParam Value to which {@link #pathParam} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setPathParam( long pPathParam ) {
       // Assign value to attribute
       pathParam = pPathParam;
@@ -261,6 +267,7 @@ public class Context {
      * @param pQueryParam Value to which {@link #queryParam} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setQueryParam( @MyNotNullProperty String pQueryParam ) {
       // Assign value to attribute
       queryParam = pQueryParam;
@@ -273,6 +280,7 @@ public class Context {
      * @param pLang Value to which {@link #lang} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setLang( @MyNotNullProperty String pLang ) {
       // Assign value to attribute
       lang = pLang;
@@ -285,6 +293,7 @@ public class Context {
      * @param pIntCode Value to which {@link #intCode} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setIntCode( @MyNotNullProperty IntegerCodeType pIntCode ) {
       // Assign value to attribute
       intCode = pIntCode;

@@ -12,6 +12,8 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -81,6 +83,7 @@ public class SoftLinkChildA extends SoftLinkParent {
      * @param pPartners Collection to which {@link #partners} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     @Override
     public Builder setPartnerIDs( Set<SoftLinkID> pPartners ) {
       // Call super class implementation.
@@ -94,6 +97,7 @@ public class SoftLinkChildA extends SoftLinkParent {
      * @param pThePartner Value to which {@link #thePartner} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public Builder setThePartnerID( SoftLinkID pThePartner ) {
       // Call super class implementation.
@@ -107,6 +111,7 @@ public class SoftLinkChildA extends SoftLinkParent {
      * @param pReadonlyPartner Value to which {@link #readonlyPartner} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public Builder setReadonlyPartnerID( SoftLinkID pReadonlyPartner ) {
       // Call super class implementation.

@@ -17,6 +17,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -137,6 +139,7 @@ public class ChildB extends ParentClass {
      * @param pChildBAttribute Value to which {@link #childBAttribute} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public B setChildBAttribute( boolean[] pChildBAttribute ) {
       // Assign value to attribute
       if (pChildBAttribute != null) {
@@ -155,6 +158,7 @@ public class ChildB extends ParentClass {
      * @param pComposition Collection to which {@link #composition} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public B setComposition( Set<ParentClass> pComposition ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pComposition != null) {

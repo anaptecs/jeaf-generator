@@ -20,6 +20,8 @@ import javax.validation.constraints.NotBlank;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -116,6 +118,7 @@ public abstract class CustomerBase extends Partner {
      * @param pTags Value to which {@link #tags} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public BuilderBase setTags( String pTags ) {
       // Call super class implementation.
@@ -129,6 +132,7 @@ public abstract class CustomerBase extends Partner {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -141,6 +145,7 @@ public abstract class CustomerBase extends Partner {
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setFirstName( String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
@@ -153,6 +158,7 @@ public abstract class CustomerBase extends Partner {
      * @param pEmail Value to which {@link #email} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setEmail( String pEmail ) {
       // Assign value to attribute
       email = pEmail;
@@ -165,6 +171,7 @@ public abstract class CustomerBase extends Partner {
      * @param pAccounts Collection to which {@link #accounts} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public BuilderBase setAccounts( Set<Account> pAccounts ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAccounts != null) {

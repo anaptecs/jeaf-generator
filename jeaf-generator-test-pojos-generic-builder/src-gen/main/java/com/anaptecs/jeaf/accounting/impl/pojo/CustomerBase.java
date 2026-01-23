@@ -17,6 +17,8 @@ import javax.validation.constraints.NotBlank;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -115,6 +117,7 @@ public abstract class CustomerBase extends Partner {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setName( String pName ) {
       // Assign value to attribute
       name = pName;
@@ -127,6 +130,7 @@ public abstract class CustomerBase extends Partner {
      * @param pFirstName Value to which {@link #firstName} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setFirstName( String pFirstName ) {
       // Assign value to attribute
       firstName = pFirstName;
@@ -139,6 +143,7 @@ public abstract class CustomerBase extends Partner {
      * @param pEmail Value to which {@link #email} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setEmail( String pEmail ) {
       // Assign value to attribute
       email = pEmail;
@@ -151,6 +156,7 @@ public abstract class CustomerBase extends Partner {
      * @param pAccounts Collection to which {@link #accounts} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public B setAccounts( Set<Account> pAccounts ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pAccounts != null) {

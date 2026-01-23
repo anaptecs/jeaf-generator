@@ -8,6 +8,8 @@ package com.anaptecs.spring.base;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -114,6 +116,7 @@ public class GeoPosition extends PlaceRef {
      * @param pLongitude Value to which {@link #longitude} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setLongitude( int pLongitude ) {
       // Assign value to attribute
       longitude = pLongitude;
@@ -126,6 +129,7 @@ public class GeoPosition extends PlaceRef {
      * @param pLatitude Value to which {@link #latitude} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setLatitude( int pLatitude ) {
       // Assign value to attribute
       latitude = pLatitude;

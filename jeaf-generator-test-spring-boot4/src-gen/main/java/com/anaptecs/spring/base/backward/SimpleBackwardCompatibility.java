@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -129,6 +131,7 @@ public class SimpleBackwardCompatibility {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setDeprecatedProperty( @MyNotNullProperty String pDeprecatedProperty ) {
       // Delegate call to setSuccessorProperty(...)
       this.setSuccessorProperty(pDeprecatedProperty);
@@ -141,6 +144,7 @@ public class SimpleBackwardCompatibility {
      * @param pSuccessorProperty Value to which {@link #successorProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setSuccessorProperty( @MyNotNullProperty String pSuccessorProperty ) {
       // Assign value to attribute
       successorProperty = pSuccessorProperty;

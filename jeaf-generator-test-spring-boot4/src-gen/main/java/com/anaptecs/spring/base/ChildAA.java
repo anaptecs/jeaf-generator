@@ -13,6 +13,8 @@ import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -145,6 +147,7 @@ public class ChildAA extends ChildA {
      * @param pChildAAAttribute Value to which {@link #childAAAttribute} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setChildAAAttribute( byte pChildAAAttribute ) {
       // Assign value to attribute
       childAAAttribute = pChildAAAttribute;
@@ -157,6 +160,7 @@ public class ChildAA extends ChildA {
      * @param pSizedArray Value to which {@link #sizedArray} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public B setSizedArray( int[] pSizedArray ) {
       // Assign value to attribute
       if (pSizedArray != null) {
@@ -175,6 +179,7 @@ public class ChildAA extends ChildA {
      * @param pRequiredArray Collection to which {@link #requiredArray} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public B setRequiredArray( @MyNotEmptyProperty String[] pRequiredArray ) {
       // Assign value to attribute
       if (pRequiredArray != null) {

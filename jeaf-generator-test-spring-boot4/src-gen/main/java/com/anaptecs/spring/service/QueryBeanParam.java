@@ -16,6 +16,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class QueryBeanParam {
@@ -142,6 +144,7 @@ public class QueryBeanParam {
      * @param pBookingCode Value to which {@link #bookingCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBookingCode( @MyNotNullProperty BookingCode pBookingCode ) {
       // Assign value to attribute
       bookingCode = pBookingCode;
@@ -154,6 +157,7 @@ public class QueryBeanParam {
      * @param pMaxResults Value to which {@link #maxResults} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setMaxResults( int pMaxResults ) {
       // Assign value to attribute
       maxResults = pMaxResults;
@@ -166,6 +170,7 @@ public class QueryBeanParam {
      * @param pSortCriteria Collection to which {@link #sortCriteria} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setSortCriteria( List<MySortCriteria> pSortCriteria ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pSortCriteria != null) {

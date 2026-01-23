@@ -14,6 +14,8 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -99,6 +101,7 @@ public abstract class AdvancedPOJOBase {
      * @param pReadonlyDefault Value to which {@link #readonlyDefault} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setReadonlyDefault( int pReadonlyDefault ) {
       // Assign value to attribute
       readonlyDefault = pReadonlyDefault;
@@ -111,6 +114,7 @@ public abstract class AdvancedPOJOBase {
      * @param pIntWithDefault Value to which {@link #intWithDefault} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setIntWithDefault( Integer pIntWithDefault ) {
       // Assign value to attribute
       intWithDefault = pIntWithDefault;

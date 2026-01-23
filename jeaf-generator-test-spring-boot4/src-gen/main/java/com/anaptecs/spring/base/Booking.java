@@ -16,6 +16,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -145,6 +147,7 @@ public class Booking {
      * @param pBookingID Value to which {@link #bookingID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBookingID( @MyNotNullProperty BookingID pBookingID ) {
       bookingID = pBookingID;
       return this;
@@ -156,6 +159,7 @@ public class Booking {
      * @param pCustomerName Value to which {@link #customerName} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCustomerName( @MyNotNullProperty String pCustomerName ) {
       // Assign value to attribute
       customerName = pCustomerName;
@@ -168,6 +172,7 @@ public class Booking {
      * @param pInventories Collection to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setInventories( List<InventoryType> pInventories ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pInventories != null) {

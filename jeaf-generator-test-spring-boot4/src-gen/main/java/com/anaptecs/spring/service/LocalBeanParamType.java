@@ -10,6 +10,8 @@ import java.util.Objects;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class LocalBeanParamType {
@@ -117,6 +119,7 @@ public class LocalBeanParamType {
      * @param pLocalKey Value to which {@link #localKey} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setLocalKey( @MyNotNullProperty String pLocalKey ) {
       // Assign value to attribute
       localKey = pLocalKey;
@@ -129,6 +132,7 @@ public class LocalBeanParamType {
      * @param pLocalID Value to which {@link #localID} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setLocalID( @MyNotNullProperty String pLocalID ) {
       // Assign value to attribute
       localID = pLocalID;

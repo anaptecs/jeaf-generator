@@ -25,6 +25,8 @@ import javax.validation.constraints.Size;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -456,6 +458,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pABoolean Value to which {@link #aBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
       aBoolean = pABoolean;
@@ -468,6 +471,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBBoolean Value to which {@link #bBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBBoolean( Boolean pBBoolean ) {
       // Assign value to attribute
       bBoolean = pBBoolean;
@@ -480,6 +484,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pCBoolean Value to which {@link #cBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCBoolean( boolean pCBoolean ) {
       // Assign value to attribute
       cBoolean = pCBoolean;
@@ -492,6 +497,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pAByte Value to which {@link #aByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAByte( byte pAByte ) {
       // Assign value to attribute
       aByte = pAByte;
@@ -504,6 +510,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBByte Value to which {@link #bByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBByte( Byte pBByte ) {
       // Assign value to attribute
       bByte = pBByte;
@@ -516,6 +523,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pAShort Value to which {@link #aShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAShort( short pAShort ) {
       // Assign value to attribute
       aShort = pAShort;
@@ -528,6 +536,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBShort Value to which {@link #bShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBShort( Short pBShort ) {
       // Assign value to attribute
       bShort = pBShort;
@@ -540,6 +549,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pAInteger Value to which {@link #aInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAInteger( int pAInteger ) {
       // Assign value to attribute
       aInteger = pAInteger;
@@ -552,6 +562,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBInteger Value to which {@link #bInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBInteger( Integer pBInteger ) {
       // Assign value to attribute
       bInteger = pBInteger;
@@ -564,6 +575,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pCInteger Value to which {@link #cInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCInteger( Integer pCInteger ) {
       // Assign value to attribute
       cInteger = pCInteger;
@@ -576,6 +588,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pALong Value to which {@link #aLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setALong( long pALong ) {
       // Assign value to attribute
       aLong = pALong;
@@ -588,6 +601,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBLong Value to which {@link #bLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBLong( Long pBLong ) {
       // Assign value to attribute
       bLong = pBLong;
@@ -600,6 +614,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pABigInteger Value to which {@link #aBigInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setABigInteger( BigInteger pABigInteger ) {
       // Assign value to attribute
       aBigInteger = pABigInteger;
@@ -612,6 +627,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pACharacter Value to which {@link #aCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setACharacter( char pACharacter ) {
       // Assign value to attribute
       aCharacter = pACharacter;
@@ -624,6 +640,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBCharacter Value to which {@link #bCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBCharacter( Character pBCharacter ) {
       // Assign value to attribute
       bCharacter = pBCharacter;
@@ -636,6 +653,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pAFloat Value to which {@link #aFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAFloat( float pAFloat ) {
       // Assign value to attribute
       aFloat = pAFloat;
@@ -648,6 +666,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBFloat Value to which {@link #bFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBFloat( Float pBFloat ) {
       // Assign value to attribute
       bFloat = pBFloat;
@@ -660,6 +679,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pADouble Value to which {@link #aDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setADouble( double pADouble ) {
       // Assign value to attribute
       aDouble = pADouble;
@@ -672,6 +692,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBDouble Value to which {@link #bDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBDouble( Double pBDouble ) {
       // Assign value to attribute
       bDouble = pBDouble;
@@ -684,6 +705,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setABigDecimal( BigDecimal pABigDecimal ) {
       // Assign value to attribute
       aBigDecimal = pABigDecimal;
@@ -696,6 +718,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pAString Value to which {@link #aString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAString( String pAString ) {
       // Assign value to attribute
       aString = pAString;
@@ -708,6 +731,7 @@ public class PrimitiveObjectWithRestrictions {
      * @param pBString Value to which {@link #bString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBString( String pBString ) {
       // Assign value to attribute
       bString = pBString;

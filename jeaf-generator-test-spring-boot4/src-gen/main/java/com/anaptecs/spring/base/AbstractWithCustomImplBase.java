@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonAutoDetect(
@@ -65,6 +67,7 @@ public abstract class AbstractWithCustomImplBase {
      * @param pJustAProperty Value to which {@link #justAProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setJustAProperty( int pJustAProperty ) {
       // Assign value to attribute
       justAProperty = pJustAProperty;

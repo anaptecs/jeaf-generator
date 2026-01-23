@@ -14,6 +14,8 @@ import javax.validation.constraints.PositiveOrZero;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -100,6 +102,7 @@ public abstract class PlainPOJOBase {
      * @param pHello Value to which {@link #hello} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setHello( String pHello ) {
       // Assign value to attribute
       hello = pHello;
@@ -112,6 +115,7 @@ public abstract class PlainPOJOBase {
      * @param pWorld Value to which {@link #world} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setWorld( Integer pWorld ) {
       // Assign value to attribute
       world = pWorld;

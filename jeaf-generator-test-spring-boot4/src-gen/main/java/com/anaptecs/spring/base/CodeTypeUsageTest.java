@@ -17,6 +17,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -171,6 +173,7 @@ public class CodeTypeUsageTest {
      * @param pBooleanCode Value to which {@link #booleanCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBooleanCode( @MyNotNullProperty BooleanCodeType pBooleanCode ) {
       // Assign value to attribute
       booleanCode = pBooleanCode;
@@ -183,6 +186,7 @@ public class CodeTypeUsageTest {
      * @param pBooleanCodeAssociation Collection to which {@link #booleanCodeAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setBooleanCodeAssociation( Set<BooleanCodeType> pBooleanCodeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pBooleanCodeAssociation != null) {
@@ -217,6 +221,7 @@ public class CodeTypeUsageTest {
      * @param pShortCodeTypeAssociation Collection to which {@link #shortCodeTypeAssociation} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setShortCodeTypeAssociation( @MyNotEmptyProperty Set<ShortCodeType> pShortCodeTypeAssociation ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pShortCodeTypeAssociation != null) {
@@ -251,6 +256,7 @@ public class CodeTypeUsageTest {
      * @param pStringCode Value to which {@link #stringCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setStringCode( @MyNotNullProperty StringCodeType pStringCode ) {
       // Assign value to attribute
       stringCode = pStringCode;
@@ -263,6 +269,7 @@ public class CodeTypeUsageTest {
      * @param pCharacterCode Value to which {@link #characterCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCharacterCode( CharacterCode pCharacterCode ) {
       characterCode = pCharacterCode;
       return this;

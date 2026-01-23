@@ -11,6 +11,8 @@ import java.util.Objects;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class SpecialContext extends Context {
@@ -125,6 +127,7 @@ public class SpecialContext extends Context {
      * @param pSpecificHeader Value to which {@link #specificHeader} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setSpecificHeader( @MyNotNullProperty String pSpecificHeader ) {
       // Assign value to attribute
       specificHeader = pSpecificHeader;
@@ -137,6 +140,7 @@ public class SpecialContext extends Context {
      * @param pChannelType Value to which {@link #channelType} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setChannelType( @MyNotNullProperty ChannelType pChannelType ) {
       // Assign value to attribute
       channelType = pChannelType;

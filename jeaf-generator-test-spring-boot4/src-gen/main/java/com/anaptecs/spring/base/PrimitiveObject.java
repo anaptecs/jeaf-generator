@@ -13,6 +13,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -411,6 +413,7 @@ public class PrimitiveObject {
      * @param pABoolean Value to which {@link #aBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setABoolean( boolean pABoolean ) {
       // Assign value to attribute
       aBoolean = pABoolean;
@@ -423,6 +426,7 @@ public class PrimitiveObject {
      * @param pBBoolean Value to which {@link #bBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBBoolean( @MyNotNullProperty Boolean pBBoolean ) {
       // Assign value to attribute
       bBoolean = pBBoolean;
@@ -435,6 +439,7 @@ public class PrimitiveObject {
      * @param pCBoolean Value to which {@link #cBoolean} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCBoolean( boolean pCBoolean ) {
       // Assign value to attribute
       cBoolean = pCBoolean;
@@ -447,6 +452,7 @@ public class PrimitiveObject {
      * @param pAByte Value to which {@link #aByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAByte( byte pAByte ) {
       // Assign value to attribute
       aByte = pAByte;
@@ -459,6 +465,7 @@ public class PrimitiveObject {
      * @param pBByte Value to which {@link #bByte} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBByte( @MyNotNullProperty Byte pBByte ) {
       // Assign value to attribute
       bByte = pBByte;
@@ -471,6 +478,7 @@ public class PrimitiveObject {
      * @param pAShort Value to which {@link #aShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAShort( short pAShort ) {
       // Assign value to attribute
       aShort = pAShort;
@@ -483,6 +491,7 @@ public class PrimitiveObject {
      * @param pBShort Value to which {@link #bShort} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBShort( @MyNotNullProperty Short pBShort ) {
       // Assign value to attribute
       bShort = pBShort;
@@ -495,6 +504,7 @@ public class PrimitiveObject {
      * @param pAInteger Value to which {@link #aInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAInteger( int pAInteger ) {
       // Assign value to attribute
       aInteger = pAInteger;
@@ -507,6 +517,7 @@ public class PrimitiveObject {
      * @param pBInteger Value to which {@link #bInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBInteger( @MyNotNullProperty Integer pBInteger ) {
       // Assign value to attribute
       bInteger = pBInteger;
@@ -519,6 +530,7 @@ public class PrimitiveObject {
      * @param pCInteger Value to which {@link #cInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCInteger( @MyNotNullProperty Integer pCInteger ) {
       // Assign value to attribute
       cInteger = pCInteger;
@@ -531,6 +543,7 @@ public class PrimitiveObject {
      * @param pALong Value to which {@link #aLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setALong( long pALong ) {
       // Assign value to attribute
       aLong = pALong;
@@ -543,6 +556,7 @@ public class PrimitiveObject {
      * @param pBLong Value to which {@link #bLong} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBLong( @MyNotNullProperty Long pBLong ) {
       // Assign value to attribute
       bLong = pBLong;
@@ -555,6 +569,7 @@ public class PrimitiveObject {
      * @param pABigInteger Value to which {@link #aBigInteger} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setABigInteger( @MyNotNullProperty BigInteger pABigInteger ) {
       // Assign value to attribute
       aBigInteger = pABigInteger;
@@ -567,6 +582,7 @@ public class PrimitiveObject {
      * @param pACharacter Value to which {@link #aCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setACharacter( char pACharacter ) {
       // Assign value to attribute
       aCharacter = pACharacter;
@@ -579,6 +595,7 @@ public class PrimitiveObject {
      * @param pBCharacter Value to which {@link #bCharacter} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBCharacter( @MyNotNullProperty Character pBCharacter ) {
       // Assign value to attribute
       bCharacter = pBCharacter;
@@ -591,6 +608,7 @@ public class PrimitiveObject {
      * @param pAFloat Value to which {@link #aFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAFloat( float pAFloat ) {
       // Assign value to attribute
       aFloat = pAFloat;
@@ -603,6 +621,7 @@ public class PrimitiveObject {
      * @param pBFloat Value to which {@link #bFloat} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBFloat( @MyNotNullProperty Float pBFloat ) {
       // Assign value to attribute
       bFloat = pBFloat;
@@ -615,6 +634,7 @@ public class PrimitiveObject {
      * @param pADouble Value to which {@link #aDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setADouble( double pADouble ) {
       // Assign value to attribute
       aDouble = pADouble;
@@ -627,6 +647,7 @@ public class PrimitiveObject {
      * @param pBDouble Value to which {@link #bDouble} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBDouble( @MyNotNullProperty Double pBDouble ) {
       // Assign value to attribute
       bDouble = pBDouble;
@@ -639,6 +660,7 @@ public class PrimitiveObject {
      * @param pABigDecimal Value to which {@link #aBigDecimal} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setABigDecimal( @MyNotNullProperty BigDecimal pABigDecimal ) {
       // Assign value to attribute
       aBigDecimal = pABigDecimal;
@@ -651,6 +673,7 @@ public class PrimitiveObject {
      * @param pAString Value to which {@link #aString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setAString( @MyNotNullProperty String pAString ) {
       // Assign value to attribute
       aString = pAString;
@@ -663,6 +686,7 @@ public class PrimitiveObject {
      * @param pBString Value to which {@link #bString} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setBString( @MyNotNullProperty String pBString ) {
       // Assign value to attribute
       bString = pBString;

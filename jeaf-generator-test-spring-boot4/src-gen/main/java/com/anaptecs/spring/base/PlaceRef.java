@@ -10,8 +10,10 @@ import java.util.Objects;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
@@ -85,6 +87,7 @@ public abstract class PlaceRef {
      * @param pName Value to which {@link #name} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setName( @MyNotNullProperty String pName ) {
       // Assign value to attribute
       name = pName;
@@ -97,6 +100,7 @@ public abstract class PlaceRef {
      * @param pType Value to which {@link #type} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setType( @MyNotNullProperty MyType pType ) {
       type = pType;
       return this.self();

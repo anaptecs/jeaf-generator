@@ -12,6 +12,8 @@ import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -126,6 +128,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
      * @param pWriteable Value to which {@link #writeable} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setWriteable( Integer pWriteable ) {
       // Assign value to attribute
       writeable = pWriteable;
@@ -138,6 +141,7 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
      * @param pBooleanDefault Value to which {@link #booleanDefault} should be set.
      * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public B setBooleanDefault( Boolean pBooleanDefault ) {
       // Assign value to attribute
       booleanDefault = pBooleanDefault;

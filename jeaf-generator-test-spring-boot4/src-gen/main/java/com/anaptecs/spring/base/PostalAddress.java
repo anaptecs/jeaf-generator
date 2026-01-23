@@ -11,6 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
@@ -177,6 +179,7 @@ public class PostalAddress {
      * @param pStreet Value to which {@link #street} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setStreet( @MyNotNullProperty String pStreet ) {
       // Assign value to attribute
       street = pStreet;
@@ -189,6 +192,7 @@ public class PostalAddress {
      * @param pHouseNumber Value to which {@link #houseNumber} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setHouseNumber( @MyNotNullProperty String pHouseNumber ) {
       // Assign value to attribute
       houseNumber = pHouseNumber;
@@ -201,6 +205,7 @@ public class PostalAddress {
      * @param pCity Value to which {@link #city} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCity( @MyNotNullProperty String pCity ) {
       // Assign value to attribute
       city = pCity;
@@ -213,6 +218,7 @@ public class PostalAddress {
      * @param pPostalCode Value to which {@link #postalCode} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setPostalCode( int pPostalCode ) {
       // Assign value to attribute
       postalCode = pPostalCode;
@@ -225,6 +231,7 @@ public class PostalAddress {
      * @param pCountry Value to which {@link #country} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setCountry( @MyNotNullProperty String pCountry ) {
       // Assign value to attribute
       country = pCountry;

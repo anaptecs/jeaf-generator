@@ -17,6 +17,8 @@ import com.anaptecs.jeaf.xfun.api.common.ObjectID;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
@@ -104,6 +106,7 @@ public abstract class POJOWithIDnMethodBase implements Identifiable<ObjectID> {
      * @param pAttr Value to which {@link #attr} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setAttr( Double pAttr ) {
       // Assign value to attribute
       attr = pAttr;

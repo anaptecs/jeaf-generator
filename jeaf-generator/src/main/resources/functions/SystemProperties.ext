@@ -19,10 +19,12 @@ cached List[String] getSystemPropertyValues(String propertyName, String defaultV
 	if propertyName.getSystemPropertyValues().isEmpty
 	then {defaultValue}.toList()
 	else propertyName.getSystemPropertyValues();
-    
 
 cached boolean generateJSONAutoDetectAnnotationOnClass():
    getBooleanSystemProperty("switch.gen.jackson.jsonautodetect.on.class", false);
+
+cached boolean generateJsonSetterAnnotationOnBuilderOperations():
+   getBooleanSystemProperty("jeaf.generator.generateJsonSetterAnnotationOnBuilderOperations", false);
 
 cached boolean groupBreakingChangesReportByPackage():
     getBooleanSystemProperty("switch.gen.breaking.changes.report.groupByPackage", true);

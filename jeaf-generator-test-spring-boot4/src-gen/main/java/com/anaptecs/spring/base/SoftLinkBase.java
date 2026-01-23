@@ -11,6 +11,8 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
@@ -110,6 +112,7 @@ public abstract class SoftLinkBase {
      * @param pObjectID Value to which {@link #objectID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setObjectID( long pObjectID ) {
       // Assign value to attribute
       objectID = pObjectID;
@@ -122,6 +125,7 @@ public abstract class SoftLinkBase {
      * @param pDataUnit Value to which {@link #dataUnit} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setDataUnit( @MyNotNullProperty DataUnit pDataUnit ) {
       dataUnit = pDataUnit;
       return this;
@@ -133,6 +137,7 @@ public abstract class SoftLinkBase {
      * @param pEntity Value to which {@link #entity} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setEntity( @MyNotNullProperty Entity pEntity ) {
       entity = pEntity;
       return this;
@@ -144,6 +149,7 @@ public abstract class SoftLinkBase {
      * @param pRefrenceID Value to which {@link #refrenceID} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setRefrenceID( @MyNotNullProperty String pRefrenceID ) {
       // Assign value to attribute
       refrenceID = pRefrenceID;

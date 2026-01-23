@@ -22,6 +22,8 @@ import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
 import com.anaptecs.spring.base.TimeUnit;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 public class MultiValuedHeaderBeanParam {
@@ -259,6 +261,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pNames Collection to which {@link #names} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setNames( String[] pNames ) {
       // Assign value to attribute
       if (pNames != null) {
@@ -277,6 +280,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pInts Value to which {@link #ints} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setInts( @MyNotEmptyProperty int[] pInts ) {
       // Assign value to attribute
       if (pInts != null) {
@@ -295,6 +299,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pDoubles Collection to which {@link #doubles} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setDoubles( Double[] pDoubles ) {
       // Assign value to attribute
       if (pDoubles != null) {
@@ -313,6 +318,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pCodes Collection to which {@link #codes} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setCodes( StringCode[] pCodes ) {
       // Assign value to attribute
       if (pCodes != null) {
@@ -331,6 +337,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pStringCodeList Collection to which {@link #stringCodeList} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setStringCodeList( Set<StringCode> pStringCodeList ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pStringCodeList != null) {
@@ -365,6 +372,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pStartDate Value to which {@link #startDate} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP)
     public Builder setStartDate( LocalDate pStartDate ) {
       // Assign value to attribute
       startDate = pStartDate;
@@ -377,6 +385,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pDates Collection to which {@link #dates} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setDates( LocalDate[] pDates ) {
       // Assign value to attribute
       if (pDates != null) {
@@ -395,6 +404,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pTimestamps Collection to which {@link #timestamps} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setTimestamps( Set<LocalDateTime> pTimestamps ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimestamps != null) {
@@ -428,6 +438,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pCalendars Collection to which {@link #calendars} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setCalendars( Calendar[] pCalendars ) {
       // Assign value to attribute
       if (pCalendars != null) {
@@ -446,6 +457,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pUtilDates Collection to which {@link #utilDates} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setUtilDates( Date[] pUtilDates ) {
       // Assign value to attribute
       if (pUtilDates != null) {
@@ -464,6 +476,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pSqlTimestamps Collection to which {@link #sqlTimestamps} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setSqlTimestamps( Timestamp[] pSqlTimestamps ) {
       // Assign value to attribute
       if (pSqlTimestamps != null) {
@@ -482,6 +495,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pTimeUnits Collection to which {@link #timeUnits} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setTimeUnits( Set<TimeUnit> pTimeUnits ) {
       // To ensure immutability we have to copy the content of the passed collection.
       if (pTimeUnits != null) {
@@ -532,6 +546,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pTimeUnitArray Collection to which {@link #timeUnitArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setTimeUnitArray( TimeUnit[] pTimeUnitArray ) {
       // Assign value to attribute
       if (pTimeUnitArray != null) {
@@ -550,6 +565,7 @@ public class MultiValuedHeaderBeanParam {
      * @param pBase64 Value to which {@link #base64} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setBase64( byte[] pBase64 ) {
       // Assign value to attribute
       if (pBase64 != null) {
