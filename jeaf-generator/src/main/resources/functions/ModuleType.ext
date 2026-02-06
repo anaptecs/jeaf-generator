@@ -1,0 +1,42 @@
+
+
+boolean isModuleTypePOM(String moduleType):
+	moduleType == "POM";
+
+boolean isModuleTypeBOM(String moduleType):
+	moduleType == "BOM";
+
+boolean isModuleTypeOpenAPI(String moduleType):
+	moduleType == "OPEN_API";
+
+boolean isModuleTypeJAVA(String moduleType):
+	moduleType == "JAVA";
+
+boolean isModuleTypeJavaRuntime(String moduleType):
+	moduleType == "JAVA_RUNTIME";
+
+boolean isModuleTypeJavaStarter(String moduleType):
+	moduleType == "JAVA_STARTER";
+
+boolean isModuleTypeServices(String moduleType):
+	moduleType == "SERVICES";
+
+boolean isModuleTypeRESTClient(String moduleType):
+	moduleType == "REST_CLIENT";
+
+boolean isModuleTypeRESTClientStarter(String moduleType):
+	moduleType == "REST_CLIENT_STARTER";
+
+boolean isModuleTypeRESTController(String moduleType):
+	moduleType == "REST_CONTROLLER";
+
+boolean isModuleTypeRESTControllerStarter(String moduleType):
+	moduleType == "REST_CONTROLLER_STARTER";
+
+boolean isModuleTypeIntegrationTest(String moduleType):
+	moduleType == "INTEGRATION_TEST";
+
+boolean isModuleTypeCustom(String moduleType):
+	moduleType == "CUSTOM";
+
+

@@ -137,4 +137,42 @@ cached String nextMajorReleasePublishingDate():
 
 cached String nextMajorReleaseVersion():
    getSystemProperty("jeaf.generator.nextMajorReleaseVersion", "");    
-   
+
+//
+// Properties specific to Maven code generation.
+//
+cached boolean generateMavenProjectStructure():
+	getBooleanSystemProperty("jeaf.generator.generateMavenProjectStructure", false);
+
+cached boolean generateGeneratorProjectParentPOM():
+	getBooleanSystemProperty("jeaf.generator.generateGeneratorProjectParentPOM", false);
+
+cached boolean initialProjectGeneration():
+	getBooleanSystemProperty("jeaf.generator.initialProjectGeneration", false);
+
+cached String getInitialOutputDirectory():
+	getSystemProperty("jeaf.generator.initialOutputDirectory", "");
+	
+cached String getProjectNamePattern():
+	getSystemProperty("jeaf.generator.mavenProjectNamePattern", "").trim();
+
+cached String getProjectDescriptionPattern():
+	getSystemProperty("jeaf.generator.mavenProjectDescriptionPattern", "").trim();
+
+cached String getProjectURLPattern():
+	getSystemProperty("jeaf.generator.mavenProjectURLPattern", "").trim();
+
+cached String getGroupIdPattern():
+	getSystemProperty("jeaf.generator.mavenGroupIdPattern", "").trim();
+
+cached String getArtifactIdPattern():
+	getSystemProperty("jeaf.generator.mavenArtifactIdPattern", "").trim();
+
+cached String getSCMPathPattern():
+	getSystemProperty("jeaf.generator.mavenScmPathPattern", "").trim();
+
+cached String getVersionPropertyNamePattern():
+	getSystemProperty("jeaf.generator.mavenVersionPropertyNamePattern", "").trim();
+
+cached String getMavenArtifactDefaultVersion():
+	getSystemProperty("jeaf.generator.mavenArtifactDefaultVersion", "").trim();

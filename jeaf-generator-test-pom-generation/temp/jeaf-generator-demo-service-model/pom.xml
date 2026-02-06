@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.anaptecs.jeaf</groupId>
+		<artifactId>jeaf-generator-project-parent</artifactId>
+		<version>47.1.1</version>
+	</parent>
+
+	<groupId>com.anaptecs.maven</groupId>
+	<artifactId>jeaf-generator-demo-service-model</artifactId>
+	<version>47.1.1</version>
+
+	<packaging>pom</packaging>
+	<name>JEAF Generator Demo Service Model</name>
+
+
+	<!-- Custom section for information about developers -->
+	
+	<!-- PROTECTED REGION ID(developers:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+	<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+	<!--
+	<developers>
+		<developer>
+			<name></name>
+			<email></email>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+		</developer>
+	</developers>
+	-->
+	
+	<!-- PROTECTED REGION END -->
+
+	<scm>
+		<connection>scm:git:https://github.com/anaptecs/jeaf-generator-demo-service-model>.git</connection>
+		<developerConnection>scm:git:https://github.com/anaptecs/jeaf-generator-demo-service-model>.git</developerConnection>
+		<url>https://github.com/anaptecs/jeaf-generator-demo-service-model></url>
+		<tag>HEAD</tag>
+	</scm>
+
+
+	<!-- Custom section for distribution management -->
+	<distributionManagement>
+		
+		<!-- PROTECTED REGION ID(distributionManagement:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		
+		<!-- PROTECTED REGION END -->
+	</distributionManagement>
+
+
+	<!-- Custom section for license information -->
+	
+	<!-- PROTECTED REGION ID(licenses:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+	<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+	<!--
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	-->
+	
+	<!-- PROTECTED REGION END -->
+
+
+	<properties>
+		<!-- UML package which will be the one that is considered during code generation --> 
+		<umlPackage>com.anaptecs.maven</umlPackage>
+
+		<!-- Add properties for versions of dependent projects -->
+		<jeaf-generator-other-data-types.version>47.1.1</jeaf-generator-other-data-types.version>
+		<jeaf-generator-demo-data-types.version>47.1.1</jeaf-generator-demo-data-types.version>
+-
+		<!-- Custom section for properties -->
+		
+		<!-- PROTECTED REGION ID(properties:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		<!-- Add your custom properties here -->
+		
+		<!-- PROTECTED REGION END -->
+	</properties>
+	
+	<modules>
+		<module>jeaf-generator-demo-service-model-bom</module>
+		<module>jeaf-generator-demo-service-model-open-api</module>
+		<module>jeaf-generator-demo-service-model-java</module>
+		<module>jeaf-generator-demo-service-model-java-runtime</module>
+		<module>jeaf-generator-demo-service-model-services</module>
+		<module>jeaf-generator-demo-service-model-rest-client</module>
+		<module>jeaf-generator-demo-service-model-rest-client-starter</module>
+		<module>jeaf-generator-demo-service-model-rest-controller</module>
+		<module>jeaf-generator-demo-service-model-rest-controller-starter</module>
+		<module>jeaf-generator-demo-service-model-integration-test</module>
+	</modules>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-other-data-types-bom</artifactId>
+				<version>${jeaf-generator-other-data-types.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-data-types-bom</artifactId>
+				<version>${jeaf-generator-demo-data-types.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Section for custom dependency management entries -->
+			
+			<!-- PROTECTED REGION ID(dependencyManagement:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+			<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+			
+			<!-- PROTECTED REGION END -->
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+		<!-- Section for custom dependency entries -->
+		
+		<!-- PROTECTED REGION ID(dependencies:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		
+		<!-- PROTECTED REGION END -->
+	</dependencies>
+
+
+	<profiles>
+		<!-- Section for custom profile entries -->
+		
+		<!-- PROTECTED REGION ID(profiles:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		
+		<!-- PROTECTED REGION END -->
+	</profiles>
+
+
+	<build>
+		<plugins>
+			<!-- Section for custom plugin entries -->
+			
+			<!-- PROTECTED REGION ID(plugins:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+			<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+			
+			<!-- PROTECTED REGION END -->
+		</plugins>
+	</build>
+</project>

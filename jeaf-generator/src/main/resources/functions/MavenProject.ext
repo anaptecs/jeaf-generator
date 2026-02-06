@@ -1,0 +1,274 @@
+extension java::GeneratorCommons;
+extension functions::SystemProperties;
+extension functions::NamedElement;
+extension functions::Javadoc;
+extension functions::MavenDependency;
+extension functions::ModuleType;
+
+cached boolean isMavenProject(uml::Element element) :
+	element.isStereotypeApplied("MavenProject");
+
+cached JMM::MavenProject asMavenProject(uml::Element element):
+	(JMM::MavenProject) element;
+
+cached String getMavenProjectName(JMM::MavenProject project):
+	if project.name.trim().length > 0
+	then project.name.trim().convertPatternToEffectiveValue(project)
+	else getProjectNamePattern().convertPatternToEffectiveValue(project);	
+
+cached String getMavenProjectDescription(JMM::MavenProject project):
+	if project.getMarkdownComment().length > 0
+	then project.getMarkdownComment().convertPatternToEffectiveValue(project)
+	else getProjectDescriptionPattern().convertPatternToEffectiveValue(project);
+	
+cached String getMavenProjectURL(JMM::MavenProject project):
+	if project.projectURL.trim().length > 0
+	then project.projectURL.trim().convertPatternToEffectiveValue(project)
+	else getProjectURLPattern().convertPatternToEffectiveValue(project);
+	
+cached String getGroupId(JMM::MavenProject project):
+	if project.groupId.trim().length > 0
+	then project.groupId.trim().convertPatternToEffectiveValue(project)
+	else getGroupIdPattern().convertPatternToEffectiveValue(project);
+	
+cached String getArtifactId(JMM::MavenProject project):
+	if project.artifactId.trim().length > 0
+	then project.artifactId.trim().convertPatternToEffectiveValue(project)
+	else getArtifactIdPattern().convertPatternToEffectiveValue(project);
+	
+cached String getProjectID(JMM::MavenProject project):
+	project.getGroupId() + ":" + project.getArtifactId();
+
+cached String getVersion(JMM::MavenProject project):
+	if project.getProjectID().javaGetArtifactVersion().length > 0
+	then project.getProjectID().javaGetArtifactVersion()
+	else getMavenArtifactDefaultVersion();
+
+cached String getSCMUrl(JMM::MavenProject project):
+	if project.scmPath.trim().length > 0
+	then project.scmPath.trim().convertPatternToEffectiveValue(project)
+	else getSCMPathPattern().convertPatternToEffectiveValue(project);
+	
+cached String getSCMConnection(JMM::MavenProject project):
+	javaGetSCMConnection(project.scmType.name, project.getSCMUrl());
+
+
+cached String getVersionPropertyName(JMM::MavenProject project):
+	getVersionPropertyNamePattern().convertPatternToEffectiveValue(project);
+	
+cached String getVersionPropertyVariable(JMM::MavenProject project):
+	"${" + project.getVersionPropertyName() + "}";
+
+// DOMAIN_PACKAGE_NAME
+// DOMAIN_PACKAGE_FQN
+// DOMAIN_NAME
+// DOMAIN_NAME_JAVA
+// DOMAIN_GROUP_ID
+// DOMAIN_ARTIFACT_ID
+// DOMAIN_SCM_PATH
+
+// PROJECT_NAME_MAVEN
+private String getProjectNameMaven(JMM::MavenProject project):
+	project.name.toMavenId();
+
+// PROJECT_PACKAGE_NAME
+private String getMavenProjectPackageName(JMM::MavenProject project):
+	project.getNearestPackage().name;
+	
+// PROJECT_PACKAGE_FQN
+cached String getMavenProjectPackageNameFQN(JMM::MavenProject project):
+	project.getNearestPackage().qualifiedName();
+
+// PROJECT_ARCHETYPE
+private String getArchetype(JMM::MavenProject project):
+	project.archetype.name;
+	
+private String javaGetArchetypeName(String archeType):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype.getName(java.lang.String);
+
+// PROJECT_ARCHETYPE_NAME 
+private String getArchetypeName(JMM::MavenProject project):
+	project.archetype.name.javaGetArchetypeName();
+
+// PROJECT_ARCHETYPE_JAVA_SUFFIX 
+private String getArchetypeJavaSuffix(JMM::MavenProject project):
+	project.archetype.name.javaGetArchetypeJavaSuffix();
+
+private String javaGetArchetypeJavaSuffix(String archeType):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype.getJavaSuffix(java.lang.String);
+
+// PROJECT_ARCHETYPE_MAVEN_SUFFIX
+private String getArchetypeMavenSuffix(JMM::MavenProject project):
+	project.archetype.name.javaGetArchetypeMavenSuffix();
+
+private String javaGetArchetypeMavenSuffix(String archeType):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype.getMavenSuffix(java.lang.String);
+
+
+private String javaGetArtifactVersion(String projectID):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ArtifactCache.getArtifactVersion(java.lang.String);
+
+// MAVEN_PROJECT_SCM_PATH
+// MAVEN_PROJECT_SCM_EXTENSION	
+
+private String javaGetSCMConnection(String scmType, String url):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.SCMType.getMavenConnection(java.lang.String, java.lang.String);
+
+
+private String convertPatternToEffectiveValue(String pattern, JMM::MavenProject project):
+	if pattern.length == 0
+	then ""
+	else 
+		pattern
+			.inlineProjectNameMaven(project)
+			.inlineMavenProjectPackageName(project)
+			.inlineMavenProjectPackageNameFQN(project)
+			.inlineArchetype(project)
+			.inlineArchetypeName(project)
+			.inlineArchetypeJavaSuffix(project)
+			.inlineArchetypeMavenSuffix(project)
+			.inlineArtifactId(project)
+			.inlineGroupId(project)
+	;
+	
+private String inlineProjectNameMaven(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_NAME_MAVEN]")
+	then pattern.replaceAll("\\$\\[PROJECT_NAME_MAVEN\\]", project.getProjectNameMaven())
+	else pattern;
+
+private String inlineMavenProjectPackageName(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_PACKAGE_NAME]")
+	then pattern.replaceAll("\\$\\[PROJECT_PACKAGE_NAME\\]", project.getMavenProjectPackageName())
+	else pattern;
+
+private String inlineMavenProjectPackageNameFQN(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_PACKAGE_NAME_FQN]")
+	then pattern.replaceAll("\\$\\[PROJECT_PACKAGE_NAME_FQN\\]", project.getMavenProjectPackageNameFQN())
+	else pattern;
+
+private String inlineArchetype(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_ARCHETYPE]")
+	then pattern.replaceAll("\\$\\[PROJECT_ARCHETYPE\\]", project.getArchetype())
+	else pattern;
+
+private String inlineArchetypeName(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_ARCHETYPE_NAME]")
+	then pattern.replaceAll("\\$\\[PROJECT_ARCHETYPE_NAME\\]", project.getArchetypeName())
+	else pattern;
+
+private String inlineArchetypeJavaSuffix(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_ARCHETYPE_JAVA_SUFFIX]")
+	then pattern.replaceAll("\\$\\[PROJECT_ARCHETYPE_JAVA_SUFFIX\\]", project.getArchetypeJavaSuffix())
+	else pattern;
+
+private String inlineArchetypeMavenSuffix(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_ARCHETYPE_MAVEN_SUFFIX]")
+	then pattern.replaceAll("\\$\\[PROJECT_ARCHETYPE_MAVEN_SUFFIX\\]", project.getArchetypeMavenSuffix())
+	else pattern;
+
+private String inlineArtifactId(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_ARTIFACT_ID]")
+	then pattern.replaceAll("\\$\\[PROJECT_ARTIFACT_ID\\]", project.getArtifactId())
+	else pattern;
+
+private String inlineGroupId(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[PROJECT_GROUP_ID]")
+	then pattern.replaceAll("\\$\\[PROJECT_GROUP_ID\\]", project.getArtifactId())
+	else pattern;
+
+
+private cached String toMavenId(String input):
+	input.toLowerCase().replaceAll(" ", "-");
+
+//
+// Maven Dependencies
+//
+cached boolean hasParentPOM(JMM::MavenProject project):
+	project.getParentPOM() != null;
+
+cached JMM::MavenProject getParentPOM(JMM::MavenProject project):
+	project.getMavenDependencies().selectFirst(e|e.isParentPOMDependency()).supplier.typeSelect(JMM::MavenProject).first();
+
+cached List[JMM::MavenProject] getDependentProjects(JMM::MavenProject project):
+	project.getMavenDependencies().select(e|e.isProjectDependency()).supplier.typeSelect(JMM::MavenProject);
+
+private List[JMM::MavenDependency] getMavenDependencies(JMM::MavenProject project):
+	project.clientDependency.typeSelect(JMM::MavenDependency).sortBy(e|e.supplier.first().name).sortBy(e|e.order);
+
+
+//
+// Archetype operations.
+//
+
+cached isArchetypeGeneratorProjectParentPOM(JMM::MavenProject project):
+	project.archetype.name == "GENERATOR_PROJECT_PARENT_POM";
+
+cached isArchetypeDomain(JMM::MavenProject project):
+	project.archetype.name == "DOMAIN";
+
+cached isArchetypeDataTypes(JMM::MavenProject project):
+	project.archetype.name == "DATA_TYPES";
+
+cached isArchetypeServiceModel(JMM::MavenProject project):
+	project.archetype.name == "SERVICE_MODEL";
+
+cached isArchetypeMasterData(JMM::MavenProject project):
+	project.archetype.name == "MASTER_DATA";
+
+cached isArchetypeEvents(JMM::MavenProject project):
+	project.archetype.name == "EVENTS";
+
+cached isArchetypeImplementation(JMM::MavenProject project):
+	project.archetype.name == "IMPLEMENTATION";
+
+cached isArchetypeExternalProject(JMM::MavenProject project):
+	project.archetype.name == "EXTERNAL_PROJECT";
+
+cached isArchetypeCustom(JMM::MavenProject project):
+	project.archetype.name == "CUSTOM";
+	
+cached requiresProjectPOM(JMM::MavenProject project):
+	if project.isArchetypeGeneratorProjectParentPOM() || project.isArchetypeExternalProject()
+	then false
+	else true;
+
+
+cached String getPOMOutputDirectory(JMM::MavenProject project):
+	if initialProjectGeneration() == false
+	then ""
+	else getInitialOutputDirectory() + "/" + project.getArtifactId() + "/";
+
+cached String getBOMOutputDirectory(JMM::MavenProject project):
+	if initialProjectGeneration() == false
+	then project.getModuleArtifactId("BOM") + "/"
+	else getInitialOutputDirectory() + "/" + project.getArtifactId() + "/" + project.getModuleArtifactId("BOM") + "/";
+	
+//
+// Module names
+//
+
+
+cached List[String] getModuleTypesForBOM(JMM::MavenProject project):
+	project.getModuleTypes().select(e|e.isModuleTypeBOM() == false && e.isModuleTypeIntegrationTest() == false);
+
+cached List[String] getModuleTypes(JMM::MavenProject project):
+	project.archetype.name.javaGetModuleTypes();
+	
+private List[String] javaGetModuleTypes(String archetype):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype.getModuleTypeNames(java.lang.String);
+ 
+cached String getModuleArtifactId(JMM::MavenProject project, String moduleType):
+	project.getArtifactId().javaGetModuleArtifactId(moduleType);
+
+cached String getBOMModuleName(JMM::MavenProject project):
+	project.getMavenProjectName().javaGetModuleName("BOM");
+
+cached String getBOMArtifactId(JMM::MavenProject project):
+	project.getArtifactId().javaGetModuleArtifactId("BOM");
+	
+private String javaGetModuleName(String projectName, String moduleType):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getModuleName(java.lang.String, java.lang.String);
+
+private String javaGetModuleArtifactId(String projectName, String moduleType):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getArtifactId(java.lang.String, java.lang.String);
+	

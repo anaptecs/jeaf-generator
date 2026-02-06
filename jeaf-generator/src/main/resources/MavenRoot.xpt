@@ -1,0 +1,49 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION java::GeneratorCommons»
+
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::SystemProperties»
+«EXTENSION functions::MavenProject»
+«EXTENSION functions::ModuleType»
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+
+«DEFINE Root FOR Model»
+	«EXPAND Root FOREACH ownedElement»
+«ENDDEFINE»
+
+
+«DEFINE Root FOR Package»
+	«REM» Apply package white list as defined.«ENDREM»
+	«IF this.isMayBeInPackageWhitelist() == true»
+	  «EXPAND Root FOREACH ownedElement»	  
+	«ENDIF»
+«ENDDEFINE» 
+
+«DEFINE Root FOR MavenProject»
+	«IF this.isArchetypeGeneratorProjectParentPOM() && generateGeneratorProjectParentPOM()»
+		«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
+		«EXPAND maven::GeneratorProjectParentPOM::Generate»
+	«ENDIF»
+	
+	«IF generateMavenProjectStructure()»
+		«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
+		«IF this.requiresProjectPOM()»
+			«EXPAND maven::ProjectPOM::GenerateProjectPOM»
+		«ENDIF»
+		
+		«FOREACH this.getModuleTypes() AS moduleType»
+			«IF moduleType.isModuleTypeBOM()»
+				«EXPAND maven::BOM::GenerateBOM»
+			«ENDIF»
+		«ENDFOREACH»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR Object»
+«ENDDEFINE»
+
+ 

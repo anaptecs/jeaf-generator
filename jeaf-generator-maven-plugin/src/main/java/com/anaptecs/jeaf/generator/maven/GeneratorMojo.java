@@ -41,6 +41,7 @@ import com.anaptecs.jeaf.fwk.generator.util.OpenAPIVersion;
 import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
 import com.anaptecs.jeaf.fwk.generator.util.ReportFormat;
 import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
+import com.anaptecs.jeaf.fwk.generator.util.maven.ArtifactCache;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
 import com.anaptecs.jeaf.fwk.tools.message.generator.MessageConstantsGenerator;
@@ -1616,6 +1617,42 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "java,*")
   private String staticImportGroups;
 
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateMavenProjectStructure;
+
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateGeneratorProjectParentPOM;
+
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean initialProjectGeneration;
+
+  @Parameter(required = false, defaultValue = "temp")
+  private String initialOutputDirectory;
+
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectNamePattern;
+
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectDescriptionPattern;
+
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectURLPattern;
+
+  @Parameter(required = false, defaultValue = "$[PROJECT_PACKAGE_NAME_FQN]")
+  private String mavenGroupIdPattern;
+
+  @Parameter(required = false, defaultValue = "$[PROJECT_NAME_MAVEN]")
+  private String mavenArtifactIdPattern;
+
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenScmPathPattern;
+
+  @Parameter(required = false, defaultValue = "$[PROJECT_ARTIFACT_ID].version")
+  private String mavenVersionPropertyNamePattern;
+
+  @Parameter(required = false, defaultValue = "UNKNOWN_VERSION")
+  private String mavenArtifactDefaultVersion;
+
   @Component
   private BuildPluginManager pluginManager;
 
@@ -1636,6 +1673,9 @@ public class GeneratorMojo extends AbstractMojo {
   public void execute( ) throws MojoExecutionException, MojoFailureException {
     if (this.isGenerationRequested()) {
       this.setDefaults();
+
+      this.resolveArtifactVersions();
+
       // Show startup info.
       this.showStartupInfo();
 
@@ -1679,6 +1719,22 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Starting JEAF Generator " + XFun.getVersionInfo().getVersionString() + " (www.jeaf-generator.io)");
       lLog.info("Skipping code generation. According to Maven Plugin configuration nothing should be generated.");
       lLog.info("--------------------------------------------------------------------------------------");
+    }
+  }
+
+  private void resolveArtifactVersions( ) {
+    // Resolve versions of all dependencies (direct and transitive ones)
+    List<Artifact> lArtifacts = new ArrayList<>(mavenProject.getArtifacts());
+    lArtifacts.add(mavenProject.getParentArtifact());
+    lArtifacts.add(mavenProject.getArtifact());
+    Collections.sort(lArtifacts);
+
+    // Add versions of all artifacts to dependency cache, so that they can be used during code generation.
+    for (Artifact lDependency : lArtifacts) {
+      String lProjectID = lDependency.getGroupId() + ":" + lDependency.getArtifactId();
+      String lVersion = lDependency.getVersion();
+      this.getLog().info(lProjectID + ":" + lVersion);
+      ArtifactCache.addArtifactVersion(lProjectID, lVersion);
     }
   }
 
@@ -2226,6 +2282,25 @@ public class GeneratorMojo extends AbstractMojo {
     lLog.info("Java formatter stylesheet:                        " + javaFormatterStyleFile);
     lLog.info("XML formatter stylesheet:                         " + xmlFormatterStyleFile);
     lLog.info(" ");
+
+    if (generateMavenProjectStructure || generateGeneratorProjectParentPOM) {
+      lLog.info(" ");
+      lLog.info("Generate Maven Project Structure:                 " + generateMavenProjectStructure);
+      lLog.info("Generate JEAF Generator Project Parent POM:       " + generateGeneratorProjectParentPOM);
+
+      if (initialProjectGeneration) {
+        lLog.info("Initial Maven Project generation:                 " + initialProjectGeneration);
+        lLog.info("Output directory for initial project creation:    " + initialOutputDirectory);
+      }
+      lLog.info("Maven Project Name pattern:                       " + mavenProjectNamePattern);
+      lLog.info("Maven Project Description pattern:                " + mavenProjectDescriptionPattern);
+      lLog.info("Maven Project URL pattern:                        " + mavenProjectURLPattern);
+      lLog.info("Maven Project Group-Id pattern:                   " + mavenGroupIdPattern);
+      lLog.info("Maven Project Artifact-Id pattern:                " + mavenArtifactIdPattern);
+      lLog.info("Maven Project SCM Path pattern:                   " + mavenScmPathPattern);
+      lLog.info("Maven Project Version Property Name pattern:      " + mavenVersionPropertyNamePattern);
+      lLog.info("Default version for unknown artifacts:            " + mavenArtifactDefaultVersion);
+    }
   }
 
   private void cleanDirectories( ) {
@@ -2512,6 +2587,22 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("name.oid.row", peristentObjectsOIDRowName);
       System.setProperty("name.version.label.row", peristentObjectsVersionLabelRowName);
 
+      // System Properties for Maven code generation
+      System.setProperty(PROPERTY_PREFIX + "generateMavenProjectStructure", generateMavenProjectStructure.toString());
+      System.setProperty(PROPERTY_PREFIX + "generateGeneratorProjectParentPOM",
+          generateGeneratorProjectParentPOM.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "initialProjectGeneration", initialProjectGeneration.toString());
+      System.setProperty(PROPERTY_PREFIX + "initialOutputDirectory", initialOutputDirectory);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectNamePattern", mavenProjectNamePattern);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectDescriptionPattern", mavenProjectDescriptionPattern);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectURLPattern", mavenProjectURLPattern);
+      System.setProperty(PROPERTY_PREFIX + "mavenGroupIdPattern", mavenGroupIdPattern);
+      System.setProperty(PROPERTY_PREFIX + "mavenArtifactIdPattern", mavenArtifactIdPattern);
+      System.setProperty(PROPERTY_PREFIX + "mavenScmPathPattern", mavenScmPathPattern);
+      System.setProperty(PROPERTY_PREFIX + "mavenVersionPropertyNamePattern", mavenVersionPropertyNamePattern);
+      System.setProperty(PROPERTY_PREFIX + "mavenArtifactDefaultVersion", mavenArtifactDefaultVersion);
+
       // Add parameters for custom templates also as system properties.
       if (customTemplateParameters != null) {
         for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
@@ -2571,6 +2662,7 @@ public class GeneratorMojo extends AbstractMojo {
         else {
           lParams.put("customprofile.file", lProfileFilePath);
         }
+        lParams.put("basedir", mavenProject.getBasedir().getAbsolutePath());
         lParams.put("path.src.gen", sourceGenDirectory);
         lParams.put("path.src", sourceDirectory);
         lParams.put("path.res.gen", resourceGenDirectory);
@@ -2841,7 +2933,8 @@ public class GeneratorMojo extends AbstractMojo {
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
         | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateModelReport
         | generateBreakingChangesReport | generateRESTDeprecationReport | generateJavaDeprecationReport
-        | generateOpenAPISpec | generateJSONSerializers | enforceCustomTemplateExecution;
+        | generateOpenAPISpec | generateJSONSerializers | enforceCustomTemplateExecution
+        | generateMavenProjectStructure | generateGeneratorProjectParentPOM;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {

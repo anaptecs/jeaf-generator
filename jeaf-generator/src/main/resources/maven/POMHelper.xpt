@@ -1,0 +1,76 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION java::GeneratorCommons»
+«EXTENSION functions::MavenProject»
+
+
+«DEFINE POMCommonBegin FOR MavenProject»
+	<modelVersion>4.0.0</modelVersion>
+
+	«IF this.hasParentPOM() -»
+	<parent>
+		<groupId>«this.getParentPOM().getGroupId()»</groupId>
+		<artifactId>«this.getParentPOM().getArtifactId()»</artifactId>
+		<version>«this.getParentPOM().getVersion()»</version>
+	</parent>
+	«ENDIF-»
+
+	<groupId>«this.getGroupId()»</groupId>
+	<artifactId>«this.getArtifactId()»</artifactId>
+	<version>«this.getVersion()»</version>
+
+	<packaging>pom</packaging>
+	<name>«this.getMavenProjectName()»</name>
+«IF this.getMavenProjectDescription().length > 0 -»
+	<description>«this.getMavenProjectDescription()»</description>
+«ENDIF-»
+«IF this.getMavenProjectURL().length > 0 -»
+	<url>«this.getMavenProjectURL()»</url>
+«ENDIF-»
+
+
+	<!-- Custom section for information about developers -->
+	«PROTECT CSTART "\n\t<!-- " CEND " -->" ID "developers:"  + this.getProjectID()»
+	<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+	<!--
+	<developers>
+		<developer>
+			<name></name>
+			<email></email>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+		</developer>
+	</developers>
+	-->
+	«ENDPROTECT»
+
+	<scm>
+		<connection>«this.getSCMConnection()»</connection>
+		<developerConnection>«this.getSCMConnection()»</developerConnection>
+		<url>«this.getSCMUrl()»</url>
+		<tag>HEAD</tag>
+	</scm>
+
+
+	<!-- Custom section for distribution management -->
+	<distributionManagement>
+		«PROTECT CSTART "\n\t\t<!-- " CEND " -->" ID "distributionManagement:"  + this.getProjectID()»
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		«ENDPROTECT»
+	</distributionManagement>
+
+
+	<!-- Custom section for license information -->
+	«PROTECT CSTART "\n\t<!-- " CEND " -->" ID "licenses:"  + this.getProjectID()»
+	<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+	<!--
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+	-->
+	«ENDPROTECT»
+«ENDDEFINE»

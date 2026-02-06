@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
-    <bean class="oaw.uml2.Setup" standardUML2Setup="true"/>
-    
-    <component class="org.openarchitectureware.emf.XmiReader">
-        <modelFile value="${model.file}"/>
-        <outputSlot value="${output.slot}"/>
-    </component>
-    
-    <!-- Execute checks -->    
-    
-    <!-- Run Generator -->
-    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
-        <metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
-        <metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
-            <profile value="${profile.file}"/>
-        </metaModel>
-        <metaModel id="CustomProfile" class="oaw.uml2.profile.ProfileMetaModel">
-            <profile value="${customprofile.file}"/>
-        </metaModel>
+	<bean class="oaw.uml2.Setup" standardUML2Setup="true"/>
+
+	<component class="org.openarchitectureware.emf.XmiReader">
+		<modelFile value="${model.file}"/>
+		<outputSlot value="${output.slot}"/>
+	</component>
+
+	<!-- Run Generator -->
+	<component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+		<metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
+		<metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
+			<profile value="${profile.file}"/>
+		</metaModel>
+		<metaModel id="CustomProfile" class="oaw.uml2.profile.ProfileMetaModel">
+			<profile value="${customprofile.file}"/>
+		</metaModel>
 
 		<fileEncoding value="UTF-8"/>
 		<!-- Call EXPAND to run "root" template for every model element -->
 		<expand value="${template.root} FOR ${output.slot}"/>
 		
+		<outlet name="basedir" path="${basedir}/" overwrite="true"/>
 		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
 		<outlet name="src" path="${path.src}/" overwrite="false"/>
 		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
 		<outlet name="res"  path="${path.res}/" overwrite="false"/>
-        <outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
-        <outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
-        <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
-        <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
+		<outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
+		<outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
+		<outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
+		<outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
 		<outlet path="error" />
 		
 		<!-- protected regions configuration -->
 		<prSrcPaths value="${path.src.gen}"/>
 		<prDefaultExcludes value="true"/>
 		<prExcludes value="*.xml"/>		
-    </component>
-    
-    <!-- Run Generator for OpenAPI -->
-    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+	</component>
+
+	<!-- Run Generator for OpenAPI -->
+	<component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 		<metaModel idRef="CustomProfile"/>
@@ -48,61 +47,80 @@
 		<fileEncoding value="UTF-8"/>
 		<!-- Call EXPAND to run "root" template for every model element -->
 		<expand value="OpenAPIRoot::Root FOR ${output.slot}"/>
-		
+
 		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
 		<outlet name="src" path="${path.src}/" overwrite="false"/>
 		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
 		<outlet name="res"  path="${path.res}/" overwrite="false"/>
-        <outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
-        <outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
-        <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
-        <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
+		<outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
+		<outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
+		<outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
+		<outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
 		<outlet path="error" />
-		
+
 		<!-- protected regions configuration -->
 		<prSrcPaths value="${path.src.gen}"/>
 		<prDefaultExcludes value="true"/>
-		<prExcludes value="*.xml"/>		
-    </component>
-    
-    <!-- Write log message to console -->
-    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+		<prExcludes value="*.xml"/>
+	</component>
+
+	<!-- Run Generator for Maven -->
+	<component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+		<metaModel idRef="UmlMM"/>
+		<metaModel idRef="${profile.name}"/>
+		<metaModel idRef="CustomProfile"/>
+
+		<fileEncoding value="UTF-8"/>
+		<!-- Call EXPAND to run "root" template for every model element -->
+		<expand value="MavenRoot::Root FOR ${output.slot}"/>
+
+		<outlet name="basedir" path="${basedir}/" overwrite="true"/>
+		<outlet path="error" />
+
+		<!-- protected regions configuration -->
+		<prSrcPaths value="${basedir}"/>
+		<prDefaultExcludes value="true"/>
+		<prExcludes value="*.java"/>
+	</component>
+
+	<!-- Write log message to console -->
+	<component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 		<metaModel idRef="CustomProfile"/>
 
 		<fileEncoding value="UTF-8"/>
 		<expand value="CustomRoot::InfoMessage FOR ${output.slot}"/>
-		
+
 		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
 		<outlet name="src" path="${path.src}/" overwrite="false"/>
 		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
 		<outlet name="res"  path="${path.res}/" overwrite="false"/>
-        <outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
-        <outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
-        <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
-        <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
+		<outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
+		<outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
+		<outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
+		<outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
 		<outlet path="error" />
-    </component>
+	</component>
 
-    <!-- Run custom templates -->
-    <component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+	<!-- Run custom templates -->
+	<component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 		<metaModel idRef="CustomProfile"/>
 
 		<fileEncoding value="UTF-8"/>
 		<expand value="${custom.root.template} FOR ${output.slot}"/>
-		
+
+		<outlet name="basedir" path="${basedir}/" overwrite="true"/>
 		<outlet name="src_gen" path="${path.src.gen}/" overwrite="true"/>
 		<outlet name="src" path="${path.src}/" overwrite="false"/>
 		<outlet name="res_gen"  path="${path.res.gen}/" overwrite="true"/>
 		<outlet name="res"  path="${path.res}/" overwrite="false"/>
-        <outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
-        <outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
-        <outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
-        <outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
+		<outlet name="src_test_gen" path="${path.src.test.gen}/" overwrite="true"/>
+		<outlet name="src_test" path="${path.src.test}/" overwrite="false"/>
+		<outlet name="res_test_gen"  path="${path.res.test.gen}/" overwrite="true"/>
+		<outlet name="res_test"  path="${path.res.test}/" overwrite="false"/>
 		<outlet path="error" />
-    </component>
-    
+	</component>
 </workflow>

@@ -1,0 +1,252 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION java::GeneratorCommons»
+«EXTENSION functions::MavenProject»
+
+
+«DEFINE Generate FOR MavenProject»
+«FILE this.getPOMOutputDirectory() + "pom.xml" basedir -»
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+«EXPAND maven::POMHelper::POMCommonBegin»
+
+	<!-- Custom section for properties -->
+	«PROTECT CSTART "\n\t<!-- " CEND " -->" ID "properties:"  + this.getProjectID()»
+	<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+	<properties>
+		«IF this.hasParentPOM() == false -»
+		<!-- Properties are only required / helpful, if no parent POM is present -->
+		<java.release.version>21</java.release.version>
+		
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss.SSS</maven.build.timestamp.format>
+		
+		<dest.dir>../target</dest.dir>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<src-gen.dir>${project.build.directory}/src-gen</src-gen.dir>
+
+
+		<maven.compiler.version>3.15.0</maven.compiler.version>
+		<maven.jar.version>3.5.0</maven.jar.version>
+		<maven.deploy.version>3.1.4</maven.deploy.version>
+		<maven.versions.version>2.21.0</maven.versions.version>
+		<maven.surefire.version>3.5.4</maven.surefire.version>
+
+
+		«ENDIF-»
+		<!-- Versions for Maven Plugins required by projects making use of JEAF Generator -->
+		<maven.build.helper.version>3.6.1</maven.build.helper.version>
+		<maven.source.version>3.4.0</maven.source.version>
+
+
+		<!-- Plugin versions required to checkin generated code (activated through profile "CheckinGeneratedCode"") -->
+		<maven.scmplugin.version>2.2.1</maven.scmplugin.version>
+	</properties>
+	«ENDPROTECT»
+
+
+	<dependencyManagement>
+		<!-- Section for custom dependency management entries -->
+		«PROTECT CSTART "\n\t\t<!-- " CEND " -->" ID "dependencyManagement:"  + this.getProjectID()»
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		«ENDPROTECT»
+	</dependencyManagement>
+
+
+	<dependencies>
+		<!-- Section for custom dependency entries -->
+		«PROTECT CSTART "\n\t\t<!-- " CEND " -->" ID "dependencies:"  + this.getProjectID()»
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		«ENDPROTECT»
+	</dependencies>
+
+
+	<profiles>
+		<!-- Profile contains all plugin configurations that are required to check-in generated code during build. -->
+		<profile>
+			<id>CheckinGeneratedCode</id>
+			<build>
+				<plugins>
+					<plugin>
+					    <artifactId>maven-scm-plugin</artifactId>
+					    <version>${maven.scmplugin.version}</version>
+					    <executions>
+					    	<execution>
+					    		<id>CheckinGeneratedCode</id>
+					    		<goals>
+					    			<goal>checkin</goal>
+					    		</goals>
+					    		<phase>prepare-package</phase>
+					    		<configuration>
+					    			<message>[maven-scm-plugin] Checkin of generated files during build</message>
+					    			<excludes>**/pom.xml</excludes>
+					    			<includes>**/*</includes>
+					    			<basedir>${basedir}/src-gen</basedir>
+					    		</configuration>
+					    	</execution>
+					    </executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Section for custom profile entries -->
+		«PROTECT CSTART "\n\t\t<!-- " CEND " -->" ID "profiles:"  + this.getProjectID()»
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		«ENDPROTECT»
+	</profiles>
+
+
+	<build>
+		<plugins>
+«IF this.hasParentPOM() == false -»
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<release>${java.release.version}</release>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven.jar.version}</version>
+				<configuration>
+					<archive>
+						<index>true</index>
+					</archive>
+				</configuration>
+			</plugin>
+
+«ENDIF-»
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${maven.build.helper.version}</version>
+				<executions>
+					<execution>
+						<id>sources</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${basedir}/src/main/java</source>
+								<source>${basedir}/src-gen/main/java</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>test-sources</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>add-test-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${basedir}/src/test/java</source>
+								<source>${basedir}/src-gen/test/java</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>resources</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${basedir}/src/main/resources</directory>
+								</resource>
+								<resource>
+									<directory>${basedir}/src-gen/main/resources</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>test-resources</id>
+						<phase>generate-test-resources</phase>
+						<goals>
+							<goal>add-test-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${basedir}/src/test/resources</directory>
+								</resource>
+								<resource>
+									<directory>${basedir}/src-gen/test/resources</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- 
+				Here we override the parent-pom attach-sources execution which calls sources:jar goal. That goal forks 
+				the lifecycle, causing the generate-sources phase to be called twice for the install goal. 
+				This causes any other plugins bound to the generate-sources phase like JEAF Generator to be called 
+				twice, which results in nothing but duplicate processing and longer build times.
+				
+				Big thanks to: http://blog.peterlynch.ca/2010/05/maven-how-to-prevent-generate-sources.html 
+			-->
+		    <plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven.source.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>DISABLE_FORKED_LIFECYCLE</phase>
+					</execution>
+
+					<execution>
+						<id>attach-sources-no-fork</id>
+						<inherited>true</inherited>
+						<goals>
+    						<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+«IF this.hasParentPOM() == false -»
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven.deploy.version}</version>
+				<configuration>
+					<deployAtEnd>true</deployAtEnd>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${maven.versions.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+			</plugin>
+«ENDIF-»
+
+
+			<!-- Section for custom plugin entries -->
+			«PROTECT CSTART "\n\t\t\t<!-- " CEND " -->" ID "plugins:"  + this.getProjectID()»
+			<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+			«ENDPROTECT»
+		</plugins>
+	</build>
+</project>
+«ENDFILE»
+«ENDDEFINE»
