@@ -13,23 +13,33 @@
         <dependencies>
             <dependency>
                 <groupId>com.anaptecs.maven</groupId>
+                <artifactId>jeaf-generator-other-data-types-uml</artifactId>
+                <version>47.1.1</version>
+                <packaging>zip</packaging>
+            </dependency>
+            <dependency>
+                <groupId>com.anaptecs.maven</groupId>
                 <artifactId>jeaf-generator-other-data-types-open-api</artifactId>
                 <version>47.1.1</version>
+                <packaging>zip</packaging>
             </dependency>
             <dependency>
                 <groupId>com.anaptecs.maven</groupId>
                 <artifactId>jeaf-generator-other-data-types-java</artifactId>
                 <version>47.1.1</version>
+                <packaging>jar</packaging>
             </dependency>
             <dependency>
                 <groupId>com.anaptecs.maven</groupId>
                 <artifactId>jeaf-generator-other-data-types-java-runtime</artifactId>
                 <version>47.1.1</version>
+                <packaging>jar</packaging>
             </dependency>
             <dependency>
                 <groupId>com.anaptecs.maven</groupId>
-                <artifactId>jeaf-generator-other-data-types-java-starter</artifactId>
+                <artifactId>jeaf-generator-other-data-types-starter</artifactId>
                 <version>47.1.1</version>
+                <packaging>jar</packaging>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -26,6 +26,7 @@
                 <groupId>«this.getGroupId()»</groupId>
                 <artifactId>«this.getModuleArtifactId(module)»</artifactId>
                 <version>«this.getVersion()»</version>
+                <packaging>«this.getPackagingType(module)»</packaging>
             </dependency>
 «ENDFOREACH -»
         </dependencies>

@@ -6,6 +6,9 @@ boolean isModuleTypePOM(String moduleType):
 boolean isModuleTypeBOM(String moduleType):
 	moduleType == "BOM";
 
+boolean isModuleTypeUML(String moduleType):
+	moduleType == "UML_MODEL";
+
 boolean isModuleTypeOpenAPI(String moduleType):
 	moduleType == "OPEN_API";
 

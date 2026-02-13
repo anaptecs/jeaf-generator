@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.anaptecs.maven</groupId>
+		<artifactId>jeaf-generator-demo-service-model</artifactId>
+		<version>47.1.1</version>
+	</parent>
+
+	<name>JEAF Generator Demo Service Model Integration Test</name>
+	<artifactId>jeaf-generator-demo-service-model-integration-test</artifactId>
+	<packaging>jar</packaging>
+
+	<properties>
+		<generateServiceInterfaces>true</generateServiceInterfaces>
+		<generateReactiveServiceInterfaces>true</generateReactiveServiceInterfaces>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.anaptecs.maven</groupId>
+			<artifactId>jeaf-generator-demo-service-model-rest-client-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.anaptecs.maven</groupId>
+			<artifactId>jeaf-generator-demo-service-model-rest-controller-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+	</dependencies>
+</project>

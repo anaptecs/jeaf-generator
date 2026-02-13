@@ -408,7 +408,7 @@ public class GeneratorMojo extends AbstractMojo {
    *    &#60;/dependency><br/>
    * </pre>
    *
-   * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> if might
+   * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> it might
    * still be possible to disable / enable request validation without changing the code.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -439,7 +439,7 @@ public class GeneratorMojo extends AbstractMojo {
    *    &#60;/dependency><br/>
    * </pre>
    *
-   * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> if might
+   * Depending on the implementation of class <code>com.anaptecs.jeaf.validation.api.ValidationExecutor</code> it might
    * still be possible to disable / enable response validation without changing the code.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -2339,6 +2339,8 @@ public class GeneratorMojo extends AbstractMojo {
       // Prepare XMI file
       this.prepareXMIFiles();
 
+      this.cleanSystemProperties();
+
       // Configure all system properties for UML Generator.
       System.setProperty("maven.version", mavenProject.getVersion());
       System.setProperty("info.version", fileHeaderVersion);
@@ -2602,6 +2604,25 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "mavenScmPathPattern", mavenScmPathPattern);
       System.setProperty(PROPERTY_PREFIX + "mavenVersionPropertyNamePattern", mavenVersionPropertyNamePattern);
       System.setProperty(PROPERTY_PREFIX + "mavenArtifactDefaultVersion", mavenArtifactDefaultVersion);
+
+      if (xmiDirectory != null) {
+        System.setProperty(PROPERTY_PREFIX + "xmiDirectory",
+            xmiDirectory.replace(mavenProject.getBasedir().getAbsolutePath(), "${project.basedir}"));
+      }
+      if (modelArtifactGroupID != null) {
+        System.setProperty(PROPERTY_PREFIX + "modelArtifactGroupID", modelArtifactGroupID);
+      }
+      if (modelArtifactArtifactID != null) {
+        System.setProperty(PROPERTY_PREFIX + "modelArtifactArtifactID", modelArtifactArtifactID);
+      }
+      if (modelArtifactXMIPath != null) {
+        System.setProperty(PROPERTY_PREFIX + "modelArtifactXMIPath", modelArtifactXMIPath);
+      }
+      System.setProperty(PROPERTY_PREFIX + "umlModelFile", umlModelFile);
+      System.setProperty(PROPERTY_PREFIX + "jmmProfileFile", jmmProfileFile);
+      if (customProfileFile != null) {
+        System.setProperty(PROPERTY_PREFIX + "customProfileFile", customProfileFile);
+      }
 
       // Add parameters for custom templates also as system properties.
       if (customTemplateParameters != null) {
@@ -3342,6 +3363,18 @@ public class GeneratorMojo extends AbstractMojo {
       }
     }
     return lFiles;
+  }
+
+  /**
+   * Operation cleans up system properties between multiple runs within multi-module builds
+   */
+  private void cleanSystemProperties( ) {
+    for (Object lKey : System.getProperties().keySet()) {
+      String lKeyAsString = lKey.toString();
+      if (lKeyAsString.startsWith(PROPERTY_PREFIX) || lKeyAsString.startsWith("switch.gen.")) {
+        System.setProperty(lKeyAsString, "");
+      }
+    }
   }
 
   private String toString(List<? extends Enum<?>> pVersions) {

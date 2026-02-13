@@ -8,14 +8,3 @@ cached boolean isMavenDependency(uml::Element element) :
 
 cached JMM::MavenDependency asMavenDependency(uml::Element element):
 	(JMM::MavenDependency) element;
-
-
-cached isParentPOMDependency(JMM::MavenDependency dependency):
-	dependency.dependencyType.name == "PARENT_POM";
-
-cached isProjectDependency(JMM::MavenDependency dependency):
-	dependency.dependencyType.name == "PROJECT_DEPENDENCY";
-
-cached isStandardDependency(JMM::MavenDependency dependency):
-	dependency.dependencyType.name == "STANDARD_DEPENDENCY";
-

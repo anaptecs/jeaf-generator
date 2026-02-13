@@ -28,10 +28,11 @@
 «IF this.getMavenProjectURL().length > 0 -»
 	<url>«this.getMavenProjectURL()»</url>
 «ENDIF-»
+«IF this.isCustomizable()-»
 
 
 	<!-- Custom section for information about developers -->
-	«PROTECT CSTART "\n\t<!-- " CEND " -->" ID "developers:"  + this.getProjectID()»
+	«PROTECT CSTART "<!-- " CEND " -->" ID "developers:"  + this.getProjectID()»
 	<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
 	<!--
 	<developers>
@@ -44,6 +45,8 @@
 	</developers>
 	-->
 	«ENDPROTECT»
+«ENDIF-»
+
 
 	<scm>
 		<connection>«this.getSCMConnection()»</connection>
@@ -51,18 +54,19 @@
 		<url>«this.getSCMUrl()»</url>
 		<tag>HEAD</tag>
 	</scm>
+«IF this.isCustomizable()-»
 
 
 	<!-- Custom section for distribution management -->
 	<distributionManagement>
-		«PROTECT CSTART "\n\t\t<!-- " CEND " -->" ID "distributionManagement:"  + this.getProjectID()»
+		«PROTECT CSTART "<!-- " CEND " -->" ID "distributionManagement:"  + this.getProjectID()»
 		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
 		«ENDPROTECT»
 	</distributionManagement>
 
 
 	<!-- Custom section for license information -->
-	«PROTECT CSTART "\n\t<!-- " CEND " -->" ID "licenses:"  + this.getProjectID()»
+	«PROTECT CSTART "<!-- " CEND " -->" ID "licenses:"  + this.getProjectID()»
 	<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
 	<!--
 	<licenses>
@@ -73,4 +77,56 @@
 	</licenses>
 	-->
 	«ENDPROTECT»
+«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE GenerateDependenciesSection(String moduleType, List[String] moduleDependencyTypes, List[String] internalModuleDependencies, List[String] externalDependencies) FOR MavenProject»
+	<dependencies>
+		«FOREACH internalModuleDependencies AS moduleType -»
+		<dependency>
+			<groupId>«this.getGroupId()»</groupId>
+			<artifactId>«this.getModuleArtifactId(moduleType)»</artifactId>
+		</dependency>
+		«ENDFOREACH -»
+		«FOREACH this.getMavenDependencies(moduleType) AS dependency -»
+		<dependency>
+			<groupId>«dependency.getMavenProject().getGroupId()»</groupId>
+			<artifactId>«dependency.getMavenProject().getArtifactId()»</artifactId>
+			<version>«dependency.getMavenProject().getVersionPropertyVariable()»</version>
+			«IF dependency.packaging != null-»
+			<packaging>«dependency.packaging.name.toLowerCase()»</packaging>
+			«ENDIF-»
+		</dependency>
+
+		«ENDFOREACH-»
+		«FOREACH moduleDependencyTypes AS moduleDependencyType -»
+			«IF moduleDependencyType.length > 0 -»
+				«FOREACH this.getMavenDependenciesForModule(moduleDependencyType) AS dependency -»
+					«IF moduleType.hasTargetModuleTypeMapping(moduleDependencyType) -»
+						«LET moduleType.getTargetModuleType(moduleDependencyType) AS targetModuleType -»
+		<dependency>
+			<groupId>«dependency.getMavenProject().getGroupId()»</groupId>
+			<artifactId>«dependency.getMavenProject().getModuleArtifactId(targetModuleType)»</artifactId>
+		</dependency>
+						«ENDLET -»
+					«ENDIF -»
+				«ENDFOREACH -»
+			«ENDIF-»
+		«ENDFOREACH-»
+		«FOREACH externalDependencies AS dependency -»
+		<dependency>
+			<groupId>«dependency.split(":").get(0)»</groupId>
+			<artifactId>«dependency.split(":").get(1)»</artifactId>
+		</dependency>
+		«ENDFOREACH -»
+		«IF this.isCustomizable() -»
+
+		<!-- Custom section for dependencies -->
+		«PROTECT CSTART "<!-- " CEND " -->" ID "dependencies:"  + this.getModuleID(moduleType)»
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		<!-- Add your custom properties here -->
+		«ENDPROTECT»
+		«ENDIF -»
+	</dependencies>
 «ENDDEFINE»

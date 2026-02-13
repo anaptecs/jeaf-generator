@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>com.anaptecs.jeaf.generator</groupId>
+	<artifactId>magic-project-parent</artifactId>
+	<version>47.1.1</version>
+
+	<packaging>pom</packaging>
+	<name>Customer Parent POM</name>
+
+
+	<scm>
+		<connection>scm:git:https://github.com/anaptecs/customer-parent-pom>.git</connection>
+		<developerConnection>scm:git:https://github.com/anaptecs/customer-parent-pom>.git</developerConnection>
+		<url>https://github.com/anaptecs/customer-parent-pom></url>
+		<tag>HEAD</tag>
+	</scm>
+
+
+	<properties>
+		<!-- Read UML model from Maven artifact. -->
+		<modelArtifactGroupID>com.anaptecs.jeaf.uml</modelArtifactGroupID>
+		<modelArtifactArtifactID>jeaf-uml-test-model</modelArtifactArtifactID>
+		<modelArtifactXMIPath>xmi</modelArtifactXMIPath>
+
+		<!-- Name of the main file with the UML model -->
+		<umlModelFile>JEAF_Test.uml</umlModelFile>
+
+		<!-- UML package which will be the one that is considered during code generation --> 
+		<umlPackage>com.anaptecs.maven</umlPackage>
+
+	</properties>
+
+
+	<modules>
+	</modules>
+
+
+	<dependencyManagement>
+		<dependencies>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<dependencies>
+	</dependencies>
+</project>

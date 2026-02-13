@@ -11,30 +11,35 @@ public enum ProjectArchetype {
 	DOMAIN("Domain", "Domain", "domain", new ModuleType[] {}),
 
 	DATA_TYPES("Data Types", "DataTypes", "datatypes", new ModuleType[] {
-			ModuleType.BOM, ModuleType.OPEN_API, ModuleType.JAVA,
-			ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
+			ModuleType.BOM, ModuleType.UML_MODEL, ModuleType.OPEN_API,
+			ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
 			ModuleType.INTEGRATION_TEST }),
 
 	SERVICE_MODEL("Service Model", "ServiceModel", "servicemodel",
-			new ModuleType[] { ModuleType.BOM, ModuleType.OPEN_API,
-					ModuleType.JAVA, ModuleType.JAVA_RUNTIME,
-					ModuleType.SERVICES, ModuleType.REST_CLIENT,
-					ModuleType.REST_CLIENT_STARTER, ModuleType.REST_CONTROLLER,
+			new ModuleType[] { ModuleType.BOM, ModuleType.UML_MODEL,
+					ModuleType.OPEN_API, ModuleType.JAVA,
+					ModuleType.JAVA_RUNTIME, ModuleType.SERVICES,
+					ModuleType.REST_CLIENT, ModuleType.REST_CLIENT_STARTER,
+					ModuleType.REST_CONTROLLER,
 					ModuleType.REST_CONTROLLER_STARTER,
 					ModuleType.INTEGRATION_TEST }),
 
 	MASTER_DATA("Master Data", "MasterData", "masterdata", new ModuleType[] {
-			ModuleType.BOM, ModuleType.OPEN_API, ModuleType.JAVA,
-			ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
+			ModuleType.BOM, ModuleType.UML_MODEL, ModuleType.OPEN_API,
+			ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
 			ModuleType.INTEGRATION_TEST }),
 
 	EVENTS("Events", "Events", "events", new ModuleType[] { ModuleType.BOM,
-			ModuleType.OPEN_API, ModuleType.JAVA, ModuleType.JAVA_RUNTIME,
-			ModuleType.JAVA_STARTER, ModuleType.INTEGRATION_TEST }),
+			ModuleType.UML_MODEL, ModuleType.OPEN_API, ModuleType.JAVA,
+			ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
+			ModuleType.INTEGRATION_TEST }),
 
 	IMPLEMENTATION("Implementation", "Impl", "impl", new ModuleType[] {}),
 
-	EXTERNAL_PROJECT("External Project", "", "", new ModuleType[] {}),
+	UML_MODEL_PROJECT("UML Model Project", "", "",
+			new ModuleType[] { ModuleType.UML_MODEL }),
+
+	EXTERNAL_ARTIFACT("External Artifact", "", "", new ModuleType[] {}),
 
 	CUSTOM("Custom", "Custom", "custom", new ModuleType[] {});
 

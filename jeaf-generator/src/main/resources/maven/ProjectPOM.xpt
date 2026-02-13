@@ -3,31 +3,57 @@
 
 «EXTENSION java::GeneratorCommons»
 «EXTENSION functions::MavenProject»
+«EXTENSION functions::MavenDependency»
+«EXTENSION functions::SystemProperties»
 
 
 «DEFINE GenerateProjectPOM FOR MavenProject»
+«LET "POM" AS moduleType»
 «FILE this.getPOMOutputDirectory() + "pom.xml" basedir -»
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 «EXPAND maven::POMHelper::POMCommonBegin»
 
 	<properties>
+«IF getXMIDirectory().length > 0-»
+		<!-- Read UML model (XMI files) directly from file system -->
+		<xmiDirectory>«getXMIDirectory()»</xmiDirectory>»
+
+«ELSE-»
+		<!-- Read UML model from Maven artifact. -->
+		<modelArtifactGroupID>«getModelArtifactGroupID()»</modelArtifactGroupID>
+		<modelArtifactArtifactID>«getModelArtifactArtifactID()»</modelArtifactArtifactID>
+		<modelArtifactXMIPath>«getModelArtifactXMIPath()»</modelArtifactXMIPath>
+
+«ENDIF-»
+		<!-- Name of the main file with the UML model -->
+		<umlModelFile>«getUMLModelFile()»</umlModelFile>
+
 		<!-- UML package which will be the one that is considered during code generation --> 
 		<umlPackage>«this.getMavenProjectPackageNameFQN()»</umlPackage>
 
 «IF this.getDependentProjects().size > 0 -»
-		<!-- Add properties for versions of dependent projects -->
 «FOREACH this.getDependentProjects() AS project-»
+		<!-- Version property for dependency to «project.getProjectID()» -->
 		<«project.getVersionPropertyName()»>«project.getVersion()»</«project.getVersionPropertyName()»>
-«ENDFOREACH»-
+
+«ENDFOREACH-»
+«FOREACH this.getMavenDependencies(moduleType).getMavenProject() AS dependentProject-»
+		<!-- Version property for dependency to «dependentProject.getProjectID()» -->
+		<«dependentProject.getVersionPropertyName()»>«dependentProject.getVersion()»</«dependentProject.getVersionPropertyName()»>
+
+«ENDFOREACH-»
 «ENDIF -»
+«IF this.isCustomizable() -»
 		<!-- Custom section for properties -->
-		«PROTECT CSTART "\n\t\t<!-- " CEND " -->" ID "properties:"  + this.getProjectID()»
+		«PROTECT CSTART "<!-- " CEND " -->" ID "properties:"  + this.getProjectID()»
 		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
 		<!-- Add your custom properties here -->
 		«ENDPROTECT»
+«ENDIF-»
 	</properties>
-	
+
+
 	<modules>
 «FOREACH this.getModuleTypes() AS moduleType -»
 		<module>«this.getModuleArtifactId(moduleType)»</module>
@@ -45,27 +71,24 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-«ENDFOREACH -»
 
+«ENDFOREACH -»
+«IF this.isCustomizable() -»
 			<!-- Section for custom dependency management entries -->
-			«PROTECT CSTART "\n\t\t\t<!-- " CEND " -->" ID "dependencyManagement:"  + this.getProjectID()»
+			«PROTECT CSTART "<!-- " CEND " -->" ID "dependencyManagement:"  + this.getProjectID()»
 			<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
 			«ENDPROTECT»
+«ENDIF-»
 		</dependencies>
 	</dependencyManagement>
 
-
-	<dependencies>
-		<!-- Section for custom dependency entries -->
-		«PROTECT CSTART "\n\t\t<!-- " CEND " -->" ID "dependencies:"  + this.getProjectID()»
-		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
-		«ENDPROTECT»
-	</dependencies>
+«EXPAND maven::POMHelper::GenerateDependenciesSection(moduleType, null, null, null) -»
+«IF this.isCustomizable() -»
 
 
 	<profiles>
 		<!-- Section for custom profile entries -->
-		«PROTECT CSTART "\n\t\t<!-- " CEND " -->" ID "profiles:"  + this.getProjectID()»
+		«PROTECT CSTART "<!-- " CEND " -->" ID "profiles:"  + this.getProjectID()»
 		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
 		«ENDPROTECT»
 	</profiles>
@@ -74,11 +97,13 @@
 	<build>
 		<plugins>
 			<!-- Section for custom plugin entries -->
-			«PROTECT CSTART "\n\t\t\t<!-- " CEND " -->" ID "plugins:"  + this.getProjectID()»
+			«PROTECT CSTART "<!-- " CEND " -->" ID "plugins:"  + this.getProjectID()»
 			<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
 			«ENDPROTECT»
 		</plugins>
 	</build>
+«ENDIF-»
 </project>
 «ENDFILE»
+«ENDLET»
 «ENDDEFINE»

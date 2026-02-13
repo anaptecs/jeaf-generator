@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.anaptecs.maven</groupId>
+		<artifactId>jeaf-generator-demo-data-types</artifactId>
+		<version>47.1.1</version>
+	</parent>
+
+	<name>JEAF Generator Demo Data Types Starter</name>
+	<artifactId>jeaf-generator-demo-data-types-starter</artifactId>
+	<packaging>jar</packaging>
+
+	<properties>
+		<!-- Custom section for properties -->
+		<!-- PROTECTED REGION ID(properties:com.anaptecs.maven:jeaf-generator-demo-data-types-starter) ENABLED START -->
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		<!-- Add your custom properties here -->
+		<!-- PROTECTED REGION END -->
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.anaptecs.maven</groupId>
+			<artifactId>jeaf-generator-demo-data-types-java-runtime</artifactId>
+		</dependency>
+
+		<!-- Custom section for dependencies -->
+		<!-- PROTECTED REGION ID(dependencies:com.anaptecs.maven:jeaf-generator-demo-data-types-starter) ENABLED START -->
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		<!-- Add your custom properties here -->
+		<!-- PROTECTED REGION END -->
+	</dependencies>
+</project>

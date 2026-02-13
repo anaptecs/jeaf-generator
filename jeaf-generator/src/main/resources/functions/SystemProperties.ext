@@ -1,178 +1,202 @@
 
-cached String getSystemProperty(String propertyName):
+String getSystemProperty(String propertyName):
    JAVA java.lang.System.getProperty(java.lang.String);
 
 
-cached String getSystemProperty(String propertyName, String defaultValue):
+String getSystemProperty(String propertyName, String defaultValue):
    JAVA java.lang.System.getProperty(java.lang.String, java.lang.String);
 
 
-cached boolean getBooleanSystemProperty(String propertyName, boolean defaultValue):
+boolean getBooleanSystemProperty(String propertyName, boolean defaultValue):
     if getSystemProperty(propertyName, defaultValue.toString()) == "true"
     then true
     else false;
     
-cached List[String] getSystemPropertyValues(String propertyName):
+List[String] getSystemPropertyValues(String propertyName):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.SystemProperties.getPropertiesList(java.lang.String);    
     
-cached List[String] getSystemPropertyValues(String propertyName, String defaultValue):
+List[String] getSystemPropertyValues(String propertyName, String defaultValue):
 	if propertyName.getSystemPropertyValues().isEmpty
 	then {defaultValue}.toList()
 	else propertyName.getSystemPropertyValues();
 
-cached boolean generateJSONAutoDetectAnnotationOnClass():
+boolean generateJSONAutoDetectAnnotationOnClass():
    getBooleanSystemProperty("switch.gen.jackson.jsonautodetect.on.class", false);
 
-cached boolean generateJsonSetterAnnotationOnBuilderOperations():
+boolean generateJsonSetterAnnotationOnBuilderOperations():
    getBooleanSystemProperty("jeaf.generator.generateJsonSetterAnnotationOnBuilderOperations", false);
 
-cached boolean groupBreakingChangesReportByPackage():
+boolean groupBreakingChangesReportByPackage():
     getBooleanSystemProperty("switch.gen.breaking.changes.report.groupByPackage", true);
     
-cached boolean listUnsecuredRESTEndpoints():
+boolean listUnsecuredRESTEndpoints():
     getBooleanSystemProperty("switch.gen.security.roles.report.list.unsecured.endpoints", true);
     
-cached String getDefaultSecurityRoleName():
+String getDefaultSecurityRoleName():
 	getSystemProperty("switch.gen.security.default.security.role", "");
 	
 // NotNull / NotEmpty annotation settings for properties
-cached boolean generateNotNullAnnotationForSingleValuedProperties():
+boolean generateNotNullAnnotationForSingleValuedProperties():
     getBooleanSystemProperty("jeaf.generator.generateNotNullAnnotationForSingleValuedProperties", false);
 
-cached String notNullAnnotationNameForSingleValuedProperties():
+String notNullAnnotationNameForSingleValuedProperties():
     getSystemProperty("jeaf.generator.notNullAnnotationNameForSingleValuedProperties");
 
-cached boolean generateNotEmptyAnnotationForMultiValuedProperties():
+boolean generateNotEmptyAnnotationForMultiValuedProperties():
     getBooleanSystemProperty("jeaf.generator.generateNotEmptyAnnotationForMultiValuedProperties", false);
 
-cached String notEmptyAnnotationNameForMultiValuedProperties():
+String notEmptyAnnotationNameForMultiValuedProperties():
     getSystemProperty("jeaf.generator.notEmptyAnnotationNameForMultiValuedProperties");
     
 // NotNull / NotEmpty annotation settings for services
-cached boolean generateNotNullAnnotationForSingleValuedServiceParameters():
+boolean generateNotNullAnnotationForSingleValuedServiceParameters():
     getBooleanSystemProperty("jeaf.generator.generateNotNullAnnotationForSingleValuedServiceParameters", false);
 
-cached String notNullAnnotationNameForSingleValuedServiceParameters():
+String notNullAnnotationNameForSingleValuedServiceParameters():
     getSystemProperty("jeaf.generator.notNullAnnotationNameForSingleValuedServiceParameters");
 
-cached boolean generateNotEmptyAnnotationForMultiValuedServiceParameters():
+boolean generateNotEmptyAnnotationForMultiValuedServiceParameters():
     getBooleanSystemProperty("jeaf.generator.generateNotEmptyAnnotationForMultiValuedServiceParameters", false);
 
-cached String notEmptyAnnotationNameForMultiValuedServiceParameters():
+String notEmptyAnnotationNameForMultiValuedServiceParameters():
     getSystemProperty("jeaf.generator.notEmptyAnnotationNameForMultiValuedServiceParameters");
 
 
 // NotNull / NotEmpty annotation settings for REST controllers
-cached boolean generateNotNullAnnotationForSingleValuedRESTParameters():
+boolean generateNotNullAnnotationForSingleValuedRESTParameters():
     getBooleanSystemProperty("jeaf.generator.generateNotNullAnnotationForSingleValuedRESTParameters", false);
 
-cached String notNullAnnotationNameForSingleValuedRESTParameters():
+String notNullAnnotationNameForSingleValuedRESTParameters():
     getSystemProperty("jeaf.generator.notNullAnnotationNameForSingleValuedRESTParameters");
 
-cached boolean generateNotEmptyAnnotationForMultiValuedRESTParameters():
+boolean generateNotEmptyAnnotationForMultiValuedRESTParameters():
     getBooleanSystemProperty("jeaf.generator.generateNotEmptyAnnotationForMultiValuedRESTParameters", false);
 
-cached String notEmptyAnnotationNameForMultiValuedRESTParameters():
+String notEmptyAnnotationNameForMultiValuedRESTParameters():
     getSystemProperty("jeaf.generator.notEmptyAnnotationNameForMultiValuedRESTParameters");
     
-cached boolean generateServiceInterfaces():
+boolean generateServiceInterfaces():
     getBooleanSystemProperty("switch.gen.services", false);
 
-cached boolean generateReactiveServiceInterfaces():
+boolean generateReactiveServiceInterfaces():
     getBooleanSystemProperty("jeaf.generator.generateReactiveServiceInterfaces", false);
 
-cached boolean generateReactiveRESTResources():
+boolean generateReactiveRESTResources():
     getBooleanSystemProperty("jeaf.generator.generateReactiveRESTResources", false);
     
-cached boolean generateReactiveRESTServiceProxies():
+boolean generateReactiveRESTServiceProxies():
     getBooleanSystemProperty("jeaf.generator.generateReactiveRESTServiceProxies", false); 
     
-cached boolean generateModelReport():
+boolean generateModelReport():
     getBooleanSystemProperty("jeaf.generator.generateModelReport", false); 
    
-cached String getOpenAPISpecReferenceDefaultLocation():
+String getOpenAPISpecReferenceDefaultLocation():
     getSystemProperty("jeaf.generator.openAPISpecReferenceDefaultLocation", ""); 
     
-cached boolean allowTypeWildcardsForGenerics():
+boolean allowTypeWildcardsForGenerics():
    getBooleanSystemProperty("jeaf.generator.allowTypeWildcardsForGenerics", false);
 
-cached boolean disableSaveCopyOfCollectionsInBuilders():
+boolean disableSaveCopyOfCollectionsInBuilders():
    getBooleanSystemProperty("jeaf.generator.disableSaveCopyOfCollectionsInBuilders", false);
    
-cached boolean useGenericBuilderPattern():
+boolean useGenericBuilderPattern():
     getBooleanSystemProperty("jeaf.generator.useGenericBuilderPattern", false); 
    
-cached boolean suppressNotRequiredNullableInOpenAPISpec():   
+boolean suppressNotRequiredNullableInOpenAPISpec():   
    getBooleanSystemProperty("jeaf.generator.suppressNotRequiredNullableInOpenAPISpec", false);
    
-cached boolean implementCompareableForOpenAPIDataTypes():
+boolean implementCompareableForOpenAPIDataTypes():
    getBooleanSystemProperty("jeaf.generator.implementCompareableForOpenAPIDataTypes", false);
    
-cached boolean enforceExplicitDefaultValueForOptionalPrimitives():
+boolean enforceExplicitDefaultValueForOptionalPrimitives():
    getBooleanSystemProperty("jeaf.generator.enforceExplicitDefaultValueForOptionalPrimitives", false);
    
-cached List[String] getJacksonVersions():
+List[String] getJacksonVersions():
 	getSystemPropertyValues("jeaf.generator.jacksonVersions");
 
-cached String getJackson2Suffix():
+String getJackson2Suffix():
 	getSystemProperty("jeaf.generator.jackson2Suffix");
 
-cached String getJackson3Suffix():
+String getJackson3Suffix():
 	getSystemProperty("jeaf.generator.jackson3Suffix");
 	
-cached String getJackson2Subpackage():
+String getJackson2Subpackage():
 	getSystemProperty("jeaf.generator.jackson2Subpackage", "");
 
-cached String getJackson3Subpackage():
+String getJackson3Subpackage():
 	getSystemProperty("jeaf.generator.jackson3Subpackage", "");
 
-cached String openAPILiteralQuotationCharacter():
+String openAPILiteralQuotationCharacter():
    getSystemProperty("jeaf.generator.openAPILiteralQuotationCharacter", ""); 
    
-cached String openAPIExampleQuotationCharacter():
+String openAPIExampleQuotationCharacter():
    getSystemProperty("jeaf.generator.openAPIExampleQuotationCharacter", "");    
    
-cached String nextMajorReleasePublishingDate():
+String nextMajorReleasePublishingDate():
    getSystemProperty("jeaf.generator.nextMajorReleasePublishingDate", "");    
 
-cached String nextMajorReleaseVersion():
+String nextMajorReleaseVersion():
    getSystemProperty("jeaf.generator.nextMajorReleaseVersion", "");    
 
 //
 // Properties specific to Maven code generation.
 //
-cached boolean generateMavenProjectStructure():
+boolean generateMavenProjectStructure():
 	getBooleanSystemProperty("jeaf.generator.generateMavenProjectStructure", false);
 
-cached boolean generateGeneratorProjectParentPOM():
+boolean generateGeneratorProjectParentPOM():
 	getBooleanSystemProperty("jeaf.generator.generateGeneratorProjectParentPOM", false);
 
-cached boolean initialProjectGeneration():
+boolean initialProjectGeneration():
 	getBooleanSystemProperty("jeaf.generator.initialProjectGeneration", false);
 
-cached String getInitialOutputDirectory():
+String getInitialOutputDirectory():
 	getSystemProperty("jeaf.generator.initialOutputDirectory", "");
 	
-cached String getProjectNamePattern():
+String getProjectNamePattern():
 	getSystemProperty("jeaf.generator.mavenProjectNamePattern", "").trim();
 
-cached String getProjectDescriptionPattern():
+String getProjectDescriptionPattern():
 	getSystemProperty("jeaf.generator.mavenProjectDescriptionPattern", "").trim();
 
-cached String getProjectURLPattern():
+String getProjectURLPattern():
 	getSystemProperty("jeaf.generator.mavenProjectURLPattern", "").trim();
 
-cached String getGroupIdPattern():
+String getGroupIdPattern():
 	getSystemProperty("jeaf.generator.mavenGroupIdPattern", "").trim();
 
-cached String getArtifactIdPattern():
+String getArtifactIdPattern():
 	getSystemProperty("jeaf.generator.mavenArtifactIdPattern", "").trim();
 
-cached String getSCMPathPattern():
+String getSCMPathPattern():
 	getSystemProperty("jeaf.generator.mavenScmPathPattern", "").trim();
 
-cached String getVersionPropertyNamePattern():
+String getVersionPropertyNamePattern():
 	getSystemProperty("jeaf.generator.mavenVersionPropertyNamePattern", "").trim();
 
-cached String getMavenArtifactDefaultVersion():
+String getMavenArtifactDefaultVersion():
 	getSystemProperty("jeaf.generator.mavenArtifactDefaultVersion", "").trim();
+
+String getXMIDirectory():
+	getSystemProperty("jeaf.generator.xmiDirectory", "");
+
+String getModelArtifactGroupID():
+	getSystemProperty("jeaf.generator.modelArtifactGroupID", "");
+
+String getModelArtifactArtifactID():
+	getSystemProperty("jeaf.generator.modelArtifactArtifactID", "");
+
+String getModelArtifactXMIPath():
+	getSystemProperty("jeaf.generator.modelArtifactXMIPath", "");
+
+String getUMLModelFile():
+	getSystemProperty("jeaf.generator.umlModelFile", "");
+
+String getJMMProfileFile():
+	getSystemProperty("jeaf.generator.jmmProfileFile", "");
+
+String getCustomProfileFile():
+	getSystemProperty("jeaf.generator.customProfileFile", "");
+	
+List[String] getPackages():
+	getSystemProperty("list.pkgs.whitelist", "").split(";").trim();

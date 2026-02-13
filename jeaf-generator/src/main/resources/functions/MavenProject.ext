@@ -38,6 +38,9 @@ cached String getArtifactId(JMM::MavenProject project):
 	
 cached String getProjectID(JMM::MavenProject project):
 	project.getGroupId() + ":" + project.getArtifactId();
+	
+cached String getModuleID(JMM::MavenProject project, String moduleType):
+	project.getGroupId() + ":" + project.getModuleArtifactId(moduleType);
 
 cached String getVersion(JMM::MavenProject project):
 	if project.getProjectID().javaGetArtifactVersion().length > 0
@@ -58,6 +61,20 @@ cached String getVersionPropertyName(JMM::MavenProject project):
 	
 cached String getVersionPropertyVariable(JMM::MavenProject project):
 	"${" + project.getVersionPropertyName() + "}";
+
+cached boolean isCustomizable(JMM::MavenProject project):
+	project.customizable;
+	
+
+cached boolean generateSyncServices(JMM::MavenProject project):
+	if project.archetype.name == "SERVICE_MODEL"
+	then true
+	else false;
+
+cached boolean generateReactiveServices(JMM::MavenProject project):
+	if project.archetype.name == "SERVICE_MODEL"
+	then true
+	else false;
 
 // DOMAIN_PACKAGE_NAME
 // DOMAIN_PACKAGE_FQN
@@ -187,13 +204,31 @@ cached boolean hasParentPOM(JMM::MavenProject project):
 	project.getParentPOM() != null;
 
 cached JMM::MavenProject getParentPOM(JMM::MavenProject project):
-	project.getMavenDependencies().selectFirst(e|e.isParentPOMDependency()).supplier.typeSelect(JMM::MavenProject).first();
+	project.clientDependency.typeSelect(JMM::MavenParentPOM).first().supplier.typeSelect(JMM::MavenProject).first();
 
 cached List[JMM::MavenProject] getDependentProjects(JMM::MavenProject project):
-	project.getMavenDependencies().select(e|e.isProjectDependency()).supplier.typeSelect(JMM::MavenProject);
+	project.getMavenProjectDependencies().supplier.typeSelect(JMM::MavenProject);
 
-private List[JMM::MavenDependency] getMavenDependencies(JMM::MavenProject project):
-	project.clientDependency.typeSelect(JMM::MavenDependency).sortBy(e|e.supplier.first().name).sortBy(e|e.order);
+cached List[JMM::MavenProjectDependency] getMavenDependenciesForModule(JMM::MavenProject project, String moduleDependencyType):
+	project.getMavenProjectDependencies().select(e|e.moduleDependencyTypes.toString().contains(moduleDependencyType));
+	
+cached List[JMM::MavenProjectDependency] getMavenProjectDependencies(JMM::MavenProject project):
+	project.clientDependency.typeSelect(JMM::MavenProjectDependency);
+
+cached List[JMM::MavenDependency] getMavenDependencies(JMM::MavenProject project, String sourceModuleType):
+	project.clientDependency.typeSelect(JMM::MavenDependency).select(e| e.sourceModuleTypes.toString().contains(sourceModuleType));
+	
+cached JMM::MavenProject getMavenProject(JMM::MavenDependency dependency):
+	dependency.supplier.typeSelect(JMM::MavenProject).first();
+
+cached JMM::MavenProject getMavenProject(JMM::MavenProjectDependency dependency):
+	dependency.supplier.typeSelect(JMM::MavenProject).first();
+
+cached boolean hasTargetModuleTypeMapping(String sourceModule, String moduleDependencyType):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.hasTargetModuleTypeMapping(java.lang.String, java.lang.String);
+
+cached String getTargetModuleType(String sourceModule, String moduleDependencyType):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getTargetModuleType(java.lang.String, java.lang.String);
 
 
 //
@@ -221,6 +256,9 @@ cached isArchetypeEvents(JMM::MavenProject project):
 cached isArchetypeImplementation(JMM::MavenProject project):
 	project.archetype.name == "IMPLEMENTATION";
 
+cached isArchetypeUMLModelProject(JMM::MavenProject project):
+	project.archetype.name == "UML_MODEL_PROJECT";
+
 cached isArchetypeExternalProject(JMM::MavenProject project):
 	project.archetype.name == "EXTERNAL_PROJECT";
 
@@ -232,6 +270,15 @@ cached requiresProjectPOM(JMM::MavenProject project):
 	then false
 	else true;
 
+cached List[String] getIntegrationTestModuleDependencies(JMM::MavenProject project):
+	if project.isArchetypeServiceModel()
+	then {"REST_CLIENT_STARTER", "REST_CONTROLLER_STARTER"}
+	else {"JAVA_STARTER"};
+	
+cached List[String] getIntegrationTestSpringDependencies(JMM::MavenProject project):
+	if project.isArchetypeServiceModel()
+	then {"org.springframework.boot:spring-boot-starter-web", "org.springframework.boot:spring-boot-starter-webflux"}
+	else null;
 
 cached String getPOMOutputDirectory(JMM::MavenProject project):
 	if initialProjectGeneration() == false
@@ -242,7 +289,8 @@ cached String getBOMOutputDirectory(JMM::MavenProject project):
 	if initialProjectGeneration() == false
 	then project.getModuleArtifactId("BOM") + "/"
 	else getInitialOutputDirectory() + "/" + project.getArtifactId() + "/" + project.getModuleArtifactId("BOM") + "/";
-	
+
+
 //
 // Module names
 //
@@ -260,6 +308,12 @@ private List[String] javaGetModuleTypes(String archetype):
 cached String getModuleArtifactId(JMM::MavenProject project, String moduleType):
 	project.getArtifactId().javaGetModuleArtifactId(moduleType);
 
+cached String getModuleName(JMM::MavenProject project, String moduleType):
+	project.getMavenProjectName().javaGetModuleName(moduleType);
+
+cached String getPackagingType(JMM::MavenProject project, String moduleType):
+	moduleType.javaGetModulePackagingType();
+
 cached String getBOMModuleName(JMM::MavenProject project):
 	project.getMavenProjectName().javaGetModuleName("BOM");
 
@@ -271,4 +325,7 @@ private String javaGetModuleName(String projectName, String moduleType):
 
 private String javaGetModuleArtifactId(String projectName, String moduleType):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getArtifactId(java.lang.String, java.lang.String);
+	
+private String javaGetModulePackagingType(String moduleType):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getPackagingType(java.lang.String);
 	

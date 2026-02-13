@@ -28,16 +28,67 @@
 		«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
 		«EXPAND maven::GeneratorProjectParentPOM::Generate»
 	«ENDIF»
-	
+
 	«IF generateMavenProjectStructure()»
 		«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
 		«IF this.requiresProjectPOM()»
 			«EXPAND maven::ProjectPOM::GenerateProjectPOM»
 		«ENDIF»
-		
+
 		«FOREACH this.getModuleTypes() AS moduleType»
+			«REM»BOM«ENDREM»
 			«IF moduleType.isModuleTypeBOM()»
 				«EXPAND maven::BOM::GenerateBOM»
+			«ENDIF»
+
+			«REM»OpenAPI«ENDREM»
+			«IF moduleType.isModuleTypeOpenAPI()»
+				«EXPAND maven::OpenAPIModule::GenerateOpenAPIModule»
+			«ENDIF»
+
+			«REM»Java«ENDREM»
+			«IF moduleType.isModuleTypeJAVA()»
+				«EXPAND maven::JavaModule::GenerateJavaModule»
+			«ENDIF»
+
+			«REM»Java Runtime«ENDREM»
+			«IF moduleType.isModuleTypeJavaRuntime()»
+				«EXPAND maven::JavaRuntimeModule::GenerateJavaRuntimeModule»
+			«ENDIF»
+
+			«REM»Java Starter«ENDREM»
+			«IF moduleType.isModuleTypeJavaStarter()»
+				«EXPAND maven::JavaStarterModule::GenerateJavaStarterModule»
+			«ENDIF»
+
+			«REM»Services«ENDREM»
+			«IF moduleType.isModuleTypeServices()»
+				«EXPAND maven::ServicesModule::GenerateServicesModule»
+			«ENDIF»
+
+			«REM»REST Client«ENDREM»
+			«IF moduleType.isModuleTypeRESTClient()»
+				«EXPAND maven::RESTClientModule::GenerateRESTClientModule»
+			«ENDIF»
+
+			«REM»REST Client Starter«ENDREM»
+			«IF moduleType.isModuleTypeRESTClientStarter()»
+				«EXPAND maven::RESTClientStarterModule::GenerateRESTClientStarterModule»
+			«ENDIF»
+
+			«REM»REST Controller«ENDREM»
+			«IF moduleType.isModuleTypeRESTController()»
+				«EXPAND maven::RESTControllerModule::GenerateRESTControllerModule»
+			«ENDIF»
+
+			«REM»REST Controller Starter«ENDREM»
+			«IF moduleType.isModuleTypeRESTControllerStarter()»
+				«EXPAND maven::RESTControllerStarterModule::GenerateRESTControllerStarterModule»
+			«ENDIF»
+
+			«REM»Integration Test«ENDREM»
+			«IF moduleType.isModuleTypeIntegrationTest()»
+				«EXPAND maven::IntegrationTestModule::GenerateIntegrationTestModule»
 			«ENDIF»
 		«ENDFOREACH»
 	«ENDIF»
