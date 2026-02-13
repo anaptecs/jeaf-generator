@@ -285,12 +285,6 @@ cached String getPOMOutputDirectory(JMM::MavenProject project):
 	then ""
 	else getInitialOutputDirectory() + "/" + project.getArtifactId() + "/";
 
-cached String getBOMOutputDirectory(JMM::MavenProject project):
-	if initialProjectGeneration() == false
-	then project.getModuleArtifactId("BOM") + "/"
-	else getInitialOutputDirectory() + "/" + project.getArtifactId() + "/" + project.getModuleArtifactId("BOM") + "/";
-
-
 //
 // Module names
 //
