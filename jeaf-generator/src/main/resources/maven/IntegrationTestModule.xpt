@@ -23,20 +23,18 @@
 	<name>«this.getModuleName(moduleType)»</name>
 	<artifactId>«this.getModuleArtifactId(moduleType)»</artifactId>
 	<packaging>jar</packaging>
-
-	<properties>
-		<generateServiceInterfaces>«this.generateSyncServices()»</generateServiceInterfaces>
-		<generateReactiveServiceInterfaces>«this.generateReactiveServices()»</generateReactiveServiceInterfaces>
 «IF this.isCustomizable() -»
 
+
+	<properties>
 		<!-- Custom section for properties -->
 		«PROTECT CSTART "<!-- " CEND " -->" ID "properties:"  + this.getModuleID(moduleType)»
 		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
 		<!-- Add your custom properties here -->
 		«ENDPROTECT»
-«ENDIF -»
 	</properties>
 
+«ENDIF -»
 «EXPAND maven::POMHelper::GenerateDependenciesSection(moduleType, null, this.getIntegrationTestModuleDependencies(), this.getIntegrationTestSpringDependencies()) -»
 </project>
 «ENDFILE»

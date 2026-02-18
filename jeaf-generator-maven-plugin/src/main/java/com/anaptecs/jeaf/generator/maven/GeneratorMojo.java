@@ -1893,24 +1893,27 @@ public class GeneratorMojo extends AbstractMojo {
       if (generateExceptionClasses) {
         lLog.info("Generate Exception Classes:                       " + generateExceptionClasses);
       }
-      if (generateServiceInterfaces) {
+      if (generateServiceInterfaces || generateReactiveServiceInterfaces) {
         lLog.info("Generate Service Interfaces:                      " + generateServiceInterfaces);
-      }
-      if (generateReactiveServiceInterfaces) {
         lLog.info("Generate Reactive Service Interfaces:             " + generateReactiveServiceInterfaces);
+        lLog.info(" ");
       }
       if (generateServiceProxies) {
         lLog.info("Generate Service Proxies:                         " + generateServiceProxies);
+        lLog.info(" ");
       }
       if (generateServiceProviderInterfaces) {
         lLog.info("Generate Service Provider Interfaces:             " + generateServiceProviderInterfaces);
+        lLog.info(" ");
       }
       if (generateServiceProviderImpls) {
         lLog.info("Generate Service Provider Impls:                  " + generateServiceProviderImpls);
+        lLog.info(" ");
       }
       if (this.generateREST()) {
         lLog.info("Generate REST Resources:                          " + generateRESTResources);
         lLog.info("Generate Reactive REST Resources:                 " + generateReactiveRESTResources);
+        lLog.info(" ");
         lLog.info("Generate REST Security Annotation:                " + generateSecurityAnnotation);
         if (defaultSecurityRoleName.length() > 0) {
           lLog.info("Default Security Role Name:                       " + defaultSecurityRoleName);
@@ -1930,7 +1933,8 @@ public class GeneratorMojo extends AbstractMojo {
 
       if (generateRESTServiceProxies || generateReactiveRESTServiceProxies) {
         lLog.info("Generate REST Service Proxies:                    " + generateRESTServiceProxies);
-        lLog.info("Generate reactive REST Service Proxies:           " + generateReactiveRESTServiceProxies);
+        lLog.info("Generate Reactive REST Service Proxies:           " + generateReactiveRESTServiceProxies);
+        lLog.info(" ");
       }
 
       if (generateRESTServiceProxyConfigFile) {
