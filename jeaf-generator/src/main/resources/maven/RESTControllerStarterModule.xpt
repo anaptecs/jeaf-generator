@@ -37,5 +37,8 @@
 «EXPAND maven::POMHelper::GenerateDependenciesSection(moduleType, null, {"REST_CONTROLLER"}, null) -»
 </project>
 «ENDFILE»
+
+«EXPAND maven::POMHelper::CreateSourceDirectories(moduleType)»
+
 «ENDLET»
 «ENDDEFINE»

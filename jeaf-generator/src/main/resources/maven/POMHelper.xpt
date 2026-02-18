@@ -139,3 +139,15 @@
 		«ENDIF -»
 	</dependencies>
 «ENDDEFINE»
+
+
+«DEFINE CreateSourceDirectories(String moduleType) FOR MavenProject»
+	«IF initialProjectGeneration()»
+		«LET this.getPOMOutputDirectory() + "/" + this.getModuleArtifactId(moduleType) + "/" AS fileBasePath»
+			«FILE fileBasePath + "src/main/java/.gitkeep" basedir -»«ENDFILE»
+			«FILE fileBasePath + "src/main/resources/.gitkeep" basedir -»«ENDFILE»
+			«FILE fileBasePath + "src/test/java/.gitkeep" basedir -»«ENDFILE»
+			«FILE fileBasePath + "src/test/resources/.gitkeep" basedir -»«ENDFILE»
+		«ENDLET»
+	«ENDIF»
+«ENDDEFINE»

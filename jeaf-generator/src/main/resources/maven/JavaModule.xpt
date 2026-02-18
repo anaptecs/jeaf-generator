@@ -39,5 +39,8 @@
 «EXPAND maven::POMHelper::GenerateDependenciesSection(moduleType, {"JAVA_2_JAVA"}, null, null) -»
 </project>
 «ENDFILE»
+
+«EXPAND maven::POMHelper::CreateSourceDirectories(moduleType)»
+
 «ENDLET»
 «ENDDEFINE»

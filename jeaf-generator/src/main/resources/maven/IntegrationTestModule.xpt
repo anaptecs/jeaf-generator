@@ -38,5 +38,8 @@
 «EXPAND maven::POMHelper::GenerateDependenciesSection(moduleType, null, this.getIntegrationTestModuleDependencies(), this.getIntegrationTestSpringDependencies()) -»
 </project>
 «ENDFILE»
+
+«EXPAND maven::POMHelper::CreateSourceDirectories(moduleType)»
+
 «ENDLET»
 «ENDDEFINE»

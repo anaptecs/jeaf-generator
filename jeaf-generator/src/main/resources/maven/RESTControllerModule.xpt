@@ -41,5 +41,8 @@
 «EXPAND maven::POMHelper::GenerateDependenciesSection(moduleType, null, {"SERVICES", "JAVA_RUNTIME"}, {"com.anaptecs.jeaf.rest:jeaf-rest-resource-api", "com.anaptecs.jeaf.validation:jeaf-validation-api", "org.springframework:spring-web", "org.springframework.security:spring-security-core"}) -»
 </project>
 «ENDFILE»
+
+«EXPAND maven::POMHelper::CreateSourceDirectories(moduleType)»
+
 «ENDLET»
 «ENDDEFINE»

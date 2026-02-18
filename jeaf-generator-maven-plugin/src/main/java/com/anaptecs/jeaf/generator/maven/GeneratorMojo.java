@@ -1713,7 +1713,9 @@ public class GeneratorMojo extends AbstractMojo {
 
       if (lSuccessful == true) {
         // Format generated sources and resources
-        this.runFormatter();
+        if (this.willFilesWrittenFromUML() || generateMessageConstants) {
+          this.runFormatter();
+        }
 
         // Validate OpenAPI specification
         if (generateOpenAPISpec && validateOpenAPISpec) {
@@ -1730,7 +1732,7 @@ public class GeneratorMojo extends AbstractMojo {
           this.getLog().error("");
           this.getLog().error("Error(s) during code generation. Please see log output for further details.");
           this.getLog().error(
-              "For further information about how to solve them please check: https://anaptecs.atlassian.net/l/cp/5KVHFrW9");
+              "For further information about how to solve them please check: https://www.jeaf-generator.io/developer-guide/error-codes");
           this.getLog().error("");
         }
       }
@@ -2886,7 +2888,7 @@ public class GeneratorMojo extends AbstractMojo {
         String lStartOfFile = FileTools.getFileTools().readLinesAsString(lNextFile, 0, 5);
         if (lStartOfFile.contains("file:/")) {
           this.getLog().warn("Warning: [9102] " + lNextFile
-              + " seems to use file system references. This might lead to portabilty issues with the exported XMI files. For further details please refer to FAQ entry #2.1 on https://anaptecs.atlassian.net/l/cp/ndmtZxvX");
+              + " seems to use file system references. This might lead to portabilty issues with the exported XMI files. For further details please refer to https://www.jeaf-generator.io/developer-guide/error-codes");
         }
       }
       catch (IOException e) {
