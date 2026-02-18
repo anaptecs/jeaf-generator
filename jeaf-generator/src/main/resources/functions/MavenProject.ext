@@ -12,30 +12,33 @@ cached JMM::MavenProject asMavenProject(uml::Element element):
 	(JMM::MavenProject) element;
 
 cached String getMavenProjectName(JMM::MavenProject project):
-	if project.name.trim().length > 0
-	then project.name.trim().convertPatternToEffectiveValue(project)
-	else getProjectNamePattern().convertPatternToEffectiveValue(project);	
+	if isMavenProjectGeneratedFromModelTemplate()
+	then getProjectNamePattern()
+	else
+		if project.name.trim().length > 0
+		then project.name.trim().convertPatternToEffectiveValue(project)
+		else getProjectNamePattern().convertPatternToEffectiveValue(project);	
 
 cached String getMavenProjectDescription(JMM::MavenProject project):
 	if project.getMarkdownComment().length > 0
 	then project.getMarkdownComment().convertPatternToEffectiveValue(project)
 	else getProjectDescriptionPattern().convertPatternToEffectiveValue(project);
-	
+
 cached String getMavenProjectURL(JMM::MavenProject project):
 	if project.projectURL.trim().length > 0
 	then project.projectURL.trim().convertPatternToEffectiveValue(project)
 	else getProjectURLPattern().convertPatternToEffectiveValue(project);
-	
+
 cached String getGroupId(JMM::MavenProject project):
 	if project.groupId.trim().length > 0
 	then project.groupId.trim().convertPatternToEffectiveValue(project)
 	else getGroupIdPattern().convertPatternToEffectiveValue(project);
-	
+
 cached String getArtifactId(JMM::MavenProject project):
 	if project.artifactId.trim().length > 0
 	then project.artifactId.trim().convertPatternToEffectiveValue(project)
 	else getArtifactIdPattern().convertPatternToEffectiveValue(project);
-	
+
 cached String getProjectID(JMM::MavenProject project):
 	project.getGroupId() + ":" + project.getArtifactId();
 	
@@ -55,7 +58,6 @@ cached String getSCMUrl(JMM::MavenProject project):
 cached String getSCMConnection(JMM::MavenProject project):
 	javaGetSCMConnection(project.scmType.name, project.getSCMUrl());
 
-
 cached String getVersionPropertyName(JMM::MavenProject project):
 	getVersionPropertyNamePattern().convertPatternToEffectiveValue(project);
 	
@@ -64,7 +66,6 @@ cached String getVersionPropertyVariable(JMM::MavenProject project):
 
 cached boolean isCustomizable(JMM::MavenProject project):
 	project.customizable;
-	
 
 cached boolean generateSyncServices(JMM::MavenProject project):
 	if project.archetype.name == "SERVICE_MODEL"
@@ -95,10 +96,17 @@ private String getMavenProjectPackageName(JMM::MavenProject project):
 // PROJECT_PACKAGE_FQN
 cached String getMavenProjectPackageNameFQN(JMM::MavenProject project):
 	project.getNearestPackage().qualifiedName();
+	
+cached String getMavenProjectUMLPackagePath(JMM::MavenProject project):
+	if getMavenProjectUMLPackage().length > 0
+	then getMavenProjectUMLPackage()
+	else project.getMavenProjectPackageNameFQN();
 
 // PROJECT_ARCHETYPE
 private String getArchetype(JMM::MavenProject project):
-	project.archetype.name;
+	if project.archetype.name == "CUSTOM"
+	then getMavenProjectDefaultArchetype()
+	else project.archetype.name;
 	
 private String javaGetArchetypeName(String archeType):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype.getName(java.lang.String);
@@ -202,6 +210,9 @@ private cached String toMavenId(String input):
 //
 cached boolean hasParentPOM(JMM::MavenProject project):
 	project.getParentPOM() != null;
+	
+cached boolean hasDefaultParentPOM(JMM::MavenProject project):
+	getMavenProjectDefaultParentGroupId().length > 0;
 
 cached JMM::MavenProject getParentPOM(JMM::MavenProject project):
 	project.clientDependency.typeSelect(JMM::MavenParentPOM).first().supplier.typeSelect(JMM::MavenProject).first();
@@ -236,34 +247,34 @@ cached String getTargetModuleType(String sourceModule, String moduleDependencyTy
 //
 
 cached isArchetypeGeneratorProjectParentPOM(JMM::MavenProject project):
-	project.archetype.name == "GENERATOR_PROJECT_PARENT_POM";
+	project.getArchetype() == "GENERATOR_PROJECT_PARENT_POM";
 
 cached isArchetypeDomain(JMM::MavenProject project):
-	project.archetype.name == "DOMAIN";
+	project.getArchetype() == "DOMAIN";
 
 cached isArchetypeDataTypes(JMM::MavenProject project):
-	project.archetype.name == "DATA_TYPES";
+	project.getArchetype() == "DATA_TYPES";
 
 cached isArchetypeServiceModel(JMM::MavenProject project):
-	project.archetype.name == "SERVICE_MODEL";
+	project.getArchetype() == "SERVICE_MODEL";
 
 cached isArchetypeMasterData(JMM::MavenProject project):
-	project.archetype.name == "MASTER_DATA";
+	project.getArchetype() == "MASTER_DATA";
 
 cached isArchetypeEvents(JMM::MavenProject project):
-	project.archetype.name == "EVENTS";
+	project.getArchetype() == "EVENTS";
 
 cached isArchetypeImplementation(JMM::MavenProject project):
-	project.archetype.name == "IMPLEMENTATION";
+	project.getArchetype() == "IMPLEMENTATION";
 
 cached isArchetypeUMLModelProject(JMM::MavenProject project):
-	project.archetype.name == "UML_MODEL_PROJECT";
+	project.getArchetype() == "UML_MODEL_PROJECT";
 
 cached isArchetypeExternalProject(JMM::MavenProject project):
-	project.archetype.name == "EXTERNAL_PROJECT";
+	project.getArchetype() == "EXTERNAL_PROJECT";
 
 cached isArchetypeCustom(JMM::MavenProject project):
-	project.archetype.name == "CUSTOM";
+	project.getArchetype() == "CUSTOM";
 	
 cached requiresProjectPOM(JMM::MavenProject project):
 	if project.isArchetypeGeneratorProjectParentPOM() || project.isArchetypeExternalProject()
@@ -294,8 +305,8 @@ cached List[String] getModuleTypesForBOM(JMM::MavenProject project):
 	project.getModuleTypes().select(e|e.isModuleTypeBOM() == false && e.isModuleTypeIntegrationTest() == false);
 
 cached List[String] getModuleTypes(JMM::MavenProject project):
-	project.archetype.name.javaGetModuleTypes();
-	
+	project.getArchetype().javaGetModuleTypes();
+
 private List[String] javaGetModuleTypes(String archetype):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype.getModuleTypeNames(java.lang.String);
  

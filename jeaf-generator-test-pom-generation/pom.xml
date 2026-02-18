@@ -59,45 +59,16 @@
 
 					<mavenGroupIdPattern>$[PROJECT_PACKAGE_NAME_FQN]</mavenGroupIdPattern>
 					<mavenArtifactIdPattern>$[PROJECT_NAME_MAVEN]</mavenArtifactIdPattern>
-					
+					<mavenProjectUseDefaultParent>false</mavenProjectUseDefaultParent>
 					
 					<mavenScmPathPattern>https://github.com/anaptecs/$[PROJECT_NAME_MAVEN]></mavenScmPathPattern>
 					<mavenArtifactDefaultVersion>47.1.1</mavenArtifactDefaultVersion>
+					<mavenProjectUMLPackage>com.anaptecs.maven</mavenProjectUMLPackage>
 
 					<!-- Define code formatting style -->
 					<!-- <conventionFile>anaptecs_code_guideline.xml</conventionFile> -->
 				</configuration>
 			</plugin>
 		</plugins>
-
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>com.anaptecs.jeaf.generator</groupId>
-										<artifactId>jeaf-generator-maven-plugin</artifactId>
-										<versionRange>[1.6.0,)</versionRange>
-										<goals>
-											<goal>Generator</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>

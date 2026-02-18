@@ -15,7 +15,23 @@
 «EXPAND maven::POMHelper::POMCommonBegin»
 
 	<properties>
-«IF getXMIDirectory().length > 0-»
+«IF isMavenProjectGeneratedFromModelTemplate()-»
+		<!--
+			TODO: Please define from where the UML model should be read, either directly from the local file system
+			or from a Maven artifact that contains the so called XMI files.
+		-->
+		<!-- Read UML model (XMI files) directly from file system -->
+		<!--
+		<xmiDirectory>TODO</xmiDirectory>
+		-->
+
+		<!-- Read UML model from Maven artifact. -->
+		<!--
+		<modelArtifactGroupID>TODO</modelArtifactGroupID>
+		<modelArtifactArtifactID>TODO</modelArtifactArtifactID>
+		<modelArtifactXMIPath>xmi</modelArtifactXMIPath>
+		-->
+«ELSEIF getXMIDirectory().length > 0-»
 		<!-- Read UML model (XMI files) directly from file system -->
 		<xmiDirectory>«getXMIDirectory()»</xmiDirectory>»
 
@@ -26,11 +42,16 @@
 		<modelArtifactXMIPath>«getModelArtifactXMIPath()»</modelArtifactXMIPath>
 
 «ENDIF-»
+«IF isMavenProjectGeneratedFromModelTemplate() -»
+		<!-- Name of the main file with the UML model -->
+		<umlModelFile>TODO</umlModelFile>
+«ELSE -»
 		<!-- Name of the main file with the UML model -->
 		<umlModelFile>«getUMLModelFile()»</umlModelFile>
+«ENDIF-»
 
 		<!-- UML package which will be the one that is considered during code generation --> 
-		<umlPackage>«this.getMavenProjectPackageNameFQN()»</umlPackage>
+		<umlPackage>«this.getMavenProjectUMLPackagePath()»</umlPackage>
 
 «IF this.getDependentProjects().size > 0 -»
 «FOREACH this.getDependentProjects() AS project-»
@@ -71,7 +92,13 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
+«ENDFOREACH -»
+«FOREACH this.getModuleTypesForBOM() AS module -»
+			<dependency>
+				<groupId>«this.getGroupId()»</groupId>
+				<artifactId>«this.getModuleArtifactId(module)»</artifactId>
+				<version>«this.getVersion()»</version>
+			</dependency>
 «ENDFOREACH -»
 «IF this.isCustomizable() -»
 			<!-- Section for custom dependency management entries -->

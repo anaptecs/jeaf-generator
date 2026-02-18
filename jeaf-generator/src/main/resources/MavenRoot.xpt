@@ -41,6 +41,11 @@
 				«EXPAND maven::BOM::GenerateBOM»
 			«ENDIF»
 
+			«REM»UML Model«ENDREM»
+			«IF moduleType.isModuleTypeUML()»
+				«EXPAND maven::UMLModule::GenerateUMLModule»
+			«ENDIF»
+
 			«REM»OpenAPI«ENDREM»
 			«IF moduleType.isModuleTypeOpenAPI()»
 				«EXPAND maven::OpenAPIModule::GenerateOpenAPIModule»

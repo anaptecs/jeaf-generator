@@ -76,7 +76,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>com.anaptecs.maven</groupId>
 				<artifactId>jeaf-generator-demo-data-types-bom</artifactId>
@@ -84,7 +83,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
 			<dependency>
 				<groupId>com.anaptecs.maven</groupId>
 				<artifactId>jeaf-generator-other-data-types-bom</artifactId>
@@ -92,7 +90,51 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-uml</artifactId>
+				<version>47.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-open-api</artifactId>
+				<version>47.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-java</artifactId>
+				<version>47.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-java-runtime</artifactId>
+				<version>47.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-services</artifactId>
+				<version>47.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-rest-client</artifactId>
+				<version>47.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-rest-client-starter</artifactId>
+				<version>47.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-rest-controller</artifactId>
+				<version>47.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.anaptecs.maven</groupId>
+				<artifactId>jeaf-generator-demo-service-model-rest-controller-starter</artifactId>
+				<version>47.1.1</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

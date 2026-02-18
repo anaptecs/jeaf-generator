@@ -177,6 +177,28 @@ String getVersionPropertyNamePattern():
 String getMavenArtifactDefaultVersion():
 	getSystemProperty("jeaf.generator.mavenArtifactDefaultVersion", "").trim();
 
+String getMavenProjectDefaultArchetype():
+	getSystemProperty("jeaf.generator.mavenProjectDefaultArchetype", "").trim();
+
+String getMavenProjectUMLPackage():
+	getSystemProperty("jeaf.generator.mavenProjectUMLPackage", "").trim();
+
+String getMavenProjectDefaultParentGroupId():
+	getSystemProperty("jeaf.generator.mavenProjectDefaultParentGroupId", "").trim();
+
+String getMavenProjectDefaultParentArtifactId():
+	getSystemProperty("jeaf.generator.mavenProjectDefaultParentArtifactId", "").trim();
+
+String getMavenProjectDefaultParentVersion():
+	getSystemProperty("jeaf.generator.mavenProjectDefaultParentVersion", "").trim();
+
+boolean useDefaultParent():	
+	getBooleanSystemProperty("jeaf.generator.mavenProjectUseDefaultParent", true);
+
+	
+boolean isMavenProjectGeneratedFromModelTemplate():
+	getBooleanSystemProperty("jeaf.generator.mavenProjectGeneratedFromModelTemplate", false);
+
 String getXMIDirectory():
 	getSystemProperty("jeaf.generator.xmiDirectory", "");
 

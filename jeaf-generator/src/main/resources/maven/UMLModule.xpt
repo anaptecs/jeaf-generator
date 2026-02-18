@@ -1,0 +1,83 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION java::GeneratorCommons»
+«EXTENSION functions::MavenProject»
+«EXTENSION functions::MavenDependency»
+«EXTENSION functions::SystemProperties»
+
+
+«DEFINE GenerateUMLModule FOR MavenProject»
+«LET "UML_MODEL" AS moduleType»
+«FILE this.getPOMOutputDirectory() + "/" + this.getModuleArtifactId(moduleType) + "/pom.xml" basedir -»
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>«this.getGroupId()»</groupId>
+		<artifactId>«this.getArtifactId()»</artifactId>
+		<version>«this.getVersion()»</version>
+	</parent>
+
+	<name>«this.getModuleName(moduleType)»</name>
+	<artifactId>«this.getModuleArtifactId(moduleType)»</artifactId>
+	<packaging>pom</packaging>
+
+«IF this.isCustomizable() -»
+	<properties>
+		<!-- Custom section for properties -->
+		«PROTECT CSTART "<!-- " CEND " -->" ID "properties:"  + this.getModuleID(moduleType)»
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		<!-- Add your custom properties here -->
+		«ENDPROTECT»
+	</properties>
+«ENDIF -»
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>${maven.assembly.version}</version>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptors>
+						<descriptor>${basedir}/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+«ENDFILE»
+
+«FILE this.getPOMOutputDirectory() + "/" + this.getModuleArtifactId(moduleType) + "/assembly.xml" basedir -»
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+	<id>distribution</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+		<fileSet>
+			<directory>${basedir}/xmi</directory>
+			<outputDirectory>xmi</outputDirectory>
+		</fileSet>
+	</fileSets>
+</assembly>
+«ENDFILE»
+
+«FILE this.getPOMOutputDirectory() + "/" + this.getModuleArtifactId(moduleType) + "/xmi/.gitkeep" basedir -»
+«ENDFILE»
+
+«ENDLET»
+«ENDDEFINE»

@@ -17,20 +17,20 @@
 	<version>«this.getVersion()»</version>
 	<packaging>pom</packaging>
 
+
 «LET this.getModuleTypesForBOM() AS moduleTypes -»
-«IF moduleTypes.size > 0»
+«IF moduleTypes.size > 0 -»
 	<dependencyManagement>
-        <dependencies>
+		<dependencies>
 «FOREACH moduleTypes AS module -»
-            <dependency>
-                <groupId>«this.getGroupId()»</groupId>
-                <artifactId>«this.getModuleArtifactId(module)»</artifactId>
-                <version>«this.getVersion()»</version>
-                <packaging>«this.getPackagingType(module)»</packaging>
-            </dependency>
+			<dependency>
+				<groupId>«this.getGroupId()»</groupId>
+				<artifactId>«this.getModuleArtifactId(module)»</artifactId>
+				<version>«this.getVersion()»</version>
+			</dependency>
 «ENDFOREACH -»
-        </dependencies>
-    </dependencyManagement>
+		</dependencies>
+	</dependencyManagement>
 «ENDIF-»
 «ENDLET-»
 </project>

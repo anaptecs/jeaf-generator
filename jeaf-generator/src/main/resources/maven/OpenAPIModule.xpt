@@ -22,7 +22,7 @@
 
 	<name>«this.getModuleName(moduleType)»</name>
 	<artifactId>«this.getModuleArtifactId(moduleType)»</artifactId>
-	<packaging>zip</packaging>
+	<packaging>pom</packaging>
 
 	<properties>
 		<generateOpenAPISpec>true</generateOpenAPISpec>

@@ -42,6 +42,7 @@ import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
 import com.anaptecs.jeaf.fwk.generator.util.ReportFormat;
 import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
 import com.anaptecs.jeaf.fwk.generator.util.maven.ArtifactCache;
+import com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
 import com.anaptecs.jeaf.fwk.tools.message.generator.MessageConstantsGenerator;
@@ -1650,8 +1651,29 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "$[PROJECT_ARTIFACT_ID].version")
   private String mavenVersionPropertyNamePattern;
 
-  @Parameter(required = false, defaultValue = "UNKNOWN_VERSION")
+  @Parameter(required = false, defaultValue = "0.1.0-SNAPSHOT")
   private String mavenArtifactDefaultVersion;
+
+  @Parameter(required = false, defaultValue = "SERVICE_MODEL")
+  private ProjectArchetype mavenProjectDefaultArchetype;
+
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectUMLPackage;
+
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf")
+  private String mavenProjectDefaultParentGroupId;
+
+  @Parameter(required = false, defaultValue = "jeaf-generator-project-parent")
+  private String mavenProjectDefaultParentArtifactId;
+
+  @Parameter(required = false, defaultValue = "${project.version}")
+  private String mavenProjectDefaultParentVersion;
+
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean mavenProjectUseDefaultParent;
+
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean mavenProjectGeneratedFromModelTemplate;
 
   @Component
   private BuildPluginManager pluginManager;
@@ -1672,6 +1694,7 @@ public class GeneratorMojo extends AbstractMojo {
   @Override
   public void execute( ) throws MojoExecutionException, MojoFailureException {
     if (this.isGenerationRequested()) {
+      this.checkConfiguration();
       this.setDefaults();
 
       this.resolveArtifactVersions();
@@ -1722,10 +1745,20 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
+  private void checkConfiguration( ) throws MojoFailureException {
+    if (initialProjectGeneration && mavenProjectUMLPackage.trim().isEmpty()) {
+      throw new MojoFailureException(
+          "Configuration parameter 'mavenProjectUMLPackage' is not defined even though it is required.");
+    }
+  }
+
   private void resolveArtifactVersions( ) {
     // Resolve versions of all dependencies (direct and transitive ones)
     List<Artifact> lArtifacts = new ArrayList<>(mavenProject.getArtifacts());
-    lArtifacts.add(mavenProject.getParentArtifact());
+    Artifact lParentArtifact = mavenProject.getParentArtifact();
+    if (lParentArtifact != null) {
+      lArtifacts.add(lParentArtifact);
+    }
     lArtifacts.add(mavenProject.getArtifact());
     Collections.sort(lArtifacts);
 
@@ -1733,7 +1766,7 @@ public class GeneratorMojo extends AbstractMojo {
     for (Artifact lDependency : lArtifacts) {
       String lProjectID = lDependency.getGroupId() + ":" + lDependency.getArtifactId();
       String lVersion = lDependency.getVersion();
-      this.getLog().info(lProjectID + ":" + lVersion);
+      this.getLog().debug(lProjectID + ":" + lVersion);
       ArtifactCache.addArtifactVersion(lProjectID, lVersion);
     }
   }
@@ -1751,6 +1784,15 @@ public class GeneratorMojo extends AbstractMojo {
     if (resourceTestGenDirectory == null) {
       resourceTestGenDirectory = resourceGenDirectory;
     }
+
+    // Cleanup custom check files
+    List<String> lCleanedCustomCheckFiles = new ArrayList<>();
+    for (String lNext : customCheckFiles) {
+      if (lNext.trim().isEmpty() == false) {
+        lCleanedCustomCheckFiles.add(lNext.trim());
+      }
+    }
+    customCheckFiles = lCleanedCustomCheckFiles;
   }
 
   private String getPackageWhitelist( ) {
@@ -1787,504 +1829,532 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info(" ");
     }
 
-    lLog.info("sourceDirectory (slot 'src'):                     " + sourceDirectory);
-    lLog.info("sourceGenDirectory (slot 'src_gen'):              " + sourceGenDirectory);
-    lLog.info("resourceDirectory (slot 'res'):                   " + resourceDirectory);
-    lLog.info("resourceGenDirectory(slot 'res_gen'):             " + resourceGenDirectory);
-    lLog.info("sourceTestDirectory (slot 'src_test'):            " + sourceTestDirectory);
-    lLog.info("sourceTestGenDirectory (slot 'src_test_gen'):     " + sourceTestGenDirectory);
-    lLog.info("resourceTestDirectory (slot 'res_test'):          " + resourceTestDirectory);
-    lLog.info("resourceTestGenDirectory (slot 'res-test-gen'):   " + resourceTestGenDirectory);
+    if (generateMavenProjectStructure == false && generateGeneratorProjectParentPOM == false) {
+      if (this.willFilesWrittenFromUML()) {
+        lLog.info("sourceDirectory (slot 'src'):                     " + sourceDirectory);
+        lLog.info("sourceGenDirectory (slot 'src_gen'):              " + sourceGenDirectory);
+        lLog.info("resourceDirectory (slot 'res'):                   " + resourceDirectory);
+        lLog.info("resourceGenDirectory(slot 'res_gen'):             " + resourceGenDirectory);
+        lLog.info("sourceTestDirectory (slot 'src_test'):            " + sourceTestDirectory);
+        lLog.info("sourceTestGenDirectory (slot 'src_test_gen'):     " + sourceTestGenDirectory);
+        lLog.info("resourceTestDirectory (slot 'res_test'):          " + resourceTestDirectory);
+        lLog.info("resourceTestGenDirectory (slot 'res-test-gen'):   " + resourceTestGenDirectory);
+      }
 
-    if (breakBuildOnGeneratorError == false) {
-      lLog.warn("");
-      lLog.warn(
-          "Errors during code generation do not break the build. Please make sure that this is configured intentionally.");
-      lLog.warn("");
-    }
+      if (breakBuildOnGeneratorError == false) {
+        lLog.warn("");
+        lLog.warn(
+            "Errors during code generation do not break the build. Please make sure that this is configured intentionally.");
+        lLog.warn("");
+      }
 
-    if (this.isUMLGenerationRequested() == true) {
       lLog.info(" ");
       lLog.info("UML Modeling Tool:                                " + umlModelingTool.getDisplayName());
-      lLog.info("Target Runtime:                                   " + targetRuntime.name());
-      lLog.info("Enterprise Java Type:                             " + enterpriseJavaType.name());
-    }
-    if (restLibrary != null) {
-      lLog.info("REST Library:                                     " + restLibrary.name());
-    }
-
-    lLog.info(" ");
-    lLog.info("Code-Style:                                       " + xmlFormatterStyleFile);
-    lLog.info("Package Whitelist:                                " + this.getPackageWhitelist());
-    String lIgnoredResources = Tools.getCollectionTools().toString(ignoredResourceFiles, ", ");
-    if (lIgnoredResources.trim().isEmpty()) {
-      lIgnoredResources = "none";
-    }
-    lLog.info("Ignored resource files:                           " + lIgnoredResources);
-    lLog.info(" ");
-
-    if (useMultiModuleWorkflow) {
-      lLog.info("Using multi-module workflow:                      " + useMultiModuleWorkflow);
-      lLog.info("Running all checks:                               " + this.runAllChecks());
-    }
-
-    if (generateCustomConstraints) {
-      lLog.info("Generate Custmom Constraints:                     " + generateCustomConstraints);
-    }
-    if (generateServiceObjects) {
-      lLog.info("Generate Service Objects:                         " + generateServiceObjects);
-      lLog.info("Make ServiceObjects immutable:                    " + generateImmutableClasses);
-
-      if (generateHeavyExtensibleEnums) {
-        lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
-      }
-      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
-      lLog.info("Generate of(...):                                 " + generateOfOperation);
-      lLog.info("Generate of(...) for OpenAPI Data Types:          " + generateOfOperationForOpenAPIDataType);
-      lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
-    }
-    if (generateExceptionClasses) {
-      lLog.info("Generate Exception Classes:                       " + generateExceptionClasses);
-    }
-    if (generateServiceInterfaces) {
-      lLog.info("Generate Service Interfaces:                      " + generateServiceInterfaces);
-    }
-    if (generateReactiveServiceInterfaces) {
-      lLog.info("Generate Reactive Service Interfaces:             " + generateReactiveServiceInterfaces);
-    }
-    if (generateServiceProxies) {
-      lLog.info("Generate Service Proxies:                         " + generateServiceProxies);
-    }
-    if (generateServiceProviderInterfaces) {
-      lLog.info("Generate Service Provider Interfaces:             " + generateServiceProviderInterfaces);
-    }
-    if (generateServiceProviderImpls) {
-      lLog.info("Generate Service Provider Impls:                  " + generateServiceProviderImpls);
-    }
-    if (generateRESTResources || generateReactiveRESTResources) {
-      lLog.info("Generate REST Resources:                          " + generateRESTResources);
-      lLog.info("Generate Reactive REST Resources:                 " + generateReactiveRESTResources);
-      lLog.info("Generate REST Security Annotation:                " + generateSecurityAnnotation);
-      if (defaultSecurityRoleName.length() > 0) {
-        lLog.info("Default Security Role Name:                       " + defaultSecurityRoleName);
-      }
-      if (useDeprecatedSpringSecuredAnnotation) {
-        lLog.info("Use deprecated Spring @Secured annotation:        " + useDeprecatedSpringSecuredAnnotation);
-      }
-      lLog.info("Generate REST Request Validation:                 " + generateRESTRequestValidation);
-      lLog.info("Generate REST Response Validation:                " + generateRESTResponseValidation);
-    }
-    if (filterCustomHeaders == false) {
-      lLog.info("Filter custom headers:                            " + filterCustomHeaders);
-    }
-    if (restPathPrefix.length() > 0) {
-      lLog.info("REST Path Prefix:                                 " + restPathPrefix);
-    }
-    if (generateRESTServiceProxies || generateReactiveRESTServiceProxies) {
-      lLog.info("Generate REST Service Proxies:                    " + generateRESTServiceProxies);
-      lLog.info("Generate reactive REST Service Proxies:           " + generateReactiveRESTServiceProxies);
-    }
-    if (generateRESTServiceProxyConfigFile) {
-      lLog.info("Generate REST Service Default Config File:        " + generateRESTServiceProxyConfigFile);
-    }
-    if (generateActivityInterfaces) {
-      lLog.info("Generate Activity Interfaces:                     " + generateActivityInterfaces);
-    }
-    if (generateActivityImpls) {
-      lLog.info("Generate Activity Impls:                          " + generateActivityImpls);
-    }
-    if (generatePOJOs) {
-      lLog.info("Generate POJO's:                                  " + generatePOJOs);
-      lLog.info("Make POJO's serializable:                         " + makePOJOsSerializable);
-      lLog.info("Make POJO's immutable:                            " + generateImmutableClasses);
-
-      if (generateHeavyExtensibleEnums) {
-        lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
-      }
-      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
-      lLog.info("Generate of(...):                                 " + generateOfOperation);
-      lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
-    }
-
-    if (allowTypeWildcardsForGenerics) {
-      lLog.info("Allow type wildcards for generics:                " + allowTypeWildcardsForGenerics);
-    }
-
-    if (generateEqualsAndHashCode) {
-      lLog.info("Generate equals() and hashCode():                 " + generateEqualsAndHashCode);
-    }
-    if (generateEqualsAndHashCodeForStandardClasses) {
-      lLog.info("Generate equals() and hashCode() for 'normal'     ");
-      lLog.info("classes:                                          " + generateEqualsAndHashCodeForStandardClasses);
-    }
-    if (generateEqualsAndHashCodeForCompositeDataTypes) {
-      lLog.info("Generate equals() and hashCode() for composite");
-      lLog.info("data types:                                       " + generateEqualsAndHashCodeForCompositeDataTypes);
-    }
-    if (generateEqualsAndHashCodeForOpenAPIDataTypes) {
-      lLog.info("Generate equals() and hashCode() for OpenAPI");
-      lLog.info("data types:                                       " + generateEqualsAndHashCodeForOpenAPIDataTypes);
-    }
-    if (implementComparableForOpenAPIDataTypes) {
-      lLog.info("Implement Compareable for OpenAPIDataTypes:       " + implementComparableForOpenAPIDataTypes);
-    }
-
-    if (generateNotNullAnnotationForSingleValuedProperties) {
-      lLog.info("Generate NotNull annotation for                   ");
-      lLog.info(
-          "single valued properties:                         " + generateNotNullAnnotationForSingleValuedProperties);
-      lLog.info("NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedProperties);
-    }
-
-    if (generateNotEmptyAnnotationForMultiValuedProperties) {
-      lLog.info("Generate NotEmpty annotation for                   ");
-      lLog.info(
-          "multi valued properties:                          " + generateNotEmptyAnnotationForMultiValuedProperties);
-      lLog.info("NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedProperties);
-    }
-
-    if (generateNotNullAnnotationForSingleValuedServiceParameters) {
-      lLog.info("Generate NotNull annotation for                   ");
-      lLog.info("single valued service parameters:                 "
-          + generateNotNullAnnotationForSingleValuedServiceParameters);
-      lLog.info(
-          "NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedServiceParameters);
-    }
-
-    if (generateNotEmptyAnnotationForMultiValuedServiceParameters) {
-      lLog.info("Generate NotEmpty annotation for                   ");
-      lLog.info("multi valued service parameters:                  "
-          + generateNotEmptyAnnotationForMultiValuedServiceParameters);
-      lLog.info(
-          "NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedServiceParameters);
-    }
-
-    if (generateNotNullAnnotationForSingleValuedRESTParameters) {
-      lLog.info("Generate NotNull annotation for                   ");
-      lLog.info(
-          "single valued REST parameters:                    "
-              + generateNotNullAnnotationForSingleValuedRESTParameters);
-      lLog.info(
-          "NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedRESTParameters);
-    }
-
-    if (generateNotEmptyAnnotationForMultiValuedRESTParameters) {
-      lLog.info("Generate NotEmpty annotation for                   ");
-      lLog.info("multi valued REST parameters:                     "
-          + generateNotEmptyAnnotationForMultiValuedRESTParameters);
-      lLog.info(
-          "NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedRESTParameters);
-    }
-
-    if (generateDomainObjects) {
-      lLog.info("Generate Domain Objects:                          " + generateDomainObjects);
-      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
-    }
-    if (generateObjectMappers) {
-      lLog.info("Generate Object Mappers:                          " + generateObjectMappers);
-    }
-    if (generateComponentImpls) {
-      lLog.info("Generate Component Impls:                         " + generateComponentImpls);
-    }
-    if (generateComponentRuntimeClasses) {
-      lLog.info("Generate Component Runtime Classe:                " + generateComponentRuntimeClasses);
-    }
-    if (generateGlobalParts) {
-      lLog.info("Generate Global Parts:                            " + generateGlobalParts);
-    }
-    if (generateJUnitTests) {
-      lLog.info("Generate JUnit Test Cases:                        " + generateJUnitTests);
-    }
-
-    if (generateTypesReport) {
-      lLog.info(" ");
-      lLog.info("Generate Types Report                             " + generateTypesReport);
-      lLog.info("Types Report Name                                 " + typesReportName);
-      lLog.info("Types Report File Name                            " + typesReportFileName
-          + deprecationReportFormat.getExtension());
-      lLog.info("Types Report Stereotypes                          " + typesReportStereotypes);
-      lLog.info("Types Report Show Alias                           " + typesReportShowAlias);
-      lLog.info("Types Report Alias Row Name                       " + typesReportAliasRowName);
-      lLog.info("Types Report Show Package                         " + typesReportShowPackage);
-      lLog.info("Types Report Show Properties                      " + typesReportShowProperties);
-      lLog.info("Types Report Group by Package                     " + typesReportGroupByPackage);
-      lLog.info(" ");
-    }
-
-    if (generateModelReport) {
-      lLog.info("Generate Model Report                             " + generateModelReport);
-    }
-
-    if (nextMajorReleasePublishingDate.isEmpty() == false) {
-      lLog.info("Next major release publishing date                " + nextMajorReleasePublishingDate);
-      if (nextMajorReleaseVersion.isEmpty() == false) {
-        lLog.info("Next major release version                        " + nextMajorReleaseVersion);
-      }
-      lLog.info(" ");
-    }
-
-    if (generateBreakingChangesReport) {
-      lLog.info("Generate Breaking Changes Report                  " + generateBreakingChangesReport);
-      lLog.info("Breaking Changes Report Name                      " + breakingChangesReportName);
-      lLog.info("Breaking Changes Report File Name                 " + breakingChangesReportFileName
-          + deprecationReportFormat.getExtension());
-      lLog.info("Breaking Changes Group by Package                 " + breakingChangesReportGroupByPackage);
-      lLog.info(" ");
-    }
-
-    if (generateRESTDeprecationReport) {
-      lLog.info("Generate REST Deprecation Report                  " + generateRESTDeprecationReport);
-      lLog.info("REST Deprecation Report Name                      " + restDeprecationReportName);
-      lLog.info("REST Deprecation Report File Name                 " + restDeprecationReportFileName
-          + deprecationReportFormat.getExtension());
-      lLog.info("REST Deprecation Report Format                    " + deprecationReportFormat);
-      lLog.info(" ");
-    }
-
-    if (generateJavaDeprecationReport) {
-      lLog.info("Generate Java Deprecation Report                  " + generateJavaDeprecationReport);
-      lLog.info("Java Deprecation Report Name                      " + javaDeprecationReportName);
-      lLog.info("Java Deprecation Report File Name                 " + javaDeprecationReportFileName
-          + deprecationReportFormat.getExtension());
-      lLog.info("Java Deprecation Report Format                    " + deprecationReportFormat);
-      lLog.info(" ");
-    }
-
-    if (generateSecurityRolesReport) {
-      lLog.info("Generate Security Roles Report                    " + generateSecurityRolesReport);
-      lLog.info("Security Roles Report Name                        " + securityRolesReportName);
-      lLog.info("Security Roles Report File Name                   " + securityRolesReportFileName
-          + securityRolesReportFormat.getExtension());
-      lLog.info("Security Roles Report Format                      " + securityRolesReportFormat);
-      lLog.info("List unsecured REST endpoints                     " + listUnsecuredRESTEndpoints);
-    }
-
-    if (generateOpenAPISpec) {
-      lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
-      lLog.info("Generate dependent OpenAPI Specifications:        " + generateDependentOpenAPISpecs);
-      lLog.info("Use transitive OpenAPI dependencies:              " + useTransitiveOpenAPIDependencies);
-      lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
-      if (validateOpenAPISpec) {
-        lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
-      }
-      lLog.info("Disable OpenAPI Dependency Checks:                " + disableOpenAPIDependencyChecks);
-      lLog.info("OpenAPI spec reference default location:          " + openAPISpecReferenceDefaultLocation);
-      lLog.info("OpenAPI Version:                                  " + openAPIVersion.name());
-      lLog.info("OpenAPI Specification file extensions:            " + openAPIExtensions.toString());
-      lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
-      lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
-
-      if (openAPILiteralQuotationCharacter.isEmpty() == false) {
-        lLog.info("OpenAPI Enum literal quotation character:         " + openAPILiteralQuotationCharacter);
-      }
-
-      if (openAPIExampleQuotationCharacter.isEmpty() == false) {
-        lLog.info("OpenAPI example value quotation character:        " + openAPIExampleQuotationCharacter);
-      }
-
-      if (openAPIContactName.isEmpty() == false) {
-        lLog.info("OpenAPI Contact Name:                             " + openAPIContactName);
-      }
-      if (openAPIContactURL.isEmpty() == false) {
-        lLog.info("OpenAPI Contact URL:                              " + openAPIContactURL);
-      }
-      if (openAPIContactEmail.isEmpty() == false) {
-        lLog.info("OpenAPI Contact EMail:                            " + openAPIContactEmail);
-      }
-      if (openAPILicenseName.isEmpty() == false) {
-        lLog.info("OpenAPI License Name:                             " + openAPILicenseName);
-      }
-      if (openAPILicenseURL.isEmpty() == false) {
-        lLog.info("OpenAPI License URL:                              " + openAPILicenseURL);
-      }
-      if (openAPITermsOfUseURL.isEmpty() == false) {
-        lLog.info("OpenAPI Terms of Use URL:                         " + openAPITermsOfUseURL);
-      }
-
-      lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
-      lLog.info("Suppress not required nullable in OpenAPI spec:   " + suppressNotRequiredNullableInOpenAPISpec);
-    }
-
-    if (generateOpenAPISpec || generateRESTResources || generateRESTServiceProxies)
-
-    {
-      lLog.info("REST default success status code:                 " + restDefaultSuccessStatusCode);
-      lLog.info("REST default success void status code:            " + restDefaultVoidStatusCode);
-    }
-
-    if (suppressTechnicalHeaders) {
-      lLog.info("Suppress technical http headers:                  " + suppressTechnicalHeaders);
-    }
-
-    if (generateJAXRSAnnotations) {
-      lLog.info("Generate JAX-RS annotations:                      " + generateJAXRSAnnotations);
-    }
-    if (generateJacksonAnnotations) {
-      lLog.info("Generate Jackson annotations:                     " + generateJacksonAnnotations);
-      lLog.info("Generate @JsonAutoDetect on class:                " + generateJSONAutoDetectAnnotationOnClass);
-      lLog.info("Generate @JsonSetter for builders:                " + generateJsonSetterAnnotationOnBuilderOperations);
-      lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
-      lLog.info("Supported Jackson versions:                       " + this.toString(jacksonVersions));
-      lLog.info("Suffix for Jackson 2 specific classes:            " + jackson2Suffix.trim());
-      lLog.info("Sub package for Jackson 2 specific classes:       " + jackson2Subpackage.trim());
-      lLog.info("Suffix for Jackson 3 specific classes:            " + jackson3Suffix.trim());
-      lLog.info("Sub package for Jackson 3 specific classes:       " + jackson3Subpackage.trim());
-    }
-
-    if (generateJSONSerializers) {
-      lLog.info("Generate JSON serializers:                        " + generateJSONSerializers);
-    }
-
-    if (javaGenericSoftLinkType.isEmpty() == false) {
-      lLog.info("Java generic soft link type:                      " + javaGenericSoftLinkType);
-    }
-
-    if (openAPIGenericSoftLinkType.isEmpty() == false) {
-      lLog.info("OpenAPI generic soft link type:                   " + openAPIGenericSoftLinkType);
-    }
-
-    if (softLinkSuffix.isEmpty() == false) {
-      lLog.info("Soft link suffix:                                 " + softLinkSuffix);
-      lLog.info("Use soft link suffix in Java:                     " + useSoftLinkSuffixInJava);
-      lLog.info("Use soft link suffix in OpenAPI:                  " + useSoftLinkSuffixInOpenAPI);
-    }
-
-    if (suppressAllWarnings) {
-      lLog.info("Suppress all warnings:                            " + suppressAllWarnings);
-    }
-
-    if (suppressWarnings.isEmpty() == false) {
-      lLog.info("Suppress all warnings:                            "
-          + suppressWarnings.stream().collect(Collectors.joining("; ")));
-    }
-
-    if (addGeneratedAnnotation) {
-      lLog.info("Generate @Generated annotation:                   " + addGeneratedAnnotation);
-      lLog.info("Add generation timestamp:                         " + addGenerationTimestamp);
-      lLog.info("Add generation comment:                           " + generationComment);
-    }
-
-    if (generateMessageConstants) {
-      lLog.info("Generate Message Constants:                       " + generateMessageConstants);
-    }
-    if (generateValidAnnotationForClasses) {
-      lLog.info("Generate @Valid annotation  for classes:          " + generateValidAnnotationForClasses);
-      lLog.warn(
-          "Please remove 'generateValidAnnotationForClasses' from your configuration. This flag will not be supported in the near future as it is not really required.");
-    }
-
-    if (generateValidAnnotationForAssociations) {
-      lLog.info("Generate @Valid annotation for associations:      " + generateValidAnnotationForAssociations);
-    }
-
-    if (generateValidationAnnotationsForAttributesFromMultiplicity) {
-      lLog.info("Generate Validation Annotations for attributes:   "
-          + generateValidationAnnotationsForAttributesFromMultiplicity);
-    }
-    if (generateValidationAnnotationsForAssociationsFromMultiplicity) {
-      lLog.info("Generate Validation Annotations for associations: "
-          + generateValidationAnnotationsForAssociationsFromMultiplicity);
-    }
-    if (generateObjectValidationInBuilder) {
-      lLog.info("Add object validation to builders:                " + generateObjectValidationInBuilder);
-    }
-    if (generatePersistentObjects) {
-      lLog.info("Generate Persistent Objects:                      " + generatePersistentObjects);
-      lLog.info(" ");
-      lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
-      lLog.info("OID Row Name:                                     " + peristentObjectsOIDRowName);
-      lLog.info("Version Label Row Name:                           " + peristentObjectsVersionLabelRowName);
-    }
-    if (generatePublicSettersForAssociations) {
-      lLog.info("Generate public setters for associations:         " + generatePublicSettersForAssociations);
-    }
-    if (generateNullChecksForToOneAssociations) {
-      lLog.info("NULL checks for to one associations:              " + generateNullChecksForToOneAssociations);
-    }
-
-    if (generatePublicObjectView) {
-      lLog.info("Generate public view for POJO's / ServiceObjects: " + generatePublicObjectView);
-    }
-
-    if (useArraysOnlyForPrimitives) {
-      lLog.info("Use arrays for primitives only:                   " + useArraysOnlyForPrimitives);
-    }
-
-    if (disableSaveCopyOfCollectionsInBuilders) {
-      lLog.info("Disable save copy of collections in builders:     " + disableSaveCopyOfCollectionsInBuilders);
-    }
-
-    // Print information about immutability behavior
-    if (disableImmutabilityOfCollections) {
-      lLog.info("Disable immutability for collections:             " + disableImmutabilityOfCollections);
-    }
-    if (disableImmutabilityOfArrays) {
-      lLog.info("Disable immutability for non-binary arrays:       " + disableImmutabilityOfArrays);
-    }
-    if (disableImmutabilityOfBinaryData) {
-      lLog.info("Disable immutability for binary arrays:           " + disableImmutabilityOfBinaryData);
-    }
-
-    if (enableLegacyBuilderStyle) {
-      lLog.info("Enable legacy builder style:                      " + enableLegacyBuilderStyle);
-    }
-
-    if (useGenericBuilderPattern) {
-      lLog.info("Using generic builder pattern:                    " + useGenericBuilderPattern);
-    }
-
-    if (generateBuilderWithAllMandatoryFields) {
-      lLog.info("Generate builder with all manadatory fields:      " + generateBuilderWithAllMandatoryFields);
-    }
-
-    if (enforceExplicitDefaultValueForOptionalPrimitives) {
-      lLog.info("Enforce explicit default value for optional");
-      lLog.info(
-          "primitve properties / parameters:                 " + enforceExplicitDefaultValueForOptionalPrimitives);
-    }
-
-    if (enableDetailedToStringMethod) {
-      lLog.info("Enable detailed toString():                       " + enableDetailedToStringMethod);
-    }
-
-    if (enforceCustomTemplateExecution) {
-      lLog.info(" ");
-      lLog.info("Enforce custom root template execution:           " + enforceCustomTemplateExecution);
-    }
-
-    if (customRootTemplate.equals(DEFAULT_CUSTOM_ROOT) == false) {
-      lLog.info(" ");
-      lLog.info("Custom Root Template:                             " + customRootTemplate);
-      if (customTemplateParameters != null && customTemplateParameters.isEmpty() == false) {
-        lLog.info("Custom Template Parameters:                       ");
-        for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
-          lLog.info("                                                  \"" + lNext.getKey() + "\":\"" + lNext.getValue()
-              + "\"");
+      if (this.willFilesWrittenFromUML()) {
+        lLog.info("Target Runtime:                                   " + targetRuntime.name());
+        if (targetRuntime != TargetRuntime.SPRING) {
+          lLog.info("Enterprise Java Type:                             " + enterpriseJavaType.name());
         }
       }
-    }
 
-    if (customCheckFiles.isEmpty() == false) {
+      if (restLibrary != null && this.generateREST()) {
+        lLog.info("REST Library:                                     " + restLibrary.name());
+      }
+
       lLog.info(" ");
-      lLog.info("Custom Check Files:");
-      for (String lNextFile : customCheckFiles) {
-        lLog.info("                                                  " + lNextFile);
+      lLog.info("Packages:                                         " + this.getPackageWhitelist());
+      String lIgnoredResources = Tools.getCollectionTools().toString(ignoredResourceFiles, ", ");
+      if (lIgnoredResources.trim().isEmpty()) {
+        lIgnoredResources = "none";
+      }
+      lLog.info("Ignored resource files:                           " + lIgnoredResources);
+
+      if (useMultiModuleWorkflow) {
+        lLog.info("Using multi-module workflow:                      " + useMultiModuleWorkflow);
+        lLog.info("Running all checks:                               " + this.runAllChecks());
+        lLog.info(" ");
+      }
+
+      if (generateCustomConstraints) {
+        lLog.info("Generate Custmom Constraints:                     " + generateCustomConstraints);
+      }
+      if (generateServiceObjects) {
+        lLog.info("Generate Service Objects:                         " + generateServiceObjects);
+        lLog.info("Make ServiceObjects immutable:                    " + generateImmutableClasses);
+
+        if (generateHeavyExtensibleEnums) {
+          lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
+        }
+        lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+        lLog.info("Generate of(...):                                 " + generateOfOperation);
+        lLog.info("Generate of(...) for OpenAPI Data Types:          " + generateOfOperationForOpenAPIDataType);
+        lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
+      }
+      if (generateExceptionClasses) {
+        lLog.info("Generate Exception Classes:                       " + generateExceptionClasses);
+      }
+      if (generateServiceInterfaces) {
+        lLog.info("Generate Service Interfaces:                      " + generateServiceInterfaces);
+      }
+      if (generateReactiveServiceInterfaces) {
+        lLog.info("Generate Reactive Service Interfaces:             " + generateReactiveServiceInterfaces);
+      }
+      if (generateServiceProxies) {
+        lLog.info("Generate Service Proxies:                         " + generateServiceProxies);
+      }
+      if (generateServiceProviderInterfaces) {
+        lLog.info("Generate Service Provider Interfaces:             " + generateServiceProviderInterfaces);
+      }
+      if (generateServiceProviderImpls) {
+        lLog.info("Generate Service Provider Impls:                  " + generateServiceProviderImpls);
+      }
+      if (this.generateREST()) {
+        lLog.info("Generate REST Resources:                          " + generateRESTResources);
+        lLog.info("Generate Reactive REST Resources:                 " + generateReactiveRESTResources);
+        lLog.info("Generate REST Security Annotation:                " + generateSecurityAnnotation);
+        if (defaultSecurityRoleName.length() > 0) {
+          lLog.info("Default Security Role Name:                       " + defaultSecurityRoleName);
+        }
+        if (useDeprecatedSpringSecuredAnnotation) {
+          lLog.info("Use deprecated Spring @Secured annotation:        " + useDeprecatedSpringSecuredAnnotation);
+        }
+        lLog.info("Generate REST Request Validation:                 " + generateRESTRequestValidation);
+        lLog.info("Generate REST Response Validation:                " + generateRESTResponseValidation);
+        if (filterCustomHeaders == false) {
+          lLog.info("Filter custom headers:                            " + filterCustomHeaders);
+        }
+        if (restPathPrefix.length() > 0) {
+          lLog.info("REST Path Prefix:                                 " + restPathPrefix);
+        }
+      }
+
+      if (generateRESTServiceProxies || generateReactiveRESTServiceProxies) {
+        lLog.info("Generate REST Service Proxies:                    " + generateRESTServiceProxies);
+        lLog.info("Generate reactive REST Service Proxies:           " + generateReactiveRESTServiceProxies);
+      }
+
+      if (generateRESTServiceProxyConfigFile) {
+        lLog.info("Generate REST Service Default Config File:        " + generateRESTServiceProxyConfigFile);
+      }
+      if (generateActivityInterfaces) {
+        lLog.info("Generate Activity Interfaces:                     " + generateActivityInterfaces);
+      }
+      if (generateActivityImpls) {
+        lLog.info("Generate Activity Impls:                          " + generateActivityImpls);
+      }
+      if (generatePOJOs) {
+        lLog.info("Generate POJO's:                                  " + generatePOJOs);
+        lLog.info("Make POJO's serializable:                         " + makePOJOsSerializable);
+        lLog.info("Make POJO's immutable:                            " + generateImmutableClasses);
+
+        if (generateHeavyExtensibleEnums) {
+          lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
+        }
+        lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+        lLog.info("Generate of(...):                                 " + generateOfOperation);
+        lLog.info("Generate valueOf(...) for OpenAPI Data Types:     " + generateValueOfForOpenAPIDataTypes);
+      }
+
+      if (this.generatePlainJava()) {
+        if (allowTypeWildcardsForGenerics) {
+          lLog.info("Allow type wildcards for generics:                " + allowTypeWildcardsForGenerics);
+        }
+
+        if (generateEqualsAndHashCode) {
+          lLog.info("Generate equals() and hashCode():                 " + generateEqualsAndHashCode);
+        }
+        if (generateEqualsAndHashCodeForStandardClasses) {
+          lLog.info("Generate equals() and hashCode() for 'normal'     ");
+          lLog.info("classes:                                          " + generateEqualsAndHashCodeForStandardClasses);
+        }
+        if (generateEqualsAndHashCodeForCompositeDataTypes) {
+          lLog.info("Generate equals() and hashCode() for composite");
+          lLog.info(
+              "data types:                                       " + generateEqualsAndHashCodeForCompositeDataTypes);
+        }
+        if (generateEqualsAndHashCodeForOpenAPIDataTypes) {
+          lLog.info("Generate equals() and hashCode() for OpenAPI");
+          lLog.info(
+              "data types:                                       " + generateEqualsAndHashCodeForOpenAPIDataTypes);
+        }
+        if (implementComparableForOpenAPIDataTypes) {
+          lLog.info("Implement Compareable for OpenAPIDataTypes:       " + implementComparableForOpenAPIDataTypes);
+        }
+
+        if (generateNotNullAnnotationForSingleValuedProperties) {
+          lLog.info("Generate NotNull annotation for                   ");
+          lLog.info(
+              "single valued properties:                         "
+                  + generateNotNullAnnotationForSingleValuedProperties);
+          lLog.info(
+              "NotNull annotation name:                          " + notNullAnnotationNameForSingleValuedProperties);
+        }
+
+        if (generateNotEmptyAnnotationForMultiValuedProperties) {
+          lLog.info("Generate NotEmpty annotation for                   ");
+          lLog.info(
+              "multi valued properties:                          "
+                  + generateNotEmptyAnnotationForMultiValuedProperties);
+          lLog.info(
+              "NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedProperties);
+        }
+      }
+
+      if (this.generateServices()) {
+        if (generateNotNullAnnotationForSingleValuedServiceParameters) {
+          lLog.info("Generate NotNull annotation for                   ");
+          lLog.info("single valued service parameters:                 "
+              + generateNotNullAnnotationForSingleValuedServiceParameters);
+          lLog.info(
+              "NotNull annotation name:                          "
+                  + notNullAnnotationNameForSingleValuedServiceParameters);
+        }
+
+        if (generateNotEmptyAnnotationForMultiValuedServiceParameters) {
+          lLog.info("Generate NotEmpty annotation for                   ");
+          lLog.info("multi valued service parameters:                  "
+              + generateNotEmptyAnnotationForMultiValuedServiceParameters);
+          lLog.info(
+              "NotEmpty annotation name:                         "
+                  + notEmptyAnnotationNameForMultiValuedServiceParameters);
+        }
+      }
+
+      if (this.generateREST()) {
+        if (generateNotNullAnnotationForSingleValuedRESTParameters) {
+          lLog.info("Generate NotNull annotation for                   ");
+          lLog.info(
+              "single valued REST parameters:                    "
+                  + generateNotNullAnnotationForSingleValuedRESTParameters);
+          lLog.info(
+              "NotNull annotation name:                          "
+                  + notNullAnnotationNameForSingleValuedRESTParameters);
+        }
+
+        if (generateNotEmptyAnnotationForMultiValuedRESTParameters) {
+          lLog.info("Generate NotEmpty annotation for                   ");
+          lLog.info("multi valued REST parameters:                     "
+              + generateNotEmptyAnnotationForMultiValuedRESTParameters);
+          lLog.info(
+              "NotEmpty annotation name:                         "
+                  + notEmptyAnnotationNameForMultiValuedRESTParameters);
+        }
+      }
+
+      if (generateDomainObjects) {
+        lLog.info("Generate Domain Objects:                          " + generateDomainObjects);
+        lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+      }
+      if (generateObjectMappers) {
+        lLog.info("Generate Object Mappers:                          " + generateObjectMappers);
+      }
+      if (generateComponentImpls) {
+        lLog.info("Generate Component Impls:                         " + generateComponentImpls);
+      }
+      if (generateComponentRuntimeClasses) {
+        lLog.info("Generate Component Runtime Classe:                " + generateComponentRuntimeClasses);
+      }
+      if (generateGlobalParts) {
+        lLog.info("Generate Global Parts:                            " + generateGlobalParts);
+      }
+      if (generateJUnitTests) {
+        lLog.info("Generate JUnit Test Cases:                        " + generateJUnitTests);
+      }
+
+      if (generateTypesReport) {
+        lLog.info(" ");
+        lLog.info("Generate Types Report                             " + generateTypesReport);
+        lLog.info("Types Report Name                                 " + typesReportName);
+        lLog.info("Types Report File Name                            " + typesReportFileName
+            + deprecationReportFormat.getExtension());
+        lLog.info("Types Report Stereotypes                          " + typesReportStereotypes);
+        lLog.info("Types Report Show Alias                           " + typesReportShowAlias);
+        lLog.info("Types Report Alias Row Name                       " + typesReportAliasRowName);
+        lLog.info("Types Report Show Package                         " + typesReportShowPackage);
+        lLog.info("Types Report Show Properties                      " + typesReportShowProperties);
+        lLog.info("Types Report Group by Package                     " + typesReportGroupByPackage);
+        lLog.info(" ");
+      }
+
+      if (generateModelReport) {
+        lLog.info("Generate Model Report                             " + generateModelReport);
+      }
+
+      if (nextMajorReleasePublishingDate.isEmpty() == false) {
+        lLog.info("Next major release publishing date                " + nextMajorReleasePublishingDate);
+        if (nextMajorReleaseVersion.isEmpty() == false) {
+          lLog.info("Next major release version                        " + nextMajorReleaseVersion);
+        }
+        lLog.info(" ");
+      }
+
+      if (generateBreakingChangesReport) {
+        lLog.info("Generate Breaking Changes Report                  " + generateBreakingChangesReport);
+        lLog.info("Breaking Changes Report Name                      " + breakingChangesReportName);
+        lLog.info("Breaking Changes Report File Name                 " + breakingChangesReportFileName
+            + deprecationReportFormat.getExtension());
+        lLog.info("Breaking Changes Group by Package                 " + breakingChangesReportGroupByPackage);
+        lLog.info(" ");
+      }
+
+      if (generateRESTDeprecationReport) {
+        lLog.info("Generate REST Deprecation Report                  " + generateRESTDeprecationReport);
+        lLog.info("REST Deprecation Report Name                      " + restDeprecationReportName);
+        lLog.info("REST Deprecation Report File Name                 " + restDeprecationReportFileName
+            + deprecationReportFormat.getExtension());
+        lLog.info("REST Deprecation Report Format                    " + deprecationReportFormat);
+        lLog.info(" ");
+      }
+
+      if (generateJavaDeprecationReport) {
+        lLog.info("Generate Java Deprecation Report                  " + generateJavaDeprecationReport);
+        lLog.info("Java Deprecation Report Name                      " + javaDeprecationReportName);
+        lLog.info("Java Deprecation Report File Name                 " + javaDeprecationReportFileName
+            + deprecationReportFormat.getExtension());
+        lLog.info("Java Deprecation Report Format                    " + deprecationReportFormat);
+        lLog.info(" ");
+      }
+
+      if (generateSecurityRolesReport) {
+        lLog.info("Generate Security Roles Report                    " + generateSecurityRolesReport);
+        lLog.info("Security Roles Report Name                        " + securityRolesReportName);
+        lLog.info("Security Roles Report File Name                   " + securityRolesReportFileName
+            + securityRolesReportFormat.getExtension());
+        lLog.info("Security Roles Report Format                      " + securityRolesReportFormat);
+        lLog.info("List unsecured REST endpoints                     " + listUnsecuredRESTEndpoints);
+      }
+
+      if (generateOpenAPISpec) {
+        lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
+        lLog.info("Generate dependent OpenAPI Specifications:        " + generateDependentOpenAPISpecs);
+        lLog.info("Use transitive OpenAPI dependencies:              " + useTransitiveOpenAPIDependencies);
+        lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
+        if (validateOpenAPISpec) {
+          lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
+        }
+        lLog.info("Disable OpenAPI Dependency Checks:                " + disableOpenAPIDependencyChecks);
+        lLog.info("OpenAPI spec reference default location:          " + openAPISpecReferenceDefaultLocation);
+        lLog.info("OpenAPI Version:                                  " + openAPIVersion.name());
+        lLog.info("OpenAPI Specification file extensions:            " + openAPIExtensions.toString());
+        lLog.info("Enable YAML 1.1 compatibility mode:               " + enableYAML11Compatibility);
+        lLog.info("OpenAPI YAML multi-line comment style:            " + openAPICommentStyle);
+
+        if (openAPILiteralQuotationCharacter.isEmpty() == false) {
+          lLog.info("OpenAPI Enum literal quotation character:         " + openAPILiteralQuotationCharacter);
+        }
+
+        if (openAPIExampleQuotationCharacter.isEmpty() == false) {
+          lLog.info("OpenAPI example value quotation character:        " + openAPIExampleQuotationCharacter);
+        }
+
+        if (openAPIContactName.isEmpty() == false) {
+          lLog.info("OpenAPI Contact Name:                             " + openAPIContactName);
+        }
+        if (openAPIContactURL.isEmpty() == false) {
+          lLog.info("OpenAPI Contact URL:                              " + openAPIContactURL);
+        }
+        if (openAPIContactEmail.isEmpty() == false) {
+          lLog.info("OpenAPI Contact EMail:                            " + openAPIContactEmail);
+        }
+        if (openAPILicenseName.isEmpty() == false) {
+          lLog.info("OpenAPI License Name:                             " + openAPILicenseName);
+        }
+        if (openAPILicenseURL.isEmpty() == false) {
+          lLog.info("OpenAPI License URL:                              " + openAPILicenseURL);
+        }
+        if (openAPITermsOfUseURL.isEmpty() == false) {
+          lLog.info("OpenAPI Terms of Use URL:                         " + openAPITermsOfUseURL);
+        }
+
+        lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
+        lLog.info("Suppress not required nullable in OpenAPI spec:   " + suppressNotRequiredNullableInOpenAPISpec);
+      }
+
+      if (generateOpenAPISpec || this.generateREST()) {
+        lLog.info("REST default success status code:                 " + restDefaultSuccessStatusCode);
+        lLog.info("REST default success void status code:            " + restDefaultVoidStatusCode);
+
+        if (suppressTechnicalHeaders) {
+          lLog.info("Suppress technical http headers:                  " + suppressTechnicalHeaders);
+        }
+        lLog.info(" ");
+      }
+
+      if (generateJAXRSAnnotations && this.generateREST()) {
+        lLog.info("Generate JAX-RS annotations:                      " + generateJAXRSAnnotations);
+      }
+      if (generateJacksonAnnotations && generatePlainJava()) {
+        lLog.info("Generate Jackson annotations:                     " + generateJacksonAnnotations);
+        lLog.info("Generate @JsonAutoDetect on class:                " + generateJSONAutoDetectAnnotationOnClass);
+        lLog.info(
+            "Generate @JsonSetter for builders:                " + generateJsonSetterAnnotationOnBuilderOperations);
+        lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
+        lLog.info("Supported Jackson versions:                       " + this.toString(jacksonVersions));
+        lLog.info("Suffix for Jackson 2 specific classes:            " + jackson2Suffix.trim());
+        lLog.info("Sub package for Jackson 2 specific classes:       " + jackson2Subpackage.trim());
+        lLog.info("Suffix for Jackson 3 specific classes:            " + jackson3Suffix.trim());
+        lLog.info("Sub package for Jackson 3 specific classes:       " + jackson3Subpackage.trim());
+      }
+
+      if (generateJSONSerializers) {
+        lLog.info("Generate JSON serializers:                        " + generateJSONSerializers);
+        lLog.info(" ");
+      }
+
+      if (javaGenericSoftLinkType.isEmpty() == false && this.generatePlainJava()) {
+        lLog.info("Java generic soft link type:                      " + javaGenericSoftLinkType);
+      }
+
+      if (openAPIGenericSoftLinkType.isEmpty() == false && generateOpenAPISpec) {
+        lLog.info("OpenAPI generic soft link type:                   " + openAPIGenericSoftLinkType);
+      }
+
+      if (softLinkSuffix.isEmpty() == false && (this.generatePlainJava() || generateOpenAPISpec)) {
+        lLog.info("Soft link suffix:                                 " + softLinkSuffix);
+        lLog.info("Use soft link suffix in Java:                     " + useSoftLinkSuffixInJava);
+        lLog.info("Use soft link suffix in OpenAPI:                  " + useSoftLinkSuffixInOpenAPI);
+      }
+
+      if (suppressAllWarnings) {
+        lLog.info("Suppress all warnings:                            " + suppressAllWarnings);
+      }
+
+      if (suppressWarnings.isEmpty() == false) {
+        lLog.info("Suppress all warnings:                            "
+            + suppressWarnings.stream().collect(Collectors.joining("; ")));
+      }
+
+      if (addGeneratedAnnotation) {
+        lLog.info("Generate @Generated annotation:                   " + addGeneratedAnnotation);
+        lLog.info("Add generation timestamp:                         " + addGenerationTimestamp);
+        lLog.info("Add generation comment:                           " + generationComment);
+      }
+
+      if (generateMessageConstants) {
+        lLog.info("Generate Message Constants:                       " + generateMessageConstants);
+      }
+
+      if (this.generateJavaClasses()) {
+        if (generateValidAnnotationForClasses) {
+          lLog.info("Generate @Valid annotation  for classes:          " + generateValidAnnotationForClasses);
+          lLog.warn(
+              "Please remove 'generateValidAnnotationForClasses' from your configuration. This flag will not be supported in the near future as it is not really required.");
+        }
+
+        if (generateValidAnnotationForAssociations) {
+          lLog.info("Generate @Valid annotation for associations:      " + generateValidAnnotationForAssociations);
+        }
+
+        if (generateValidationAnnotationsForAttributesFromMultiplicity) {
+          lLog.info("Generate Validation Annotations for attributes:   "
+              + generateValidationAnnotationsForAttributesFromMultiplicity);
+        }
+        if (generateValidationAnnotationsForAssociationsFromMultiplicity) {
+          lLog.info("Generate Validation Annotations for associations: "
+              + generateValidationAnnotationsForAssociationsFromMultiplicity);
+        }
+        if (generateObjectValidationInBuilder) {
+          lLog.info("Add object validation to builders:                " + generateObjectValidationInBuilder);
+        }
+        if (generatePublicSettersForAssociations) {
+          lLog.info("Generate public setters for associations:         " + generatePublicSettersForAssociations);
+        }
+        if (generateNullChecksForToOneAssociations) {
+          lLog.info("NULL checks for to one associations:              " + generateNullChecksForToOneAssociations);
+        }
+
+        if (generatePublicObjectView) {
+          lLog.info("Generate public view for POJO's / ServiceObjects: " + generatePublicObjectView);
+        }
+
+        if (useArraysOnlyForPrimitives) {
+          lLog.info("Use arrays for primitives only:                   " + useArraysOnlyForPrimitives);
+        }
+
+        if (disableSaveCopyOfCollectionsInBuilders) {
+          lLog.info("Disable save copy of collections in builders:     " + disableSaveCopyOfCollectionsInBuilders);
+        }
+
+        // Print information about immutability behavior
+        if (disableImmutabilityOfCollections) {
+          lLog.info("Disable immutability for collections:             " + disableImmutabilityOfCollections);
+        }
+        if (disableImmutabilityOfArrays) {
+          lLog.info("Disable immutability for non-binary arrays:       " + disableImmutabilityOfArrays);
+        }
+        if (disableImmutabilityOfBinaryData) {
+          lLog.info("Disable immutability for binary arrays:           " + disableImmutabilityOfBinaryData);
+        }
+
+        if (enableLegacyBuilderStyle) {
+          lLog.info("Enable legacy builder style:                      " + enableLegacyBuilderStyle);
+        }
+
+        if (useGenericBuilderPattern) {
+          lLog.info("Using generic builder pattern:                    " + useGenericBuilderPattern);
+        }
+
+        if (generateBuilderWithAllMandatoryFields) {
+          lLog.info("Generate builder with all manadatory fields:      " + generateBuilderWithAllMandatoryFields);
+        }
+
+        if (enforceExplicitDefaultValueForOptionalPrimitives) {
+          lLog.info("Enforce explicit default value for optional");
+          lLog.info(
+              "    primitve properties / parameters:             " + enforceExplicitDefaultValueForOptionalPrimitives);
+        }
+
+        if (enableDetailedToStringMethod) {
+          lLog.info("Enable detailed toString():                       " + enableDetailedToStringMethod);
+        }
+      }
+
+      if (generatePersistentObjects) {
+        lLog.info("Generate Persistent Objects:                      " + generatePersistentObjects);
+        lLog.info(" ");
+        lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
+        lLog.info("OID Row Name:                                     " + peristentObjectsOIDRowName);
+        lLog.info("Version Label Row Name:                           " + peristentObjectsVersionLabelRowName);
+      }
+
+      if (enforceCustomTemplateExecution) {
+        lLog.info(" ");
+        lLog.info("Enforce custom root template execution:           " + enforceCustomTemplateExecution);
+      }
+
+      if (customRootTemplate.equals(DEFAULT_CUSTOM_ROOT) == false) {
+        lLog.info(" ");
+        lLog.info("Custom Root Template:                             " + customRootTemplate);
+        if (customTemplateParameters != null && customTemplateParameters.isEmpty() == false) {
+          lLog.info("Custom Template Parameters:                       ");
+          for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
+            lLog.info(
+                "                                                  \"" + lNext.getKey() + "\":\"" + lNext.getValue()
+                    + "\"");
+          }
+        }
+      }
+
+      if (customCheckFiles.isEmpty() == false) {
+        lLog.info(" ");
+        lLog.info("Custom Check Files:                               " + this.getCustomCheckFiles());
+        lLog.info(" ");
+      }
+
+      if (generateJavaClasses()) {
+        lLog.info(" ");
+        lLog.info("Javadoc Company Tag:                              " + fileHeaderCompany);
+        lLog.info("Javadoc Author Tag:                               " + fileHeaderAuthor);
+        lLog.info("Javadoc Copyright Tag:                            " + fileHeaderCopyright);
+        lLog.info("Javadoc Version Tag:                              " + fileHeaderVersion);
+        lLog.info(" ");
+
+        lLog.info("Java formatter stylesheet:                        " + javaFormatterStyleFile);
+        lLog.info("XML formatter stylesheet:                         " + xmlFormatterStyleFile);
+        lLog.info(" ");
       }
     }
-
-    lLog.info(" ");
-    lLog.info("Javadoc Company Tag:                              " + fileHeaderCompany);
-    lLog.info("Javadoc Author Tag:                               " + fileHeaderAuthor);
-    lLog.info("Javadoc Copyright Tag:                            " + fileHeaderCopyright);
-    lLog.info("Javadoc Version Tag:                              " + fileHeaderVersion);
-    lLog.info(" ");
-
-    lLog.info("Java formatter stylesheet:                        " + javaFormatterStyleFile);
-    lLog.info("XML formatter stylesheet:                         " + xmlFormatterStyleFile);
-    lLog.info(" ");
-
-    if (generateMavenProjectStructure || generateGeneratorProjectParentPOM) {
-      lLog.info(" ");
+    else {
       lLog.info("Generate Maven Project Structure:                 " + generateMavenProjectStructure);
       lLog.info("Generate JEAF Generator Project Parent POM:       " + generateGeneratorProjectParentPOM);
 
@@ -2300,30 +2370,57 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Maven Project SCM Path pattern:                   " + mavenScmPathPattern);
       lLog.info("Maven Project Version Property Name pattern:      " + mavenVersionPropertyNamePattern);
       lLog.info("Default version for unknown artifacts:            " + mavenArtifactDefaultVersion);
+      lLog.info("Maven Project archetype:                          " + mavenProjectDefaultArchetype);
+      lLog.info("Maven Project UML package:                        " + mavenProjectUMLPackage);
+      lLog.info("Maven Project default parent group ID:            " + mavenProjectDefaultParentGroupId);
+      lLog.info("Maven Project default parent artifact ID:         " + mavenProjectDefaultParentArtifactId);
+      lLog.info("Maven Project default parent version:             " + mavenProjectDefaultParentVersion);
+      lLog.info("Use default parent:                               " + mavenProjectUseDefaultParent);
+      lLog.info("Generated from default model template:            " + mavenProjectGeneratedFromModelTemplate);
+      lLog.info(" ");
     }
   }
 
+  private boolean generateJavaClasses( ) {
+    return this.generatePlainJava() || generateDomainObjects || generatePersistentObjects;
+  }
+
+  private boolean generateServices( ) {
+    return generateServiceInterfaces || generateReactiveServiceInterfaces;
+  }
+
+  private boolean generatePlainJava( ) {
+    return generatePOJOs || generateServiceObjects;
+  }
+
+  private boolean generateREST( ) {
+    return generateRESTResources || generateReactiveRESTResources;
+  }
+
   private void cleanDirectories( ) {
-    FileTools lFileTools = Tools.getFileTools();
-    if (cleanSourceGen == true) {
-      this.getLog().info("Cleaning src-gen directory '" + sourceGenDirectory + "'.");
-      lFileTools.tryDeleteRecursive(sourceGenDirectory, true);
-      lFileTools.createDirectory(sourceGenDirectory);
-    }
-    if (cleanResourceGen == true) {
-      this.getLog().info("Cleaning res-gen directory '" + resourceGenDirectory + "'.");
-      lFileTools.tryDeleteRecursive(resourceGenDirectory, true);
-      lFileTools.createDirectory(resourceGenDirectory);
-    }
-    if (cleanSourceTestGen == true) {
-      this.getLog().info("Cleaning src-tes-gen directory '" + sourceTestGenDirectory + "'.");
-      lFileTools.tryDeleteRecursive(sourceTestGenDirectory, true);
-      lFileTools.createDirectory(sourceTestGenDirectory);
-    }
-    if (cleanResourceTestGen == true) {
-      this.getLog().info("Cleaning res-test-gen directory '" + resourceTestGenDirectory + "'.");
-      lFileTools.tryDeleteRecursive(resourceTestGenDirectory, true);
-      lFileTools.createDirectory(resourceTestGenDirectory);
+    if (this.willFilesWrittenFromUML()) {
+      FileTools lFileTools = Tools.getFileTools();
+      if (cleanSourceGen == true) {
+        this.getLog().info("Cleaning src-gen directory '" + sourceGenDirectory + "'.");
+        lFileTools.tryDeleteRecursive(sourceGenDirectory, true);
+        lFileTools.createDirectory(sourceGenDirectory);
+      }
+      if (cleanResourceGen == true) {
+        this.getLog().info("Cleaning res-gen directory '" + resourceGenDirectory + "'.");
+        lFileTools.tryDeleteRecursive(resourceGenDirectory, true);
+        lFileTools.createDirectory(resourceGenDirectory);
+      }
+      if (cleanSourceTestGen == true) {
+        this.getLog().info("Cleaning src-tes-gen directory '" + sourceTestGenDirectory + "'.");
+        lFileTools.tryDeleteRecursive(sourceTestGenDirectory, true);
+        lFileTools.createDirectory(sourceTestGenDirectory);
+      }
+      if (cleanResourceTestGen == true) {
+        this.getLog().info("Cleaning res-test-gen directory '" + resourceTestGenDirectory + "'.");
+        lFileTools.tryDeleteRecursive(resourceTestGenDirectory, true);
+        lFileTools.createDirectory(resourceTestGenDirectory);
+      }
+      this.getLog().info(" ");
     }
   }
 
@@ -2604,6 +2701,14 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "mavenScmPathPattern", mavenScmPathPattern);
       System.setProperty(PROPERTY_PREFIX + "mavenVersionPropertyNamePattern", mavenVersionPropertyNamePattern);
       System.setProperty(PROPERTY_PREFIX + "mavenArtifactDefaultVersion", mavenArtifactDefaultVersion);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultArchetype", mavenProjectDefaultArchetype.name());
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectUMLPackage", mavenProjectUMLPackage);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultParentGroupId", mavenProjectDefaultParentGroupId);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultParentArtifactId", mavenProjectDefaultParentArtifactId);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultParentVersion", mavenProjectDefaultParentVersion);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectUseDefaultParent", mavenProjectUseDefaultParent.toString());
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectGeneratedFromModelTemplate",
+          mavenProjectGeneratedFromModelTemplate.toString());
 
       if (xmiDirectory != null) {
         System.setProperty(PROPERTY_PREFIX + "xmiDirectory",
@@ -2694,7 +2799,12 @@ public class GeneratorMojo extends AbstractMojo {
         lParams.put("path.res.test", resourceTestDirectory);
 
         // Execute oAW Workflow Runner. This will cause the UML generation to be executed.
-        this.getLog().info("Starting code generation from UML model " + umlModelFile);
+        if (this.willFilesWrittenFromUML()) {
+          this.getLog().info("Starting code generation from UML model " + umlModelFile);
+        }
+        else {
+          this.getLog().info("Starting check of UML model " + umlModelFile);
+        }
         WorkflowRunner lRunner = new WorkflowRunner();
 
         String lWorkflowFile = this.getWorkflowFile();
@@ -2928,7 +3038,7 @@ public class GeneratorMojo extends AbstractMojo {
         // Lookup for Maven dependency failed.
         else {
           throw new MojoFailureException("Unable to resolve XMI files from artifact " + lKey
-              + ". Maven artifact is not available.Please check configuration of JEAF Generator Plugin.");
+              + ". Maven artifact is not available. Please check configuration of JEAF Generator Plugin.");
         }
       }
       catch (IOException e) {
@@ -2945,7 +3055,11 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   private boolean isUMLGenerationRequested( ) {
-    return this.runAllChecks() | generateCustomConstraints | generateServiceInterfaces
+    return this.runAllChecks() | this.willFilesWrittenFromUML();
+  }
+
+  private boolean willFilesWrittenFromUML( ) {
+    return generateCustomConstraints | generateServiceInterfaces
         | generateReactiveServiceInterfaces
         | generateServiceProxies | generateServiceProviderInterfaces | generateServiceProviderImpls
         | generateRESTResources | generateReactiveRESTResources | generateRESTServiceProxies
