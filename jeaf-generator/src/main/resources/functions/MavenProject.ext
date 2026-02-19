@@ -69,12 +69,12 @@ cached boolean isCustomizable(JMM::MavenProject project):
 	project.customizable;
 
 cached boolean generateSyncServices(JMM::MavenProject project):
-	if project.isArchetypeServiceModel()
+	if project.isArchetypeServiceModel() && (project.serviceTypes.isEmpty ||  project.serviceTypes.select(e|e.toString() == "SYNCHRONOUS").size > 0)
 	then true
 	else false;
 
 cached boolean generateReactiveServices(JMM::MavenProject project):
-	if project.isArchetypeServiceModel()
+	if project.isArchetypeServiceModel() && (project.serviceTypes.isEmpty ||  project.serviceTypes.select(e|e.toString() == "REACTIVE").size > 0)
 	then true
 	else false;
 
