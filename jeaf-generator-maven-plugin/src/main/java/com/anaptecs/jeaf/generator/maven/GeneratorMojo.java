@@ -22,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -1627,7 +1628,7 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "false")
   private Boolean initialProjectGeneration;
 
-  @Parameter(required = false, defaultValue = "temp")
+  @Parameter(required = false, defaultValue = "")
   private String initialOutputDirectory;
 
   @Parameter(required = false, defaultValue = " ")
@@ -1675,6 +1676,9 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "false")
   private Boolean mavenProjectGeneratedFromModelTemplate;
 
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean addRequiredTechnicalDepdendencies;
+
   @Component
   private BuildPluginManager pluginManager;
 
@@ -1720,6 +1724,14 @@ public class GeneratorMojo extends AbstractMojo {
         // Validate OpenAPI specification
         if (generateOpenAPISpec && validateOpenAPISpec) {
           this.validateOpenAPISpec();
+        }
+
+        // Move generated Maven project files to target directory
+        if (initialProjectGeneration && initialOutputDirectory.isEmpty() == false) {
+          FileTools.getFileTools().tryDeleteRecursive(initialOutputDirectory, true);
+          String lSourceDirectory = "./temp/" + mavenArtifactIdPattern;
+          this.copyDirectory(lSourceDirectory, initialOutputDirectory);
+          FileTools.getFileTools().deleteRecursive(lSourceDirectory);
         }
       }
       // Error during code generation from UML model
@@ -2383,6 +2395,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Maven Project default parent version:             " + mavenProjectDefaultParentVersion);
       lLog.info("Use default parent:                               " + mavenProjectUseDefaultParent);
       lLog.info("Generated from default model template:            " + mavenProjectGeneratedFromModelTemplate);
+      lLog.info("Add required technical dependencies:              " + addRequiredTechnicalDepdendencies);
       lLog.info(" ");
     }
   }
@@ -2698,7 +2711,6 @@ public class GeneratorMojo extends AbstractMojo {
           generateGeneratorProjectParentPOM.toString());
 
       System.setProperty(PROPERTY_PREFIX + "initialProjectGeneration", initialProjectGeneration.toString());
-      System.setProperty(PROPERTY_PREFIX + "initialOutputDirectory", initialOutputDirectory);
       System.setProperty(PROPERTY_PREFIX + "mavenProjectNamePattern", mavenProjectNamePattern);
       System.setProperty(PROPERTY_PREFIX + "mavenProjectDescriptionPattern", mavenProjectDescriptionPattern);
       System.setProperty(PROPERTY_PREFIX + "mavenProjectURLPattern", mavenProjectURLPattern);
@@ -2715,6 +2727,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "mavenProjectUseDefaultParent", mavenProjectUseDefaultParent.toString());
       System.setProperty(PROPERTY_PREFIX + "mavenProjectGeneratedFromModelTemplate",
           mavenProjectGeneratedFromModelTemplate.toString());
+      System.setProperty(PROPERTY_PREFIX + "addRequiredTechnicalDepdendencies",
+          addRequiredTechnicalDepdendencies.toString());
 
       if (xmiDirectory != null) {
         System.setProperty(PROPERTY_PREFIX + "xmiDirectory",
@@ -3499,5 +3513,25 @@ public class GeneratorMojo extends AbstractMojo {
 
   private String toString(List<? extends Enum<?>> pVersions) {
     return pVersions.stream().map(t -> t.name()).collect(Collectors.joining("; "));
+  }
+
+  private void copyDirectory(String pSourceDirectory, String pDestinationDirectory) throws MojoFailureException {
+    try {
+      Files.walk(Paths.get(pSourceDirectory))
+          .forEach(source -> {
+            Path destination = Paths.get(pDestinationDirectory, source.toString()
+                .substring(pSourceDirectory.length()));
+            try {
+              Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+            }
+            catch (IOException e) {
+              e.printStackTrace();
+            }
+          });
+    }
+    catch (IOException e) {
+      throw new MojoFailureException(
+          "Unable to copy created Maven project files to target directory " + pDestinationDirectory, e);
+    }
   }
 }

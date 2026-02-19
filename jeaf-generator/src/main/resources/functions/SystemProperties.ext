@@ -150,9 +150,6 @@ boolean generateGeneratorProjectParentPOM():
 boolean initialProjectGeneration():
 	getBooleanSystemProperty("jeaf.generator.initialProjectGeneration", false);
 
-String getInitialOutputDirectory():
-	getSystemProperty("jeaf.generator.initialOutputDirectory", "");
-	
 String getProjectNamePattern():
 	getSystemProperty("jeaf.generator.mavenProjectNamePattern", "").trim();
 
@@ -198,6 +195,9 @@ boolean useDefaultParent():
 	
 boolean isMavenProjectGeneratedFromModelTemplate():
 	getBooleanSystemProperty("jeaf.generator.mavenProjectGeneratedFromModelTemplate", false);
+
+boolean addRequiredTechnicalDepdendencies():
+	getBooleanSystemProperty("jeaf.generator.addRequiredTechnicalDepdendencies", true);
 
 String getXMIDirectory():
 	getSystemProperty("jeaf.generator.xmiDirectory", "");

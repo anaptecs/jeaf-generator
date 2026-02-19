@@ -4,6 +4,7 @@ extension functions::NamedElement;
 extension functions::Javadoc;
 extension functions::MavenDependency;
 extension functions::ModuleType;
+extension functions::Jackson;
 
 cached boolean isMavenProject(uml::Element element) :
 	element.isStereotypeApplied("MavenProject");
@@ -294,7 +295,7 @@ cached List[String] getIntegrationTestSpringDependencies(JMM::MavenProject proje
 cached String getPOMOutputDirectory(JMM::MavenProject project):
 	if initialProjectGeneration() == false
 	then ""
-	else getInitialOutputDirectory() + "/" + project.getArtifactId() + "/";
+	else "temp/" + project.getArtifactId() + "/";
 
 //
 // Module names
@@ -334,3 +335,15 @@ private String javaGetModuleArtifactId(String projectName, String moduleType):
 private String javaGetModulePackagingType(String moduleType):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getPackagingType(java.lang.String);
 	
+List[String] getTechnicalDependenciesForJavaModule():
+	if addRequiredTechnicalDepdendencies() == false
+	then {}
+	else 
+		if generateJacksonAnnotations() && isJackson3Enabled()
+		then {"jakarta.annotation:jakarta.annotation-api", "jakarta.validation:jakarta.validation-api", "tools.jackson.core:jackson-databind"}
+		else {"jakarta.annotation:jakarta.annotation-api", "jakarta.validation:jakarta.validation-api"};
+
+List[String] getTechnicalDependenciesForServiceModule():
+	if addRequiredTechnicalDepdendencies() && (generateReactiveServiceInterfaces() || initialProjectGeneration()) 
+	then {"io.projectreactor:reactor-core"}
+	else {};

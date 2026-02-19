@@ -36,7 +36,7 @@
 «ENDIF -»
 	</properties>
 
-«EXPAND maven::POMHelper::GenerateDependenciesSection(moduleType, {"JAVA_2_JAVA"}, null, null) -»
+«EXPAND maven::POMHelper::GenerateDependenciesSection(moduleType, {"JAVA_2_JAVA"}, null, getTechnicalDependenciesForJavaModule()) -»
 </project>
 «ENDFILE»
 
