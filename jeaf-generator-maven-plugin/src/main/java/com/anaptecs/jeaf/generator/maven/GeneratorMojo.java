@@ -1727,7 +1727,7 @@ public class GeneratorMojo extends AbstractMojo {
         }
 
         // Move generated Maven project files to target directory
-        if (initialProjectGeneration && initialOutputDirectory.isEmpty() == false) {
+        if (initialProjectGeneration && initialOutputDirectory != null && initialOutputDirectory.isEmpty() == false) {
           FileTools.getFileTools().tryDeleteRecursive(initialOutputDirectory, true);
           String lSourceDirectory = "./temp/" + mavenArtifactIdPattern;
           this.copyDirectory(lSourceDirectory, initialOutputDirectory);
