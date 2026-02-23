@@ -82,12 +82,14 @@
 		<profile>
 			<id>RunCodeGenerationFromXMIFile</id>
 			<properties>
+				<!-- PROTECTED REGION ID(local-xmi-directory:com.anaptecs.maven:jeaf-generator-demo-data-types) ENABLED START -->
 				<!--
 					TODO: Please define from where the UML model should be read, either directly from the local file system
 					or from a Maven artifact that contains the so called XMI files.
 				-->
 				<!-- Read UML model (XMI files) directly from local file system -->
 				<xmiDirectory>TODO</xmiDirectory>
+				<!-- PROTECTED REGION END -->
 			</properties>
 		</profile>
 		<profile>

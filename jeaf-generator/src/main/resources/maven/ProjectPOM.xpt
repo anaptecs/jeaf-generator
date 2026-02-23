@@ -52,6 +52,7 @@
 		<profile>
 			<id>RunCodeGenerationFromXMIFile</id>
 			<properties>
+				«PROTECT CSTART "<!-- " CEND " -->" ID "local-xmi-directory:"  + this.getProjectID()»
 «IF isMavenProjectGeneratedFromModelTemplate() || getXMIDirectory().length == 0 -»
 				<!--
 					TODO: Please define from where the UML model should be read, either directly from the local file system
@@ -63,6 +64,7 @@
 				<!-- Read UML model (XMI files) directly from local file system -->
 				<xmiDirectory>«getXMIDirectory()»</xmiDirectory>»
 «ENDIF -»
+				«ENDPROTECT»
 			</properties>
 		</profile>
 		<profile>
