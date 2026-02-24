@@ -1667,7 +1667,7 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "jeaf-generator-project-parent")
   private String mavenProjectDefaultParentArtifactId;
 
-  @Parameter(required = false, defaultValue = "${project.version}")
+  @Parameter(required = false, defaultValue = " ")
   private String mavenProjectDefaultParentVersion;
 
   @Parameter(required = false, defaultValue = "true")
@@ -1699,9 +1699,8 @@ public class GeneratorMojo extends AbstractMojo {
   public void execute( ) throws MojoExecutionException, MojoFailureException {
     if (this.isGenerationRequested()) {
       this.checkConfiguration();
-      this.setDefaults();
-
       this.resolveArtifactVersions();
+      this.setDefaults();
 
       // Show startup info.
       this.showStartupInfo();
@@ -1717,7 +1716,7 @@ public class GeneratorMojo extends AbstractMojo {
 
       if (lSuccessful == true) {
         // Format generated sources and resources
-        if (this.willFilesWrittenFromUML() || generateMessageConstants) {
+        if (this.codeFromUMLModelGenerated() || generateMessageConstants) {
           this.runFormatter();
         }
 
@@ -1807,6 +1806,18 @@ public class GeneratorMojo extends AbstractMojo {
       }
     }
     customCheckFiles = lCleanedCustomCheckFiles;
+
+    // Resolve default parent POM if it is not set
+    if (mavenProjectDefaultParentVersion.trim().isEmpty()) {
+      String lParentVersion = ArtifactCache
+          .getArtifactVersion(mavenProjectDefaultParentGroupId + ":" + mavenProjectDefaultParentArtifactId);
+      if (lParentVersion != null) {
+        mavenProjectDefaultParentVersion = lParentVersion;
+      }
+      else {
+        mavenProjectDefaultParentVersion = "UNKNOWN";
+      }
+    }
   }
 
   private String getPackageWhitelist( ) {
@@ -1844,7 +1855,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
 
     if (generateMavenProjectStructure == false && generateGeneratorProjectParentPOM == false) {
-      if (this.willFilesWrittenFromUML()) {
+      if (this.codeFromUMLModelGenerated()) {
         lLog.info("sourceDirectory (slot 'src'):                     " + sourceDirectory);
         lLog.info("sourceGenDirectory (slot 'src_gen'):              " + sourceGenDirectory);
         lLog.info("resourceDirectory (slot 'res'):                   " + resourceDirectory);
@@ -1864,7 +1875,7 @@ public class GeneratorMojo extends AbstractMojo {
 
       lLog.info(" ");
       lLog.info("UML Modeling Tool:                                " + umlModelingTool.getDisplayName());
-      if (this.willFilesWrittenFromUML()) {
+      if (this.codeFromUMLModelGenerated()) {
         lLog.info("Target Runtime:                                   " + targetRuntime.name());
         if (targetRuntime != TargetRuntime.SPRING) {
           lLog.info("Enterprise Java Type:                             " + enterpriseJavaType.name());
@@ -2417,7 +2428,7 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   private void cleanDirectories( ) {
-    if (this.willFilesWrittenFromUML()) {
+    if (this.codeFromUMLModelGenerated()) {
       FileTools lFileTools = Tools.getFileTools();
       if (cleanSourceGen == true) {
         this.getLog().info("Cleaning src-gen directory '" + sourceGenDirectory + "'.");
@@ -2819,7 +2830,7 @@ public class GeneratorMojo extends AbstractMojo {
         lParams.put("path.res.test", resourceTestDirectory);
 
         // Execute oAW Workflow Runner. This will cause the UML generation to be executed.
-        if (this.willFilesWrittenFromUML()) {
+        if (this.codeFromUMLModelGenerated()) {
           this.getLog().info("Starting code generation from UML model " + umlModelFile);
         }
         else {
@@ -3075,10 +3086,17 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   private boolean isUMLGenerationRequested( ) {
-    return this.runAllChecks() | this.willFilesWrittenFromUML();
+    boolean lUMLGenerationRequested;
+    if (generateMavenProjectStructure || generateGeneratorProjectParentPOM) {
+      lUMLGenerationRequested = mavenProject.isExecutionRoot();
+    }
+    else {
+      lUMLGenerationRequested = this.runAllChecks() | this.codeFromUMLModelGenerated();
+    }
+    return lUMLGenerationRequested;
   }
 
-  private boolean willFilesWrittenFromUML( ) {
+  private boolean codeFromUMLModelGenerated( ) {
     return generateCustomConstraints | generateServiceInterfaces
         | generateReactiveServiceInterfaces
         | generateServiceProxies | generateServiceProviderInterfaces | generateServiceProviderImpls
@@ -3088,8 +3106,7 @@ public class GeneratorMojo extends AbstractMojo {
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
         | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateModelReport
         | generateBreakingChangesReport | generateRESTDeprecationReport | generateJavaDeprecationReport
-        | generateOpenAPISpec | generateJSONSerializers | enforceCustomTemplateExecution
-        | generateMavenProjectStructure | generateGeneratorProjectParentPOM;
+        | generateOpenAPISpec | generateJSONSerializers | enforceCustomTemplateExecution;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {

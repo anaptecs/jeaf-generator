@@ -32,6 +32,22 @@
 		<!-- UML package which will be the one that is considered during code generation --> 
 		<umlPackage>com.anaptecs.maven</umlPackage>
 
+		<!-- PROTECTED REGION ID(xmi-properties:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
+		<!-- 
+			Directory on local file system from where XMI files should be read. 
+			Property only needs to be set in case that you want read XMI files from local file system
+		-->
+		<my.xmiDirectory></my.xmiDirectory>
+		
+		<!--
+			Properties are use to specify the Maven artifact from which the XMI files should be read.
+			Properties only need to be set in case that you want read XMI files from a Maven artifact.
+		-->
+		<my.modelArtifactGroupID>TODO</my.modelArtifactGroupID>
+		<my.modelArtifactArtifactID>TODO</my.modelArtifactArtifactID>
+		<my.modelArtifactXMIPath>xmi</my.modelArtifactXMIPath>
+		<!-- PROTECTED REGION END -->
+
 		<!-- Version property for dependency to com.anaptecs.maven:jeaf-generator-other-service-model -->
 		<jeaf-generator-other-service-model.version>47.1.1</jeaf-generator-other-service-model.version>
 
@@ -51,23 +67,17 @@
 		<profile>
 			<id>RunCodeGenerationFromXMIFile</id>
 			<properties>
-				<!-- PROTECTED REGION ID(local-xmi-directory:com.anaptecs.maven:jeaf-generator-demo-service-model) ENABLED START -->
-				<!--
-					TODO: Please define from where the UML model should be read, either directly from the local file system
-					or from a Maven artifact that contains the so called XMI files.
-				-->
 				<!-- Read UML model (XMI files) directly from local file system -->
-				<xmiDirectory>TODO</xmiDirectory>
-				<!-- PROTECTED REGION END -->
+				<xmiDirectory>${my.xmiDirectory}</xmiDirectory>
 			</properties>
 		</profile>
 		<profile>
 			<id>RunCodeGenerationFromModelArtifact</id>
 			<properties>
 				<!-- Read UML model from Maven artifact. -->
-				<modelArtifactGroupID>com.anaptecs.jeaf.uml</modelArtifactGroupID>
-				<modelArtifactArtifactID>jeaf-uml-test-model</modelArtifactArtifactID>
-				<modelArtifactXMIPath>xmi</modelArtifactXMIPath>
+				<modelArtifactGroupID>${my.modelArtifactGroupID}</modelArtifactGroupID>
+				<modelArtifactArtifactID>${my.modelArtifactArtifactID}</modelArtifactArtifactID>
+				<modelArtifactXMIPath>${my.modelArtifactXMIPath}</modelArtifactXMIPath>
 			</properties>
 		</profile>
 	</profiles>
