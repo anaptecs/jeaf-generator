@@ -5,41 +5,31 @@ import java.util.Collections;
 import java.util.List;
 
 public enum ProjectArchetype {
-	GENERATOR_PROJECT_PARENT_POM("Generator Project Parent POM", "Parent",
-			"parent", new ModuleType[] {}),
+	GENERATOR_PROJECT_PARENT_POM("Generator Project Parent POM", "Parent", "parent", new ModuleType[] {}),
 
 	DOMAIN("Domain", "Domain", "domain", new ModuleType[] {}),
 
-	DATA_TYPES("Data Types", "DataTypes", "datatypes", new ModuleType[] {
-			ModuleType.BOM, ModuleType.UML_MODEL, ModuleType.OPEN_API,
-			ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
+	DATA_TYPES("Data Types", "DataTypes", "datatypes", new ModuleType[] { ModuleType.BOM, ModuleType.UML_MODEL,
+			ModuleType.OPEN_API, ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
 			ModuleType.INTEGRATION_TEST }),
 
-	SERVICE_MODEL("Service Model", "ServiceModel", "servicemodel",
-			new ModuleType[] { ModuleType.BOM, ModuleType.UML_MODEL,
-					ModuleType.OPEN_API, ModuleType.JAVA,
-					ModuleType.JAVA_RUNTIME, ModuleType.SERVICES,
-					ModuleType.REST_CLIENT, ModuleType.REST_CLIENT_STARTER,
-					ModuleType.REST_CONTROLLER,
-					ModuleType.REST_CONTROLLER_STARTER,
-					ModuleType.INTEGRATION_TEST }),
+	SERVICE_MODEL("Service Model", "ServiceModel", "servicemodel", new ModuleType[] { ModuleType.BOM,
+			ModuleType.UML_MODEL, ModuleType.OPEN_API, ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.SERVICES,
+			ModuleType.REST_CLIENT, ModuleType.REST_CLIENT_STARTER, ModuleType.REST_CONTROLLER,
+			ModuleType.REST_CONTROLLER_STARTER, ModuleType.INTEGRATION_TEST }),
 
-	MASTER_DATA("Master Data", "MasterData", "masterdata", new ModuleType[] {
-			ModuleType.BOM, ModuleType.UML_MODEL, ModuleType.OPEN_API,
-			ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
+	MASTER_DATA("Master Data", "MasterData", "masterdata", new ModuleType[] { ModuleType.BOM, ModuleType.UML_MODEL,
+			ModuleType.OPEN_API, ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
 			ModuleType.INTEGRATION_TEST }),
 
-	EVENTS("Events", "Events", "events", new ModuleType[] { ModuleType.BOM,
-			ModuleType.UML_MODEL, ModuleType.OPEN_API, ModuleType.JAVA,
-			ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
-			ModuleType.INTEGRATION_TEST }),
+	EVENTS("Events", "Events", "events", new ModuleType[] { ModuleType.BOM, ModuleType.UML_MODEL, ModuleType.OPEN_API,
+			ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER, ModuleType.INTEGRATION_TEST }),
 
 	IMPLEMENTATION("Implementation", "Impl", "impl", new ModuleType[] {}),
 
-	UML_MODEL_PROJECT("UML Model Project", "", "",
-			new ModuleType[] { ModuleType.UML_MODEL }),
+	UML_MODEL_PROJECT("UML Model Project", "", "", new ModuleType[] { ModuleType.UML_MODEL }),
 
-	EXTERNAL_ARTIFACT("External Artifact", "", "", new ModuleType[] {}),
+	ARTIFACT("Artifact", "", "", new ModuleType[] {}),
 
 	CUSTOM("Custom", "Custom", "custom", new ModuleType[] {});
 
@@ -48,8 +38,7 @@ public enum ProjectArchetype {
 	private final String defaultMavenSuffix;
 	private final List<ModuleType> defaultModules;
 
-	private ProjectArchetype(String name, String javaSuffix,
-			String mavenSuffix, ModuleType[] pModules) {
+	private ProjectArchetype(String name, String javaSuffix, String mavenSuffix, ModuleType[] pModules) {
 		defaultName = name;
 		defaultJavaSuffix = javaSuffix;
 		defaultMavenSuffix = mavenSuffix;

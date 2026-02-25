@@ -104,7 +104,7 @@
 			<artifactId>«dependency.getMavenProject().getArtifactId()»</artifactId>
 			<version>«dependency.getMavenProject().getVersionPropertyVariable()»</version>
 			«IF dependency.packaging != null-»
-			<packaging>«dependency.packaging.name.toLowerCase()»</packaging>
+			<type>«dependency.packaging.name.toLowerCase()»</type>
 			«ENDIF-»
 		</dependency>
 
