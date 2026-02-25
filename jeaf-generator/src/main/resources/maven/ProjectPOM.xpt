@@ -16,14 +16,14 @@
 
 	<properties>
 «IF isMavenProjectGeneratedFromModelTemplate() -»
-		<!-- Name of the main file with the UML model -->
+		<!-- Name of the main file of the UML model -->
 		<umlModelFile>TODO</umlModelFile>
 «ELSE -»
-		<!-- Name of the main file with the UML model -->
+		<!-- Name of the main file of the UML model -->
 		<umlModelFile>«getUMLModelFile()»</umlModelFile>
 «ENDIF-»
 
-		<!-- UML package which will be the one that is considered during code generation --> 
+		<!-- UML package which will be the one that is considered during code generation. -->
 		<umlPackage>«this.getMavenProjectUMLPackagePath()»</umlPackage>
 
 		«PROTECT CSTART "<!-- " CEND " -->" ID "xmi-properties:"  + this.getProjectID()»

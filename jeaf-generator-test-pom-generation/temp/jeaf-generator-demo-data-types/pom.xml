@@ -64,10 +64,10 @@
 
 
 	<properties>
-		<!-- Name of the main file with the UML model -->
+		<!-- Name of the main file of the UML model -->
 		<umlModelFile>JEAF_Test.uml</umlModelFile>
 
-		<!-- UML package which will be the one that is considered during code generation --> 
+		<!-- UML package which will be the one that is considered during code generation. -->
 		<umlPackage>com.anaptecs.maven</umlPackage>
 
 		<!-- PROTECTED REGION ID(xmi-properties:com.anaptecs.maven:jeaf-generator-demo-data-types) ENABLED START -->
@@ -94,6 +94,7 @@
 	</properties>
 
 
+	<!-- "Extend" profiles from parent POM for usages of XMI files from local file system and Maven artifact usage. -->
 	<profiles>
 		<profile>
 			<id>RunCodeGenerationFromXMIFile</id>
@@ -104,6 +105,22 @@
 		</profile>
 		<profile>
 			<id>RunCodeGenerationFromModelArtifact</id>
+			<properties>
+				<!-- Read UML model from Maven artifact. -->
+				<modelArtifactGroupID>${my.modelArtifactGroupID}</modelArtifactGroupID>
+				<modelArtifactArtifactID>${my.modelArtifactArtifactID}</modelArtifactArtifactID>
+				<modelArtifactXMIPath>${my.modelArtifactXMIPath}</modelArtifactXMIPath>
+			</properties>
+		</profile>
+		<profile>
+			<id>UpdateMavenProjectStructureFromXMIFile</id>
+			<properties>
+				<!-- Read UML model (XMI files) directly from local file system -->
+				<xmiDirectory>${my.xmiDirectory}</xmiDirectory>
+			</properties>
+		</profile>
+		<profile>
+			<id>UpdateMavenProjectStructureFromModelArtifact</id>
 			<properties>
 				<!-- Read UML model from Maven artifact. -->
 				<modelArtifactGroupID>${my.modelArtifactGroupID}</modelArtifactGroupID>
