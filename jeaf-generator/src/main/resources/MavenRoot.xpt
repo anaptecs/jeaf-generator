@@ -24,7 +24,7 @@
 «ENDDEFINE» 
 
 «DEFINE Root FOR MavenProject»
-	«IF this.isArchetypeGeneratorProjectParentPOM() && generateGeneratorProjectParentPOM()»
+	«IF generateGeneratorProjectParentPOM() && this.isArchetypeGeneratorProjectParentPOM()»
 		«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
 		«EXPAND maven::GeneratorProjectParentPOM::Generate»
 	«ENDIF»
