@@ -1619,18 +1619,40 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "java,*")
   private String staticImportGroups;
 
+  /********************************************************************************************************************
+   * Configuration parameters for Maven project generation. *
+   ********************************************************************************************************************/
+
+  /**
+   * Parameter can be used to activate generation of Maven project structures.
+   */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateMavenProjectStructure;
 
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateGeneratorProjectParentPOM;
 
+  /**
+   * Switch can be used to tell JEAF Generator in case of Maven project generation that this is the initial creation.
+   *
+   * In this case several information can not be read from an already existing POM but need to be taken from default
+   * values and / or explicitly provided parameters.
+   */
   @Parameter(required = false, defaultValue = "false")
   private Boolean initialProjectGeneration;
 
+  /**
+   * Parameter can be used to define the output directory for the generated POM files in case of an initial Maven
+   * project creation.
+   *
+   * By default, the Maven projects structure will be created in directory: <code>./temp/{ARTIFACT_ID}</code>
+   */
   @Parameter(required = false, defaultValue = "")
   private String initialOutputDirectory;
 
+  /**
+   * Parameter can be used to define a naming pattern for Maven projects.
+   */
   @Parameter(required = false, defaultValue = " ")
   private String mavenProjectNamePattern;
 
@@ -1640,42 +1662,130 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = " ")
   private String mavenProjectURLPattern;
 
+  /**
+   * This parameter can be used to define the pattern that is applied to determine the group ID of a Maven project if
+   * none is explicitly specified in the UML model.
+   *
+   * By default, the fully qualified name of the package in which the Maven project is located within the UML model is
+   * used as the group ID.
+   */
   @Parameter(required = false, defaultValue = "$[PROJECT_PACKAGE_NAME_FQN]")
   private String mavenGroupIdPattern;
 
+  /**
+   * This parameter can be used to define the pattern that is applied to determine the artifact ID of a Maven project if
+   * none is explicitly specified in the UML model.
+   *
+   * By default, the artifact name from the UML model, adjusted to comply with Maven naming conventions, will be used.
+   */
   @Parameter(required = false, defaultValue = "$[PROJECT_NAME_MAVEN]")
   private String mavenArtifactIdPattern;
 
+  /**
+   * This parameter can be used to define a pattern that is applied to determine the SCM path of a Maven project if none
+   * is explicitly specified in the UML model.
+   *
+   * By default, no pattern is defined.
+   */
   @Parameter(required = false, defaultValue = " ")
   private String mavenScmPathPattern;
 
+  /**
+   * This parameter can be used to define a pattern that determines the names of version properties in generated POM
+   * files.
+   *
+   * By default, <code>[ARTIFACT_ID].version</code> is used. For example, this results in a version property
+   * <code>&lt;jeaf-timetable-demo-api.version&gt;</code> for an artifact with the ID *
+   * <code>jeaf-timetable-demo-api</code>.
+   */
   @Parameter(required = false, defaultValue = "$[PROJECT_ARTIFACT_ID].version")
   private String mavenVersionPropertyNamePattern;
 
+  /**
+   * This parameter can be used to define the default version number for an artifact if none can be resolved.
+   *
+   * By default, `<code>0.1.0-SNAPSHOT</code>` is used.
+   */
   @Parameter(required = false, defaultValue = "0.1.0-SNAPSHOT")
   private String mavenArtifactDefaultVersion;
 
+  /**
+   * This parameter can be used to define the default archetype when a Maven project is created.
+   *
+   * By default, archetype <code>SERVICE_MODEL</code> is used.
+   */
   @Parameter(required = false, defaultValue = "SERVICE_MODEL")
   private ProjectArchetype mavenProjectDefaultArchetype;
 
+  /**
+   * This parameter can be used to the define the UML package in the generated POM file when generating an initial Maven
+   * project
+   *
+   * By default, no package is set.
+   *
+   * @see #initialProjectGeneration
+   */
   @Parameter(required = false, defaultValue = " ")
   private String mavenProjectUMLPackage;
 
+  /**
+   * This parameter can be used to define the default value for the parent group ID. This value will be applied if a
+   * Maven project does not define its parent POM in the UML model and the property #mavenProjectUseDefaultParent is set
+   * to <code>true</code>.
+   *
+   * By default, the group ID of the JEAF Generator Project Parent POM is used.
+   */
   @Parameter(required = false, defaultValue = "com.anaptecs.jeaf")
   private String mavenProjectDefaultParentGroupId;
 
+  /**
+   * This parameter can be used to define the default value for the parent artifact ID. This value will be applied if a
+   * Maven project does not define its parent POM in the UML model and the property #mavenProjectUseDefaultParent is set
+   * to <code>true</code>.
+   *
+   * By default, the artifact ID of the JEAF Generator Project Parent POM is used.
+   */
   @Parameter(required = false, defaultValue = "jeaf-generator-project-parent")
   private String mavenProjectDefaultParentArtifactId;
 
+  /**
+   * This parameter can be used to define the default value for the parent POM version. This value will be applied if a
+   * Maven project does not define its parent POM in the UML model and the property #mavenProjectUseDefaultParent is set
+   * to <code>true</code>.
+   *
+   * By default, version of the JEAF Generator Project Parent POM is used.
+   */
   @Parameter(required = false, defaultValue = " ")
   private String mavenProjectDefaultParentVersion;
 
+  /**
+   * This parameter can be used to enforce that generated Maven projects have a parent POM, even if none is defined for
+   * them in the UML model.
+   *
+   * If this parameter is set to `true`, the parent POM information will be taken from the configured default parent
+   * settings.
+   *
+   * @see #mavenProjectDefaultParentGroupId
+   * @see #mavenProjectDefaultParentArtifactId
+   * @see #mavenProjectDefaultParentVersion
+   */
   @Parameter(required = false, defaultValue = "true")
   private Boolean mavenProjectUseDefaultParent;
 
+  /**
+   * This parameter can be used to tell JEAF Generator that a project is generated from the default template model.
+   */
   @Parameter(required = false, defaultValue = "false")
   private Boolean mavenProjectGeneratedFromModelTemplate;
 
+  /**
+   * This parameter can be used to instruct JEAF Generator to add technical dependencies for the modules in addition to
+   * dependencies defined in the UML model. Such technical dependencies include, for example, Reactor libraries for
+   * reactive services or Spring runtime dependencies.
+   *
+   * By default, technical dependencies are added automatically.
+   *
+   */
   @Parameter(required = false, defaultValue = "true")
   private Boolean addRequiredTechnicalDepdendencies;
 
