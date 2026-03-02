@@ -217,6 +217,34 @@ cached boolean hasDefaultParentPOM(JMM::MavenProject project):
 
 cached JMM::MavenProject getParentPOM(JMM::MavenProject project):
 	project.clientDependency.typeSelect(JMM::MavenParentPOM).first().supplier.typeSelect(JMM::MavenProject).first();
+	
+cached boolean hasOwnUMLModelCoordinates(JMM::MavenProject project):
+	if project.getUMLCoordinatesSource() == "NONE"
+	then false
+	else
+		if project.getUMLCoordinatesSource() == "USE_OWN"
+		then true
+		else
+			if project.getUMLCoordinatesSource() == "USE_FROM_PARENT_POM"
+			then false
+			else
+				if project.getUMLCoordinatesSource() == "USE_PARENT_OR_OWN" && project.hasParentPOM() && project.getParentPOM().hasUMLModelCoordinates()
+				then false
+				else 
+					true;
+	
+cached boolean hasUMLModelCoordinates(JMM::MavenProject project):
+	if project.hasOwnUMLModelCoordinates()
+	then true
+	else
+		if project.hasParentPOM() && project.getParentPOM().hasUMLModelCoordinates()
+		then true
+		else false;
+
+cached String getUMLCoordinatesSource(JMM::MavenProject project):
+	if project.modelCoordinatesSource.name == "USE_DEFAULT"
+	then defaultUMLCoordinatesSource()
+	else project.modelCoordinatesSource.name;
 
 cached List[JMM::MavenProject] getDependentProjects(JMM::MavenProject project):
 	project.getMavenProjectDependencies().supplier.typeSelect(JMM::MavenProject);

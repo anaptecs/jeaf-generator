@@ -1,0 +1,28 @@
+import uml;
+import JMM;
+
+extension java::GeneratorCommons;
+extension functions::NamedElement;
+extension functions::MavenDependency;
+extension functions::MavenProject;
+
+
+
+// Check that source and target are of type MavenProject
+context MavenDependency if runChecks("MavenDependency") && ignore() == false ERROR this.getErrorMessage("9181", {source.first().getNearestPackage().qualifiedName() + "." + source.first().asNamedElement().name, supplier.first().getNearestPackage().qualifiedName() + "." + supplier.first().asNamedElement().name}): source.first().isMavenProject() && supplier.first().isMavenProject();
+context MavenDependency if runChecks("MavenProjectDependency") && ignore() == false ERROR this.getErrorMessage("9181", {source.first().getNearestPackage().qualifiedName() + "." + source.first().asNamedElement().name, supplier.first().getNearestPackage().qualifiedName() + "." + supplier.first().asNamedElement().name}): source.first().isMavenProject() && supplier.first().isMavenProject();
+context MavenDependency if runChecks("MavenParentPOM") && ignore() == false ERROR this.getErrorMessage("9181", {source.first().getNearestPackage().qualifiedName() + "." + source.first().asNamedElement().name, supplier.first().getNearestPackage().qualifiedName() + "." + supplier.first().asNamedElement().name}): source.first().isMavenProject() && supplier.first().isMavenProject();
+
+// Check that for USE_FROM_PARENT_POM really something is defined in parent POM.
+context MavenProject if runChecks("MavenProject") && this.getUMLCoordinatesSource() == "USE_FROM_PARENT_POM" ERROR this.getErrorMessage("9182", {this.getNearestPackage().qualifiedName() + "." + name}): this.hasParentPOM() && this.getParentPOM().hasUMLModelCoordinates();
+
+// Check that Maven Dependencies are only set up between Maven Projects (source and target)
+context MavenDependency if runChecks("MavenDependency") && ignore() == false ERROR this.getErrorMessage("9183", {source.first().getNearestPackage().qualifiedName() + "." + source.first().asNamedElement().name, supplier.first().getNearestPackage().qualifiedName() + "." + supplier.first().asNamedElement().name}): supplier.first().isMavenProject() && supplier.first().asMavenProject().archetype.name == "ARTIFACT";
+
+// Check that only in case of archetype SERVICE_MODEL "serviceTypes" are set
+context MavenProject if runChecks("MavenProject") && this.serviceTypes.isEmpty == false && ignore() == false ERROR this.getErrorMessage("9184", {this.getNearestPackage().qualifiedName() + "." + name}): this.archetype.name == "SERVICE_MODEL";
+
+// Check that "moduleDependencyTypes" match to source and target archety
+context MavenDependency if runChecks("MavenProjectDependency") && this.moduleDependencyTypes.name.contains("SERVICES_2_JAVA") && ignore() == false ERROR this.getErrorMessage("9185", {"SERVICES_2_JAVA", source.first().getNearestPackage().qualifiedName() + "." + source.first().asNamedElement().name, supplier.first().getNearestPackage().qualifiedName() + "." + supplier.first().asNamedElement().name}): source.first().isMavenProject() && source.first().asMavenProject().archetype.name == "SERVICE_MODEL" && supplier.first().isMavenProject();
+
+// Check that "sourceModuleTypes" match to source archetype

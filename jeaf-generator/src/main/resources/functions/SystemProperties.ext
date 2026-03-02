@@ -180,6 +180,9 @@ String getMavenProjectDefaultArchetype():
 String getMavenProjectUMLPackage():
 	getSystemProperty("jeaf.generator.mavenProjectUMLPackage", "").trim();
 
+String defaultUMLCoordinatesSource():
+	getSystemProperty("jeaf.generator.defaultUMLCoordinatesSource", "");
+
 String getMavenProjectDefaultParentGroupId():
 	getSystemProperty("jeaf.generator.mavenProjectDefaultParentGroupId", "").trim();
 
@@ -192,7 +195,6 @@ String getMavenProjectDefaultParentVersion():
 boolean useDefaultParent():	
 	getBooleanSystemProperty("jeaf.generator.mavenProjectUseDefaultParent", true);
 
-	
 boolean isMavenProjectGeneratedFromModelTemplate():
 	getBooleanSystemProperty("jeaf.generator.mavenProjectGeneratedFromModelTemplate", false);
 

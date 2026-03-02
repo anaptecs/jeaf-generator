@@ -15,16 +15,17 @@
 «EXPAND maven::POMHelper::POMCommonBegin»
 
 	<properties>
-«IF isMavenProjectGeneratedFromModelTemplate() -»
 		<!-- UML package which will be the one that is considered during code generation. -->
 		<umlPackage>«this.getMavenProjectUMLPackagePath()»</umlPackage>
 
+«IF isMavenProjectGeneratedFromModelTemplate() -»
 		<!-- Name of the main file of the UML model -->
 		<umlModelFile>TODO</umlModelFile>
 «ELSE -»
 		<!-- Name of the main file of the UML model -->
 		<umlModelFile>«getUMLModelFile()»</umlModelFile>
 «ENDIF-»
+«IF this.hasOwnUMLModelCoordinates()-»
 
 		«PROTECT CSTART "<!-- " CEND " -->" ID "xmi-properties:"  + this.getProjectID()»
 		<!-- 
@@ -41,6 +42,7 @@
 		<my.modelArtifactArtifactID>TODO</my.modelArtifactArtifactID>
 		<my.modelArtifactXMIPath>xmi</my.modelArtifactXMIPath>
 		«ENDPROTECT»
+«ENDIF-»
 
 «IF this.getDependentProjects().size > 0 -»
 «FOREACH this.getDependentProjects() AS project-»
