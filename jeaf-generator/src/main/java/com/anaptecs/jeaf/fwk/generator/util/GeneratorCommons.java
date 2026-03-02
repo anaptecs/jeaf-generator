@@ -24,6 +24,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Dependency;
@@ -1442,6 +1443,7 @@ public class GeneratorCommons {
       if (pStereotype.length() > 0) {
         if (pElement instanceof Class || pElement instanceof Interface
             || pElement instanceof Component
+            || pElement instanceof Artifact
             || pElement instanceof Enumeration
             || pElement instanceof EnumerationLiteral
             || pElement instanceof Activity
@@ -1604,6 +1606,15 @@ public class GeneratorCommons {
                   "FutureOrPresent");
           lRunChecks = lRunChecks
               | ClassUtil.isStereotypeApplied(pElement, "Future");
+          
+          lRunChecks = lRunChecks
+          | ClassUtil.isStereotypeApplied(pElement, "MavenProject");
+          lRunChecks = lRunChecks
+          | ClassUtil.isStereotypeApplied(pElement, "MavenDependency");
+          lRunChecks = lRunChecks
+          | ClassUtil.isStereotypeApplied(pElement, "MavenProjectDependency");
+          lRunChecks = lRunChecks
+          | ClassUtil.isStereotypeApplied(pElement, "MavenParentPOM");
         }
       }
       else {

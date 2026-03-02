@@ -44,6 +44,7 @@ import com.anaptecs.jeaf.fwk.generator.util.ReportFormat;
 import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
 import com.anaptecs.jeaf.fwk.generator.util.maven.ArtifactCache;
 import com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype;
+import com.anaptecs.jeaf.fwk.generator.util.maven.UMLCoordinatesSourceType;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
 import com.anaptecs.jeaf.fwk.tools.message.generator.MessageConstantsGenerator;
@@ -1729,6 +1730,16 @@ public class GeneratorMojo extends AbstractMojo {
   private String mavenProjectUMLPackage;
 
   /**
+   * This parameter defines the default source from which the coordinates of the UML model should be derived. It will be
+   * applied when no explicit configuration is provided for a Maven project within the UML model.
+   *
+   * By default, the value <code>USE_PARENT_OR_OWN</code> is used.
+   *
+   */
+  @Parameter(required = false, defaultValue = "USE_PARENT_OR_OWN")
+  private UMLCoordinatesSourceType defaultUMLCoordinatesSource;
+
+  /**
    * This parameter can be used to define the default value for the parent group ID. This value will be applied if a
    * Maven project does not define its parent POM in the UML model and the property #mavenProjectUseDefaultParent is set
    * to <code>true</code>.
@@ -2511,6 +2522,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Default version for unknown artifacts:            " + mavenArtifactDefaultVersion);
       lLog.info("Maven Project archetype:                          " + mavenProjectDefaultArchetype);
       lLog.info("Maven Project UML package:                        " + mavenProjectUMLPackage);
+      lLog.info("Default UML model coordinates source:             " + defaultUMLCoordinatesSource.name());
       lLog.info("Maven Project default parent group ID:            " + mavenProjectDefaultParentGroupId);
       lLog.info("Maven Project default parent artifact ID:         " + mavenProjectDefaultParentArtifactId);
       lLog.info("Maven Project default parent version:             " + mavenProjectDefaultParentVersion);
@@ -2842,6 +2854,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "mavenArtifactDefaultVersion", mavenArtifactDefaultVersion);
       System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultArchetype", mavenProjectDefaultArchetype.name());
       System.setProperty(PROPERTY_PREFIX + "mavenProjectUMLPackage", mavenProjectUMLPackage);
+      System.setProperty(PROPERTY_PREFIX + "defaultUMLCoordinatesSource", defaultUMLCoordinatesSource.name());
       System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultParentGroupId", mavenProjectDefaultParentGroupId);
       System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultParentArtifactId", mavenProjectDefaultParentArtifactId);
       System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultParentVersion", mavenProjectDefaultParentVersion);
