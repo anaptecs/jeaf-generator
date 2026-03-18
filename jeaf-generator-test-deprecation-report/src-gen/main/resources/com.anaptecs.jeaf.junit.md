@@ -16,7 +16,7 @@
 | Name | Description |
 |------|-------------|
 | `A` |  |
-| `B` |  |
+| :exclamation:`B` | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
 | `C` |  |
 
 ## MyEnumWithInterface

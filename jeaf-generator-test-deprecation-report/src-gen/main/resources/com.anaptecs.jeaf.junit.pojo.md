@@ -42,7 +42,7 @@
 <br>
 
 ## BChildPOJO
-
+:exclamation:**Deprecation Notice (since: , removed with: ):**<br>
 
 <br>
 
@@ -111,6 +111,8 @@
 ## ChildPOJO
 This is the first line of the first comment
 2nd line
+
+:exclamation:**Deprecation Notice (since: Big bang, removed with: Last X-Mas):**<br>We do not like this class any more.
 
 <br>
 
@@ -191,7 +193,7 @@ This is the first line of the first comment
 | `yetAnotherAttribute` | `boolean` | `1..1` |  |  |
 | `readonlyAssociation` | [`ImmutablePOJO`](#immutablepojo) | `0..*` |  |  |
 | `immutableChildPOJO` | [`ImmutableChildPOJO`](#immutablechildpojo) | `0..1` |  |  |
-| `deprecatedRefs` | [`ImmutableChildPOJO`](#immutablechildpojo) | `0..*` |  |  |
+| :exclamation:`deprecatedRefs` | [`ImmutableChildPOJO`](#immutablechildpojo) | `0..*` |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
 | `deprecatedRef` | [`ChildPOJO`](#childpojo) | `0..1` |  |  |
 
 <br>
@@ -329,7 +331,7 @@ This is the first line of the first comment
 | Name | Type | Multiplicity | Constraints | Description |
 |------|------|:------------:|-------------|-------------|
 | `parentAttribute` | `java.lang.String` | `1..1` |  |  |
-| `weirdAttribute` | `byte` | `1..1` |  |  |
+| :exclamation:`weirdAttribute` | `byte` | `1..1` |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
 | `hello` | `String` | `1..1` |  |  |
 
 <br>

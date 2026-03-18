@@ -56,4 +56,28 @@ cached String makeMultiLineCompatible(String value):
     else value;
     
 
-    
+cached String getMarkdownCommentForReport(uml::NamedElement element):
+	if element.getMarkdownComment().length > 0
+	then element.getMarkdownComment() + element.getDeprecationNoticeForReport() + element.getBreakingChangeNoticeForReport()
+	else                                element.getDeprecationNoticeForReport() + element.getBreakingChangeNoticeForReport();
+
+
+cached String getMarkdownCommentForReportTable(uml::NamedElement element):
+	element.getMarkdownCommentForReport().replaceAll("\n", "<br>");
+
+
+cached String getDeprecationNoticeForReport(uml::NamedElement element):
+	if element.isJEAFDeprecated()
+	then element.getLineBreaks() + ":exclamation:**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + "):**<br>" + element.getDeprecationDescriptionForMarkup()
+	else "";
+
+cached String getBreakingChangeNoticeForReport(uml::NamedElement element):
+	if element.isBreakingChange()
+	then element.getLineBreaks() + ":bomb: **Breaking Change Notice " + "(since: " + "" + ", active with: " + element.getBreakingChangeActiveWith() + "):**<br>" + element.getBreakingChangeDescription()
+	else "";
+	
+private getLineBreaks(uml::NamedElement element):
+	if element.getMarkdownComment().length > 0
+	then "\n\n"
+	else "";
+	

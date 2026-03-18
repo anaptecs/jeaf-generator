@@ -23,10 +23,10 @@ cached List[uml::Package] getPackagesForBreakingChangesReport(uml::Model model):
 
 cached boolean isBreakingChange(uml::Element element):
     element.isStereotypeApplied("BreakingChange");
-    
+
 cached String getBreakingChangeDescription(uml::NamedElement change):
     change.getStereotypeValue("BreakingChange", "description").replaceAll("\n", "<br>");
-    
+
 cached String getBreakingChangeActiveWith(uml::NamedElement change):
     change.getStereotypeValue("BreakingChange", "activeWith");
 
