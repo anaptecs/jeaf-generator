@@ -6,9 +6,9 @@
 package com.anaptecs.spring.base;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -81,7 +81,7 @@ public class Context {
   /**
    * Map contains all custom headers that were set on the object.
    */
-  private Map<String, String> customHeaders = new HashMap<String, String>();
+  private Map<String, String> customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
   /**
    * Initialize object using the passed builder.
@@ -174,7 +174,7 @@ public class Context {
     /**
      * Map contains all custom headers that were set on the object.
      */
-    private Map<String, String> customHeaders = new HashMap<String, String>();
+    private Map<String, String> customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
@@ -195,7 +195,8 @@ public class Context {
         this.setQueryParam(pObject.queryParam);
         this.setLang(pObject.lang);
         this.setIntCode(pObject.intCode);
-        customHeaders = new HashMap<String, String>(pObject.customHeaders);
+        customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        customHeaders.putAll(pObject.customHeaders);
       }
     }
 

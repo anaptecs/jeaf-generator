@@ -6,8 +6,8 @@
 package com.anaptecs.spring.base;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class TechnicalHeaderContext {
   /**
@@ -20,7 +20,7 @@ public class TechnicalHeaderContext {
   /**
    * Map contains all custom headers that were set on the object.
    */
-  private Map<String, String> customHeaders = new HashMap<String, String>();
+  private Map<String, String> customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
   /**
    * Initialize object using the passed builder.
@@ -66,7 +66,7 @@ public class TechnicalHeaderContext {
     /**
      * Map contains all custom headers that were set on the object.
      */
-    private Map<String, String> customHeaders = new HashMap<String, String>();
+    private Map<String, String> customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     /**
      * Use {@link TechnicalHeaderContext#builder()} instead of private constructor to create new builder.
@@ -82,7 +82,8 @@ public class TechnicalHeaderContext {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setReseller(pObject.reseller);
-        customHeaders = new HashMap<String, String>(pObject.customHeaders);
+        customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        customHeaders.putAll(pObject.customHeaders);
       }
     }
 

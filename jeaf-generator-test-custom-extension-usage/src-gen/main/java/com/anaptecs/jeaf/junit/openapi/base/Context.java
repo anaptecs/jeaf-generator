@@ -6,9 +6,9 @@
 package com.anaptecs.jeaf.junit.openapi.base;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
@@ -124,7 +124,7 @@ public class Context extends Object implements ServiceObject {
   /**
    * Map contains all custom headers that were set on the object.
    */
-  private Map<String, String> customHeaders = new HashMap<String, String>();
+  private Map<String, String> customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -237,7 +237,7 @@ public class Context extends Object implements ServiceObject {
     /**
      * Map contains all custom headers that were set on the object.
      */
-    private Map<String, String> customHeaders = new HashMap<String, String>();
+    private Map<String, String> customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     /**
      * Use {@link Context#builder()} instead of private constructor to create new builder.
@@ -257,7 +257,8 @@ public class Context extends Object implements ServiceObject {
         this.setPathParam(pObject.pathParam);
         this.setQueryParam(pObject.queryParam);
         this.setIntCode(pObject.intCode);
-        customHeaders = new HashMap<String, String>(pObject.customHeaders);
+        customHeaders = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        customHeaders.putAll(pObject.customHeaders);
       }
     }
 
