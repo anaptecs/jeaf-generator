@@ -23,6 +23,6 @@ context MavenDependency if runChecks("MavenDependency") && ignore() == false ERR
 context MavenProject if runChecks("MavenProject") && this.serviceTypes.isEmpty == false && ignore() == false ERROR this.getErrorMessage("9184", {this.getNearestPackage().qualifiedName() + "." + name}): this.archetype.name == "SERVICE_MODEL";
 
 // Check that "moduleDependencyTypes" match to source and target archety
-context MavenDependency if runChecks("MavenProjectDependency") && this.moduleDependencyTypes.name.contains("SERVICES_2_JAVA") && ignore() == false ERROR this.getErrorMessage("9185", {"SERVICES_2_JAVA", source.first().getNearestPackage().qualifiedName() + "." + source.first().asNamedElement().name, supplier.first().getNearestPackage().qualifiedName() + "." + supplier.first().asNamedElement().name}): source.first().isMavenProject() && source.first().asMavenProject().archetype.name == "SERVICE_MODEL" && supplier.first().isMavenProject();
+context MavenProjectDependency if runChecks("MavenProjectDependency") && this.moduleDependencyTypes.selectFirst(e|e == "SERVICES_2_JAVA") != null && ignore() == false ERROR this.getErrorMessage("9185", {"SERVICES_2_JAVA", source.first().getNearestPackage().qualifiedName() + "." + source.first().asNamedElement().name, supplier.first().getNearestPackage().qualifiedName() + "." + supplier.first().asNamedElement().name}): source.first().isMavenProject() && source.first().asMavenProject().archetype.name == "SERVICE_MODEL" && supplier.first().isMavenProject();
 
 // Check that "sourceModuleTypes" match to source archetype

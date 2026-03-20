@@ -77,6 +77,10 @@
 |   | `campaigns` |  |  |  |
 | `JustAType` | |  |  |  |
 |   | `legacy` | Hello |  |  |
+| `MyPOJOResponse` | |  |  |  |
+|   | `deprecatedProperty` |  |  |  |
+| `MyPojoRequest` | |  |  |  |
+|   | `deprecatedRequestProperty` |  |  |  |
 | `POI` | |  |  |  |
 |   | `theLink` |  |  |  |
 |   | `evenMoreLinks` |  |  |  |

@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Profile xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmi:id="0faf926f-e455-4957-a958-13742c2fc621" name="deployment" metamodelReference="db10c39e-0937-4e9d-97a3-f96e61f1fb48">
-  <eAnnotations xmi:id="_vs4BURY-EfGMJ_pXoEL-UQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
-    <contents xmi:type="ecore:EPackage" xmi:id="_vs4BUhY-EfGMJ_pXoEL-UQ" name="deployment" nsURI="http://UML_Profile_for_Java/deployment/_9_0_622020d_1108465332701_602548_6762" nsPrefix="deployment">
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_vs4BUxY-EfGMJ_pXoEL-UQ" name="JARInclude">
-        <eAnnotations xmi:id="_vs4BVBY-EfGMJ_pXoEL-UQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="72982302-b459-4c01-89dc-b6ec24aeb30f"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vs4BVRY-EfGMJ_pXoEL-UQ" name="base_Dependency" ordered="false" lowerBound="1">
+  <eAnnotations xmi:id="_PyClcCQhEfGfMoCKFzC6jA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <contents xmi:type="ecore:EPackage" xmi:id="_PyClcSQhEfGfMoCKFzC6jA" name="deployment" nsURI="http://UML_Profile_for_Java/deployment/_9_0_622020d_1108465332701_602548_6762" nsPrefix="deployment">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_PyClciQhEfGfMoCKFzC6jA" name="JARInclude">
+        <eAnnotations xmi:id="_PyClcyQhEfGfMoCKFzC6jA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="72982302-b459-4c01-89dc-b6ec24aeb30f"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_PyCldCQhEfGfMoCKFzC6jA" name="base_Dependency" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Dependency"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_vs4BVhY-EfGMJ_pXoEL-UQ" name="JARReference">
-        <eAnnotations xmi:id="_vs4BVxY-EfGMJ_pXoEL-UQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="3b97e311-f344-4fb2-8c18-2275a5f54929"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vs4BWBY-EfGMJ_pXoEL-UQ" name="base_Usage" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_PyCldSQhEfGfMoCKFzC6jA" name="JARReference">
+        <eAnnotations xmi:id="_PyCldiQhEfGfMoCKFzC6jA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="3b97e311-f344-4fb2-8c18-2275a5f54929"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_PyCldyQhEfGfMoCKFzC6jA" name="base_Usage" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Usage"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_vs4BWRY-EfGMJ_pXoEL-UQ" name="JAR">
-        <eAnnotations xmi:id="_vs4BWhY-EfGMJ_pXoEL-UQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="8c72adb0-e5c3-454c-9338-b1323c898473"/>
-        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_vs4BWxY-EfGMJ_pXoEL-UQ" name="JARFileList" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_PyCleCQhEfGfMoCKFzC6jA" name="JAR">
+        <eAnnotations xmi:id="_PyCleSQhEfGfMoCKFzC6jA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="8c72adb0-e5c3-454c-9338-b1323c898473"/>
+        <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="_PyCleiQhEfGfMoCKFzC6jA" name="JARFileList" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
         </eStructuralFeatures>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vs4BXBY-EfGMJ_pXoEL-UQ" name="base_Artifact" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_PyCleyQhEfGfMoCKFzC6jA" name="base_Artifact" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_vs4BXRY-EfGMJ_pXoEL-UQ" name="JavaArchiveFile">
-        <eAnnotations xmi:id="_vs4BXhY-EfGMJ_pXoEL-UQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="b7121bfa-821d-4194-9476-4e029e5058ee"/>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vs4BXxY-EfGMJ_pXoEL-UQ" name="base_Package" ordered="false" lowerBound="1">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_PyClfCQhEfGfMoCKFzC6jA" name="JavaArchiveFile">
+        <eAnnotations xmi:id="_PyClfSQhEfGfMoCKFzC6jA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="b7121bfa-821d-4194-9476-4e029e5058ee"/>
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_PyClfiQhEfGfMoCKFzC6jA" name="base_Package" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Package"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_vs4BYBY-EfGMJ_pXoEL-UQ" name="JavaSourceFile" eSuperTypes="_vs4BZhY-EfGMJ_pXoEL-UQ">
-        <eAnnotations xmi:id="_vs4BYRY-EfGMJ_pXoEL-UQ" source="http://www.eclipse.org/uml2/2.0.0/UML" references="79c533a2-d511-4db6-990d-4d80356f1a09"/>
-        <eAnnotations xmi:id="_vs4BYhY-EfGMJ_pXoEL-UQ" source="duplicates">
-          <contents xmi:type="ecore:EReference" xmi:id="_vs4BYxY-EfGMJ_pXoEL-UQ" name="base_Artifact" ordered="false" lowerBound="1">
-            <eAnnotations xmi:id="_vs4BZBY-EfGMJ_pXoEL-UQ" source="redefines" references="_vs4BaBY-EfGMJ_pXoEL-UQ"/>
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_PyClfyQhEfGfMoCKFzC6jA" name="JavaSourceFile" eSuperTypes="_PyClhSQhEfGfMoCKFzC6jA">
+        <eAnnotations xmi:id="_PyClgCQhEfGfMoCKFzC6jA" source="http://www.eclipse.org/uml2/2.0.0/UML" references="79c533a2-d511-4db6-990d-4d80356f1a09"/>
+        <eAnnotations xmi:id="_PyClgSQhEfGfMoCKFzC6jA" source="duplicates">
+          <contents xmi:type="ecore:EReference" xmi:id="_PyClgiQhEfGfMoCKFzC6jA" name="base_Artifact" ordered="false" lowerBound="1">
+            <eAnnotations xmi:id="_PyClgyQhEfGfMoCKFzC6jA" source="redefines" references="_PyClhyQhEfGfMoCKFzC6jA"/>
             <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
           </contents>
         </eAnnotations>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vs4BZRY-EfGMJ_pXoEL-UQ" name="base_Component" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_PyClhCQhEfGfMoCKFzC6jA" name="base_Component" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Component"/>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xmi:type="ecore:EClass" xmi:id="_vs4BZhY-EfGMJ_pXoEL-UQ" name="Standard_File">
-        <eAnnotations xmi:id="_vs4BZxY-EfGMJ_pXoEL-UQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <eClassifiers xmi:type="ecore:EClass" xmi:id="_PyClhSQhEfGfMoCKFzC6jA" name="Standard_File">
+        <eAnnotations xmi:id="_PyClhiQhEfGfMoCKFzC6jA" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <references xmi:type="uml:Stereotype" href="pathmap://UML_PROFILES/Standard.profile.uml#File"/>
         </eAnnotations>
-        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_vs4BaBY-EfGMJ_pXoEL-UQ" name="base_Artifact" ordered="false" lowerBound="1">
+        <eStructuralFeatures xmi:type="ecore:EReference" xmi:id="_PyClhyQhEfGfMoCKFzC6jA" name="base_Artifact" ordered="false" lowerBound="1">
           <eType xmi:type="ecore:EClass" href="http://www.eclipse.org/uml2/2.0.0/UML#//Artifact"/>
         </eStructuralFeatures>
       </eClassifiers>

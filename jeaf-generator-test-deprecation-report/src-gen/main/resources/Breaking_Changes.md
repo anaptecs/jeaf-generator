@@ -45,3 +45,13 @@
 
 <br>
 
+## Package `com.anaptecs.jeaf.junit.validationgroups`
+
+| Element  | Details    | Description  | Active with |
+|----------|------------|--------------|:-----------:|
+| `MyPOJOResponse` | `upcomingMandatoryProperty` |  |  | 
+| `MyPojoRequest` | `formerMandatoryProperty` |  |  | 
+| `MyPojoRequest` | `propertyWithNewConstraints` |  |  | 
+
+<br>
+

@@ -48,14 +48,14 @@
 		<my.modelArtifactXMIPath>xmi</my.modelArtifactXMIPath>
 		<!-- PROTECTED REGION END -->
 
-		<!-- Version property for dependency to com.anaptecs.maven:jeaf-generator-other-service-model -->
-		<jeaf-generator-other-service-model.version>47.1.1</jeaf-generator-other-service-model.version>
+		<!-- Version property for dependency to com.anaptecs.maven:jeaf-generator-other-data-types -->
+		<jeaf-generator-other-data-types.version>47.1.1</jeaf-generator-other-data-types.version>
 
 		<!-- Version property for dependency to com.anaptecs.maven:jeaf-generator-demo-data-types -->
 		<jeaf-generator-demo-data-types.version>47.1.1</jeaf-generator-demo-data-types.version>
 
-		<!-- Version property for dependency to com.anaptecs.maven:jeaf-generator-other-data-types -->
-		<jeaf-generator-other-data-types.version>47.1.1</jeaf-generator-other-data-types.version>
+		<!-- Version property for dependency to com.anaptecs.maven:jeaf-generator-other-service-model -->
+		<jeaf-generator-other-service-model.version>47.1.1</jeaf-generator-other-service-model.version>
 
 		<!-- Version property for dependency to com.anaptecs.jeaf.demo:jeaf-rest-demo-uml -->
 		<jeaf-rest-demo-uml.version>47.1.1</jeaf-rest-demo-uml.version>
@@ -119,8 +119,8 @@
 		<dependencies>
 			<dependency>
 				<groupId>com.anaptecs.maven</groupId>
-				<artifactId>jeaf-generator-other-service-model-bom</artifactId>
-				<version>${jeaf-generator-other-service-model.version}</version>
+				<artifactId>jeaf-generator-other-data-types-bom</artifactId>
+				<version>${jeaf-generator-other-data-types.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -133,8 +133,8 @@
 			</dependency>
 			<dependency>
 				<groupId>com.anaptecs.maven</groupId>
-				<artifactId>jeaf-generator-other-data-types-bom</artifactId>
-				<version>${jeaf-generator-other-data-types.version}</version>
+				<artifactId>jeaf-generator-other-service-model-bom</artifactId>
+				<version>${jeaf-generator-other-service-model.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

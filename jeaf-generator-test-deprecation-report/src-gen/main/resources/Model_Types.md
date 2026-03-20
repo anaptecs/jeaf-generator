@@ -181,6 +181,8 @@ MutableChildPOJO |   |  |
 MyBusinessObject |   |  |
 MyDataType |   |  |
 MyEnumWithInterface |   |  |
+MyPOJOResponse |   |  |
+MyPojoRequest |   |  |
 MyType |   |  |
 NotInlinedBeanParam |   |  |
 Offer |   |  |
@@ -603,6 +605,15 @@ Message |   |  |
 Offer |   |  |
 Pageable |   |  |
 Response |   |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.validationgroups`
+
+| Type     | Legacy Name | Description  |
+|----------|---------------------|------------|
+MyPOJOResponse |   |  |
+MyPojoRequest |   |  |
 
 <br>
 

@@ -128,6 +128,11 @@
 				<modelArtifactXMIPath>${my.modelArtifactXMIPath}</modelArtifactXMIPath>
 			</properties>
 		</profile>
+
+		<!-- Section for custom profile entries -->
+		<!-- PROTECTED REGION ID(profiles:com.anaptecs.maven:jeaf-generator-demo-data-types) ENABLED START -->
+		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
+		<!-- PROTECTED REGION END -->
 	</profiles>
 
 
@@ -185,14 +190,6 @@
 		<!-- Add your custom properties here -->
 		<!-- PROTECTED REGION END -->
 	</dependencies>
-
-
-	<profiles>
-		<!-- Section for custom profile entries -->
-		<!-- PROTECTED REGION ID(profiles:com.anaptecs.maven:jeaf-generator-demo-data-types) ENABLED START -->
-		<!-- Everything that is within this protection area will remain unchanged by JEAF Generator. -->
-		<!-- PROTECTED REGION END -->
-	</profiles>
 
 
 	<build>

@@ -310,3 +310,20 @@
 
 <br>
 
+## Package `com.anaptecs.jeaf.junit.validationgroups`
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   |
+|--------|-------------|---------------|:------------------:|:-----------------------:|
+| `MyPOJOResponse` | |  |  |  |
+|   | `deprecatedProperty` |  |  |  |
+| `MyPojoRequest` | |  |  |  |
+|   | `deprecatedRequestProperty` |  |  |  |
+
+<br>
+
