@@ -201,6 +201,10 @@ boolean isMavenProjectGeneratedFromModelTemplate():
 boolean addRequiredTechnicalDepdendencies():
 	getBooleanSystemProperty("jeaf.generator.addRequiredTechnicalDepdendencies", true);
 
+String issueTrackingURLPattern():
+	getSystemProperty("jeaf.generator.issueTrackingURLPattern", "").trim();
+
+
 String getXMIDirectory():
 	getSystemProperty("jeaf.generator.xmiDirectory", "");
 

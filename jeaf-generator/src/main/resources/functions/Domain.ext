@@ -1,0 +1,55 @@
+extension java::GeneratorCommons;
+extension functions::NamedElement;
+extension functions::SystemProperties;
+extension functions::Model;
+
+
+cached boolean isDomain(uml::Element element) :
+	element.isStereotypeApplied("Domain");
+
+
+cached JMM::Domain asDomain(uml::Element element):
+	(JMM::Domain) element;
+
+
+cached String getDomainName(JMM::Domain domain):
+	if domain.domainName.trim().length > 0
+	then domain.domainName.trim()
+	else domain.name.toFirstUpper();
+
+
+cached String getDomainNameJava(JMM::Domain domain):
+	if domain.domainNameJava.trim().length > 0
+	then domain.domainNameJava.trim()
+	else domain.getDomainName().split(" ").toFirstUpper().toString("");
+
+
+cached String getGroupId(JMM::Domain domain):
+	if domain.groupId.trim().length > 0
+	then domain.groupId.trim()
+	else domain.qualifiedName();
+
+
+cached JMM::Domain getDomain(uml::Element element):
+	if element.getNearestPackage().isDomain()
+	then element.getNearestPackage().asDomain()
+	else
+		if element.hasParentPackage()
+		then element.owner.getDomain()
+		else null;
+
+
+cached boolean belongsToDomain(uml::Element element):
+	element.getDomain() != null;
+
+
+cached String getSCMPath(JMM::Domain domain):
+	if domain.scmBasePath.trim().length > 0
+	then domain.scmBasePath.trim()
+	else getSCMPathPattern();
+
+cached String getIssueTrackingBaseURL(JMM::Domain domain):
+	if domain.issueTrackingURL.trim().length > 0
+	then domain.issueTrackingURL.trim()
+	else issueTrackingURLPattern();
+	

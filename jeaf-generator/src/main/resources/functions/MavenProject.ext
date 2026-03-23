@@ -4,6 +4,7 @@ extension functions::NamedElement;
 extension functions::Javadoc;
 extension functions::MavenDependency;
 extension functions::ModuleType;
+extension functions::Domain;
 extension functions::Jackson;
 
 cached boolean isMavenProject(uml::Element element) :
@@ -79,10 +80,35 @@ cached boolean generateReactiveServices(JMM::MavenProject project):
 	else false;
 
 // DOMAIN_PACKAGE_NAME
+private String getDomainPackageName(JMM::MavenProject project):
+	if project.belongsToDomain()
+	then project.getDomain().name
+	else "";
+
 // DOMAIN_PACKAGE_FQN
+private String getDomainPackageNameFQN(JMM::MavenProject project):
+	if project.belongsToDomain()
+	then project.getDomain().qualifiedName()
+	else "";
+
 // DOMAIN_NAME
+private String getDomainNameForProject(JMM::MavenProject project):
+	if project.belongsToDomain()
+	then project.getDomain().getDomainName()
+	else "";
+
 // DOMAIN_NAME_JAVA
+private String getDomainNameJavaForProject(JMM::MavenProject project):
+	if project.belongsToDomain()
+	then project.getDomain().getDomainNameJava()
+	else "";
+
 // DOMAIN_GROUP_ID
+private String getDomainGroupIdForProject(JMM::MavenProject project):
+	if project.belongsToDomain()
+	then project.getDomain().getGroupId()
+	else "";
+
 // DOMAIN_ARTIFACT_ID
 // DOMAIN_SCM_PATH
 
@@ -155,6 +181,11 @@ private String convertPatternToEffectiveValue(String pattern, JMM::MavenProject 
 			.inlineArchetypeMavenSuffix(project)
 			.inlineArtifactId(project)
 			.inlineGroupId(project)
+			.inlineDomainPackageName(project)
+			.inlineDomainPackageFQN(project)
+			.inlineDomainNameForProject(project)
+			.inlineDomainNameJavaForProject(project)
+			.inlineDomainGroupIdForProject(project)
 	;
 	
 private String inlineProjectNameMaven(String pattern, JMM::MavenProject project):
@@ -201,6 +232,43 @@ private String inlineGroupId(String pattern, JMM::MavenProject project):
 	if pattern.contains("$[PROJECT_GROUP_ID]")
 	then pattern.replaceAll("\\$\\[PROJECT_GROUP_ID\\]", project.getArtifactId())
 	else pattern;
+
+
+// DOMAIN_PACKAGE_NAME
+private String inlineDomainPackageName(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[DOMAIN_PACKAGE_NAME]")
+	then pattern.replaceAll("\\$\\[DOMAIN_PACKAGE_NAME\\]", project.getDomainPackageName())
+	else pattern;
+
+// DOMAIN_PACKAGE_NAME_FQN
+private String inlineDomainPackageFQN(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[DOMAIN_PACKAGE_NAME_FQN]")
+	then pattern.replaceAll("\\$\\[DOMAIN_PACKAGE_NAME_FQN\\]", project.getDomainPackageNameFQN())
+	else pattern;
+
+// DOMAIN_NAME
+private String inlineDomainNameForProject(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[DOMAIN_NAME]")
+	then pattern.replaceAll("\\$\\[DOMAIN_NAME\\]", project.getDomainNameForProject())
+	else pattern;
+
+// DOMAIN_NAME_JAVA
+private String inlineDomainNameJavaForProject(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[DOMAIN_NAME_JAVA]")
+	then pattern.replaceAll("\\$\\[DOMAIN_NAME_JAVA\\]", project.getDomainNameJavaForProject())
+	else pattern;
+
+// DOMAIN_GROUP_ID
+private String inlineDomainGroupIdForProject(String pattern, JMM::MavenProject project):
+	if pattern.contains("$[DOMAIN_GROUP_ID]")
+	then pattern.replaceAll("\\$\\[DOMAIN_GROUP_ID\\]", project.getDomainGroupIdForProject())
+	else pattern;
+
+
+
+
+
+
 
 
 private cached String toMavenId(String input):

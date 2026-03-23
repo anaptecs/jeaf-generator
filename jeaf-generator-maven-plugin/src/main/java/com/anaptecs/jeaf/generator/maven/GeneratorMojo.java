@@ -1800,6 +1800,15 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = "true")
   private Boolean addRequiredTechnicalDepdendencies;
 
+  /**
+   * This parameter can be used to define a pattern that is applied to determine the issue tracking URL for a domain
+   * etc. if none is explicitly specified in the UML model.
+   *
+   * By default, no pattern is defined.
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String issueTrackingURLPattern;
+
   @Component
   private BuildPluginManager pluginManager;
 
@@ -2529,6 +2538,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Use default parent:                               " + mavenProjectUseDefaultParent);
       lLog.info("Generated from default model template:            " + mavenProjectGeneratedFromModelTemplate);
       lLog.info("Add required technical dependencies:              " + addRequiredTechnicalDepdendencies);
+      lLog.info("Issue Tracking URL pattern:                       " + issueTrackingURLPattern);
       lLog.info(" ");
     }
   }
@@ -2850,6 +2860,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "mavenGroupIdPattern", mavenGroupIdPattern);
       System.setProperty(PROPERTY_PREFIX + "mavenArtifactIdPattern", mavenArtifactIdPattern);
       System.setProperty(PROPERTY_PREFIX + "mavenScmPathPattern", mavenScmPathPattern);
+      System.setProperty(PROPERTY_PREFIX + "issueTrackingURLPattern", issueTrackingURLPattern);
       System.setProperty(PROPERTY_PREFIX + "mavenVersionPropertyNamePattern", mavenVersionPropertyNamePattern);
       System.setProperty(PROPERTY_PREFIX + "mavenArtifactDefaultVersion", mavenArtifactDefaultVersion);
       System.setProperty(PROPERTY_PREFIX + "mavenProjectDefaultArchetype", mavenProjectDefaultArchetype.name());

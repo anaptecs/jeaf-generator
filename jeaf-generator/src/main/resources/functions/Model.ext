@@ -1,0 +1,20 @@
+extension java::GeneratorCommons;
+
+
+cached boolean isModel(uml::Element element) :
+	element.isStereotypeApplied("Model");
+
+
+cached uml::Model asModel(uml::Element element):
+	(uml::Model) element;
+	
+
+cached boolean isModelLibrary(uml::Element element) :
+	element.isStereotypeApplied("ModelLibrary");
+	
+cached boolean hasParentPackage(uml::Element element):
+	if element.isModelLibrary() || element.getNearestPackage().isModel()
+	then false
+	else true;
+
+	
