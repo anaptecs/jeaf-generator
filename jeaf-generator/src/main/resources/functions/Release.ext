@@ -39,7 +39,11 @@ cached String getForwardCompatibilityInfosFromChanges(JMM::Release release):
 
 
 cached List[String] getCompatibilityInfosFromChanges(JMM::Release release):
-	release.ownedElement.typeSelect(JMM::ChangeDescription).compatibilityInfos.toSet();
+	release.getAllChangeDescriptions().compatibilityInfos.toSet();
+
+
+cached List[JMM::ChangeDescription] getAllChanges(JMM::Release release):
+	release.ownedElement.typeSelect(JMM::ChangeDescription);
 
 
 cached List[JMM::ReleaseNotesEntry] getGeneralEntries(JMM::Release release):
