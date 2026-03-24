@@ -16,7 +16,7 @@
 
 «DEFINE GenerateReleaseFile(ReleaseUnit releaseUnit) FOR Release»
 «FILE releaseNotesDirectory() + "/" + name + ".md" basedir -»
-# Release Notes «releaseUnit.name» «name»
+# Release Notes «releaseUnit.releaseUnitName» «name»
 
 | Release Info              |                                             |
 | ------------------------- | --------------------------------------------|
