@@ -99,6 +99,13 @@
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE Root FOR ReleaseUnit»
+	«IF this.isInGeneratorWhitelist() && generateReleaseNotes()»
+		«info("Processing «ReleaseUnit» " + this.releaseUnitName + " (" + (this.qualifiedName()) + ")")»
+		«EXPAND release::ReleaseNotes::GenerateReleaseNotes»
+	«ENDIF»
+«ENDDEFINE»
+
 «DEFINE Root FOR Object»
 «ENDDEFINE»
 

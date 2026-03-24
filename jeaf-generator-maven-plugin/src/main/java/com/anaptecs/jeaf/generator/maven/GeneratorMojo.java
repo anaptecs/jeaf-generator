@@ -1809,6 +1809,27 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false, defaultValue = " ")
   private String issueTrackingURLPattern;
 
+  /**
+   * Parameter defines the base URL of the Maven repository where artifacts are hosted.
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenRepoBaseURL;
+
+  /**
+   * Switch can be used to generated release notes based on the information defined in the UML model.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateReleaseNotes;
+
+  /**
+   * Name of the directory where release notes will be written to. The parameter is defined relative to the projects
+   * base directory.
+   *
+   * By default, <code>releases</code> will be used.
+   */
+  @Parameter(required = false, defaultValue = "releases")
+  private String releaseNotesDirectory;
+
   @Component
   private BuildPluginManager pluginManager;
 
@@ -2541,6 +2562,13 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Issue Tracking URL pattern:                       " + issueTrackingURLPattern);
       lLog.info(" ");
     }
+
+    if (generateReleaseNotes) {
+      lLog.info(" ");
+      lLog.info("Generate Release Notes:                           " + generateReleaseNotes);
+      lLog.info("Release Notes Directory:                          " + releaseNotesDirectory);
+      lLog.info("Maven Repo Base URL:                              " + mavenRepoBaseURL);
+    }
   }
 
   private boolean generateJavaClasses( ) {
@@ -2874,6 +2902,10 @@ public class GeneratorMojo extends AbstractMojo {
           mavenProjectGeneratedFromModelTemplate.toString());
       System.setProperty(PROPERTY_PREFIX + "addRequiredTechnicalDepdendencies",
           addRequiredTechnicalDepdendencies.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "mavenRepoBaseURL", mavenRepoBaseURL);
+      System.setProperty(PROPERTY_PREFIX + "generateReleaseNotes", generateReleaseNotes.toString());
+      System.setProperty(PROPERTY_PREFIX + "releaseNotesDirectory", releaseNotesDirectory);
 
       if (xmiDirectory != null) {
         System.setProperty(PROPERTY_PREFIX + "xmiDirectory",
@@ -3240,7 +3272,7 @@ public class GeneratorMojo extends AbstractMojo {
         | generatePersistentObjects | generateComponentImpls | generateComponentRuntimeClasses | generateGlobalParts
         | generateExceptionClasses | generateJUnitTests | generateTypesReport | generateModelReport
         | generateBreakingChangesReport | generateRESTDeprecationReport | generateJavaDeprecationReport
-        | generateOpenAPISpec | generateJSONSerializers | enforceCustomTemplateExecution;
+        | generateOpenAPISpec | generateJSONSerializers | enforceCustomTemplateExecution | generateReleaseNotes;
   }
 
   private boolean isMessageConstantsGenerationRequested( ) {

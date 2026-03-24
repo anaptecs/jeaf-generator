@@ -1,0 +1,29 @@
+extension java::GeneratorCommons;
+extension functions::SystemProperties;
+
+
+cached boolean isReleaseUnit(uml::Element element) :
+	element.isStereotypeApplied("ReleaseUnit");
+
+
+cached JMM::ReleaseUnit asReleaseUnit(uml::Element element):
+	(JMM::ReleaseUnit) element;
+
+
+cached List[JMM::Release] getReleases(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.ownedElement.typeSelect(JMM::Release);
+
+
+cached String getGroupId(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.groupId;
+
+
+cached String getArtifactId(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.artifactId;
+
+
+cached String getMavenRepoPath(JMM::ReleaseUnit releaseUnit):
+	mavenRepoBaseURL() + "/" + releaseUnit.getGroupId().replaceAll("\\.", "/") + "/" + releaseUnit.getArtifactId();
+
+cached String getIssueTrackingURL(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.issueTrackingURL;

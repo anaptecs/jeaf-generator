@@ -204,6 +204,14 @@ boolean addRequiredTechnicalDepdendencies():
 String issueTrackingURLPattern():
 	getSystemProperty("jeaf.generator.issueTrackingURLPattern", "").trim();
 
+boolean generateReleaseNotes():
+	getBooleanSystemProperty("jeaf.generator.generateReleaseNotes", false);
+
+String releaseNotesDirectory():
+	getSystemProperty("jeaf.generator.releaseNotesDirectory", "releases").trim();
+
+String mavenRepoBaseURL():
+	getSystemProperty("jeaf.generator.mavenRepoBaseURL", "").trim();
 
 String getXMIDirectory():
 	getSystemProperty("jeaf.generator.xmiDirectory", "");

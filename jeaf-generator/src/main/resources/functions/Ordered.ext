@@ -1,0 +1,14 @@
+extension java::GeneratorCommons;
+
+
+cached boolean isOrdered(uml::Element element) :
+	element.isStereotypeApplied("Ordered");
+
+
+cached JMM::Ordered asOrdered(uml::Element element):
+	(JMM::Ordered) element;
+
+cached Integer getOrder(uml::Element element):
+	if element.isOrdered()
+	then element.asOrdered().order
+	else 1000;

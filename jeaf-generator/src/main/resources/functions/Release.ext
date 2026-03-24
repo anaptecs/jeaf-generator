@@ -1,0 +1,73 @@
+extension java::GeneratorCommons;
+extension functions::SystemProperties;
+extension functions::ReleaseUnit;
+extension functions::Icons;
+extension functions::Ordered;
+
+cached boolean isRelease(uml::Element element) :
+	element.isStereotypeApplied("Release");
+
+
+cached JMM::Release asRelease(uml::Element element):
+	(JMM::Release) element;
+
+
+cached JMM::ReleaseUnit getReleaseUnit(JMM::Release release):
+	release.owner.asReleaseUnit();
+
+
+cached String getMavenRepoArtifactLink(JMM::Release release):
+	release.getReleaseUnit().getMavenRepoPath() + "/" + release.name;
+
+
+cached String getCompatibilityIconsWithNames(JMM::Release release):
+	if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "BREAKING").size > 0
+	then getBreakingIcon(4) + "   `Breaking`"
+	else release.getBackwardCompatibilityInfosFromChanges() + "<br>" + release.getForwardCompatibilityInfosFromChanges();
+
+
+cached String getBackwardCompatibilityInfosFromChanges(JMM::Release release):
+	if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "BACKWARD_COMPATIBLE").size > 0
+	then getBackwardCompatibleIcon(4) + "   `Backward Compatible`";
+
+
+cached String getForwardCompatibilityInfosFromChanges(JMM::Release release):
+	if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "API_FORWARD_COMPATIBLE").size > 0
+	then getAPIForwardCompatibleIcon(4) + "   `API Forward Compatible`"
+	else if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "STRICT_FORWARD_COMPATIBLE").size > 0
+	then getStrictForwardCompatibleIcon(4) + "   `Strict Forward Compatible`";
+
+
+cached List[String] getCompatibilityInfosFromChanges(JMM::Release release):
+	release.ownedElement.typeSelect(JMM::ChangeDescription).compatibilityInfos.toSet();
+
+
+cached List[JMM::ReleaseNotesEntry] getGeneralEntries(JMM::Release release):
+	release.ownedElement.typeSelect(JMM::ReleaseNotesEntry).select(e|e.releaseNotesEntryType.name == "GENERAL_INFORMATION").sortBy(e|e.getOrder());
+
+
+cached boolean hasGeneralEntries(JMM::Release release):
+	!release.getGeneralEntries().isEmpty;
+
+
+cached List[JMM::ReleaseNotesEntry] getMigrationNoticeEntries(JMM::Release release):
+	release.ownedElement.typeSelect(JMM::ReleaseNotesEntry).select(e|e.releaseNotesEntryType.name == "MIGRATION_NOTICE").sortBy(e|e.getOrder());
+
+
+cached boolean hasMigrationNoticeEntries(JMM::Release release):
+	!release.getMigrationNoticeEntries().isEmpty;
+
+
+cached List[JMM::ChangeDescription] getAllChangeDescriptions(JMM::Release release):
+	release.getFeatureDescriptions().addAll(release.getImprovementDescriptions()).addAll(release.getBugDescriptions());
+
+cached List[JMM::ChangeDescription] getFeatureDescriptions(JMM::Release release):
+	release.ownedElement.typeSelect(JMM::ChangeDescription).select(e|e.issueCategory.name == "FEATURE").sortBy(e|e.getOrder());
+
+
+cached List[JMM::ChangeDescription] getImprovementDescriptions(JMM::Release release):
+	release.ownedElement.typeSelect(JMM::ChangeDescription).select(e|e.issueCategory.name == "IMPROVEMENT").sortBy(e|e.getOrder());
+
+
+cached List[JMM::ChangeDescription] getBugDescriptions(JMM::Release release):
+	release.ownedElement.typeSelect(JMM::ChangeDescription).select(e|e.issueCategory.name == "BUGFIX").sortBy(e|e.getOrder());

@@ -1,0 +1,83 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION java::GeneratorCommons»
+«EXTENSION functions::ReleaseUnit»
+«EXTENSION functions::Release»
+«EXTENSION functions::ReleaseNotesEntry»
+«EXTENSION functions::ChangeDescription»
+«EXTENSION functions::SystemProperties»
+
+«DEFINE GenerateReleaseNotes FOR ReleaseUnit»
+	«FOREACH this.getReleases() AS release»
+		«EXPAND GenerateReleaseFile(this) FOR release»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE GenerateReleaseFile(ReleaseUnit releaseUnit) FOR Release»
+«FILE releaseNotesDirectory() + "/" + name + ".md" basedir -»
+# Release Notes «releaseUnit.name» «name»
+
+| Release Info              |                                             |
+| ------------------------- | --------------------------------------------|
+| Version                   | `«name»`                                    |
+«IF releaseDate.length > 0 -»
+| Release Date              | «releaseDate»                               |
+«ENDIF-»
+«IF umlModelRevision > 0-»
+| UML Model Revision        | `«this.umlModelRevision»`                   |
+«ENDIF-»
+| Compatibility             | «this.getCompatibilityIconsWithNames()»     |
+«IF oldestSupportedVersion.length > 0-»
+| Oldest Supported Version  | `«this.oldestSupportedVersion»`             |
+«ENDIF-»
+| Maven Repo Link           | «this.getMavenRepoArtifactLink()»           |
+| Documentation             |  |
+
+<br>
+
+«IF this.hasGeneralEntries()-»
+## General
+
+«FOREACH this.getGeneralEntries() AS entry-»
+### «entry.getTitle()»
+«entry.getDetails()»
+
+<br>
+
+«ENDFOREACH-» 
+«ENDIF-»
+«IF this.hasMigrationNoticeEntries()-»
+## Migration Notice
+
+«FOREACH this.getMigrationNoticeEntries() AS entry-»
+### «entry.getTitle()»
+
+«entry.getDetails()»
+
+<br>
+
+«ENDFOREACH-»
+«ENDIF-»
+## Changes Summary
+
+| Issue                                   | Type                            | Summary                                                      |                        Compatibility                         |
+| --------------------------------------- | :-----------------------------: | ------------------------------------------------------------ | :----------------------------------------------------------: |
+«FOREACH this.getAllChangeDescriptions() AS description-»
+| «description.getIssueLinkForMarkdown()» | «description.getCategoryIcon()» | «description.getTitle()» | «description.getCompatibilityIcons()» |
+«ENDFOREACH-»
+
+<br>
+
+## Changes Details
+
+«FOREACH this.getAllChangeDescriptions() AS description-»
+### «description.getIssueLinkForMarkdown()» «description.getTitle()»   «description.getCompatibilityIcons()»
+«description.getDetails()»
+
+<br>
+
+«ENDFOREACH-»
+«ENDFILE»
+«ENDDEFINE»
+

@@ -1,0 +1,97 @@
+extension java::GeneratorCommons;
+extension functions::ReleaseUnit;
+extension functions::Release;
+extension functions::Icons;
+
+cached boolean isChangeDescription(uml::Element element) :
+	element.isStereotypeApplied("ChangeDescription");
+
+
+cached JMM::ChangeDescription asChangeDescription(uml::Element element):
+	(JMM::ChangeDescription) element;
+
+cached JMM::Release getRelease(JMM::ChangeDescription description):
+	description.owner.asRelease();
+
+
+cached String getTitle(JMM::ChangeDescription description):
+	description.body.trim();
+
+
+cached String getDetails(JMM::ChangeDescription description):
+	description.details.trim();
+
+
+cached String getIssueID(JMM::ChangeDescription description):
+	description.issueID.trim();
+
+cached String getIssueNamePrefix(JMM::ChangeDescription description):
+	if description.getRelease().getReleaseUnit().issueDisplayNamePrefix.trim().length > 0
+	then description.getRelease().getReleaseUnit().issueDisplayNamePrefix.trim()
+	else "";
+
+
+cached String getIssueLinkForMarkdown(JMM::ChangeDescription description):
+	if description.getIssueID().length > 0 && description.getIssueLink().length > 0
+	then "[" + description.getIssueNamePrefix() + description.getIssueID() + "](" + description.getIssueLink() +")"
+	else if description.getIssueID().length > 0
+	then description.getIssueID()
+	else if description.getIssueLink().length > 0
+	then description.getIssueLink()
+	else "";
+
+
+cached String getIssueLink(JMM::ChangeDescription description):
+	if description.issueLink.trim().length > 0
+	then description.issueLink.trim()
+	else if description.getIssueTrackingBaseURL().length > 0
+	then description.getIssueTrackingBaseURL() + description.issueID
+	else "";
+
+
+cached String getIssueTrackingBaseURL(JMM::ChangeDescription description):
+	description.getRelease().getReleaseUnit().getIssueTrackingURL() + "/";
+
+
+cached String getCategoryIcon(JMM::ChangeDescription description):
+	if description.issueCategory.name == "FEATURE"
+	then getFeatureIcon(4)
+	else if description.issueCategory.name == "IMPROVEMENT"
+	then getImprovementIcon(4)
+	else if description.issueCategory.name == "BUGFIX"
+	then getBugIcon(4)
+	else "";
+
+
+cached String getCompatibilityIcons(JMM::ChangeDescription description):
+	(description.getBackwardCompatibilityIcon() + "   " + description.getForwardCompatibilityIcon()).trim();
+	
+
+cached String getBackwardCompatibilityIcon(JMM::ChangeDescription description):
+	if description.isBackwardCompatible()
+	then getBackwardCompatibleIcon(4)
+	else "";
+
+
+cached String getForwardCompatibilityIcon(JMM::ChangeDescription description):
+	if description.isAPIForwardCompatible()
+	then getAPIForwardCompatibleIcon(4)
+	else if description.isStrictForwardCompatible()
+	then getStrictForwardCompatibleIcon(4)
+	else "";
+
+
+cached boolean isBreaking(JMM::ChangeDescription description):
+	!description.compatibilityInfos.select(e|e.toString() == "BREAKING").isEmpty;
+
+
+cached boolean isBackwardCompatible(JMM::ChangeDescription description):
+	!description.compatibilityInfos.select(e|e.toString() == "BACKWARD_COMPATIBLE").isEmpty;
+
+cached boolean isAPIForwardCompatible(JMM::ChangeDescription description):
+	!description.compatibilityInfos.select(e|e.toString() == "API_FORWARD_COMAPTIBLE").isEmpty;
+
+
+cached boolean isStrictForwardCompatible(JMM::ChangeDescription description):
+	!description.compatibilityInfos.select(e|e.toString() == "STRICT_FORWARD_COMPATIBLE").isEmpty;
+

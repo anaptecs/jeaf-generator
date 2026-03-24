@@ -1,0 +1,20 @@
+extension java::GeneratorCommons;
+extension functions::Ordered;
+
+cached boolean isReleaseNotesEntry(uml::Element element) :
+	element.isStereotypeApplied("ReleaseNotesEntry");
+
+
+cached JMM::ReleaseNotesEntry asReleaseNotesEntry(uml::Element element):
+	(JMM::ReleaseNotesEntry) element;
+
+
+cached String getTitle(JMM::ReleaseNotesEntry entry):
+	entry.body.trim();
+
+
+cached String getDetails(JMM::ReleaseNotesEntry entry):
+	entry.details.trim();
+
+cached String getDetailsForList(JMM::ReleaseNotesEntry entry):
+	entry.details.trim().replaceAll("\n", "\n  ");
