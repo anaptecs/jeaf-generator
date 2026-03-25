@@ -103,8 +103,8 @@
 «ENDDEFINE»
 
 «DEFINE Root FOR ReleaseUnit»
-	«IF this.isInGeneratorWhitelist() && generateReleaseNotes()»
-		«info("Processing «ReleaseUnit» " + this.getReleaseUnitName() + " (" + (this.qualifiedName()) + ")")»
+	«IF getPackages().contains(this.owner.getNearestPackage().qualifiedName()) && generateReleaseNotes()»
+		«info("Processing «ReleaseUnit» " + this.getReleaseUnitName())»
 		«EXPAND release::ReleaseNotes::GenerateReleaseNotes»
 	«ENDIF»
 «ENDDEFINE»

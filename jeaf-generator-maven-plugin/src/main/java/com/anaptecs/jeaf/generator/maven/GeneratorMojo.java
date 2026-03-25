@@ -1930,7 +1930,7 @@ public class GeneratorMojo extends AbstractMojo {
     for (Artifact lDependency : lArtifacts) {
       String lProjectID = lDependency.getGroupId() + ":" + lDependency.getArtifactId();
       String lVersion = lDependency.getVersion();
-      this.getLog().debug(lProjectID + ":" + lVersion);
+      this.getLog().info(lProjectID + ":" + lVersion);
       ArtifactCache.addArtifactVersion(lProjectID, lVersion);
     }
   }
@@ -1957,6 +1957,13 @@ public class GeneratorMojo extends AbstractMojo {
       }
     }
     customCheckFiles = lCleanedCustomCheckFiles;
+
+    if (generateReleaseNotes && mavenProject.isExecutionRoot() && mavenProject.getPackaging().equals("pom")) {
+      generateReleaseNotes = true;
+    }
+    else {
+      generateReleaseNotes = false;
+    }
 
     // Resolve default parent POM if it is not set
     if (mavenProjectDefaultParentVersion.trim().isEmpty()) {
@@ -2567,7 +2574,10 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info(" ");
       lLog.info("Generate Release Notes:                           " + generateReleaseNotes);
       lLog.info("Release Notes Directory:                          " + releaseNotesDirectory);
-      lLog.info("Maven Repo Base URL:                              " + mavenRepoBaseURL);
+      if (mavenRepoBaseURL != null && !mavenRepoBaseURL.isEmpty()) {
+        lLog.info("Maven Repo Base URL:                              " + mavenRepoBaseURL);
+      }
+      lLog.info(" ");
     }
   }
 
@@ -3253,7 +3263,7 @@ public class GeneratorMojo extends AbstractMojo {
 
   private boolean isUMLGenerationRequested( ) {
     boolean lUMLGenerationRequested;
-    if (generateMavenProjectStructure || generateGeneratorProjectParentPOM) {
+    if (generateMavenProjectStructure || generateGeneratorProjectParentPOM || generateReleaseNotes) {
       lUMLGenerationRequested = mavenProject.isExecutionRoot();
     }
     else {

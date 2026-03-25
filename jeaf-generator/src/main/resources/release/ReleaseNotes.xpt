@@ -6,6 +6,7 @@
 «EXTENSION functions::Release»
 «EXTENSION functions::ReleaseNotesEntry»
 «EXTENSION functions::ChangeDescription»
+«EXTENSION functions::MavenProject»
 «EXTENSION functions::SystemProperties»
 
 «DEFINE GenerateReleaseNotes FOR ReleaseUnit»
@@ -14,9 +15,12 @@
 	«ENDFOREACH»
 «ENDDEFINE»
 
+
+
+
 «DEFINE GenerateReleaseFile(ReleaseUnit releaseUnit) FOR Release»
 «FILE releaseNotesDirectory() + "/" + name + ".md" basedir -»
-# Release Notes «releaseUnit.releaseUnitName» «name»
+# Release Notes «releaseUnit.getReleaseUnitName()» «name»
 
 | Release Info              |                                             |
 | ------------------------- | --------------------------------------------|
@@ -31,8 +35,9 @@
 «IF oldestSupportedVersion.length > 0-»
 | Oldest Supported Version  | `«this.oldestSupportedVersion»`             |
 «ENDIF-»
-| Maven Repo Link           | «this.getMavenRepoArtifactLink()»           |
-| Documentation             |  |
+«IF releaseUnit.hasMavenRepoPath()-»
+| Links                     | [Maven Repo Link](«this.getMavenRepoArtifactLink()»)           |
+«ENDIF-»
 
 <br>
 
@@ -61,14 +66,28 @@
 «ENDIF-»
 ## Changes Summary
 
-| Issue                                   | Type                            | Summary                                                      |                        Compatibility                         |
-| --------------------------------------- | :-----------------------------: | ------------------------------------------------------------ | :----------------------------------------------------------: |
+| Issue | Type | Summary | Compatibility |
+| ----- | :--: | ------- | :-----------: |
 «FOREACH this.getAllChangeDescriptions() AS description-»
 | «description.getIssueLinkForMarkdown()» | «description.getCategoryIcon()» | «description.getTitle()» | «description.getCompatibilityIcons()» |
 «ENDFOREACH-»
 
 <br>
 
+«IF releaseUnit.hasTransitiveReleaseDependencies()-»
+## Bundled Artifacts
+
+| Name | Artifact | Version |
+| ---- | -------- | ------- |
+«FOREACH releaseUnit.getTransitiveReleaseDependencies() AS dependency-»
+«LET dependency.getReleaseUnit().getVersions().toString(";") AS versions-»
+| «dependency.getReleaseUnit().getReleaseUnitName()» | «IF dependency.getReleaseUnit().hasMavenCoordinates()»`«dependency.getReleaseUnit().getGroupId()»:«dependency.getReleaseUnit().getArtifactId()»`«ENDIF» | `«getArtifactVersionForReleaseNotes(dependency.getReleaseUnit().getGroupId(), dependency.getReleaseUnit().getArtifactId())»` |
+«ENDLET-»
+«ENDFOREACH-»
+
+<br>
+
+«ENDIF-»
 ## Changes Details
 
 «FOREACH this.getAllChangeDescriptions() AS description-»

@@ -1,5 +1,7 @@
 extension java::GeneratorCommons;
 extension functions::SystemProperties;
+extension functions::MavenProject;
+extension functions::Domain;
 
 
 cached boolean isReleaseUnit(uml::Element element) :
@@ -14,16 +16,97 @@ cached List[JMM::Release] getReleases(JMM::ReleaseUnit releaseUnit):
 	releaseUnit.ownedElement.typeSelect(JMM::Release);
 
 
+cached String getReleaseUnitName(JMM::ReleaseUnit releaseUnit):
+	if releaseUnit.releaseUnitName.trim().length > 0
+	then releaseUnit.releaseUnitName.trim()
+	else 
+		if releaseUnit.hasMavenProject()
+		then releaseUnit.getMavenProject().getMavenProjectName();
+
+
+cached boolean hasMavenCoordinates(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.getGroupId().length > 0 && releaseUnit.getArtifactId().length > 0; 
+
 cached String getGroupId(JMM::ReleaseUnit releaseUnit):
-	releaseUnit.groupId;
+	if releaseUnit.groupId.trim().length > 0
+	then releaseUnit.groupId.trim()
+	else
+		if releaseUnit.hasMavenProject()
+		then releaseUnit.getMavenProject().getGroupId()
+		else
+			if releaseUnit.belongsToDomain()
+			then releaseUnit.getDomain().getGroupId();
+
+
+cached boolean hasGroupId(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.getGroupId() != null;
 
 
 cached String getArtifactId(JMM::ReleaseUnit releaseUnit):
-	releaseUnit.artifactId;
+	if releaseUnit.artifactId.trim().length > 0
+	then releaseUnit.artifactId.trim()
+	else
+		if releaseUnit.hasMavenProject()
+		then releaseUnit.getMavenProject().getArtifactId()
+		else
+			if releaseUnit.belongsToDomain()
+			then releaseUnit.getArtifactId();
 
 
 cached String getMavenRepoPath(JMM::ReleaseUnit releaseUnit):
 	mavenRepoBaseURL() + "/" + releaseUnit.getGroupId().replaceAll("\\.", "/") + "/" + releaseUnit.getArtifactId();
 
+
+cached boolean hasMavenRepoPath(JMM::ReleaseUnit releaseUnit):
+	mavenRepoBaseURL().length > 0 && releaseUnit.getGroupId() != null && releaseUnit.getArtifactId() != null;
+
+
+cached JMM::MavenProject getMavenProject(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.owner.getNearestPackage().ownedElement.typeSelect(JMM::MavenProject).first();
+
+
+cached boolean hasMavenProject(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.getMavenProject() != null;
+
+
 cached String getIssueTrackingURL(JMM::ReleaseUnit releaseUnit):
 	releaseUnit.issueTrackingURL;
+
+
+cached List[JMM::ReleaseUnit] getTransitiveDependentReleases(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.getDirectDependentReleases().addAll(releaseUnit.getDirectDependentReleases().getTransitiveDependentReleases());
+
+
+List[JMM::ReleaseUnit] getDirectDependentReleases(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.clientDependency.typeSelect(JMM::ReleaseDependency).supplier.typeSelect(JMM::ReleaseUnit);
+
+
+cached List[JMM::ReleaseDependency] getDirectReleaseDependencies(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.clientDependency.typeSelect(JMM::ReleaseDependency);
+
+
+cached List[JMM::ReleaseDependency] getTransitiveReleaseDependencies(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.getDirectReleaseDependencies().addAll(releaseUnit.getDirectReleaseDependencies().supplier.typeSelect(JMM::ReleaseUnit).getTransitiveReleaseDependencies());
+
+cached boolean hasTransitiveReleaseDependencies(JMM::ReleaseUnit releaseUnit):
+	!releaseUnit.getTransitiveReleaseDependencies().isEmpty;
+
+cached JMM::ReleaseUnit getReleaseUnit(JMM::ReleaseDependency dependency):
+	dependency.supplier.typeSelect(JMM::ReleaseUnit).first();
+
+
+cached String getMatchingReleaseUnitVersion(JMM::ReleaseDependency dependency, String myVersion):
+	if dependency.versionResolution.name == "LATEST_VERSION"
+	then dependency.getReleaseUnit().getVersions().getLatestVersion()
+	else getLatestMatchingVersion(myVersion, dependency.getReleaseUnit().getVersions());
+
+
+cached List[String] getVersions(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.ownedElement.typeSelect(JMM::Release).name;
+
+private String getLatestMatchingVersion(String myVersion, List[String] versions):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.versioning.VersionHelper.getLatestMatchingVersion(java.lang.String, java.util.List);
+
+
+private String getLatestVersion(List[String] versions):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.versioning.VersionHelper.getLatestVersion(java.util.List);
