@@ -106,6 +106,9 @@
 			«IF dependency.packaging != null-»
 			<type>«dependency.packaging.name.toLowerCase()»</type>
 			«ENDIF-»
+			«IF dependency.scope != null-»
+			<scope>«dependency.scope.name.toLowerCase()»</scope>
+			«ENDIF-»
 		</dependency>
 
 		«ENDFOREACH-»

@@ -7,6 +7,7 @@
 «EXTENSION functions::SystemProperties»
 «EXTENSION functions::MavenProject»
 «EXTENSION functions::ModuleType»
+«EXTENSION functions::ReleaseUnit»
 
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
@@ -24,84 +25,86 @@
 «ENDDEFINE» 
 
 «DEFINE Root FOR MavenProject»
-	«IF generateGeneratorProjectParentPOM() && this.isArchetypeGeneratorProjectParentPOM()»
-		«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
-		«EXPAND maven::GeneratorProjectParentPOM::Generate»
-	«ENDIF»
-
-	«IF generateMavenProjectStructure()»
-		«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
-		«IF this.requiresProjectPOM()»
-			«EXPAND maven::ProjectPOM::GenerateProjectPOM»
+	«IF this.isInGeneratorWhitelist() == true»
+		«IF generateGeneratorProjectParentPOM() && this.isArchetypeGeneratorProjectParentPOM()»
+			«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
+			«EXPAND maven::GeneratorProjectParentPOM::Generate»
 		«ENDIF»
-
-		«FOREACH this.getModuleTypes() AS moduleType»
-			«REM»BOM«ENDREM»
-			«IF moduleType.isModuleTypeBOM()»
-				«EXPAND maven::BOM::GenerateBOM»
+	
+		«IF generateMavenProjectStructure()»
+			«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
+			«IF this.requiresProjectPOM()»
+				«EXPAND maven::ProjectPOM::GenerateProjectPOM»
 			«ENDIF»
-
-			«REM»UML Model«ENDREM»
-			«IF moduleType.isModuleTypeUML()»
-				«EXPAND maven::UMLModule::GenerateUMLModule»
-			«ENDIF»
-
-			«REM»OpenAPI«ENDREM»
-			«IF moduleType.isModuleTypeOpenAPI()»
-				«EXPAND maven::OpenAPIModule::GenerateOpenAPIModule»
-			«ENDIF»
-
-			«REM»Java«ENDREM»
-			«IF moduleType.isModuleTypeJAVA()»
-				«EXPAND maven::JavaModule::GenerateJavaModule»
-			«ENDIF»
-
-			«REM»Java Runtime«ENDREM»
-			«IF moduleType.isModuleTypeJavaRuntime()»
-				«EXPAND maven::JavaRuntimeModule::GenerateJavaRuntimeModule»
-			«ENDIF»
-
-			«REM»Java Starter«ENDREM»
-			«IF moduleType.isModuleTypeJavaStarter()»
-				«EXPAND maven::JavaStarterModule::GenerateJavaStarterModule»
-			«ENDIF»
-
-			«REM»Services«ENDREM»
-			«IF moduleType.isModuleTypeServices()»
-				«EXPAND maven::ServicesModule::GenerateServicesModule»
-			«ENDIF»
-
-			«REM»REST Client«ENDREM»
-			«IF moduleType.isModuleTypeRESTClient()»
-				«EXPAND maven::RESTClientModule::GenerateRESTClientModule»
-			«ENDIF»
-
-			«REM»REST Client Starter«ENDREM»
-			«IF moduleType.isModuleTypeRESTClientStarter()»
-				«EXPAND maven::RESTClientStarterModule::GenerateRESTClientStarterModule»
-			«ENDIF»
-
-			«REM»REST Controller«ENDREM»
-			«IF moduleType.isModuleTypeRESTController()»
-				«EXPAND maven::RESTControllerModule::GenerateRESTControllerModule»
-			«ENDIF»
-
-			«REM»REST Controller Starter«ENDREM»
-			«IF moduleType.isModuleTypeRESTControllerStarter()»
-				«EXPAND maven::RESTControllerStarterModule::GenerateRESTControllerStarterModule»
-			«ENDIF»
-
-			«REM»Integration Test«ENDREM»
-			«IF moduleType.isModuleTypeIntegrationTest()»
-				«EXPAND maven::IntegrationTestModule::GenerateIntegrationTestModule»
-			«ENDIF»
-		«ENDFOREACH»
+	
+			«FOREACH this.getModuleTypes() AS moduleType»
+				«REM»BOM«ENDREM»
+				«IF moduleType.isModuleTypeBOM()»
+					«EXPAND maven::BOM::GenerateBOM»
+				«ENDIF»
+	
+				«REM»UML Model«ENDREM»
+				«IF moduleType.isModuleTypeUML()»
+					«EXPAND maven::UMLModule::GenerateUMLModule»
+				«ENDIF»
+	
+				«REM»OpenAPI«ENDREM»
+				«IF moduleType.isModuleTypeOpenAPI()»
+					«EXPAND maven::OpenAPIModule::GenerateOpenAPIModule»
+				«ENDIF»
+	
+				«REM»Java«ENDREM»
+				«IF moduleType.isModuleTypeJAVA()»
+					«EXPAND maven::JavaModule::GenerateJavaModule»
+				«ENDIF»
+	
+				«REM»Java Runtime«ENDREM»
+				«IF moduleType.isModuleTypeJavaRuntime()»
+					«EXPAND maven::JavaRuntimeModule::GenerateJavaRuntimeModule»
+				«ENDIF»
+	
+				«REM»Java Starter«ENDREM»
+				«IF moduleType.isModuleTypeJavaStarter()»
+					«EXPAND maven::JavaStarterModule::GenerateJavaStarterModule»
+				«ENDIF»
+	
+				«REM»Services«ENDREM»
+				«IF moduleType.isModuleTypeServices()»
+					«EXPAND maven::ServicesModule::GenerateServicesModule»
+				«ENDIF»
+	
+				«REM»REST Client«ENDREM»
+				«IF moduleType.isModuleTypeRESTClient()»
+					«EXPAND maven::RESTClientModule::GenerateRESTClientModule»
+				«ENDIF»
+	
+				«REM»REST Client Starter«ENDREM»
+				«IF moduleType.isModuleTypeRESTClientStarter()»
+					«EXPAND maven::RESTClientStarterModule::GenerateRESTClientStarterModule»
+				«ENDIF»
+	
+				«REM»REST Controller«ENDREM»
+				«IF moduleType.isModuleTypeRESTController()»
+					«EXPAND maven::RESTControllerModule::GenerateRESTControllerModule»
+				«ENDIF»
+	
+				«REM»REST Controller Starter«ENDREM»
+				«IF moduleType.isModuleTypeRESTControllerStarter()»
+					«EXPAND maven::RESTControllerStarterModule::GenerateRESTControllerStarterModule»
+				«ENDIF»
+	
+				«REM»Integration Test«ENDREM»
+				«IF moduleType.isModuleTypeIntegrationTest()»
+					«EXPAND maven::IntegrationTestModule::GenerateIntegrationTestModule»
+				«ENDIF»
+			«ENDFOREACH»
+		«ENDIF»
 	«ENDIF»
 «ENDDEFINE»
 
 «DEFINE Root FOR ReleaseUnit»
 	«IF this.isInGeneratorWhitelist() && generateReleaseNotes()»
-		«info("Processing «ReleaseUnit» " + this.releaseUnitName + " (" + (this.qualifiedName()) + ")")»
+		«info("Processing «ReleaseUnit» " + this.getReleaseUnitName() + " (" + (this.qualifiedName()) + ")")»
 		«EXPAND release::ReleaseNotes::GenerateReleaseNotes»
 	«ENDIF»
 «ENDDEFINE»
