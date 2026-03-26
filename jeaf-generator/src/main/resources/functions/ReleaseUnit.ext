@@ -53,6 +53,10 @@ cached String getArtifactId(JMM::ReleaseUnit releaseUnit):
 			then releaseUnit.getArtifactId();
 
 
+cached String getArtifactVersion(JMM::ReleaseUnit releaseUnit):
+	getArtifactVersionForReleaseNotes(releaseUnit.getGroupId(), releaseUnit.getArtifactId());
+
+
 cached String getMavenRepoPath(JMM::ReleaseUnit releaseUnit):
 	mavenRepoBaseURL() + "/" + releaseUnit.getGroupId().replaceAll("\\.", "/") + "/" + releaseUnit.getArtifactId();
 
@@ -70,7 +74,11 @@ cached boolean hasMavenProject(JMM::ReleaseUnit releaseUnit):
 
 
 cached String getIssueTrackingURL(JMM::ReleaseUnit releaseUnit):
-	releaseUnit.issueTrackingURL;
+	if releaseUnit.issueTrackingURL.trim().length > 0
+	then releaseUnit.issueTrackingURL.trim()
+	else
+		if releaseUnit.belongsToDomain()
+		then releaseUnit.getDomain().getIssueTrackingBaseURL();
 
 
 cached List[JMM::ReleaseUnit] getTransitiveDependentReleases(JMM::ReleaseUnit releaseUnit):

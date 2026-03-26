@@ -3,6 +3,7 @@ extension functions::SystemProperties;
 extension functions::ReleaseUnit;
 extension functions::Icons;
 extension functions::Ordered;
+extension functions::MavenProject;
 
 cached boolean isRelease(uml::Element element) :
 	element.isStereotypeApplied("Release");
@@ -65,13 +66,56 @@ cached boolean hasMigrationNoticeEntries(JMM::Release release):
 cached List[JMM::ChangeDescription] getAllChangeDescriptions(JMM::Release release):
 	release.getFeatureDescriptions().addAll(release.getImprovementDescriptions()).addAll(release.getBugDescriptions());
 
+
 cached List[JMM::ChangeDescription] getFeatureDescriptions(JMM::Release release):
+	release.getInternalFeatureDescriptions().addAll(release.getBundledFeatureDescriptions());
+
+
+private List[JMM::ChangeDescription] getInternalFeatureDescriptions(JMM::Release release):
 	release.ownedElement.typeSelect(JMM::ChangeDescription).select(e|e.issueCategory.name == "FEATURE").sortBy(e|e.getOrder());
 
 
+cached List[JMM::ChangeDescription] getBundledFeatureDescriptions(JMM::Release release):
+	release.getBundledReleaseDependencies().getReleaseUnit().getFeatureDescriptionsForReleaseUnit();
+
+
+private List[JMM::ChangeDescription] getFeatureDescriptionsForReleaseUnit(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.getReleases().select(e|e.name == releaseUnit.getArtifactVersion()).getInternalFeatureDescriptions();
+
+
+private List[JMM::ReleaseDependency] getBundledReleaseDependencies(JMM::Release release):
+	release.getReleaseUnit().getTransitiveReleaseDependencies().select(e|e.getReleaseUnit().hasMavenCoordinates());
+
+
 cached List[JMM::ChangeDescription] getImprovementDescriptions(JMM::Release release):
+	release.getInternalFeatureDescriptions().addAll(release.getBundledImprovementDescriptions());
+
+
+private List[JMM::ChangeDescription] getInternalImprovementDescriptions(JMM::Release release):
 	release.ownedElement.typeSelect(JMM::ChangeDescription).select(e|e.issueCategory.name == "IMPROVEMENT").sortBy(e|e.getOrder());
 
 
+cached List[JMM::ChangeDescription] getBundledImprovementDescriptions(JMM::Release release):
+	release.getBundledReleaseDependencies().getReleaseUnit().getImprovementDescriptionsForReleaseUnit();
+
+
+private List[JMM::ChangeDescription] getImprovementDescriptionsForReleaseUnit(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.getReleases().select(e|e.name == releaseUnit.getArtifactVersion()).getInternalImprovementDescriptions();
+
+
 cached List[JMM::ChangeDescription] getBugDescriptions(JMM::Release release):
+	release.getInternalImprovementDescriptions().addAll(release.getBundledBugDescriptions());
+
+
+private List[JMM::ChangeDescription] getInternalBugDescriptions(JMM::Release release):
 	release.ownedElement.typeSelect(JMM::ChangeDescription).select(e|e.issueCategory.name == "BUGFIX").sortBy(e|e.getOrder());
+
+
+cached List[JMM::ChangeDescription] getBundledBugDescriptions(JMM::Release release):
+	release.getBundledReleaseDependencies().getReleaseUnit().getBugDescriptionsForReleaseUnit();
+
+
+private List[JMM::ChangeDescription] getBugDescriptionsForReleaseUnit(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.getReleases().select(e|e.name == releaseUnit.getArtifactVersion()).getInternalBugDescriptions();
+
+

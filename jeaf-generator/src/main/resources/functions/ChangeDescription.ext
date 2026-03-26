@@ -64,7 +64,7 @@ cached String getCategoryIcon(JMM::ChangeDescription description):
 
 
 cached String getCompatibilityIcons(JMM::ChangeDescription description):
-	(description.getBackwardCompatibilityIcon() + "   " + description.getForwardCompatibilityIcon()).trim();
+	(description.getBackwardCompatibilityIcon() + " " + description.getForwardCompatibilityIcon()).trim();
 	
 
 cached String getBackwardCompatibilityIcon(JMM::ChangeDescription description):

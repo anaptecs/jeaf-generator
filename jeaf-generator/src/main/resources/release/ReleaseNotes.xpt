@@ -81,7 +81,7 @@
 | ---- | -------- | ------- |
 «FOREACH releaseUnit.getTransitiveReleaseDependencies() AS dependency-»
 «LET dependency.getReleaseUnit().getVersions().toString(";") AS versions-»
-| «dependency.getReleaseUnit().getReleaseUnitName()» | «IF dependency.getReleaseUnit().hasMavenCoordinates()»`«dependency.getReleaseUnit().getGroupId()»:«dependency.getReleaseUnit().getArtifactId()»`«ENDIF» | `«getArtifactVersionForReleaseNotes(dependency.getReleaseUnit().getGroupId(), dependency.getReleaseUnit().getArtifactId())»` |
+| «dependency.getReleaseUnit().getReleaseUnitName()» | «IF dependency.getReleaseUnit().hasMavenCoordinates()»`«dependency.getReleaseUnit().getGroupId()»:«dependency.getReleaseUnit().getArtifactId()»`«ENDIF» | `«dependency.getReleaseUnit().getArtifactVersion()»` |
 «ENDLET-»
 «ENDFOREACH-»
 
@@ -91,7 +91,7 @@
 ## Changes Details
 
 «FOREACH this.getAllChangeDescriptions() AS description-»
-### «description.getIssueLinkForMarkdown()» «description.getTitle()»   «description.getCompatibilityIcons()»
+### «description.getIssueLinkForMarkdown()» «description.getTitle()» «description.getCompatibilityIcons()»
 «description.getDetails()»
 
 <br>
