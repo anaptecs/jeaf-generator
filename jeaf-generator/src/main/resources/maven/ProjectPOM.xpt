@@ -111,8 +111,8 @@
 
 
 	<modules>
-«FOREACH this.getModuleTypes() AS moduleType -»
-		<module>«this.getModuleArtifactId(moduleType)»</module>
+«FOREACH this.getModuleTypes() AS type -»
+		<module>«this.getModuleArtifactId(type)»</module>
 «ENDFOREACH -»
 	</modules>
 
