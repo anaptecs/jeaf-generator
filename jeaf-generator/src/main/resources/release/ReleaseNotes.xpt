@@ -7,6 +7,8 @@
 «EXTENSION functions::ReleaseNotesEntry»
 «EXTENSION functions::ChangeDescription»
 «EXTENSION functions::MavenProject»
+«EXTENSION functions::Domain»
+«EXTENSION functions::Ordered»
 «EXTENSION functions::SystemProperties»
 
 «DEFINE GenerateReleaseNotes FOR ReleaseUnit»
@@ -66,10 +68,13 @@
 «ENDIF-»
 ## Changes Summary
 
-| Issue | Type | Summary | Compatibility |
-| ----- | :--: | ------- | :-----------: |
+«LET this.getAllChangeDescriptions().getDomain().toSet().sortBy(e|e.getDomainName()).sortBy(e|e.getOrder()) AS domains-»
+«LET domains.size > 1 AS multipleDomanis-»
+
+| Issue | Type | «IF multipleDomanis»Domain | «ENDIF»Summary | Compatibility |
+| ----- | :--: | «IF multipleDomanis»------ | «ENDIF»------- | :-----------: |
 «FOREACH this.getAllChangeDescriptions() AS description-»
-| «description.getIssueLinkForMarkdown()» | «description.getCategoryIcon()» | «description.getTitle()» | «description.getCompatibilityIcons()» |
+| «description.getIssueLinkForMarkdown()» | «description.getCategoryIcon()» | «IF multipleDomanis» «description.getDomain().getDomainName()» |«ENDIF»«description.getTitle()» | «description.getCompatibilityIcons()» |
 «ENDFOREACH-»
 
 <br>
@@ -90,6 +95,34 @@
 «ENDIF-»
 ## Changes Details
 
+«IF multipleDomanis-»
+«FOREACH domains AS domain»
+### Domain "«domain.getDomainName()»"
+
+«FOREACH this.getAllChangeDescriptions().select(e|e.getDomain() == domain) AS description-»
+#### «description.getIssueLinkForMarkdown()» «description.getTitle()» «description.getCompatibilityIcons()»
+«description.getDetails()»
+
+<br>
+
+«ENDFOREACH-»
+«ENDFOREACH-»
+«ELSE-»
+«LET this.getAllChangeDescriptions().getRelease().getReleaseUnit().toSet().sortBy(e|e.getReleaseUnitName()).sortBy(e|e.getOrder()) AS releaseUnits-»
+«LET releaseUnits.size > 0 AS hasMultipleReleaseUnits-»
+«IF hasMultipleReleaseUnits»
+«FOREACH releaseUnits AS unit-»
+### «unit.getReleaseUnitName()»
+
+«FOREACH this.getAllChangeDescriptions() AS description-»
+#### «description.getIssueLinkForMarkdown()» «description.getTitle()» «description.getCompatibilityIcons()»
+«description.getDetails()»
+
+<br>
+
+«ENDFOREACH-»
+«ENDFOREACH-»
+«ELSE»
 «FOREACH this.getAllChangeDescriptions() AS description-»
 ### «description.getIssueLinkForMarkdown()» «description.getTitle()» «description.getCompatibilityIcons()»
 «description.getDetails()»
@@ -97,6 +130,12 @@
 <br>
 
 «ENDFOREACH-»
+«ENDIF-»
+«ENDLET-»
+«ENDLET-»
+«ENDIF-»
+«ENDLET-»
+«ENDLET-»
 «ENDFILE»
 «ENDDEFINE»
 

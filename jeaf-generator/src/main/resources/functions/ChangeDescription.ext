@@ -1,6 +1,7 @@
 extension java::GeneratorCommons;
 extension functions::ReleaseUnit;
 extension functions::Release;
+extension functions::Domain;
 extension functions::Icons;
 
 cached boolean isChangeDescription(uml::Element element) :
@@ -28,7 +29,10 @@ cached String getIssueID(JMM::ChangeDescription description):
 cached String getIssueNamePrefix(JMM::ChangeDescription description):
 	if description.getRelease().getReleaseUnit().issueDisplayNamePrefix.trim().length > 0
 	then description.getRelease().getReleaseUnit().issueDisplayNamePrefix.trim()
-	else "";
+	else 
+		if description.belongsToDomain()
+		then description.getDomain().getIssueDisplayNamePrefix()
+		else "";
 
 
 cached String getIssueLinkForMarkdown(JMM::ChangeDescription description):

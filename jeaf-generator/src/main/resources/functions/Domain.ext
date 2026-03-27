@@ -52,4 +52,8 @@ cached String getIssueTrackingBaseURL(JMM::Domain domain):
 	if domain.issueTrackingURL.trim().length > 0
 	then domain.issueTrackingURL.trim()
 	else issueTrackingURLPattern();
+
+
+cached String getIssueDisplayNamePrefix(JMM::Domain domain):
+	domain.issueDisplayNamePrefix.trim();
 	
