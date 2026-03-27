@@ -103,12 +103,6 @@ cached JMM::ReleaseUnit getReleaseUnit(JMM::ReleaseDependency dependency):
 	dependency.supplier.typeSelect(JMM::ReleaseUnit).first();
 
 
-cached String getMatchingReleaseUnitVersion(JMM::ReleaseDependency dependency, String myVersion):
-	if dependency.versionResolution.name == "LATEST_VERSION"
-	then dependency.getReleaseUnit().getVersions().getLatestVersion()
-	else getLatestMatchingVersion(myVersion, dependency.getReleaseUnit().getVersions());
-
-
 cached List[String] getVersions(JMM::ReleaseUnit releaseUnit):
 	releaseUnit.ownedElement.typeSelect(JMM::Release).name;
 
