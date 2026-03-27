@@ -2,6 +2,7 @@ extension java::GeneratorCommons;
 extension functions::SystemProperties;
 extension functions::MavenProject;
 extension functions::Domain;
+extension functions::Release;
 
 
 cached boolean isReleaseUnit(uml::Element element) :
@@ -106,9 +107,14 @@ cached JMM::ReleaseUnit getReleaseUnit(JMM::ReleaseDependency dependency):
 cached List[String] getVersions(JMM::ReleaseUnit releaseUnit):
 	releaseUnit.ownedElement.typeSelect(JMM::Release).name;
 
-private String getLatestMatchingVersion(String myVersion, List[String] versions):
+
+cached List[String] getUnreleasedVersions(JMM::ReleaseUnit releaseUnit):
+	releaseUnit.ownedElement.typeSelect(JMM::Release).select(e|e.isReleased() == false).name;
+
+
+String getLatestMatchingVersion(String myVersion, List[String] versions):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.versioning.VersionHelper.getLatestMatchingVersion(java.lang.String, java.util.List);
 
 
-private String getLatestVersion(List[String] versions):
+String getLatestVersion(List[String] versions):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.versioning.VersionHelper.getLatestVersion(java.util.List);

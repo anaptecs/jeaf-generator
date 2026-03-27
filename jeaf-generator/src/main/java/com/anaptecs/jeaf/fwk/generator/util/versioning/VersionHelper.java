@@ -22,28 +22,32 @@ public class VersionHelper {
 			}
 		}
 		if (lVersions.size() > 0) {
-			Collections.sort(lVersions, new VersionComparator());
+			Collections.sort(lVersions, new LatestVersionComparator());
 			VersionInfo lMatchingVersion = lVersions.get(0);
 			return lMatchingVersion.getMajorVersion() + "." + lMatchingVersion.getMinorVersion() + "."
 					+ lMatchingVersion.getBugfixLevel();
 		} else {
-			return "not matching version found";
+			return "";
 		}
 	}
 
 	public static String getLatestVersion(List<String> pVersionStrings) {
-		List<VersionInfo> lVersions = new ArrayList<VersionInfo>();
-		for (String lNext : pVersionStrings) {
-			lVersions.add(new VersionInfo(lNext, TODAY));
+		if (pVersionStrings.size() > 0) {
+			List<VersionInfo> lVersions = new ArrayList<VersionInfo>();
+			for (String lNext : pVersionStrings) {
+				lVersions.add(new VersionInfo(lNext, TODAY));
+			}
+			Collections.sort(lVersions, new LatestVersionComparator());
+			VersionInfo lLatestVersion = lVersions.get(0);
+			return lLatestVersion.getMajorVersion() + "." + lLatestVersion.getMinorVersion() + "."
+					+ lLatestVersion.getBugfixLevel();
+		} else {
+			return "";
 		}
-		Collections.sort(lVersions, new VersionComparator());
-		VersionInfo lLatestVersion = lVersions.get(0);
-		return lLatestVersion.getMajorVersion() + "." + lLatestVersion.getMinorVersion() + "."
-				+ lLatestVersion.getBugfixLevel();
 	}
 }
 
-class VersionComparator implements Comparator<VersionInfo> {
+class LatestVersionComparator implements Comparator<VersionInfo> {
 	public int compare(VersionInfo pMyVersion, VersionInfo pOtherVersion) {
 		int lResult;
 		// Same major versions
@@ -61,6 +65,6 @@ class VersionComparator implements Comparator<VersionInfo> {
 		else {
 			lResult = Integer.valueOf(pMyVersion.getMajorVersion()).compareTo(pOtherVersion.getMajorVersion());
 		}
-		return lResult;
+		return -1 * lResult;
 	}
 }

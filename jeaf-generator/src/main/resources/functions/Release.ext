@@ -5,12 +5,20 @@ extension functions::Icons;
 extension functions::Ordered;
 extension functions::MavenProject;
 
+extension org::openarchitectureware::util::stdlib::io;
+
 cached boolean isRelease(uml::Element element) :
 	element.isStereotypeApplied("Release");
 
 
 cached JMM::Release asRelease(uml::Element element):
 	(JMM::Release) element;
+
+
+boolean isReleased(JMM::Release release):
+	if release.released != null
+	then release.released
+	else false;
 
 
 cached JMM::ReleaseUnit getReleaseUnit(JMM::Release release):
@@ -76,15 +84,42 @@ private List[JMM::ChangeDescription] getInternalFeatureDescriptions(JMM::Release
 
 
 cached List[JMM::ChangeDescription] getBundledFeatureDescriptions(JMM::Release release):
-	release.getBundledReleaseDependencies().getReleaseUnit().getFeatureDescriptionsForReleaseUnit();
+	release.getBundledReleaseDependencies().getFeatureDescriptionsForDependency(release.name);
 
 
-private List[JMM::ChangeDescription] getFeatureDescriptionsForReleaseUnit(JMM::ReleaseUnit releaseUnit):
-	releaseUnit.getReleases().select(e|e.name == releaseUnit.getArtifactVersion()).getInternalFeatureDescriptions();
+private List[JMM::ChangeDescription] getFeatureDescriptionsForDependency(JMM::ReleaseDependency dependency, String currentVersion):
+	info("Current version: " + currentVersion) ->
+	info("Unreleased versions: " + dependency.getReleaseUnit().getUnreleasedVersions()) ->
+	info("Matching version: " + dependency.getMatchingVersion(currentVersion)) ->
+	info(dependency.releaseNotesResolution.name) ->
+	dependency.getReleaseUnit().getReleases().select(e|e.name == dependency.getMatchingVersion(currentVersion)).getInternalFeatureDescriptions();
 
 
 private List[JMM::ReleaseDependency] getBundledReleaseDependencies(JMM::Release release):
-	release.getReleaseUnit().getTransitiveReleaseDependencies().select(e|e.getReleaseUnit().hasMavenCoordinates());
+	release.getReleaseUnit().getTransitiveReleaseDependencies().select(e|e.getReleaseUnit().hasMavenCoordinates() && e.hasMatchingVersion(release.name));
+
+
+private String getMatchingVersion(JMM::ReleaseDependency dependency, String currentVersion):
+	if dependency.hasMatchingVersion(currentVersion)
+	then
+		switch (dependency.releaseNotesResolution.name) {
+			case "SAME_VERSION": dependency.getReleaseUnit().getVersions().selectFirst(e| e == currentVersion)
+			case "LATEST_VERSION": dependency.getReleaseUnit().getVersions().getLatestVersion()
+			case "LATEST_UNRELEASED_VERSION": dependency.getReleaseUnit().getUnreleasedVersions().getLatestVersion()
+			case "LATEST_UNRELEASED_VERSION_WITH_SAME_MAJOR": currentVersion.getLatestMatchingVersion(dependency.getReleaseUnit().getUnreleasedVersions())
+			default: true
+		};
+
+
+
+private boolean hasMatchingVersion(JMM::ReleaseDependency dependency, String currentVersion):
+	switch (dependency.releaseNotesResolution.name) {
+		case "SAME_VERSION": dependency.getReleaseUnit().getVersions().selectFirst(e| e == currentVersion) != null
+		case "LATEST_VERSION": dependency.getReleaseUnit().getVersions().getLatestVersion().length > 0
+		case "LATEST_UNRELEASED_VERSION": dependency.getReleaseUnit().getUnreleasedVersions().getLatestVersion().length > 0 != null
+		case "LATEST_UNRELEASED_VERSION_WITH_SAME_MAJOR": currentVersion.getLatestMatchingVersion(dependency.getReleaseUnit().getUnreleasedVersions()).length > 0
+		default: false
+	};
 
 
 cached List[JMM::ChangeDescription] getImprovementDescriptions(JMM::Release release):
@@ -96,11 +131,11 @@ private List[JMM::ChangeDescription] getInternalImprovementDescriptions(JMM::Rel
 
 
 cached List[JMM::ChangeDescription] getBundledImprovementDescriptions(JMM::Release release):
-	release.getBundledReleaseDependencies().getReleaseUnit().getImprovementDescriptionsForReleaseUnit();
+	release.getBundledReleaseDependencies().getImprovementDescriptionsForDependency(release.name);
 
 
-private List[JMM::ChangeDescription] getImprovementDescriptionsForReleaseUnit(JMM::ReleaseUnit releaseUnit):
-	releaseUnit.getReleases().select(e|e.name == releaseUnit.getArtifactVersion()).getInternalImprovementDescriptions();
+private List[JMM::ChangeDescription] getImprovementDescriptionsForDependency(JMM::ReleaseDependency dependency, String currentVersion):
+	dependency.getReleaseUnit().getReleases().select(e|e.name == dependency.getMatchingVersion(currentVersion)).getInternalImprovementDescriptions();
 
 
 cached List[JMM::ChangeDescription] getBugDescriptions(JMM::Release release):
@@ -112,10 +147,10 @@ private List[JMM::ChangeDescription] getInternalBugDescriptions(JMM::Release rel
 
 
 cached List[JMM::ChangeDescription] getBundledBugDescriptions(JMM::Release release):
-	release.getBundledReleaseDependencies().getReleaseUnit().getBugDescriptionsForReleaseUnit();
+	release.getBundledReleaseDependencies().getBugDescriptionsForDependency(release.name);
 
 
-private List[JMM::ChangeDescription] getBugDescriptionsForReleaseUnit(JMM::ReleaseUnit releaseUnit):
-	releaseUnit.getReleases().select(e|e.name == releaseUnit.getArtifactVersion()).getInternalBugDescriptions();
+private List[JMM::ChangeDescription] getBugDescriptionsForDependency(JMM::ReleaseDependency dependency, String currentVersion):
+	dependency.getReleaseUnit().getReleases().select(e|e.name == dependency.getMatchingVersion(currentVersion)).getInternalBugDescriptions();
 
 
