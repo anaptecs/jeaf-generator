@@ -88,10 +88,10 @@ cached List[JMM::ChangeDescription] getBundledFeatureDescriptions(JMM::Release r
 
 
 private List[JMM::ChangeDescription] getFeatureDescriptionsForDependency(JMM::ReleaseDependency dependency, String currentVersion):
-	info("Current version: " + currentVersion) ->
-	info("Unreleased versions: " + dependency.getReleaseUnit().getUnreleasedVersions()) ->
-	info("Matching version: " + dependency.getMatchingVersion(currentVersion)) ->
-	info(dependency.releaseNotesResolution.name) ->
+	// info("Current version: " + currentVersion) ->
+	// info("Unreleased versions: " + dependency.getReleaseUnit().getUnreleasedVersions()) ->
+	// info("Matching version: " + dependency.getMatchingVersion(currentVersion)) ->
+	// info(dependency.releaseNotesResolution.name) ->
 	dependency.getReleaseUnit().getReleases().select(e|e.name == dependency.getMatchingVersion(currentVersion)).getInternalFeatureDescriptions();
 
 
