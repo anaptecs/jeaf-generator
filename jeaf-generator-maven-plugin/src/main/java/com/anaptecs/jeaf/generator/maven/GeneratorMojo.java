@@ -1930,7 +1930,7 @@ public class GeneratorMojo extends AbstractMojo {
     for (Artifact lDependency : lArtifacts) {
       String lProjectID = lDependency.getGroupId() + ":" + lDependency.getArtifactId();
       String lVersion = lDependency.getVersion();
-      this.getLog().info(lProjectID + ":" + lVersion);
+      this.getLog().debug(lProjectID + ":" + lVersion);
       ArtifactCache.addArtifactVersion(lProjectID, lVersion);
     }
   }
