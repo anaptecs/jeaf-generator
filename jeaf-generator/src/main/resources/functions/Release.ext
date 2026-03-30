@@ -56,7 +56,19 @@ cached List[JMM::ChangeDescription] getAllChanges(JMM::Release release):
 
 
 cached List[JMM::ReleaseNotesEntry] getGeneralEntries(JMM::Release release):
+	release.getInternalGeneralEntries().addAll(release.getBundledGeneralEntries());
+
+
+cached getInternalGeneralEntries(JMM::Release release):
 	release.ownedElement.typeSelect(JMM::ReleaseNotesEntry).select(e|e.releaseNotesEntryType.name == "GENERAL_INFORMATION").sortBy(e|e.getOrder());
+
+
+cached List[JMM::ReleaseNotesEntry] getBundledGeneralEntries(JMM::Release release):
+	release.getBundledReleaseDependencies().getGeneralEntriesForDependency(release.name);
+
+
+private List[JMM::ReleaseNotesEntry] getGeneralEntriesForDependency(JMM::ReleaseDependency dependency, String currentVersion):
+	dependency.getReleaseUnit().getReleases().select(e|e.name == dependency.getMatchingVersion(currentVersion)).getInternalGeneralEntries();
 
 
 cached boolean hasGeneralEntries(JMM::Release release):
@@ -64,7 +76,19 @@ cached boolean hasGeneralEntries(JMM::Release release):
 
 
 cached List[JMM::ReleaseNotesEntry] getMigrationNoticeEntries(JMM::Release release):
+	release.getInternalMigrationNoticeEntries().addAll(release.getBundledMigrationNoticeEntries());
+
+
+cached getInternalMigrationNoticeEntries(JMM::Release release):
 	release.ownedElement.typeSelect(JMM::ReleaseNotesEntry).select(e|e.releaseNotesEntryType.name == "MIGRATION_NOTICE").sortBy(e|e.getOrder());
+
+
+cached List[JMM::ReleaseNotesEntry] getBundledMigrationNoticeEntries(JMM::Release release):
+	release.getBundledReleaseDependencies().getMigrationNoticeEntriesForDependency(release.name);
+
+
+private List[JMM::ReleaseNotesEntry] getMigrationNoticeEntriesForDependency(JMM::ReleaseDependency dependency, String currentVersion):
+	dependency.getReleaseUnit().getReleases().select(e|e.name == dependency.getMatchingVersion(currentVersion)).getInternalMigrationNoticeEntries();
 
 
 cached boolean hasMigrationNoticeEntries(JMM::Release release):
