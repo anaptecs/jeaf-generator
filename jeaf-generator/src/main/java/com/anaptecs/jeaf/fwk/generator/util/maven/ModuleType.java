@@ -8,6 +8,8 @@ public enum ModuleType {
 
 	BOM("BOM", "BOM", "bom", "pom"),
 
+	DOMAIN_BOM("Domain BOM", "DomainBOM", "bom", "pom"),
+
 	UML_MODEL("UML Model", "UMLModel", "uml", "zip"),
 
 	OPEN_API("OpenAPI", "OpenAPI", "open-api", "zip"),

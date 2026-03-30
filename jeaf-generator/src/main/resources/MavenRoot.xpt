@@ -25,7 +25,7 @@
 «ENDDEFINE» 
 
 «DEFINE Root FOR MavenProject»
-	«IF this.isInGeneratorWhitelist() == true»
+	«IF getPackages().contains(this.owner.getNearestPackage().qualifiedName()) == true»
 		«IF generateGeneratorProjectParentPOM() && this.isArchetypeGeneratorProjectParentPOM()»
 			«info("Processing «MavenProject» " + this.name + " (" + this.getProjectID() + ")")»
 			«EXPAND maven::GeneratorProjectParentPOM::Generate»
@@ -41,6 +41,11 @@
 				«REM»BOM«ENDREM»
 				«IF moduleType.isModuleTypeBOM()»
 					«EXPAND maven::BOM::GenerateBOM»
+				«ENDIF»
+	
+				«REM»Domain BOM«ENDREM»
+				«IF moduleType.isModuleTypeDomainBOM()»
+					«EXPAND maven::DomainBOM::GenerateDomainBOM»
 				«ENDIF»
 	
 				«REM»UML Model«ENDREM»

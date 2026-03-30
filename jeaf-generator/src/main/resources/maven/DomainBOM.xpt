@@ -1,0 +1,40 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION java::GeneratorCommons»
+«EXTENSION functions::MavenProject»
+
+
+«DEFINE GenerateDomainBOM FOR MavenProject»
+«FILE this.getPOMOutputDirectory() + "/" + this.getModuleArtifactId("DOMAIN_BOM") + "/pom.xml" basedir -»
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<name>«this.getDomainBOMModuleName()»</name>
+	<groupId>«this.getGroupId()»</groupId>
+	<artifactId>«this.getDomainBOMArtifactId()»</artifactId>
+	<version>«this.getVersion()»</version>
+	<packaging>pom</packaging>
+
+
+«LET this.getDomainProjects() AS domainProjects -»
+«IF domainProjects.size > 0 -»
+	<dependencyManagement>
+		<dependencies>
+	«FOREACH domainProjects AS domainProject-»
+			<dependency>
+				<groupId>«domainProject.getGroupId()»</groupId>
+				<artifactId>«domainProject.getBOMArtifactId()»</artifactId>
+				<version>«domainProject.getVersion()»</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+	«ENDFOREACH-»
+		</dependencies>
+	</dependencyManagement>
+«ENDIF-»
+«ENDLET-»
+</project>
+«ENDFILE»
+«ENDDEFINE»

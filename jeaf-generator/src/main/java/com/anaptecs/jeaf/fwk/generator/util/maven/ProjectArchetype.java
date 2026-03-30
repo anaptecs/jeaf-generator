@@ -7,7 +7,7 @@ import java.util.List;
 public enum ProjectArchetype {
 	GENERATOR_PROJECT_PARENT_POM("Generator Project Parent POM", "Parent", "parent", new ModuleType[] {}),
 
-	DOMAIN("Domain", "Domain", "domain", new ModuleType[] {}),
+	DOMAIN("Domain", "Domain", "domain", new ModuleType[] { ModuleType.DOMAIN_BOM }),
 
 	DATA_TYPES("Data Types", "DataTypes", "datatypes", new ModuleType[] { ModuleType.BOM, ModuleType.UML_MODEL,
 			ModuleType.OPEN_API, ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER,
@@ -25,9 +25,9 @@ public enum ProjectArchetype {
 	EVENTS("Events", "Events", "events", new ModuleType[] { ModuleType.BOM, ModuleType.UML_MODEL, ModuleType.OPEN_API,
 			ModuleType.JAVA, ModuleType.JAVA_RUNTIME, ModuleType.JAVA_STARTER, ModuleType.INTEGRATION_TEST }),
 
-	IMPLEMENTATION("Implementation", "Impl", "impl", new ModuleType[] {}),
-
 	UML_MODEL_PROJECT("UML Model Project", "", "", new ModuleType[] { ModuleType.UML_MODEL }),
+
+	IMPLEMENTATION("Implementation", "Impl", "impl", new ModuleType[] {}),
 
 	ARTIFACT("Artifact", "", "", new ModuleType[] {}),
 

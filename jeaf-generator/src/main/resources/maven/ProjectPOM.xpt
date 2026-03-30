@@ -44,7 +44,6 @@
 		«ENDPROTECT»
 «ENDIF-»
 
-«IF this.getDependentProjects().size > 0 -»
 «FOREACH this.getDependentProjects() AS project-»
 		<!-- Version property for dependency to «project.getProjectID()» -->
 		<«project.getVersionPropertyName()»>«project.getVersion()»</«project.getVersionPropertyName()»>
@@ -55,7 +54,6 @@
 		<«dependentProject.getVersionPropertyName()»>«dependentProject.getVersion()»</«dependentProject.getVersionPropertyName()»>
 
 «ENDFOREACH-»
-«ENDIF -»
 «IF this.isCustomizable() -»
 		<!-- Custom section for properties -->
 		«PROTECT CSTART "<!-- " CEND " -->" ID "properties:"  + this.getProjectID()»

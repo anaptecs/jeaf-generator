@@ -92,10 +92,10 @@
 
 «DEFINE GenerateDependenciesSection(String moduleType, List[String] moduleDependencyTypes, List[String] internalModuleDependencies, List[String] externalDependencies) FOR MavenProject»
 	<dependencies>
-		«FOREACH internalModuleDependencies AS moduleType -»
+		«FOREACH internalModuleDependencies AS internalModuleDepdency -»
 		<dependency>
 			<groupId>«this.getGroupId()»</groupId>
-			<artifactId>«this.getModuleArtifactId(moduleType)»</artifactId>
+			<artifactId>«this.getModuleArtifactId(internalModuleDepdency)»</artifactId>
 		</dependency>
 		«ENDFOREACH -»
 		«FOREACH this.getMavenDependencies(moduleType) AS dependency -»
@@ -132,6 +132,17 @@
 			<artifactId>«dependency.split(":").get(1)»</artifactId>
 		</dependency>
 		«ENDFOREACH -»
+		«IF this.hasDomainProjects()-»
+			«FOREACH this.getDomainProjects() AS domainProject-»
+		<dependency>
+			<groupId>«domainProject.getGroupId()»</groupId>
+			<artifactId>«domainProject.getArtifactId()»</artifactId>
+			<version>«domainProject.getVersion()»</version>
+			<type>pom</type>
+			<scope>provided</scope>
+		</dependency>
+			«ENDFOREACH-»
+		«ENDIF-»
 		«IF this.isCustomizable() -»
 
 		<!-- Custom section for dependencies -->

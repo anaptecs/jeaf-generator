@@ -343,6 +343,27 @@ cached String getTargetModuleType(String sourceModule, String moduleDependencyTy
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getTargetModuleType(java.lang.String, java.lang.String);
 
 
+cached boolean hasDomainProjects(JMM::MavenProject project):
+	!project.getDomainProjects().isEmpty;
+
+
+cached List[JMM::MavenProject] getDomainProjects(JMM::MavenProject project):
+	if project.belongsToDomain()
+	then project.getDomain().allOwnedElements().typeSelect(JMM::MavenProject).select(e|e.isDomainArchetype())
+	else {};
+
+
+private boolean isDomainArchetype(JMM::MavenProject project):
+	switch (project.archetype.name) {
+		case "DATA_TYPES": true
+		case "SERVICE_MODEL": true
+		case "MASTER_DATA": true
+		case "EVENTS": true
+		case "IMPLEMENTATION": true
+		default: false
+	};
+
+
 //
 // Archetype operations.
 //
@@ -403,38 +424,57 @@ cached String getPOMOutputDirectory(JMM::MavenProject project):
 
 
 cached List[String] getModuleTypesForBOM(JMM::MavenProject project):
-	project.getModuleTypes().select(e|e.isModuleTypeBOM() == false && e.isModuleTypeIntegrationTest() == false);
+	project.getModuleTypes().select(e|e.isModuleTypeBOM() == false && e.isModuleTypeDomainBOM() == false && e.isModuleTypeIntegrationTest() == false);
+
 
 cached List[String] getModuleTypes(JMM::MavenProject project):
 	project.getArchetype().javaGetModuleTypes();
 
+
 private List[String] javaGetModuleTypes(String archetype):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype.getModuleTypeNames(java.lang.String);
+
  
 cached String getModuleArtifactId(JMM::MavenProject project, String moduleType):
 	project.getArtifactId().javaGetModuleArtifactId(moduleType);
 
+
 cached String getModuleName(JMM::MavenProject project, String moduleType):
 	project.getMavenProjectName().javaGetModuleName(moduleType);
+
 
 cached String getPackagingType(JMM::MavenProject project, String moduleType):
 	moduleType.javaGetModulePackagingType();
 
+
 cached String getBOMModuleName(JMM::MavenProject project):
 	project.getMavenProjectName().javaGetModuleName("BOM");
 
+
 cached String getBOMArtifactId(JMM::MavenProject project):
 	project.getArtifactId().javaGetModuleArtifactId("BOM");
-	
+
+
+cached String getDomainBOMModuleName(JMM::MavenProject project):
+	project.getMavenProjectName().javaGetModuleName("DOMAIN_BOM");
+
+
+cached String getDomainBOMArtifactId(JMM::MavenProject project):
+	project.getArtifactId().javaGetModuleArtifactId("DOMAIN_BOM");
+
+
 private String javaGetModuleName(String projectName, String moduleType):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getModuleName(java.lang.String, java.lang.String);
 
+
 private String javaGetModuleArtifactId(String projectName, String moduleType):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getArtifactId(java.lang.String, java.lang.String);
-	
+
+
 private String javaGetModulePackagingType(String moduleType):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.maven.ModuleType.getPackagingType(java.lang.String);
-	
+
+
 List[String] getTechnicalDependenciesForJavaModule():
 	if addRequiredTechnicalDepdendencies() == false
 	then {}
@@ -442,6 +482,7 @@ List[String] getTechnicalDependenciesForJavaModule():
 		if generateJacksonAnnotations() && isJackson3Enabled()
 		then {"jakarta.annotation:jakarta.annotation-api", "jakarta.validation:jakarta.validation-api", "tools.jackson.core:jackson-databind"}
 		else {"jakarta.annotation:jakarta.annotation-api", "jakarta.validation:jakarta.validation-api"};
+
 
 List[String] getTechnicalDependenciesForServiceModule(JMM::MavenProject project):
 	if addRequiredTechnicalDepdendencies() && (generateReactiveServiceInterfaces() || initialProjectGeneration() || project.generateReactiveServices()) 
