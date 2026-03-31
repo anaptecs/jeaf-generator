@@ -92,6 +92,15 @@
 
 «DEFINE GenerateDependenciesSection(String moduleType, List[String] moduleDependencyTypes, List[String] internalModuleDependencies, List[String] externalDependencies) FOR MavenProject»
 	<dependencies>
+		«IF isMavenProjectGeneratedFromModelTemplate() && isUMLArtifactGAVDefined()-»
+		<dependency>
+			<groupId>«mavenProjectGenerationUMLModelArtifactGroupID()»</groupId>
+			<artifactId>«mavenProjectGenerationUMLModelArtifactArtifactID()»</artifactId>
+			<version>${«mavenProjectGenerationUMLModelArtifactArtifactID()».version}</version>
+			<type>zip</type>
+			<scope>provided</scope>
+		</dependency>
+		«ENDIF-»
 		«FOREACH internalModuleDependencies AS internalModuleDepdency -»
 		<dependency>
 			<groupId>«this.getGroupId()»</groupId>
@@ -110,7 +119,6 @@
 			<scope>«dependency.scope.name.toLowerCase()»</scope>
 			«ENDIF-»
 		</dependency>
-
 		«ENDFOREACH-»
 		«FOREACH moduleDependencyTypes AS moduleDependencyType -»
 			«IF moduleDependencyType.length > 0 -»

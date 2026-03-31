@@ -20,7 +20,7 @@
 
 «IF isMavenProjectGeneratedFromModelTemplate() -»
 		<!-- Name of the main file of the UML model -->
-		<umlModelFile>TODO</umlModelFile>
+		<umlModelFile>«mavenProjectGenerationUMLModelFile("TODO")»</umlModelFile>
 «ELSE -»
 		<!-- Name of the main file of the UML model -->
 		<umlModelFile>«getUMLModelFile()»</umlModelFile>
@@ -38,12 +38,17 @@
 			Properties are use to specify the Maven artifact from which the XMI files should be read.
 			Properties only need to be set in case that you want read XMI files from a Maven artifact.
 		-->
-		<my.modelArtifactGroupID>TODO</my.modelArtifactGroupID>
-		<my.modelArtifactArtifactID>TODO</my.modelArtifactArtifactID>
-		<my.modelArtifactXMIPath>xmi</my.modelArtifactXMIPath>
+		<my.modelArtifactGroupID>«mavenProjectGenerationUMLModelArtifactGroupID("TODO")»</my.modelArtifactGroupID>
+		<my.modelArtifactArtifactID>«mavenProjectGenerationUMLModelArtifactArtifactID("TODO")»</my.modelArtifactArtifactID>
+		<my.modelArtifactXMIPath>«mavenProjectGenerationUMLModelArtifactXMIPath("xmi")»</my.modelArtifactXMIPath>
 		«ENDPROTECT»
 «ENDIF-»
 
+«IF isMavenProjectGeneratedFromModelTemplate() && isUMLArtifactGAVDefined()-»
+		<!-- Version property for dependency to «mavenProjectGenerationUMLModelArtifactGroupID()»:«mavenProjectGenerationUMLModelArtifactArtifactID()» -->
+		<«mavenProjectGenerationUMLModelArtifactArtifactID()».version>«mavenProjectGenerationUMLModelArtifactVersion()»</«mavenProjectGenerationUMLModelArtifactArtifactID()».version>
+
+«ENDIF-»
 «FOREACH this.getDependentProjects() AS project-»
 		<!-- Version property for dependency to «project.getProjectID()» -->
 		<«project.getVersionPropertyName()»>«project.getVersion()»</«project.getVersionPropertyName()»>

@@ -1790,6 +1790,37 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean mavenProjectGeneratedFromModelTemplate;
 
   /**
+   * Parameter defines the Maven Group ID of the artifact containing the UML model.
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectGenerationUMLModelArtifactGroupID;
+
+  /**
+   * Parameter defines the Maven Artifact ID of the artifact containing the UML model.
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectGenerationUMLModelArtifactArtifactID;
+
+  /**
+   * Parameter defines the Maven version of the artifact containing the UML model.
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectGenerationUMLModelArtifactVersion;
+
+  /**
+   * Parameter defines the path inside the UML model artifact where the XMI files are located.
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectGenerationUMLModelArtifactXMIPath;
+
+  /**
+   * Parameter defines the name of the main UML file that should be used for code generation by the generated Maven
+   * project.
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private String mavenProjectGenerationUMLModelFile;
+
+  /**
    * This parameter can be used to instruct JEAF Generator to add technical dependencies for the modules in addition to
    * dependencies defined in the UML model. Such technical dependencies include, for example, Reactor libraries for
    * reactive services or Spring runtime dependencies.
@@ -1975,6 +2006,11 @@ public class GeneratorMojo extends AbstractMojo {
       else {
         mavenProjectDefaultParentVersion = "UNKNOWN";
       }
+    }
+
+    if (generateGeneratorProjectParentPOM && initialProjectGeneration
+        && mavenProjectGeneratedFromModelTemplate == false) {
+      mavenProjectGenerationUMLModelFile = umlModelFile;
     }
   }
 
@@ -2565,6 +2601,14 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("Maven Project default parent version:             " + mavenProjectDefaultParentVersion);
       lLog.info("Use default parent:                               " + mavenProjectUseDefaultParent);
       lLog.info("Generated from default model template:            " + mavenProjectGeneratedFromModelTemplate);
+
+      lLog.info("Maven Group ID of UML artifact for project:       " + mavenProjectGenerationUMLModelArtifactGroupID);
+      lLog.info(
+          "Maven Artifact ID of UML artifact for project:    " + mavenProjectGenerationUMLModelArtifactArtifactID);
+      lLog.info("Maven version of UML artifact for project:        " + mavenProjectGenerationUMLModelArtifactVersion);
+      lLog.info("XMI path within UML artifact for project:         " + mavenProjectGenerationUMLModelArtifactXMIPath);
+      lLog.info("UML model file for project:                       " + mavenProjectGenerationUMLModelFile);
+
       lLog.info("Add required technical dependencies:              " + addRequiredTechnicalDepdendencies);
       lLog.info("Issue Tracking URL pattern:                       " + issueTrackingURLPattern);
       lLog.info(" ");
@@ -2910,6 +2954,15 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "mavenProjectUseDefaultParent", mavenProjectUseDefaultParent.toString());
       System.setProperty(PROPERTY_PREFIX + "mavenProjectGeneratedFromModelTemplate",
           mavenProjectGeneratedFromModelTemplate.toString());
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectGenerationUMLModelArtifactGroupID",
+          mavenProjectGenerationUMLModelArtifactGroupID);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectGenerationUMLModelArtifactArtifactID",
+          mavenProjectGenerationUMLModelArtifactArtifactID);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectGenerationUMLModelArtifactVersion",
+          mavenProjectGenerationUMLModelArtifactVersion);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectGenerationUMLModelArtifactXMIPath",
+          mavenProjectGenerationUMLModelArtifactXMIPath);
+      System.setProperty(PROPERTY_PREFIX + "mavenProjectGenerationUMLModelFile", mavenProjectGenerationUMLModelFile);
       System.setProperty(PROPERTY_PREFIX + "addRequiredTechnicalDepdendencies",
           addRequiredTechnicalDepdendencies.toString());
 
