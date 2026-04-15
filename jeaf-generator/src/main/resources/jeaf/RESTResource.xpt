@@ -63,7 +63,7 @@ public class «this.getResourceName(reactive)» {
 	            /**
 	             * REST Controller was generated with request / response validation enabled. The actual validation will be delegated to the implementation of this interface.
 	             */
-	            private final com.anaptecs.jeaf.validation.api.ValidationExecutor validationExecutor;
+	            private final «getValidationExecutorFQN(reactive)» validationExecutor;
             «ENDIF»
         «ENDIF»
         «IF isRESTLibraryJAXRS()»
@@ -73,7 +73,7 @@ public class «this.getResourceName(reactive)» {
 	             * to the implementation of this interface.
 	             */
 	            @org.springframework.beans.factory.annotation.Autowired
-	            private com.anaptecs.jeaf.validation.api.ValidationExecutor validationExecutor;
+	            private «getValidationExecutorFQN(reactive)» validationExecutor;
             «ENDIF»
         «ENDIF»
     «ENDIF»
@@ -118,7 +118,7 @@ public class «this.getResourceName(reactive)» {
 				 * @param pCustomHeaderFilter Filter for custom header fields.
 				 «ENDIF -»
 				 */
-				public «this.getResourceName(reactive)»( «this.asJEAFService().getServiceNameFQN(reactive)» p«name» «IF this.hasCompositeDataTypes()», «getObjectMapperFQN(jacksonVersion)» pObjectMapper«ENDIF»«IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF»«IF this.requiresCustomHeadersFilter()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
+				public «this.getResourceName(reactive)»( «this.asJEAFService().getServiceNameFQN(reactive)» p«name» «IF this.hasCompositeDataTypes()», «getObjectMapperFQN(jacksonVersion)» pObjectMapper«ENDIF»«IF generateRESTRequestValidation() || generateRESTResponseValidation()», «getValidationExecutorFQN(reactive)» pValidationExecutor«ENDIF»«IF this.requiresCustomHeadersFilter()», com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter pCustomHeaderFilter«ENDIF») {
 				  «name.toFirstLower()» = p«name»;
 				  «IF this.hasCompositeDataTypes()»
 				  objectMapper = pObjectMapper;

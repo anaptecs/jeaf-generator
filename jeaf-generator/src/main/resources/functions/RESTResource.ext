@@ -70,3 +70,10 @@ cached String getWrapperTypeQualifiedName(uml::Type type):
 
 cached String getWrapperTypeAwareQualifiedName(uml::Property property):
 	property.type.getWrapperTypeQualifiedName();
+
+
+String getValidationExecutorFQN(boolean reactive):
+	if reactive 
+	then "com.anaptecs.jeaf.validation.api.ValidationExecutorReactive"
+	else "com.anaptecs.jeaf.validation.api.ValidationExecutor";
+

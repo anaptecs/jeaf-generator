@@ -5,6 +5,7 @@
 «EXTENSION functions::JEAFService»
 «EXTENSION functions::Property»
 «EXTENSION functions::Class»
+«EXTENSION functions::RESTResource»
 «EXTENSION functions::RESTOperation»
 «EXTENSION functions::Reactive»
 
@@ -166,7 +167,7 @@ public class «this.getRESTProxyName(reactive)» implements «this.asJEAFService
     /**
      * REST Service Proxy was generated with request / response validation enabled. The actual validation will be delegated to the implementation of this interface.
      */
-    private final com.anaptecs.jeaf.validation.api.ValidationExecutor validationExecutor;
+    private final «getValidationExecutorFQN(reactive)» validationExecutor;
   «ENDIF»
   
   /**
@@ -177,7 +178,7 @@ public class «this.getRESTProxyName(reactive)» implements «this.asJEAFService
    * @param pValidationExecutor Validation executor for request / response validation.
   «ENDIF-»
    */
-  public «this.getRESTProxyName(reactive)»( «IF reactive»com.anaptecs.jeaf.rest.executor.api.reactive.RESTRequestExecutorReactive«ELSE»com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor«ENDIF» pRequestExecutor «IF generateRESTRequestValidation() || generateRESTResponseValidation()», com.anaptecs.jeaf.validation.api.ValidationExecutor pValidationExecutor«ENDIF» ) {
+  public «this.getRESTProxyName(reactive)»( «IF reactive»com.anaptecs.jeaf.rest.executor.api.reactive.RESTRequestExecutorReactive«ELSE»com.anaptecs.jeaf.rest.executor.api.RESTRequestExecutor«ENDIF» pRequestExecutor «IF generateRESTRequestValidation() || generateRESTResponseValidation()», «getValidationExecutorFQN(reactive)» pValidationExecutor«ENDIF» ) {
     requestExecutor = pRequestExecutor;
     «IF generateRESTRequestValidation() || generateRESTResponseValidation()»
       validationExecutor = pValidationExecutor;
