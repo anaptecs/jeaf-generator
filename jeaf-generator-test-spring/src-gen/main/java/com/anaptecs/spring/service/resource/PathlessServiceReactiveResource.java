@@ -33,7 +33,7 @@ import org.springframework.web.server.ServerWebExchange;
 
 import com.anaptecs.annotations.MyNotEmptyRESTParam;
 import com.anaptecs.annotations.MyNotNullRESTParam;
-import com.anaptecs.jeaf.validation.api.ValidationExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutorReactive;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
@@ -61,7 +61,7 @@ public class PathlessServiceReactiveResource {
    * REST Controller was generated with request / response validation enabled. The actual validation will be delegated
    * to the implementation of this interface.
    */
-  private final ValidationExecutor validationExecutor;
+  private final ValidationExecutorReactive validationExecutor;
 
   /**
    * All request to this class will be delegated to {@link com.anaptecs.spring.service.PathlessService}.
@@ -78,7 +78,7 @@ public class PathlessServiceReactiveResource {
    * @param pValidationExecutor Validation executor for request / response validation.
    */
   public PathlessServiceReactiveResource( PathlessServiceReactive pPathlessService, ObjectMapper pObjectMapper,
-      ValidationExecutor pValidationExecutor ) {
+      ValidationExecutorReactive pValidationExecutor ) {
     pathlessService = pPathlessService;
     objectMapper = pObjectMapper;
     validationExecutor = pValidationExecutor;
@@ -92,12 +92,11 @@ public class PathlessServiceReactiveResource {
   @RequestMapping(path = "doSomething", method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> getSomething( ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Delegate request to service.
-      return pathlessService.getSomething();
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(PathlessServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Delegate request to service.
+    pathlessService.getSomething())
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(PathlessServiceReactive.class, response));
   }
 
   /**
@@ -212,12 +211,11 @@ public class PathlessServiceReactiveResource {
     MultiValuedHeaderBeanParam pHeaderBean = lHeaderBeanBuilder.build();
     var lTechContextBuilder = TechOnlyBeanParam.builder();
     TechOnlyBeanParam pTechContext = lTechContextBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(PathlessServiceReactive.class, pHeaderBean);
-      // Delegate request to service.
-      return pathlessService.processTechParam(pHeaderBean);
-    });
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(PathlessServiceReactive.class, pHeaderBean)
+        // Delegate request to service.
+        .then(pathlessService.processTechParam(pHeaderBean)));
   }
 
   /**
@@ -327,14 +325,13 @@ public class PathlessServiceReactiveResource {
       lQueryBuilder.setStartTimestamps(lStartTimestamps);
     }
     DataTypesQueryBean pQuery = lQueryBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(PathlessServiceReactive.class, pQuery);
-      // Delegate request to service.
-      return pathlessService.testQueryBeanParam(pQuery);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(PathlessServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(PathlessServiceReactive.class, pQuery)
+        // Delegate request to service.
+        .then(pathlessService.testQueryBeanParam(pQuery)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(PathlessServiceReactive.class, response));
   }
 
   /**

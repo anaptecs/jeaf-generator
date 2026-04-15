@@ -701,21 +701,22 @@ public class «this.getResourceName(reactive)» {
 	  «ENDIF»
 	  
 	  «IF reactive»
+	      «LET generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false AS requiresRequestValidation» 
 	      «IF this.hasRequestBody()»
-	            return «this.getRequestBodyParameters().first().name» 
-            «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
-		            .flatMap(«this.getRequestBodyParameters().first().name»Body -> {
+	            return «this.getRequestBodyParameters().first().name»
+            «IF requiresRequestValidation»
+		            .flatMap(«this.getRequestBodyParameters().first().name»Body -> 
 		                // Validate request parameter(s).
-		                validationExecutor.validateRequest(«restResource.fqn()»Reactive.class, «this.asRESTParameterListNames(reactive)»);
+		                validationExecutor.validateRequest(«restResource.fqn()»Reactive.class, «this.asRESTParameterListNames(reactive)»)
             «ENDIF»
                         // Delegate request to service.
-                        return «restResource.name.toFirstLower()».«this.name»(«this.asRESTParameterListNames(reactive)»);
-                    })
+                        «IF requiresRequestValidation».then(«ENDIF»«restResource.name.toFirstLower()».«this.name»(«this.asRESTParameterListNames(reactive)»)«IF requiresRequestValidation»)«ENDIF»
+                    )
             «IF getReturnTypeName() != "void"»
                 «IF generateRESTResponseValidation()»
-		            .doOnNext(lResponse ->
-		                // Validate response.
-		                validationExecutor.validateResponse(«restResource.fqn()»Reactive.class, lResponse)
+	                // Validate response.
+		            .delayUntil(response ->
+		                validationExecutor.validateResponse(«restResource.fqn()»Reactive.class, response)
 		            );
 		        «ELSE»
 		            ;
@@ -725,27 +726,28 @@ public class «this.getResourceName(reactive)» {
 	        «ENDIF» 
 	      «ELSE»
                 return «getMonoTypeName()»
-                    .defer(() -> {
-            «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
+                    .defer(() -> 
+            «IF requiresRequestValidation»
                         // Validate request parameter(s).
-                        validationExecutor.validateRequest(«restResource.fqn()»Reactive.class, «this.asRESTParameterListNames(reactive)»);
+                        validationExecutor.validateRequest(«restResource.fqn()»Reactive.class, «this.asRESTParameterListNames(reactive)»)
             «ENDIF»
                         // Delegate request to service.
-                        return «restResource.name.toFirstLower()».«this.name»(«this.asRESTParameterListNames(reactive)»);
-                    })           
+                        «IF requiresRequestValidation».then(«ENDIF»«restResource.name.toFirstLower()».«this.name»(«this.asRESTParameterListNames(reactive)»)«IF requiresRequestValidation»)«ENDIF»
+                    )           
             «IF getReturnTypeName() != "void"»
                 «IF generateRESTResponseValidation()»
-                    .doOnNext(lResponse ->
-                        // Validate response.
-                        validationExecutor.validateResponse(«restResource.fqn()»Reactive.class, lResponse)
+                    // Validate response.
+                    .delayUntil(response ->
+                        validationExecutor.validateResponse(«restResource.fqn()»Reactive.class, response)
                     );
                 «ELSE»
                     ;
-                «ENDIF»         
+                «ENDIF»
             «ELSE»
                 ;
-            «ENDIF» 
+            «ENDIF»
 	      «ENDIF»
+          «ENDLET» 
 	  «ELSE»
 		  «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
 	        // Validate request parameter(s).

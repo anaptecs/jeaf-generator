@@ -38,7 +38,7 @@ import org.springframework.web.server.ServerWebExchange;
 import com.anaptecs.annotations.MyNotEmptyRESTParam;
 import com.anaptecs.annotations.MyNotNullRESTParam;
 import com.anaptecs.jeaf.rest.resource.api.CustomHeaderFilter;
-import com.anaptecs.jeaf.validation.api.ValidationExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutorReactive;
 import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -68,7 +68,7 @@ public class ProductServiceReactiveResource {
    * REST Controller was generated with request / response validation enabled. The actual validation will be delegated
    * to the implementation of this interface.
    */
-  private final ValidationExecutor validationExecutor;
+  private final ValidationExecutorReactive validationExecutor;
 
   /**
    * Filter is used to provide only those headers that are configured to be processed by this REST resource.
@@ -88,8 +88,8 @@ public class ProductServiceReactiveResource {
    * @param pValidationExecutor Validation executor for request / response validation.
    * @param pCustomHeaderFilter Filter for custom header fields.
    */
-  public ProductServiceReactiveResource( ProductServiceReactive pProductService, ValidationExecutor pValidationExecutor,
-      CustomHeaderFilter pCustomHeaderFilter ) {
+  public ProductServiceReactiveResource( ProductServiceReactive pProductService,
+      ValidationExecutorReactive pValidationExecutor, CustomHeaderFilter pCustomHeaderFilter ) {
     productService = pProductService;
     validationExecutor = pValidationExecutor;
     customHeaderFilter = pCustomHeaderFilter;
@@ -103,12 +103,11 @@ public class ProductServiceReactiveResource {
   @RequestMapping(path = "products/", method = { RequestMethod.GET })
   @MyNotEmptyRESTParam
   public Mono<List<Product>> getProducts( ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Delegate request to service.
-      return productService.getProducts();
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Delegate request to service.
+    productService.getProducts())
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -120,14 +119,13 @@ public class ProductServiceReactiveResource {
   @MyNotNullRESTParam
   public Mono<Product> getProduct( @PathVariable(name = "id", required = true) @MyNotNullRESTParam String pProductID,
       ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pProductID);
-      // Delegate request to service.
-      return productService.getProduct(pProductID);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pProductID)
+        // Delegate request to service.
+        .then(productService.getProduct(pProductID)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -138,14 +136,13 @@ public class ProductServiceReactiveResource {
   @RequestMapping(path = "products/", method = { RequestMethod.POST })
   public Mono<Boolean> createProduct( @RequestBody(required = true) @MyNotNullRESTParam Mono<Product> pProduct,
       ServerWebExchange pServerWebExchange ) {
-    return pProduct.flatMap(pProductBody -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pProductBody);
-      // Delegate request to service.
-      return productService.createProduct(pProductBody);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return pProduct.flatMap(pProductBody ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pProductBody)
+        // Delegate request to service.
+        .then(productService.createProduct(pProductBody)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -182,14 +179,13 @@ public class ProductServiceReactiveResource {
       }
     }
     Context pContext = lContextBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pContext);
-      // Delegate request to service.
-      return productService.getSortiment(pContext);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pContext)
+        // Delegate request to service.
+        .then(productService.getSortiment(pContext)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -206,14 +202,13 @@ public class ProductServiceReactiveResource {
   public Mono<ChannelCode> createChannelCode(
       @RequestBody(required = true) @MyNotNullRESTParam Mono<String> pChannelCode,
       ServerWebExchange pServerWebExchange ) {
-    return pChannelCode.flatMap(pChannelCodeBody -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pChannelCodeBody);
-      // Delegate request to service.
-      return productService.createChannelCode(pChannelCodeBody);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return pChannelCode.flatMap(pChannelCodeBody ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pChannelCodeBody)
+        // Delegate request to service.
+        .then(productService.createChannelCode(pChannelCodeBody)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -224,10 +219,9 @@ public class ProductServiceReactiveResource {
   @RequestMapping(path = "products/", method = { RequestMethod.HEAD })
   @MyNotNullRESTParam
   public Mono<Void> ping( ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Delegate request to service.
-      return productService.ping();
-    });
+    return Mono.defer(( ) ->
+    // Delegate request to service.
+    productService.ping());
   }
 
   /**
@@ -239,12 +233,11 @@ public class ProductServiceReactiveResource {
   @Deprecated
   @MyNotNullRESTParam
   public Mono<String> deprecatedOperation( ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Delegate request to service.
-      return productService.deprecatedOperation();
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Delegate request to service.
+    productService.deprecatedOperation())
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -268,14 +261,13 @@ public class ProductServiceReactiveResource {
     lContextBuilder.setResellerID(pResellerID);
     lContextBuilder.setQueryParam(pQueryParam);
     DeprecatedContext pContext = lContextBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pContext);
-      // Delegate request to service.
-      return productService.deprecatedContext(pContext);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pContext)
+        // Delegate request to service.
+        .then(productService.deprecatedContext(pContext)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -297,12 +289,11 @@ public class ProductServiceReactiveResource {
     lBeanParamBuilder.setLanguage(pLanguage);
     lBeanParamBuilder.setOldStyle(pOldStyle);
     BeanParameter pBeanParam = lBeanParamBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pBeanParam);
-      // Delegate request to service.
-      return productService.deprecatedBeanParam(pBeanParam);
-    });
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pBeanParam)
+        // Delegate request to service.
+        .then(productService.deprecatedBeanParam(pBeanParam)));
   }
 
   /**
@@ -315,14 +306,13 @@ public class ProductServiceReactiveResource {
   @MyNotNullRESTParam
   public Mono<String> deprecatedParams( @RequestHeader(name = "param1", required = true) @Deprecated int pParam1,
       ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pParam1);
-      // Delegate request to service.
-      return productService.deprecatedParams(pParam1);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pParam1)
+        // Delegate request to service.
+        .then(productService.deprecatedParams(pParam1)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -334,14 +324,13 @@ public class ProductServiceReactiveResource {
   @MyNotNullRESTParam
   public Mono<String> deprecatedBody( @RequestBody(required = true) @Deprecated @MyNotNullRESTParam Mono<String> pBody,
       ServerWebExchange pServerWebExchange ) {
-    return pBody.flatMap(pBodyBody -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pBodyBody);
-      // Delegate request to service.
-      return productService.deprecatedBody(pBodyBody);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return pBody.flatMap(pBodyBody ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pBodyBody)
+        // Delegate request to service.
+        .then(productService.deprecatedBody(pBodyBody)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -354,12 +343,11 @@ public class ProductServiceReactiveResource {
   public Mono<Void> deprectedComplexRequestBody(
       @RequestBody(required = true) @Deprecated @MyNotNullRESTParam Mono<Product> pProduct,
       ServerWebExchange pServerWebExchange ) {
-    return pProduct.flatMap(pProductBody -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pProductBody);
-      // Delegate request to service.
-      return productService.deprectedComplexRequestBody(pProductBody);
-    });
+    return pProduct.flatMap(pProductBody ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pProductBody)
+        // Delegate request to service.
+        .then(productService.deprectedComplexRequestBody(pProductBody)));
   }
 
   /**
@@ -371,12 +359,11 @@ public class ProductServiceReactiveResource {
   @Deprecated
   @MyNotNullRESTParam
   public Mono<Product> deprecatedComplexReturn( ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Delegate request to service.
-      return productService.deprecatedComplexReturn();
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Delegate request to service.
+    productService.deprecatedComplexReturn())
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -417,12 +404,11 @@ public class ProductServiceReactiveResource {
       }
     }
     SpecialContext pContext = lContextBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pContext);
-      // Delegate request to service.
-      return productService.loadSpecificThings(pContext);
-    });
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pContext)
+        // Delegate request to service.
+        .then(productService.loadSpecificThings(pContext)));
   }
 
   /**
@@ -435,14 +421,13 @@ public class ProductServiceReactiveResource {
   public Mono<ChannelCode> createChannelCodeFromObject(
       @RequestBody(required = true) @MyNotNullRESTParam Mono<ChannelCode> pChannelCode,
       ServerWebExchange pServerWebExchange ) {
-    return pChannelCode.flatMap(pChannelCodeBody -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pChannelCodeBody);
-      // Delegate request to service.
-      return productService.createChannelCodeFromObject(pChannelCodeBody);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return pChannelCode.flatMap(pChannelCodeBody ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pChannelCodeBody)
+        // Delegate request to service.
+        .then(productService.createChannelCodeFromObject(pChannelCodeBody)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -455,14 +440,13 @@ public class ProductServiceReactiveResource {
   public Mono<List<CurrencyCode>> addCurrencies(
       @RequestBody(required = true) @MyNotEmptyRESTParam Mono<List<CurrencyCode>> pCurrencies,
       ServerWebExchange pServerWebExchange ) {
-    return pCurrencies.flatMap(pCurrenciesBody -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pCurrenciesBody);
-      // Delegate request to service.
-      return productService.addCurrencies(pCurrenciesBody);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return pCurrencies.flatMap(pCurrenciesBody ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pCurrenciesBody)
+        // Delegate request to service.
+        .then(productService.addCurrencies(pCurrenciesBody)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -475,14 +459,13 @@ public class ProductServiceReactiveResource {
   public Mono<CurrencyCode> isCurrencySupported(
       @RequestBody(required = true) @MyNotNullRESTParam Mono<CurrencyCode> pCurrency,
       ServerWebExchange pServerWebExchange ) {
-    return pCurrency.flatMap(pCurrencyBody -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pCurrencyBody);
-      // Delegate request to service.
-      return productService.isCurrencySupported(pCurrencyBody);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return pCurrency.flatMap(pCurrencyBody ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pCurrencyBody)
+        // Delegate request to service.
+        .then(productService.isCurrencySupported(pCurrencyBody)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -495,14 +478,13 @@ public class ProductServiceReactiveResource {
   public Mono<IntegerCodeType> testCodeTypeUsage(
       @RequestBody(required = true) @MyNotNullRESTParam Mono<StringCodeType> pStringCode,
       ServerWebExchange pServerWebExchange ) {
-    return pStringCode.flatMap(pStringCodeBody -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pStringCodeBody);
-      // Delegate request to service.
-      return productService.testCodeTypeUsage(pStringCodeBody);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return pStringCode.flatMap(pStringCodeBody ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pStringCodeBody)
+        // Delegate request to service.
+        .then(productService.testCodeTypeUsage(pStringCodeBody)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -522,14 +504,13 @@ public class ProductServiceReactiveResource {
     lBeanParamBuilder.setLocalKey(pLocalKey);
     lBeanParamBuilder.setLocalID(pLocalID);
     LocalBeanParamType pBeanParam = lBeanParamBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pBeanParam);
-      // Delegate request to service.
-      return productService.testLocalBeanParamType(pBeanParam);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pBeanParam)
+        // Delegate request to service.
+        .then(productService.testLocalBeanParamType(pBeanParam)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -552,14 +533,13 @@ public class ProductServiceReactiveResource {
     // Handle bean parameter pParent.code
     lParentBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
     ParentBeanParamType pParent = lParentBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pParent);
-      // Delegate request to service.
-      return productService.testExternalBeanParameterType(pParent);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pParent)
+        // Delegate request to service.
+        .then(productService.testExternalBeanParameterType(pParent)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -584,14 +564,13 @@ public class ProductServiceReactiveResource {
     lChildBuilder.setCode(DoubleCode.builder().setCode(pCodeAsBasicType).build());
     lChildBuilder.setChildProperty(pChildProperty);
     ChildBeanParameterType pChild = lChildBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pChild);
-      // Delegate request to service.
-      return productService.testChildBeanParameter(pChild);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pChild)
+        // Delegate request to service.
+        .then(productService.testChildBeanParameter(pChild)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -698,15 +677,14 @@ public class ProductServiceReactiveResource {
     else {
       pSQLDate = null;
     }
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pPath, pStartTimestamp, pStartTime,
-          pLocalStartTimestamp, pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime,
-          pSQLDate);
-      // Delegate request to service.
-      return productService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp,
-          pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-    });
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor
+        .validateRequest(ProductServiceReactive.class, pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp,
+            pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate)
+        // Delegate request to service.
+        .then(productService.testDateQueryParams(pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp,
+            pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate)));
   }
 
   /**
@@ -787,12 +765,11 @@ public class ProductServiceReactiveResource {
       lQueryParamsBuilder.setSqlDate(Date.valueOf(pSqlDateAsBasicType));
     }
     DateQueryParamsBean pQueryParams = lQueryParamsBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pPath, pQueryParams);
-      // Delegate request to service.
-      return productService.testDateQueryParamsBean(pPath, pQueryParams);
-    });
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pPath, pQueryParams)
+        // Delegate request to service.
+        .then(productService.testDateQueryParamsBean(pPath, pQueryParams)));
   }
 
   /**
@@ -898,14 +875,14 @@ public class ProductServiceReactiveResource {
     else {
       pSQLDate = null;
     }
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pPath, pOffsetDateTime, pOffsetTime,
-          pLocalDateTime, pLocalTime, pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-      // Delegate request to service.
-      return productService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime,
-          pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-    });
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor
+        .validateRequest(ProductServiceReactive.class, pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime,
+            pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate)
+        // Delegate request to service.
+        .then(productService.testDateHeaderParams(pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime,
+            pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate)));
   }
 
   /**
@@ -986,12 +963,11 @@ public class ProductServiceReactiveResource {
       lHeaderParamsBuilder.setSqlDate(Date.valueOf(pSqlDateAsBasicType));
     }
     DateHeaderParamsBean pHeaderParams = lHeaderParamsBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pPath, pHeaderParams);
-      // Delegate request to service.
-      return productService.testDateHeaderParamsBean(pPath, pHeaderParams);
-    });
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pPath, pHeaderParams)
+        // Delegate request to service.
+        .then(productService.testDateHeaderParamsBean(pPath, pHeaderParams)));
   }
 
   /**
@@ -1004,14 +980,13 @@ public class ProductServiceReactiveResource {
   public Mono<String> testTechnicalHeaderParam(
       @RequestHeader(name = "Reseller", required = true) @MyNotNullRESTParam String pReseller,
       ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pReseller);
-      // Delegate request to service.
-      return productService.testTechnicalHeaderParam(pReseller);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pReseller)
+        // Delegate request to service.
+        .then(productService.testTechnicalHeaderParam(pReseller)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -1035,14 +1010,13 @@ public class ProductServiceReactiveResource {
       }
     }
     TechnicalHeaderContext pContext = lContextBuilder.build();
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pContext);
-      // Delegate request to service.
-      return productService.testTechnicalHeaderBean(pContext);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pContext)
+        // Delegate request to service.
+        .then(productService.testTechnicalHeaderBean(pContext)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -1065,14 +1039,13 @@ public class ProductServiceReactiveResource {
     else {
       pCodes = Collections.emptyList();
     }
-    return Mono.defer(( ) -> {
-      // Validate request parameter(s).
-      validationExecutor.validateRequest(ProductServiceReactive.class, pCodes);
-      // Delegate request to service.
-      return productService.processDataTypes(pCodes);
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Validate request parameter(s).
+    validationExecutor.validateRequest(ProductServiceReactive.class, pCodes)
+        // Delegate request to service.
+        .then(productService.processDataTypes(pCodes)))
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 
   /**
@@ -1083,11 +1056,10 @@ public class ProductServiceReactiveResource {
   @RequestMapping(path = "products/info", method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> getVersionInfo( ServerWebExchange pServerWebExchange ) {
-    return Mono.defer(( ) -> {
-      // Delegate request to service.
-      return productService.getVersionInfo();
-    }).doOnNext(lResponse ->
-    // Validate response.
-    validationExecutor.validateResponse(ProductServiceReactive.class, lResponse));
+    return Mono.defer(( ) ->
+    // Delegate request to service.
+    productService.getVersionInfo())
+        // Validate response.
+        .delayUntil(response -> validationExecutor.validateResponse(ProductServiceReactive.class, response));
   }
 }

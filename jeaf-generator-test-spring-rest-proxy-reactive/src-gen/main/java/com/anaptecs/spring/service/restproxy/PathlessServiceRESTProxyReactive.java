@@ -24,7 +24,7 @@ import com.anaptecs.jeaf.rest.executor.api.HttpMethod;
 import com.anaptecs.jeaf.rest.executor.api.ObjectType;
 import com.anaptecs.jeaf.rest.executor.api.RESTRequest;
 import com.anaptecs.jeaf.rest.executor.api.reactive.RESTRequestExecutorReactive;
-import com.anaptecs.jeaf.validation.api.ValidationExecutor;
+import com.anaptecs.jeaf.validation.api.ValidationExecutorReactive;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.DoubleCode;
 import com.anaptecs.spring.base.IntegerCodeType;
@@ -65,7 +65,7 @@ public class PathlessServiceRESTProxyReactive implements PathlessServiceReactive
    * REST Service Proxy was generated with request / response validation enabled. The actual validation will be
    * delegated to the implementation of this interface.
    */
-  private final ValidationExecutor validationExecutor;
+  private final ValidationExecutorReactive validationExecutor;
 
   /**
    * Initialize object.
@@ -74,7 +74,7 @@ public class PathlessServiceRESTProxyReactive implements PathlessServiceReactive
    * @param pValidationExecutor Validation executor for request / response validation.
    */
   public PathlessServiceRESTProxyReactive( RESTRequestExecutorReactive pRequestExecutor,
-      ValidationExecutor pValidationExecutor ) {
+      ValidationExecutorReactive pValidationExecutor ) {
     requestExecutor = pRequestExecutor;
     validationExecutor = pValidationExecutor;
   }
