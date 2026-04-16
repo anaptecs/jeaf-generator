@@ -16,7 +16,8 @@
 
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
-| :bomb: `upcomingMandatoryProperty` | `String` | `1..1` |   |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
+| `untouchedProperty` | `String` | `1..1` |   |  |  |
+| :bomb: `formerMandatoryProperty` | `String` | `0..1` |   |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
 | :exclamation:`deprecatedProperty` | `String` | `0..1` |   |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
 
 <br>
@@ -31,9 +32,10 @@
 
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
-| :bomb: `formerMandatoryProperty` | `String` | `1..1` |   |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
+| :bomb: `upcomingMandatoryProperty` | `String` | `1..1` |   |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
 | :bomb: `propertyWithNewConstraints` | `String` | `1..1` |   |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
-| :exclamation:`deprecatedRequestProperty` | `String` | `1..1` |   |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| :exclamation:`deprecatedRequestProperty` | `String` | `0..1` |   |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| `untouchedProperty` | `String` | `1..1` |   |  |  |
 
 <br>
 

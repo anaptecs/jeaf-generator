@@ -5,28 +5,43 @@ extension functions::SystemProperties;
 
 cached List[uml::NamedElement] getAllBreakingChanges(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange()).sortBy(e|e.getBreakingChangeActiveWith());
-    
+
+
 cached List[uml::NamedElement] getAllDueBreakingChanges(uml::Package package):
 	package.getAllBreakingChanges().select(e|e.isDueBreakingChange());
-	
+
+
 cached boolean isDueBreakingChange(uml::NamedElement element):
 	javaIsBefore(element.getBreakingChangeActiveWith(), nextMajorReleasePublishingDate());
 
+
 private boolean javaIsBefore(String referenceDate, String actualDate):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isBefore(java.lang.String, java.lang.String);  
-    
+
+
 cached List[uml::NamedElement] getBreakingChanges(uml::Package package):
     package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange() && e.getNearestPackage() == package).sortBy(e|e.getBreakingChangeActiveWith());
-    
+
+
 cached List[uml::Package] getPackagesForBreakingChangesReport(uml::Model model):
     model.getAllBreakingChanges().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
+
 
 cached boolean isBreakingChange(uml::Element element):
     element.isStereotypeApplied("BreakingChange");
 
+
 cached String getBreakingChangeDescription(uml::NamedElement change):
     change.getStereotypeValue("BreakingChange", "description").replaceAll("\n", "<br>");
 
+
+cached String getBreakingChangeSince(uml::NamedElement change):
+    change.getStereotypeValue("BreakingChange", "since");
+
 cached String getBreakingChangeActiveWith(uml::NamedElement change):
     change.getStereotypeValue("BreakingChange", "activeWith");
+
+
+cached String getBreakingChangeActivactionDate(uml::NamedElement change):
+    change.getStereotypeValue("BreakingChange", "activationDate");
 

@@ -50,16 +50,16 @@
 
 
 «DEFINE BreakingChangesTablePerPackage FOR List[uml::NamedElement]-»
-| Element  | Details    | Description  | Active with |
-|----------|------------|--------------|:-----------:|
+| Element  | Details    | Description  | Since | Active with |
+|----------|------------|--------------|:-----:|:-----------:|
 «IF this.isEmpty == false -»
     «FOREACH this AS change -»
         «IF change.isProperty() || change.isEnumerationLiteral() -»
-| `«change.owner.asNamedElement().name»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+| `«change.owner.asNamedElement().name»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeSince()» | «change.getBreakingChangeActiveWith()» «change.getBreakingChangeActivactionDate()» | 
        «ELSEIF change.isParameter() -»
-| `«change.owner.owner.asNamedElement().name».«change.owner.asNamedElement().name»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+| `«change.owner.owner.asNamedElement().name».«change.owner.asNamedElement().name»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeSince()» | «change.getBreakingChangeActiveWith()» «change.getBreakingChangeActivactionDate()» | 
        «ELSE -»
-| `«change.name»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+| `«change.name»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeSince()» | «change.getBreakingChangeActiveWith()» «change.getBreakingChangeActivactionDate()» | 
        «ENDIF-»
     «ENDFOREACH -»
 «ELSE-»
@@ -81,14 +81,14 @@
 
 
 «DEFINE BreakingChangesTable FOR List[uml::NamedElement]-»
-| Element  | Details    | Description  | Active with |
-|----------|------------|--------------|:-----------:|
+| Element  | Details    | Description  | Since | Active with |
+|----------|------------|--------------|:-----:|:-----------:|
 «IF this.isEmpty == false -»
     «FOREACH this AS change -»
         «IF change.isProperty() || change.isEnumerationLiteral() || change.isParameter() -»
-| `«((uml::NamedElement) change.owner).fqn()»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+| `«((uml::NamedElement) change.owner).fqn()»` | `«change.name»` | «change.getBreakingChangeDescription()» | «change.getBreakingChangeSince()» | «change.getBreakingChangeActiveWith()» «change.getBreakingChangeActivactionDate()» | 
        «ELSE -»
-| `«((uml::NamedElement) change).fqn()»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeActiveWith()» | 
+| `«((uml::NamedElement) change).fqn()»` | | «change.getBreakingChangeDescription()» | «change.getBreakingChangeSince()» | «change.getBreakingChangeActiveWith()» «change.getBreakingChangeActivactionDate()» | 
        «ENDIF-»
     «ENDFOREACH -»
 «ELSE-»
@@ -98,15 +98,15 @@
 
 «DEFINE BreakingChangesCSV FOR Model»
 «FILE getBreakingChangesCSVFileName() res_gen-»
-Element;Package;Details;Description;Active with;
+Element;Package;Details;Description;Since;Active with;Activation Date;
 «FOREACH this.getPackagesForBreakingChangesReport() AS package-»
 «FOREACH package.getBreakingChanges() AS change-»
         «IF change.isProperty() || change.isEnumerationLiteral() -»
-«change.owner.asNamedElement().name»;«package.qualifiedName()»;«change.name»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeActiveWith()»; 
+«change.owner.asNamedElement().name»;«package.qualifiedName()»;«change.name»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeSince()»;«change.getBreakingChangeActiveWith()»;«change.getBreakingChangeActivactionDate()»;
        «ELSEIF change.isParameter() -»
-«change.owner.owner.asNamedElement().name».«change.owner.asNamedElement().name»;«package.qualifiedName()»;«change.name»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeActiveWith()»; 
+«change.owner.owner.asNamedElement().name».«change.owner.asNamedElement().name»;«package.qualifiedName()»;«change.name»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeSince()»;«change.getBreakingChangeActiveWith()»;«change.getBreakingChangeActivactionDate()»;
        «ELSE -»
-«change.name»;«package.qualifiedName()»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeActiveWith()»; 
+«change.name»;«package.qualifiedName()»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeSince()»;«change.getBreakingChangeActiveWith()»;«change.getBreakingChangeActivactionDate()»;
        «ENDIF-»
 «ENDFOREACH-»
 «ENDFOREACH-»
