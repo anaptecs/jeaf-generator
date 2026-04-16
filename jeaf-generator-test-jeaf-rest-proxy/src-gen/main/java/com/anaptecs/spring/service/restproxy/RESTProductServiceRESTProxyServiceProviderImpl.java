@@ -245,7 +245,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -263,7 +263,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lPathBuilder.append('/');
     lPathBuilder.append("test-init");
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -381,7 +381,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setQueryParameter("extensibleEnum", XFun.getDatatypeConverterRegistry()
           .getConverter(ExtensibleEnum.class, String.class).convert(pExtensibleEnum));
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -415,7 +415,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setHeader("Extensible-Enum", XFun.getDatatypeConverterRegistry()
           .getConverter(ExtensibleEnum.class, String.class).convert(pExtensibleEnum));
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -496,7 +496,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       }
       lRequestBuilder.setQueryParameter("calendars", lValues);
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -560,7 +560,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
             .getConverter(Date.class, String.class).convert(pQueryParams.getSqlDate()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -642,7 +642,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
       }
       lRequestBuilder.setHeader("util-dates", lValues);
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -706,7 +706,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
             .convert(pHeaderParams.getSqlDate()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -764,7 +764,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
             .getConverter(ChannelType.class, String.class).convert(pContext.getChannelType()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1426,7 +1426,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     lPathBuilder.append("booking-id-as-path-param/");
     lPathBuilder.append(pBookingID.getBookingID());
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1449,7 +1449,7 @@ public final class RESTProductServiceRESTProxyServiceProviderImpl
     if (pBookingID != null) {
       lRequestBuilder.setHeader("bookingID", pBookingID.getBookingID());
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }

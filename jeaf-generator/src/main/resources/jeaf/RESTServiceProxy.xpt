@@ -196,12 +196,20 @@ public class «this.getRESTProxyName(reactive)» implements «this.asJEAFService
     «EXPAND java::Helper::GenerateAnnotations-»
     «EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult() -»
     @Override
+    «LET generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false AS requiresRequestValidation»
 	«visibility» «getReturnTypeName().getReactiveAwareTypeName(reactive)» «name» («EXPAND jeaf::JEAFOperation::ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
-        «IF generateRESTRequestValidation() && this.getInputParameters().select(e|e.isParameterSuppressed() == false).isEmpty == false»
-            «IF isTargetRuntimeSpring()»
-                // Validate request parameter(s).
-                validationExecutor.validateRequest(«((NamedElement)owner).fqn()».class, «this.asParameterListNames()»);
-            «ENDIF»
+        «IF requiresRequestValidation»
+	        «IF reactive»
+	        // Validate request parameter(s).
+	        return validationExecutor.validateRequest(«((NamedElement)owner).fqn()».class, «this.asParameterListNames()»)
+	                // Next, we execute the REST request
+	                .then(reactor.core.publisher.Mono.defer(() -> {
+	        «ELSE»
+	        // Validate request parameter(s).
+	        validationExecutor.validateRequest(«((NamedElement)owner).fqn()».class, «this.asParameterListNames()»);
+	        «ENDIF»
+        «ELSEIF reactive»
+        	return reactor.core.publisher.Mono.defer( () -> {
         «ENDIF»
 
 		// Create builder for «this.httpMethods.selectFirst(e|e!=null)» request
@@ -424,7 +432,7 @@ public class «this.getRESTProxyName(reactive)» implements «this.asJEAFService
 		«IF getReturnTypeName() != "void"»
 		// Execute request and return result.
 		«ELSE»
-		// Execute request.
+		// Build request object and send REST request.
 		«ENDIF»
 		com.anaptecs.jeaf.rest.executor.api.RESTRequest lRequest = lRequestBuilder.build();
 		
@@ -437,32 +445,43 @@ public class «this.getRESTProxyName(reactive)» implements «this.asJEAFService
             com.anaptecs.jeaf.rest.executor.api.ObjectType lObjectType = com.anaptecs.jeaf.rest.executor.api.ObjectType.createObjectType(«getReturnType().type.fqn()».class);                
             «ENDIF»
 			«IF this.getReturnResult().isMultivalued() == false»
-	            «IF generateRESTResponseValidation()»
+	            «IF generateRESTResponseValidation() && reactive == false»
 	                «getReturnTypeName().getReactiveAwareTypeName(reactive)» lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», lObjectType);
 	                // Validate response and return it.
 	                validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
 	                return lResult;
 	            «ELSE»
-				return requestExecutor.executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», lObjectType);
+					return requestExecutor.«IF reactive»«getReturnTypeName().getReactiveAwareReturnTypeCast()»«ENDIF»executeSingleObjectResultRequest(lRequest, «this.getHTTPStatusCode()», lObjectType);
 	            «ENDIF»
+                «IF reactive»
+	                })«IF requiresRequestValidation»)«ENDIF»
+                «ENDIF»
 			«ELSE»
-		    «getReturnTypeName().getReactiveAwareTypeName(reactive)» lResult = requestExecutor.executeCollectionResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, lObjectType);
-		    if (lResult == null) {
-		      lResult = «IF reactive»«getMonoTypeName()».just(«ENDIF»«this.getReturnResult().getEmptyCollectionOperation()»«IF reactive»)«ENDIF»;
-		    }
-
-			«IF generateRESTResponseValidation()»
-				// Validate response and return it.
-				validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
+			    «getReturnTypeName().getReactiveAwareTypeName(reactive)» lResult = requestExecutor.executeCollectionResultRequest(lRequest, «this.getHTTPStatusCode()», «this.getReturnResult().getCollectionType()».class, lObjectType);
+			    if (lResult == null) {
+			      lResult = «IF reactive»«getMonoTypeName()».just(«ENDIF»«this.getReturnResult().getEmptyCollectionOperation()»«IF reactive»)«ENDIF»;
+			    }
+	
+				«IF generateRESTResponseValidation() && reactive == false»
+					// Validate response and return it.
+					validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, lResult);
+				«ENDIF»
+			    return lResult;
+                «IF reactive»
+	                })«IF requiresRequestValidation»)«ENDIF»
+                «ENDIF»
 			«ENDIF»
-		    return lResult;
+			«IF reactive && generateRESTResponseValidation()»
+				// Validate response
+				.delayUntil(result -> validationExecutor.validateResponse(«((NamedElement)owner).fqn()».class, result))
 			«ENDIF»
+			«IF reactive»;«ENDIF»
 		«ELSE»
 		    requestExecutor.executeNoResultRequest(lRequest, «this.getHTTPStatusCode()»);
 		«ENDIF»
 	}
+	«ENDLET»
 «ENDDEFINE»
-
 
 
 «DEFINE QueryParamValueAccessor FOR QueryParam»

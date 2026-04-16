@@ -277,7 +277,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/rest-products");
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -295,7 +295,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lPathBuilder.append('/');
     lPathBuilder.append("test-init");
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -424,7 +424,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pExtensibleEnum != null) {
       lRequestBuilder.setQueryParameter("extensibleEnum", pExtensibleEnum.toString());
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -457,7 +457,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pExtensibleEnum != null) {
       lRequestBuilder.setHeader("Extensible-Enum", pExtensibleEnum.toString());
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -536,7 +536,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       }
       lRequestBuilder.setQueryParameter("calendars", lValues);
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -597,7 +597,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setQueryParameter("sqlDate", pQueryParams.getSqlDate().toString());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -673,7 +673,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
       }
       lRequestBuilder.setHeader("util-dates", lValues);
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -734,7 +734,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setHeader("SQL-Date", pHeaderParams.getSqlDate().toString());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -791,7 +791,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
         lRequestBuilder.setCookie("Channel-Type", pContext.getChannelType().toString());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1529,7 +1529,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     lPathBuilder.append("booking-id-as-path-param/");
     lPathBuilder.append(pBookingID.getBookingID());
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1554,7 +1554,7 @@ public class RESTProductServiceRESTProxy implements RESTProductService {
     if (pBookingID != null) {
       lRequestBuilder.setHeader("bookingID", pBookingID.getBookingID());
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }

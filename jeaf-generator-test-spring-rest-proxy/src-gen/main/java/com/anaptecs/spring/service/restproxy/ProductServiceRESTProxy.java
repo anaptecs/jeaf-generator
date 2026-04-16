@@ -255,7 +255,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lPathBuilder.append('/');
     lPathBuilder.append("products/");
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -354,7 +354,7 @@ public class ProductServiceRESTProxy implements ProductService {
         lRequestBuilder.setHeader("lang", pBeanParam.getLanguage().toString());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -435,7 +435,7 @@ public class ProductServiceRESTProxy implements ProductService {
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pProduct as request body.
     lRequestBuilder.setBody(pProduct);
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -510,7 +510,7 @@ public class ProductServiceRESTProxy implements ProductService {
         lRequestBuilder.setCookie("Channel-Type", pContext.getChannelType().toString());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -793,7 +793,7 @@ public class ProductServiceRESTProxy implements ProductService {
     if (pSQLDate != null) {
       lRequestBuilder.setQueryParameter("sqlDate", pSQLDate.toString());
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -852,7 +852,7 @@ public class ProductServiceRESTProxy implements ProductService {
         lRequestBuilder.setQueryParameter("sqlDate", pQueryParams.getSqlDate().toString());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -917,7 +917,7 @@ public class ProductServiceRESTProxy implements ProductService {
     if (pSQLDate != null) {
       lRequestBuilder.setHeader("SQL-Date", pSQLDate.toString());
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -976,7 +976,7 @@ public class ProductServiceRESTProxy implements ProductService {
         lRequestBuilder.setHeader("SQL-Date", pHeaderParams.getSqlDate().toString());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }

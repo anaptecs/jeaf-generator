@@ -100,24 +100,26 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
    */
   @Override
   public Mono<List<Product>> getProducts( ) {
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(Product.class);
-    Mono<List<Product>> lResult =
-        requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
-    if (lResult == null) {
-      lResult = Mono.just(Collections.emptyList());
-    }
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return Mono.defer(( ) -> {
+      // Create builder for GET request
+      RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+      // Build path of request
+      StringBuilder lPathBuilder = new StringBuilder();
+      lPathBuilder.append('/');
+      lPathBuilder.append("products/");
+      lRequestBuilder.setPath(lPathBuilder.toString());
+      // Execute request and return result.
+      RESTRequest lRequest = lRequestBuilder.build();
+      ObjectType lObjectType = ObjectType.createObjectType(Product.class);
+      Mono<List<Product>> lResult =
+          requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
+      if (lResult == null) {
+        lResult = Mono.just(Collections.emptyList());
+      }
+      return lResult;
+    })
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -127,22 +129,25 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<Product> getProduct( String pProductID ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pProductID);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/");
-    lPathBuilder.append(pProductID);
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(Product.class);
-    Mono<Product> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pProductID)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/");
+          lPathBuilder.append(pProductID);
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(Product.class);
+          return requestExecutor.<Product> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -152,23 +157,26 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<Boolean> createProduct( Product pProduct ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pProduct);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set parameter pProduct as request body.
-    lRequestBuilder.setBody(pProduct);
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(boolean.class);
-    Mono<Boolean> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pProduct)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set parameter pProduct as request body.
+          lRequestBuilder.setBody(pProduct);
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(boolean.class);
+          return requestExecutor.<Boolean> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -178,48 +186,51 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<Sortiment> getSortiment( Context pContext ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pContext);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/sortiment/");
-    lPathBuilder.append(pContext.getPathParam());
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Add query parameter(s) to request
-    if (pContext != null) {
-      if (pContext.getQueryParam() != null) {
-        lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
-      }
-    }
-    // Set HTTP header(s)
-    if (pContext != null) {
-      // First we process custom headers then the explicit ones.
-      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
-        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
-      }
-      if (pContext.getAccessToken() != null) {
-        lRequestBuilder.setHeader("token", pContext.getAccessToken());
-      }
-      if (pContext.getLanguage() != null) {
-        lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
-      }
-      if (pContext.getIntCode() != null) {
-        lRequestBuilder.setHeader("intCode", pContext.getIntCode().getCode());
-      }
-    }
-    // Handle cookie parameters
-    if (pContext != null) {
-      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
-    }
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(Sortiment.class);
-    Mono<Sortiment> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pContext)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/sortiment/");
+          lPathBuilder.append(pContext.getPathParam());
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Add query parameter(s) to request
+          if (pContext != null) {
+            if (pContext.getQueryParam() != null) {
+              lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
+            }
+          }
+          // Set HTTP header(s)
+          if (pContext != null) {
+            // First we process custom headers then the explicit ones.
+            for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+              lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+            }
+            if (pContext.getAccessToken() != null) {
+              lRequestBuilder.setHeader("token", pContext.getAccessToken());
+            }
+            if (pContext.getLanguage() != null) {
+              lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
+            }
+            if (pContext.getIntCode() != null) {
+              lRequestBuilder.setHeader("intCode", pContext.getIntCode().getCode());
+            }
+          }
+          // Handle cookie parameters
+          if (pContext != null) {
+            lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+          }
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(Sortiment.class);
+          return requestExecutor.<Sortiment> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -229,43 +240,48 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<ChannelCode> createChannelCode( String pChannelCode ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pChannelCode);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/ChannelCode");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set parameter pChannelCode as request body.
-    lRequestBuilder.setBody(pChannelCode);
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(ChannelCode.class);
-    Mono<ChannelCode> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pChannelCode)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/ChannelCode");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set parameter pChannelCode as request body.
+          lRequestBuilder.setBody(pChannelCode);
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(ChannelCode.class);
+          return requestExecutor.<ChannelCode> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
    */
   @Override
   public Mono<Void> ping( ) {
-    // Create builder for HEAD request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.HEAD, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(void.class);
-    Mono<Void> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 204, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return Mono.defer(( ) -> {
+      // Create builder for HEAD request
+      RESTRequest.Builder lRequestBuilder =
+          RESTRequest.builder(ProductService.class, HttpMethod.HEAD, ContentType.JSON);
+      // Build path of request
+      StringBuilder lPathBuilder = new StringBuilder();
+      lPathBuilder.append('/');
+      lPathBuilder.append("products/");
+      lRequestBuilder.setPath(lPathBuilder.toString());
+      // Build request object and send REST request.
+      RESTRequest lRequest = lRequestBuilder.build();
+      ObjectType lObjectType = ObjectType.createObjectType(void.class);
+      return requestExecutor.<Void> executeSingleObjectResultRequest(lRequest, 204, lObjectType);
+    })
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -274,20 +290,21 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Deprecated
   @Override
   public Mono<String> deprecatedOperation( ) {
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/deprecated/operation");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return Mono.defer(( ) -> {
+      // Create builder for GET request
+      RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+      // Build path of request
+      StringBuilder lPathBuilder = new StringBuilder();
+      lPathBuilder.append('/');
+      lPathBuilder.append("products/deprecated/operation");
+      lRequestBuilder.setPath(lPathBuilder.toString());
+      // Execute request and return result.
+      RESTRequest lRequest = lRequestBuilder.build();
+      ObjectType lObjectType = ObjectType.createObjectType(String.class);
+      return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+    })
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -297,40 +314,43 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> deprecatedContext( DeprecatedContext pContext ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pContext);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/deprecated/context");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Add query parameter(s) to request
-    if (pContext != null) {
-      if (pContext.getQueryParam() != null) {
-        lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
-      }
-    }
-    // Set HTTP header(s)
-    if (pContext != null) {
-      if (pContext.getAccessToken() != null) {
-        lRequestBuilder.setHeader("token", pContext.getAccessToken());
-      }
-      if (pContext.getLanguage() != null) {
-        lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
-      }
-    }
-    // Handle cookie parameters
-    if (pContext != null) {
-      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
-    }
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pContext)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/deprecated/context");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Add query parameter(s) to request
+          if (pContext != null) {
+            if (pContext.getQueryParam() != null) {
+              lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
+            }
+          }
+          // Set HTTP header(s)
+          if (pContext != null) {
+            if (pContext.getAccessToken() != null) {
+              lRequestBuilder.setHeader("token", pContext.getAccessToken());
+            }
+            if (pContext.getLanguage() != null) {
+              lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
+            }
+          }
+          // Handle cookie parameters
+          if (pContext != null) {
+            lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+          }
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -339,36 +359,39 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<Void> deprecatedBeanParam( BeanParameter pBeanParam ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pBeanParam);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/deprecated/beanParams");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Add query parameter(s) to request
-    if (pBeanParam != null) {
-      if (pBeanParam.getOldStyle() != null) {
-        lRequestBuilder.setQueryParameter("q2", pBeanParam.getOldStyle());
-      }
-    }
-    // Set HTTP header(s)
-    if (pBeanParam != null) {
-      if (pBeanParam.getAccessToken() != null) {
-        lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
-      }
-      if (pBeanParam.getLanguage() != null) {
-        lRequestBuilder.setHeader("lang", pBeanParam.getLanguage().toString());
-      }
-    }
-    // Execute request.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(void.class);
-    Mono<Void> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 204, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pBeanParam)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/deprecated/beanParams");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Add query parameter(s) to request
+          if (pBeanParam != null) {
+            if (pBeanParam.getOldStyle() != null) {
+              lRequestBuilder.setQueryParameter("q2", pBeanParam.getOldStyle());
+            }
+          }
+          // Set HTTP header(s)
+          if (pBeanParam != null) {
+            if (pBeanParam.getAccessToken() != null) {
+              lRequestBuilder.setHeader("token", pBeanParam.getAccessToken());
+            }
+            if (pBeanParam.getLanguage() != null) {
+              lRequestBuilder.setHeader("lang", pBeanParam.getLanguage().toString());
+            }
+          }
+          // Build request object and send REST request.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(void.class);
+          return requestExecutor.<Void> executeSingleObjectResultRequest(lRequest, 204, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -381,23 +404,26 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> deprecatedParams( @Deprecated int pParam1 ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pParam1);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/deprecated/params");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set HTTP header(s)
-    lRequestBuilder.setHeader("param1", pParam1);
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pParam1)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/deprecated/params");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set HTTP header(s)
+          lRequestBuilder.setHeader("param1", pParam1);
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -408,23 +434,26 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> deprecatedBody( @Deprecated String pBody ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pBody);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/deprecated/body");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set parameter pBody as request body.
-    lRequestBuilder.setBody(pBody);
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pBody)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/deprecated/body");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set parameter pBody as request body.
+          lRequestBuilder.setBody(pBody);
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -437,23 +466,26 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<Void> deprectedComplexRequestBody( @Deprecated Product pProduct ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pProduct);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/deprecated/complexBody");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set parameter pProduct as request body.
-    lRequestBuilder.setBody(pProduct);
-    // Execute request.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(void.class);
-    Mono<Void> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 204, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pProduct)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/deprecated/complexBody");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set parameter pProduct as request body.
+          lRequestBuilder.setBody(pProduct);
+          // Build request object and send REST request.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(void.class);
+          return requestExecutor.<Void> executeSingleObjectResultRequest(lRequest, 204, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -463,20 +495,21 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Deprecated
   @Override
   public Mono<Product> deprecatedComplexReturn( ) {
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/deprecated/complexReturn");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(Product.class);
-    Mono<Product> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return Mono.defer(( ) -> {
+      // Create builder for GET request
+      RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+      // Build path of request
+      StringBuilder lPathBuilder = new StringBuilder();
+      lPathBuilder.append('/');
+      lPathBuilder.append("products/deprecated/complexReturn");
+      lRequestBuilder.setPath(lPathBuilder.toString());
+      // Execute request and return result.
+      RESTRequest lRequest = lRequestBuilder.build();
+      ObjectType lObjectType = ObjectType.createObjectType(Product.class);
+      return requestExecutor.<Product> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+    })
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -485,54 +518,57 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<Void> loadSpecificThings( SpecialContext pContext ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pContext);
-    // Create builder for PATCH request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.PATCH, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/specific/");
-    lPathBuilder.append(pContext.getPathParam());
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Add query parameter(s) to request
-    if (pContext != null) {
-      if (pContext.getQueryParam() != null) {
-        lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
-      }
-    }
-    // Set HTTP header(s)
-    if (pContext != null) {
-      // First we process custom headers then the explicit ones.
-      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
-        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
-      }
-      if (pContext.getAccessToken() != null) {
-        lRequestBuilder.setHeader("token", pContext.getAccessToken());
-      }
-      if (pContext.getLanguage() != null) {
-        lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
-      }
-      if (pContext.getIntCode() != null) {
-        lRequestBuilder.setHeader("intCode", pContext.getIntCode().getCode());
-      }
-      if (pContext.getSpecificHeader() != null) {
-        lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
-      }
-    }
-    // Handle cookie parameters
-    if (pContext != null) {
-      lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
-      if (pContext.getChannelType() != null) {
-        lRequestBuilder.setCookie("Channel-Type", pContext.getChannelType().toString());
-      }
-    }
-    // Execute request.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(void.class);
-    Mono<Void> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 204, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pContext)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for PATCH request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.PATCH, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/specific/");
+          lPathBuilder.append(pContext.getPathParam());
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Add query parameter(s) to request
+          if (pContext != null) {
+            if (pContext.getQueryParam() != null) {
+              lRequestBuilder.setQueryParameter("q1", pContext.getQueryParam());
+            }
+          }
+          // Set HTTP header(s)
+          if (pContext != null) {
+            // First we process custom headers then the explicit ones.
+            for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+              lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+            }
+            if (pContext.getAccessToken() != null) {
+              lRequestBuilder.setHeader("token", pContext.getAccessToken());
+            }
+            if (pContext.getLanguage() != null) {
+              lRequestBuilder.setHeader("lang", pContext.getLanguage().toString());
+            }
+            if (pContext.getIntCode() != null) {
+              lRequestBuilder.setHeader("intCode", pContext.getIntCode().getCode());
+            }
+            if (pContext.getSpecificHeader() != null) {
+              lRequestBuilder.setHeader("specificHeader", pContext.getSpecificHeader());
+            }
+          }
+          // Handle cookie parameters
+          if (pContext != null) {
+            lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
+            if (pContext.getChannelType() != null) {
+              lRequestBuilder.setCookie("Channel-Type", pContext.getChannelType().toString());
+            }
+          }
+          // Build request object and send REST request.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(void.class);
+          return requestExecutor.<Void> executeSingleObjectResultRequest(lRequest, 204, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -542,23 +578,26 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<ChannelCode> createChannelCodeFromObject( ChannelCode pChannelCode ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pChannelCode);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/ChannelCodeObject");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set parameter pChannelCode as request body.
-    lRequestBuilder.setBody(pChannelCode);
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(ChannelCode.class);
-    Mono<ChannelCode> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pChannelCode)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/ChannelCodeObject");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set parameter pChannelCode as request body.
+          lRequestBuilder.setBody(pChannelCode);
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(ChannelCode.class);
+          return requestExecutor.<ChannelCode> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -568,27 +607,31 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<List<CurrencyCode>> addCurrencies( List<CurrencyCode> pCurrencies ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pCurrencies);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/currencies");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set parameter pCurrencies as request body.
-    lRequestBuilder.setBody(pCurrencies);
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(CurrencyCode.class);
-    Mono<List<CurrencyCode>> lResult =
-        requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
-    if (lResult == null) {
-      lResult = Mono.just(Collections.emptyList());
-    }
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pCurrencies)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/currencies");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set parameter pCurrencies as request body.
+          lRequestBuilder.setBody(pCurrencies);
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(CurrencyCode.class);
+          Mono<List<CurrencyCode>> lResult =
+              requestExecutor.executeCollectionResultRequest(lRequest, 200, List.class, lObjectType);
+          if (lResult == null) {
+            lResult = Mono.just(Collections.emptyList());
+          }
+          return lResult;
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -598,23 +641,26 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<CurrencyCode> isCurrencySupported( CurrencyCode pCurrency ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pCurrency);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/currencies/valid");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set parameter pCurrency as request body.
-    lRequestBuilder.setBody(pCurrency);
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(CurrencyCode.class);
-    Mono<CurrencyCode> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pCurrency)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/currencies/valid");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set parameter pCurrency as request body.
+          lRequestBuilder.setBody(pCurrency);
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(CurrencyCode.class);
+          return requestExecutor.<CurrencyCode> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -624,23 +670,26 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<IntegerCodeType> testCodeTypeUsage( StringCodeType pStringCode ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pStringCode);
-    // Create builder for POST request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/codeTypeUsages");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set parameter pStringCode as request body.
-    lRequestBuilder.setBody(pStringCode);
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(IntegerCodeType.class);
-    Mono<IntegerCodeType> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pStringCode)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for POST request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.POST, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/codeTypeUsages");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set parameter pStringCode as request body.
+          lRequestBuilder.setBody(pStringCode);
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(IntegerCodeType.class);
+          return requestExecutor.<IntegerCodeType> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -650,30 +699,33 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> testLocalBeanParamType( LocalBeanParamType pBeanParam ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pBeanParam);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/LocalBeanParam");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set HTTP header(s)
-    if (pBeanParam != null) {
-      if (pBeanParam.getLocalKey() != null) {
-        lRequestBuilder.setHeader("localKey", pBeanParam.getLocalKey());
-      }
-      if (pBeanParam.getLocalID() != null) {
-        lRequestBuilder.setHeader("localID", pBeanParam.getLocalID());
-      }
-    }
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pBeanParam)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/LocalBeanParam");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set HTTP header(s)
+          if (pBeanParam != null) {
+            if (pBeanParam.getLocalKey() != null) {
+              lRequestBuilder.setHeader("localKey", pBeanParam.getLocalKey());
+            }
+            if (pBeanParam.getLocalID() != null) {
+              lRequestBuilder.setHeader("localID", pBeanParam.getLocalID());
+            }
+          }
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -683,33 +735,36 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> testExternalBeanParameterType( ParentBeanParamType pParent ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pParent);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/ExternalBeanParam");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set HTTP header(s)
-    if (pParent != null) {
-      if (pParent.getNovaKey() != null) {
-        lRequestBuilder.setHeader("novaKey", pParent.getNovaKey());
-      }
-      if (pParent.getTkID() != null) {
-        lRequestBuilder.setHeader("tkID", pParent.getTkID());
-      }
-      if (pParent.getCode() != null) {
-        lRequestBuilder.setHeader("code", pParent.getCode().getCode());
-      }
-    }
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pParent)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/ExternalBeanParam");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set HTTP header(s)
+          if (pParent != null) {
+            if (pParent.getNovaKey() != null) {
+              lRequestBuilder.setHeader("novaKey", pParent.getNovaKey());
+            }
+            if (pParent.getTkID() != null) {
+              lRequestBuilder.setHeader("tkID", pParent.getTkID());
+            }
+            if (pParent.getCode() != null) {
+              lRequestBuilder.setHeader("code", pParent.getCode().getCode());
+            }
+          }
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -719,36 +774,39 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> testChildBeanParameter( ChildBeanParameterType pChild ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pChild);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/ChildBeanParam");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set HTTP header(s)
-    if (pChild != null) {
-      if (pChild.getNovaKey() != null) {
-        lRequestBuilder.setHeader("novaKey", pChild.getNovaKey());
-      }
-      if (pChild.getTkID() != null) {
-        lRequestBuilder.setHeader("tkID", pChild.getTkID());
-      }
-      if (pChild.getCode() != null) {
-        lRequestBuilder.setHeader("code", pChild.getCode().getCode());
-      }
-      if (pChild.getChildProperty() != null) {
-        lRequestBuilder.setHeader("X-Child-Property", pChild.getChildProperty());
-      }
-    }
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pChild)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/ChildBeanParam");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set HTTP header(s)
+          if (pChild != null) {
+            if (pChild.getNovaKey() != null) {
+              lRequestBuilder.setHeader("novaKey", pChild.getNovaKey());
+            }
+            if (pChild.getTkID() != null) {
+              lRequestBuilder.setHeader("tkID", pChild.getTkID());
+            }
+            if (pChild.getCode() != null) {
+              lRequestBuilder.setHeader("code", pChild.getCode().getCode());
+            }
+            if (pChild.getChildProperty() != null) {
+              lRequestBuilder.setHeader("X-Child-Property", pChild.getChildProperty());
+            }
+          }
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -769,58 +827,62 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
       LocalDateTime pLocalStartTimestamp, LocalTime pLocalStartTime, LocalDate pLocalStartDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp,
-        pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/test-date-query-params/");
-    lPathBuilder.append(pPath);
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Add query parameter(s) to request
-    if (pStartTimestamp != null) {
-      lRequestBuilder.setQueryParameter("startTimestamp",
-          DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
-    }
-    if (pStartTime != null) {
-      lRequestBuilder.setQueryParameter("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
-    }
-    if (pLocalStartTimestamp != null) {
-      lRequestBuilder.setQueryParameter("localStartTimestamp",
-          DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
-    }
-    if (pLocalStartTime != null) {
-      lRequestBuilder.setQueryParameter("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
-    }
-    if (pLocalStartDate != null) {
-      lRequestBuilder.setQueryParameter("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
-    }
-    if (pCalendar != null) {
-      lRequestBuilder.setQueryParameter("calendar",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
-    }
-    if (pUtilDate != null) {
-      lRequestBuilder.setQueryParameter("utilDate",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
-    }
-    if (pSQLTimestamp != null) {
-      lRequestBuilder.setQueryParameter("sqlTimestamp", pSQLTimestamp.toString());
-    }
-    if (pSQLTime != null) {
-      lRequestBuilder.setQueryParameter("sqlTime", pSQLTime.toString());
-    }
-    if (pSQLDate != null) {
-      lRequestBuilder.setQueryParameter("sqlDate", pSQLDate.toString());
-    }
-    // Execute request.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(void.class);
-    Mono<Void> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 204, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor
+        .validateRequest(ProductService.class, pPath, pStartTimestamp, pStartTime, pLocalStartTimestamp,
+            pLocalStartTime, pLocalStartDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/test-date-query-params/");
+          lPathBuilder.append(pPath);
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Add query parameter(s) to request
+          if (pStartTimestamp != null) {
+            lRequestBuilder.setQueryParameter("startTimestamp",
+                DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pStartTimestamp));
+          }
+          if (pStartTime != null) {
+            lRequestBuilder.setQueryParameter("startTime", DateTimeFormatter.ISO_OFFSET_TIME.format(pStartTime));
+          }
+          if (pLocalStartTimestamp != null) {
+            lRequestBuilder.setQueryParameter("localStartTimestamp",
+                DateTimeFormatter.ISO_DATE_TIME.format(pLocalStartTimestamp));
+          }
+          if (pLocalStartTime != null) {
+            lRequestBuilder.setQueryParameter("localStartTime", DateTimeFormatter.ISO_TIME.format(pLocalStartTime));
+          }
+          if (pLocalStartDate != null) {
+            lRequestBuilder.setQueryParameter("localStartDate", DateTimeFormatter.ISO_DATE.format(pLocalStartDate));
+          }
+          if (pCalendar != null) {
+            lRequestBuilder.setQueryParameter("calendar",
+                new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
+          }
+          if (pUtilDate != null) {
+            lRequestBuilder.setQueryParameter("utilDate",
+                new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
+          }
+          if (pSQLTimestamp != null) {
+            lRequestBuilder.setQueryParameter("sqlTimestamp", pSQLTimestamp.toString());
+          }
+          if (pSQLTime != null) {
+            lRequestBuilder.setQueryParameter("sqlTime", pSQLTime.toString());
+          }
+          if (pSQLDate != null) {
+            lRequestBuilder.setQueryParameter("sqlDate", pSQLDate.toString());
+          }
+          // Build request object and send REST request.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(void.class);
+          return requestExecutor.<Void> executeSingleObjectResultRequest(lRequest, 204, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -830,60 +892,65 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<Void> testDateQueryParamsBean( String pPath, DateQueryParamsBean pQueryParams ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pPath, pQueryParams);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/test-date-query-params-beans/");
-    lPathBuilder.append(pPath);
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Add query parameter(s) to request
-    if (pQueryParams != null) {
-      if (pQueryParams.getOffsetDateTime() != null) {
-        lRequestBuilder.setQueryParameter("offsetDateTime",
-            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryParams.getOffsetDateTime()));
-      }
-      if (pQueryParams.getOffsetTime() != null) {
-        lRequestBuilder.setQueryParameter("offsetTime",
-            DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryParams.getOffsetTime()));
-      }
-      if (pQueryParams.getLocalDateTime() != null) {
-        lRequestBuilder.setQueryParameter("localDateTime",
-            DateTimeFormatter.ISO_DATE_TIME.format(pQueryParams.getLocalDateTime()));
-      }
-      if (pQueryParams.getLocalTime() != null) {
-        lRequestBuilder.setQueryParameter("localTime", DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
-      }
-      if (pQueryParams.getLocalDate() != null) {
-        lRequestBuilder.setQueryParameter("localDate", DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
-      }
-      if (pQueryParams.getUtilDate() != null) {
-        lRequestBuilder.setQueryParameter("utilDate",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getUtilDate()));
-      }
-      if (pQueryParams.getCalendar() != null) {
-        lRequestBuilder.setQueryParameter("calendar",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
-      }
-      if (pQueryParams.getSqlTimestamp() != null) {
-        lRequestBuilder.setQueryParameter("sqlTimestamp", pQueryParams.getSqlTimestamp().toString());
-      }
-      if (pQueryParams.getSqlTime() != null) {
-        lRequestBuilder.setQueryParameter("sqlTime", pQueryParams.getSqlTime().toString());
-      }
-      if (pQueryParams.getSqlDate() != null) {
-        lRequestBuilder.setQueryParameter("sqlDate", pQueryParams.getSqlDate().toString());
-      }
-    }
-    // Execute request.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(void.class);
-    Mono<Void> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 204, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pPath, pQueryParams)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/test-date-query-params-beans/");
+          lPathBuilder.append(pPath);
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Add query parameter(s) to request
+          if (pQueryParams != null) {
+            if (pQueryParams.getOffsetDateTime() != null) {
+              lRequestBuilder.setQueryParameter("offsetDateTime",
+                  DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pQueryParams.getOffsetDateTime()));
+            }
+            if (pQueryParams.getOffsetTime() != null) {
+              lRequestBuilder.setQueryParameter("offsetTime",
+                  DateTimeFormatter.ISO_OFFSET_TIME.format(pQueryParams.getOffsetTime()));
+            }
+            if (pQueryParams.getLocalDateTime() != null) {
+              lRequestBuilder.setQueryParameter("localDateTime",
+                  DateTimeFormatter.ISO_DATE_TIME.format(pQueryParams.getLocalDateTime()));
+            }
+            if (pQueryParams.getLocalTime() != null) {
+              lRequestBuilder.setQueryParameter("localTime",
+                  DateTimeFormatter.ISO_TIME.format(pQueryParams.getLocalTime()));
+            }
+            if (pQueryParams.getLocalDate() != null) {
+              lRequestBuilder.setQueryParameter("localDate",
+                  DateTimeFormatter.ISO_DATE.format(pQueryParams.getLocalDate()));
+            }
+            if (pQueryParams.getUtilDate() != null) {
+              lRequestBuilder.setQueryParameter("utilDate",
+                  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getUtilDate()));
+            }
+            if (pQueryParams.getCalendar() != null) {
+              lRequestBuilder.setQueryParameter("calendar",
+                  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pQueryParams.getCalendar().getTime()));
+            }
+            if (pQueryParams.getSqlTimestamp() != null) {
+              lRequestBuilder.setQueryParameter("sqlTimestamp", pQueryParams.getSqlTimestamp().toString());
+            }
+            if (pQueryParams.getSqlTime() != null) {
+              lRequestBuilder.setQueryParameter("sqlTime", pQueryParams.getSqlTime().toString());
+            }
+            if (pQueryParams.getSqlDate() != null) {
+              lRequestBuilder.setQueryParameter("sqlDate", pQueryParams.getSqlDate().toString());
+            }
+          }
+          // Build request object and send REST request.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(void.class);
+          return requestExecutor.<Void> executeSingleObjectResultRequest(lRequest, 204, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -904,55 +971,61 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
       LocalDateTime pLocalDateTime, LocalTime pLocalTime, LocalDate pLocalDate, Calendar pCalendar,
       java.util.Date pUtilDate, Timestamp pSQLTimestamp, Time pSQLTime, Date pSQLDate ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime,
-        pLocalTime, pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/test-date-header-params/");
-    lPathBuilder.append(pPath);
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set HTTP header(s)
-    if (pOffsetDateTime != null) {
-      lRequestBuilder.setHeader("Offset-Date-Time", DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pOffsetDateTime));
-    }
-    if (pOffsetTime != null) {
-      lRequestBuilder.setHeader("Offset-Time", DateTimeFormatter.ISO_OFFSET_TIME.format(pOffsetTime));
-    }
-    if (pLocalDateTime != null) {
-      lRequestBuilder.setHeader("Local-Date-Time", DateTimeFormatter.ISO_DATE_TIME.format(pLocalDateTime));
-    }
-    if (pLocalTime != null) {
-      lRequestBuilder.setHeader("Local-Time", DateTimeFormatter.ISO_TIME.format(pLocalTime));
-    }
-    if (pLocalDate != null) {
-      lRequestBuilder.setHeader("Local-Date", DateTimeFormatter.ISO_DATE.format(pLocalDate));
-    }
-    if (pCalendar != null) {
-      lRequestBuilder.setHeader("Calendar",
-          new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
-    }
-    if (pUtilDate != null) {
-      lRequestBuilder.setHeader("Util-Date", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
-    }
-    if (pSQLTimestamp != null) {
-      lRequestBuilder.setHeader("SQL-Timestamp", pSQLTimestamp.toString());
-    }
-    if (pSQLTime != null) {
-      lRequestBuilder.setHeader("SQL-Time", pSQLTime.toString());
-    }
-    if (pSQLDate != null) {
-      lRequestBuilder.setHeader("SQL-Date", pSQLDate.toString());
-    }
-    // Execute request.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(void.class);
-    Mono<Void> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 204, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor
+        .validateRequest(ProductService.class, pPath, pOffsetDateTime, pOffsetTime, pLocalDateTime, pLocalTime,
+            pLocalDate, pCalendar, pUtilDate, pSQLTimestamp, pSQLTime, pSQLDate)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/test-date-header-params/");
+          lPathBuilder.append(pPath);
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set HTTP header(s)
+          if (pOffsetDateTime != null) {
+            lRequestBuilder.setHeader("Offset-Date-Time",
+                DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pOffsetDateTime));
+          }
+          if (pOffsetTime != null) {
+            lRequestBuilder.setHeader("Offset-Time", DateTimeFormatter.ISO_OFFSET_TIME.format(pOffsetTime));
+          }
+          if (pLocalDateTime != null) {
+            lRequestBuilder.setHeader("Local-Date-Time", DateTimeFormatter.ISO_DATE_TIME.format(pLocalDateTime));
+          }
+          if (pLocalTime != null) {
+            lRequestBuilder.setHeader("Local-Time", DateTimeFormatter.ISO_TIME.format(pLocalTime));
+          }
+          if (pLocalDate != null) {
+            lRequestBuilder.setHeader("Local-Date", DateTimeFormatter.ISO_DATE.format(pLocalDate));
+          }
+          if (pCalendar != null) {
+            lRequestBuilder.setHeader("Calendar",
+                new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pCalendar.getTime()));
+          }
+          if (pUtilDate != null) {
+            lRequestBuilder.setHeader("Util-Date",
+                new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pUtilDate));
+          }
+          if (pSQLTimestamp != null) {
+            lRequestBuilder.setHeader("SQL-Timestamp", pSQLTimestamp.toString());
+          }
+          if (pSQLTime != null) {
+            lRequestBuilder.setHeader("SQL-Time", pSQLTime.toString());
+          }
+          if (pSQLDate != null) {
+            lRequestBuilder.setHeader("SQL-Date", pSQLDate.toString());
+          }
+          // Build request object and send REST request.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(void.class);
+          return requestExecutor.<Void> executeSingleObjectResultRequest(lRequest, 204, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -962,60 +1035,63 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<Void> testDateHeaderParamsBean( String pPath, DateHeaderParamsBean pHeaderParams ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pPath, pHeaderParams);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/test-date-header-params-beans/");
-    lPathBuilder.append(pPath);
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set HTTP header(s)
-    if (pHeaderParams != null) {
-      if (pHeaderParams.getOffsetDateTime() != null) {
-        lRequestBuilder.setHeader("Offset-Date-Time",
-            DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pHeaderParams.getOffsetDateTime()));
-      }
-      if (pHeaderParams.getOffsetTime() != null) {
-        lRequestBuilder.setHeader("Offset-Time",
-            DateTimeFormatter.ISO_OFFSET_TIME.format(pHeaderParams.getOffsetTime()));
-      }
-      if (pHeaderParams.getLocalDateTime() != null) {
-        lRequestBuilder.setHeader("Local-Date-Time",
-            DateTimeFormatter.ISO_DATE_TIME.format(pHeaderParams.getLocalDateTime()));
-      }
-      if (pHeaderParams.getLocalTime() != null) {
-        lRequestBuilder.setHeader("Local-Time", DateTimeFormatter.ISO_TIME.format(pHeaderParams.getLocalTime()));
-      }
-      if (pHeaderParams.getLocalDate() != null) {
-        lRequestBuilder.setHeader("Local-Date", DateTimeFormatter.ISO_DATE.format(pHeaderParams.getLocalDate()));
-      }
-      if (pHeaderParams.getUtilDate() != null) {
-        lRequestBuilder.setHeader("Util-Date",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getUtilDate()));
-      }
-      if (pHeaderParams.getCalendar() != null) {
-        lRequestBuilder.setHeader("Calendar",
-            new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getCalendar().getTime()));
-      }
-      if (pHeaderParams.getSqlTimestamp() != null) {
-        lRequestBuilder.setHeader("SQL-Timestamp", pHeaderParams.getSqlTimestamp().toString());
-      }
-      if (pHeaderParams.getSqlTime() != null) {
-        lRequestBuilder.setHeader("SQL-Time", pHeaderParams.getSqlTime().toString());
-      }
-      if (pHeaderParams.getSqlDate() != null) {
-        lRequestBuilder.setHeader("SQL-Date", pHeaderParams.getSqlDate().toString());
-      }
-    }
-    // Execute request.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(void.class);
-    Mono<Void> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 204, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pPath, pHeaderParams)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/test-date-header-params-beans/");
+          lPathBuilder.append(pPath);
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set HTTP header(s)
+          if (pHeaderParams != null) {
+            if (pHeaderParams.getOffsetDateTime() != null) {
+              lRequestBuilder.setHeader("Offset-Date-Time",
+                  DateTimeFormatter.ISO_OFFSET_DATE_TIME.format(pHeaderParams.getOffsetDateTime()));
+            }
+            if (pHeaderParams.getOffsetTime() != null) {
+              lRequestBuilder.setHeader("Offset-Time",
+                  DateTimeFormatter.ISO_OFFSET_TIME.format(pHeaderParams.getOffsetTime()));
+            }
+            if (pHeaderParams.getLocalDateTime() != null) {
+              lRequestBuilder.setHeader("Local-Date-Time",
+                  DateTimeFormatter.ISO_DATE_TIME.format(pHeaderParams.getLocalDateTime()));
+            }
+            if (pHeaderParams.getLocalTime() != null) {
+              lRequestBuilder.setHeader("Local-Time", DateTimeFormatter.ISO_TIME.format(pHeaderParams.getLocalTime()));
+            }
+            if (pHeaderParams.getLocalDate() != null) {
+              lRequestBuilder.setHeader("Local-Date", DateTimeFormatter.ISO_DATE.format(pHeaderParams.getLocalDate()));
+            }
+            if (pHeaderParams.getUtilDate() != null) {
+              lRequestBuilder.setHeader("Util-Date",
+                  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getUtilDate()));
+            }
+            if (pHeaderParams.getCalendar() != null) {
+              lRequestBuilder.setHeader("Calendar",
+                  new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(pHeaderParams.getCalendar().getTime()));
+            }
+            if (pHeaderParams.getSqlTimestamp() != null) {
+              lRequestBuilder.setHeader("SQL-Timestamp", pHeaderParams.getSqlTimestamp().toString());
+            }
+            if (pHeaderParams.getSqlTime() != null) {
+              lRequestBuilder.setHeader("SQL-Time", pHeaderParams.getSqlTime().toString());
+            }
+            if (pHeaderParams.getSqlDate() != null) {
+              lRequestBuilder.setHeader("SQL-Date", pHeaderParams.getSqlDate().toString());
+            }
+          }
+          // Build request object and send REST request.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(void.class);
+          return requestExecutor.<Void> executeSingleObjectResultRequest(lRequest, 204, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -1026,25 +1102,28 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> testTechnicalHeaderParam( String pReseller ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pReseller);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/technicalHeaderParam");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set HTTP header(s)
-    if (pReseller != null) {
-      lRequestBuilder.setHeader("Reseller", pReseller);
-    }
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pReseller)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/technicalHeaderParam");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set HTTP header(s)
+          if (pReseller != null) {
+            lRequestBuilder.setHeader("Reseller", pReseller);
+          }
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -1054,31 +1133,34 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> testTechnicalHeaderBean( TechnicalHeaderContext pContext ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pContext);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/technicalHeaderBeanParam");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Set HTTP header(s)
-    if (pContext != null) {
-      // First we process custom headers then the explicit ones.
-      for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
-        lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
-      }
-      if (pContext.getReseller() != null) {
-        lRequestBuilder.setHeader("Reseller", pContext.getReseller());
-      }
-    }
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pContext)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/technicalHeaderBeanParam");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Set HTTP header(s)
+          if (pContext != null) {
+            // First we process custom headers then the explicit ones.
+            for (Map.Entry<String, String> lNextEntry : pContext.getCustomHeaders().entrySet()) {
+              lRequestBuilder.setHeader(lNextEntry.getKey(), lNextEntry.getValue());
+            }
+            if (pContext.getReseller() != null) {
+              lRequestBuilder.setHeader("Reseller", pContext.getReseller());
+            }
+          }
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -1088,29 +1170,32 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
   @Override
   public Mono<String> processDataTypes( List<AnotherDataType> pCodes ) {
     // Validate request parameter(s).
-    validationExecutor.validateRequest(ProductService.class, pCodes);
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/product-codes");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Add query parameter(s) to request
-    if (pCodes != null) {
-      List<Object> lValues = new ArrayList<Object>();
-      for (AnotherDataType lNext : pCodes) {
-        lValues.add(lNext.getData());
-      }
-      lRequestBuilder.setQueryParameter("pCodes", lValues);
-    }
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(ProductService.class, lResult);
-    return lResult;
+    return validationExecutor.validateRequest(ProductService.class, pCodes)
+        // Next, we execute the REST request
+        .then(Mono.defer(( ) -> {
+          // Create builder for GET request
+          RESTRequest.Builder lRequestBuilder =
+              RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+          // Build path of request
+          StringBuilder lPathBuilder = new StringBuilder();
+          lPathBuilder.append('/');
+          lPathBuilder.append("products/product-codes");
+          lRequestBuilder.setPath(lPathBuilder.toString());
+          // Add query parameter(s) to request
+          if (pCodes != null) {
+            List<Object> lValues = new ArrayList<Object>();
+            for (AnotherDataType lNext : pCodes) {
+              lValues.add(lNext.getData());
+            }
+            lRequestBuilder.setQueryParameter("pCodes", lValues);
+          }
+          // Execute request and return result.
+          RESTRequest lRequest = lRequestBuilder.build();
+          ObjectType lObjectType = ObjectType.createObjectType(String.class);
+          return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+        }))
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(ProductService.class, result));
   }
 
   /**
@@ -1118,19 +1203,20 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
    */
   @Override
   public Mono<String> getVersionInfo( ) {
-    // Create builder for GET request
-    RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
-    // Build path of request
-    StringBuilder lPathBuilder = new StringBuilder();
-    lPathBuilder.append('/');
-    lPathBuilder.append("products/info");
-    lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request and return result.
-    RESTRequest lRequest = lRequestBuilder.build();
-    ObjectType lObjectType = ObjectType.createObjectType(String.class);
-    Mono<String> lResult = requestExecutor.executeSingleObjectResultRequest(lRequest, 200, lObjectType);
-    // Validate response and return it.
-    validationExecutor.validateResponse(MonitoringService.class, lResult);
-    return lResult;
+    return Mono.defer(( ) -> {
+      // Create builder for GET request
+      RESTRequest.Builder lRequestBuilder = RESTRequest.builder(ProductService.class, HttpMethod.GET, ContentType.JSON);
+      // Build path of request
+      StringBuilder lPathBuilder = new StringBuilder();
+      lPathBuilder.append('/');
+      lPathBuilder.append("products/info");
+      lRequestBuilder.setPath(lPathBuilder.toString());
+      // Execute request and return result.
+      RESTRequest lRequest = lRequestBuilder.build();
+      ObjectType lObjectType = ObjectType.createObjectType(String.class);
+      return requestExecutor.<String> executeSingleObjectResultRequest(lRequest, 200, lObjectType);
+    })
+        // Validate response
+        .delayUntil(result -> validationExecutor.validateResponse(MonitoringService.class, result));
   }
 }

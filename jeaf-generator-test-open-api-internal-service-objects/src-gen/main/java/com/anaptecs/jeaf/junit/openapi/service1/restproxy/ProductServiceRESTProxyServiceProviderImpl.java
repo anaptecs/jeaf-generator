@@ -240,7 +240,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     StringBuilder lPathBuilder = new StringBuilder();
     lPathBuilder.append("/products");
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 202);
   }
@@ -335,7 +335,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
             .convert(pBeanParam.getLanguage()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -407,7 +407,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pProduct as request body.
     lRequestBuilder.setBody(pProduct);
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -483,7 +483,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     if (pContext != null) {
       lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -865,7 +865,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setQueryParameter("sqlDate",
           XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class).convert(pSQLDate));
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -928,7 +928,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
             .getConverter(Date.class, String.class).convert(pQueryParams.getSqlDate()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -984,7 +984,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     if (pAccept != null) {
       lRequestBuilder.setHeader("ACCEPT", pAccept);
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1073,7 +1073,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
         lRequestBuilder.setHeader("bookingID", pInlinedBeanParam.getBookingID().getReferenceID());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1093,7 +1093,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pIntegerArray as request body.
     lRequestBuilder.setBody(pIntegerArray);
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1282,7 +1282,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
         lRequestBuilder.setHeader("longValues", pContext.getLongValues());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1302,7 +1302,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lPathBuilder.append("delete-something/");
     lPathBuilder.append(pID);
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1379,7 +1379,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setQueryParameter("byte-code",
           XFun.getDatatypeConverterRegistry().getConverter(Byte.class, String.class).convert(pJustAByte));
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -1424,7 +1424,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     if (pContext != null) {
       lRequestBuilder.setCookie("reseller", String.valueOf(pContext.getResellerID()));
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }

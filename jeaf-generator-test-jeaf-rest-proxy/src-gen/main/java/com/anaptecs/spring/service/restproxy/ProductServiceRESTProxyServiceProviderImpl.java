@@ -224,7 +224,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lPathBuilder.append('/');
     lPathBuilder.append("products/");
     lRequestBuilder.setPath(lPathBuilder.toString());
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -315,7 +315,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
             .convert(pBeanParam.getLanguage()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -384,7 +384,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
     lRequestBuilder.setPath(lPathBuilder.toString());
     // Set parameter pProduct as request body.
     lRequestBuilder.setBody(pProduct);
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -456,7 +456,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
             .getConverter(ChannelType.class, String.class).convert(pContext.getChannelType()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -708,7 +708,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setQueryParameter("sqlDate",
           XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class).convert(pSQLDate));
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -770,7 +770,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
             .getConverter(Date.class, String.class).convert(pQueryParams.getSqlDate()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -841,7 +841,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
       lRequestBuilder.setHeader("SQL-Date",
           XFun.getDatatypeConverterRegistry().getConverter(Date.class, String.class).convert(pSQLDate));
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
@@ -903,7 +903,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
             .convert(pHeaderParams.getSqlDate()));
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }

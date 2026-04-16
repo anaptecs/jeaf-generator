@@ -7,64 +7,75 @@ extension functions::DefaultOperation;
 cached boolean isJEAFService(uml::Element element):
     element.isStereotypeApplied("JEAFService");
 
+
 cached JMM::JEAFService asInterface(uml::Element element):
     (JMM::JEAFService) element;
-    
+
+
 cached JMM::JEAFService asJEAFService(uml::Element element):
     (JMM::JEAFService) element;
-    
+
+
 cached List[JMM::JEAFService] getParentServices(JMM::JEAFService interface) :
     interface.parents().typeSelect(JMM::JEAFService);    
-    
+
+
 cached String getServiceName(JMM::JEAFService service, boolean reactive):
     if reactive
     then service.getServiceInterfaceName() + "Reactive"
     else service.getServiceInterfaceName();
-    
+
+
 private String getServiceInterfaceName(JMM::JEAFService service):
 	if service.requiresCustomerServiceBaseClass()
 	then service.name + "Base"
 	else service.name;
-	
+
+
 cached String getServiceCustomImplName(JMM::JEAFService service, boolean reactive):
     if reactive
     then service.name + "Reactive"
     else service.name;
-	
-    
+
+
 cached boolean requiresCustomerServiceBaseClass(JMM::JEAFService interface):
 	interface.ownedOperation.selectFirst(e|e.isCustomDefaultImplementationType()) != null;
+
 
 cached String getServiceNameFQN(JMM::JEAFService service, boolean reactive):
     if reactive
     then service.qualifiedName() + "Reactive"
     else service.qualifiedName();
 
+
 cached String getReactiveAwareTypeName(String typeName, boolean reactive):
     if reactive == false
     then typeName
-    else 
-        if typeName == "void"
-        then getMonoTypeName() + "<Void>"
+    else getMonoTypeName() + typeName.getReactiveAwareReturnTypeCast();
+
+
+cached String getReactiveAwareReturnTypeCast(String typeName):
+    if typeName == "void"
+    then "<Void>"
+    else
+        if typeName == "boolean"
+        then "<Boolean>"
         else
-            if typeName == "boolean"
-            then getMonoTypeName() + "<Boolean>"
+            if typeName == "byte"
+            then "<Byte>"
             else
-                if typeName == "byte"
-                then getMonoTypeName() + "<Byte>"
+                if typeName == "short"
+                then "<Short>"
                 else
-                    if typeName == "short"
-                    then getMonoTypeName() + "<Short>"
+                    if typeName == "int"
+                    then "<Integer>"
                     else
-                        if typeName == "int"
-                        then getMonoTypeName() + "<Integer>"
+                        if typeName == "long"
+                        then "<Long>"
                         else
-                            if typeName == "long"
-                            then getMonoTypeName() + "<Long>"
+                            if typeName == "float"
+                            then "<Float>"
                             else
-                                if typeName == "float"
-                                then getMonoTypeName() + "<Float>"
-                                else
-                                    if typeName == "double"
-                                    then getMonoTypeName() + "<Double>"
-                                    else getMonoTypeName() + "<" + typeName + ">";
+                                if typeName == "double"
+                                then "<Double>"
+                                else "<" + typeName + ">";

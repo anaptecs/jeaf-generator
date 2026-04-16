@@ -181,7 +181,7 @@ public final class PathlessServiceRESTProxyServiceProviderImpl
         lRequestBuilder.setHeader("base64", pHeaderBean.getBase64());
       }
     }
-    // Execute request.
+    // Build request object and send REST request.
     RESTRequest lRequest = lRequestBuilder.build();
     requestExecutor.executeNoResultRequest(lRequest, 204);
   }
