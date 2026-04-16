@@ -8,11 +8,11 @@
 
 | Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed |
 |---------|------|----------------------|-------------|------------------|-----------------------|
-| `com.anaptecs.jeaf.junit.rest` | `RESTTestService` | `deprecatedOperation` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |   
-| `com.anaptecs.jeaf.junit.openapi.base` | `DeprecatedContext` |  |  |  | 2022-07-25 |   
-| `com.anaptecs.jeaf.junit.openapi.base` | `SpecialContext` | `deprecatedHeader` |  |  | 2024-12-24 |   
-| `com.anaptecs.jeaf.junit.openapi.service1` | `ProductService` | `deprecatedOperation` | This request is no longer supported. | 1.1.1 | 2024-10-20 |   
-| `com.anaptecs.jeaf.junit.deprecation` | `DeprecatedService` |  | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |   
+| `com.anaptecs.jeaf.junit.rest` | `RESTTestService` | `deprecatedOperation` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13  |   
+| `com.anaptecs.jeaf.junit.openapi.base` | `DeprecatedContext` |  |  |  | 2022-07-25  |   
+| `com.anaptecs.jeaf.junit.openapi.base` | `SpecialContext` | `deprecatedHeader` |  |  | 2024-12-24  |   
+| `com.anaptecs.jeaf.junit.openapi.service1` | `ProductService` | `deprecatedOperation` | This request is no longer supported. | 1.1.1 | 2024-10-20  |   
+| `com.anaptecs.jeaf.junit.deprecation` | `DeprecatedService` |  | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31  |   
 
 <br>
 
@@ -28,14 +28,14 @@
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
-| `EnumWithDeprecatedProperty` | |  |  |  |
-|   | `B` |  |  |  |
+| `EnumWithDeprecatedProperty` | |  |  |   |
+|   | `B` |  |  |   |
 
 <br>
 
 | Type | Property   | Description   | Deprecated since   | Planned to be removed   |
 |------|------------|---------------|:------------------:|:-----------------------:|
-| `EnumWithDeprecatedProperty` | `doNotUse` | Very outdated | 08.15 | 47.11 |
+| `EnumWithDeprecatedProperty` | `doNotUse` | Very outdated | 08.15 | 47.11  |
 
 <br>
 
@@ -61,7 +61,7 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
-| `deprectedOperation()` | |  |  |  |
+| `deprectedOperation()` | |  |  |   |
 
 <br>
 
@@ -69,7 +69,7 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
-| `checkRequiredService_2()` | |  |  |  |
+| `checkRequiredService_2()` | |  |  |   |
 
 <br>
 
@@ -93,9 +93,9 @@
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
-| `Color` | |  |  |  |
-|   | `LightGreen` | We do not like this color any more. |  |  |
-| `Farbe` | |  |  |  |
+| `Color` | |  |  |   |
+|   | `LightGreen` | We do not like this color any more. |  |   |
+| `Farbe` | |  |  |   |
 
 <br>
 
@@ -117,10 +117,10 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
-| `createSomething()` | | Resources can no longer be explicitly be created. | 0.9 | 1.2.3 |
-| `createSomething(JustAType, String, String, BeanParamWithDeprecations)` | |  |  |  |
-|   | `String pHeader` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |  |
-|   | `String pQueryParam` |  |  |  |
+| `createSomething()` | | Resources can no longer be explicitly be created. | 0.9 | 1.2.3  |
+| `createSomething(JustAType, String, String, BeanParamWithDeprecations)` | |  |  |   |
+|   | `String pHeader` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |   |
+|   | `String pQueryParam` |  |  |   |
 
 <br>
 
@@ -231,8 +231,8 @@
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|
-| `ChannelType` | |  |  |  |
-|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |
+| `ChannelType` | |  |  |   |
+|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |   |
 
 <br>
 
@@ -244,16 +244,16 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
-| `deprecatedBody(String)` | |  |  |  |
-|   | `String pBody` |  |  |  |
-| `deprecatedComplexReturn()` | |  |  |  |
-|   | `Product ` |  |  |  |
-| `deprecatedOperation()` | | This request is no longer supported. | 1.1.1 | 2024-10-20 |
-| `deprecatedParams(int)` | |  |  |  |
-|   | `int pParam1` |  |  |  |
-|   | `String ` |  |  |  |
-| `deprectedComplexRequestBody(Product)` | |  |  |  |
-|   | `Product pProduct` |  |  |  |
+| `deprecatedBody(String)` | |  |  |   |
+|   | `String pBody` |  |  |   |
+| `deprecatedComplexReturn()` | |  |  |   |
+|   | `Product ` |  |  |   |
+| `deprecatedOperation()` | | This request is no longer supported. | 1.1.1 | 2024-10-20  |
+| `deprecatedParams(int)` | |  |  |   |
+|   | `int pParam1` |  |  |   |
+|   | `String ` |  |  |   |
+| `deprectedComplexRequestBody(Product)` | |  |  |   |
+|   | `Product pProduct` |  |  |   |
 
 <br>
 
@@ -294,15 +294,15 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|
-| `deprecatedAsync(int)` | |  |  |  |
-| `deprecatedAsyncParam(int)` | |  |  |  |
-|   | `int pParam1` |  |  |  |
-|   | `String ` |  |  |  |
-| `deprecatedOperation()` | | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |
-| `deprecatedParameter(int, int)` | |  |  |  |
-|   | `int pParam2` |  |  |  |
-| `deprectaedReturnValue(int)` | |  |  |  |
-|   | `int ` |  |  |  |
+| `deprecatedAsync(int)` | |  |  |   |
+| `deprecatedAsyncParam(int)` | |  |  |   |
+|   | `int pParam1` |  |  |   |
+|   | `String ` |  |  |   |
+| `deprecatedOperation()` | | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13  |
+| `deprecatedParameter(int, int)` | |  |  |   |
+|   | `int pParam2` |  |  |   |
+| `deprectaedReturnValue(int)` | |  |  |   |
+|   | `int ` |  |  |   |
 
 <br>
 

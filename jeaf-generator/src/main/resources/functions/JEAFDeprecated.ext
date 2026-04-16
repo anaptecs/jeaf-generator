@@ -39,6 +39,12 @@ cached String getDeprecationRemoval(NamedElement element):
     else "";
 
 
+cached String getDeprecationRemovalDate(NamedElement element):
+    if element.isJEAFDeprecated()    
+    then element.getStereotypeValue("JEAFDeprecated", "removalDate")
+    else "";
+
+
 cached boolean isDeprecationComplete(NamedElement element): 
     element.getDeprecationDescription().length > 0 && element.getDeprecatedSince().length > 0 && element.getDeprecationRemoval().length > 0;
 
