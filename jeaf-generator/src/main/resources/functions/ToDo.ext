@@ -1,0 +1,56 @@
+extension java::GeneratorCommons;
+extension functions::NamedElement;
+extension functions::SystemProperties;
+extension functions::ReportFormat;
+
+
+cached boolean isToDo(uml::Element element):
+    element.isStereotypeApplied("ToDo");
+
+
+cached JMM::ToDo asToDo(uml::Element element):
+	(JMM::ToDo) element;
+
+
+cached String getToDoDescription(uml::NamedElement toDo):
+    toDo.getStereotypeValue("ToDo", "description").replaceAll("\n", "<br>").trim();
+
+
+cached String getToDoSince(uml::NamedElement toDo):
+    toDo.getStereotypeValue("ToDo", "since").trim();
+
+
+cached List[String] getToDoPlannedChanges(uml::NamedElement toDo):
+	if toDo.isToDo()
+	then toDo.getStereotypeValue("ToDo", "plannedChanges").replaceAll("\\[", "").replaceAll("\\]", "").split(", ")
+	else {}.toList();
+
+
+cached String getToDoPlannedChangesForReport(uml::NamedElement toDo):
+	toDo.getToDoPlannedChanges().toString(", ");
+
+
+cached boolean hasPlannedChangesInfo(JMM::ToDo toDo):
+	if toDo.plannedChanges.isEmpty || ( toDo.plannedChanges.size == 1 &&  toDo.plannedChanges.selectFirst(e| e.toString() == "UNDEFINED") != null)
+	then false
+	else true;
+
+
+cached List[uml::NamedElement] getAllToDos(uml::Package package):
+	package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isToDo()).sortBy(e|e.qualifiedName());
+
+
+cached List[uml::Package] getPackagesForToDoReport(uml::Model model):
+	model.getAllToDos().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
+
+
+cached List[uml::NamedElement] getToDos(uml::Package package):
+	package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isToDo() && e.getNearestPackage() == package).sortBy(e|e.qualifiedName());
+
+
+cached String getToDoReportFileName():
+	toDoReportFileName() + toDoReportFormat().getReportFormatExtension();
+
+
+cached String getToDoCSVFileName():
+	toDoReportFileName() + ".csv";

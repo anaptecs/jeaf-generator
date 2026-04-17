@@ -46,6 +46,12 @@
        «EXPAND jeaf::JavaDeprecation::DeprecationsCSV»
     «ENDIF»
     
+    «IF generateToDoReport()»
+       «info("Generating ToDo Report")»
+       «EXPAND jeaf::ToDoReport::ToDoReport»
+       «EXPAND jeaf::ToDoReport::ToDoCSV»
+    «ENDIF»
+    
     «IF generateSecurityRolesReport()»
        «info("Generating Security Roles Report")»
         «EXPAND jeaf::SecurityRolesReport::SecurityRolesReport»

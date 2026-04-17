@@ -348,3 +348,22 @@ String getCustomProfileFile():
 
 List[String] getPackages():
 	getSystemProperty("list.pkgs.whitelist", "").split(";").trim();
+
+
+boolean generateToDoReport():
+	getBooleanSystemProperty("jeaf.generator.generateToDoReport", false);
+
+
+String toDoReportName():
+	getSystemProperty("jeaf.generator.toDoReportName", "");
+
+
+String toDoReportFileName():
+	getSystemProperty("jeaf.generator.toDoReportFileName", "");
+	
+String toDoReportFormat():
+	getSystemProperty("jeaf.generator.toDoReportFormat", "");
+
+
+boolean groupToDoReportByPackage():
+	getBooleanSystemProperty("jeaf.generator.groupToDoReportByPackage", false);

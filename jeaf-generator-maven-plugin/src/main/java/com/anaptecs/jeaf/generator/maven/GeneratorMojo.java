@@ -857,6 +857,38 @@ public class GeneratorMojo extends AbstractMojo {
   private ReportFormat deprecationReportFormat;
 
   /**
+   * Switch enables the generation of a ToDo report about the model parts which are configured to be processed.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateToDoReport;
+
+  /**
+   * Title of the ToDo report.
+   */
+  @Parameter(required = false, defaultValue = "ToDo Report")
+  private String toDoReportName;
+
+  /**
+   * Name of the file that contains the Java deprecation report. The file extension will be chosen based on the report
+   * format.
+   */
+  @Parameter(required = false, defaultValue = "ToDo_Report")
+  private String toDoReportFileName;
+
+  /**
+   * Switch defines if for ToDo report content should be grouped by package.
+   */
+  @Parameter(required = false, defaultValue = "true")
+  private Boolean groupToDoReportByPackage;
+
+  /**
+   * Parameter defines the format of the ToDo report. Supported formats are <code>MARKDOWN</code>, <code>HTML</code> and
+   * <code>XML</code>.
+   */
+  @Parameter(required = false, defaultValue = "MARKDOWN")
+  private ReportFormat toDoReportFormat;
+
+  /**
    * Switch enables the generation of a security roles report about the model parts which are configured to be
    * processed.
    */
@@ -2338,6 +2370,16 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info(" ");
       }
 
+      if (generateToDoReport) {
+        lLog.info("Generate ToDo Report                              " + generateToDoReport);
+        lLog.info("ToDo Report Name                                  " + toDoReportName);
+        lLog.info("ToDo Report group by package                      " + groupToDoReportByPackage);
+        lLog.info("ToDo Report File Name                             " + toDoReportFileName
+            + toDoReportFormat.getExtension());
+        lLog.info("ToDo Report Format                                " + toDoReportFormat);
+        lLog.info(" ");
+      }
+
       if (generateSecurityRolesReport) {
         lLog.info("Generate Security Roles Report                    " + generateSecurityRolesReport);
         lLog.info("Security Roles Report Name                        " + securityRolesReportName);
@@ -2808,6 +2850,12 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.java.deprecation.report", generateJavaDeprecationReport.toString());
       System.setProperty("switch.gen.java.deprecation.report.name", javaDeprecationReportName.toString());
       System.setProperty("switch.gen.java.deprecation.report.filename", javaDeprecationReportFileName.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateToDoReport", generateToDoReport.toString());
+      System.setProperty(PROPERTY_PREFIX + "toDoReportName", toDoReportName.toString());
+      System.setProperty(PROPERTY_PREFIX + "toDoReportFileName", toDoReportFileName.toString());
+      System.setProperty(PROPERTY_PREFIX + "toDoReportFormat", toDoReportFormat.toString());
+      System.setProperty(PROPERTY_PREFIX + "groupToDoReportByPackage", groupToDoReportByPackage.toString());
 
       System.setProperty("switch.gen.deprecation.report.format", deprecationReportFormat.name());
 

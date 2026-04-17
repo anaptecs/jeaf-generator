@@ -1,0 +1,99 @@
+«IMPORT uml»
+«IMPORT JMM»
+
+«EXTENSION java::Naming»
+«EXTENSION jeaf::Deprecation»
+
+«EXTENSION functions::TypeChecks»
+«EXTENSION functions::Class»
+«EXTENSION functions::POJO»
+«EXTENSION functions::ServiceObject»
+«EXTENSION functions::PersistentObject»
+«EXTENSION functions::JEAFEnumeration»
+«EXTENSION functions::Element»
+«EXTENSION functions::Operation»
+«EXTENSION functions::HeaderParam»
+«EXTENSION functions::QueryParam»
+«EXTENSION functions::BeanParam»
+«EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::EnumerationLiteral»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION functions::Property»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::SystemProperties»
+«EXTENSION functions::ToDo»
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+
+«DEFINE ToDoReport FOR Model»
+«FILE getToDoReportFileName() res_gen-»
+# «toDoReportName()»
+
+<br>
+«IF groupToDoReportByPackage() -»
+«FOREACH this.getPackagesForToDoReport() AS package-»
+## Package `«package.qualifiedName()»`
+
+«EXPAND ToDoTablePerPackage FOR package.getToDos()»
+<br>
+
+«ENDFOREACH-»
+«ELSE-»
+«EXPAND ToDoTable FOR this.getAllToDos()»
+«ENDIF-»
+«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE ToDoTablePerPackage FOR List[uml::NamedElement]-»
+| Element  | Details    | Planned Changes | Description  | Since |
+|----------|------------|-----------------|--------------|:-----:|
+«IF this.isEmpty == false -»
+    «FOREACH this AS toDo -»
+        «IF toDo.isProperty() || toDo.isEnumerationLiteral() -»
+| `«toDo.owner.asNamedElement().name»` | `«toDo.name»` | «toDo.getToDoPlannedChangesForReport()» | «toDo.getToDoDescription()» | «toDo.getToDoSince()» |
+       «ELSEIF toDo.isParameter() -»
+| `«toDo.owner.owner.asNamedElement().name».«toDo.owner.asNamedElement().name»` | `«toDo.name»` | «toDo.getToDoPlannedChangesForReport()» | «toDo.getToDoDescription()» | «toDo.getToDoSince()» |
+       «ELSE -»
+| `«toDo.name»` | | «toDo.getToDoPlannedChangesForReport()» | «toDo.getToDoDescription()» | «toDo.getToDoSince()» |
+       «ENDIF-»
+    «ENDFOREACH -»
+«ELSE-»
+| No breaking changes declared. |
+«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE ToDoTable FOR List[uml::NamedElement]-»
+| Element  | Details    | Description  | Since |
+|----------|------------|--------------|:-----:|
+«IF this.isEmpty == false -»
+    «FOREACH this AS toDo -»
+        «IF toDo.isProperty() || toDo.isEnumerationLiteral() || toDo.isParameter() -»
+| `«((uml::NamedElement) toDo.owner).fqn()»` | `«toDo.name»` | «toDo.getToDoPlannedChangesForReport()» | «toDo.getToDoDescription()» | «toDo.getToDoSince()» |
+       «ELSE -»
+| `«((uml::NamedElement) toDo).fqn()»` | | «toDo.getToDoPlannedChangesForReport()» | «toDo.getToDoDescription()» | «toDo.getToDoSince()» |
+       «ENDIF-»
+    «ENDFOREACH -»
+«ELSE-»
+| No breaking changes declared. |
+«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE ToDoCSV FOR Model»
+«FILE getToDoCSVFileName() res_gen-»
+Element;Package;Details;Planned Changes;Description;Since;
+«FOREACH this.getPackagesForToDoReport() AS package-»
+«FOREACH package.getToDos() AS toDo-»
+        «IF toDo.isProperty() || toDo.isEnumerationLiteral() -»
+«toDo.owner.asNamedElement().name»;«package.qualifiedName()»;«toDo.name»;«toDo.getToDoPlannedChangesForReport()»;«toDo.getToDoDescription()»;«toDo.getToDoSince()»;
+       «ELSEIF toDo.isParameter() -»
+«toDo.owner.owner.asNamedElement().name».«toDo.owner.asNamedElement().name»;«package.qualifiedName()»;«toDo.name»;«toDo.getToDoPlannedChangesForReport()»;«toDo.getToDoDescription()»;«toDo.getToDoSince()»;
+       «ELSE -»
+«toDo.name»;«package.qualifiedName()»;;«toDo.getToDoPlannedChangesForReport()»;«toDo.getToDoDescription()»;«toDo.getToDoSince()»;
+       «ENDIF-»
+«ENDFOREACH-»
+«ENDFOREACH-»
+«ENDFILE»
+«ENDDEFINE»

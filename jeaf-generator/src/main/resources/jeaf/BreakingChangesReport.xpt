@@ -106,7 +106,7 @@ Element;Package;Details;Description;Since;Active with;Activation Date;
        «ELSEIF change.isParameter() -»
 «change.owner.owner.asNamedElement().name».«change.owner.asNamedElement().name»;«package.qualifiedName()»;«change.name»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeSince()»;«change.getBreakingChangeActiveWith()»;«change.getBreakingChangeActivactionDate()»;
        «ELSE -»
-«change.name»;«package.qualifiedName()»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeDescription()»;«change.getBreakingChangeSince()»;«change.getBreakingChangeActiveWith()»;«change.getBreakingChangeActivactionDate()»;
+«change.name»;«package.qualifiedName()»;;«change.getBreakingChangeDescription()»;«change.getBreakingChangeSince()»;«change.getBreakingChangeActiveWith()»;«change.getBreakingChangeActivactionDate()»;
        «ENDIF-»
 «ENDFOREACH-»
 «ENDFOREACH-»
