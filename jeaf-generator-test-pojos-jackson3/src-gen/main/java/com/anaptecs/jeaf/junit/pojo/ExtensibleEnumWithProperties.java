@@ -99,16 +99,6 @@ public final class ExtensibleEnumWithProperties {
      *
      * @return boolean Value to which {@link #booleanProperty} is set.
      */
-    @Deprecated
-    public boolean getBooleanProperty( ) {
-      return booleanProperty;
-    }
-
-    /**
-     * Method returns attribute {@link #booleanProperty}.<br/>
-     *
-     * @return boolean Value to which {@link #booleanProperty} is set.
-     */
     public boolean isBooleanProperty( ) {
       return booleanProperty;
     }

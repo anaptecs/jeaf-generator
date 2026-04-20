@@ -400,17 +400,6 @@ public abstract class ChannelBase extends Object implements ServiceObject {
    * @return boolean Value to which {@link #selfServiceChannel} is set.
    */
   @JEAFCustomAnnotationTest
-  @Deprecated
-  public boolean getSelfServiceChannel( ) {
-    return selfServiceChannel;
-  }
-
-  /**
-   * Method returns attribute {@link #selfServiceChannel}.<br/>
-   *
-   * @return boolean Value to which {@link #selfServiceChannel} is set.
-   */
-  @JEAFCustomAnnotationTest
   public boolean isSelfServiceChannel( ) {
     return selfServiceChannel;
   }

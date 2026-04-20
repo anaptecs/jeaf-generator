@@ -17,6 +17,6 @@ public class BooleanCodeSerializer extends ValueSerializer<BooleanCode> {
   @Override
   public void serialize( BooleanCode pObject, JsonGenerator pGenerator, SerializationContext pSerializers ) {
     // Write value directly to JSON and avoid nesting object structures
-    pGenerator.writeBoolean(pObject.getCode());
+    pGenerator.writeBoolean(pObject.isCode());
   }
 }

@@ -266,16 +266,6 @@ public abstract class PartiallyDeprecatedServiceObjectBase implements ServiceObj
    * @return boolean Value to which {@link #outdated} is set.
    */
   @Deprecated
-  public boolean getOutdated( ) {
-    return outdated;
-  }
-
-  /**
-   * Method returns attribute {@link #outdated}.<br/>
-   *
-   * @return boolean Value to which {@link #outdated} is set.
-   */
-  @Deprecated
   public boolean isOutdated( ) {
     return outdated;
   }

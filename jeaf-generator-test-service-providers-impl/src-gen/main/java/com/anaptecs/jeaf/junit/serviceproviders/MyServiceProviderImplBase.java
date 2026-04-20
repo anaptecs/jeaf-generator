@@ -55,7 +55,7 @@ abstract class MyServiceProviderImplBase implements ServiceProviderImplementatio
    * defined.
    */
   @Deprecated
-  public boolean getDeprecated( ) {
+  public boolean isDeprecated( ) {
     return configuration.getConfigurationValue("deprecated", Boolean.class);
   }
 }

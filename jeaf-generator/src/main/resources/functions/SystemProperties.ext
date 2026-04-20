@@ -401,4 +401,6 @@ String toDoTypeClassName():
 	getSystemProperty("jeaf.generator.toDoTypeClassName", "").trim();
 
 
+boolean generateDeprecatedGetterForBooleans():
+	getBooleanSystemProperty("jeaf.generator.generateDeprecatedGetterForBooleans", false);
 

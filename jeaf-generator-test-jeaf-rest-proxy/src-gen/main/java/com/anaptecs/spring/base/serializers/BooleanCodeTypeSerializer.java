@@ -20,6 +20,6 @@ public class BooleanCodeTypeSerializer extends JsonSerializer<BooleanCodeType> {
   public void serialize( BooleanCodeType pObject, JsonGenerator pGenerator, SerializerProvider pSerializers )
     throws IOException {
     // Write value directly to JSON and avoid nesting object structures
-    pGenerator.writeBoolean(pObject.getCode());
+    pGenerator.writeBoolean(pObject.isCode());
   }
 }

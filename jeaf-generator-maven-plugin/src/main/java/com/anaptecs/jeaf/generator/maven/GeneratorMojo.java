@@ -669,6 +669,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateHeavyExtensibleEnums;
 
   /**
+   * Switch can be used to generated deprecated getter for <code>boolean</code> properties.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateDeprecatedGetterForBooleans;
+
+  /**
    * Switch defines whether domain objects should be generated or not.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -2201,6 +2207,9 @@ public class GeneratorMojo extends AbstractMojo {
         if (generateHeavyExtensibleEnums) {
           lLog.info("Generate heavy style extensible enums:            " + generateHeavyExtensibleEnums);
         }
+        if (generateDeprecatedGetterForBooleans) {
+          lLog.info("Deprecated getters for boolean properties:        " + generateDeprecatedGetterForBooleans);
+        }
         lLog.info("Generate Constants for Attribute Names:           " + generateConstantsForAttributeNames);
         lLog.info("Generate of(...):                                 " + generateOfOperation);
         lLog.info("Generate of(...) for OpenAPI Data Types:          " + generateOfOperationForOpenAPIDataType);
@@ -2894,6 +2903,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.immutable.classes", generateImmutableClasses.toString());
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());
       System.setProperty("switch.gen.heavy.extensible.enums", generateHeavyExtensibleEnums.toString());
+      System.setProperty(PROPERTY_PREFIX + "generateDeprecatedGetterForBooleans",
+          generateDeprecatedGetterForBooleans.toString());
       System.setProperty("switch.gen.domain.objects", generateDomainObjects.toString());
       System.setProperty("switch.gen.junits", generateJUnitTests.toString());
 

@@ -26,8 +26,8 @@ String asSetter (uml::NamedElement element) :
 
 // Function returns the name of the java get method for this named element. For the element "name" the function will 
 // return "getName".
-String asGetter (uml::NamedElement element) :
-    "get" + element.name.toFirstUpper();
+String asGetter(uml::NamedElement element):
+    element.internalAsGetter();
 
 // Function returns the name of the java unset method for this named element. For the element "name" the function will 
 // return "unsetName".

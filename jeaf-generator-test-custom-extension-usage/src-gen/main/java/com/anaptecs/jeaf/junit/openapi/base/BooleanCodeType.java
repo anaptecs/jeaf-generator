@@ -146,17 +146,6 @@ public class BooleanCodeType extends Object implements ServiceObject {
    * @return boolean Value to which {@link #code} is set.
    */
   @JEAFCustomAnnotationTest
-  @Deprecated
-  public boolean getCode( ) {
-    return code;
-  }
-
-  /**
-   * Method returns attribute {@link #code}.<br/>
-   *
-   * @return boolean Value to which {@link #code} is set.
-   */
-  @JEAFCustomAnnotationTest
   public boolean isCode( ) {
     return code;
   }

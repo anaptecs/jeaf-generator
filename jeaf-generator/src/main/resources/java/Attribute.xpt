@@ -14,6 +14,7 @@
 «EXTENSION functions::Class»
 «EXTENSION functions::Property»
 «EXTENSION functions::Jackson»
+«EXTENSION functions::SystemProperties»
 
 // this properties should be processed
 // for now all properties should be processed
@@ -138,60 +139,61 @@
 
 // TODO Get and set method should be final for service objects. 
 «DEFINE Getter FOR Property»
+    «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false && generateDeprecatedGetterForBooleans()»
+        «EXPAND functions::Javadoc::JavadocForPropertyGetter»
+        «EXPAND java::Helper::GenerateAnnotations-»
+		«IF this.isDeprecated() == false && type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false-»
+			@Deprecated
+	    «ENDIF-»	
+       «IF this.isInternalProperty() == false»public«ENDIF» boolean get«name.toFirstUpper()»() {
+           «IF this.generateBackwardCompatibility() == false»
+               return «name»;
+           «ELSE»
+	           «EXPAND java::Helper::CallGetterForSuccessor»
+           «ENDIF»
+    }
+    «ENDIF»
+
 	«EXPAND functions::Javadoc::JavadocForPropertyGetter»
 	«EXPAND java::Helper::GenerateAnnotations-»
-	«IF this.isDeprecated() == false && type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false-»
-    @Deprecated
-    «ENDIF-»	
 	«IF generateJacksonAnnotations() && this.generateBackwardCompatibility()»
 	@«getJsonGetterFQN()»
 	«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     «EXPAND java::Helper::OverrideAnnotation»
 	«IF this.isInternalProperty() == false»public«ENDIF» «this.fqn()» «asGetter()»() {
-	    «IF this.owner.isEnumeration() && this.isMultivalued()»
-	    	return «asInstanceVar()»;
-	    «ELSEIF this.generateBackwardCompatibility() == false»
-		    «IF this.isMultivalued() == false»return «asInstanceVar()»;
-		    «ELSE»
-			    «this.fqn()» lReturnValue;
-			    if(«asInstanceVar()» != null) {
-			      «IF this.isBinaryType()»
-				      «IF disableBinaryDataImmutability()»
-					      lReturnValue = «asInstanceVar()»;
-				      «ELSE»
-					      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
-					      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
-				      «ENDIF»
+    «IF this.owner.isEnumeration() && this.isMultivalued()»
+    	return «asInstanceVar()»;
+    «ELSEIF this.generateBackwardCompatibility() == false»
+	    «IF this.isMultivalued() == false»return «asInstanceVar()»;
+	    «ELSE»
+		    «this.fqn()» lReturnValue;
+		    if(«asInstanceVar()» != null) {
+		      «IF this.isBinaryType()»
+			      «IF disableBinaryDataImmutability()»
+				      lReturnValue = «asInstanceVar()»;
 			      «ELSE»
-				      «IF disableArrayImmutability()»
-					      lReturnValue = «asInstanceVar()»;
-				      «ELSE»
-					      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
-					      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
-				      «ENDIF»
+				      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
+				      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
 			      «ENDIF»
-			    }
-			    else {
-			      lReturnValue = null;
-			    }
-			    return lReturnValue;
-			«ENDIF»
-		«ELSE»
-            «EXPAND java::Helper::CallGetterForSuccessor»
+		      «ELSE»
+			      «IF disableArrayImmutability()»
+				      lReturnValue = «asInstanceVar()»;
+			      «ELSE»
+				      lReturnValue = new «type.fqn()»[«asInstanceVar()».length];
+				      System.arraycopy(«asInstanceVar()», 0, lReturnValue, 0, «asInstanceVar()».length);
+			      «ENDIF»
+		      «ENDIF»
+		    }
+		    else {
+		      lReturnValue = null;
+		    }
+		    return lReturnValue;
 		«ENDIF»
+	«ELSE»
+        «EXPAND java::Helper::CallGetterForSuccessor»
+	«ENDIF»
     }
-    «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false» 
-        «EXPAND functions::Javadoc::JavadocForPropertyGetter»
-        «EXPAND java::Helper::GenerateAnnotations-»
-       «IF this.isInternalProperty() == false»public«ENDIF» boolean is«name.toFirstUpper()»() {
-           «IF this.generateBackwardCompatibility() == false»
-               return «name»;
-           «ELSE»
-	           «EXPAND java::Helper::CallGetterForSuccessor»
-           «ENDIF»
-       }
-    «ENDIF»    
 «ENDDEFINE»
 
 «DEFINE AbstractGetterForDerivedProperty FOR Property»

@@ -398,17 +398,6 @@ public abstract class PartiallyDeprecatedServiceObjectBase extends Object implem
    */
   @Deprecated
   @JEAFCustomAnnotationTest
-  public boolean getOutdated( ) {
-    return outdated;
-  }
-
-  /**
-   * Method returns attribute {@link #outdated}.<br/>
-   *
-   * @return boolean Value to which {@link #outdated} is set.
-   */
-  @Deprecated
-  @JEAFCustomAnnotationTest
   public boolean isOutdated( ) {
     return outdated;
   }

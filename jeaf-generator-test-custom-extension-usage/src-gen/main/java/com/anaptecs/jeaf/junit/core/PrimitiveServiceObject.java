@@ -462,17 +462,6 @@ public class PrimitiveServiceObject extends Object implements ServiceObject {
    * @return boolean Value to which {@link #aBoolean} is set.
    */
   @JEAFCustomAnnotationTest
-  @Deprecated
-  public boolean getABoolean( ) {
-    return aBoolean;
-  }
-
-  /**
-   * Method returns attribute {@link #aBoolean}.<br/>
-   *
-   * @return boolean Value to which {@link #aBoolean} is set.
-   */
-  @JEAFCustomAnnotationTest
   public boolean isABoolean( ) {
     return aBoolean;
   }

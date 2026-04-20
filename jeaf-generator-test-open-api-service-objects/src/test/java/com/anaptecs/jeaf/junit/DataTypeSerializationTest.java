@@ -49,7 +49,7 @@ public class DataTypeSerializationTest {
 
     // Test deserialization
     HeavyDataTypeUser lReadObject = lTools.read(lJSONString, HeavyDataTypeUser.class);
-    assertEquals(true, lReadObject.getBooleanCode().getCode());
+    assertEquals(true, lReadObject.getBooleanCode().isCode());
     assertEquals((byte) 127, lReadObject.getByteCode().getCode());
     assertEquals((short) 1024, lReadObject.getShortCode().getCode());
     assertEquals(324567, lReadObject.getIntegerCode().getCode());

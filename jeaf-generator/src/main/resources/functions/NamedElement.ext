@@ -1,17 +1,51 @@
 extension functions::TypeChecks;
+extension java::GeneratorCommons;
 extension java::Naming;
 
 cached boolean isNamedElement(uml::Element element):
-    element.isInstanceOf("org.eclipse.uml2.uml.NamedElement");
+	element.isInstanceOf("org.eclipse.uml2.uml.NamedElement");
+
 
 cached uml::NamedElement asNamedElement(uml::Element element):
-    (uml::NamedElement) element;
-    
+	(uml::NamedElement) element;
+
+
 cached String qualifiedName(uml::NamedElement element):
-    element.fqn();
-    
+	element.fqn();
+
+
 cached String asLocalVariable(uml::NamedElement element):
 	element.asLocalVar();
-	
+
+
 cached String asGetter(uml::NamedElement element):
-    "get" + element.name.toFirstUpper();
+	element.internalAsGetter();
+
+
+cached String internalAsGetter(uml::NamedElement element):
+	if element.isTypedElement() == false || element.isMultiplicityElement() == false
+	then "get" + element.name.toFirstUpper()
+	else
+		if element.asTypedElement().type.isBooleanType() && element.asTypedElement().type.isPrimitiveType() && element.asMultiplicityElement().isMultivalued() == false
+		then "is" + element.name.toFirstUpper()
+		else "get" + element.name.toFirstUpper();
+
+
+private boolean isTypedElement(uml::NamedElement element):
+	element.isInstanceOf("org.eclipse.uml2.uml.TypedElement");
+
+
+private uml::TypedElement asTypedElement(uml::NamedElement element):
+	(uml::TypedElement) element;
+
+
+private boolean isMultiplicityElement(uml::NamedElement element):
+	element.isInstanceOf("org.eclipse.uml2.uml.MultiplicityElement");
+
+
+private uml::MultiplicityElement asMultiplicityElement(uml::Element element):
+	(uml::MultiplicityElement) element;
+
+
+
+	

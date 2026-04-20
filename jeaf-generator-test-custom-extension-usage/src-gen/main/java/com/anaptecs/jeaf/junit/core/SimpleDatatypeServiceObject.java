@@ -529,17 +529,6 @@ public class SimpleDatatypeServiceObject extends Object implements ServiceObject
    * @return boolean Value to which {@link #myBoolean} is set.
    */
   @JEAFCustomAnnotationTest
-  @Deprecated
-  public boolean getMyBoolean( ) {
-    return myBoolean;
-  }
-
-  /**
-   * Method returns attribute {@link #myBoolean}.<br/>
-   *
-   * @return boolean Value to which {@link #myBoolean} is set.
-   */
-  @JEAFCustomAnnotationTest
   public boolean isMyBoolean( ) {
     return myBoolean;
   }

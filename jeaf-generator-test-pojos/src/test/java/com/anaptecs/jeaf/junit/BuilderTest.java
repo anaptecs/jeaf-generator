@@ -54,21 +54,21 @@ class BuilderTest {
     ImmutableAssociationPOJO lPojo = ImmutableAssociationPOJO.builder().setYetAnotherAttribute(true).build();
     assertNotNull(lPojo.getDeprecatedRefs());
     assertNotNull(lPojo.getReadonlyAssociation());
-    assertEquals(true, lPojo.getYetAnotherAttribute());
+    assertEquals(true, lPojo.isYetAnotherAttribute());
     assertNull(lPojo.getImmutableChildPOJO());
 
     ImmutableAssociationPOJO.builder().setYetAnotherAttribute(true).setDeprecatedRefs(Collections.emptySet())
         .setReadonlyAssociation(Collections.emptySortedSet()).build();
     assertNotNull(lPojo.getDeprecatedRefs());
     assertNotNull(lPojo.getReadonlyAssociation());
-    assertEquals(true, lPojo.getYetAnotherAttribute());
+    assertEquals(true, lPojo.isYetAnotherAttribute());
     assertNull(lPojo.getImmutableChildPOJO());
 
     // Test empty object
     lPojo = ImmutableAssociationPOJO.builder().build();
     assertNotNull(lPojo.getDeprecatedRefs());
     assertNotNull(lPojo.getReadonlyAssociation());
-    assertEquals(false, lPojo.getYetAnotherAttribute());
+    assertEquals(false, lPojo.isYetAnotherAttribute());
     assertNull(lPojo.getImmutableChildPOJO());
 
   }

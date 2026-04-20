@@ -123,16 +123,6 @@ public class BooleanCode implements ServiceObject {
    *
    * @return boolean Value to which {@link #code} is set.
    */
-  @Deprecated
-  public boolean getCode( ) {
-    return code;
-  }
-
-  /**
-   * Method returns attribute {@link #code}.<br/>
-   *
-   * @return boolean Value to which {@link #code} is set.
-   */
   public boolean isCode( ) {
     return code;
   }
@@ -162,7 +152,7 @@ public class BooleanCode implements ServiceObject {
       lEquals = false;
     }
     else {
-      lEquals = (code == ((BooleanCode) pOtherObject).getCode());
+      lEquals = (code == ((BooleanCode) pOtherObject).isCode());
     }
     return lEquals;
   }

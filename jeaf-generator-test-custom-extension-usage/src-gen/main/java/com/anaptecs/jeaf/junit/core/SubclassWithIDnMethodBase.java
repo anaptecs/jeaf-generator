@@ -161,17 +161,6 @@ public abstract class SubclassWithIDnMethodBase extends IdentifiableServiceObjec
    * @return boolean Value to which {@link #attr} is set.
    */
   @JEAFCustomAnnotationTest
-  @Deprecated
-  public boolean getAttr( ) {
-    return attr;
-  }
-
-  /**
-   * Method returns attribute {@link #attr}.<br/>
-   *
-   * @return boolean Value to which {@link #attr} is set.
-   */
-  @JEAFCustomAnnotationTest
   public boolean isAttr( ) {
     return attr;
   }

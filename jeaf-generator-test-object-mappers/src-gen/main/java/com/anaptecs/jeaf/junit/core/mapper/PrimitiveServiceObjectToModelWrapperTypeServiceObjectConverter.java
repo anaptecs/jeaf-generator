@@ -205,7 +205,7 @@ public class PrimitiveServiceObjectToModelWrapperTypeServiceObjectConverter
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
   private void setTargetObject( PrimitiveServiceObject pSource, ModelWrapperTypeServiceObject pTarget ) {
-    pTarget.setABoolean(pSource.getABoolean());
+    pTarget.setABoolean(pSource.isABoolean());
     pTarget.setAInt(pSource.getAInt());
   }
 
@@ -218,7 +218,7 @@ public class PrimitiveServiceObjectToModelWrapperTypeServiceObjectConverter
    */
   private void updateTargetObject( PrimitiveServiceObject pSource, ModelWrapperTypeServiceObject pTarget ) {
     // Update target object
-    pTarget.setABoolean(pSource.getABoolean());
+    pTarget.setABoolean(pSource.isABoolean());
     pTarget.setAInt(pSource.getAInt());
   }
 
@@ -230,7 +230,7 @@ public class PrimitiveServiceObjectToModelWrapperTypeServiceObjectConverter
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
   private void setSourceObject( PrimitiveServiceObject pSource, ModelWrapperTypeServiceObject pTarget ) {
-    pSource.setABoolean(pTarget.getABoolean());
+    pSource.setABoolean(pTarget.isABoolean());
     pSource.setAInt(pTarget.getAInt());
   }
 }

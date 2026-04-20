@@ -203,7 +203,7 @@ public class PrimitiveServiceObjectToWrapperTypesServiceObjectConverter
    * @param pTarget Target object for the mapping. The parameter must not be null.
    */
   private void setTargetObject( PrimitiveServiceObject pSource, WrapperTypesServiceObject pTarget ) {
-    pTarget.setABoolean(pSource.getABoolean());
+    pTarget.setABoolean(pSource.isABoolean());
     pTarget.setAByte(pSource.getAByte());
     pTarget.setAShort(pSource.getAShort());
     pTarget.setAInt(pSource.getAInt());
@@ -222,7 +222,7 @@ public class PrimitiveServiceObjectToWrapperTypesServiceObjectConverter
    */
   private void updateTargetObject( PrimitiveServiceObject pSource, WrapperTypesServiceObject pTarget ) {
     // Update target object
-    pTarget.setABoolean(pSource.getABoolean());
+    pTarget.setABoolean(pSource.isABoolean());
     pTarget.setAByte(pSource.getAByte());
     pTarget.setAShort(pSource.getAShort());
     pTarget.setAInt(pSource.getAInt());

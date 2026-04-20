@@ -309,16 +309,6 @@ public class Channel {
    * @return boolean Value to which {@link #selfServiceChannel} is set.
    */
   @Deprecated
-  public boolean getSelfServiceChannel( ) {
-    return selfServiceChannel;
-  }
-
-  /**
-   * Method returns attribute {@link #selfServiceChannel}.<br/>
-   *
-   * @return boolean Value to which {@link #selfServiceChannel} is set.
-   */
-  @Deprecated
   public boolean isSelfServiceChannel( ) {
     return selfServiceChannel;
   }

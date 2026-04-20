@@ -778,16 +778,6 @@ public class PrimitiveObjectWithRestrictions implements Serializable {
    *
    * @return boolean Value to which {@link #aBoolean} is set.
    */
-  @Deprecated
-  public boolean getABoolean( ) {
-    return aBoolean;
-  }
-
-  /**
-   * Method returns attribute {@link #aBoolean}.<br/>
-   *
-   * @return boolean Value to which {@link #aBoolean} is set.
-   */
   public boolean isABoolean( ) {
     return aBoolean;
   }
@@ -819,16 +809,6 @@ public class PrimitiveObjectWithRestrictions implements Serializable {
   public void setBBoolean( Boolean pBBoolean ) {
     // Assign value to attribute
     bBoolean = pBBoolean;
-  }
-
-  /**
-   * Method returns attribute {@link #cBoolean}.<br/>
-   *
-   * @return boolean Value to which {@link #cBoolean} is set.
-   */
-  @Deprecated
-  public boolean getCBoolean( ) {
-    return cBoolean;
   }
 
   /**
