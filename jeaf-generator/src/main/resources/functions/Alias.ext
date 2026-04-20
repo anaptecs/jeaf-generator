@@ -2,20 +2,27 @@ extension java::GeneratorCommons;
 
 
 cached boolean isAlias(uml::Element element) :
-  element.isStereotypeApplied("Alias");
-  
+	element.isStereotypeApplied("Alias");
+
+
 cached JMM::Alias asAlias(uml::Element element):
-    (JMM::Alias) element;
-    
+	(JMM::Alias) element;
+
+
 cached String getAlternateName(uml::NamedElement element):
-    if element.isAlias()
-    then element.getStereotypeValue("Alias", "alternateName")
-    else "";
-    
+	element.getAlternateNames().toString(", ");
+
+
+cached List[String] getAlternateNames(uml::NamedElement element):
+	if  element.isAlias()
+	then element.getStereotypeValue("Alias", "alternateNames").replaceAll("\\[", "").replaceAll("\\]", "").split(", ")
+	else "";
+
+
 cached String getAlternateNameForMarkup(uml::NamedElement element):
-    element.getAlternateName().replaceAll("\n", "<br>");
-    
+	element.getAlternateName().replaceAll("\n", "<br>");
+
+
 cached String getAlternateNameForJavadoc(uml::NamedElement element):
-    element.getAlternateName().replaceAll("\n", "</br>");
-    
-    
+	element.getAlternateName().replaceAll("\n", "</br>");
+

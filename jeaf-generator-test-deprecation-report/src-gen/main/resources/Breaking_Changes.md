@@ -45,6 +45,15 @@
 
 <br>
 
+## Package `com.anaptecs.jeaf.junit.pojo`
+
+| Element  | Details    | Description  | Since | Active with |
+|----------|------------|--------------|:-----:|:-----------:|
+| `PlainPOJO` | | Announcement for the far away future | 1.2.3 | 47.11 2222-12-31 | 
+| `MyType` | `GAMMA` | X-mas present | 1.0.0 | 47.11 2024-12-24 | 
+
+<br>
+
 ## Package `com.anaptecs.jeaf.junit.validationgroups`
 
 | Element  | Details    | Description  | Since | Active with |

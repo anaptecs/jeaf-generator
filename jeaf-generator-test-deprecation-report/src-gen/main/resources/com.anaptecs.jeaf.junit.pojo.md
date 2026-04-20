@@ -337,7 +337,7 @@ This is the first line of the first comment
 <br>
 
 ## PlainPOJO
-
+:bomb: **Breaking Change Notice (since: , active with: 47.11):**<br>Announcement for the far away future
 
 
 <br>
@@ -481,7 +481,7 @@ This is the first line of the first comment
 | `RELATION_KEY_DATA_UNIT` |   |  |
 | `UNKNOWN` |  | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
 
-## MyType
+## MyType (aka "MyFormerName")
 
 
 ### Literals
@@ -490,5 +490,5 @@ This is the first line of the first comment
 |------|----------------------|----------------------------|
 | `ALPHA` |   |  |
 | `BETA` |   |  |
-| `GAMMA` |   |  |
+| `GAMMA` |   | :bomb: **Breaking Change Notice (since: , active with: 47.11):**<br>X-mas present |
 

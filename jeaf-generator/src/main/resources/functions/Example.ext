@@ -8,4 +8,7 @@ JMM::Example asExample(uml::NamedElement element):
     
 cached boolean hasExampleValue(JMM::Example example):
     example.exampleValues.isEmpty == false && example.exampleValues.selectFirst(e|e.length > 0) != null;
-  
+
+
+cached List[String] getExampleValues(JMM::Example example):
+	example.exampleValues;

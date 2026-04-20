@@ -183,7 +183,7 @@ MyDataType |   |  |
 MyEnumWithInterface |   |  |
 MyPOJOResponse |   |  |
 MyPojoRequest |   |  |
-MyType |   |  |
+MyType |  MyFormerName |  |
 NotInlinedBeanParam |   |  |
 Offer |   |  |
 OptionalDataType |   |  |
@@ -530,7 +530,7 @@ ImmutablePOJO |   |  |
 ImmutablePOJOParent |   |  |
 MasterClass |   |  |
 MutableChildPOJO |   |  |
-MyType |   |  |
+MyType |  MyFormerName |  |
 OptionalDataType |   |  |
 POJOWithID |   |  |
 POJOWithIDnMethod |   |  |

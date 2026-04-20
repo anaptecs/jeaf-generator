@@ -5,6 +5,21 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import com.anaptecs.jeaf.generator.annotations.BreakingChangeNotice;
+import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
+
+/**
+ * <p/>
+ * <b>Breaking Change with 47.11:</b> Announcement for the far away future
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
+@BreakingChangeNotice(
+    description = "Announcement for the far away future",
+    since = "1.2.3",
+    activeWith = "47.11",
+    activationDate = "2222-12-31")
 public class PlainPOJO extends PlainPOJOBase {
   /**
    * Initialize object. Nothing special to do.
@@ -44,6 +59,7 @@ public class PlainPOJO extends PlainPOJOBase {
   /**
    */
   @Deprecated
+  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   @Override
   public void doDeprectedStuff( ) {
     // TODO: Implement business logic for method.
@@ -57,8 +73,11 @@ public class PlainPOJO extends PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
+  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   @Override
-  public String doSomething( @Deprecated int pParam1, int pParam2 ) {
+  public String doSomething(
+      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "") int pParam1,
+      int pParam2 ) {
     // TODO: Implement business logic for method.
     return null;
   }

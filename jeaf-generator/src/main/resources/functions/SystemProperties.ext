@@ -367,3 +367,38 @@ String toDoReportFormat():
 
 boolean groupToDoReportByPackage():
 	getBooleanSystemProperty("jeaf.generator.groupToDoReportByPackage", false);
+
+
+
+//
+// Access to properties for documentation annotations.
+//
+
+boolean addDocumentationAnnotations():
+	getBooleanSystemProperty("jeaf.generator.addDocumentationAnnotations", false);
+
+
+String aliasAnnotationClassName():
+	getSystemProperty("jeaf.generator.aliasAnnotationClassName", "").trim();
+
+
+String exampleAnnotationClassName():
+	getSystemProperty("jeaf.generator.exampleAnnotationClassName", "").trim();
+
+String breakingChangeNoticeAnnotationClassName():
+	getSystemProperty("jeaf.generator.breakingChangeNoticeAnnotationClassName", "").trim();
+
+
+String deprecationNoticeAnnotationClassName():
+	getSystemProperty("jeaf.generator.deprecationNoticeAnnotationClassName", "").trim();
+
+
+String toDoAnnotationClassName():
+	getSystemProperty("jeaf.generator.toDoAnnotationClassName", "").trim();
+
+
+String toDoTypeClassName():
+	getSystemProperty("jeaf.generator.toDoTypeClassName", "").trim();
+
+
+

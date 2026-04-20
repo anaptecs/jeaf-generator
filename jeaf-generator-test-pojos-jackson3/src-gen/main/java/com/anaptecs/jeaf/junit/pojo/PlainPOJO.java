@@ -5,6 +5,13 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+/**
+ * <p/>
+ * <b>Breaking Change with 47.11:</b> Announcement for the far away future
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public class PlainPOJO extends PlainPOJOBase {
   /**
    * Initialize object. Nothing special to do.

@@ -25,6 +25,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.anaptecs.jeaf.generator</groupId>
+			<artifactId>jeaf-generator-annotations</artifactId>
+			<version>${jeaf-generator-annotations.version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson2.version}</version>
@@ -109,6 +115,8 @@
 
 					<suppressWarnings>JEAF_SUPPRESS_WARNINGS</suppressWarnings>
 					<addGeneratedAnnotation>true</addGeneratedAnnotation>
+					
+					<addDocumentationAnnotations>true</addDocumentationAnnotations>
 					
 					<javaGenericSoftLinkType>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkID</javaGenericSoftLinkType>
 					<softLinkSuffix>ID</softLinkSuffix>

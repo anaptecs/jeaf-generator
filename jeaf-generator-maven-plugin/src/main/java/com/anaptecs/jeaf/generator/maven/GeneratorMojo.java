@@ -1385,6 +1385,71 @@ public class GeneratorMojo extends AbstractMojo {
   private String generationComment = "";
 
   /**
+   * Parameter can be used to add documentation annotations for stereotypes
+   * <code>Alias, Example, BreakingChange, JEAFDeprecated</code> and <code>ToDo</code> to generated Java code.
+   *
+   * Using configuration parameters {@link #aliasAnnotationClassName}, {@link #exampleAnnotationClassName},
+   * {@link #breakingChangeNoticeAnnotationClassName}, {@link #deprecationNoticeAnnotationClassName},
+   * {@link #toDoAnnotationClassName} and {@link #toDoTypeClassName} it is possible to define the used annotation types.
+   * <br/>
+   * <br/>
+   * By default types from Maven artifact <code>com.anaptecs.jeaf.generator:jeaf-generator-annotations</code> are used.
+   * That's why a dependency on this artifact is required if this switch is enabled and default types will be used.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean addDocumentationAnnotations;
+
+  /**
+   * Parameter can be used to define the annotation class that should be used for stereotype <code>Alias</code>.<br/>
+   * <br/>
+   * By default type from Maven artifact <code>com.anaptecs.jeaf.generator:jeaf-generator-annotations</code> are used.
+   */
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.generator.annotations.Alias")
+  private String aliasAnnotationClassName;
+
+  /**
+   * Parameter can be used to define the annotation class that should be used for stereotype <code>Example</code>.<br/>
+   * <br/>
+   * By default type from Maven artifact <code>com.anaptecs.jeaf.generator:jeaf-generator-annotations</code> are used.
+   */
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.generator.annotations.Example")
+  private String exampleAnnotationClassName;
+
+  /**
+   * Parameter can be used to define the annotation class that should be used for stereotype
+   * <code>BreakingChange</code>.<br/>
+   * <br/>
+   * By default type from Maven artifact <code>com.anaptecs.jeaf.generator:jeaf-generator-annotations</code> are used.
+   */
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.generator.annotations.BreakingChangeNotice")
+  private String breakingChangeNoticeAnnotationClassName;
+
+  /**
+   * Parameter can be used to define the annotation class that should be used for stereotype
+   * <code>JEAFDeprecated</code>.<br/>
+   * <br/>
+   * By default type from Maven artifact <code>com.anaptecs.jeaf.generator:jeaf-generator-annotations</code> are used.
+   */
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.generator.annotations.DeprecationNotice")
+  private String deprecationNoticeAnnotationClassName;
+
+  /**
+   * Parameter can be used to define the annotation class that should be used for stereotype <code>ToDo</code>.<br/>
+   * <br/>
+   * By default type from Maven artifact <code>com.anaptecs.jeaf.generator:jeaf-generator-annotations</code> are used.
+   */
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.generator.annotations.ToDo")
+  private String toDoAnnotationClassName;
+
+  /**
+   * Parameter can be used to define the enumeration that should be used for <code>ToDoType</code>.<br/>
+   * <br/>
+   * By default type from Maven artifact <code>com.anaptecs.jeaf.generator:jeaf-generator-annotations</code> are used.
+   */
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.generator.annotations.ToDoType")
+  private String toDoTypeClassName;
+
+  /**
    * Parameter can be used to define the target runtime environment for which code should be generated. Currently JEAF
    * and Spring are supported. Valid values are (case-sensitive): "JEAF", "JAVA" and "SPRING"
    */
@@ -2495,6 +2560,16 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("Add generation comment:                           " + generationComment);
       }
 
+      if (addDocumentationAnnotations) {
+        lLog.info("Add documentation annotations:                    " + addDocumentationAnnotations);
+        lLog.info("Alias Annotation Class:                           " + aliasAnnotationClassName);
+        lLog.info("Example Annotation Class:                         " + exampleAnnotationClassName);
+        lLog.info("Breaking Change Notice Annotation Class:          " + breakingChangeNoticeAnnotationClassName);
+        lLog.info("Deprecation Notice Annotation Class:              " + deprecationNoticeAnnotationClassName);
+        lLog.info("ToDo Annotation Class:                            " + toDoAnnotationClassName);
+        lLog.info("ToDo Enumeration Type:                            " + toDoTypeClassName);
+      }
+
       if (generateMessageConstants) {
         lLog.info("Generate Message Constants:                       " + generateMessageConstants);
       }
@@ -2934,6 +3009,16 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.add.generated.annotation", addGeneratedAnnotation.toString());
       System.setProperty("switch.gen.add.generation.timestamp", addGenerationTimestamp.toString());
       System.setProperty("switch.gen.generation.comment", generationComment.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "addDocumentationAnnotations", addDocumentationAnnotations.toString());
+      System.setProperty(PROPERTY_PREFIX + "aliasAnnotationClassName", aliasAnnotationClassName);
+      System.setProperty(PROPERTY_PREFIX + "exampleAnnotationClassName", exampleAnnotationClassName);
+      System.setProperty(PROPERTY_PREFIX + "breakingChangeNoticeAnnotationClassName",
+          breakingChangeNoticeAnnotationClassName);
+      System.setProperty(PROPERTY_PREFIX + "deprecationNoticeAnnotationClassName",
+          deprecationNoticeAnnotationClassName);
+      System.setProperty(PROPERTY_PREFIX + "toDoAnnotationClassName", toDoAnnotationClassName);
+      System.setProperty(PROPERTY_PREFIX + "toDoTypeClassName", toDoTypeClassName);
 
       System.setProperty("switch.gen.suppress.classname.openapi", suppressClassNameCommentInOpenAPISpec.toString());
 

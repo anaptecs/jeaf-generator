@@ -11,6 +11,8 @@ TheReadOnlyServiceObject;com.anaptecs.jeaf.junit.openapi.base;bits;At least one 
 ComplexBookingType;com.anaptecs.jeaf.junit.openapi.base;;Class was changed to an extensible enum. New literals will not be introduced before PI 17.;;PI 17;;
 ProductService.createChannelCode;com.anaptecs.jeaf.junit.openapi.service1;pChannelCode;Parameter will be mandatory;;2.0;;
 DateQueryParamsBean;com.anaptecs.jeaf.junit.openapi.service1;localDateTime;Has to be in the past;;2.0;;
+PlainPOJO;com.anaptecs.jeaf.junit.pojo;;Announcement for the far away future;1.2.3;47.11;2222-12-31;
+MyType;com.anaptecs.jeaf.junit.pojo;GAMMA;X-mas present;1.0.0;47.11;2024-12-24;
 MyPOJOResponse;com.anaptecs.jeaf.junit.validationgroups;formerMandatoryProperty;;;;;
 MyPojoRequest;com.anaptecs.jeaf.junit.validationgroups;upcomingMandatoryProperty;;;;;
 MyPojoRequest;com.anaptecs.jeaf.junit.validationgroups;propertyWithNewConstraints;;;;;

@@ -10,6 +10,7 @@ import java.util.Objects;
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 
+import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -35,6 +36,7 @@ public class ParentPOJO {
    * Constant for the name of attribute "weirdAttribute".
    */
   @Deprecated
+  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   public static final String WEIRDATTRIBUTE = "weirdAttribute";
 
   /**
@@ -45,6 +47,7 @@ public class ParentPOJO {
   private String parentAttribute;
 
   @Deprecated
+  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   private byte weirdAttribute;
 
   private String hello;
@@ -101,6 +104,7 @@ public class ParentPOJO {
     private String parentAttribute;
 
     @Deprecated
+    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
     private byte weirdAttribute;
 
     private String hello;
@@ -143,6 +147,7 @@ public class ParentPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {
       // Assign value to attribute
@@ -211,6 +216,7 @@ public class ParentPOJO {
    * @return byte Value to which {@link #weirdAttribute} is set.
    */
   @Deprecated
+  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   public byte getWeirdAttribute( ) {
     return weirdAttribute;
   }
@@ -221,6 +227,7 @@ public class ParentPOJO {
    * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
    */
   @Deprecated
+  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   public void setWeirdAttribute( byte pWeirdAttribute ) {
     // Assign value to attribute
     weirdAttribute = pWeirdAttribute;

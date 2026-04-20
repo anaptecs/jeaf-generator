@@ -11,6 +11,7 @@ import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.NotNull;
 
+import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -32,6 +33,11 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Deprecated
+@DeprecationNotice(
+    description = "We do not like this class any more.",
+    since = "Big bang",
+    removedWith = "Last X-Mas",
+    removalDate = "")
 @JsonDeserialize(builder = ChildPOJO.Builder.class)
 public class ChildPOJO extends ParentPOJO {
   /**
@@ -92,6 +98,11 @@ public class ChildPOJO extends ParentPOJO {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
+  @DeprecationNotice(
+      description = "We do not like this class any more.",
+      since = "Big bang",
+      removedWith = "Last X-Mas",
+      removalDate = "")
   public static class Builder extends ParentPOJO.Builder {
     @NotNull
     private Integer childAttribute;
@@ -135,6 +146,7 @@ public class ChildPOJO extends ParentPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
+    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
     @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {

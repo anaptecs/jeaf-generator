@@ -19,6 +19,13 @@ import com.fasterxml.jackson.annotation.Nulls;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
+/**
+ * <p/>
+ * <b>Breaking Change with 47.11:</b> Announcement for the far away future
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @JsonDeserialize(builder = PlainPOJO.Builder.class)

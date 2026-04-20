@@ -11,6 +11,9 @@ import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.PositiveOrZero;
 
+import com.anaptecs.jeaf.generator.annotations.BreakingChangeNotice;
+import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
+import com.anaptecs.jeaf.generator.annotations.Example;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,13 +22,26 @@ import com.fasterxml.jackson.annotation.Nulls;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+/**
+ * <p/>
+ * <b>Breaking Change with 47.11:</b> Announcement for the far away future
+ *
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
+@BreakingChangeNotice(
+    description = "Announcement for the far away future",
+    since = "1.2.3",
+    activeWith = "47.11",
+    activationDate = "2222-12-31")
 @JsonDeserialize(builder = PlainPOJO.Builder.class)
 public abstract class PlainPOJOBase {
   /**
    * Constant for the name of attribute "hello".
    */
+  @Example(values = { "Hello", "World!" })
   public static final String HELLO = "hello";
 
   /**
@@ -41,6 +57,7 @@ public abstract class PlainPOJOBase {
    * <li><code>World!</code></li>
    * </ul>
    */
+  @Example(values = { "Hello", "World!" })
   private String hello;
 
   @PositiveOrZero
@@ -74,6 +91,7 @@ public abstract class PlainPOJOBase {
      * <li><code>World!</code></li>
      * </ul>
      */
+    @Example(values = { "Hello", "World!" })
     private String hello;
 
     @PositiveOrZero
@@ -102,6 +120,7 @@ public abstract class PlainPOJOBase {
      * @param pHello Value to which {@link #hello} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
+    @Example(values = { "Hello", "World!" })
     @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setHello( String pHello ) {
       // Assign value to attribute
@@ -152,6 +171,7 @@ public abstract class PlainPOJOBase {
    *
    * @return {@link String} Value to which {@link #hello} is set.
    */
+  @Example(values = { "Hello", "World!" })
   public String getHello( ) {
     return hello;
   }
@@ -161,6 +181,7 @@ public abstract class PlainPOJOBase {
    *
    * @param pHello Value to which {@link #hello} should be set.
    */
+  @Example(values = { "Hello", "World!" })
   public void setHello( String pHello ) {
     // Assign value to attribute
     hello = pHello;
@@ -205,6 +226,7 @@ public abstract class PlainPOJOBase {
   /**
    */
   @Deprecated
+  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   public abstract void doDeprectedStuff( );
 
   /**
@@ -215,7 +237,10 @@ public abstract class PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  public abstract String doSomething( @Deprecated int pParam1, int pParam2 );
+  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  public abstract String doSomething(
+      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "") int pParam1,
+      int pParam2 );
 
   @Override
   public int hashCode( ) {

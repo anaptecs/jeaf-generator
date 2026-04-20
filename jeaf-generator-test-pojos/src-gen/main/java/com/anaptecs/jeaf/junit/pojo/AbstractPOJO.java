@@ -9,6 +9,8 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 
+import com.anaptecs.jeaf.generator.annotations.ToDo;
+import com.anaptecs.jeaf.generator.annotations.ToDoType;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -19,6 +21,10 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
+@ToDo(
+    plannedChanges = { ToDoType.CHANGE_PACKAGE, ToDoType.UPDATE_DOCUMENTATION },
+    description = "Should be moved to package `com.anaptecs.jeaf.other`.",
+    since = "1.2.3")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = ImmutablePOJOParent.class, name = "ImmutablePOJOParent"),
   @JsonSubTypes.Type(value = ImmutableChildPOJO.class, name = "ImmutableChildPOJO"),
@@ -48,6 +54,10 @@ public abstract class AbstractPOJO {
    */
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
+  @ToDo(
+      plannedChanges = { ToDoType.CHANGE_PACKAGE, ToDoType.UPDATE_DOCUMENTATION },
+      description = "Should be moved to package `com.anaptecs.jeaf.other`.",
+      since = "1.2.3")
   public static abstract class Builder {
     private String abtractAttr;
 

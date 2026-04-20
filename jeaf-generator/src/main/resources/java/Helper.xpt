@@ -2,9 +2,14 @@
 «EXTENSION java::Naming»
 «EXTENSION java::Helper»
 «EXTENSION java::OpenAPIFunctions»
+«EXTENSION functions::Alias»
+«EXTENSION functions::BreakingChange»
+«EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::Class»
+«EXTENSION functions::Example»
 «EXTENSION functions::Property»
 «EXTENSION functions::SoftLink»
+«EXTENSION functions::ToDo»
 «EXTENSION functions::RESTResource»
 «EXTENSION functions::JEAFService»
 «EXTENSION functions::JEAFDeprecated»
@@ -129,12 +134,34 @@
 
 «DEFINE GenerateAnnotations FOR uml::NamedElement»
 	«EXPAND GenerateDeprecationAnnotation»
+	«EXPAND GenerateDocumentationAnnotations»
 	«EXPAND jeafgenerator::api::AnnotationExtensionPoint::GenerateCustomAnnotations»
 «ENDDEFINE»
 
 «DEFINE GenerateDeprecationAnnotation FOR uml::NamedElement»
 	«IF this.isDeprecated()-»
 	@Deprecated
+	«ENDIF-»
+«ENDDEFINE»
+
+
+«DEFINE GenerateDocumentationAnnotations FOR uml::NamedElement»
+	«IF addDocumentationAnnotations()-»
+		«IF this.isAlias() && aliasAnnotationClassName().length > 0-»
+			@«aliasAnnotationClassName()»(alternateNames = { «FOREACH this.getAlternateNames() AS alternateName SEPARATOR ", "»"«alternateName»"«ENDFOREACH» })
+		«ENDIF-»
+		«IF this.hasExample() && exampleAnnotationClassName().length > 0 -»
+			@«exampleAnnotationClassName()»(values = { «FOREACH this.asExample().getExampleValues() AS example SEPARATOR ", "»"«example»"«ENDFOREACH» })
+		«ENDIF-»
+		«IF this.isToDo() && toDoAnnotationClassName().length > 0-»	
+			@«toDoAnnotationClassName()»(plannedChanges = {«FOREACH this.getToDoPlannedChanges() AS change SEPARATOR ", "»«toDoTypeClassName()».«change»«ENDFOREACH»}, description = "«this.getToDoDescription()»", since = "«this.getToDoSince()»")
+		«ENDIF-»
+		«IF this.isBreakingChange() && breakingChangeNoticeAnnotationClassName().length > 0 -»
+			@«breakingChangeNoticeAnnotationClassName()»(description = "«this.getBreakingChangeDescription()»", since = "«this.getBreakingChangeSince()»", activeWith = "«this.getBreakingChangeActiveWith()»", activationDate = "«this.getBreakingChangeActivactionDate()»")
+		«ENDIF-»
+		«IF this.isDeprecated() && deprecationNoticeAnnotationClassName().length > 0 -»
+			@«deprecationNoticeAnnotationClassName()»(description = "«this.getDeprecationDescription()»", since = "«this.getDeprecatedSince()»", removedWith = "«this.getDeprecationRemoval()»", removalDate = "«this.getDeprecationRemovalDate()»")
+		«ENDIF-»
 	«ENDIF-»
 «ENDDEFINE»
 
