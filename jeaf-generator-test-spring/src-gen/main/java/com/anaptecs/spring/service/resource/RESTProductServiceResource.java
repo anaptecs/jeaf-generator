@@ -121,7 +121,7 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(method = { RequestMethod.GET })
+  @RequestMapping(consumes = { "application/json" }, produces = { "application/json" }, method = { RequestMethod.GET })
   public List<Product> getProducts( @RequestParam(name = "maxResult", required = false) int pMaxResultSize ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pMaxResultSize);
@@ -137,7 +137,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "{id}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "{id}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Product getProduct( @PathVariable(name = "id", required = true) @MyNotNullRESTParam String pProductID ) {
     // Validate request parameter(s).
@@ -154,7 +158,7 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(method = { RequestMethod.POST })
+  @RequestMapping(consumes = { "application/json" }, produces = { "application/json" }, method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) @MyNotNullRESTParam Product pProduct ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(RESTProductService.class, pProduct);
@@ -170,7 +174,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "sortiment/{id}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "sortiment/{id}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Sortiment getSortiment(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
@@ -213,7 +221,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "ChannelCode", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "ChannelCode",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public ChannelCode createChannelCode( @RequestBody(required = true) @MyNotNullRESTParam String pChannelCode ) {
     // Validate request parameter(s).
@@ -230,7 +242,7 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(method = { RequestMethod.HEAD })
+  @RequestMapping(consumes = { "application/json" }, produces = { "application/json" }, method = { RequestMethod.HEAD })
   @MyNotNullRESTParam
   public void ping( ) {
     // Delegate request to service.
@@ -242,7 +254,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-init", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-init",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testInit( ) {
     // Delegate request to service.
@@ -254,7 +270,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "currencies/{channelCode}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "currencies/{channelCode}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   public List<CurrencyCode> getSupportedCurrencies(
       @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
@@ -273,7 +293,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "async-currencies/{channelCode}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "async-currencies/{channelCode}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   public List<CurrencyCode> getSupportedCurrenciesAsync(
       @PathVariable(name = "channelCode", required = true) @MyNotNullRESTParam String pChannelCodeAsBasicType ) {
     // Convert basic type parameters into "real" objects.
@@ -292,7 +316,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "test-params", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-params",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testParams(
       @RequestHeader(name = "Big-Header", required = true) @MyNotNullRESTParam BigDecimal pBigDecimalHeader,
@@ -312,7 +340,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-enum-params/{channelType}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-enum-params/{channelType}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testEnumParams(
       @PathVariable(name = "channelType", required = true) @MyNotNullRESTParam ChannelType pChannelType,
@@ -329,7 +361,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-enum-header-params", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-enum-header-params",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testEnumHeaderParams(
       @RequestHeader(name = "Channel-Type", required = true) @MyNotNullRESTParam ChannelType pChannelType,
@@ -346,7 +382,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-date-query-params/{path}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-date-query-params/{path}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testDateQueryParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestParam(name = "startTimestamp", required = true) @MyNotNullRESTParam String pStartTimestampAsBasicType,
@@ -478,7 +518,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-date-query-params-beans/{path}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-date-query-params-beans/{path}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
@@ -560,7 +604,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-date-header-params/{path}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-date-header-params/{path}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
@@ -687,7 +735,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "test-date-header-params-beans/{path}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-date-header-params-beans/{path}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
@@ -769,7 +821,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "cookies", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "cookies",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testCookieParams(
       @CookieValue(name = "Channel-Type-Param", required = true) @MyNotNullRESTParam ChannelType pChannelTypeParam,
@@ -814,7 +870,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "test-optional-query-params", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-optional-query-params",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testOptionalQueryParams(
       @RequestParam(name = "query1", required = false, defaultValue = "Just a default value") String query1,
@@ -833,7 +893,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "complex/{bookingID}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "complex/{bookingID}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   public boolean processComplexBookingID(
       @PathVariable(name = "bookingID", required = true) @MyNotNullRESTParam String pComplextBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
@@ -853,7 +917,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "dataTypesInHeader", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "dataTypesInHeader",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testDataTypesAsHeaderParam(
       @RequestHeader(name = "BookingID", required = false) String pBookingIDAsBasicType,
@@ -889,7 +957,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "dataTypesInBeanHeader", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "dataTypesInBeanHeader",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testDataTypesAsHeaderBeanParam(
       @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType,
@@ -925,7 +997,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testPrimitiveArrayAsBody", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "testPrimitiveArrayAsBody",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public String testPrimitiveArrays( @RequestBody(required = false) int[] pIntegerArray ) {
     // Validate request parameter(s).
@@ -942,7 +1018,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testDataTypeAsQueryParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testDataTypeAsQueryParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testDataTypeAsQueryParam(
       @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType ) {
@@ -962,7 +1042,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testDataTypeAsBeanQueryParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testDataTypeAsBeanQueryParam(
       @RequestParam(name = "bookingCode", required = true) @MyNotNullRESTParam String pBookingCodeAsBasicType,
@@ -998,7 +1082,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testPrimitiveArrayAsQueryParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testPrimitiveArrayAsQueryParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testPrimitiveArrayAsQueryParam( @RequestParam(name = "intValues", required = false) int[] pIntValues ) {
     // Validate request parameter(s).
@@ -1015,7 +1103,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testSimpleTypesAsQueryParams", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testSimpleTypesAsQueryParams",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testSimpleTypesAsQueryParams(
       @RequestParam(name = "strings", required = false) List<String> pStrings ) {
@@ -1033,7 +1125,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testPrimitiveWrapperArrayAsQueryParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testPrimitiveWrapperArrayAsQueryParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testPrimitiveWrapperArrayAsQueryParam(
       @RequestParam(name = "integers", required = true) @MyNotEmptyRESTParam Set<Integer> pIntegers ) {
@@ -1051,7 +1147,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testMultivaluedQueryParamsBean", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testMultivaluedQueryParamsBean",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testMultivaluedQueryParamsBean( @RequestParam(name = "intArray", required = false) int[] pIntArray,
       @RequestParam(name = "strings", required = false) String[] pStrings,
@@ -1081,7 +1181,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testMulitvaluedDataTypeAsQueryParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testMulitvaluedDataTypeAsQueryParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testMulitvaluedDataTypeAsQueryParam(
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,
@@ -1157,7 +1261,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testMulitvaluedDataTypeAsBeanQueryParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testMulitvaluedDataTypeAsBeanQueryParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testMulitvaluedDataTypeAsBeanQueryParam(
       @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
@@ -1272,7 +1380,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testMultiValuedHeaderFieldsInBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testMultiValuedHeaderFieldsInBeanParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testMultiValuedHeaderFieldsInBeanParam(
       @RequestHeader(name = "names", required = false) String[] pNames,
@@ -1392,7 +1504,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "testMultiValuedHeaderFields", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "testMultiValuedHeaderFields",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testMultiValuedHeaderFields( @RequestHeader(name = "names", required = false) Set<String> pNames,
       @RequestHeader(name = "ints", required = true) @MyNotEmptyRESTParam int[] pInts,
@@ -1464,7 +1580,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "booking-id-as-path-param/{bookingID}", method = { RequestMethod.PATCH })
+  @RequestMapping(
+      path = "booking-id-as-path-param/{bookingID}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.PATCH })
   @MyNotNullRESTParam
   public void testBookingIDAsPathParam(
       @PathVariable(name = "bookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType ) {
@@ -1481,7 +1601,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "booking-id-as-header-param", method = { RequestMethod.PATCH })
+  @RequestMapping(
+      path = "booking-id-as-header-param",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.PATCH })
   @MyNotNullRESTParam
   public void testBookingIDAsHeaderParam(
       @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType ) {
@@ -1498,7 +1622,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "test-context-with-primitives", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-context-with-primitives",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testContextWithPrimitives( @RequestHeader(name = "aBoolean", required = true) boolean pABoolean,
       @RequestHeader(name = "aBooleanWrapper", required = true) @MyNotNullRESTParam Boolean pABooleanWrapper,
@@ -1530,7 +1658,11 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "test-primitives-as-params", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "test-primitives-as-params",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testPrimitivesAsParams( @RequestHeader(name = "pAnInt", required = true) int pAnInt,
       @RequestHeader(name = "pAnInteger", required = true) @MyNotNullRESTParam Integer pAnInteger,

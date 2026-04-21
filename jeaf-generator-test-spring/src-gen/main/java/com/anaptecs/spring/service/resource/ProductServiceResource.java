@@ -97,7 +97,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotEmptyRESTParam
   public List<Product> getProducts( ) {
     // Delegate request to service.
@@ -112,7 +116,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/{id}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/{id}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Product getProduct( @PathVariable(name = "id", required = true) @MyNotNullRESTParam String pProductID ) {
     // Validate request parameter(s).
@@ -129,7 +137,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   public boolean createProduct( @RequestBody(required = true) @MyNotNullRESTParam Product pProduct ) {
     // Validate request parameter(s).
     validationExecutor.validateRequest(ProductService.class, pProduct);
@@ -145,7 +157,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/sortiment/{id}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/sortiment/{id}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Sortiment getSortiment(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
@@ -209,7 +225,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "products/", method = { RequestMethod.HEAD })
+  @RequestMapping(
+      path = "products/",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.HEAD })
   @MyNotNullRESTParam
   public void ping( ) {
     // Delegate request to service.
@@ -221,7 +241,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/deprecated/operation", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/deprecated/operation",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @Deprecated
   @MyNotNullRESTParam
   public String deprecatedOperation( ) {
@@ -237,7 +261,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/deprecated/context", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/deprecated/context",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public String deprecatedContext(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
@@ -266,7 +294,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "products/deprecated/beanParams", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/deprecated/beanParams",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public void deprecatedBeanParam(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
@@ -290,7 +322,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/deprecated/params", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/deprecated/params",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @Deprecated
   @MyNotNullRESTParam
   public String deprecatedParams( @RequestHeader(name = "param1", required = true) @Deprecated int pParam1 ) {
@@ -308,7 +344,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/deprecated/body", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/deprecated/body",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public String deprecatedBody( @RequestBody(required = true) @Deprecated @MyNotNullRESTParam String pBody ) {
     // Validate request parameter(s).
@@ -325,7 +365,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "products/deprecated/complexBody", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/deprecated/complexBody",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public void deprectedComplexRequestBody(
       @RequestBody(required = true) @Deprecated @MyNotNullRESTParam Product pProduct ) {
@@ -340,7 +384,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/deprecated/complexReturn", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/deprecated/complexReturn",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @Deprecated
   @MyNotNullRESTParam
   public Product deprecatedComplexReturn( ) {
@@ -356,7 +404,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "products/specific/{id}", method = { RequestMethod.PATCH })
+  @RequestMapping(
+      path = "products/specific/{id}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.PATCH })
   @MyNotNullRESTParam
   public void loadSpecificThings(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
@@ -400,7 +452,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/ChannelCodeObject", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/ChannelCodeObject",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public ChannelCode createChannelCodeFromObject(
       @RequestBody(required = true) @MyNotNullRESTParam ChannelCode pChannelCode ) {
@@ -418,7 +474,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/currencies", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/currencies",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotEmptyRESTParam
   public List<CurrencyCode> addCurrencies(
       @RequestBody(required = true) @MyNotEmptyRESTParam List<CurrencyCode> pCurrencies ) {
@@ -436,7 +496,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/currencies/valid", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/currencies/valid",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public CurrencyCode isCurrencySupported( @RequestBody(required = true) @MyNotNullRESTParam CurrencyCode pCurrency ) {
     // Validate request parameter(s).
@@ -453,7 +517,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/codeTypeUsages", method = { RequestMethod.POST })
+  @RequestMapping(
+      path = "products/codeTypeUsages",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public IntegerCodeType testCodeTypeUsage(
       @RequestBody(required = true) @MyNotNullRESTParam StringCodeType pStringCode ) {
@@ -471,7 +539,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/LocalBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/LocalBeanParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testLocalBeanParamType(
       @RequestHeader(name = "localKey", required = true) @MyNotNullRESTParam String pLocalKey,
@@ -496,7 +568,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/ExternalBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/ExternalBeanParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testExternalBeanParameterType(
       @RequestHeader(name = "novaKey", required = true) @MyNotNullRESTParam String pNovaKey,
@@ -524,7 +600,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/ChildBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/ChildBeanParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testChildBeanParameter(
       @RequestHeader(name = "novaKey", required = true) @MyNotNullRESTParam String pNovaKey,
@@ -554,7 +634,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "products/test-date-query-params/{path}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/test-date-query-params/{path}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testDateQueryParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestParam(name = "startTimestamp", required = true) @MyNotNullRESTParam String pStartTimestampAsBasicType,
@@ -665,7 +749,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "products/test-date-query-params-beans/{path}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/test-date-query-params-beans/{path}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
@@ -747,7 +835,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "products/test-date-header-params/{path}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/test-date-header-params/{path}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
@@ -856,7 +948,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(path = "products/test-date-header-params-beans/{path}", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/test-date-header-params-beans/{path}",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
@@ -938,7 +1034,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/technicalHeaderParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/technicalHeaderParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testTechnicalHeaderParam(
       @RequestHeader(name = "Reseller", required = true) @MyNotNullRESTParam String pReseller ) {
@@ -956,7 +1056,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/technicalHeaderBeanParam", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/technicalHeaderBeanParam",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testTechnicalHeaderBean(
       @RequestHeader(name = "Reseller", required = true) @MyNotNullRESTParam String pReseller,
@@ -986,7 +1090,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/product-codes", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/product-codes",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String processDataTypes( @RequestParam(name = "pCodes", required = false) String[] pCodesAsBasicType ) {
     // Convert basic type parameters into "real" objects.
@@ -1014,7 +1122,11 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(path = "products/info", method = { RequestMethod.GET })
+  @RequestMapping(
+      path = "products/info",
+      consumes = { "application/json" },
+      produces = { "application/json" },
+      method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String getVersionInfo( ) {
     // Delegate request to service.

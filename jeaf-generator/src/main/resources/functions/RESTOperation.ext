@@ -47,3 +47,11 @@ cached boolean hasBeanParamsForRESTOperation(JMM::RESTOperation operation):
 
 cached List[JMM::BeanParam] getBeanParamsForRESTOperation(JMM::RESTOperation operation):
     operation.ownedParameter.select(e|e.isParameterBeanParam()).parameterAsBeanParam();
+
+cached List[JMM::MediaType] getConsumedMediaTypes(JMM::RESTOperation operation, JMM::RESTResource restResource):
+	operation.consumes.addAll(restResource.consumes).toSet();
+
+
+cached List[JMM::MediaType] getProducedMediaTypes(JMM::RESTOperation operation, JMM::RESTResource restResource):
+	operation.produces.addAll(restResource.produces).toSet();
+

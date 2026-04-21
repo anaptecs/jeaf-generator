@@ -376,8 +376,8 @@ public class «this.getResourceName(reactive)» {
 	@org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.«getJAXRSStatusCodeName(this.getStatusCodeName())»)
 	@org.springframework.web.bind.annotation.RequestMapping(
 	«IF this.getRESTOperationPath(restResource).length > 0»path = "«this.getRESTOperationPath(restResource)»",«ENDIF»
-	«IF consumes.size > 0»consumes = {«FOREACH consumes AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
-	«IF produces.size > 0»produces = {«FOREACH produces AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
+	«IF this.getConsumedMediaTypes(restResource).size > 0»consumes = {«FOREACH this.getConsumedMediaTypes(restResource) AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
+	«IF this.getProducedMediaTypes(restResource).size > 0»produces = {«FOREACH this.getProducedMediaTypes(restResource) AS mediaType SEPARATOR ","»"«mediaType.toOpenAPIContentType()»"«ENDFOREACH»},«ENDIF»
 	method = { «FOREACH httpMethods AS httpMethod SEPARATOR ","»org.springframework.web.bind.annotation.RequestMethod.«httpMethod»«ENDFOREACH»}
 	)
 	«EXPAND java::Helper::GenerateAnnotations-»
