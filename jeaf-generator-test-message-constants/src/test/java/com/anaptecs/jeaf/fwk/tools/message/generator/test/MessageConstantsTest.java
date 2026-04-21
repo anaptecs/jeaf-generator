@@ -10,10 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.lang.reflect.Field;
 
+import org.junit.jupiter.api.Test;
+
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ErrorCode;
 import com.jeaf.sample.yourapp.MyMessages;
-import org.junit.jupiter.api.Test;
 
 public class MessageConstantsTest {
   @SuppressWarnings("deprecation")
@@ -47,11 +48,9 @@ public class MessageConstantsTest {
     assertNotNull(lField.getAnnotation(Deprecated.class));
     lField = MyMessages.class.getField("DEPRECATED_LOCALIZED_MESSAGE");
     assertNotNull(lField.getAnnotation(Deprecated.class));
-
     // Other constants should not have it.
     lField = MyMessages.class.getField("SOURCE_BANK_ACCOUNT_LOCKED");
     assertNull(lField.getAnnotation(Deprecated.class));
-
     lField = MyMessages.class.getField("INVALID_TARGET_BANK_ACCOUNT");
     assertNull(lField.getAnnotation(Deprecated.class));
     lField = MyMessages.class.getField("SOURCE_BANK_ACCOUNT_LOCKED");

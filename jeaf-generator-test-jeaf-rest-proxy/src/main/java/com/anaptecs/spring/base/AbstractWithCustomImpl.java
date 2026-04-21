@@ -1,4 +1,3 @@
-
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  *
@@ -7,7 +6,6 @@
 package com.anaptecs.spring.base;
 
 public abstract class AbstractWithCustomImpl extends AbstractWithCustomImplBase {
-
   /**
    * Default serial version UID.
    */
@@ -38,7 +36,5 @@ public abstract class AbstractWithCustomImpl extends AbstractWithCustomImplBase 
     protected Builder( AbstractWithCustomImpl pObject ) {
       super(pObject);
     }
-
   }
-
 }

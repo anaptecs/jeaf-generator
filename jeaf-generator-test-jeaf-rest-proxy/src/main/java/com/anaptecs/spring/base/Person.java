@@ -1,4 +1,3 @@
-
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  *
@@ -6,7 +5,9 @@
  */
 package com.anaptecs.spring.base;
 
-@javax.validation.Valid
+import javax.validation.Valid;
+
+@Valid
 public class Person extends PersonBase {
   /**
    * Default serial version UID.
@@ -35,14 +36,14 @@ public class Person extends PersonBase {
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Person objects. The method never returns null.
    */
-  public static Builder builder(com.anaptecs.spring.base.Person pObject) {
+  public static Builder builder( Person pObject ) {
     return new Builder(pObject);
   }
 
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder(java.lang.String pSurname, java.lang.String pFirstName) {
+  public static Builder builder( String pSurname, String pFirstName ) {
     Builder lBuilder = builder();
     lBuilder.setSurname(pSurname);
     lBuilder.setFirstName(pFirstName);
@@ -69,10 +70,10 @@ public class Person extends PersonBase {
   }
 
   /**
-   * @return {@link java.lang.String}
+   * @return {@link String}
    */
   @Override
-  public java.lang.String getDisplayName( ) {
+  public String getDisplayName( ) {
     // TODO: Implement business logic for method.
     return null;
   }

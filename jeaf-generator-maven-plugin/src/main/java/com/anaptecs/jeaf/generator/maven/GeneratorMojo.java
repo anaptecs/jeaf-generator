@@ -1684,6 +1684,12 @@ public class GeneratorMojo extends AbstractMojo {
   private boolean disableSourceFormatting;
 
   /**
+   * Parameter can be be used to disable formatting of <code>src</code> directory, which by default will be formatted.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean disableSrcDirFormatting;
+
+  /**
    * Parameter can be used to disable formatting of generated resources only.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -3697,6 +3703,9 @@ public class GeneratorMojo extends AbstractMojo {
       try {
         String[] lExtensions = { "java" };
         Collection<File> lFiles = FileUtils.listFiles(new File(sourceGenDirectory), lExtensions, true);
+        if (disableSrcDirFormatting == false) {
+          lFiles.addAll(FileUtils.listFiles(new File(sourceDirectory), lExtensions, true));
+        }
         ImportProcessor lProcessor = new ImportProcessor();
         lProcessor.setRemoveUnusedImports(removeUnusedImports);
         for (File formatFile : lFiles) {
@@ -3798,17 +3807,46 @@ public class GeneratorMojo extends AbstractMojo {
   private Element createDirectoryElementConfiguration( ) {
     Element lElement;
     if (disableSourceFormatting == false && disableResourceFormatting == false) {
-      lElement =
-          element("directories", element("directory", sourceGenDirectory), element("directory", resourceGenDirectory),
-              element("directory", sourceTestGenDirectory), element("directory", resourceTestGenDirectory));
+      if (disableSrcDirFormatting == false) {
+        lElement =
+            element("directories",
+                element("directory", sourceDirectory),
+                element("directory", sourceGenDirectory),
+                element("directory", resourceGenDirectory),
+                element("directory", sourceTestDirectory),
+                element("directory", sourceTestGenDirectory),
+                element("directory", resourceTestGenDirectory));
+      }
+      else {
+        lElement =
+            element("directories",
+                element("directory", sourceGenDirectory),
+                element("directory", resourceGenDirectory),
+                element("directory", sourceTestGenDirectory),
+                element("directory", resourceTestGenDirectory));
+      }
     }
     else if (disableSourceFormatting == true) {
-      lElement = element("directories", element("directory", resourceGenDirectory),
-          element("directory", resourceTestGenDirectory));
+      lElement =
+          element("directories",
+              element("directory", resourceGenDirectory),
+              element("directory", resourceTestGenDirectory));
     }
     else if (disableResourceFormatting == true) {
-      lElement = element("directories", element("directory", sourceGenDirectory),
-          element("directory", sourceTestGenDirectory));
+      if (disableSrcDirFormatting == false) {
+        lElement =
+            element("directories",
+                element("directory", sourceDirectory),
+                element("directory", sourceGenDirectory),
+                element("directory", sourceTestDirectory),
+                element("directory", sourceTestGenDirectory));
+      }
+      else {
+        lElement =
+            element("directories",
+                element("directory", sourceGenDirectory),
+                element("directory", sourceTestGenDirectory));
+      }
     }
     else {
       lElement = null;

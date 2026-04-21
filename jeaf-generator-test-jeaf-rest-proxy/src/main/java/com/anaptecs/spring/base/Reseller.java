@@ -1,4 +1,3 @@
-
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  *
@@ -6,7 +5,11 @@
  */
 package com.anaptecs.spring.base;
 
-@javax.validation.Valid
+import java.util.Locale;
+
+import javax.validation.Valid;
+
+@Valid
 public class Reseller extends ResellerBase {
   /**
    * Default serial version UID.
@@ -35,14 +38,14 @@ public class Reseller extends ResellerBase {
    * @param pObject Object that should be used to initialize the builder. The parameter may be null.
    * @return {@link Builder} New builder that can be used to create new Reseller objects. The method never returns null.
    */
-  public static Builder builder(com.anaptecs.spring.base.Reseller pObject) {
+  public static Builder builder( Reseller pObject ) {
     return new Builder(pObject);
   }
 
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder(java.lang.String pName, java.util.Locale pLanguage) {
+  public static Builder builder( String pName, Locale pLanguage ) {
     Builder lBuilder = builder();
     lBuilder.setName(pName);
     lBuilder.setLanguage(pLanguage);
@@ -69,10 +72,10 @@ public class Reseller extends ResellerBase {
   }
 
   /**
-   * @return {@link java.lang.Integer}
+   * @return {@link Integer}
    */
   @Override
-  public java.lang.Integer doSomething( ) {
+  public Integer doSomething( ) {
     // TODO: Implement business logic for method.
     return null;
   }

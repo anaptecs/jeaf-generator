@@ -1,10 +1,11 @@
-
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  *
  * Copyright 2004 - 2019. All rights reserved.
  */
 package com.anaptecs.spring.base;
+
+import java.util.List;
 
 public class MasterDataObject extends MasterDataObjectBase {
   /**
@@ -31,8 +32,7 @@ public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder(com.anaptecs.spring.base.Entity pEntity, java.lang.String pObjectID,
-      String pInternalProperty) {
+  public static Builder builder( Entity pEntity, String pObjectID, String pInternalProperty ) {
     Builder lBuilder = builder();
     lBuilder.setEntity(pEntity);
     lBuilder.setObjectID(pObjectID);
@@ -73,11 +73,11 @@ public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Method returns association {@link #derivedDataUnits}.<br/>
    *
-   * @return {@link java.util.List<com.anaptecs.spring.base.DataUnit>} Value to which {@link #derivedDataUnits} is set.
-   * The method never returns null and the returned collection is unmodifiable.
+   * @return {@link List<DataUnit>} Value to which {@link #derivedDataUnits} is set. The method never returns null and
+   * the returned collection is unmodifiable.
    */
   @Override
-  public java.util.List<com.anaptecs.spring.base.DataUnit> getDerivedDataUnits( ) {
+  public List<DataUnit> getDerivedDataUnits( ) {
     // TODO Implement method for derived property "derivedDataUnits".
     return null;
   }
@@ -85,10 +85,10 @@ public class MasterDataObject extends MasterDataObjectBase {
   /**
    * Method returns association {@link #derivedEntity}.<br/>
    *
-   * @return {@link com.anaptecs.spring.base.Entity} Value to which {@link #derivedEntity} is set.
+   * @return {@link Entity} Value to which {@link #derivedEntity} is set.
    */
   @Override
-  public com.anaptecs.spring.base.Entity getDerivedEntity( ) {
+  public Entity getDerivedEntity( ) {
     // TODO Implement method for derived property "derivedEntity".
     return null;
   }

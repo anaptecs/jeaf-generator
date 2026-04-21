@@ -1,4 +1,3 @@
-
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  *
@@ -39,7 +38,7 @@ public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase
   /**
    * Method creates a new builder and initializes it with the passed attributes.
    */
-  public static Builder builder(int pProperty) {
+  public static Builder builder( int pProperty ) {
     Builder lBuilder = builder();
     lBuilder.setProperty(pProperty);
     return lBuilder;
@@ -70,7 +69,6 @@ public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-
   @Override
   public String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".

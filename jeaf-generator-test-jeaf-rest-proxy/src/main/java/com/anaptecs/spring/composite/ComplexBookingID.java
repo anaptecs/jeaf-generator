@@ -1,4 +1,3 @@
-
 /*
  * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
  *
@@ -7,7 +6,6 @@
 package com.anaptecs.spring.composite;
 
 public class ComplexBookingID extends ComplexBookingIDBase {
-
   /**
    * Default serial version UID.
    */
@@ -37,7 +35,7 @@ public class ComplexBookingID extends ComplexBookingIDBase {
     return new Builder();
   }
 
-  public static Builder builder(String pBookingID) {
+  public static Builder builder( String pBookingID ) {
     Builder lBuilder = builder();
     lBuilder.setBookingID(pBookingID);
     return lBuilder;
