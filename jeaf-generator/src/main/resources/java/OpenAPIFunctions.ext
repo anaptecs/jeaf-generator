@@ -31,7 +31,7 @@ cached boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     getOpenAPISecuritySchemes(spec).size > 0;
     
 cached List[uml::Property] getOpenAPIParameters(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::BeanParam).select(e|e.inline==false).typeSelect(uml::Class).ownedAttribute.select(e|e.isIgnoredHeaderParam()== false).sortBy(e|e.name);
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::BeanParam).select(e|e.inline==false).typeSelect(uml::Class).ownedAttribute.select(e|e.isIgnoredHeaderParam()== false && e.isNoRESTParam() == false).sortBy(e|e.name);
     
 cached boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
     spec.getOpenAPIParameters().size > 0;
