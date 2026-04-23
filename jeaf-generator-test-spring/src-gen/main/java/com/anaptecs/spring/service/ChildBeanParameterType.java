@@ -20,7 +20,14 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String CHILDPROPERTY = "childProperty";
 
+  /**
+   * Constant for the name of attribute "noRESTParam".
+   */
+  public static final String NORESTPARAM = "noRESTParam";
+
   private String childProperty;
+
+  private String noRESTParam;
 
   /**
    * Initialize object using the passed builder.
@@ -32,6 +39,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     super(pBuilder);
     // Read attribute values from builder.
     childProperty = pBuilder.childProperty;
+    noRESTParam = pBuilder.noRESTParam;
   }
 
   /**
@@ -56,14 +64,18 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
+   * @param pNoRESTParam Value to which {@link #noRESTParam} should be set.
+   *
    * @return {@link ChildBeanParameterType}
    */
-  public static ChildBeanParameterType of( String pNovaKey, String pTkID, DoubleCode pCode, String pChildProperty ) {
+  public static ChildBeanParameterType of( String pNovaKey, String pTkID, DoubleCode pCode, String pChildProperty,
+      String pNoRESTParam ) {
     var lBuilder = ChildBeanParameterType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
     lBuilder.setCode(pCode);
     lBuilder.setChildProperty(pChildProperty);
+    lBuilder.setNoRESTParam(pNoRESTParam);
     return lBuilder.build();
   }
 
@@ -75,6 +87,8 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   public static abstract class ChildBeanParameterTypeBuilder<T extends ChildBeanParameterType, B extends ChildBeanParameterTypeBuilder<T, B>>
       extends ParentBeanParamTypeBuilder<T, B> {
     private String childProperty;
+
+    private String noRESTParam;
 
     /**
      * Use {@link ChildBeanParameterType#builder()} instead of private constructor to create new builder.
@@ -92,6 +106,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setChildProperty(pObject.childProperty);
+        this.setNoRESTParam(pObject.noRESTParam);
       }
     }
 
@@ -104,6 +119,18 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     public B setChildProperty( @MyNotNullProperty String pChildProperty ) {
       // Assign value to attribute
       childProperty = pChildProperty;
+      return this.self();
+    }
+
+    /**
+     * Method sets attribute {@link #noRESTParam}.<br/>
+     *
+     * @param pNoRESTParam Value to which {@link #noRESTParam} should be set.
+     * @return {@link B} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public B setNoRESTParam( @MyNotNullProperty String pNoRESTParam ) {
+      // Assign value to attribute
+      noRESTParam = pNoRESTParam;
       return this.self();
     }
 
@@ -158,11 +185,32 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     childProperty = pChildProperty;
   }
 
+  /**
+   * Method returns attribute {@link #noRESTParam}.<br/>
+   *
+   * @return {@link String} Value to which {@link #noRESTParam} is set.
+   */
+  @MyNotNullProperty
+  public String getNoRESTParam( ) {
+    return noRESTParam;
+  }
+
+  /**
+   * Method sets attribute {@link #noRESTParam}.<br/>
+   *
+   * @param pNoRESTParam Value to which {@link #noRESTParam} should be set.
+   */
+  public void setNoRESTParam( @MyNotNullProperty String pNoRESTParam ) {
+    // Assign value to attribute
+    noRESTParam = pNoRESTParam;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = super.hashCode();
     lResult = lPrime * lResult + Objects.hashCode(childProperty);
+    lResult = lPrime * lResult + Objects.hashCode(noRESTParam);
     return lResult;
   }
 
@@ -183,7 +231,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
     else {
       ChildBeanParameterType lOther = (ChildBeanParameterType) pObject;
-      lEquals = Objects.equals(childProperty, lOther.childProperty);
+      lEquals = Objects.equals(childProperty, lOther.childProperty) && Objects.equals(noRESTParam, lOther.noRESTParam);
     }
     return lEquals;
   }
@@ -200,6 +248,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     lBuilder.append(pIndent);
     lBuilder.append("childProperty: ");
     lBuilder.append(childProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("noRESTParam: ");
+    lBuilder.append(noRESTParam);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

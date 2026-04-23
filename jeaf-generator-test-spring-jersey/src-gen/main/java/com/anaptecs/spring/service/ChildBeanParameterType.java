@@ -18,8 +18,15 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String CHILDPROPERTY = "childProperty";
 
+  /**
+   * Constant for the name of attribute "noRESTParam".
+   */
+  public static final String NORESTPARAM = "noRESTParam";
+
   @HeaderParam("X-Child-Property")
   private String childProperty;
+
+  private String noRESTParam;
 
   /**
    * Initialize object using the passed builder.
@@ -31,6 +38,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     super(pBuilder);
     // Read attribute values from builder.
     childProperty = pBuilder.childProperty;
+    noRESTParam = pBuilder.noRESTParam;
   }
 
   /**
@@ -54,14 +62,18 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    *
    * @param pChildProperty Value to which {@link #childProperty} should be set.
    *
+   * @param pNoRESTParam Value to which {@link #noRESTParam} should be set.
+   *
    * @return {@link ChildBeanParameterType}
    */
-  public static ChildBeanParameterType of( String pNovaKey, String pTkID, DoubleCode pCode, String pChildProperty ) {
+  public static ChildBeanParameterType of( String pNovaKey, String pTkID, DoubleCode pCode, String pChildProperty,
+      String pNoRESTParam ) {
     var lBuilder = ChildBeanParameterType.builder();
     lBuilder.setNovaKey(pNovaKey);
     lBuilder.setTkID(pTkID);
     lBuilder.setCode(pCode);
     lBuilder.setChildProperty(pChildProperty);
+    lBuilder.setNoRESTParam(pNoRESTParam);
     return lBuilder.build();
   }
 
@@ -72,6 +84,8 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ParentBeanParamType.Builder {
     private String childProperty;
+
+    private String noRESTParam;
 
     /**
      * Use {@link ChildBeanParameterType#builder()} instead of private constructor to create new builder.
@@ -89,6 +103,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
       if (pObject != null) {
         // Read attribute values from passed object.
         this.setChildProperty(pObject.childProperty);
+        this.setNoRESTParam(pObject.noRESTParam);
       }
     }
 
@@ -144,6 +159,18 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     }
 
     /**
+     * Method sets attribute {@link #noRESTParam}.<br/>
+     *
+     * @param pNoRESTParam Value to which {@link #noRESTParam} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setNoRESTParam( String pNoRESTParam ) {
+      // Assign value to attribute
+      noRESTParam = pNoRESTParam;
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class ChildBeanParameterType. The object will be initialized with the values of
      * the builder.
      *
@@ -174,6 +201,25 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   }
 
   /**
+   * Method returns attribute {@link #noRESTParam}.<br/>
+   *
+   * @return {@link String} Value to which {@link #noRESTParam} is set.
+   */
+  public String getNoRESTParam( ) {
+    return noRESTParam;
+  }
+
+  /**
+   * Method sets attribute {@link #noRESTParam}.<br/>
+   *
+   * @param pNoRESTParam Value to which {@link #noRESTParam} should be set.
+   */
+  public void setNoRESTParam( String pNoRESTParam ) {
+    // Assign value to attribute
+    noRESTParam = pNoRESTParam;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -185,6 +231,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
     lBuilder.append(pIndent);
     lBuilder.append("childProperty: ");
     lBuilder.append(childProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("noRESTParam: ");
+    lBuilder.append(noRESTParam);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

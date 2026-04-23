@@ -389,7 +389,7 @@ public class «this.getResourceName(reactive)» {
 	  «ENDIF»
 	  «FOREACH this.getBeanParams() AS beanParam»
 		  var «beanParam.name.toLocalVar()»Builder = «beanParam.getTypeName()».builder();
-		  «FOREACH beanParam.type.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false) AS attribute»
+		  «FOREACH beanParam.type.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isNoRESTParam() == false) AS attribute»
 		  		«IF attribute.type.isOpenAPIDataType()»
   					// Handle bean parameter «beanParam.name».«attribute.name»
 		  			«IF attribute.type.isCompositeDataTypeForRESTResource()»
@@ -969,7 +969,7 @@ public class «this.getResourceName(reactive)» {
 «ENDDEFINE»
 
 «DEFINE ProcessBeanParam FOR Class»
-	«EXPAND SpringRESTBeanParameterDefinition FOREACH this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false) SEPARATOR ","»
+	«EXPAND SpringRESTBeanParameterDefinition FOREACH this.getAllAttributesFromHierarchy().select(e|e.isPropertySuppressed() == false && e.isNoRESTParam() == false) SEPARATOR ","»
 «ENDDEFINE»
 
 «DEFINE SpringRESTBeanParameterDefinition FOR Property»
