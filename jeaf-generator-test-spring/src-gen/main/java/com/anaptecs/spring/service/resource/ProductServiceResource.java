@@ -169,7 +169,6 @@ public class ProductServiceResource {
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
       @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam,
-      @MyNotNullRESTParam String pLang,
       @RequestHeader(name = "intCode", required = true) @MyNotNullRESTParam int pIntCodeAsBasicType,
       @RequestHeader Map<String, String> pHeaders ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
@@ -180,7 +179,6 @@ public class ProductServiceResource {
     lContextBuilder.setResellerID(pResellerID);
     lContextBuilder.setPathParam(pPathParam);
     lContextBuilder.setQueryParam(pQueryParam);
-    lContextBuilder.setLang(pLang);
     // Handle bean parameter pContext.intCode
     lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     // Add custom headers.
@@ -416,7 +414,6 @@ public class ProductServiceResource {
       @CookieValue(name = "reseller", required = true) long pResellerID,
       @PathVariable(name = "id", required = true) long pPathParam,
       @RequestParam(name = "q1", required = true) @MyNotNullRESTParam String pQueryParam,
-      @MyNotNullRESTParam String pLang,
       @RequestHeader(name = "intCode", required = true) @MyNotNullRESTParam int pIntCodeAsBasicType,
       @RequestHeader(name = "specificHeader", required = true) @MyNotNullRESTParam String pSpecificHeader,
       @CookieValue(name = "Channel-Type", required = true) @MyNotNullRESTParam ChannelType pChannelType,
@@ -429,7 +426,6 @@ public class ProductServiceResource {
     lContextBuilder.setResellerID(pResellerID);
     lContextBuilder.setPathParam(pPathParam);
     lContextBuilder.setQueryParam(pQueryParam);
-    lContextBuilder.setLang(pLang);
     // Handle bean parameter pContext.intCode
     lContextBuilder.setIntCode(IntegerCodeType.builder().setCode(pIntCodeAsBasicType).build());
     lContextBuilder.setSpecificHeader(pSpecificHeader);

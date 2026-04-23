@@ -91,3 +91,5 @@ context Property if owner.asNamedElement().runChecks("OpenAPIType") && runOpenAP
 context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isOpenAPIType() && this.getNearestPackage().getOwnOpenAPISpecification() != null &&runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9172", {name, owner.asNamedElement().name, type.name}): this.checkForOrphanedOpenAPITypes();
 //context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isOpenAPIType() && runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9172", {name, owner.asNamedElement().name, type.name}): this.getOwnOpenAPISpecification() != null;
 
+
+context BeanParam if runChecks("BeanParam") && ignore() == false ERROR this.getErrorMessage("9186", {this.qualifiedName()}) : this.ownedElement.typeSelect(Property).select(e|e.hasNoRESTParamStereotype()).size == 0;

@@ -43,6 +43,11 @@ cached boolean isCookieParamProperty(uml::Property property):
 cached boolean isNoRESTParam(uml::Property property):
 	property.isStereotypeApplied("NoRESTParam");
 	
+cached boolean hasNoRESTParamStereotype(uml::Property property):
+	if property.isPathParamProperty() == false && property.isHeaderParamProperty() == false && property.isQueryParamProperty() == false && property.isCookieParamProperty() == false && property.isNoRESTParam() == false
+	then true
+	else false;
+	
 cached List[JMM::PathParam] getPathParams(uml::Operation operation):
     operation.ownedParameter.typeSelect(JMM::PathParam);
     
