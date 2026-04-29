@@ -20,7 +20,7 @@ public class CharacterCodeDeserializerV3 extends ValueDeserializer<CharacterCode
   @Override
   public CharacterCode deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return CharacterCode.of(lNode.asString().charAt(0));
     }

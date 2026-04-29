@@ -21,7 +21,7 @@ public class DoubleCodeDeserializer extends ValueDeserializer<DoubleCode> {
   @Override
   public DoubleCode deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
       return DoubleCode.builder().setCode(lNumericNode.doubleValue()).build();

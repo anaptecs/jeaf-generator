@@ -20,7 +20,7 @@ public class CurrencyCodeDeserializerV3 extends ValueDeserializer<CurrencyCode> 
   @Override
   public CurrencyCode deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return CurrencyCode.of(lNode.asString());
     }

@@ -21,7 +21,7 @@ public class IBANDeserializer extends ValueDeserializer<IBAN> {
   @Override
   public IBAN deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return IBAN.builder().setValue(lNode.asString()).build();
     }

@@ -20,7 +20,7 @@ public class MySortCriteriaDeserializerV3 extends ValueDeserializer<MySortCriter
   @Override
   public MySortCriteria deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       // Convert public string representation of MySortCriteria into real object.
       return MySortCriteria.deserialize(lNode.asString());

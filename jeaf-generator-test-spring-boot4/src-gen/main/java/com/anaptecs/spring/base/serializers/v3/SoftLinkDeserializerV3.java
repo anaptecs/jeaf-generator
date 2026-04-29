@@ -20,7 +20,7 @@ public class SoftLinkDeserializerV3 extends ValueDeserializer<SoftLink> {
   @Override
   public SoftLink deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       // Convert public string representation of SoftLink into real object.
       return SoftLink.deserialize(lNode.asString());

@@ -20,7 +20,7 @@ public class StringCodeTypeDeserializerV3 extends ValueDeserializer<StringCodeTy
   @Override
   public StringCodeType deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return StringCodeType.of(lNode.asString());
     }

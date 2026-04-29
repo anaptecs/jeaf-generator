@@ -21,7 +21,7 @@ public class BookingIDDeserializer extends ValueDeserializer<BookingID> {
   @Override
   public BookingID deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return BookingID.builder().setBookingID(lNode.asString()).build();
     }

@@ -412,7 +412,7 @@ public final class «name» {
 			@Override
 			public «this.fqn()» deserialize( «getJsonParserFQN(jacksonVersion)» pParser, «getDeserializationContextFQN(jacksonVersion)» pContext ) «IF jacksonVersion.isJacksonVersion2()»throws java.io.IOException«ENDIF» {
 				// Parse JSON content.
-				«getJsonNodeFQN(jacksonVersion)» lNode = pParser.«IF jacksonVersion.isJacksonVersion2()»getCodec()«ELSE»objectReadContext()«ENDIF».readTree(pParser);
+				«getJsonNodeFQN(jacksonVersion)» lNode = «IF jacksonVersion.isJacksonVersion2()»pParser.getCodec()«ELSE»pContext«ENDIF».readTree(pParser);
 			
 			    // We expect that enumerations are always serialized as plain text which will result in a TextNode.
 			    if (lNode instanceof «getTextNodeFQN(jacksonVersion)») {

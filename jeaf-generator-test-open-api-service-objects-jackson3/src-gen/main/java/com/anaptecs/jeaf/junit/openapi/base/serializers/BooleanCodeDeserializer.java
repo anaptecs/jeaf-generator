@@ -21,7 +21,7 @@ public class BooleanCodeDeserializer extends ValueDeserializer<BooleanCode> {
   @Override
   public BooleanCode deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof BooleanNode) {
       return BooleanCode.builder().setCode(lNode.asBoolean()).build();
     }

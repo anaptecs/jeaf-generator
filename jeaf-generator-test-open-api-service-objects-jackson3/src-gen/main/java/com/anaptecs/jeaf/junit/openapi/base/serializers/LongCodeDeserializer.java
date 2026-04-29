@@ -21,7 +21,7 @@ public class LongCodeDeserializer extends ValueDeserializer<LongCode> {
   @Override
   public LongCode deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
       return LongCode.builder().setCode(lNumericNode.longValue()).build();

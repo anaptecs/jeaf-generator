@@ -57,7 +57,7 @@ public class ComplexBookingIDDeserializerV3 extends ValueDeserializer<ComplexBoo
   @Override
   public ComplexBookingID deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       // Convert public string representation of ComplexBookingID into real object.
       return deserializer.deserializeObject(lNode.asString(), ComplexBookingID.class, SERIALIZED_CLASSES);

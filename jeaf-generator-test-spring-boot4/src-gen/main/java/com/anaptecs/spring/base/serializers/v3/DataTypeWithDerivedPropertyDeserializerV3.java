@@ -20,7 +20,7 @@ public class DataTypeWithDerivedPropertyDeserializerV3 extends ValueDeserializer
   @Override
   public DataTypeWithDerivedProperty deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
       return DataTypeWithDerivedProperty.of(lNumericNode.intValue());

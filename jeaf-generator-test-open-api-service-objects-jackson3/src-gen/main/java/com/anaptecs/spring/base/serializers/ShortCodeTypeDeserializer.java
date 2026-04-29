@@ -21,7 +21,7 @@ public class ShortCodeTypeDeserializer extends ValueDeserializer<ShortCodeType> 
   @Override
   public ShortCodeType deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
       return ShortCodeType.builder().setCode((short) lNumericNode.intValue()).build();

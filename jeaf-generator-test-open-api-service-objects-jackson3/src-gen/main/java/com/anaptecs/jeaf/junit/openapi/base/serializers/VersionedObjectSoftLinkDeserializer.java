@@ -21,7 +21,7 @@ public class VersionedObjectSoftLinkDeserializer extends ValueDeserializer<Versi
   @Override
   public VersionedObjectSoftLink deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return VersionedObjectSoftLink.builder().setObjectID(lNode.asString()).build();
     }

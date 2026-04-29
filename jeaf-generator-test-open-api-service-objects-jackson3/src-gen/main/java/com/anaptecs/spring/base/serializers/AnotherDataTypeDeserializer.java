@@ -21,7 +21,7 @@ public class AnotherDataTypeDeserializer extends ValueDeserializer<AnotherDataTy
   @Override
   public AnotherDataType deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return AnotherDataType.builder().setData(lNode.asString()).build();
     }

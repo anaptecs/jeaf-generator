@@ -20,7 +20,7 @@ public class ByteCodeDeserializerV3 extends ValueDeserializer<ByteCode> {
   @Override
   public ByteCode deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof NumericNode) {
       NumericNode lNumericNode = (NumericNode) lNode;
       return ByteCode.of((byte) lNumericNode.intValue());

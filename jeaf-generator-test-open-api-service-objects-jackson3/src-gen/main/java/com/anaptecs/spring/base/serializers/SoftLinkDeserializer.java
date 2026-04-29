@@ -21,7 +21,7 @@ public class SoftLinkDeserializer extends ValueDeserializer<SoftLink> {
   @Override
   public SoftLink deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return SoftLink.builder().setOpenID(lNode.asString()).build();
     }

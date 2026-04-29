@@ -20,7 +20,7 @@ public class EntityDeserializerV3 extends ValueDeserializer<Entity> {
   @Override
   public Entity deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     // We expect that enumerations are always serialized as plain text which will result in a TextNode.
     if (lNode instanceof StringNode) {
       Entity lLiteral;

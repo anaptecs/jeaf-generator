@@ -21,7 +21,7 @@ public class ChannelCodeDeserializer extends ValueDeserializer<ChannelCode> {
   @Override
   public ChannelCode deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       return ChannelCode.builder().setCode(lNode.asString()).build();
     }

@@ -20,7 +20,7 @@ public class DataTypeCustomSerializationDeserializerV3 extends ValueDeserializer
   @Override
   public DataTypeCustomSerialization deserialize( JsonParser pParser, DeserializationContext pContext ) {
     // Parse JSON content.
-    JsonNode lNode = pParser.objectReadContext().readTree(pParser);
+    JsonNode lNode = pContext.readTree(pParser);
     if (lNode instanceof StringNode) {
       // Convert public string representation of DataTypeCustomSerialization into real object.
       return DataTypeCustomSerialization.deserialize(lNode.asString());
