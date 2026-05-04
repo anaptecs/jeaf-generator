@@ -218,11 +218,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(
-      path = "products/",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.HEAD })
+  @RequestMapping(path = "products/", produces = { "application/json" }, method = { RequestMethod.HEAD })
   @MyNotNullRESTParam
   public Mono<Void> ping( ServerWebExchange pServerWebExchange ) {
     return Mono.defer(( ) ->

@@ -211,11 +211,7 @@ public class ProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(
-      path = "products/",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.HEAD })
+  @RequestMapping(path = "products/", produces = { "application/json" }, method = { RequestMethod.HEAD })
   @MyNotNullRESTParam
   public void ping( ) {
     // Delegate request to service.

@@ -232,7 +232,7 @@ public class RESTProductServiceResource {
    */
   @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(consumes = { "application/json" }, produces = { "application/json" }, method = { RequestMethod.HEAD })
+  @RequestMapping(produces = { "application/json" }, method = { RequestMethod.HEAD })
   @MyNotNullRESTParam
   public void ping( ) {
     // Delegate request to service.
