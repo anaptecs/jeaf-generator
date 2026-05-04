@@ -89,11 +89,7 @@ public class PathlessServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "doSomething",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "doSomething", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> getSomething( ServerWebExchange pServerWebExchange ) {
     return Mono.defer(( ) ->
@@ -231,11 +227,7 @@ public class PathlessServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "test-query-bean-param",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "test-query-bean-param", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> testQueryBeanParam(
       @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,

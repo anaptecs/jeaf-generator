@@ -86,11 +86,7 @@ public class PathlessServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "doSomething",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "doSomething", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String getSomething( ) {
     // Delegate request to service.
@@ -227,11 +223,7 @@ public class PathlessServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "test-query-bean-param",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "test-query-bean-param", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public String testQueryBeanParam( @RequestParam(name = "longCodes", required = false) Long[] pLongCodesAsBasicType,
       @RequestParam(name = "codes", required = false) int[] pCodesAsBasicType,

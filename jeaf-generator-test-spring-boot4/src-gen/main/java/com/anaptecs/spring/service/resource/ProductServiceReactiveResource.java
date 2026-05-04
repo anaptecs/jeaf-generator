@@ -100,11 +100,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "products/",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "products/", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotEmptyRESTParam
   public Mono<List<Product>> getProducts( ServerWebExchange pServerWebExchange ) {
     return Mono.defer(( ) ->
@@ -119,11 +115,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "products/{id}",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "products/{id}", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<Product> getProduct( @PathVariable(name = "id", required = true) @MyNotNullRESTParam String pProductID,
       ServerWebExchange pServerWebExchange ) {
@@ -162,11 +154,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "products/sortiment/{id}",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "products/sortiment/{id}", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<Sortiment> getSortiment(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
@@ -249,7 +237,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
       path = "products/deprecated/operation",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @Deprecated
@@ -399,7 +386,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
       path = "products/deprecated/complexReturn",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @Deprecated
@@ -556,11 +542,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "products/LocalBeanParam",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "products/LocalBeanParam", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> testLocalBeanParamType(
       @RequestHeader(name = "localKey", required = true) @MyNotNullRESTParam String pLocalKey,
@@ -588,7 +570,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
       path = "products/ExternalBeanParam",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @MyNotNullRESTParam
@@ -619,11 +600,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "products/ChildBeanParam",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "products/ChildBeanParam", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> testChildBeanParameter(
       @RequestHeader(name = "novaKey", required = true) @MyNotNullRESTParam String pNovaKey,
@@ -656,7 +633,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(
       path = "products/test-date-query-params/{path}",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @MyNotNullRESTParam
@@ -774,7 +750,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(
       path = "products/test-date-query-params-beans/{path}",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @MyNotNullRESTParam
@@ -863,7 +838,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(
       path = "products/test-date-header-params/{path}",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @MyNotNullRESTParam
@@ -980,7 +954,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(
       path = "products/test-date-header-params-beans/{path}",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @MyNotNullRESTParam
@@ -1069,7 +1042,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
       path = "products/technicalHeaderParam",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @MyNotNullRESTParam
@@ -1092,7 +1064,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
       path = "products/technicalHeaderBeanParam",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.GET })
   @MyNotNullRESTParam
@@ -1124,11 +1095,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "products/product-codes",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "products/product-codes", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> processDataTypes( @RequestParam(name = "pCodes", required = false) String[] pCodesAsBasicType,
       ServerWebExchange pServerWebExchange ) {
@@ -1157,11 +1124,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.OK)
-  @RequestMapping(
-      path = "products/info",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.GET })
+  @RequestMapping(path = "products/info", produces = { "application/json" }, method = { RequestMethod.GET })
   @MyNotNullRESTParam
   public Mono<String> getVersionInfo( ServerWebExchange pServerWebExchange ) {
     return Mono.defer(( ) ->
