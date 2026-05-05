@@ -16,8 +16,8 @@
 
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
-| `iban` | `int` | `1..1` |   |  |  |
-| `currency` | `java.util.Currency` | `1..1` |   |  |  |
+| `iban` | `int` | `1..1` |  |  |  |
+| `currency` | `java.util.Currency` | `1..1` |  |  |  |
 
 <br>
 
@@ -31,11 +31,11 @@
 
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
-| `sourceAccount` | [`Account`](#account) | `1..1` |   |  |  |
-| `targetAccount` | [`Account`](#account) | `1..1` |   |  |  |
-| `amount` | `java.math.BigDecimal` | `1..1` |   |  |  |
-| `currency` | `java.util.Currency` | `1..1` |   |  |  |
-| `executionTimestamp` | `java.util.Calendar` | `1..1` |   |  |  |
+| `sourceAccount` | [`Account`](#account) | `1..1` |  |  |  |
+| `targetAccount` | [`Account`](#account) | `1..1` |  |  |  |
+| `amount` | `java.math.BigDecimal` | `1..1` |  |  |  |
+| `currency` | `java.util.Currency` | `1..1` |  |  |  |
+| `executionTimestamp` | `java.util.Calendar` | `1..1` |  |  |  |
 
 <br>
 
@@ -55,10 +55,10 @@
 
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
-| `name` | `java.lang.String` | `1..1` |   | `@NotBlank`<br> |  |
-| `firstName` | `java.lang.String` | `1..1` |   | `@NotBlank`<br> |  |
-| `email` | `java.lang.String` | `1..1` |   | `@Email`<br> |  |
-| `accounts` | [`Account`](#account) | `0..*` |   |  |  |
+| `name` | `java.lang.String` | `1..1` |  | `@NotBlank`<br> |  |
+| `firstName` | `java.lang.String` | `1..1` |  | `@NotBlank`<br> |  |
+| `email` | `java.lang.String` | `1..1` |  | `@Email`<br> |  |
+| `accounts` | [`Account`](#account) | `0..*` |  |  |  |
 
 <br>
 
@@ -78,7 +78,7 @@
 
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
-| `tags` | `String` | `1..1` |   |  |  |
+| `tags` | `String` | `1..1` |  |  |  |
 
 <br>
 

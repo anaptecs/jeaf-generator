@@ -55,8 +55,8 @@
 
 | Name | Type | Multiplicity | «IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF» Constraints | Description |
 |------|------|:------------:|«IF showAliasInTypesReport()»----------------------|«ENDIF»-------------|-------------|
-«FOREACH pojo.ownedAttribute AS attr-»
-| «IF attr.isJEAFDeprecated()»:exclamation:«ELSEIF attr.isBreakingChange()»:bomb: «ENDIF»`«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF showAliasInTypesReport()» «IF attr.isAlias()»«attr.asAlias().getAlternateName()»«ENDIF» | «ENDIF»«IF attr.getValidationStereotypes().isEmpty == false»«FOREACH attr.getValidationStereotypes() AS stereo SEPARATOR "<br>"»`«attr.getValidationStereotyeAndValue(stereo)»`«ENDFOREACH»<br>«ENDIF»«IF attr.isTransient()»`transient`<br>«ENDIF»«IF attr.isDerived»`derived`«ENDIF» | «attr.getMarkdownCommentForReportTable()»«IF attr.hasExample()»<br><br>**Example(s):**<br>«FOREACH attr.asExample().exampleValues AS exampleValue»- `«exampleValue.makeMultiLineCompatible()»`«ENDFOREACH»«ENDIF» |
+«FOREACH pojo.ownedAttribute.select(e|e.ignore() == false && e.isStatic == false) AS attr-»
+| «IF attr.isJEAFDeprecated()»:exclamation:«ELSEIF attr.isBreakingChange()»:bomb: «ENDIF»`«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF showAliasInTypesReport()»«IF attr.isAlias()»`«attr.asAlias().getAlternateName()»`«ENDIF» | «ENDIF»«IF attr.getValidationStereotypes().isEmpty == false»«FOREACH attr.getValidationStereotypes() AS stereo SEPARATOR "<br>"»`«attr.getValidationStereotyeAndValue(stereo)»`«ENDFOREACH»<br>«ENDIF»«IF attr.isTransient()»`transient`<br>«ENDIF»«IF attr.isDerived»`derived`«ENDIF» | «attr.getMarkdownCommentForReportTable()»«IF attr.hasExample()»<br><br>**Example(s):**<br>«FOREACH attr.asExample().exampleValues AS exampleValue»- `«exampleValue.makeMultiLineCompatible()»`«ENDFOREACH»«ENDIF» |
 «ENDFOREACH-»
 
 <br>
@@ -76,8 +76,8 @@
 
 | Name | «IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF» Description |
 |------|«IF showAliasInTypesReport()»----------------------|«ENDIF»----------------------------|
-«FOREACH enum.ownedLiteral AS literal-»
-| «IF literal.isJEAFDeprecated()»:exclamation:«ENDIF»`«literal.name»` | «IF showAliasInTypesReport()» «IF literal.isAlias()»«literal.asAlias().getAlternateName()»«ENDIF» | «ENDIF»«literal.getMarkdownCommentForReportTable()» |
+«FOREACH enum.ownedLiteral.select(e|e.ignore() == false) AS literal-»
+| «IF literal.isJEAFDeprecated()»:exclamation:«ENDIF»`«literal.name»` | «IF showAliasInTypesReport()» «IF literal.isAlias()»`«literal.asAlias().getAlternateName()»`«ENDIF» | «ENDIF»«literal.getMarkdownCommentForReportTable()» |
 «ENDFOREACH-»
 «IF enum.extensibleEnum -»
 | `UNKNOWN` | «IF showAliasInTypesReport()» | «ENDIF»Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |

@@ -32,7 +32,7 @@ Enumeration defines the different types of channels that are supported.
 
 | Name |  Legacy Name | Description |
 |------|----------------------|----------------------------|
-| `COUNTER` |  BEDIENT | counter |
+| `COUNTER` |  `BEDIENT` | counter |
 | `CALL_CENTER` |   |  |
 | `MOBILE` |   |  |
 | `TVM` |   |  |
