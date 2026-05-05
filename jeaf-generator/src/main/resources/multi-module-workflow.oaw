@@ -7,6 +7,21 @@
 		<outputSlot value="${output.slot}"/>
 	</component>
 
+	<!-- JMM version check -->
+	<component class="org.openarchitectureware.check.CheckComponent">
+		<metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
+		<metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
+			<profile value="${profile.file}"/>
+		</metaModel>
+		<metaModel id="CustomProfile" class="oaw.uml2.profile.ProfileMetaModel">
+			<profile value="${customprofile.file}"/>
+		</metaModel>
+
+		<checkFile value="jeaf::VersionCheck"/>
+
+		<expression value="${output.slot}.eAllContents.union({${output.slot}})"/>
+	</component>
+
 	<!-- Run Generator -->
 	<component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
 		<metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
