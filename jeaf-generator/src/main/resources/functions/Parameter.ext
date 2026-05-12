@@ -8,3 +8,5 @@ cached boolean isParameter(uml::Element element):
 cached uml::Parameter asParameter(uml::Element element):
 	(uml::Parameter) element;
 
+cached int lowerForParam(uml::Parameter parameter):
+	parameter.lower;

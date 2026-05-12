@@ -10,6 +10,7 @@ extension functions::Alias;
 extension functions::SoftLink;
 extension functions::NamedElement;
 extension functions::Parameter;
+extension functions::Property;
 extension functions::Javadoc;
 extension functions::DefaultComment;
 extension functions::Example;
@@ -303,10 +304,10 @@ cached List[uml::Property] getAllAttributesFromHierarchy(uml::Element class):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getAllAttributesFromHierarchy(org.eclipse.uml2.uml.Element);   
    
 cached boolean isRequired(uml::Parameter param):
-   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || (param.type.isPrimitiveType() && param.lower > 0) || param.lower > 0;
+   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || (param.type.isPrimitiveType() && param.lowerForOpenAPI() > 0) || param.lowerForOpenAPI() > 0;
 
 cached boolean isRequiredProperty(uml::Property property):
-   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lower > 0) || (property.association != null && property.lower > 0) || (property.isMultivalued() && property.lower > 0);
+   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lowerForOpenAPI() > 0) || (property.association != null && property.lowerForOpenAPI() > 0) || (property.isMultivalued() && property.lowerForOpenAPI() > 0);
    
 cached List[uml::Property] getRequiredProperties(uml::Class class):
     class.getPropertiesForOpenAPI().select(e|e.isRequiredProperty());
@@ -339,7 +340,7 @@ cached boolean isNullable(uml::Property property):
     if property.isStereotypeApplied("NotNull")
     then false
     else 
-      if property.lower > 0
+      if property.lowerForOpenAPI() > 0
       then false
       else true;
   
@@ -357,7 +358,7 @@ cached boolean isNullableForParam(uml::Parameter param):
 	if param.isStereotypeApplied("NotNull")
 	then false
 	else 
-	  if param.lower > 0
+	  if param.lowerForOpenAPI() > 0
 	  then false
 	  else true;
 
@@ -603,3 +604,7 @@ private List[JMM::OpenAPITag] getOpenAPITagsForOperationOnly(JMM::RESTOperation 
     
 private List[JMM::OpenAPITag] getOpenAPITagsForInterface(uml::Interface interface):
     interface.getTargetDirectedRelationships().source.typeSelect(JMM::OpenAPITag).sortBy(e|e.name);
+
+cached int lowerForOpenAPI(uml::MultiplicityElement multiplicityElement):
+	multiplicityElement.lower;
+

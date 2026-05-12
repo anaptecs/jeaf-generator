@@ -8,6 +8,7 @@
 «EXTENSION functions::Class»
 «EXTENSION functions::Example»
 «EXTENSION functions::Property»
+«EXTENSION functions::Parameter»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::ToDo»
 «EXTENSION functions::RESTResource»
@@ -618,7 +619,7 @@
 «ENDDEFINE»
 
 «DEFINE NotNullAnnotationForProperty FOR uml::Property -»
-    «IF lower > 0 -»
+    «IF lower() > 0 -»
         «IF isMultivalued() -»
             «IF generateNotEmptyAnnotationForMultiValuedProperties() -»
                 @«notEmptyAnnotationNameForMultiValuedProperties()»
@@ -632,7 +633,7 @@
 «ENDDEFINE»
 
 «DEFINE NotNullAnnotationForParameter(String context) FOR uml::Parameter -»
-    «IF lower > 0 -»
+    «IF lowerForParam() > 0 -»
         «IF context == "RESTResource"»
             «IF isMultivalued() -»
                 «IF generateNotEmptyAnnotationForMultiValuedRESTParameters() -»
@@ -669,7 +670,7 @@
 
 
 «DEFINE NotNullAnnotationForBeanParameter FOR uml::Property -»
-    «IF lower > 0 -»
+    «IF lower() > 0 -»
         «IF isMultivalued() -»
             «IF generateNotEmptyAnnotationForMultiValuedRESTParameters() -»
                 @«notEmptyAnnotationNameForMultiValuedRESTParameters()»

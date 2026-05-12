@@ -10,6 +10,7 @@ extension functions::RESTOperation;
 extension functions::RESTResource;
 extension functions::NamedElement;
 extension functions::Property;
+extension functions::Parameter;
 extension functions::OpenAPIType;
 extension functions::OpenAPISpecification;
 extension functions::SystemProperties;
@@ -37,8 +38,8 @@ context RESTOperation if runChecks("RESTOperation") && ignore() == false && owne
 
 context RESTOperation if runChecks("RESTOperation") && ignore() == false WARNING this.getWarningMessage("9166", {owner.asNamedElement().name + "." + name, this.getRESTOperationPath(), this.detectDeadRESTPathParams().toString(", ")}): this.detectDeadRESTPathParams().isEmpty == true ;
 
-context Parameter if runChecks("RESTOperation") && this.owner.isRESTOperation() && enforceExplicitDefaultValueForOptionalPrimitives() == true  && this.owner.ignore() == false ERROR   this.asNamedElement().getErrorMessage(  "9180", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeParameter() == false);
-context Parameter if runChecks("RESTOperation") && this.owner.isRESTOperation() && enforceExplicitDefaultValueForOptionalPrimitives() == false && this.owner.ignore() == false WARNING this.asNamedElement().getWarningMessage("9180", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeParameter() == false);
+context Parameter if runChecks("RESTOperation") && this.owner.isRESTOperation() && enforceExplicitDefaultValueForOptionalPrimitives() == true  && this.owner.ignore() == false ERROR   this.asNamedElement().getErrorMessage(  "9180", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lowerForParam() == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeParameter() == false);
+context Parameter if runChecks("RESTOperation") && this.owner.isRESTOperation() && enforceExplicitDefaultValueForOptionalPrimitives() == false && this.owner.ignore() == false WARNING this.asNamedElement().getWarningMessage("9180", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lowerForParam() == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeParameter() == false);
 
 // Global checks for OpenAPI3Specification
 context Model if runChecks() ERROR this.getErrorMessage("9114", {}): this.hasValidOneGlobalDefaultErrorResponse() == false;
@@ -68,7 +69,8 @@ context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false WAR
 
 
 // Checks for stereotype PathParam
-context PathParam if runChecks("PathParam") && ignore() == false ERROR this.getErrorMessage("9120", {this.fqn()}): this.lower == 1;
+context PathParam if runChecks("PathParam") && ignore() == false && isParameter() ERROR this.getErrorMessage("9120", {this.fqn()}): ((uml::Parameter) this).lowerForParam() == 1;
+context PathParam if runChecks("PathParam") && ignore() == false && isProperty() ERROR this.getErrorMessage("9120", {this.fqn()}): ((uml::Property) this).lower() == 1;
 context PathParam if runChecks("PathParam") && ignore() == false ERROR this.getErrorMessage("9120", {this.fqn()}): this.isMultivalued() == false;
 
 // Checks for stereotype HeaderParam

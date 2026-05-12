@@ -78,4 +78,7 @@ cached uml::Property getPredecessorProperty(uml::Property property):
 
 cached boolean hasPredecessorProperty(uml::Property property):
 	property.getPredecessorProperty() != null;
-	
+
+
+cached int lower(uml::Property property):
+	property.lower;

@@ -48,8 +48,8 @@
 			«ENDIF -»
 	    «ENDIF -»
 	«ENDFOREACH -»
-    «IF this.isMultivalued() == true && this.lower > 0 && this.isStereotypeApplied("Size") == false -»
-«indent»      minItems: «this.lower»
+    «IF this.isMultivalued() == true && this.lowerForOpenAPI() > 0 && this.isStereotypeApplied("Size") == false -»
+«indent»      minItems: «this.lowerForOpenAPI()»
     «ENDIF -»
 «ENDDEFINE»
 
@@ -114,8 +114,8 @@
 «indent»      maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
 «DEFINE SizeAnnotationForArray(String indent) FOR Size -»
-          «IF min > 0 || lower > 0 -»
-«indent»      minItems: «maxValue(min, lower)»
+          «IF min > 0 || lowerForOpenAPI() > 0 -»
+«indent»      minItems: «maxValue(min, lowerForOpenAPI())»
           «ENDIF-»
           «IF max != -1 -»
 «indent»      maxItems: «max»«ENDIF -»«ENDDEFINE»
