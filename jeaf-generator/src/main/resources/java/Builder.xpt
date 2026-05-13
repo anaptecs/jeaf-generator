@@ -443,11 +443,8 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
         «IF this.owner.asClass().isPOJO()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
         «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.hasValidationStereotype() == false && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower()»)«ENDIF»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
             «visibility» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «this.getSoftLinkPropertyName()»;
         «ELSE»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
             «visibility» «IF isTransient()»transient «ENDIF» «this.getJavaSoftLinkType()» «this.getSoftLinkPropertyName()»;
         «ENDIF»
 «ENDDEFINE»

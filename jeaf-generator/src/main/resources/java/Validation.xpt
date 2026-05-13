@@ -4,6 +4,7 @@
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::CustomValidationCommons»
 «EXTENSION functions::Property»
+«EXTENSION functions::Parameter»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateCustomValidation FOR CustomConstraint»
@@ -135,6 +136,27 @@ public @interface «validationClass» {
 			«ENDIF»
 	    «ENDIF»
 	«ENDFOREACH»
+	«IF this.isProperty()»
+		«LET this.asProperty() AS property»
+			«IF property.association == null»
+				«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == true && isStereotypeApplied("Size") == false && property.lower() > 0»
+					@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()»)
+				«ENDIF»
+				«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == false && property.type.isPrimitiveType() == false && this.requiresNotNullAnnotation() && property.lower() > 0»
+					@«getEnterpriseJavaPackage()».validation.constraints.NotNull
+				«ENDIF»
+			«ELSE»
+				«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isMultivalued() && property.isStatic == false && property.isTransient() == false && isStereotypeApplied("Size") == false && property.lower() > 0»
+					@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()»)
+				«ENDIF»
+				«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isStatic == false && property.isTransient() == false && this.requiresNotNullAnnotation() && property.lower() > 0»
+					@«getEnterpriseJavaPackage()».validation.constraints.NotNull
+				«ENDIF»
+			«ENDIF»
+		«ENDLET»
+	«ENDIF»
+	«IF this.isStereotypeApplied("Size") == false »
+	«ENDIF»
 	«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject")) && this.isStereotypeApplied("Valid")==false »
 	@«getEnterpriseJavaPackage()».validation.Valid
 	«ENDIF»

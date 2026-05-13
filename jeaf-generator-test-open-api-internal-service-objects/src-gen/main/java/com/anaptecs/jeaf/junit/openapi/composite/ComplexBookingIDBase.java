@@ -42,10 +42,10 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
   @NotNull
   private String referenceID;
 
-  @Valid
-  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
+  @Valid
+  @JsonSetter(nulls = Nulls.SKIP)
   private List<BookingID> bookingIDs;
 
   @NotNull
@@ -91,12 +91,14 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
      */
     private long internalID;
 
+    @NotNull
     private String referenceID;
 
     private List<BookingID> bookingIDs;
 
     private ComplexBookingType complexBookingType;
 
+    @NotNull
     private Integer anotherID;
 
     /**

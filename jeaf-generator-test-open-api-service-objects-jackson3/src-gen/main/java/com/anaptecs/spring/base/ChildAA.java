@@ -98,6 +98,7 @@ public class ChildAA extends ChildA {
     @Size(min = 10, max = 100)
     private int[] sizedArray;
 
+    @Size(min = 1)
     private String[] requiredArray;
 
     /**

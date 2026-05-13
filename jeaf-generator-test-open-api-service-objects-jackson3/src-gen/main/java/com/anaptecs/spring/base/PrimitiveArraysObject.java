@@ -177,6 +177,7 @@ public class PrimitiveArraysObject {
 
     private String[] bStringArray;
 
+    @Size(min = 1)
     private String[] cStringArray;
 
     /**

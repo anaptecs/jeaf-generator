@@ -51,10 +51,10 @@ public class Campaign implements ServiceObject {
    * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
    */
   @Deprecated
-  @Valid
-  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
+  @Valid
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<Long> moreLinks;
 
   /**
@@ -138,9 +138,9 @@ public class Campaign implements ServiceObject {
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    @Valid
     @Size(min = 1)
     @NotNull
+    @Valid
     private Set<Long> moreLinks;
 
     /**

@@ -68,6 +68,7 @@ public class BusinessChild extends BusinessParent {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends BusinessParent.Builder {
+    @NotNull
     private String childAttribute;
 
     /**

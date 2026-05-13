@@ -82,6 +82,7 @@ public class Stop {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     @JsonAlias({ "bavName", "stopName" })
+    @NotNull
     private String name;
 
     @JsonProperty("_links")

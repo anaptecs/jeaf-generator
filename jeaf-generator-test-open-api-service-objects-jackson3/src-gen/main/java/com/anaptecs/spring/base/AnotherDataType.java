@@ -49,6 +49,7 @@ public class AnotherDataType implements Comparable<AnotherDataType> {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String data;
 
     /**

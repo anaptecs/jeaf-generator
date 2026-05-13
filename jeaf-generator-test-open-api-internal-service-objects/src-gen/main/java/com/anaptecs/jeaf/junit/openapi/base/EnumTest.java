@@ -104,6 +104,7 @@ public class EnumTest implements ServiceObject {
      * <br/>
      * <b>Default Value:</b> <code>GREEN</code>
      */
+    @NotNull
     private ExtensibleEnum property = ExtensibleEnum.GREEN;
 
     /**

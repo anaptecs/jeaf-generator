@@ -117,6 +117,7 @@ public class MasterClass implements ServiceObject {
   public static class Builder {
     private List<ClientClass> clients;
 
+    @NotNull
     private String name;
 
     private ClientClass singleClient;

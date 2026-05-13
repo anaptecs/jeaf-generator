@@ -57,13 +57,13 @@ public class POI extends Stop {
    * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
    */
   @Size(min = 2, max = 42)
-  @JsonSetter(nulls = Nulls.SKIP)
   @NotNull
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<UICStop> stops;
 
-  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<BookingCode> bookingCodes;
 
   /**
@@ -139,6 +139,7 @@ public class POI extends Stop {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Stop.Builder {
+    @NotNull
     private String description;
 
     /**

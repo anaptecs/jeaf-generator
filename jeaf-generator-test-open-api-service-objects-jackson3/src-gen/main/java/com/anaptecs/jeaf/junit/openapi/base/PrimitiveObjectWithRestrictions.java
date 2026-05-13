@@ -261,6 +261,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      */
     private boolean aBoolean = true;
 
+    @NotNull
     private Boolean bBoolean;
 
     private boolean cBoolean;
@@ -269,39 +270,47 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
     private byte aByte;
 
     @NegativeOrZero
+    @NotNull
     private Byte bByte;
 
     @Min(value = -237)
     private short aShort;
 
     @Positive
+    @NotNull
     private Short bShort;
 
     @PositiveOrZero
     private int aInteger;
 
     @Min(value = 4711)
+    @NotNull
     private Integer bInteger;
 
     @Min(value = 100)
     @Max(value = 1000)
+    @NotNull
     private Integer cInteger;
 
     private long aLong;
 
     @DecimalMax(value = "299792458", inclusive = false)
+    @NotNull
     private Long bLong;
 
     @DecimalMax(value = "3.14159265359", inclusive = true)
     @DecimalMin(value = "-3.14159265359", inclusive = true)
+    @NotNull
     private BigInteger aBigInteger;
 
     private char aCharacter;
 
+    @NotNull
     private Character bCharacter;
 
     private float aFloat;
 
+    @NotNull
     private Float bFloat;
 
     /**
@@ -310,9 +319,11 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      */
     private double aDouble = 42.0;
 
+    @NotNull
     private Double bDouble;
 
     @DecimalMin(value = "4711.0815", inclusive = true)
+    @NotNull
     private BigDecimal aBigDecimal;
 
     /**
@@ -320,6 +331,7 @@ public class PrimitiveObjectWithRestrictions implements ServiceObject {
      * <b>Default Value:</b> <code>"Hello OpenAPI"</code>
      */
     @Size(min = 8, max = 32)
+    @NotNull
     private String aString = "Hello OpenAPI";
 
     @NotEmpty

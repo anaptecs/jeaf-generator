@@ -174,6 +174,7 @@ public class Product implements IProduct {
     private Set<Reseller> resellers;
 
     @Size(min = 12, max = Integer.MAX_VALUE)
+    @NotNull
     private String name;
 
     /**
@@ -189,8 +190,10 @@ public class Product implements IProduct {
      * <li><code>https://www.company.com/products/1345-345</code></li>
      * </ul>
      */
+    @NotNull
     private URL link;
 
+    @NotNull
     private UUID productID;
 
     private Set<CurrencyCode> supportedCurrencies;
@@ -208,12 +211,14 @@ public class Product implements IProduct {
      * </ul>
      */
     @Deprecated
+    @NotNull
     private String description;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
      */
+    @NotNull
     private String uri = "https://products.anaptecs.de/123456789";
 
     /**

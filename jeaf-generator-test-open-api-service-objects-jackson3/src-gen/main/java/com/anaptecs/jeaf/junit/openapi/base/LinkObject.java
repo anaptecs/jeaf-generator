@@ -72,6 +72,7 @@ public class LinkObject implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String href;
 
     /**

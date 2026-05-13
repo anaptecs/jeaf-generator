@@ -82,6 +82,7 @@ public class TechParent implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String techAttribute;
 
     /**

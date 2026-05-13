@@ -31,8 +31,8 @@ public class WeirdBooking extends WeirdParent {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @NotNull
+  @Valid
   private ComplexBookingID booking;
 
   /**
@@ -47,8 +47,8 @@ public class WeirdBooking extends WeirdParent {
    * 2nd line<br/>
    * 3rd line
    */
-  @Valid
   @NotNull
+  @Valid
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
   private int childProperty;

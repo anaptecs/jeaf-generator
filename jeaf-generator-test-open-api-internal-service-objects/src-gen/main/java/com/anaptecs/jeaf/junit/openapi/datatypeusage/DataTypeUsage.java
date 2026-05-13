@@ -30,8 +30,8 @@ public class DataTypeUsage implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @NotNull
+  @Valid
   private MyDataType code;
 
   @Valid

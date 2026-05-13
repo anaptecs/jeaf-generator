@@ -120,6 +120,7 @@ public class NoSubTypesChild extends NoSubTypesParent {
      * <br/>
      * So far I think it is at least funny.
      */
+    @NotNull
     private String myProperty;
 
     /**

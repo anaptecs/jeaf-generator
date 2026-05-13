@@ -68,6 +68,7 @@ public class LongCode implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private Long code;
 
     /**

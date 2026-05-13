@@ -119,16 +119,22 @@ public class DateObject {
      * <li><code>12:07</code></li>
      * </ul>
      */
+    @NotNull
     private LocalTime localTime;
 
+    @NotNull
     private LocalDate localDate;
 
+    @NotNull
     private LocalDateTime localDateTime;
 
+    @NotNull
     private Calendar calendar;
 
+    @NotNull
     private Date sqlDate;
 
+    @NotNull
     private java.util.Date utilDate;
 
     /**

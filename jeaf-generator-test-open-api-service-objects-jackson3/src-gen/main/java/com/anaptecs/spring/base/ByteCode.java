@@ -49,6 +49,7 @@ public class ByteCode {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private Byte code;
 
     /**

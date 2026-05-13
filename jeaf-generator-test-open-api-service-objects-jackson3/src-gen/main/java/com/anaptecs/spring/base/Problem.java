@@ -100,8 +100,10 @@ public class Problem {
     @NotNull
     private String type;
 
+    @NotNull
     private String detail;
 
+    @NotNull
     private String instance;
 
     /**

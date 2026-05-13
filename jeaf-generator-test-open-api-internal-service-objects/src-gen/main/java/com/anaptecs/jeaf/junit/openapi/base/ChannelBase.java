@@ -32,8 +32,8 @@ public abstract class ChannelBase implements ServiceObject {
   /**
    * The business code of the channel
    */
-  @Valid
   @NotNull
+  @Valid
   private ChannelCode channelCode;
 
   private final int code;

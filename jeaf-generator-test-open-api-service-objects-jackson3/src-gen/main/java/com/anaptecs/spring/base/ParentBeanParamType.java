@@ -100,8 +100,10 @@ public class ParentBeanParamType {
      * <li><code>4711-0815</code></li>
      * </ul>
      */
+    @NotNull
     private String novaKey;
 
+    @NotNull
     private String tkID;
 
     /**
@@ -111,6 +113,7 @@ public class ParentBeanParamType {
      * <li><code>BOOKING_ID_999</code></li>
      * </ul>
      */
+    @NotNull
     private DoubleCode code;
 
     /**

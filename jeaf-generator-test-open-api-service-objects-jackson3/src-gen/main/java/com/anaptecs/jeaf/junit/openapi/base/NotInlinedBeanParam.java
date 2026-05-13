@@ -99,12 +99,16 @@ public class NotInlinedBeanParam implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String header;
 
+    @NotNull
     private DoubleCode doubleCode;
 
+    @NotNull
     private ExtensibleEnum extensibleEnum;
 
+    @NotNull
     private BookingID bookingID;
 
     /**

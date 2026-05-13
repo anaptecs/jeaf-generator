@@ -30,8 +30,8 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @NotNull
+  @Valid
   private BooleanCodeType booleanCode;
 
   @Valid
@@ -39,17 +39,17 @@ public class CodeTypeUsageTest implements ServiceObject {
   private Set<BooleanCodeType> booleanCodeAssociation;
 
   @Valid
-  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
-  @Valid
   @NotNull
+  @Valid
   private StringCodeType stringCode;
 
-  @Valid
   @NotNull
+  @Valid
   private ShortCode shortCode;
 
   /**
@@ -128,6 +128,7 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     @Valid
     private BooleanCodeType booleanCode;
 
@@ -135,6 +136,7 @@ public class CodeTypeUsageTest implements ServiceObject {
 
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
+    @NotNull
     @Valid
     private StringCodeType stringCode;
 

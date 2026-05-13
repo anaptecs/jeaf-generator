@@ -49,6 +49,7 @@ public class BooleanCode {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private Boolean code;
 
     /**

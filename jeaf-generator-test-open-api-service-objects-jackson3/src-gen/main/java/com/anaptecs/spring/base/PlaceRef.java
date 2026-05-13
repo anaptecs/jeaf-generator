@@ -49,6 +49,7 @@ public abstract class PlaceRef {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class Builder {
+    @NotNull
     private String name;
 
     private MyType type;

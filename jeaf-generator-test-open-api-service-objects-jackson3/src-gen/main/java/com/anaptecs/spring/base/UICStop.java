@@ -67,6 +67,7 @@ public class UICStop extends Stop {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Stop.Builder {
+    @NotNull
     private String uicCode;
 
     /**

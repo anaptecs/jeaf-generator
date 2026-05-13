@@ -91,6 +91,7 @@ public class Duration {
      * <br/>
      * <b>Default Value:</b> <code>DAY</code>
      */
+    @NotNull
     private TimeUnit timeUnit = TimeUnit.DAY;
 
     /**

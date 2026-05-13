@@ -121,6 +121,7 @@ public class ParentClass implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String parentAttribute;
 
     private Set<IBAN> ibans;

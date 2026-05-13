@@ -72,6 +72,7 @@ public class IgnoringClass implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private Integer age;
 
     /**

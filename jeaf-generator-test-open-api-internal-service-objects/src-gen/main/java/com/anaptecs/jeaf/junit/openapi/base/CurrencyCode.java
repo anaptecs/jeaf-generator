@@ -88,6 +88,7 @@ public class CurrencyCode implements ServiceObject {
      * </ul>
      */
     @Size(min = 3, max = 3)
+    @NotNull
     private String code = "CHF";
 
     /**

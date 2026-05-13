@@ -39,8 +39,8 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
-  @Valid
   @NotNull
+  @Valid
   private Long theLink;
 
   /**
@@ -58,15 +58,15 @@ public class POI extends Stop {
    * <b>Breaking Change on 2024-12-24:</b> New mandatory association is required to support upcoming features.
    */
   @Size(min = 2, max = 42)
+  @NotNull
   @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  @NotNull
   private Set<UICStop> stops;
 
-  @Valid
-  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
+  @Valid
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<BookingCode> bookingCodes;
 
   /**
@@ -156,6 +156,7 @@ public class POI extends Stop {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Stop.Builder {
+    @NotNull
     private String description;
 
     /**
@@ -164,8 +165,8 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
-    @Valid
     @NotNull
+    @Valid
     private Long theLink;
 
     /**

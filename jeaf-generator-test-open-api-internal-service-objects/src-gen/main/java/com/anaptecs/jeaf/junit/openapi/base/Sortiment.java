@@ -128,6 +128,7 @@ public class Sortiment implements ServiceObject {
      * <br/>
      * <b>Default Value:</b> <code>4711</code>
      */
+    @NotNull
     private Integer value = 4711;
 
     private InlineSortimentType inlineSortimentType;

@@ -56,6 +56,7 @@ public abstract class ReadOnlyClientBase implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
+    @NotNull
     private String name;
 
     /**

@@ -30,8 +30,8 @@ public class BidirectA implements ServiceObject {
   @Valid
   private transient Set<BidirectB> transientBs;
 
-  @Valid
   @NotNull
+  @Valid
   private BidirectA parent;
 
   /**

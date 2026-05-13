@@ -86,6 +86,7 @@ public class Company extends Partner {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Partner.Builder {
+    @NotNull
     private String name;
 
     private StringCode code;

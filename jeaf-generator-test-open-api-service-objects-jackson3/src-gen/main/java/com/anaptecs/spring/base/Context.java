@@ -148,16 +148,20 @@ public class Context {
      * <li><code>en</code></li>
      * </ul>
      */
+    @NotNull
     private Locale language;
 
     private long resellerID;
 
     private long pathParam;
 
+    @NotNull
     private String queryParam;
 
+    @NotNull
     private String lang;
 
+    @NotNull
     private IntegerCodeType intCode;
 
     /**

@@ -63,8 +63,10 @@ public abstract class PersonBase extends Partner {
      * <p/>
      * <b>Alternate Name:</b> <code>Vorname</code>
      */
+    @NotNull
     private String surname;
 
+    @NotNull
     private String firstName;
 
     /**

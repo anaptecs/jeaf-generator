@@ -105,10 +105,13 @@ public class PostalAddress implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String street;
 
+    @NotNull
     private String houseNumber;
 
+    @NotNull
     private String city;
 
     private int postalCode;

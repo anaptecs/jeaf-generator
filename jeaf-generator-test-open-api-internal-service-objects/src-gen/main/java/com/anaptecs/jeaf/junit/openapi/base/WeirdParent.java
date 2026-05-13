@@ -39,14 +39,14 @@ public class WeirdParent implements ServiceObject {
   @NotNull
   private String someProperty;
 
-  @Valid
   @NotNull
+  @Valid
   private ComplexBookingID complexBooking;
 
-  @Valid
-  @JsonSetter(nulls = Nulls.SKIP)
   @Size(min = 1)
   @NotNull
+  @Valid
+  @JsonSetter(nulls = Nulls.SKIP)
   private Set<ComplexBookingID> complexBookings;
 
   /**
@@ -116,6 +116,7 @@ public class WeirdParent implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String someProperty;
 
     private ComplexBookingID complexBooking;

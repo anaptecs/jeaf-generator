@@ -112,6 +112,7 @@ public class DirectedEdge implements ServiceObject {
     /**
      * Another simple comment.
      */
+    @NotNull
     private String link;
 
     /**

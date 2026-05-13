@@ -114,6 +114,7 @@ public class Stop implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String name;
 
     private List<LinkObject> links;

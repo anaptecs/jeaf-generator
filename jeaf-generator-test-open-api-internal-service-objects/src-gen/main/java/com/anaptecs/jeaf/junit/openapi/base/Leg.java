@@ -29,12 +29,12 @@ public class Leg implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @NotNull
+  @Valid
   private PlaceRef start;
 
-  @Valid
   @NotNull
+  @Valid
   private PlaceRef stop;
 
   @Valid

@@ -70,6 +70,7 @@ public class ParentClass {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String parentAttribute;
 
     /**

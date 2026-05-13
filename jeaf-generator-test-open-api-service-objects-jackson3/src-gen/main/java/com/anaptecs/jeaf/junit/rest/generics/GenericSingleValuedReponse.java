@@ -80,6 +80,7 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    * Class implements builder to create a new instance of class <code>GenericSingleValuedReponse</code>.
    */
   public static class Builder<T> extends AbstractResponse.Builder<T> {
+    @NotNull
     private T value;
 
     /**

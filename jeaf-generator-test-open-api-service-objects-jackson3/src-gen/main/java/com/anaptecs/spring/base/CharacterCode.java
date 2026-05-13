@@ -55,6 +55,7 @@ public class CharacterCode {
     /**
      * Just a character
      */
+    @NotNull
     private Character code;
 
     /**

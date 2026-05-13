@@ -49,6 +49,7 @@ public class LongCode {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private Long code;
 
     /**

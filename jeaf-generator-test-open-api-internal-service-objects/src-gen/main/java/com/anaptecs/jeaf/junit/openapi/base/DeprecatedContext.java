@@ -138,10 +138,12 @@ public class DeprecatedContext implements ServiceObject {
      * <li><code>en</code></li>
      * </ul>
      */
+    @NotNull
     private Locale language;
 
     private long resellerID;
 
+    @NotNull
     private String queryParam;
 
     /**

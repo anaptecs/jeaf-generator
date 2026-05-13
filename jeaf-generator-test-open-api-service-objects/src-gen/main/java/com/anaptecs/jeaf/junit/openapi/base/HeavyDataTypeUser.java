@@ -123,20 +123,28 @@ public class HeavyDataTypeUser implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private BooleanCode booleanCode;
 
+    @NotNull
     private ByteCode byteCode;
 
+    @NotNull
     private ShortCode shortCode;
 
+    @NotNull
     private IntegerCode integerCode;
 
+    @NotNull
     private FloatCode floatCode;
 
+    @NotNull
     private DoubleCode doubleCode;
 
+    @NotNull
     private BigIntegerCode bigInegerCode;
 
+    @NotNull
     private BigDecimalCode bigDecimalCode;
 
     /**

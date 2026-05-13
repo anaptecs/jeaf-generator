@@ -49,6 +49,7 @@ public class IntegerCode {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private Integer code;
 
     /**

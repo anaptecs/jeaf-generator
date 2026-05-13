@@ -62,6 +62,7 @@ public class DerivedClassImpl extends AbtractWithDerivedProperty {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends AbtractWithDerivedProperty.Builder {
+    @NotNull
     private String derivedProperty;
 
     /**

@@ -97,6 +97,7 @@ public class ReadOnlyMaster implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
+    @NotNull
     private String name;
 
     private List<ReadOnlyClient> clients;

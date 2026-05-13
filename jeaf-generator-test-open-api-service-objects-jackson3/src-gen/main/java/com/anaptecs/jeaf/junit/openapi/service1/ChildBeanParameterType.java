@@ -79,6 +79,7 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ParentBeanParamType.Builder {
+    @NotNull
     private String childProperty;
 
     /**

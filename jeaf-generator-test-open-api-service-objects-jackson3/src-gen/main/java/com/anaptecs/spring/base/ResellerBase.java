@@ -87,6 +87,7 @@ public abstract class ResellerBase {
     @Size(min = 0, max = 32)
     private String name;
 
+    @NotNull
     private Locale language;
 
     /**

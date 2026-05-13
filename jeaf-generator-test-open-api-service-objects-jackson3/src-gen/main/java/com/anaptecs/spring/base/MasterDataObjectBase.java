@@ -66,8 +66,10 @@ public abstract class MasterDataObjectBase {
 
     private Entity entity;
 
+    @NotNull
     private String objectID;
 
+    @NotNull
     private String internalProperty;
 
     /**
