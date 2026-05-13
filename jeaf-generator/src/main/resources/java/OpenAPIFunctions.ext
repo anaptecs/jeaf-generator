@@ -303,17 +303,17 @@ cached List[uml::Property] getOpenAPIProperties(uml::Element class):
 cached List[uml::Property] getAllAttributesFromHierarchy(uml::Element class):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getAllAttributesFromHierarchy(org.eclipse.uml2.uml.Element);   
    
-cached boolean isRequired(uml::Parameter param):
+cached boolean isRequiredOpenAPIParam(uml::Parameter param):
    param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || (param.type.isPrimitiveType() && param.lowerForOpenAPI() > 0) || param.lowerForOpenAPI() > 0;
 
-cached boolean isRequiredProperty(uml::Property property):
+cached boolean isRequiredOpenAPIProperty(uml::Property property):
    property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lowerForOpenAPI() > 0) || (property.association != null && property.lowerForOpenAPI() > 0) || (property.isMultivalued() && property.lowerForOpenAPI() > 0);
    
-cached List[uml::Property] getRequiredProperties(uml::Class class):
-    class.getPropertiesForOpenAPI().select(e|e.isRequiredProperty());
+cached List[uml::Property] getRequiredOpenAPIProperties(uml::Class class):
+    class.getPropertiesForOpenAPI().select(e|e.isRequiredOpenAPIProperty());
     
-cached boolean hasRequiredProperties(uml::Class class):
-    getRequiredProperties(class).size > 0;
+cached boolean hasRequiredOpenAPIProperties(uml::Class class):
+    getRequiredOpenAPIProperties(class).size > 0;
     
 cached boolean supportsRequestBody(JMM::HTTPMethod httpMethod):
   httpMethod.toString().toLowerCase() == "post" || httpMethod.toString().toLowerCase() == "put" || httpMethod.toString().toLowerCase() == "patch";

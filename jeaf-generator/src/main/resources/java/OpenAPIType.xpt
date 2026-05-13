@@ -55,12 +55,12 @@
       «IF this.isDeprecated() -»
       deprecated: true
       «ENDIF -»
-      «IF this.isTopOfClassHierarchy() || this.hasRequiredProperties() -»
+      «IF this.isTopOfClassHierarchy() || this.hasRequiredOpenAPIProperties() -»
       required:
         «IF this.isTopOfClassHierarchy() && this.getPropertiesForOpenAPI().selectFirst(e|e.getAttributeName() == this.getDescriminatorPropertyName()) == null-»
         - «this.getDescriminatorPropertyName()»
         «ENDIF-»
-        «FOREACH this.getRequiredProperties() AS property-»
+        «FOREACH this.getRequiredOpenAPIProperties() AS property-»
         - «property.getAttributeName()»
         «ENDFOREACH-»
       «ENDIF-»
@@ -275,9 +275,9 @@
         - $ref: «superClass.get(0).getOpenAPIType(spec)»
         - type: object
           additionalProperties: false
-      «IF this.hasRequiredProperties() -»
+      «IF this.hasRequiredOpenAPIProperties() -»
           required:
-        «FOREACH this.getRequiredProperties() AS property-»
+        «FOREACH this.getRequiredOpenAPIProperties() AS property-»
             - «property.getAttributeName()»
         «ENDFOREACH-»
       «ENDIF-»

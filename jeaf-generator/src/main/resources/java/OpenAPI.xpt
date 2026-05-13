@@ -148,7 +148,7 @@ components:
           «IF parameter.hasPatternForProperty() -»
         pattern: '«parameter.getPatternForProperty()»'
           «ENDIF-»
-          «IF parameter.isRequiredProperty() -»
+          «IF parameter.isRequiredOpenAPIProperty() -»
         nullable: false
           «ENDIF-»          
         «ELSE-»
@@ -161,7 +161,7 @@ components:
           «IF parameter.hasPatternForProperty() -»
             pattern: '«parameter.getPatternForProperty()»'
           «ENDIF-»
-          «IF parameter.isRequiredProperty() -»
+          «IF parameter.isRequiredOpenAPIProperty() -»
             nullable: false
           «ENDIF-»
           «IF parameter.isUnique-»
@@ -183,13 +183,13 @@ components:
           			«ENDIF-»
         		«EXPAND java::OpenAPIHelper::GenerateExample("        ") FOR parameter -»
       		«ENDIF-»
-            «IF parameter.isRequiredProperty() -»
+            «IF parameter.isRequiredOpenAPIProperty() -»
         nullable: false
             «ENDIF-»          
       	«ELSE-»
       		«IF parameter.type.isEnumeration() -»
         type: string
-                «IF parameter.isRequiredProperty() -»
+                «IF parameter.isRequiredOpenAPIProperty() -»
         nullable: false
                 «ENDIF-»          
         «((uml::Enumeration) parameter.type).getEnumerationType()»:
@@ -202,8 +202,8 @@ components:
       		«ENDIF-»
       	«ENDIF-»
       «ENDIF-»
-      «IF parameter.isRequiredProperty() -»
-      required: «parameter.isRequiredProperty()»
+      «IF parameter.isRequiredOpenAPIProperty() -»
+      required: «parameter.isRequiredOpenAPIProperty()»
       «ENDIF-»
       «IF parameter.isDeprecated() -»
       deprecated: true
@@ -328,8 +328,8 @@ components:
           description: «getOpenAPICommentStyle()»
             «property.getParameterCommentForOpenAPIDescription("            ")»
           «ENDIF-»
-          «IF property.isRequiredProperty() -»
-          required: «property.isRequiredProperty()»
+          «IF property.isRequiredOpenAPIProperty() -»
+          required: «property.isRequiredOpenAPIProperty()»
           «ENDIF-»
           «IF property.isDeprecated() -»
           deprecated: true
@@ -340,7 +340,7 @@ components:
             	«IF property.isMultivalued() && property.type.isByteType() -» 
             type: string
             format: byte
-                    «IF property.isRequiredProperty() -»
+                    «IF property.isRequiredOpenAPIProperty() -»
             nullable: false
                     «ENDIF-»          
             	«ELSEIF property.isMultivalued() == false -»
@@ -351,7 +351,7 @@ components:
                     «IF property.hasPatternForProperty() -»
             pattern: '«property.getPatternForProperty()»'
                     «ENDIF-»
-                    «IF property.isRequiredProperty() -»
+                    «IF property.isRequiredOpenAPIProperty() -»
             nullable: false
                     «ENDIF-»          
             «EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR property-»
@@ -369,7 +369,7 @@ components:
                     «IF property.hasPatternForProperty() -»
               pattern: '«property.getPatternForProperty()»'
                     «ENDIF-»
-                    «IF property.isRequiredProperty() -»
+                    «IF property.isRequiredOpenAPIProperty() -»
               nullable: false
                     «ENDIF-»          
                     «IF property.isUnique-»
@@ -413,8 +413,8 @@ components:
             Default value: «param.getDefaultValueForEnum()»
             «ENDIF-»
           «ENDIF-»
-          «IF param.isRequired() -»
-          required: «param.isRequired()»
+          «IF param.isRequiredOpenAPIParam() -»
+          required: «param.isRequiredOpenAPIParam()»
           «ENDIF-»
           «IF param.isDeprecated() -»
           deprecated: true
@@ -424,7 +424,7 @@ components:
                 «IF param.isMultivalued() && param.type.isByteType() -» 
             type: string
             format: byte
-                    «IF param.isRequired() -»
+                    «IF param.isRequiredOpenAPIParam() -»
             nullable: false
                     «ENDIF-»          
             	«ELSEIF param.isMultivalued() == false-»
@@ -435,7 +435,7 @@ components:
                     «IF param.hasPatternForParam() -»
             pattern: '«param.getOpenAPIFormatForParam()»'
                     «ENDIF-»
-                    «IF param.isRequired() -»
+                    «IF param.isRequiredOpenAPIParam() -»
             nullable: false
                     «ENDIF-»          
 			«EXPAND java::OpenAPIRestrictions::OpenAPIRestrictions("      ") FOR param-»
@@ -444,7 +444,7 @@ components:
                   «ENDIF-»
             	«ELSE-»
             type: array
-                    «IF param.isRequired() -»
+                    «IF param.isRequiredOpenAPIParam() -»
             nullable: false
                     «ENDIF-»          
             items:
@@ -492,8 +492,8 @@ components:
           Operation has deprected body parameter. Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set to deprecated.
           «ENDIF-»
         «ENDIF-»
-        «IF param.isRequired() -»
-        required: «param.isRequired()»
+        «IF param.isRequiredOpenAPIParam() -»
+        required: «param.isRequiredOpenAPIParam()»
         «ENDIF-»
         content:
           «FOREACH unifyMediaTypes(service.consumes, operation.consumes) AS mediaType-»

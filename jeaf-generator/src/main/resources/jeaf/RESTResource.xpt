@@ -286,7 +286,7 @@ public class «this.getResourceName(reactive)» {
 	    	«ELSE»
 	    		«LET basicParam.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
 		    		«IF basicParam.isMultivalued() == false»
-		    			«IF basicParam.isRequired()»
+		    			«IF basicParam.isRequiredRESTParam()»
 	                        «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(«basicParam.name»AsBasicType).build(); 
 	                    «ELSE»
 			    			«basicParam.type.fqn()» «basicParam.name»;
@@ -590,7 +590,7 @@ public class «this.getResourceName(reactive)» {
 	    	«ELSE»
 	    		«LET basicParam.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
 		    		«IF basicParam.isMultivalued() == false»
-	                    «IF basicParam.isRequired()»
+	                    «IF basicParam.isRequiredRESTParam()»
 	                        «basicParam.type.fqn()» «basicParam.name» = «basicParam.type.fqn()».builder().«dataTypeProperty.asSetter()»(«basicParam.name»AsBasicType).build();
 	                    «ELSE»
 		                    «basicParam.type.fqn()» «basicParam.name»;
@@ -892,7 +892,7 @@ public class «this.getResourceName(reactive)» {
 	  		String«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
 	  	«ELSE»
 	  		«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
-	  			«IF this.isRequired() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
+	  			«IF this.isRequiredRESTParam() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
 	  				«dataTypeProperty.getWrapperTypeAwareQualifiedName()» «this.name»AsBasicType
 	  			«ELSE»
 		  			«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «this.name»AsBasicType
@@ -936,7 +936,7 @@ public class «this.getResourceName(reactive)» {
 	  		String«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
 	  	«ELSE»
   			«LET this.type.attribute().select(e|e.isStatic == false).first() AS dataTypeProperty»
-  				«IF this.isRequired() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
+  				«IF this.isRequiredRESTParam() == false && this.isMultivalued() == false && dataTypeProperty.type.isPrimitiveType()»
   					«dataTypeProperty.getWrapperTypeAwareQualifiedName()» «name»AsBasicType
   				«ELSE»
 	  				«dataTypeProperty.fqn()»«IF this.isMultivalued()»[]«ENDIF» «name»AsBasicType
