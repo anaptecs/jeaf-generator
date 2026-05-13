@@ -225,3 +225,11 @@ cached String getRESTProxyName(JMM::RESTResource service, boolean reactive):
     if reactive
     then service.name + "RESTProxyReactive"
     else service.name + "RESTProxy";
+
+
+cached boolean isRequiredRESTParam(uml::Parameter param):
+   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") || (param.type.isPrimitiveType() && param.lowerForOpenAPI() > 0) || param.lowerForOpenAPI() > 0;
+
+
+cached boolean isRequiredRESTProperty(uml::Property property):
+   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lowerForOpenAPI() > 0) || (property.association != null && property.lowerForOpenAPI() > 0) || (property.isMultivalued() && property.lowerForOpenAPI() > 0);
