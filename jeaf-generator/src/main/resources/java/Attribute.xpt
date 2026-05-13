@@ -73,7 +73,7 @@
             «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().isPOJO() == false»
             @«getJsonSetterFQN()»(nulls = «getNullsFQN()».SKIP)
             «ENDIF»
-            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
+            «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower()»)«ENDIF»
             «IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
             «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «this.getSoftLinkPropertyName()»;
         «ELSE»
@@ -107,7 +107,7 @@
             «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().isPOJO() == false»
             @«getJsonSetterFQN()»(nulls = «getNullsFQN()».SKIP)
             «ENDIF»
-			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower»)«ENDIF»
+			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && isStereotypeApplied("Size") == false && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «lower()»)«ENDIF»
 			«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && isStatic == false && isTransient() == false && this.requiresNotNullAnnotation() && lower() > 0»@«getEnterpriseJavaPackage()».validation.constraints.NotNull«ENDIF»
 			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()»;
 		«ELSE»
