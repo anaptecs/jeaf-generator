@@ -82,3 +82,8 @@ cached boolean hasPredecessorProperty(uml::Property property):
 
 cached int lower(uml::Property property):
 	property.lower;
+
+cached boolean isRequiredProperty(uml::Property property):
+   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lowerForOpenAPI() > 0) || (property.association != null && property.lowerForOpenAPI() > 0) || (property.isMultivalued() && property.lowerForOpenAPI() > 0);
+   
+
