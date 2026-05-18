@@ -60,7 +60,6 @@ public class ByteCode implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private Byte code;
 
     /**

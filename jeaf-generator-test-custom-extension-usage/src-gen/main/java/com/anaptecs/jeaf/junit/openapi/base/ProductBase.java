@@ -300,7 +300,6 @@ public abstract class ProductBase extends Object implements ServiceObject, Ident
     // "java.lang.String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 12, max = Integer.MAX_VALUE)
     private String name;
 
     // "java.lang.String"

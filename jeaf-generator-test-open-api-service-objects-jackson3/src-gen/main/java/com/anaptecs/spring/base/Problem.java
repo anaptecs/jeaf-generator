@@ -91,19 +91,14 @@ public class Problem {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String title;
 
-    @NotNull
     private int status;
 
-    @NotNull
     private String type;
 
-    @NotNull
     private String detail;
 
-    @NotNull
     private String instance;
 
     /**

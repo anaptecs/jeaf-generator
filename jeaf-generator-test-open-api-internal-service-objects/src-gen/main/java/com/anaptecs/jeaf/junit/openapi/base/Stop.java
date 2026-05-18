@@ -127,13 +127,10 @@ public class Stop implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String name;
 
     private List<LinkObject> links;
 
-    @Max(value = 32)
-    @PositiveOrZero
     private byte index;
 
     /**
@@ -141,8 +138,6 @@ public class Stop implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #theSoftLink} is
      * <code>LinkObject</code><br/>
      */
-    @NotNull
-    @Valid
     private SoftLink theSoftLink;
 
     /**

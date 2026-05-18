@@ -128,16 +128,12 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
-    @Valid
     private BooleanCodeType booleanCode;
 
     private Set<BooleanCodeType> booleanCodeAssociation;
 
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
-    @NotNull
-    @Valid
     private StringCodeType stringCode;
 
     private ShortCode shortCode;

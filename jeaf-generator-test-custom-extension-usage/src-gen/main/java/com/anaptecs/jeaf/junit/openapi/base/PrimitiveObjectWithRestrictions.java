@@ -503,7 +503,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "byte"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Negative
     private byte aByte;
 
     // "byte"
@@ -512,7 +511,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "java.lang.Byte"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @NegativeOrZero
     private Byte bByte;
 
     // "java.lang.Byte"
@@ -521,7 +519,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "short"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Min(value = -237)
     private short aShort;
 
     // "short"
@@ -530,7 +527,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "java.lang.Short"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Positive
     private Short bShort;
 
     // "java.lang.Short"
@@ -539,7 +535,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "int"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @PositiveOrZero
     private int aInteger;
 
     // "int"
@@ -548,7 +543,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "java.lang.Integer"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Min(value = 4711)
     private Integer bInteger;
 
     // "java.lang.Integer"
@@ -557,8 +551,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "Integer"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Min(value = 100)
-    @Max(value = 1000)
     private Integer cInteger;
 
     // "Integer"
@@ -575,7 +567,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "java.lang.Long"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @DecimalMax(value = "299792458", inclusive = false)
     private Long bLong;
 
     // "java.lang.Long"
@@ -584,8 +575,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "java.math.BigInteger"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @DecimalMax(value = "3.14159265359", inclusive = true)
-    @DecimalMin(value = "-3.14159265359", inclusive = true)
     private BigInteger aBigInteger;
 
     // "java.math.BigInteger"
@@ -646,7 +635,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "java.math.BigDecimal"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @DecimalMin(value = "4711.0815", inclusive = true)
     private BigDecimal aBigDecimal;
 
     // "java.math.BigDecimal"
@@ -659,7 +647,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 8, max = 32)
     private String aString = "Hello OpenAPI";
 
     // "String"
@@ -668,8 +655,6 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
     // "String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @NotEmpty
-    @Size(min = 0, max = 128)
     private String bString;
 
     // "String"

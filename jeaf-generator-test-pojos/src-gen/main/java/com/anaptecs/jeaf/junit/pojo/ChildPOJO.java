@@ -104,7 +104,6 @@ public class ChildPOJO extends ParentPOJO {
       removedWith = "Last X-Mas",
       removalDate = "")
   public static class Builder extends ParentPOJO.Builder {
-    @NotNull
     private Integer childAttribute;
 
     /**

@@ -231,13 +231,11 @@ public class Product implements IProduct, Serializable {
   public static class Builder {
     private Set<Reseller> resellers;
 
-    @Size(min = 12, max = Integer.MAX_VALUE)
     private String name;
 
     /**
      * Image describing the product.
      */
-    @Size(min = 1024, max = 32768)
     private byte[] image;
 
     /**

@@ -77,7 +77,6 @@ public class StringCode extends Object implements ServiceObject {
     // "String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 32, max = 128)
     private String code;
 
     // "String"

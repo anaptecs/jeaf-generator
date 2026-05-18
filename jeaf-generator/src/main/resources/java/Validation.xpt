@@ -157,11 +157,13 @@ public @interface «validationClass» {
 	«ENDIF»
 	«IF this.isStereotypeApplied("Size") == false »
 	«ENDIF»
-	«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject")) && this.isStereotypeApplied("Valid")==false »
-	@«getEnterpriseJavaPackage()».validation.Valid
-	«ENDIF»
-    «IF generateValidAnnotationsForAssociations() && this.isProperty() && (this.asProperty().type.isStereotypeApplied("POJO") || this.asProperty().type.isStereotypeApplied("ServiceObject") || this.asProperty().type.isStereotypeApplied("DomainObject") || this.asProperty().type.isStereotypeApplied("PersistentObject") || this.asProperty().type.isTemplateParameter()) && this.isStereotypeApplied("Valid")==false »
-    @«getEnterpriseJavaPackage()».validation.Valid
+	«IF this.isStereotypeApplied("Valid") == false»
+		«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject"))»
+		@«getEnterpriseJavaPackage()».validation.Valid
+		«ENDIF»
+	    «IF generateValidAnnotationsForAssociations() && this.isProperty() && (this.asProperty().type.isStereotypeApplied("POJO") || this.asProperty().type.isStereotypeApplied("ServiceObject") || this.asProperty().type.isStereotypeApplied("DomainObject") || this.asProperty().type.isStereotypeApplied("PersistentObject") || this.asProperty().type.isTemplateParameter())»
+	    @«getEnterpriseJavaPackage()».validation.Valid
+	    «ENDIF»
     «ENDIF»
 «ENDDEFINE»
 

@@ -143,7 +143,6 @@ public class Booking implements ServiceObject {
     /**
      * Amount of the booking. The attribute must not be null.
      */
-    @NotNull
     private Double amount;
 
     private Account source;

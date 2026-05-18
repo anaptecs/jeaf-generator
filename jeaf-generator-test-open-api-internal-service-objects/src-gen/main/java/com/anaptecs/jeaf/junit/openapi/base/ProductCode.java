@@ -66,7 +66,6 @@ public class ProductCode implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @Positive
     private int code;
 
     /**

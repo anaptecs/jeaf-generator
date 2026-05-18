@@ -92,7 +92,6 @@ public class ChildBB extends ChildB {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ChildB.Builder {
-    @NotNull
     private Long childBBAttribute;
 
     @Deprecated
@@ -105,7 +104,6 @@ public class ChildBB extends ChildB {
     private ParentClass deprecatedParent;
 
     @Deprecated
-    @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
 
     /**

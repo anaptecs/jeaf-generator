@@ -77,7 +77,6 @@ public class DataTypeWithConstraints extends Object implements ServiceObject {
     // "int"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Max(value = 9999)
     private int intValue;
 
     // "int"

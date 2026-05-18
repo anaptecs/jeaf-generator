@@ -1251,6 +1251,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateValidationAnnotationsForAssociationsFromMultiplicity;
 
   /**
+   * Switch defines whether Java Validation Annotations should be generated also for the properties of builders. By
+   * default this is not the case.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForBuilderProperties;
+
+  /**
    * Switch defines if object validation should be generated in build() operation of the class builder. If it is enabled
    * then the generated code will have a dependency on one of the following artifacts:
    * <p/>
@@ -2608,6 +2615,10 @@ public class GeneratorMojo extends AbstractMojo {
           lLog.info("Generate Validation Annotations for associations: "
               + generateValidationAnnotationsForAssociationsFromMultiplicity);
         }
+        if (generateValidationAnnotationsForBuilderProperties) {
+          lLog.info("Generate Validation Annotations for builder:      "
+              + generateValidationAnnotationsForBuilderProperties);
+        }
         if (generateObjectValidationInBuilder) {
           lLog.info("Add object validation to builders:                " + generateObjectValidationInBuilder);
         }
@@ -3050,6 +3061,8 @@ public class GeneratorMojo extends AbstractMojo {
           generateValidationAnnotationsForAttributesFromMultiplicity.toString());
       System.setProperty("switch.gen.enable.validation.annotation.associations",
           generateValidationAnnotationsForAssociationsFromMultiplicity.toString());
+      System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForBuilderProperties",
+          generateValidationAnnotationsForBuilderProperties.toString());
 
       System.setProperty("switch.gen.enable.validation.in.builder", generateObjectValidationInBuilder.toString());
 

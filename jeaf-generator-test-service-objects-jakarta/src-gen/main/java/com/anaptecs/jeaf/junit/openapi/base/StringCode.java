@@ -60,7 +60,6 @@ public class StringCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>StringCode</code>.
    */
   public static class Builder {
-    @Size(min = 32, max = 128)
     private String code;
 
     /**

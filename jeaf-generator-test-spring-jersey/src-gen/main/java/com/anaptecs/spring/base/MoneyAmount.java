@@ -92,10 +92,8 @@ public class MoneyAmount {
     /**
      * The amount of money. Attribute is always set.
      */
-    @NotNull
     private BigDecimal amount;
 
-    @NotNull
     private CurrencyCode currencyCode;
 
     /**

@@ -155,7 +155,6 @@ public class Context {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class ContextBuilder<T extends Context, B extends ContextBuilder<T, B>> {
-    @NotEmpty
     private String accessToken;
 
     /**

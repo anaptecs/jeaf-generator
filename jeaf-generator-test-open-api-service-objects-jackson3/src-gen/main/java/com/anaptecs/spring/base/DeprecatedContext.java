@@ -100,7 +100,6 @@ public class DeprecatedContext {
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
   public static class Builder {
-    @NotEmpty
     private String accessToken;
 
     /**
@@ -110,12 +109,10 @@ public class DeprecatedContext {
      * <li><code>en</code></li>
      * </ul>
      */
-    @NotNull
     private Locale language;
 
     private long resellerID;
 
-    @NotNull
     private String queryParam;
 
     /**

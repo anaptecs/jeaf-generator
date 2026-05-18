@@ -88,7 +88,6 @@ public class SwiftAccount extends Account {
    * Class implements builder to create a new instance of class <code>SwiftAccount</code>.
    */
   public static class Builder extends Account.Builder {
-    @Pattern(regexp = "[A-Z]+", flags = { Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.MULTILINE })
     private String bic;
 
     /**

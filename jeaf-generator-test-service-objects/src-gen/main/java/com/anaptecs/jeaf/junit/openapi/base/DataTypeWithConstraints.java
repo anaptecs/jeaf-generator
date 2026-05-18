@@ -58,7 +58,6 @@ public class DataTypeWithConstraints implements ServiceObject {
    * Class implements builder to create a new instance of class <code>DataTypeWithConstraints</code>.
    */
   public static class Builder {
-    @Max(value = 9999)
     private int intValue;
 
     /**

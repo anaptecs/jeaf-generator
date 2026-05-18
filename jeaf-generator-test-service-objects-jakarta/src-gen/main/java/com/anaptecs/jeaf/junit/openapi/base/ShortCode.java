@@ -58,7 +58,6 @@ public class ShortCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ShortCode</code>.
    */
   public static class Builder {
-    @Max(value = 4711)
     private short code;
 
     /**

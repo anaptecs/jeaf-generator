@@ -49,7 +49,6 @@ public class BookingCode {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String code;
 
     /**

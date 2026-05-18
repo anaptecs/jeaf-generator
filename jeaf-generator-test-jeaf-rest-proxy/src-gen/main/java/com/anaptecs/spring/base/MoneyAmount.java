@@ -113,10 +113,8 @@ public class MoneyAmount implements Serializable {
     /**
      * The amount of money. Attribute is always set.
      */
-    @NotNull
     private BigDecimal amount;
 
-    @NotNull
     private CurrencyCode currencyCode;
 
     /**

@@ -132,7 +132,6 @@ public class DeprecatedContext implements Serializable {
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
   public static class Builder {
-    @NotEmpty
     private String accessToken;
 
     /**

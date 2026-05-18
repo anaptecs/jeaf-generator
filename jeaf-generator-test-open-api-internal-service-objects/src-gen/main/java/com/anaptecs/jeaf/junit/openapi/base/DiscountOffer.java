@@ -88,7 +88,6 @@ public class DiscountOffer implements ServiceObject {
      * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
      */
     @Deprecated
-    @Valid
     private Set<SoftLink> campaigns;
 
     /**

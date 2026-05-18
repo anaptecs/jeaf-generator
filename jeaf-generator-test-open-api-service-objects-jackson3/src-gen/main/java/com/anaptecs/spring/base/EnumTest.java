@@ -82,7 +82,6 @@ public class EnumTest {
      * <br/>
      * <b>Default Value:</b> <code>GREEN</code>
      */
-    @NotNull
     private ExtensibleEnum property = ExtensibleEnum.GREEN;
 
     /**

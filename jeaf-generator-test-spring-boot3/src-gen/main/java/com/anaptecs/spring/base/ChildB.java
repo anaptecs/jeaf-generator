@@ -86,7 +86,6 @@ public class ChildB extends ParentClass {
     /**
      * A child attribute
      */
-    @Size(min = 11, max = 42)
     private boolean[] childBAttribute;
 
     /**

@@ -78,7 +78,6 @@ public class TheReadOnlyPOJO {
   public static class Builder {
     private DataUnit dataUnit;
 
-    @NotNull
     private String name;
 
     private int[] ints;

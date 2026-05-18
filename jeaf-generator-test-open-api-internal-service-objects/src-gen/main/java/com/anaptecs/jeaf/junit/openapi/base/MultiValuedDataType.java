@@ -153,15 +153,11 @@ public class MultiValuedDataType implements ServiceObject {
      */
     private List<BooleanLiteralsEnum> literals;
 
-    @Size(min = 32, max = 64)
-    @NotNull
     private String stringProperty;
 
     /**
      * long values as multivalued header
      */
-    @Min(value = 3270)
-    @Max(value = 4711)
     private long[] longValues;
 
     /**

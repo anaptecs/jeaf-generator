@@ -56,7 +56,6 @@ public abstract class PlaceRef implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class Builder {
-    @NotNull
     private String name;
 
     /**

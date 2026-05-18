@@ -139,7 +139,6 @@ public class POI extends Stop {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Stop.Builder {
-    @NotNull
     private String description;
 
     /**
@@ -148,7 +147,6 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
-    @NotNull
     private Long theLinkID;
 
     /**

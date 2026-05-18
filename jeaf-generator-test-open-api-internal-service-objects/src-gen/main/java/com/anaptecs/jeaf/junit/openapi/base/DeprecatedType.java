@@ -70,7 +70,6 @@ public class DeprecatedType implements ServiceObject {
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
   public static class Builder {
-    @NotNull
     private Integer code;
 
     /**

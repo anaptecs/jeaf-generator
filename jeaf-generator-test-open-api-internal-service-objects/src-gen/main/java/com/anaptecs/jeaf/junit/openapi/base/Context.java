@@ -147,7 +147,6 @@ public class Context implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotEmpty
     private String accessToken;
 
     /**
@@ -157,17 +156,14 @@ public class Context implements ServiceObject {
      * <li><code>en</code></li>
      * </ul>
      */
-    @NotNull
     private Locale language;
 
     private long resellerID;
 
     private long pathParam;
 
-    @NotNull
     private String queryParam;
 
-    @Valid
     private IntegerCodeType intCode;
 
     /**

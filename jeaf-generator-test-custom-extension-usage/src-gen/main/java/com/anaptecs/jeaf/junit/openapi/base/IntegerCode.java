@@ -77,7 +77,6 @@ public class IntegerCode extends Object implements ServiceObject {
     // "Integer"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Min(value = 1234)
     private Integer code;
 
     // "Integer"

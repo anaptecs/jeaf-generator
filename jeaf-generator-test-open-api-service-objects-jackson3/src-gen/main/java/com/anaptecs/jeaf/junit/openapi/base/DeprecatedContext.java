@@ -116,7 +116,6 @@ public class DeprecatedContext implements ServiceObject {
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
   public static class Builder {
-    @NotEmpty
     private String accessToken;
 
     /**
@@ -126,12 +125,10 @@ public class DeprecatedContext implements ServiceObject {
      * <li><code>en</code></li>
      * </ul>
      */
-    @NotNull
     private Locale language;
 
     private long resellerID;
 
-    @NotNull
     private String queryParam;
 
     /**

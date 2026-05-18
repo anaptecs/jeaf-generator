@@ -182,8 +182,6 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
     // "java.lang.String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @NotBlank
-    @Size(min = 0, max = 32)
     private String name;
 
     // "java.lang.String"

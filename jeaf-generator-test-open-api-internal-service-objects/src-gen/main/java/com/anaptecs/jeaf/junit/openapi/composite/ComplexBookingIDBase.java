@@ -91,14 +91,12 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
      */
     private long internalID;
 
-    @NotNull
     private String referenceID;
 
     private List<BookingID> bookingIDs;
 
     private ComplexBookingType complexBookingType;
 
-    @NotNull
     private Integer anotherID;
 
     /**

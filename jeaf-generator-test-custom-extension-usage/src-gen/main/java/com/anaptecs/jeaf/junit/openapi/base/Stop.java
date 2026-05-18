@@ -158,8 +158,6 @@ public class Stop extends Object implements ServiceObject {
     // "byte"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Max(value = 32)
-    @PositiveOrZero
     private byte index;
 
     // "byte"

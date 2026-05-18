@@ -422,7 +422,9 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE DoBuilderPropertyDeclaration FOR Property»
 	«EXPAND java::Helper::GenerateAnnotations-»
 	«IF this.owner.asClass().isPOJO()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
-    «EXPAND Validation::ValidationAnnotation»
+	«IF generateValidationAnnotationsForBuilderProperties()»
+		«EXPAND Validation::ValidationAnnotation»
+	«ENDIF»
 	private «this.fqn()» «name»«IF this.isRealInitValue() && this.isMultivalued()== false » = «IF this.isJEAFEnumerationProperty()»«this.type.name».«ENDIF»«this.initValue()»«ENDIF»;
 «ENDDEFINE»
 
@@ -430,6 +432,9 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 	«IF isNavigable()»
 		«EXPAND java::Helper::GenerateAnnotations-»
 		«IF this.owner.asClass().isPOJO()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
+		«IF generateValidationAnnotationsForBuilderProperties()»
+			«EXPAND Validation::ValidationAnnotation»
+		«ENDIF»
 		«IF isMultivalued()»
 			private «this.fqn()» «asInstanceVar()»;
 		«ELSE»
@@ -441,7 +446,9 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 «DEFINE SoftLinkBuilderPropertyDeclaration FOR SoftLink»
         «EXPAND java::Helper::GenerateAnnotations-»
         «IF this.owner.asClass().isPOJO()»«EXPAND java::Jackson::JSONAlias»«ENDIF»
-        «EXPAND Validation::ValidationAnnotation»
+        «IF generateValidationAnnotationsForBuilderProperties()»
+	        «EXPAND Validation::ValidationAnnotation»
+        «ENDIF»
         «IF isMultivalued()»
             «visibility» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «this.getSoftLinkPropertyName()»;
         «ELSE»

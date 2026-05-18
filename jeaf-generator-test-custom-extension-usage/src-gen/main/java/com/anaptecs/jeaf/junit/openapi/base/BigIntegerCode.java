@@ -79,7 +79,6 @@ public class BigIntegerCode extends Object implements ServiceObject {
     // "java.math.BigInteger"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Max(value = 4711)
     private BigInteger code;
 
     // "java.math.BigInteger"

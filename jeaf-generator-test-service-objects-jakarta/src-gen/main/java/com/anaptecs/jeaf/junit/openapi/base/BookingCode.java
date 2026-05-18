@@ -60,7 +60,6 @@ public class BookingCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BookingCode</code>.
    */
   public static class Builder {
-    @Size(min = 3, max = 5)
     private String code;
 
     /**

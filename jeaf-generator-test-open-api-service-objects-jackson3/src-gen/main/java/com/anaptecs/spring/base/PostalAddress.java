@@ -95,13 +95,10 @@ public class PostalAddress {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String street;
 
-    @NotNull
     private String houseNumber;
 
-    @NotNull
     private String city;
 
     private int postalCode;
@@ -110,7 +107,6 @@ public class PostalAddress {
      * <br/>
      * <b>Default Value:</b> <code>"Germany"</code>
      */
-    @NotNull
     private String country = "Germany";
 
     /**

@@ -199,7 +199,6 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
 
     private Set<Reseller> resellers;
 
-    @Size(min = 12, max = Integer.MAX_VALUE)
     private String name;
 
     /**

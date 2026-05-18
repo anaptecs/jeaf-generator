@@ -50,7 +50,6 @@ public class Company extends Partner {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Partner.Builder {
-    @NotNull
     private String name;
 
     /**

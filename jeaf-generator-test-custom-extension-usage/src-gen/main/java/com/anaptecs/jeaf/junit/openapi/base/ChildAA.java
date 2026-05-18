@@ -189,7 +189,6 @@ public class ChildAA extends ChildA {
     // "int"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 10, max = 100)
     private int[] sizedArray;
 
     // "int"

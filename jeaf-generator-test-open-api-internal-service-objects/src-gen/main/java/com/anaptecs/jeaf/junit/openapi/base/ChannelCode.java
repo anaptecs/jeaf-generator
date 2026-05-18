@@ -87,7 +87,6 @@ public class ChannelCode implements ServiceObject {
      * <li><code>WEBSHOP</code></li>
      * </ul>
      */
-    @NotNull
     private String code = "WEBSHOP";
 
     /**

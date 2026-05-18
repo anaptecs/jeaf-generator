@@ -464,7 +464,6 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
     // "byte"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 0, max = 32768)
     private byte[] aByteArray;
 
     // "byte"
@@ -521,7 +520,6 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
     // "long"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @NotEmpty
     private long[] aLongArray;
 
     // "long"
@@ -578,7 +576,6 @@ public class PrimitiveArraysObjectWithRestrictions extends Object implements Ser
     // "double"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 4, max = 12)
     private double[] aDoubleArray;
 
     // "double"

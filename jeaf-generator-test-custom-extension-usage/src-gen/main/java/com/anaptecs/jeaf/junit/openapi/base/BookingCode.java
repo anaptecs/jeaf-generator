@@ -77,7 +77,6 @@ public class BookingCode extends Object implements ServiceObject {
     // "String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 3, max = 5)
     private String code;
 
     // "String"

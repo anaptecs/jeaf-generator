@@ -230,7 +230,6 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     private boolean[] cBooleanArray;
 
-    @Size(min = 0, max = 32768)
     private byte[] aByteArray;
 
     private Byte[] bByteArray;
@@ -245,7 +244,6 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     private Integer[] cIntegerArray;
 
-    @NotEmpty
     private long[] aLongArray;
 
     private Long[] bLongArray;
@@ -260,7 +258,6 @@ public abstract class CustomPrimitiveArraysObjectWithRestrictionsBase {
 
     private Float[] bFloatArray;
 
-    @Size(min = 4, max = 12)
     private double[] aDoubleArray;
 
     private Double[] bDoubleArray;

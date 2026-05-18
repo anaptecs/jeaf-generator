@@ -79,13 +79,10 @@ public abstract class CustomerBase extends Partner {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class CustomerBuilderBase<T extends Customer, B extends CustomerBuilderBase<T, B>>
       extends PartnerBuilder<T, B> {
-    @NotBlank
     private String name;
 
-    @NotBlank
     private String firstName;
 
-    @Email()
     private String email;
 
     private Set<Account> accounts;

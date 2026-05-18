@@ -101,13 +101,10 @@ public class Problem {
    * Class implements builder to create a new instance of class <code>Problem</code>.
    */
   public static class Builder {
-    @NotNull
     private String title;
 
-    @NotNull
     private int status;
 
-    @NotNull
     private String type;
 
     private String detail;

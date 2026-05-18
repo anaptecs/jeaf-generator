@@ -108,7 +108,6 @@ public class ChannelCode implements Serializable {
      * <li><code>MOBILE_APP</code></li>
      * </ul>
      */
-    @NotNull
     private String code = "WEBSHOP";
 
     /**

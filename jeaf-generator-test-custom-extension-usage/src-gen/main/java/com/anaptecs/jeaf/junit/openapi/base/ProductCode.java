@@ -77,7 +77,6 @@ public class ProductCode extends Object implements ServiceObject {
     // "int"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Positive
     private int code;
 
     // "int"

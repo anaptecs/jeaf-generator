@@ -99,7 +99,6 @@ public class ChannelCode {
      * <li><code>MOBILE_APP</code></li>
      * </ul>
      */
-    @NotNull
     private String code = "WEBSHOP";
 
     /**

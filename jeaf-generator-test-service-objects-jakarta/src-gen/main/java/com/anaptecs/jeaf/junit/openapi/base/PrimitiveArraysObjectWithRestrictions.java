@@ -257,7 +257,6 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
 
     private boolean[] cBooleanArray;
 
-    @Size(min = 0, max = 32768)
     private byte[] aByteArray;
 
     private Set<Byte> bByteArray;
@@ -272,7 +271,6 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
 
     private Set<Integer> cIntegerArray;
 
-    @NotEmpty
     private long[] aLongArray;
 
     private Set<Long> bLongArray;
@@ -287,7 +285,6 @@ public class PrimitiveArraysObjectWithRestrictions implements ServiceObject {
 
     private Set<Float> bFloatArray;
 
-    @Size(min = 4, max = 12)
     private double[] aDoubleArray;
 
     private Set<Double> bDoubleArray;

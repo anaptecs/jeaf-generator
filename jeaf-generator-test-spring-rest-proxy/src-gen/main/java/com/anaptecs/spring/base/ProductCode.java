@@ -45,7 +45,6 @@ public class ProductCode {
     /**
      * the product code.
      */
-    @Positive
     private int code;
 
     /**

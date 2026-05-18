@@ -156,7 +156,6 @@ public class POI extends Stop {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Stop.Builder {
-    @NotNull
     private String description;
 
     /**
@@ -165,8 +164,6 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
-    @NotNull
-    @Valid
     private Long theLink;
 
     /**
@@ -175,7 +172,6 @@ public class POI extends Stop {
      * <code>LinkObject</code><br/>
      */
     @Deprecated
-    @Valid
     private Set<SoftLink> evenMoreLinks;
 
     /**

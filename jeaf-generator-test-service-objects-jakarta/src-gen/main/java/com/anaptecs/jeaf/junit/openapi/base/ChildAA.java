@@ -151,7 +151,6 @@ public class ChildAA extends ChildA {
      */
     private byte childAAAttribute;
 
-    @Size(min = 10, max = 100)
     private int[] sizedArray;
 
     private Set<String> requiredArray;

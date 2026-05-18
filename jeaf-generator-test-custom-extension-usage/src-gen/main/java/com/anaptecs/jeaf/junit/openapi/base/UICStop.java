@@ -188,7 +188,6 @@ public class UICStop extends Stop implements IStop {
     // "String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 32, max = 255)
     private String uicCode;
 
     // "String"
@@ -197,8 +196,6 @@ public class UICStop extends Stop implements IStop {
     // "int"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @DecimalMax(value = "32.777", inclusive = true)
-    @DecimalMin(value = "1.025", inclusive = true)
     private int priority;
 
     // "int"
@@ -207,8 +204,6 @@ public class UICStop extends Stop implements IStop {
     // "long"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Min(value = 1000)
-    @Max(value = 9999)
     private long code;
 
     // "long"
@@ -217,7 +212,6 @@ public class UICStop extends Stop implements IStop {
     // "byte"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Positive
     private byte index2;
 
     // "byte"

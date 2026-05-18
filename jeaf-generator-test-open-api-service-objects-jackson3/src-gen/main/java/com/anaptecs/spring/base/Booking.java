@@ -83,7 +83,6 @@ public class Booking {
   public static class Builder {
     private BookingID bookingID;
 
-    @NotNull
     private String customerName;
 
     private List<InventoryType> inventories;

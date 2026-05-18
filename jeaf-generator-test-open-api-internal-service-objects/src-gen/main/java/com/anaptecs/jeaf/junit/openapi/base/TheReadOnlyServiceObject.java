@@ -110,7 +110,6 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String name;
 
     /**

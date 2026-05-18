@@ -170,8 +170,6 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
 
     private Set<Reseller> resellers;
 
-    @Size(min = 12, max = Integer.MAX_VALUE)
-    @NotNull
     private String name;
 
     /**
@@ -186,10 +184,8 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
      * <li><code>https://www.company.com/products/1345-345</code></li>
      * </ul>
      */
-    @NotNull
     private URL link;
 
-    @NotNull
     private UUID productID;
 
     private Set<CurrencyCode> supportedCurrencies;
@@ -197,14 +193,12 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
     private Set<ProductCode> productCodes;
 
     @Deprecated
-    @NotNull
     private String description;
 
     /**
      * <br/>
      * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
      */
-    @NotNull
     private String uri = "https://products.anaptecs.de/123456789";
 
     /**

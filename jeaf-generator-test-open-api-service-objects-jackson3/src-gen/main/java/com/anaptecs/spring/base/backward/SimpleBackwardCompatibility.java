@@ -72,7 +72,6 @@ public class SimpleBackwardCompatibility {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     @JsonAlias({ "deprecatedProperty" })
-    @NotNull
     private String successorProperty;
 
     /**

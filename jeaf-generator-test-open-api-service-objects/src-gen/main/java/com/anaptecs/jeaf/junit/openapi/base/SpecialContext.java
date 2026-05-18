@@ -110,17 +110,14 @@ public class SpecialContext extends Context {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Context.Builder {
-    @NotNull
     private String specificHeader;
 
     /**
      * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24)
      */
     @Deprecated
-    @NotNull
     private IntegerCode deprecatedHeader;
 
-    @NotNull
     private DeprecatedType deprecatedType;
 
     /**

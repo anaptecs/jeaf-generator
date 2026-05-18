@@ -60,7 +60,6 @@ public class IBAN implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String value;
 
     /**

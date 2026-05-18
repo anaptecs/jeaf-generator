@@ -94,14 +94,12 @@ public class CodeTypeUsageTest {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private BooleanCodeType booleanCode;
 
     private Set<BooleanCodeType> booleanCodeAssociation;
 
     private Set<ShortCodeType> shortCodeTypeAssociation;
 
-    @NotNull
     private StringCodeType stringCode;
 
     private CharacterCode characterCode;

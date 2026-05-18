@@ -100,8 +100,6 @@ public class ValidationTestObject extends Object implements ServiceObject {
     // "java.lang.String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Email()
-    @NotNull
     private String myEMail;
 
     // "java.lang.String"
@@ -110,7 +108,6 @@ public class ValidationTestObject extends Object implements ServiceObject {
     // "java.util.Calendar"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Past
     private Calendar dateOfBirth;
 
     // "java.util.Calendar"

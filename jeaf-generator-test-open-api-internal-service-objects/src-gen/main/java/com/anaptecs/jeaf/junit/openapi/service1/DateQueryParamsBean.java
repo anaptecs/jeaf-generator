@@ -182,38 +182,28 @@ public class DateQueryParamsBean implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private OffsetDateTime offsetDateTime;
 
-    @NotNull
     private OffsetTime offsetTime;
 
     /**
      * <p/>
      * <b>Breaking Change with 2.0:</b> Has to be in the past
      */
-    @NotNull
     private LocalDateTime localDateTime;
 
-    @NotNull
     private LocalTime localTime;
 
-    @NotNull
     private LocalDate localDate;
 
-    @NotNull
     private java.util.Date utilDate;
 
-    @NotNull
     private Calendar calendar;
 
-    @NotNull
     private Timestamp sqlTimestamp;
 
-    @NotNull
     private Time sqlTime;
 
-    @NotNull
     private Date sqlDate;
 
     /**

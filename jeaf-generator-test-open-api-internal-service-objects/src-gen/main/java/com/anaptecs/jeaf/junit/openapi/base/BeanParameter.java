@@ -114,7 +114,6 @@ public class BeanParameter implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String accessToken;
 
     /**
@@ -126,11 +125,9 @@ public class BeanParameter implements ServiceObject {
      * <li><code>en</code></li>
      * </ul>
      */
-    @NotNull
     private Locale language;
 
     @Deprecated
-    @NotNull
     private String oldStyle;
 
     /**

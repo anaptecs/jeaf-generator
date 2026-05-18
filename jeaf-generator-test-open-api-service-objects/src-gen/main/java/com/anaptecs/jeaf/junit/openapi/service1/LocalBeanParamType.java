@@ -90,13 +90,10 @@ public class LocalBeanParamType implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String localKey;
 
-    @NotNull
     private String localID;
 
-    @NotNull
     private String authorization;
 
     /**

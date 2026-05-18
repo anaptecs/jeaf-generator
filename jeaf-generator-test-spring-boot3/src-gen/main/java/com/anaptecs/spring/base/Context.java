@@ -148,7 +148,6 @@ public class Context {
    * Class implements builder to create a new instance of class <code>Context</code>.
    */
   public static class Builder {
-    @NotEmpty
     private String accessToken;
 
     /**

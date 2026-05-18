@@ -89,11 +89,8 @@ public class ValidationTestObject implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ValidationTestObject</code>.
    */
   public static class Builder {
-    @Email()
-    @NotNull
     private String myEMail;
 
-    @Past
     private Calendar dateOfBirth;
 
     /**

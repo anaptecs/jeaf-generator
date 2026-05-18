@@ -181,7 +181,6 @@ public class Context extends Object implements ServiceObject {
     // "java.lang.String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @NotEmpty
     private String accessToken;
 
     // "java.lang.String"

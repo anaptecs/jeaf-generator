@@ -77,7 +77,6 @@ public class ShortCode extends Object implements ServiceObject {
     // "short"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Max(value = 4711)
     private short code;
 
     // "short"

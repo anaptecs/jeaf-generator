@@ -127,7 +127,6 @@ public class Campaign implements ServiceObject {
      * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4)
      */
     @Deprecated
-    @Valid
     private long theLink;
 
     /**
@@ -138,9 +137,6 @@ public class Campaign implements ServiceObject {
      * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0)
      */
     @Deprecated
-    @Size(min = 1)
-    @NotNull
-    @Valid
     private Set<Long> moreLinks;
 
     /**
@@ -149,7 +145,6 @@ public class Campaign implements ServiceObject {
      * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
      */
     @Deprecated
-    @Valid
     private List<String> discountOffers;
 
     /**

@@ -94,7 +94,6 @@ public class ChildPOJO extends ParentPOJO {
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class ChildPOJOBuilder<T extends ChildPOJO, B extends ChildPOJOBuilder<T, B>>
       extends ParentPOJOBuilder<T, B> {
-    @NotNull
     private Integer childAttribute;
 
     /**

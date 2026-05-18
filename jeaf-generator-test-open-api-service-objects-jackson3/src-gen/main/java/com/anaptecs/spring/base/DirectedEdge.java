@@ -92,7 +92,6 @@ public class DirectedEdge {
     private Stop end;
 
     @JsonProperty("previousName")
-    @NotNull
     private String link;
 
     /**

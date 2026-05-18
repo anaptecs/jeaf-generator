@@ -58,7 +58,6 @@ public class ProductCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>ProductCode</code>.
    */
   public static class Builder {
-    @Positive
     private int code;
 
     /**

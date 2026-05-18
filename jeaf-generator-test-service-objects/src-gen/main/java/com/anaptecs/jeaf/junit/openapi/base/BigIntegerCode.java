@@ -61,7 +61,6 @@ public class BigIntegerCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>BigIntegerCode</code>.
    */
   public static class Builder {
-    @Max(value = 4711)
     private BigInteger code;
 
     /**

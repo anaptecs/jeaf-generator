@@ -119,7 +119,6 @@ public class ChildB extends ParentClass {
     // "boolean"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 11, max = 42)
     private boolean[] childBAttribute;
 
     // "boolean"

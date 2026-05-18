@@ -104,8 +104,6 @@ public abstract class ResellerBase implements Serializable {
   public static abstract class BuilderBase {
     private Set<Channel> channels;
 
-    @NotBlank
-    @Size(min = 0, max = 32)
     private String name;
 
     private Locale language;

@@ -143,7 +143,6 @@ public class ChildBB extends ChildB {
     private ParentClass deprecatedParent;
 
     @Deprecated
-    @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
 
     /**

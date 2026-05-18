@@ -82,13 +82,10 @@ public abstract class CustomerBase extends Partner {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase extends Partner.Builder {
-    @NotBlank
     private String name;
 
-    @NotBlank
     private String firstName;
 
-    @Email()
     private String email;
 
     private Set<Account> accounts;

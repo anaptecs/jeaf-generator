@@ -126,13 +126,10 @@ public class ChildAA extends ChildA {
      */
     private byte childAAAttribute;
 
-    @Size(min = 10, max = 100)
     private int[] sizedArray;
 
-    @Size(min = 1)
     private String[] requiredArray;
 
-    @NotNull
     private BigIntegerCode bigIntegerCode;
 
     private IntegerCodeType integerCode;

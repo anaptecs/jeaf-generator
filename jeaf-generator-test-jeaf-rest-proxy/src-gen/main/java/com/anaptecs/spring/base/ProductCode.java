@@ -91,7 +91,6 @@ public class ProductCode implements Serializable {
     /**
      * the product code.
      */
-    @Positive
     private int code;
 
     /**

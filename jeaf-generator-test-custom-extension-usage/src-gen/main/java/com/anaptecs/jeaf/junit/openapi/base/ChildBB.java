@@ -202,7 +202,6 @@ public class ChildBB extends ChildB {
     @BuilderPropertyDeclaration
     @Deprecated
     @JEAFCustomAnnotationTest
-    @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
 
     // "byte"

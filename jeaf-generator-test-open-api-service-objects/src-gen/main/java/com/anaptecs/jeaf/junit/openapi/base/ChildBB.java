@@ -108,7 +108,6 @@ public class ChildBB extends ChildB {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ChildB.Builder {
-    @NotNull
     private Long childBBAttribute;
 
     /**
@@ -124,7 +123,6 @@ public class ChildBB extends ChildB {
     private ParentClass deprecatedParent;
 
     @Deprecated
-    @Size(min = 0, max = 4711)
     private byte[] deprecatedArray;
 
     /**

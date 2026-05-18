@@ -46,10 +46,8 @@ public abstract class PersonBase extends Partner {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase extends Partner.Builder {
-    @NotNull
     private String surname;
 
-    @NotNull
     private String firstName;
 
     /**

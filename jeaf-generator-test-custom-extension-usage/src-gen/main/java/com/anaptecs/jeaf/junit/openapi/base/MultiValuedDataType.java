@@ -203,7 +203,6 @@ public class MultiValuedDataType extends Object implements ServiceObject {
     // "String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 32, max = 64)
     private String stringProperty;
 
     // "String"
@@ -215,8 +214,6 @@ public class MultiValuedDataType extends Object implements ServiceObject {
     // "long"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Min(value = 3270)
-    @Max(value = 4711)
     private long[] longValues;
 
     // "long"

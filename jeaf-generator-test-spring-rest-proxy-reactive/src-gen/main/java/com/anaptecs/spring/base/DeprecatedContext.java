@@ -99,7 +99,6 @@ public class DeprecatedContext {
    */
   @Deprecated
   public static class Builder {
-    @NotEmpty
     private String accessToken;
 
     /**

@@ -60,7 +60,6 @@ public class IntegerCode implements ServiceObject {
    * Class implements builder to create a new instance of class <code>IntegerCode</code>.
    */
   public static class Builder {
-    @Min(value = 1234)
     private Integer code;
 
     /**

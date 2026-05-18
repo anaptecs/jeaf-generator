@@ -94,7 +94,6 @@ public class CurrencyCode extends Object implements ServiceObject {
     // "String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @Size(min = 3, max = 3)
     private String code = "CHF";
 
     // "String"

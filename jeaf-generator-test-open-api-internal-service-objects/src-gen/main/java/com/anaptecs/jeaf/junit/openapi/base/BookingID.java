@@ -91,10 +91,8 @@ public class BookingID implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String referenceID;
 
-    @NotNull
     private String externalRefID;
 
     private InventoryType inventory;

@@ -95,10 +95,8 @@ public class SpecialContext extends Context {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Context.Builder {
-    @NotNull
     private String specificHeader;
 
-    @NotNull
     private ChannelType channelType;
 
     /**

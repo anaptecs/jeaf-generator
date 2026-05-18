@@ -131,13 +131,10 @@ public class Problem implements Serializable {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String title;
 
-    @NotNull
     private int status;
 
-    @NotNull
     private String type;
 
     private String detail;

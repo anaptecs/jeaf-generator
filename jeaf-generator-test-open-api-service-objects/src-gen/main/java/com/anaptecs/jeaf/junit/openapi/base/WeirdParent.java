@@ -105,7 +105,6 @@ public class WeirdParent implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String someProperty;
 
     private ComplexBookingID complexBooking;

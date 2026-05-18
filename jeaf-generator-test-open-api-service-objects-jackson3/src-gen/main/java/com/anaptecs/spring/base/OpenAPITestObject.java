@@ -123,23 +123,18 @@ public class OpenAPITestObject {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @NotNull
     private String readOnlyAttribute;
 
-    @NotNull
     private String readWriteAttribute;
 
     private int writeOnlyAttribute;
 
-    @NotNull
     private Boolean nullableAttribute;
 
     private double notNullableAttribute;
 
-    @NotNull
     private String readOnlyArray;
 
-    @NotNull
     private String readWriteArray;
 
     private int writeOnlyArray;

@@ -94,7 +94,6 @@ public abstract class PlainPOJOBase {
     @Example(values = { "Hello", "World!" })
     private String hello;
 
-    @PositiveOrZero
     private Integer world;
 
     /**

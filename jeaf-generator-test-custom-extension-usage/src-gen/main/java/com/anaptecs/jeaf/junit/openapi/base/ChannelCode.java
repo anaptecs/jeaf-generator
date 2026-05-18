@@ -96,7 +96,6 @@ public class ChannelCode extends Object implements ServiceObject {
     // "String"
     @BuilderPropertyDeclaration
     @JEAFCustomAnnotationTest
-    @NotNull
     private String code = "WEBSHOP";
 
     // "String"

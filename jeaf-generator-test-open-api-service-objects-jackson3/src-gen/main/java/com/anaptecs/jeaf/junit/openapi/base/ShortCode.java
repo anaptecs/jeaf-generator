@@ -57,7 +57,6 @@ public class ShortCode implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @Max(value = 4711)
     private short code;
 
     /**

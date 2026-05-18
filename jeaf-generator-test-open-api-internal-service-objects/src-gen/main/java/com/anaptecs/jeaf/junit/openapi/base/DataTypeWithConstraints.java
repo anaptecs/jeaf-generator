@@ -66,7 +66,6 @@ public class DataTypeWithConstraints implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @Max(value = 9999)
     private int intValue;
 
     /**

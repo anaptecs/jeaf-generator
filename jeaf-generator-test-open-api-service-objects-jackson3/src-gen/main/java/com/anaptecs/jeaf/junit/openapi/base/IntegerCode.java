@@ -62,8 +62,6 @@ public class IntegerCode implements ServiceObject {
    */
   @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
-    @Min(value = 1234)
-    @NotNull
     private Integer code;
 
     /**

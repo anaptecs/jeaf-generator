@@ -83,7 +83,6 @@ public abstract class PlainPOJOBase {
      */
     private String hello;
 
-    @PositiveOrZero
     private Integer world;
 
     /**
