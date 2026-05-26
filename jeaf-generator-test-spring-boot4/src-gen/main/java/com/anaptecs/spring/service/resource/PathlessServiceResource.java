@@ -101,11 +101,7 @@ public class PathlessServiceResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(
-      path = "processTechParam",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.POST })
+  @RequestMapping(path = "processTechParam", produces = { "application/json" }, method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public void processTechParam( @RequestHeader(name = "names", required = false) String[] pNames,
       @RequestHeader(name = "ints", required = true) @MyNotEmptyRESTParam int[] pInts,

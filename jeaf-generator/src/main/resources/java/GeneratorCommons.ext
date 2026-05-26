@@ -683,12 +683,16 @@ cached boolean validateOnBuild(uml::Class class):
         if class.isStereotypeApplied("ServiceObject")
         then ((JMM::ServiceObject) class).validateOnBuild
         else false;
- 
-    
+
 
 cached int getMetaModelVersion(uml::Element element):
   element.getModel().getAllAppliedProfiles().allOwnedElements().typeSelect(JMM::ModelVersion).get(0).revision;
-  
+
+
+cached String getMetaModelVersionName(uml::Element element):
+  element.getModel().getAllAppliedProfiles().allOwnedElements().typeSelect(JMM::ModelVersion).get(0).versionName;
+
+
 String getWarningMessage(uml::NamedElement element, String errorCode, List[String] params):
 	"       " + getMessage(element, errorCode, params);
 

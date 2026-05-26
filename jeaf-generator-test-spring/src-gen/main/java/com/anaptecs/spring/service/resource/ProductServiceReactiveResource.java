@@ -252,7 +252,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
       path = "products/deprecated/context",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.POST })
   @MyNotNullRESTParam
@@ -286,7 +285,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(
       path = "products/deprecated/beanParams",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.POST })
   @MyNotNullRESTParam
@@ -316,7 +314,6 @@ public class ProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.OK)
   @RequestMapping(
       path = "products/deprecated/params",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.POST })
   @Deprecated
@@ -399,11 +396,7 @@ public class ProductServiceReactiveResource {
    */
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  @RequestMapping(
-      path = "products/specific/{id}",
-      consumes = { "application/json" },
-      produces = { "application/json" },
-      method = { RequestMethod.PATCH })
+  @RequestMapping(path = "products/specific/{id}", produces = { "application/json" }, method = { RequestMethod.PATCH })
   @MyNotNullRESTParam
   public Mono<Void> loadSpecificThings(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,

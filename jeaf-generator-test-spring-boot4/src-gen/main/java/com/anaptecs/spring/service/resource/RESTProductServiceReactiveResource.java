@@ -1564,7 +1564,6 @@ public class RESTProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(
       path = "booking-id-as-path-param/{bookingID}",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.PATCH })
   @MyNotNullRESTParam
@@ -1587,7 +1586,6 @@ public class RESTProductServiceReactiveResource {
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(
       path = "booking-id-as-header-param",
-      consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.PATCH })
   @MyNotNullRESTParam
