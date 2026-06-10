@@ -172,11 +172,11 @@
           nullable: «attribute.isNullable()»
           «ENDIF-»
           «ENDIF -»
-          «IF attribute.isReadOnly() && true == false  -»
-          readOnly: «attribute.isReadOnly()»
+          «IF attribute.isOpenAPIReadOnly() -»
+          readOnly: «attribute.isOpenAPIReadOnly()»
           «ENDIF-»  
-          «IF attribute.isWriteOnly() -»
-          writeOnly: «attribute.isWriteOnly()»
+          «IF attribute.isOpenAPIWriteOnly() -»
+          writeOnly: «attribute.isOpenAPIWriteOnly()»
           «ENDIF-»  
           «IF attribute.defaultValue != null -»
           default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»
@@ -391,11 +391,11 @@
               nullable: «attribute.isNullable()»
               «ENDIF-»
               «ENDIF -»
-          «IF attribute.isReadOnly() && true == false -»
-              readOnly: «attribute.isReadOnly()»
+          «IF attribute.isOpenAPIReadOnly() -»
+              readOnly: «attribute.isOpenAPIReadOnly()»
           «ENDIF-»  
-          «IF attribute.isWriteOnly() -»
-              writeOnly: «attribute.isWriteOnly()»
+          «IF attribute.isOpenAPIWriteOnly() -»
+              writeOnly: «attribute.isOpenAPIWriteOnly()»
           «ENDIF-»  
           «IF attribute.defaultValue != null -»
               default: «attribute.defaultValue.stringValue().replaceAll("\"", "'")»

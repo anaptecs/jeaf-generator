@@ -1043,6 +1043,7 @@ components:
         readOnlyAttribute:
           type: string
           nullable: true
+          readOnly: true
         readWriteAttribute:
           type: string
           nullable: true
@@ -1061,6 +1062,7 @@ components:
         readOnlyArray:
           type: string
           nullable: true
+          readOnly: true
         readWriteArray:
           type: string
           nullable: true

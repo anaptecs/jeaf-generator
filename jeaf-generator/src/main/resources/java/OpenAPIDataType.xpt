@@ -124,11 +124,11 @@
           «IF ownerAttribute.isNullable() == false || suppressNotRequiredNullableInOpenAPISpec() == false -»
 «indentation»          nullable: «ownerAttribute.isNullable()»
           «ENDIF-»
-          «IF ownerAttribute.isReadOnly() && true == false -»
-«indentation»          readOnly: «ownerAttribute.isReadOnly()»
+          «IF ownerAttribute.isOpenAPIReadOnly() -»
+«indentation»          readOnly: «ownerAttribute.isOpenAPIReadOnly()»
           «ENDIF-»  
-          «IF ownerAttribute.isWriteOnly() -»
-«indentation»          writeOnly: «ownerAttribute.isWriteOnly()»
+          «IF ownerAttribute.isOpenAPIWriteOnly() -»
+«indentation»          writeOnly: «ownerAttribute.isOpenAPIWriteOnly()»
           «ENDIF-»  
             «EXPAND java::OpenAPIHelper::GenerateExample(indentation + "          ") FOR ownerAttribute -»
     «ELSE-»
@@ -163,11 +163,11 @@
       «IF attribute.isNullable() == false || suppressNotRequiredNullableInOpenAPISpec() == false -»
       nullable: «attribute.isNullable()»
       «ENDIF-»
-      «IF attribute.isReadOnly() && true == false -»
-      readOnly: «attribute.isReadOnly()»
+      «IF attribute.isOpenAPIReadOnly() -»
+      readOnly: «attribute.isOpenAPIReadOnly()»
       «ENDIF-»  
-      «IF attribute.isWriteOnly() -»
-      writeOnly: «attribute.isWriteOnly()»
+      «IF attribute.isOpenAPIWriteOnly() -»
+      writeOnly: «attribute.isOpenAPIWriteOnly()»
       «ENDIF-»
       «EXPAND java::OpenAPIHelper::GenerateExample("      ") FOR attribute -»
       «ENDIF-»

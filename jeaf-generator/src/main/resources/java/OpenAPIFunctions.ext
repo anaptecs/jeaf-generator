@@ -345,13 +345,13 @@ cached boolean isNullable(uml::Property property):
       else true;
   
   
-cached boolean isReadOnly(uml::Property property):
+cached boolean isOpenAPIReadOnly(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") 
   then ((JMM::OpenAPIProperty) property).accessType.name == "READ_ONLY" 
   else 
-    property.isReadOnly;
+    false;
   
-cached boolean isWriteOnly(uml::Property property):
+cached boolean isOpenAPIWriteOnly(uml::Property property):
   if property.isStereotypeApplied("OpenAPIProperty") then ((JMM::OpenAPIProperty) property).accessType.name == "WRITE_ONLY" else false;
   
 cached boolean isNullableForParam(uml::Parameter param):

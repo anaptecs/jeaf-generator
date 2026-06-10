@@ -86,9 +86,14 @@ public class OpenAPITestObject {
   public OpenAPITestObject() { 
   }
 
-  public OpenAPITestObject readOnlyAttribute(@javax.annotation.Nullable String readOnlyAttribute) {
+  @JsonCreator
+  public OpenAPITestObject(
+    @JsonProperty(JSON_PROPERTY_READ_ONLY_ATTRIBUTE) String readOnlyAttribute, 
+    @JsonProperty(JSON_PROPERTY_READ_ONLY_ARRAY) String readOnlyArray
+  ) {
+    this();
     this.readOnlyAttribute = readOnlyAttribute;
-    return this;
+    this.readOnlyArray = readOnlyArray;
   }
 
   /**
@@ -104,11 +109,6 @@ public class OpenAPITestObject {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_READ_ONLY_ATTRIBUTE, required = false)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setReadOnlyAttribute(@javax.annotation.Nullable String readOnlyAttribute) {
-    this.readOnlyAttribute = readOnlyAttribute;
-  }
 
 
   public OpenAPITestObject readWriteAttribute(@javax.annotation.Nullable String readWriteAttribute) {
@@ -211,11 +211,6 @@ public class OpenAPITestObject {
   }
 
 
-  public OpenAPITestObject readOnlyArray(@javax.annotation.Nullable String readOnlyArray) {
-    this.readOnlyArray = readOnlyArray;
-    return this;
-  }
-
   /**
    * Get readOnlyArray
    * @return readOnlyArray
@@ -229,11 +224,6 @@ public class OpenAPITestObject {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_READ_ONLY_ARRAY, required = false)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setReadOnlyArray(@javax.annotation.Nullable String readOnlyArray) {
-    this.readOnlyArray = readOnlyArray;
-  }
 
 
   public OpenAPITestObject readWriteArray(@javax.annotation.Nullable String readWriteArray) {
