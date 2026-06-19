@@ -16,6 +16,7 @@
 «EXTENSION functions::QueryParam»
 «EXTENSION functions::BeanParam»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::ExcelHelper»
 
 «EXTENSION functions::EnumerationLiteral»
 
@@ -111,4 +112,22 @@ Element;Package;Details;Description;Since;Active with;Activation Date;
 «ENDFOREACH-»
 «ENDFOREACH-»
 «ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE BreakingChangesXLSX FOR Model»
+	«clearRowCollector()»
+	
+	«FOREACH this.getPackagesForBreakingChangesReport() AS package»
+		«FOREACH package.getBreakingChanges() AS change»
+		«IF change.isProperty() || change.isEnumerationLiteral()»
+			«addRow({change.owner.asNamedElement().name, package.qualifiedName(), change.name, change.getBreakingChangeDescription(), change.getBreakingChangeSince(), change.getBreakingChangeActiveWith(), change.getBreakingChangeActivactionDate()})»
+		«ELSEIF change.isParameter()»
+			«addRow({change.owner.owner.asNamedElement().name + "." + change.owner.asNamedElement().name + "(...)", package.qualifiedName(), change.name, change.getBreakingChangeDescription(), change.getBreakingChangeSince(), change.getBreakingChangeActiveWith(), change.getBreakingChangeActivactionDate()})»
+		«ELSE»
+			«addRow({change.name, package.qualifiedName(),  "", change.getBreakingChangeDescription(), change.getBreakingChangeSince(), change.getBreakingChangeActiveWith(), change.getBreakingChangeActivactionDate()})»
+		«ENDIF»
+		«ENDFOREACH»
+	«ENDFOREACH»
+	«writeRowsToExcelTemplate("Breaking_Change_Report_Template.xlsx", getSystemProperty("path.res.gen", ".") + "/" + getBreakingChangesXLSXFileName())»
 «ENDDEFINE»

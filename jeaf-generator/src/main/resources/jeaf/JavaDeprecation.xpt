@@ -190,7 +190,6 @@ Type;Package;Property / Operation;HTTP Header;Description;Deprecated since;Plann
 	«FOREACH this.getPackagesForJavaDeprecationsReport() AS package-»
 		«FOREACH package.getJavaDeprecations() AS deprecation-»
 		«IF deprecation.isDeprecated()-»
-			«info(deprecation.getRowForDeprecationReportAsXLSX())»
 			«addRow(deprecation.getRowForDeprecationReportAsXLSX())»
 		«ENDIF-»
 		«ENDFOREACH -»

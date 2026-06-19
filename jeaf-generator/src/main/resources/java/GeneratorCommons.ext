@@ -177,6 +177,9 @@ cached String getBreakingChangesReportFileName():
 cached String getBreakingChangesCSVFileName():
     getBreakingChangesReportFileNameProperty() + ".csv";   
 
+cached String getBreakingChangesXLSXFileName():
+    getBreakingChangesReportFileNameProperty() + ".xlsx";   
+
 private cached String getBreakingChangesReportFileNameProperty():    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getBreakingChangesReportFileName();
     

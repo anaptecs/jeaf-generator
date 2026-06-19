@@ -45,6 +45,7 @@ public class ExcelHelper {
       lWorkbook.close();
     }
     catch (IOException e) {
+      e.printStackTrace();
       throw new RuntimeException("Unable to create Excel file ' " + pOutputFile + ".", e);
     }
   }

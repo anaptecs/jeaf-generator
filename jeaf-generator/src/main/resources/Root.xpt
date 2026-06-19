@@ -33,6 +33,7 @@
        «info("Generating Breaking Changes Report")»
        «EXPAND jeaf::BreakingChangesReport::BreakingChangesReport»
        «EXPAND jeaf::BreakingChangesReport::BreakingChangesCSV»
+       «EXPAND jeaf::BreakingChangesReport::BreakingChangesXLSX»
     «ENDIF»
     
 	«IF generateRESTDeprecationReport()»
