@@ -3152,6 +3152,8 @@ public class GeneratorMojo extends AbstractMojo {
         System.setProperty(PROPERTY_PREFIX + "customProfileFile", customProfileFile);
       }
 
+      System.setProperty("path.res.gen", resourceGenDirectory);
+
       // Add parameters for custom templates also as system properties.
       if (customTemplateParameters != null) {
         for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {

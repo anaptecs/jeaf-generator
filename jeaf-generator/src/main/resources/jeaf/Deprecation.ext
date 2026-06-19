@@ -149,3 +149,27 @@ cached List[uml::Property] getDeprecatedBeanParamProperties(uml::Type type):
 
 
 ///////////////////////////////////////////////////////////////////////////////
+
+
+cached String getTypeForDeprecationReport(uml::NamedElement deprecation):
+	if deprecation.isClass() || deprecation.isInterface() || deprecation.isEnumeration()
+	then deprecation.asNamedElement().name
+	else deprecation.owner.asNamedElement().name;
+
+
+
+cached String getPropertyOrOperationForDeprecationReport(uml::NamedElement deprecation):
+	if !deprecation.isClass() && !deprecation.isInterface()
+	then deprecation.name
+	else "";
+
+
+cached String getHeaderNameForDeprecationReport(uml::NamedElement deprecation):
+	if deprecation.isHeaderParam()
+	then deprecation.asHeaderParam().getHeaderParamName()
+	else "";
+
+
+List[String] getRowForDeprecationReportAsXLSX(uml::NamedElement deprecation):
+	{ deprecation.getTypeForDeprecationReport(), deprecation.getNearestPackage().qualifiedName(), deprecation.getPropertyOrOperationForDeprecationReport(), deprecation.getHeaderNameForDeprecationReport(), deprecation.getDeprecationDescriptionForMarkup(), deprecation.getDeprecatedSince(), deprecation.getDeprecationRemoval(), deprecation.getDeprecationRemovalDate()};
+

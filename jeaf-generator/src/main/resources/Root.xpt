@@ -44,6 +44,7 @@
        «info("Generating Java Deprecation Report")»
        «EXPAND jeaf::JavaDeprecation::JavaDeprecationReport»
        «EXPAND jeaf::JavaDeprecation::DeprecationsCSV»
+       «EXPAND jeaf::JavaDeprecation::DeprecationsXLSX»
     «ENDIF»
     
     «IF generateToDoReport()»

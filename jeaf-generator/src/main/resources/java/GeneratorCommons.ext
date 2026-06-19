@@ -204,6 +204,9 @@ cached String getJavaDeprecationReportFileName():
 cached String getDeprecationCSVFileName():
     getJavaDeprecationReportFileNameProperty() + ".csv";
     
+cached String getDeprecationXLSXFileName():
+    getJavaDeprecationReportFileNameProperty() + ".xlsx";
+    
 private cached String getJavaDeprecationReportFileNameProperty():    
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getJavaDeprecationReportFileName();
     

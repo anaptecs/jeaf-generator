@@ -198,5 +198,12 @@
             <artifactId>flexmark-all</artifactId>
             <version>${flexmark.version}</version>
         </dependency>       
+
+		<!-- Apache POI is needed to produce direct reports as *.xlsx. -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${apache.poi.version}</version>
+		</dependency>
     </dependencies>
 </project>

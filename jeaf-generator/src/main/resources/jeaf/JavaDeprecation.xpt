@@ -20,6 +20,7 @@
 «EXTENSION functions::JEAFDeprecated»
 «EXTENSION functions::NamedElement»
 «EXTENSION functions::SystemProperties»
+«EXTENSION functions::ExcelHelper»
 
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
@@ -176,7 +177,7 @@ Type;Package;Property / Operation;HTTP Header;Description;Deprecated since;Plann
 «FOREACH this.getPackagesForJavaDeprecationsReport() AS package-»
 «FOREACH package.getJavaDeprecations() AS deprecation-»
 «IF deprecation.isDeprecated()-»
-«IF deprecation.isClass() || deprecation.isInterface() || deprecation.isEnumeration()»«deprecation.asNamedElement().name »«ELSE»«deprecation.owner.asNamedElement().name »«ENDIF»;«deprecation.getNearestPackage().qualifiedName()»;«IF !deprecation.isClass() &&  !deprecation.isInterface()»«deprecation.name »«ENDIF»;«IF deprecation.isHeaderParam()»«deprecation.asHeaderParam().getHeaderParamName()»«ENDIF»;«deprecation.getDeprecationDescriptionForMarkup()»;="«deprecation.getDeprecatedSince()»";«deprecation.getDeprecationRemoval()»;«deprecation.getDeprecationRemovalDate()»;
+«deprecation.getTypeForDeprecationReport()»;«deprecation.getNearestPackage().qualifiedName()»;«deprecation.getPropertyOrOperationForDeprecationReport()»;«deprecation.getHeaderNameForDeprecationReport()»;«deprecation.getDeprecationDescriptionForMarkup()»;="«deprecation.getDeprecatedSince()»";«deprecation.getDeprecationRemoval()»;«deprecation.getDeprecationRemovalDate()»;
 «ENDIF-»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -184,3 +185,15 @@ Type;Package;Property / Operation;HTTP Header;Description;Deprecated since;Plann
 «ENDDEFINE»
 
 
+«DEFINE DeprecationsXLSX FOR Model»
+	«clearRowCollector()»
+	«FOREACH this.getPackagesForJavaDeprecationsReport() AS package-»
+		«FOREACH package.getJavaDeprecations() AS deprecation-»
+		«IF deprecation.isDeprecated()-»
+			«info(deprecation.getRowForDeprecationReportAsXLSX())»
+			«addRow(deprecation.getRowForDeprecationReportAsXLSX())»
+		«ENDIF-»
+		«ENDFOREACH -»
+	«ENDFOREACH -»
+	«writeRowsToExcelTemplate("Deprecation_Report_Template.xlsx", getSystemProperty("path.res.gen", ".") + "/" + getDeprecationXLSXFileName())»
+«ENDDEFINE»
