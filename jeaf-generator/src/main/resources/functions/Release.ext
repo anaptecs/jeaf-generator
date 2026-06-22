@@ -32,7 +32,7 @@ cached String getMavenRepoArtifactLink(JMM::Release release):
 cached String getCompatibilityIconsWithNames(JMM::Release release):
 	if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "BREAKING").size > 0
 	then getBreakingIcon(4) + "   `Breaking`"
-	else release.getBackwardCompatibilityInfosFromChanges() + "<br>" + release.getForwardCompatibilityInfosFromChanges();
+	else release.getBackwardCompatibilityInfosFromChanges() + "   " + release.getForwardCompatibilityInfosFromChanges();
 
 
 cached String getBackwardCompatibilityInfosFromChanges(JMM::Release release):
