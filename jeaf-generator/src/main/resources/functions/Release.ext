@@ -31,20 +31,20 @@ cached String getMavenRepoArtifactLink(JMM::Release release):
 
 cached String getCompatibilityIconsWithNames(JMM::Release release):
 	if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "BREAKING").size > 0
-	then getBreakingIcon(4) + "   `Breaking`"
+	then getBreakingIcon(4) + " `Breaking`"
 	else release.getBackwardCompatibilityInfosFromChanges() + "   " + release.getForwardCompatibilityInfosFromChanges();
 
 
 cached String getBackwardCompatibilityInfosFromChanges(JMM::Release release):
 	if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "BACKWARD_COMPATIBLE").size > 0
-	then getBackwardCompatibleIcon(4) + "   `Backward Compatible`";
+	then getBackwardCompatibleIcon(4) + " `Backward Compatible`";
 
 
 cached String getForwardCompatibilityInfosFromChanges(JMM::Release release):
 	if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "API_FORWARD_COMPATIBLE").size > 0
-	then getAPIForwardCompatibleIcon(4) + "   `API Forward Compatible`"
+	then getAPIForwardCompatibleIcon(4) + " `API Forward Compatible`"
 	else if release.getCompatibilityInfosFromChanges().select(e|e.toString() == "STRICT_FORWARD_COMPATIBLE").size > 0
-	then getStrictForwardCompatibleIcon(4) + "   `Strict Forward Compatible`";
+	then getStrictForwardCompatibleIcon(4) + " `Strict Forward Compatible`";
 
 
 cached List[String] getCompatibilityInfosFromChanges(JMM::Release release):
