@@ -6,6 +6,7 @@
 «EXTENSION functions::OpenAPISpecification»
 «EXTENSION functions::OpenAPISpecReference»
 «EXTENSION functions::RESTOperation»
+«EXTENSION functions::OpenAPIDataType»
 
 «EXTENSION jeafgenerator::api::JEAFGeneratorExtensionAPI»
 «EXTENSION jeafgenerator::api::OpenAPISpecificationExtensionPoint»
@@ -119,7 +120,7 @@ security:
   «ENDFOREACH-»
 
 «ENDIF-»
-«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums() || this.getOpenAPIDataTypes().select(e|e.inline == false).size > 0 || this.hasOpenAPISecuritySchemes()-»
+«IF this.hasOpenAPITypes() || this.hasOpenAPIEnums() || this.getOpenAPIDataTypes().select(e|e.isInlined() == false).size > 0 || this.hasOpenAPISecuritySchemes()-»
 components:
   «IF this.hasOpenAPISecuritySchemes() -»
   securitySchemes:
@@ -232,7 +233,7 @@ components:
     «ELSE-»
       «EXPAND java::OpenAPIType::GenerateOpenAPIType(this) FOREACH this.getOpenAPITypes().sortBy(e|e.name)»
       «EXPAND OpenAPIEnumeration::GenerateOpenAPIEnum FOREACH this.getOpenAPIEnums().sortBy(e|e.name)-»
-      «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "", true) FOREACH this.getOpenAPIDataTypes().select(e|e.inline == false).sortBy(e|e.name)»
+      «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, null, "", true) FOREACH this.getOpenAPIDataTypes().select(e|e.isInlined() == false).sortBy(e|e.name)»
     «ENDIF-»
   «ENDIF -»
 «ENDIF-»
@@ -378,7 +379,7 @@ components:
             	«ENDIF -»
                 «EXPAND java::OpenAPIHelper::GenerateExample("            ") FOR property -»
             «ELSE -»
-              «IF property.type.isOpenAPIDataType() && ((OpenAPIDataType) property.type).inline == true -»
+              «IF property.type.isOpenAPIDataType() && property.type.asOpenAPIDataType().isInlined() == true -»
               «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataType(this, property,"  ", false) FOR (OpenAPIDataType) property.type -»
               «ELSE -»
                 «IF property.isMultivalued() == false -»
@@ -462,7 +463,7 @@ components:
             	«ENDIF-»
                 «EXPAND java::OpenAPIHelper::GenerateExample("            ") FOR param -»
             «ELSE-»
-              «IF param.type.isOpenAPIDataType() && ((OpenAPIDataType) param.type).inline == true -»
+              «IF param.type.isOpenAPIDataType() && param.type.asOpenAPIDataType().isInlined() == true -»
               «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, param,"") FOR (OpenAPIDataType) param.type -»
               «ELSE -»
                 «IF param.isMultivalued() == false -»
@@ -499,7 +500,7 @@ components:
           «FOREACH unifyMediaTypes(service.consumes, operation.consumes) AS mediaType-»
           «mediaType.toOpenAPIContentType()»:
             schema:
-              «IF param.type.isOpenAPIDataType() && ((OpenAPIDataType) param.type).inline == true -»
+              «IF param.type.isOpenAPIDataType() && param.type.asOpenAPIDataType().isInlined() == true -»
               «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, param, "    ") FOR (OpenAPIDataType) param.type -»
               «ELSE -»
               «IF param.type.isBasicOpenAPIType() == true-»
@@ -562,7 +563,7 @@ components:
             «FOREACH unifyMediaTypes(service.produces, operation.produces) AS contentType-»
             «contentType.toOpenAPIContentType()»:
               schema:
-                «IF returnParam.type.isOpenAPIDataType() && ((OpenAPIDataType) returnParam.type).inline == true -»
+                «IF returnParam.type.isOpenAPIDataType() && returnParam.type.asOpenAPIDataType().isInlined() == true -»
                 «EXPAND java::OpenAPIDataType::GenerateOpenAPIDataTypeForPath(this, returnParam, "    ") FOR (OpenAPIDataType) returnParam.type -»
                 «ELSE -»
                 «IF returnParam.type.isBasicOpenAPIType() == true-»

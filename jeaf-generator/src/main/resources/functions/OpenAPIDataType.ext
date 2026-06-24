@@ -1,10 +1,17 @@
 extension java::GeneratorCommons;
+extension functions::SystemProperties;
 
 cached boolean isOpenAPIDataType(uml::Element element):
     element.isStereotypeApplied("OpenAPIDataType");
-    
+
+
 cached JMM::OpenAPIDataType asOpenAPIDataType(uml::Element element):
     (JMM::OpenAPIDataType) element;
-    
+
+
+cached boolean isInlined(JMM::OpenAPIDataType element):
+	element.inline && neverInlineOpenAPIDataTypes() == false;
+
+
 cached boolean isInlinedOpenAPIDataType(uml::Element element):
-	element.isOpenAPIDataType() && element.asOpenAPIDataType().inline;
+	element.isOpenAPIDataType() && element.asOpenAPIDataType().isInlined();

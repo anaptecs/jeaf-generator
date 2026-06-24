@@ -404,6 +404,11 @@ String toDoTypeClassName():
 boolean generateDeprecatedGetterForBooleans():
 	getBooleanSystemProperty("jeaf.generator.generateDeprecatedGetterForBooleans", false);
 
+
 boolean generateValidationAnnotationsForBuilderProperties():
 	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForBuilderProperties", false);
+
+
+boolean neverInlineOpenAPIDataTypes():
+	getBooleanSystemProperty("jeaf.generator.neverInlineOpenAPIDataTypes", false);
 

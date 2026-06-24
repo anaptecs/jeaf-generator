@@ -172,6 +172,11 @@ components:
           format: int32
           nullable: false
 
+    # com.anaptecs.spring.base.AnotherDataType
+    AnotherDataType:
+      type: string
+      nullable: false
+
     # com.anaptecs.spring.base.BidirectA
     BidirectA:
       type: object
@@ -202,8 +207,7 @@ components:
         - customerName
       properties:
         bookingID:
-          type: string
-          nullable: false
+          $ref: '#/components/schemas/BookingID'
         customerName:
           type: string
           nullable: false
@@ -211,6 +215,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InventoryType'
+
+    # com.anaptecs.spring.base.BookingCode
+    BookingCode:
+      type: string
+      nullable: false
+
+    # com.anaptecs.spring.base.BookingID
+    BookingID:
+      type: string
+
+    # com.anaptecs.spring.base.BooleanCode
+    BooleanCode:
+      type: boolean
+      nullable: false
+
+    # com.anaptecs.spring.base.ByteCode
+    ByteCode:
+      type: integer
+      format: int32
+      nullable: false
 
     # com.anaptecs.spring.base.CHStopPlace
     CHStopPlace:
@@ -233,13 +257,8 @@ components:
           # Type of the channel
           $ref: '#/components/schemas/ChannelType'
         channelCode:
-          description: |
-            The business code of the channel
-          type: string
-          default: 'WEBSHOP'
-          examples:
-           - MOBILE_APP
-          nullable: false
+          # The business code of the channel
+          $ref: '#/components/schemas/ChannelCode'
         code:
           type: integer
           format: int32
@@ -249,6 +268,14 @@ components:
           deprecated: true
           nullable: false
           default: true
+
+    # com.anaptecs.spring.base.ChannelCode
+    ChannelCode:
+      type: string
+      default: 'WEBSHOP'
+      nullable: false
+      examples:
+       - MOBILE_APP
 
     # com.anaptecs.spring.base.ChannelType
     ChannelType:
@@ -283,6 +310,11 @@ components:
         - WEB
         - LEGACY_POS
       default: MOBILE
+
+    # com.anaptecs.spring.base.CharacterCode
+    CharacterCode:
+      type: string
+      nullable: false
 
     # com.anaptecs.spring.base.CharacterCodeType
     CharacterCodeType:
@@ -431,9 +463,7 @@ components:
         stringCode:
           $ref: '#/components/schemas/StringCodeType'
         characterCode:
-          description: |
-            Just a character
-          type: string
+          $ref: '#/components/schemas/CharacterCode'
 
     # com.anaptecs.spring.base.Company
     Company:
@@ -448,12 +478,36 @@ components:
               type: string
               nullable: false
 
+    # com.anaptecs.spring.composite.ComplexBookingID
+    ComplexBookingID:
+      type: string
+
     # com.anaptecs.spring.base.ComplexBookingType
     ComplexBookingType:
       type: string
       x-extensible-enum:
         - COMPLEX
         - VERY_COMPLEX
+
+    # com.anaptecs.spring.base.CurrencyCode
+    CurrencyCode:
+      type: string
+      default: 'CHF'
+      minLength: 3
+      maxLength: 3
+      nullable: false
+      examples:
+       - CHF
+
+    # com.anaptecs.spring.custom.DataTypeCustomSerialization
+    DataTypeCustomSerialization:
+      type: string
+
+    # com.anaptecs.spring.base.DataTypeWithDerivedProperty
+    DataTypeWithDerivedProperty:
+      type: integer
+      format: int32
+      nullable: false
 
     # com.anaptecs.spring.base.DataUnit
     DataUnit:
@@ -531,6 +585,12 @@ components:
           type: string
           nullable: false
 
+    # com.anaptecs.spring.base.DoubleCode
+    DoubleCode:
+      type: number
+      format: double
+      nullable: false
+
     # com.anaptecs.spring.base.Duration
     Duration:
       type: object
@@ -570,6 +630,12 @@ components:
         - DISCOUNT_CAMPAIGN
         - DISCOUNT_OFFER
 
+    # com.anaptecs.spring.base.FloatCode
+    FloatCode:
+      type: number
+      format: float
+      nullable: false
+
     # com.anaptecs.spring.base.GeoPosition
     GeoPosition:
       allOf:
@@ -588,6 +654,12 @@ components:
               type: integer
               format: int32
               nullable: false
+
+    # com.anaptecs.spring.base.IntegerCode
+    IntegerCode:
+      type: integer
+      format: int32
+      nullable: false
 
     # com.anaptecs.spring.base.InventoryType
     InventoryType:
@@ -625,6 +697,12 @@ components:
           type: string
           nullable: false
 
+    # com.anaptecs.spring.base.LongCode
+    LongCode:
+      type: integer
+      format: int64
+      nullable: false
+
     # com.anaptecs.spring.base.MoneyAmount
     MoneyAmount:
       type: object
@@ -645,15 +723,7 @@ components:
           format: double
           nullable: false
         currencyCode:
-          description: |
-            ISO 4217 currency code.
-          type: string
-          default: 'CHF'
-          minLength: 3
-          maxLength: 3
-          examples:
-           - CHF
-          nullable: false
+          $ref: '#/components/schemas/CurrencyCode'
 
     # com.anaptecs.spring.base.MyType
     MyType:
@@ -1539,20 +1609,12 @@ components:
           type: string
           nullable: false
         supportedCurrencies:
-          description: |
-            ISO 4217 currency code.
           type: array
           items:
-            type: string
-            default: 'CHF'
-            minLength: 3
-            maxLength: 3
-            examples:
-             - CHF
+            $ref: '#/components/schemas/CurrencyCode'
+          uniqueItems: true
           minItems: 7
           maxItems: 42
-          uniqueItems: true
-          nullable: false
         productCodes:
           type: array
           items:
@@ -1605,6 +1667,12 @@ components:
           type: string
           nullable: false
 
+    # com.anaptecs.spring.base.ShortCode
+    ShortCode:
+      type: integer
+      format: int32
+      nullable: false
+
     # com.anaptecs.spring.base.backward.SimpleAssociationBackwardCompatibility
     SimpleAssociationBackwardCompatibility:
       type: object
@@ -1648,6 +1716,10 @@ components:
           type: string
           nullable: false
 
+    # com.anaptecs.spring.base.SoftLink
+    SoftLink:
+      type: string
+
     # com.anaptecs.spring.base.Sortiment
     Sortiment:
       type: object
@@ -1690,6 +1762,11 @@ components:
         - $ref: '#/components/schemas/PlaceRef'
         - type: object
           additionalProperties: false
+
+    # com.anaptecs.spring.base.StringCode
+    StringCode:
+      type: string
+      nullable: false
 
     # com.anaptecs.spring.base.SwissGeoPosition
     SwissGeoPosition:
@@ -1772,10 +1849,9 @@ components:
         - booking
       properties:
         booking:
-          type: string
-          nullable: false
+          $ref: '#/components/schemas/ComplexBookingID'
         additionalBookings:
           type: array
           items:
-            type: string
+            $ref: '#/components/schemas/ComplexBookingID'
 

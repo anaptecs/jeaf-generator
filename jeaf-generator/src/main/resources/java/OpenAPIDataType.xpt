@@ -6,6 +6,7 @@
 «EXTENSION functions::Builder»
 «EXTENSION functions::Class»
 «EXTENSION functions::Jackson»
+«EXTENSION functions::OpenAPIDataType»
 
 
 «IMPORT uml»
@@ -57,7 +58,7 @@
 
 «DEFINE GenerateOpenAPIDataType(OpenAPI3Specification spec, Property ownerAttribute, String indentation, boolean addDescription) FOR OpenAPIDataType -»
   «LET this.ownedAttribute.select(e|e.isStatic == false).first() AS attribute -»
-    «IF this.inline == true -»
+    «IF this.isInlined() == true -»
           «IF addDescription && (ownerAttribute.hasComment() || (this.compositeDataType && this.hasComment()) || this.ownedAttribute.select(e|e.isStatic == false).first().hasComment())-»
 «indentation»          description: «getOpenAPICommentStyle()»
           «IF ownerAttribute.hasComment() -»
@@ -138,7 +139,7 @@
     «this.name»:
       «IF this.compositeDataType == true -»
       type: string
-          «IF ownerAttribute.isDeprecated() -»
+          «IF ownerAttribute != null && ownerAttribute.isDeprecated() -»
       deprecated: true
           «ENDIF-»
       «ELSE-»

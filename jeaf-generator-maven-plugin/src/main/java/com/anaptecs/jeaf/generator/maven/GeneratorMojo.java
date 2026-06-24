@@ -572,6 +572,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean implementComparableForOpenAPIDataTypes;
 
   /**
+   * Switch can be used to enforce that OpenAPIDataTypes are not inlined in generated OpenAPI specifications. This means
+   * that there will be an explicit type for all OpenAPIDataTypes.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean neverInlineOpenAPIDataTypes;
+
+  /**
    * Switch can be used to enable that <code>NotNull</code> annotation is generated for setter and getter of single
    * valued properties.
    */
@@ -2323,6 +2330,10 @@ public class GeneratorMojo extends AbstractMojo {
           lLog.info("Implement Compareable for OpenAPIDataTypes:       " + implementComparableForOpenAPIDataTypes);
         }
 
+        if (neverInlineOpenAPIDataTypes) {
+          lLog.info("Never inline OpneAPIDataTypes in OpenAPI spec:    " + neverInlineOpenAPIDataTypes);
+        }
+
         if (generateNotNullAnnotationForSingleValuedProperties) {
           lLog.info("Generate NotNull annotation for                   ");
           lLog.info(
@@ -2886,6 +2897,8 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty(PROPERTY_PREFIX + "implementCompareableForOpenAPIDataTypes",
           implementComparableForOpenAPIDataTypes.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "neverInlineOpenAPIDataTypes", neverInlineOpenAPIDataTypes.toString());
 
       // NotNull / NotEmpty annotations for properties / POJOs / ServiceObjects
       System.setProperty(PROPERTY_PREFIX + "generateNotNullAnnotationForSingleValuedProperties",
