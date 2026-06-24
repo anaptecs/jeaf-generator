@@ -139,7 +139,7 @@
     «this.name»:
       «IF this.compositeDataType == true -»
       type: string
-          «IF ownerAttribute.isDeprecated() -»
+          «IF ownerAttribute != null && ownerAttribute.isDeprecated() -»
       deprecated: true
           «ENDIF-»
       «ELSE-»

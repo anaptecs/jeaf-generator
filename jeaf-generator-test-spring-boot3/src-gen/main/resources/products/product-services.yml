@@ -244,13 +244,7 @@ paths:
           content:
             application/json:
               schema:
-                description: |
-                  channel code
-                type: string
-                default: 'WEBSHOP'
-                examples:
-                 - MOBILE_APP
-                nullable: false
+                $ref: '../base/product-base.yml#/components/schemas/ChannelCode'
           headers:
             X-Global-Response-Header:
               schema:
@@ -548,13 +542,7 @@ paths:
         content:
           application/json:
             schema:
-                description: |
-                  channel code
-                type: string
-                default: 'WEBSHOP'
-                examples:
-                 - MOBILE_APP
-                nullable: false
+              $ref: '../base/product-base.yml#/components/schemas/ChannelCode'
       responses:
         '200':
           description: |
@@ -562,13 +550,7 @@ paths:
           content:
             application/json:
               schema:
-                description: |
-                  channel code
-                type: string
-                default: 'WEBSHOP'
-                examples:
-                 - MOBILE_APP
-                nullable: false
+                $ref: '../base/product-base.yml#/components/schemas/ChannelCode'
           headers:
             X-Global-Response-Header:
               schema:
@@ -589,19 +571,10 @@ paths:
         content:
           application/json:
             schema:
-                description: |
-                  ISO 4217 currency code.
-                type: array
-                items:
-                  type: string
-                  minLength: 3
-                  maxLength: 3
-                  examples:
-                   - CHF
-                minItems: 1
-                nullable: false
-                examples:
-                 - ["CHF", "EUR", "USD"]
+              type: array
+              items:
+                $ref: '../base/product-base.yml#/components/schemas/CurrencyCode'
+              minItems: 1
       responses:
         '200':
           description: |
@@ -609,18 +582,11 @@ paths:
           content:
             application/json:
               schema:
-                description: |
-                  ISO 4217 currency code.
                 type: array
                 items:
-                  type: string
-                  minLength: 3
-                  maxLength: 3
-                  examples:
-                   - CHF
+                  $ref: '../base/product-base.yml#/components/schemas/CurrencyCode'
                 minItems: 1
                 maxItems: 20
-                nullable: false
           headers:
             X-Global-Response-Header:
               schema:
@@ -641,15 +607,7 @@ paths:
         content:
           application/json:
             schema:
-                description: |
-                  ISO 4217 currency code.
-                type: string
-                default: 'CHF'
-                minLength: 3
-                maxLength: 3
-                examples:
-                 - CHF
-                nullable: false
+              $ref: '../base/product-base.yml#/components/schemas/CurrencyCode'
       responses:
         '200':
           description: |
@@ -657,15 +615,7 @@ paths:
           content:
             application/json:
               schema:
-                description: |
-                  ISO 4217 currency code.
-                type: string
-                default: 'CHF'
-                minLength: 3
-                maxLength: 3
-                examples:
-                 - CHF
-                nullable: false
+                $ref: '../base/product-base.yml#/components/schemas/CurrencyCode'
           headers:
             X-Global-Response-Header:
               schema:
@@ -1213,8 +1163,7 @@ paths:
           schema:
             type: array
             items:
-              type: string
-            nullable: true
+              $ref: '../base/product-base.yml#/components/schemas/AnotherDataType'
       responses:
         '200':
           description: |
@@ -1437,13 +1386,7 @@ paths:
           content:
             application/json:
               schema:
-                description: |
-                  channel code
-                type: string
-                default: 'WEBSHOP'
-                examples:
-                 - MOBILE_APP
-                nullable: false
+                $ref: '../base/product-base.yml#/components/schemas/ChannelCode'
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
@@ -1477,13 +1420,7 @@ paths:
           in: path
           required: true
           schema:
-            description: |
-              channel code
-            type: string
-            default: 'WEBSHOP'
-            examples:
-             - MOBILE_APP
-            nullable: false
+            $ref: '../base/product-base.yml#/components/schemas/ChannelCode' 
       responses:
         '200':
           description: |
@@ -1491,16 +1428,9 @@ paths:
           content:
             application/json:
               schema:
-                description: |
-                  ISO 4217 currency code.
                 type: array
                 items:
-                  type: string
-                  minLength: 3
-                  maxLength: 3
-                  examples:
-                   - CHF
-                nullable: true
+                  $ref: '../base/product-base.yml#/components/schemas/CurrencyCode'
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
@@ -1518,13 +1448,7 @@ paths:
           in: path
           required: true
           schema:
-            description: |
-              channel code
-            type: string
-            default: 'WEBSHOP'
-            examples:
-             - MOBILE_APP
-            nullable: false
+            $ref: '../base/product-base.yml#/components/schemas/ChannelCode' 
       responses:
         '200':
           description: |
@@ -1532,16 +1456,9 @@ paths:
           content:
             application/json:
               schema:
-                description: |
-                  ISO 4217 currency code.
                 type: array
                 items:
-                  type: string
-                  minLength: 3
-                  maxLength: 3
-                  examples:
-                   - CHF
-                nullable: true
+                  $ref: '../base/product-base.yml#/components/schemas/CurrencyCode'
     
         '400':
           $ref: '#/components/responses/CustomErrorResponse'
@@ -2157,8 +2074,7 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            nullable: false
+            $ref: '../base/product-base.yml#/components/schemas/ComplexBookingID' 
       responses:
         '200':
           description: |
@@ -2183,13 +2099,11 @@ paths:
         - name: BookingID
           in: header
           schema:
-            type: string
-            nullable: true
+            $ref: '../base/product-base.yml#/components/schemas/BookingID' 
         - name: BookingCode
           in: header
           schema:
-            type: string
-            nullable: true
+            $ref: '../base/product-base.yml#/components/schemas/BookingCode' 
         - name: DoubleCode
           in: header
           schema:
@@ -2218,13 +2132,11 @@ paths:
         - name: bookingID
           in: header
           schema:
-            type: string
-            examples:
-             - BOOK-12345
+            $ref: '../base/product-base.yml#/components/schemas/BookingID' 
         - name: bookingCode
           in: header
           schema:
-            type: string
+            $ref: '../base/product-base.yml#/components/schemas/BookingCode' 
         - name: DoubleCode
           in: header
           schema:
@@ -2283,8 +2195,7 @@ paths:
           in: query
           required: true
           schema:
-            type: string
-            nullable: false
+            $ref: '../base/product-base.yml#/components/schemas/BookingCode' 
       responses:
         '200':
           description: |
@@ -2310,8 +2221,7 @@ paths:
           in: query
           required: true
           schema:
-            type: string
-            nullable: false
+            $ref: '../base/product-base.yml#/components/schemas/BookingCode' 
         - name: maxResults
           in: query
           required: true
@@ -2325,7 +2235,7 @@ paths:
           schema:
             type: array
             items:
-              type: string
+              $ref: '#/components/schemas/MySortCriteria'
       responses:
         '200':
           description: |
@@ -2504,19 +2414,16 @@ paths:
           required: true
           schema:
             type: array
-            items:
-              type: integer
-              format: int64
             minItems: 1
+            items:
+              $ref: '../base/product-base.yml#/components/schemas/LongCode'
             uniqueItems: true
-            nullable: false
         - name: bookingIDs
           in: query
           schema:
             type: array
             items:
-              type: string
-            nullable: true
+              $ref: '../base/product-base.yml#/components/schemas/BookingID'
         - name: timestamps
           in: query
           schema:
@@ -2558,8 +2465,7 @@ paths:
           schema:
             type: array
             items:
-              type: integer
-              format: int64
+              $ref: '../base/product-base.yml#/components/schemas/LongCode'
             uniqueItems: true
         - name: codes
           in: query
@@ -2573,22 +2479,21 @@ paths:
           schema:
             type: array
             items:
-              type: number
-              format: double
+              $ref: '../base/product-base.yml#/components/schemas/DoubleCode'
             uniqueItems: true
         - name: bookingIDs
           in: query
           schema:
             type: array
             items:
-              type: string
+              $ref: '../base/product-base.yml#/components/schemas/BookingID'
             uniqueItems: true
         - name: bookingIDsArray
           in: query
           schema:
             type: array
             items:
-              type: string
+              $ref: '../base/product-base.yml#/components/schemas/BookingID'
             uniqueItems: true
         - name: offsetDateTime
           in: query
@@ -2693,14 +2598,14 @@ paths:
           schema:
             type: array
             items:
-              type: string
+              $ref: '../base/product-base.yml#/components/schemas/StringCode'
             uniqueItems: true
         - name: stringCodeList
           in: header
           schema:
             type: array
             items:
-              type: string
+              $ref: '../base/product-base.yml#/components/schemas/StringCode'
             uniqueItems: true
         - name: startDate
           in: header
@@ -2818,9 +2723,8 @@ paths:
           schema:
             type: array
             items:
-              type: string
+              $ref: '../base/product-base.yml#/components/schemas/StringCode'
             uniqueItems: true
-            nullable: true
         - name: startDate
           in: header
           schema:
@@ -2872,8 +2776,7 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            nullable: false
+            $ref: '../base/product-base.yml#/components/schemas/BookingID' 
       responses:
         '204':
           description: |
@@ -2894,8 +2797,7 @@ paths:
         - name: bookingID
           in: header
           schema:
-            type: string
-            nullable: true
+            $ref: '../base/product-base.yml#/components/schemas/BookingID' 
       responses:
         '204':
           description: |
@@ -3120,4 +3022,7 @@ components:
         - ASCENDING
         - DESCENDING
 
-      
+    # com.anaptecs.spring.service.MySortCriteria
+    MySortCriteria:
+      type: string
+
