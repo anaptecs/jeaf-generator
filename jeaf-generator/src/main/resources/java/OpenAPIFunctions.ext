@@ -18,6 +18,7 @@ extension functions::RESTOperation;
 extension jeafgenerator::api::OpenAPIEnumExtensionPoint;
 extension functions::AddToJSON;
 extension functions::JEAFEnumeration;
+extension functions::OpenAPIDataType;
 
 cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 	getOpenAPITypes(spec).size > 0;
@@ -450,7 +451,7 @@ cached String getOrderNumber(uml::Element element) :
     else "9999";  
     
 cached List[uml::Element] getOrderedSchemaElements(JMM::OpenAPI3Specification spec) :
-    spec.getOpenAPITypes().addAll(spec.getOpenAPIDataTypes().select(e|e.inline == false)).addAll(spec.getOpenAPIEnums()).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
+    spec.getOpenAPITypes().addAll(spec.getOpenAPIDataTypes().select(e|e.isInlined() == false)).addAll(spec.getOpenAPIEnums()).toList().sortBy(e|e.name).sortBy(e|e.getOrderNumber());
     
 cached List[JMM::OpenAPITag] getOrderedOpenAPITags(JMM::OpenAPI3Specification spec) :
     spec.clientDependency.supplier.typeSelect(JMM::OpenAPITag).toList().sortBy(e|e.name).sortBy(e|e.order);
