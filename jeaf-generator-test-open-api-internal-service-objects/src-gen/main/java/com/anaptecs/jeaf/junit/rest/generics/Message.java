@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import com.anaptecs.jeaf.core.api.ServiceObject;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class Message implements ServiceObject {
@@ -60,7 +59,6 @@ public class Message implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>Message</code>.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * Use {@link Message#builder()} instead of private constructor to create new builder.

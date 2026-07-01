@@ -10,7 +10,6 @@ import java.util.Objects;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
 
@@ -59,7 +58,6 @@ public abstract class MySortCriteriaBase {
    * Class implements builder to create a new instance of class MySortCriteria. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private SortOrder sortOrder;
 

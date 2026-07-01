@@ -5,8 +5,6 @@
  */
 package com.anaptecs.spring.base;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 public abstract class SoftLinkBase {
   /**
    * Constant for the name of attribute "objectID".
@@ -53,7 +51,6 @@ public abstract class SoftLinkBase {
    * Class implements builder to create a new instance of class SoftLink. As the class has read only attributes or
    * associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private long objectID;
 

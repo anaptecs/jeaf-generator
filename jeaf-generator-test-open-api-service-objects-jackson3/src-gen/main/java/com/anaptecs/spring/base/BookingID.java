@@ -12,6 +12,8 @@ import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Valid
 public class BookingID {
@@ -50,6 +52,8 @@ public class BookingID {
   /**
    * Class implements builder to create a new instance of class <code>BookingID</code>.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     /**
      * String representation of this object.

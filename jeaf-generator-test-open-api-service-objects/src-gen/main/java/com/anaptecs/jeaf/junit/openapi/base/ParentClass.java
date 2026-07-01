@@ -107,7 +107,6 @@ public class ParentClass implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>ParentClass</code>.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String parentAttribute;
 

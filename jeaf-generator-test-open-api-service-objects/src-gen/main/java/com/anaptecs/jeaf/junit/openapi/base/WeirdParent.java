@@ -103,7 +103,6 @@ public class WeirdParent implements ServiceObject {
   /**
    * Class implements builder to create a new instance of class <code>WeirdParent</code>.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder {
     private String someProperty;
 
