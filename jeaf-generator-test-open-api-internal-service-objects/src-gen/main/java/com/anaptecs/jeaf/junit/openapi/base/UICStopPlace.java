@@ -9,7 +9,6 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class UICStopPlace extends StopPlaceRef {
@@ -70,7 +69,6 @@ public class UICStopPlace extends StopPlaceRef {
   /**
    * Class implements builder to create a new instance of class <code>UICStopPlace</code>.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends StopPlaceRef.Builder {
     /**
      * Use {@link UICStopPlace#builder()} instead of private constructor to create new builder.

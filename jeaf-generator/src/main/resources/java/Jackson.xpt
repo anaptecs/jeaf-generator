@@ -49,9 +49,9 @@
 	           «FOREACH this.getAllPropertiesFromHierarchy().select(e|e.isTransient() == false && (e.isDerived == false || ( e.isDerived && e.isAddToJSON()))) AS property SEPARATOR ", "»"«property.name»"«ENDFOREACH»
 	        })
 	    «ENDIF»
-	    «IF this.isAbstract == false && this.isOpenAPIDataType() == false && this.hasCustomSerialization() == false && this.hasTemplateParameter() == false && this.isPOJO()»
+	    «IF this.isAbstract == false && this.isOpenAPIDataType() == false && this.hasCustomSerialization() == false && this.isPOJO()»
 	    	«FOREACH getJacksonVersions() AS jacksonVersion»
-	    	@«getJsonDeserializeFQN(jacksonVersion)»(builder = «this.fqn()»«IF this.hasGenericBuilder()»«ownerClassSuffix»«ENDIF».«this.builderImplName()».class)
+	    	@«getJsonDeserializeFQN(jacksonVersion)»(builder = «this.fqnWithoutGenerics()»«IF this.hasGenericBuilder()»«ownerClassSuffix»«ENDIF».«this.builderImplName()».class)
 	    	«ENDFOREACH»
 	    «ENDIF»
 		«IF enableSemVerForJSON() && this.hasTemplateParameter() && this.isPOJO()»

@@ -23,13 +23,13 @@
  * Class implements builder to create a new instance of class <code>«this.name»</code>.
  */
  
-«IF generateJacksonAnnotations() && this.hasTemplateParameter() == false && this.hasCustomSerialization() == false && this.isCompositeDataType() == false»
-	«IF this.isPOJO()  && this.asPOJO().compositeDataTypeCustomSerialization == false»
+«IF generateJacksonAnnotations() && this.hasCustomSerialization() == false»
+	«IF this.isPOJO() && this.asPOJO().compositeDataTypeCustomSerialization == false»
 		«FOREACH getJacksonVersions() AS jacksonVersion»
 			@«getJsonPOJOBuilderNameFQN(jacksonVersion)»(withPrefix = "set")
 		«ENDFOREACH»
+	@«getJsonIgnorePropertiesFQN()»(ignoreUnknown = true)
 	«ENDIF»
-@«getJsonIgnorePropertiesFQN()»(ignoreUnknown = true)
 «ENDIF»
 «EXPAND java::Helper::GenerateAnnotations-»
 public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqnWithoutGenerics()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
@@ -229,13 +229,13 @@ public static «IF isAbstract == true» abstract «ENDIF»class Builder«this.ge
 /**
  * Class implements builder to create a new instance of class «this.name». As the class has read only attributes or associations instances can not be created directly. Instead this builder class has to be used.
  */
-«IF generateJacksonAnnotations() && this.hasTemplateParameter() == false && this.hasCustomSerialization() == false»
+«IF generateJacksonAnnotations() && this.hasCustomSerialization() == false»
 	«IF this.isPOJO() && this.asPOJO().compositeDataTypeCustomSerialization == false»
 		«FOREACH getJacksonVersions() AS jacksonVersion»
 			@«getJsonPOJOBuilderNameFQN(jacksonVersion)»(withPrefix = "set")
 		«ENDFOREACH»
+	@«getJsonIgnorePropertiesFQN()»(ignoreUnknown = true)
 	«ENDIF»
-@«getJsonIgnorePropertiesFQN()»(ignoreUnknown = true)
 «ENDIF»
 public static abstract class BuilderBase«this.getTemplateParams()» «IF superClass.isEmpty == false»extends «superClass.get(0).fqnWithoutGenerics()».Builder«superClass.get(0).getTemplateParams()»«ENDIF» {
 	«REM»Generate instance variables for each property«ENDREM»

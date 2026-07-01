@@ -9,7 +9,6 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class BusinessA extends TechParent {
@@ -68,7 +67,6 @@ public class BusinessA extends TechParent {
   /**
    * Class implements builder to create a new instance of class <code>BusinessA</code>.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends TechParent.Builder {
     private int businessAttribute;
 

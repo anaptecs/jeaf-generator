@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class SpecialContext extends Context {
@@ -127,7 +126,6 @@ public class SpecialContext extends Context {
   /**
    * Class implements builder to create a new instance of class <code>SpecialContext</code>.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Context.Builder {
     private String specificHeader;
 

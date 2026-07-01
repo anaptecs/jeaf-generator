@@ -14,7 +14,6 @@ import javax.ws.rs.HeaderParam;
 
 import com.anaptecs.jeaf.junit.openapi.base.ParentBeanParamType;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class ChildBeanParameterType extends ParentBeanParamType {
@@ -89,7 +88,6 @@ public class ChildBeanParameterType extends ParentBeanParamType {
   /**
    * Class implements builder to create a new instance of class <code>ChildBeanParameterType</code>.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends ParentBeanParamType.Builder {
     private String childProperty;
 

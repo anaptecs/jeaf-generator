@@ -7,8 +7,6 @@ package com.anaptecs.spring.custom;
 
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 public abstract class DataTypeCustomSerializationBase {
   /**
    * Constant for the name of attribute "property1".
@@ -31,7 +29,6 @@ public abstract class DataTypeCustomSerializationBase {
    * Class implements builder to create a new instance of class DataTypeCustomSerialization. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private String property1;
 

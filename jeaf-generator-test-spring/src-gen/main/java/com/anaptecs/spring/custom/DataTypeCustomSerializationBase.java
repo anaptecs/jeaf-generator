@@ -10,7 +10,6 @@ import java.util.Objects;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonAutoDetect(
     fieldVisibility = JsonAutoDetect.Visibility.ANY,
@@ -48,7 +47,6 @@ public abstract class DataTypeCustomSerializationBase {
    * Class implements builder to create a new instance of class DataTypeCustomSerialization. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase {
     private String property1;
 

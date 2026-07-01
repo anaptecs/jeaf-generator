@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.common.ObjectIdentity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Valid
 public class Company extends Partner {
@@ -74,7 +73,6 @@ public class Company extends Partner {
   /**
    * Class implements builder to create a new instance of class <code>Company</code>.
    */
-  @JsonIgnoreProperties(ignoreUnknown = true)
   public static class Builder extends Partner.Builder {
     private String name;
 

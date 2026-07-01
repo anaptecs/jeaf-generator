@@ -20,9 +20,12 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.Nulls;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
+@JsonDeserialize(builder = GenericResponsePOJO.Builder.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class GenericResponsePOJOBase<T> {
   /**
@@ -73,6 +76,8 @@ public abstract class GenericResponsePOJOBase<T> {
    * Class implements builder to create a new instance of class GenericResponsePOJO. As the class has read only
    * attributes or associations instances can not be created directly. Instead this builder class has to be used.
    */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
   public static abstract class BuilderBase<T> {
     private List<Message> errors;
 

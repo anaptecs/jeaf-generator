@@ -12,6 +12,8 @@ import com.anaptecs.jeaf.accounting.impl.pojo.Customer;
 import com.anaptecs.jeaf.accounting.impl.pojo.Customer.CustomerBuilder;
 import com.anaptecs.jeaf.json.api.JSON;
 import com.anaptecs.jeaf.json.api.JSONTools;
+import com.anaptecs.jeaf.junit.generics.GenericResponsePOJO;
+import com.anaptecs.jeaf.junit.generics.Message;
 import org.junit.jupiter.api.Test;
 
 public class GenericBuilderTest {
@@ -105,5 +107,22 @@ public class GenericBuilderTest {
 
     CustomerBuilder<?, ?> lBuilder = Customer.builder();
     Customer lObject = Customer.builder().setTags("").setEmail("hello@anaptecs.de").build();
+  }
+
+  @Test
+  void testGenericClassesSerialization( ) {
+    GenericResponsePOJO<String> lPojo = GenericResponsePOJO.builder(String.class)
+        .setValue("Value")
+        .addToErrors(Message.of("Hello World"))
+        .build();
+
+    JSONTools lJsonTools = JSONTools.getJSONTools();
+    String lJSON = lJsonTools.writeObjectToString(lPojo);
+    System.out.println(lJSON);
+
+    @SuppressWarnings("unchecked")
+    GenericResponsePOJO<String> lReadJSON = lJsonTools.read(lJSON, GenericResponsePOJO.class);
+    assertEquals("Value", lReadJSON.getValue());
+    assertEquals("Hello World", lReadJSON.getErrors().get(0).getText());
   }
 }
