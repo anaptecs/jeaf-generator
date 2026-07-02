@@ -16,6 +16,7 @@ extension functions::DefaultComment;
 extension functions::Example;
 extension functions::RESTOperation;
 extension jeafgenerator::api::OpenAPIEnumExtensionPoint;
+extension jeafgenerator::api::SoftLinkExtensionPoint;
 extension functions::AddToJSON;
 extension functions::JEAFEnumeration;
 extension functions::OpenAPIDataType;
@@ -147,14 +148,20 @@ cached String getOpenAPISoftLinkRefType(JMM::SoftLink softLink):
 	if (softLink.getOpenAPISoftLinkType() == "integer" || softLink.getOpenAPISoftLinkType() == "string")
 	then "type"
 	else "$ref";
-	
+
+
 cached String getOpenAPISoftLinkType(JMM::SoftLink softLink):
 	if (softLink.softLinkType.name == "long" || softLink.softLinkType.name == "Long")
 	then "integer"
-	else if getOpenAPIGenericSoftLinkType().length > 0
-	   then "'" +getOpenAPIGenericSoftLinkType() + "'"
-	   else "string";
-    
+	else 
+		if softLink.softLinkType.name == "DynamicTypeResolution"
+		then softLink.getDynamicSoftLinkTypeForOpenAPI()
+		else
+			if getOpenAPIGenericSoftLinkType().length > 0
+			then "'" +getOpenAPIGenericSoftLinkType() + "'"
+			else "string";
+
+
 cached String getOpenAPISoftLinkFormat(JMM::SoftLink softLink):
 	if (softLink.softLinkType.name == "long" || softLink.softLinkType.name == "Long")
 	then "int64"

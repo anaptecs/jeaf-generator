@@ -323,7 +323,7 @@
 | `MyPOJOResponse` | |  |  |  |
 |   | `deprecatedProperty` |  |  |  |
 | `MyPojoRequest` | |  |  |  |
-|   | `deprecatedRequestProperty` |  |  |  |
+|   | `formerMandatoryRequestProperty` |  |  |  |
 
 <br>
 

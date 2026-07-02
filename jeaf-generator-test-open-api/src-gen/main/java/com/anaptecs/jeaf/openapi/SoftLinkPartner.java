@@ -41,6 +41,12 @@ public class SoftLinkPartner {
   @JsonProperty("theDerivedSoftLinkIDs")
   private List<String> theDerivedSoftLinkIDs = null;
 
+  @JsonProperty("dynamicSoftLinkID")
+  private String dynamicSoftLinkID = null;
+
+  @JsonProperty("multiValuedDynamicSoftLinkID")
+  private List<String> multiValuedDynamicSoftLinkID = null;
+
   public SoftLinkPartner theBackLinkID(String theBackLinkID) {
     this.theBackLinkID = theBackLinkID;
     return this;
@@ -152,6 +158,50 @@ public class SoftLinkPartner {
     this.theDerivedSoftLinkIDs = theDerivedSoftLinkIDs;
   }
 
+  public SoftLinkPartner dynamicSoftLinkID(String dynamicSoftLinkID) {
+    this.dynamicSoftLinkID = dynamicSoftLinkID;
+    return this;
+  }
+
+   /**
+   * Get dynamicSoftLinkID
+   * @return dynamicSoftLinkID
+  **/
+  @Schema(description = "")
+  public String getDynamicSoftLinkID() {
+    return dynamicSoftLinkID;
+  }
+
+  public void setDynamicSoftLinkID(String dynamicSoftLinkID) {
+    this.dynamicSoftLinkID = dynamicSoftLinkID;
+  }
+
+  public SoftLinkPartner multiValuedDynamicSoftLinkID(List<String> multiValuedDynamicSoftLinkID) {
+    this.multiValuedDynamicSoftLinkID = multiValuedDynamicSoftLinkID;
+    return this;
+  }
+
+  public SoftLinkPartner addMultiValuedDynamicSoftLinkIDItem(String multiValuedDynamicSoftLinkIDItem) {
+    if (this.multiValuedDynamicSoftLinkID == null) {
+      this.multiValuedDynamicSoftLinkID = new ArrayList<>();
+    }
+    this.multiValuedDynamicSoftLinkID.add(multiValuedDynamicSoftLinkIDItem);
+    return this;
+  }
+
+   /**
+   * Get multiValuedDynamicSoftLinkID
+   * @return multiValuedDynamicSoftLinkID
+  **/
+  @Schema(description = "")
+  public List<String> getMultiValuedDynamicSoftLinkID() {
+    return multiValuedDynamicSoftLinkID;
+  }
+
+  public void setMultiValuedDynamicSoftLinkID(List<String> multiValuedDynamicSoftLinkID) {
+    this.multiValuedDynamicSoftLinkID = multiValuedDynamicSoftLinkID;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -166,12 +216,14 @@ public class SoftLinkPartner {
         Objects.equals(this.childLinkIDs, softLinkPartner.childLinkIDs) &&
         Objects.equals(this.longLinkIDs, softLinkPartner.longLinkIDs) &&
         Objects.equals(this.derivedSoftLinkID, softLinkPartner.derivedSoftLinkID) &&
-        Objects.equals(this.theDerivedSoftLinkIDs, softLinkPartner.theDerivedSoftLinkIDs);
+        Objects.equals(this.theDerivedSoftLinkIDs, softLinkPartner.theDerivedSoftLinkIDs) &&
+        Objects.equals(this.dynamicSoftLinkID, softLinkPartner.dynamicSoftLinkID) &&
+        Objects.equals(this.multiValuedDynamicSoftLinkID, softLinkPartner.multiValuedDynamicSoftLinkID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(theBackLinkID, childLinkIDs, longLinkIDs, derivedSoftLinkID, theDerivedSoftLinkIDs);
+    return Objects.hash(theBackLinkID, childLinkIDs, longLinkIDs, derivedSoftLinkID, theDerivedSoftLinkIDs, dynamicSoftLinkID, multiValuedDynamicSoftLinkID);
   }
 
 
@@ -185,6 +237,8 @@ public class SoftLinkPartner {
     sb.append("    longLinkIDs: ").append(toIndentedString(longLinkIDs)).append("\n");
     sb.append("    derivedSoftLinkID: ").append(toIndentedString(derivedSoftLinkID)).append("\n");
     sb.append("    theDerivedSoftLinkIDs: ").append(toIndentedString(theDerivedSoftLinkIDs)).append("\n");
+    sb.append("    dynamicSoftLinkID: ").append(toIndentedString(dynamicSoftLinkID)).append("\n");
+    sb.append("    multiValuedDynamicSoftLinkID: ").append(toIndentedString(multiValuedDynamicSoftLinkID)).append("\n");
     sb.append("}");
     return sb.toString();
   }

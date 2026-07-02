@@ -34,7 +34,7 @@
 |------|------|:------------:|----------------------|-------------|-------------|
 | :bomb: `upcomingMandatoryProperty` | `String` | `1..1` |  |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
 | :bomb: `propertyWithNewConstraints` | `String` | `1..1` |  |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
-| :exclamation:`deprecatedRequestProperty` | `String` | `0..1` |  |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| :exclamation:`formerMandatoryRequestProperty` | `String` | `0..1` |  |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
 | `untouchedProperty` | `String` | `1..1` |  |  |  |
 
 <br>

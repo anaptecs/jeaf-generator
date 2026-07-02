@@ -41,22 +41,22 @@ cached String getTermsOfUseURL(OpenAPI3Specification spec):
     then spec.termsOfUseURL
     else getOpenAPITermsOfUseURLFromSystemProperties();
 
-private cached String getOpenAPIContactNameFromSystemProperties():
+private String getOpenAPIContactNameFromSystemProperties():
     getSystemProperty("switch.gen.openapi.openAPIContactName", "");
     
-private cached String getOpenAPIContactURLFromSystemProperties():
+private String getOpenAPIContactURLFromSystemProperties():
     getSystemProperty("switch.gen.openapi.openAPIContactURL", "");
     
-private cached String getOpenAPIContactEmailFromSystemProperties():
+private String getOpenAPIContactEmailFromSystemProperties():
     getSystemProperty("switch.gen.openapi.openAPIContactEmail", "");
     
-private cached String getOpenAPILicenseNameFromSystemProperties():
+private String getOpenAPILicenseNameFromSystemProperties():
     getSystemProperty("switch.gen.openapi.openAPILicenseName", "");
     
-private cached String getOpenAPILicenseURLFromSystemProperties():
+private  String getOpenAPILicenseURLFromSystemProperties():
     getSystemProperty("switch.gen.openapi.openAPILicenseURL", "");
     
-private cached String getOpenAPITermsOfUseURLFromSystemProperties():
+private String getOpenAPITermsOfUseURLFromSystemProperties():
     getSystemProperty("switch.gen.openapi.openAPITermsOfUseURL", "");
     
 cached boolean runOpenAPIDependencyCheck():

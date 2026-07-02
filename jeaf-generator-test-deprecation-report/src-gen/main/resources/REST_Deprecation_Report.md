@@ -80,7 +80,7 @@
 | `MyPOJOResponse` | |  |  |  |
 |   | `deprecatedProperty` |  |  |  |
 | `MyPojoRequest` | |  |  |  |
-|   | `deprecatedRequestProperty` |  |  |  |
+|   | `formerMandatoryRequestProperty` |  |  |  |
 | `POI` | |  |  |  |
 |   | `theLink` |  |  |  |
 |   | `evenMoreLinks` |  |  |  |

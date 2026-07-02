@@ -2151,5 +2151,15 @@ components:
             type: 
               - string
               - "null"
+        dynamicSoftLink:
+          type: integer
+          nullable: true
+        multiValuedDynamicSoftLink:
+          type: array
+          items:
+            type: 
+              - integer
+              - "null"
+          uniqueItems: true
 
       

@@ -79,6 +79,8 @@
 | `derivedSoftLink` | [`SoftLinkParent`](#softlinkparent) | `1..1` |  | `derived` |  |
 | `theDerivedSoftLinks` | [`SoftLinkParent`](#softlinkparent) | `0..*` |  | `derived` |  |
 | `javaOnlyDerivedSoftLink` | [`SoftLinkChildA`](#softlinkchilda) | `0..1` |  | `derived` |  |
+| `dynamicSoftLink` | [`SoftLinkChildB`](#softlinkchildb) | `0..1` |  |  |  |
+| `multiValuedDynamicSoftLink` | [`SoftLinkChildA`](#softlinkchilda) | `0..*` |  |  |  |
 
 <br>
 

@@ -1,0 +1,27 @@
+// This extension point can be used to provide custom logic for resolving the actual type of a SoftLink in Java or 
+// OpenAPI. It is particularly useful in scenarios where a single custom SoftLink type is not sufficient and additional 
+// resolution logic is required.
+
+// Note: 
+//		If you just need one custom soft link type then you can also configure that simply inside the Maven 
+//		configuration of JEAF Generator using params `javaGenericSoftLinkType` and `openAPIGenericSoftLinkType`.
+
+// Target Output: Java
+// since: #3
+// Description:
+//		Function returns the Java type that should be used for a specific soft link property. How the type is evaluated
+//		is decided by the provided custom implementation.
+//
+String getDynamicSoftLinkTypeForJava(JMM::SoftLink softLink):
+	"java.lang.Double";
+
+
+// Target Output: OpenAPI
+// since: #3
+// Description:
+//		Function returns the OpenAPI type that should be used for a specific soft link property. How the type is 
+//		evaluated is decided by the provided custom implementation.
+//
+String getDynamicSoftLinkTypeForOpenAPI(JMM::SoftLink softLink):
+	"integer";
+	

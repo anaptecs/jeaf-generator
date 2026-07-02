@@ -26,7 +26,9 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonPropertyOrder(value = { "theBackLink", "childLinks", "longLinks", "derivedSoftLink", "theDerivedSoftLinks" })
+@JsonPropertyOrder(
+    value = { "theBackLink", "childLinks", "longLinks", "derivedSoftLink", "theDerivedSoftLinks", "dynamicSoftLink",
+      "multiValuedDynamicSoftLink" })
 @JsonDeserialize(builder = SoftLinkPartner.Builder.class)
 public abstract class SoftLinkPartnerBase {
   /**
@@ -43,6 +45,16 @@ public abstract class SoftLinkPartnerBase {
    * Constant for the name of attribute "longLinks".
    */
   public static final String LONGLINKS = "longLinks";
+
+  /**
+   * Constant for the name of attribute "dynamicSoftLink".
+   */
+  public static final String DYNAMICSOFTLINK = "dynamicSoftLink";
+
+  /**
+   * Constant for the name of attribute "multiValuedDynamicSoftLink".
+   */
+  public static final String MULTIVALUEDDYNAMICSOFTLINK = "multiValuedDynamicSoftLink";
 
   /**
    * <p/>
@@ -66,6 +78,20 @@ public abstract class SoftLinkPartnerBase {
   private final List<Long> longLinkIDs;
 
   /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #dynamicSoftLink} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildB</code><br/>
+   */
+  private final String dynamicSoftLinkID;
+
+  /**
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by
+   * {@link #multiValuedDynamicSoftLink} is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
+   */
+  private final Set<String> multiValuedDynamicSoftLinkID;
+
+  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -77,6 +103,9 @@ public abstract class SoftLinkPartnerBase {
     theBackLinkID = pBuilder.theBackLinkID;
     childLinkIDs = (pBuilder.childLinkIDs == null) ? Set.of() : Set.copyOf(pBuilder.childLinkIDs);
     longLinkIDs = (pBuilder.longLinkIDs == null) ? List.of() : List.copyOf(pBuilder.longLinkIDs);
+    dynamicSoftLinkID = pBuilder.dynamicSoftLinkID;
+    multiValuedDynamicSoftLinkID =
+        (pBuilder.multiValuedDynamicSoftLinkID == null) ? Set.of() : Set.copyOf(pBuilder.multiValuedDynamicSoftLinkID);
   }
 
   /**
@@ -108,6 +137,20 @@ public abstract class SoftLinkPartnerBase {
     private List<Long> longLinkIDs;
 
     /**
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #dynamicSoftLink}
+     * is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildB</code><br/>
+     */
+    private String dynamicSoftLinkID;
+
+    /**
+     * <p/>
+     * This class uses so called soft links for decoupling. The actual type that is hidden by
+     * {@link #multiValuedDynamicSoftLink} is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
+     */
+    private Set<String> multiValuedDynamicSoftLinkID;
+
+    /**
      * Use {@link SoftLinkPartner.builder()} instead of protected constructor to create new builder.
      */
     protected BuilderBase( ) {
@@ -122,6 +165,8 @@ public abstract class SoftLinkPartnerBase {
         this.setTheBackLinkID(pObject.theBackLinkID);
         this.setChildLinkIDs(pObject.childLinkIDs);
         this.setLongLinkIDs(pObject.longLinkIDs);
+        this.setDynamicSoftLinkID(pObject.dynamicSoftLinkID);
+        this.setMultiValuedDynamicSoftLinkID(pObject.multiValuedDynamicSoftLinkID);
       }
     }
 
@@ -169,6 +214,36 @@ public abstract class SoftLinkPartnerBase {
       }
       else {
         longLinkIDs = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #dynamicSoftLink}.<br/>
+     *
+     * @param pDynamicSoftLink Value to which {@link #dynamicSoftLink} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public BuilderBase setDynamicSoftLinkID( String pDynamicSoftLink ) {
+      dynamicSoftLinkID = pDynamicSoftLink;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #multiValuedDynamicSoftLink}.<br/>
+     *
+     * @param pMultiValuedDynamicSoftLink Collection to which {@link #multiValuedDynamicSoftLink} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
+    public BuilderBase setMultiValuedDynamicSoftLinkID( Set<String> pMultiValuedDynamicSoftLink ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pMultiValuedDynamicSoftLink != null) {
+        multiValuedDynamicSoftLinkID = new HashSet<String>(pMultiValuedDynamicSoftLink);
+      }
+      else {
+        multiValuedDynamicSoftLinkID = null;
       }
       return this;
     }
@@ -236,6 +311,31 @@ public abstract class SoftLinkPartnerBase {
   }
 
   /**
+   * Method returns association {@link #dynamicSoftLink}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #dynamicSoftLink} is
+   * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildB</code><br/>
+   *
+   * @return {@link String} Value to which {@link #dynamicSoftLink} is set.
+   */
+  public String getDynamicSoftLinkID( ) {
+    return dynamicSoftLinkID;
+  }
+
+  /**
+   * Method returns association {@link #multiValuedDynamicSoftLink}.<br/>
+   * <p/>
+   * This class uses so called soft links for decoupling. The actual type that is hidden by
+   * {@link #multiValuedDynamicSoftLink} is <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
+   *
+   * @return {@link Set<String>} Value to which {@link #multiValuedDynamicSoftLink} is set. The method never returns
+   * null and the returned collection is unmodifiable.
+   */
+  public Set<String> getMultiValuedDynamicSoftLinkID( ) {
+    return multiValuedDynamicSoftLinkID;
+  }
+
+  /**
    * Convenience method to create new instance of class SoftLinkPartner.
    *
    *
@@ -295,6 +395,8 @@ public abstract class SoftLinkPartnerBase {
     lResult = lPrime * lResult + Objects.hashCode(theBackLinkID);
     lResult = lPrime * lResult + Objects.hashCode(childLinkIDs);
     lResult = lPrime * lResult + Objects.hashCode(longLinkIDs);
+    lResult = lPrime * lResult + Objects.hashCode(dynamicSoftLinkID);
+    lResult = lPrime * lResult + Objects.hashCode(multiValuedDynamicSoftLinkID);
     return lResult;
   }
 
@@ -313,7 +415,9 @@ public abstract class SoftLinkPartnerBase {
     else {
       SoftLinkPartnerBase lOther = (SoftLinkPartnerBase) pObject;
       lEquals = Objects.equals(theBackLinkID, lOther.theBackLinkID) && Objects.equals(childLinkIDs, lOther.childLinkIDs)
-          && Objects.equals(longLinkIDs, lOther.longLinkIDs);
+          && Objects.equals(longLinkIDs, lOther.longLinkIDs)
+          && Objects.equals(dynamicSoftLinkID, lOther.dynamicSoftLinkID)
+          && Objects.equals(multiValuedDynamicSoftLinkID, lOther.multiValuedDynamicSoftLinkID);
     }
     return lEquals;
   }
@@ -362,6 +466,27 @@ public abstract class SoftLinkPartnerBase {
     lBuilder.append(System.lineSeparator());
     if (longLinkIDs != null) {
       for (Long lNext : longLinkIDs) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("dynamicSoftLinkID: ");
+    lBuilder.append(dynamicSoftLinkID);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("multiValuedDynamicSoftLinkID: ");
+    if (multiValuedDynamicSoftLinkID != null) {
+      lBuilder.append(multiValuedDynamicSoftLinkID.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (multiValuedDynamicSoftLinkID != null) {
+      for (String lNext : multiValuedDynamicSoftLinkID) {
         lBuilder.append(pIndent + "    ");
         lBuilder.append(lNext.toString());
         lBuilder.append(System.lineSeparator());
