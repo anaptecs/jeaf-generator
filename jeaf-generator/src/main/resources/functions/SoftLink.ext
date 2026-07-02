@@ -1,4 +1,5 @@
 extension java::GeneratorCommons;
+extension jeafgenerator::api::SoftLinkExtensionPoint;
 extension functions::SystemProperties;
 
 cached boolean isSoftLink(uml::Element element):
@@ -8,25 +9,31 @@ cached JMM::SoftLink asSoftLink(uml::Element element):
     (JMM::SoftLink) element;
 
 cached String getJavaSoftLinkType(JMM::SoftLink softLink):
-    if (softLink.softLinkType.name == "CustomGenericType")
-    then getJavaGenericSoftLinkType()
-    else softLink.softLinkType.name;
+	if softLink.softLinkType.name == "CustomGenericType"
+	then getJavaGenericSoftLinkType()
+	else
+		if softLink.softLinkType.name == "DynamicTypeResolution"
+		then softLink.getDynamicSoftLinkTypeForJava()
+		else softLink.softLinkType.name;
 
 cached String getMultivaluedJavaSoftLinkType(JMM::SoftLink softLink):
-    if (softLink.softLinkType.name == "CustomGenericType")
-    then getJavaGenericSoftLinkType()
-    else softLink.softLinkType.name.toFirstUpper();
+	if (softLink.softLinkType.name == "CustomGenericType")
+	then getJavaGenericSoftLinkType()
+	else
+		if softLink.softLinkType.name == "DynamicTypeResolution"
+		then softLink.getDynamicSoftLinkTypeForJava()
+		else softLink.softLinkType.name.toFirstUpper();
 
-cached String getJavaGenericSoftLinkType():
+String getJavaGenericSoftLinkType():
     getSystemProperty("switch.gen.java.generic.soft.link.type");
     
 cached String getOpenAPIGenericSoftLinkType():
     getSystemProperty("switch.gen.openapi.generic.soft.link.type", "string");
 
-private cached String getSoftLinkSuffix():
+private String getSoftLinkSuffix():
     getSystemProperty("switch.gen.openapi.generic.soft.link.suffix", "");
     
-cached boolean useSoftLinkSuffixInOpenAPI():
+boolean useSoftLinkSuffixInOpenAPI():
 	getBooleanSystemProperty("switch.gen.openapi.generic.soft.link.suffix.use", true);
     
 cached boolean hasSoftLinkSuffix(uml::Property property):
