@@ -155,8 +155,6 @@ public @interface «validationClass» {
 			«ENDIF»
 		«ENDLET»
 	«ENDIF»
-	«IF this.isStereotypeApplied("Size") == false »
-	«ENDIF»
 	«IF this.isStereotypeApplied("Valid") == false»
 		«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject"))»
 		@«getEnterpriseJavaPackage()».validation.Valid
