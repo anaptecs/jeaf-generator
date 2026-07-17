@@ -9,9 +9,13 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.generator.annotations.BreakingChangeNotice;
 import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V4;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V5;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V6;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -42,6 +46,7 @@ public class MyPOJOResponse {
   @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   public static final String DEPRECATEDPROPERTY = "deprecatedProperty";
 
+  @NotNull
   private String untouchedProperty;
 
   /**
@@ -49,6 +54,7 @@ public class MyPOJOResponse {
    * <b>Breaking Change with :</b>
    */
   @BreakingChangeNotice(description = "", since = "", activeWith = "", activationDate = "")
+  @NotNull(groups = { V4.class, V5.class, V6.class })
   private String formerMandatoryProperty;
 
   @Deprecated

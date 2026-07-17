@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.accounting;
 
+import javax.validation.constraints.NotNull;
+
 public enum BankType {
   /**
    * Enumeration literal for bank of type &quot;Mutual Savings&quot;. <br/>
@@ -28,6 +30,7 @@ public enum BankType {
     typeCode = pTypeCode;
   }
 
+  @NotNull
   private String typeCode;
 
   /**

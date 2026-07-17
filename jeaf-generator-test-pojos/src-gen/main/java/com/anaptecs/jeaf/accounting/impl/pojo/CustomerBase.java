@@ -16,6 +16,7 @@ import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -56,6 +57,7 @@ public abstract class CustomerBase extends Partner {
   private String firstName;
 
   @Email()
+  @NotNull
   private String email;
 
   private Set<Account> accounts;

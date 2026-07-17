@@ -188,6 +188,7 @@ NotInlinedBeanParam |   |  |
 Offer |   |  |
 OptionalDataType |   |  |
 OtherMappingObject |   |  |
+OtherPojo |   |  |
 Output |   |  |
 POI |   |  |
 POJOWithID |   |  |
@@ -614,6 +615,7 @@ Response |   |  |
 |----------|---------------------|------------|
 MyPOJOResponse |   |  |
 MyPojoRequest |   |  |
+OtherPojo |   |  |
 
 <br>
 

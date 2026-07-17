@@ -47,5 +47,14 @@ private uml::MultiplicityElement asMultiplicityElement(uml::Element element):
 	(uml::MultiplicityElement) element;
 
 
+//cached JMM::CompatibilityInfo getCompatibilityInfo(uml::NamedElement element):
+//	element.getCompatibilityGroups().getCompatibilityInfoForGroup();
 
+
+cached JMM::CompatibilityInfo getCompatibilityInfoForGroup(JMM::CompatibilityGroup group):
+	group.clientDependency.typeSelect(JMM::CompatibilityInfo).first();
+
+
+cached List[JMM::ValidationGroup] getValidationGroupsForGroup(JMM::CompatibilityGroup group):
+	group.clientDependency.target.typeSelect(JMM::ValidationGroup).sortBy(e|e.qualifiedName());
 	

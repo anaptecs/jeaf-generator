@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import javax.validation.constraints.NotNull;
+
 public enum EnumWithProperties {
   CAMPAIGN_DATA_UNIT("AX2", "Campaign Data Unit", 4712, MyType.ALPHA), RELATION_KEY_DATA_UNIT("X56",
       "Relation Key Data Unit", 12345, null), LITERAL_WITH_DEFAULTS("ABC", "ABCDEF", 1208, MyType.GAMMA);
@@ -19,8 +21,10 @@ public enum EnumWithProperties {
     myType = pMyType;
   }
 
+  @NotNull
   private final String dataUnitID;
 
+  @NotNull
   private final String name;
 
   /**

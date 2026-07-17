@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -36,6 +37,7 @@ public class BChildPOJO extends BParentPOJO {
 
   private byte weirdAttribute;
 
+  @NotNull
   private Integer childAttribute;
 
   /**

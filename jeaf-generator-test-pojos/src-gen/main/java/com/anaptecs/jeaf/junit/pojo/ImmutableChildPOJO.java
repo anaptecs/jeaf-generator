@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,8 +32,10 @@ public class ImmutableChildPOJO extends ImmutablePOJOParent {
    */
   public static final String ANOTHERCHILDATTRIBUTE = "anotherChildAttribute";
 
+  @NotNull
   private String childAttribute;
 
+  @NotNull
   private final Double anotherChildAttribute;
 
   /**

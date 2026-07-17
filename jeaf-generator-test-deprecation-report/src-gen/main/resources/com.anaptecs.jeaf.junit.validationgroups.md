@@ -36,6 +36,29 @@
 | :bomb: `propertyWithNewConstraints` | `String` | `1..1` |  |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
 | :exclamation:`formerMandatoryRequestProperty` | `String` | `0..1` |  |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
 | `untouchedProperty` | `String` | `1..1` |  |  |  |
+| `constraintChangingProperty` | `String` | `1..1` |  | `@Size(min=10, max=20)`<br> |  |
+| `otherPojos` | [`OtherPojo`](#otherpojo) | `1..*` |  |  |  |
+| `thePojo` | [`OtherPojo`](#otherpojo) | `1..1` |  | `@Valid`<br> |  |
+
+<br>
+
+## OtherPojo
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
+|------|------|:------------:|----------------------|-------------|-------------|
+| `multiValuedProperty` | `String` | `1..*` |  |  |  |
+| `decimalProperty` | `java.math.BigDecimal` | `1..1` |  | `@DecimalMax(maxValue=48, inclusive=false)`<br>`@DecimalMin(minValue=42, inclusive=false)`<br>`@Digits(integer=5, fraction=2)`<br> |  |
+| `integerProperty` | `java.lang.Integer` | `1..1` |  | `@Min(minValue=333)`<br>`@Max(maxValue=666)`<br>`@Negative`<br>`@PositiveOrZero`<br> |  |
+| `stringProperty` | `String` | `1..1` |  | `@Pattern(regexp=[A-Z]+)`<br> |  |
+| `emailProperty` | `String` | `1..1` |  | `@Email`<br>`@NotEmpty`<br> |  |
+| `booleanProperty` | `java.lang.Boolean` | `1..1` |  | `@AssertTrue`<br> |  |
+| `dateTimeProperty` | `java.time.OffsetDateTime` | `1..1` |  | `@FutureOrPresent`<br>`@Past`<br> |  |
 
 <br>
 

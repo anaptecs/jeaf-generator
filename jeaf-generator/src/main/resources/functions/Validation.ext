@@ -1,4 +1,8 @@
+extension functions::NamedElement;
+extension functions::Dependency;
+
 extension java::GeneratorCommons;
+
 
 cached boolean isValidationStereotype(uml::Stereotype stereotype) : !stereotype.allParents().select(e|e.name == "Validation").isEmpty;
 
@@ -56,3 +60,15 @@ private String getEmailValidation(uml::Property property, uml::Stereotype stereo
 	if property.getValue(stereo, "regexp") != null
 	then "@Email(regexp=" + property.getValue(stereo, "regexp") + ")"
 	else "@Email";
+
+
+cached List[JMM::ValidationGroup] getAllValidationGroupsFromModel(uml::Model model):
+	model.allOwnedElements().typeSelect(JMM::ValidationGroup).select(e|e.isInGeneratorWhitelist());
+
+
+cached List[JMM::ValidationGroup] getValidationGroups(uml::Dependency dependency):
+	dependency.target.typeSelect(JMM::CompatibilityGroup).first().getValidationGroupsForGroup();
+
+cached List[JMM::ValidationGroup] getDefaultValidationGroups(uml::Model model, List[JMM::ValidationGroup] nonDefaultGroups):
+	model.getAllValidationGroupsFromModel().removeAll(nonDefaultGroups);
+

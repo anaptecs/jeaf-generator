@@ -5,13 +5,25 @@
  */
 package com.anaptecs.jeaf.junit.validationgroups;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.generator.annotations.BreakingChangeNotice;
 import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V4;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V5;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V6;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -49,10 +61,26 @@ public class MyPojoRequest {
   public static final String UNTOUCHEDPROPERTY = "untouchedProperty";
 
   /**
+   * Constant for the name of attribute "constraintChangingProperty".
+   */
+  public static final String CONSTRAINTCHANGINGPROPERTY = "constraintChangingProperty";
+
+  /**
+   * Constant for the name of attribute "otherPojos".
+   */
+  public static final String OTHERPOJOS = "otherPojos";
+
+  /**
+   * Constant for the name of attribute "thePojo".
+   */
+  public static final String THEPOJO = "thePojo";
+
+  /**
    * <p/>
    * <b>Breaking Change with :</b>
    */
   @BreakingChangeNotice(description = "", since = "", activeWith = "", activationDate = "")
+  @NotNull(groups = { V7.class })
   private String upcomingMandatoryProperty;
 
   /**
@@ -60,13 +88,29 @@ public class MyPojoRequest {
    * <b>Breaking Change with :</b>
    */
   @BreakingChangeNotice(description = "", since = "", activeWith = "", activationDate = "")
+  @NotNull
   private String propertyWithNewConstraints;
 
   @Deprecated
   @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @NotNull(groups = { V4.class, V5.class, V6.class })
   private String formerMandatoryRequestProperty;
 
+  @NotNull
   private String untouchedProperty;
+
+  @Size(min = 10, max = 20, groups = { V7.class })
+  @Size(min = 5, max = 500, groups = { V4.class, V5.class, V6.class })
+  @NotNull(groups = { V7.class })
+  private String constraintChangingProperty;
+
+  @Size(min = 1, groups = { V7.class })
+  @NotNull(groups = { V7.class })
+  private Set<OtherPojo> otherPojos;
+
+  @Valid
+  @NotNull(groups = { V7.class })
+  private OtherPojo thePojo;
 
   /**
    * Initialize object using the passed builder.
@@ -81,6 +125,9 @@ public class MyPojoRequest {
     propertyWithNewConstraints = pBuilder.propertyWithNewConstraints;
     formerMandatoryRequestProperty = pBuilder.formerMandatoryRequestProperty;
     untouchedProperty = pBuilder.untouchedProperty;
+    constraintChangingProperty = pBuilder.constraintChangingProperty;
+    otherPojos = (pBuilder.otherPojos == null) ? new HashSet<>() : pBuilder.otherPojos;
+    thePojo = pBuilder.thePojo;
   }
 
   /**
@@ -102,14 +149,23 @@ public class MyPojoRequest {
    *
    * @param pUntouchedProperty Value to which {@link #untouchedProperty} should be set.
    *
+   * @param pConstraintChangingProperty Value to which {@link #constraintChangingProperty} should be set.
+   *
+   * @param pOtherPojos Value to which {@link #otherPojos} should be set.
+   *
+   * @param pThePojo Value to which {@link #thePojo} should be set.
+   *
    * @return {@link MyPojoRequest}
    */
   public static MyPojoRequest of( String pUpcomingMandatoryProperty, String pPropertyWithNewConstraints,
-      String pUntouchedProperty ) {
+      String pUntouchedProperty, String pConstraintChangingProperty, Set<OtherPojo> pOtherPojos, OtherPojo pThePojo ) {
     var lBuilder = MyPojoRequest.builder();
     lBuilder.setUpcomingMandatoryProperty(pUpcomingMandatoryProperty);
     lBuilder.setPropertyWithNewConstraints(pPropertyWithNewConstraints);
     lBuilder.setUntouchedProperty(pUntouchedProperty);
+    lBuilder.setConstraintChangingProperty(pConstraintChangingProperty);
+    lBuilder.setOtherPojos(pOtherPojos);
+    lBuilder.setThePojo(pThePojo);
     return lBuilder.build();
   }
 
@@ -139,6 +195,12 @@ public class MyPojoRequest {
 
     private String untouchedProperty;
 
+    private String constraintChangingProperty;
+
+    private Set<OtherPojo> otherPojos;
+
+    private OtherPojo thePojo;
+
     /**
      * Use {@link MyPojoRequest#builder()} instead of private constructor to create new builder.
      */
@@ -155,6 +217,9 @@ public class MyPojoRequest {
         this.setPropertyWithNewConstraints(pObject.propertyWithNewConstraints);
         this.setFormerMandatoryRequestProperty(pObject.formerMandatoryRequestProperty);
         this.setUntouchedProperty(pObject.untouchedProperty);
+        this.setConstraintChangingProperty(pObject.constraintChangingProperty);
+        this.setOtherPojos(pObject.otherPojos);
+        this.setThePojo(pObject.thePojo);
       }
     }
 
@@ -215,6 +280,65 @@ public class MyPojoRequest {
     public Builder setUntouchedProperty( String pUntouchedProperty ) {
       // Assign value to attribute
       untouchedProperty = pUntouchedProperty;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #constraintChangingProperty}.<br/>
+     *
+     * @param pConstraintChangingProperty Value to which {@link #constraintChangingProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setConstraintChangingProperty( String pConstraintChangingProperty ) {
+      // Assign value to attribute
+      constraintChangingProperty = pConstraintChangingProperty;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #otherPojos}.<br/>
+     *
+     * @param pOtherPojos Collection to which {@link #otherPojos} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
+    public Builder setOtherPojos( Set<OtherPojo> pOtherPojos ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pOtherPojos != null) {
+        otherPojos = new HashSet<OtherPojo>(pOtherPojos);
+      }
+      else {
+        otherPojos = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #otherPojos}.<br/>
+     *
+     * @param pOtherPojos Array of objects that should be added to {@link #otherPojos}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToOtherPojos( OtherPojo... pOtherPojos ) {
+      if (pOtherPojos != null) {
+        if (otherPojos == null) {
+          otherPojos = new HashSet<OtherPojo>();
+        }
+        otherPojos.addAll(Arrays.asList(pOtherPojos));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #thePojo}.<br/>
+     *
+     * @param pThePojo Value to which {@link #thePojo} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setThePojo( OtherPojo pThePojo ) {
+      thePojo = pThePojo;
       return this;
     }
 
@@ -334,6 +458,108 @@ public class MyPojoRequest {
     untouchedProperty = pUntouchedProperty;
   }
 
+  /**
+   * Method returns attribute {@link #constraintChangingProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #constraintChangingProperty} is set.
+   */
+  public String getConstraintChangingProperty( ) {
+    return constraintChangingProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #constraintChangingProperty}.<br/>
+   *
+   * @param pConstraintChangingProperty Value to which {@link #constraintChangingProperty} should be set.
+   */
+  public void setConstraintChangingProperty( String pConstraintChangingProperty ) {
+    // Assign value to attribute
+    constraintChangingProperty = pConstraintChangingProperty;
+  }
+
+  /**
+   * Method returns association {@link #otherPojos}.<br/>
+   *
+   * @return {@link Set<OtherPojo>} Value to which {@link #otherPojos} is set. The method never returns null and the
+   * returned collection is unmodifiable.
+   */
+  public Set<OtherPojo> getOtherPojos( ) {
+    // Return all OtherPojo objects as unmodifiable collection.
+    return Collections.unmodifiableSet(otherPojos);
+  }
+
+  /**
+   * Method adds the passed object to {@link #otherPojos}.
+   *
+   * @param pOtherPojos Object that should be added to {@link #otherPojos}. The parameter must not be null.
+   */
+  public void addToOtherPojos( OtherPojo pOtherPojos ) {
+    // Check parameter "pOtherPojos" for invalid value null.
+    Check.checkInvalidParameterNull(pOtherPojos, "pOtherPojos");
+    // Add passed object to collection of associated OtherPojo objects.
+    otherPojos.add(pOtherPojos);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #otherPojos}.
+   *
+   * @param pOtherPojos Collection with all objects that should be added to {@link #otherPojos}. The parameter must not
+   * be null.
+   */
+  public void addToOtherPojos( Collection<OtherPojo> pOtherPojos ) {
+    // Check parameter "pOtherPojos" for invalid value null.
+    Check.checkInvalidParameterNull(pOtherPojos, "pOtherPojos");
+    // Add all passed objects.
+    for (OtherPojo lNextObject : pOtherPojos) {
+      this.addToOtherPojos(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #otherPojos}.<br/>
+   *
+   * @param pOtherPojos Object that should be removed from {@link #otherPojos}. The parameter must not be null.
+   */
+  public void removeFromOtherPojos( OtherPojo pOtherPojos ) {
+    // Check parameter for invalid value null.
+    Check.checkInvalidParameterNull(pOtherPojos, "pOtherPojos");
+    // Remove passed object from collection of associated OtherPojo objects.
+    otherPojos.remove(pOtherPojos);
+  }
+
+  /**
+   * Method removes all objects from {@link #otherPojos}.
+   */
+  public void clearOtherPojos( ) {
+    // Remove all objects from association "otherPojos".
+    otherPojos.clear();
+  }
+
+  /**
+   * Method returns association {@link #thePojo}.<br/>
+   *
+   * @return {@link OtherPojo} Value to which {@link #thePojo} is set.
+   */
+  public OtherPojo getThePojo( ) {
+    return thePojo;
+  }
+
+  /**
+   * Method sets association {@link #thePojo}.<br/>
+   *
+   * @param pThePojo Value to which {@link #thePojo} should be set.
+   */
+  public void setThePojo( OtherPojo pThePojo ) {
+    thePojo = pThePojo;
+  }
+
+  /**
+   * Method unsets {@link #thePojo}.
+   */
+  public final void unsetThePojo( ) {
+    thePojo = null;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
@@ -342,6 +568,9 @@ public class MyPojoRequest {
     lResult = lPrime * lResult + Objects.hashCode(propertyWithNewConstraints);
     lResult = lPrime * lResult + Objects.hashCode(formerMandatoryRequestProperty);
     lResult = lPrime * lResult + Objects.hashCode(untouchedProperty);
+    lResult = lPrime * lResult + Objects.hashCode(constraintChangingProperty);
+    lResult = lPrime * lResult + Objects.hashCode(otherPojos);
+    lResult = lPrime * lResult + Objects.hashCode(thePojo);
     return lResult;
   }
 
@@ -362,7 +591,9 @@ public class MyPojoRequest {
       lEquals = Objects.equals(upcomingMandatoryProperty, lOther.upcomingMandatoryProperty)
           && Objects.equals(propertyWithNewConstraints, lOther.propertyWithNewConstraints)
           && Objects.equals(formerMandatoryRequestProperty, lOther.formerMandatoryRequestProperty)
-          && Objects.equals(untouchedProperty, lOther.untouchedProperty);
+          && Objects.equals(untouchedProperty, lOther.untouchedProperty)
+          && Objects.equals(constraintChangingProperty, lOther.constraintChangingProperty)
+          && Objects.equals(otherPojos, lOther.otherPojos) && Objects.equals(thePojo, lOther.thePojo);
     }
     return lEquals;
   }
@@ -394,6 +625,36 @@ public class MyPojoRequest {
     lBuilder.append("untouchedProperty: ");
     lBuilder.append(untouchedProperty);
     lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("constraintChangingProperty: ");
+    lBuilder.append(constraintChangingProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("otherPojos: ");
+    if (otherPojos != null) {
+      lBuilder.append(otherPojos.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (otherPojos != null) {
+      for (OtherPojo lNext : otherPojos) {
+        lBuilder.append(lNext.toStringBuilder(pIndent + "    "));
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("thePojo: ");
+    if (thePojo != null) {
+      lBuilder.append(System.lineSeparator());
+      lBuilder.append(thePojo.toStringBuilder(pIndent + "    "));
+    }
+    else {
+      lBuilder.append(" null");
+      lBuilder.append(System.lineSeparator());
+    }
     return lBuilder;
   }
 

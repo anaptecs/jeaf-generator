@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 import com.anaptecs.jeaf.generator.annotations.BreakingChangeNotice;
@@ -58,9 +59,11 @@ public abstract class PlainPOJOBase {
    * </ul>
    */
   @Example(values = { "Hello", "World!" })
+  @NotNull
   private String hello;
 
   @PositiveOrZero
+  @NotNull
   private Integer world;
 
   /**
