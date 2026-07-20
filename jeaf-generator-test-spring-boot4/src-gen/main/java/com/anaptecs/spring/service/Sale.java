@@ -8,6 +8,8 @@ package com.anaptecs.spring.service;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.Channel;
@@ -36,6 +38,7 @@ public class Sale {
    */
   public static final String SALE = "sale";
 
+  @NotNull
   private BigDecimal transactionAmount;
 
   private Channel sale;

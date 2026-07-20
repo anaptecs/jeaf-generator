@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -74,18 +76,23 @@ public class OpenAPITestObject {
    */
   public static final String NOTNULLABLEARRAY = "notNullableArray";
 
+  @NotNull
   private String readOnlyAttribute;
 
+  @NotNull
   private String readWriteAttribute;
 
   private int writeOnlyAttribute;
 
+  @NotNull
   private Boolean nullableAttribute;
 
   private double notNullableAttribute;
 
+  @NotNull
   private String readOnlyArray;
 
+  @NotNull
   private String readWriteArray;
 
   private int writeOnlyArray;

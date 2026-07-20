@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 
 public enum DataUnit {
@@ -17,6 +19,7 @@ public enum DataUnit {
     dataUnitID = pDataUnitID;
   }
 
+  @NotNull
   private final String dataUnitID;
 
   /**

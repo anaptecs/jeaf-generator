@@ -7,6 +7,8 @@ package com.anaptecs.spring.base.techbase;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -29,6 +31,7 @@ public class TechParent {
    */
   public static final String TECHATTRIBUTE = "techAttribute";
 
+  @NotNull
   private String techAttribute;
 
   /**

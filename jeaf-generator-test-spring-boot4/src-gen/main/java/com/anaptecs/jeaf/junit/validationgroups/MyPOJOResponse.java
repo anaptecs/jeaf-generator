@@ -45,6 +45,7 @@ public class MyPOJOResponse {
   @Deprecated
   public static final String DEPRECATEDPROPERTY = "deprecatedProperty";
 
+  @NotNull
   private String untouchedProperty;
 
   /**

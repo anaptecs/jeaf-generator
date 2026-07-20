@@ -24,11 +24,13 @@ import javax.validation.constraints.Negative;
 import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.annotations.MyNotNullProperty;
@@ -87,6 +89,7 @@ public class OtherPojo {
    */
   public static final String DATETIMEPROPERTY = "dateTimeProperty";
 
+  @Size(min = 1, groups = { V7.class })
   private String[] multiValuedProperty;
 
   @DecimalMax(value = "48", inclusive = false, groups = { V7.class })
@@ -95,6 +98,7 @@ public class OtherPojo {
   @DecimalMin(value = "42", inclusive = true, groups = { V4.class, V5.class, V6.class })
   @Digits(integer = 5, fraction = 2, groups = { V7.class })
   @Digits(integer = 5, fraction = 3, groups = { V4.class, V5.class, V6.class })
+  @NotNull(groups = { V7.class })
   private BigDecimal decimalProperty;
 
   @Min(value = 333, groups = { V7.class })
@@ -105,11 +109,13 @@ public class OtherPojo {
   @PositiveOrZero(groups = { V7.class })
   @NegativeOrZero(groups = { V4.class, V5.class, V6.class })
   @Positive(groups = { V4.class, V5.class, V6.class })
+  @NotNull
   private Integer integerProperty;
 
   @Pattern(regexp = "[A-Z]+", flags = { Pattern.Flag.CASE_INSENSITIVE }, groups = { V7.class })
   @Pattern(regexp = "[B-Z]+", flags = { Pattern.Flag.CASE_INSENSITIVE }, groups = { V4.class, V5.class, V6.class })
   @NotBlank(groups = { V4.class, V5.class, V6.class })
+  @NotNull
   private String stringProperty;
 
   @Email(groups = { V7.class })
@@ -118,12 +124,14 @@ public class OtherPojo {
 
   @AssertTrue(groups = { V7.class })
   @AssertFalse(groups = { V4.class, V5.class, V6.class })
+  @NotNull
   private Boolean booleanProperty;
 
   @FutureOrPresent(groups = { V7.class })
   @Past(groups = { V7.class })
   @Future(groups = { V4.class, V5.class, V6.class })
   @PastOrPresent(groups = { V4.class, V5.class, V6.class })
+  @NotNull
   private OffsetDateTime dateTimeProperty;
 
   /**

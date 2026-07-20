@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,6 +25,7 @@ public class TechnicalHeaderContext {
    */
   public static final String RESELLER = "reseller";
 
+  @NotNull
   private String reseller;
 
   /**

@@ -12,6 +12,8 @@ import java.util.Iterator;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -46,6 +48,7 @@ public class BidirectA {
 
   private transient Set<BidirectB> transientBs;
 
+  @NotNull
   private BidirectA parent;
 
   /**

@@ -17,6 +17,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.validation.constraints.Size;
+
 import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.StringCode;
@@ -99,6 +101,7 @@ public class MultiValuedHeaderBeanParam {
 
   private String[] names;
 
+  @Size(min = 1)
   private int[] ints;
 
   private Double[] doubles;

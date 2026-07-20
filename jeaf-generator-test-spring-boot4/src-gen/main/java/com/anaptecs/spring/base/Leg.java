@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -44,8 +46,10 @@ public class Leg {
    */
   public static final String STOPOVERS = "stopovers";
 
+  @NotNull
   private PlaceRef start;
 
+  @NotNull
   private PlaceRef stop;
 
   private List<PlaceRef> stopovers;

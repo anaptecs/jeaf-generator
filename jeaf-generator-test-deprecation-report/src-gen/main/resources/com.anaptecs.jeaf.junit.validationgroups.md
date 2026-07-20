@@ -6,6 +6,21 @@
 <br>
 
 # Types
+## MyContext
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
+|------|------|:------------:|----------------------|-------------|-------------|
+| `firstProperty` | `String` | `1..1` |  |  |  |
+| `clientTypes` | [`ClientType`](#clienttype) | `1..*` |  |  |  |
+
+<br>
+
 ## MyPOJOResponse
 
 
@@ -64,4 +79,18 @@
 
 
 
+
+<br>
+
+# Enumerations
+## ClientType
+
+
+### Literals
+
+| Name |  Legacy Name | Description |
+|------|----------------------|----------------------------|
+| `CLIENT_1` |   |  |
+| `CLIENT_2` |   |  |
+| `CLIENT_3` |   |  |
 

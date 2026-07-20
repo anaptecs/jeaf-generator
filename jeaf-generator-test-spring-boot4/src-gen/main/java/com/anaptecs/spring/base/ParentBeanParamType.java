@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -39,8 +41,10 @@ public class ParentBeanParamType {
    * <p/>
    * <b>Header-Param:</b> <code>novaKey</code>
    */
+  @NotNull
   private String novaKey;
 
+  @NotNull
   private String tkID;
 
   /**
@@ -52,6 +56,7 @@ public class ParentBeanParamType {
    * <p/>
    * <b>Header-Param:</b> <code>code</code>
    */
+  @NotNull
   private DoubleCode code;
 
   /**

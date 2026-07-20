@@ -78,27 +78,34 @@ public class MyPojoRequest {
    * <p/>
    * <b>Breaking Change with :</b>
    */
+  @NotNull(groups = { V7.class })
   private String upcomingMandatoryProperty;
 
   /**
    * <p/>
    * <b>Breaking Change with :</b>
    */
+  @NotNull
   private String propertyWithNewConstraints;
 
   @Deprecated
   @NotNull(groups = { V4.class, V5.class, V6.class })
   private String formerMandatoryRequestProperty;
 
+  @NotNull
   private String untouchedProperty;
 
   @Size(min = 10, max = 20, groups = { V7.class })
   @Size(min = 5, max = 500, groups = { V4.class, V5.class, V6.class })
+  @NotNull(groups = { V7.class })
   private String constraintChangingProperty;
 
+  @Size(min = 1, groups = { V7.class })
+  @NotNull(groups = { V7.class })
   private Set<OtherPojo> otherPojos;
 
   @Valid
+  @NotNull(groups = { V7.class })
   private OtherPojo thePojo;
 
   /**

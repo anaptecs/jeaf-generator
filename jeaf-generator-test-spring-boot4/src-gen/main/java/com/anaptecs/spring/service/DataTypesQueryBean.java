@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingID;
@@ -100,12 +102,16 @@ public class DataTypesQueryBean {
 
   private BookingID[] bookingIDsArray;
 
+  @NotNull
   private OffsetDateTime offsetDateTime;
 
+  @NotNull
   private OffsetTime offsetTime;
 
+  @NotNull
   private LocalDateTime localDateTime;
 
+  @NotNull
   private LocalTime localTime;
 
   private List<LocalDateTime> timestamps;

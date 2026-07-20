@@ -60,8 +60,10 @@ public class Problem {
   @NotNull
   private final String type;
 
+  @NotNull
   private final String detail;
 
+  @NotNull
   private final String instance;
 
   /**

@@ -237,6 +237,9 @@
 					<jackson3Suffix>V3</jackson3Suffix>
 					<jackson3Subpackage>v3</jackson3Subpackage>
 					
+					<generateValidationAnnotationsForAttributesFromMultiplicity>true</generateValidationAnnotationsForAttributesFromMultiplicity>
+					<generateValidationAnnotationsForAssociationsFromMultiplicity>true</generateValidationAnnotationsForAssociationsFromMultiplicity>
+
 					<!-- NotNull / NotEmpty congfiguration for properties -->
 					<generateNotNullAnnotationForSingleValuedProperties>true</generateNotNullAnnotationForSingleValuedProperties>
 					<notNullAnnotationNameForSingleValuedProperties>com.anaptecs.annotations.MyNotNullProperty</notNullAnnotationNameForSingleValuedProperties>

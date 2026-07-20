@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
 
+import javax.validation.constraints.Size;
+
 import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -185,6 +187,7 @@ public class PrimitiveArraysObject {
 
   private String[] bStringArray;
 
+  @Size(min = 1)
   private String[] cStringArray;
 
   /**

@@ -7,6 +7,7 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotNullProperty;
@@ -38,6 +39,7 @@ public class CurrencyCode {
    * </ul>
    */
   @Size(min = 3, max = 3)
+  @NotNull
   private String code;
 
   /**
