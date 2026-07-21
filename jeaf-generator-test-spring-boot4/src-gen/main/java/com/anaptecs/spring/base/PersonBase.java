@@ -202,6 +202,7 @@ public abstract class PersonBase extends Partner {
   /**
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullProperty
   public abstract String getDisplayName( );
 

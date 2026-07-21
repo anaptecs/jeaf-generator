@@ -633,13 +633,13 @@ public class GeneratorMojo extends AbstractMojo {
   // REST Controller
 
   /**
-   * Switch can be used to enable that <code>NotEmpty</code> annotation is generated for REST resources.
+   * Switch can be used to enable that <code>NotNull</code> annotation is generated for REST resources.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateNotNullAnnotationForSingleValuedRESTParameters;
 
   /**
-   * Parameter defines the name of the <code>NotEmpty</code> annotation that should be used for REST resources.
+   * Parameter defines the name of the <code>NotNull</code> annotation that should be used for REST resources.
    */
   @Parameter(required = false)
   private String notNullAnnotationNameForSingleValuedRESTParameters = "";
@@ -1249,6 +1249,20 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateValidationAnnotationsForAttributesFromMultiplicity;
+
+  /**
+   * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
+   * but also from multiplicity based on parameters operations.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForOperationParametersFromMultiplicity;
+
+  /**
+   * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
+   * but also from multiplicity based on parameters of service operations.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForServiceOperationParametersFromMultiplicity;
 
   /**
    * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
@@ -2626,6 +2640,14 @@ public class GeneratorMojo extends AbstractMojo {
           lLog.info("Generate Validation Annotations for associations: "
               + generateValidationAnnotationsForAssociationsFromMultiplicity);
         }
+        if (generateValidationAnnotationsForOperationParametersFromMultiplicity) {
+          lLog.info("Validation Annotations for operation parameters:  "
+              + generateValidationAnnotationsForOperationParametersFromMultiplicity);
+        }
+        if (generateValidationAnnotationsForServiceOperationParametersFromMultiplicity) {
+          lLog.info("Validation Annotations for service parameters:   "
+              + generateValidationAnnotationsForServiceOperationParametersFromMultiplicity);
+        }
         if (generateValidationAnnotationsForBuilderProperties) {
           lLog.info("Generate Validation Annotations for builder:      "
               + generateValidationAnnotationsForBuilderProperties);
@@ -3072,6 +3094,13 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.enable.validation.annotation.attributes",
           generateValidationAnnotationsForAttributesFromMultiplicity.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForOperationParametersFromMultiplicity",
+          generateValidationAnnotationsForOperationParametersFromMultiplicity.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForServiceOperationParametersFromMultiplicity",
+          generateValidationAnnotationsForServiceOperationParametersFromMultiplicity.toString());
+
       System.setProperty("switch.gen.enable.validation.annotation.associations",
           generateValidationAnnotationsForAssociationsFromMultiplicity.toString());
       System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForBuilderProperties",

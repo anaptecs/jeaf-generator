@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service.monitoring;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullServiceParam;
 import reactor.core.publisher.Mono;
 
@@ -15,6 +17,7 @@ public interface MonitoringServiceReactive {
    *
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
   Mono<String> getVersionInfo( );
 }

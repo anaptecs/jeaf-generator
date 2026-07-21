@@ -412,3 +412,15 @@ boolean generateValidationAnnotationsForBuilderProperties():
 boolean neverInlineOpenAPIDataTypes():
 	getBooleanSystemProperty("jeaf.generator.neverInlineOpenAPIDataTypes", false);
 
+
+boolean generateValidationAnnotationsForOperationParametersFromMultiplicity():
+	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForOperationParametersFromMultiplicity", false);
+
+
+boolean generateValidationAnnotationsForServiceOperationParametersFromMultiplicity():
+	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForServiceOperationParametersFromMultiplicity", false);
+
+
+
+
+

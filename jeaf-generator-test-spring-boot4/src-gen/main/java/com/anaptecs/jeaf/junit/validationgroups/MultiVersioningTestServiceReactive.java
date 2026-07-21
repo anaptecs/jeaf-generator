@@ -5,6 +5,7 @@
  */
 package com.anaptecs.jeaf.junit.validationgroups;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotNullServiceParam;
@@ -24,11 +25,13 @@ public interface MultiVersioningTestServiceReactive {
    * @param myContext
    * @return {@link MyPOJOResponse}
    */
+  @NotNull
   @MyNotNullServiceParam
   Mono<MyPOJOResponse> someRequest(
       @Size(min = 11, max = 42, groups = { V7.class }) @Size(
           min = 10,
           max = 666,
-          groups = { V4.class, V5.class, V6.class }) @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam MyPojoRequest pRequest, @MyNotNullServiceParam MyContext myContext );
+          groups = { V4.class, V5.class, V6.class }) @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull(groups = { V7.class }) @MyNotNullServiceParam MyPojoRequest pRequest,
+      @NotNull @MyNotNullServiceParam MyContext myContext );
 }

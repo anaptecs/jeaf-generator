@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service.monitoring;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullServiceParam;
 
 public interface MonitoringService {
@@ -14,6 +16,7 @@ public interface MonitoringService {
    *
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
   String getVersionInfo( );
 }

@@ -1,5 +1,6 @@
 extension functions::NamedElement;
 extension functions::Dependency;
+extension functions::SystemProperties;
 
 extension java::GeneratorCommons;
 
@@ -69,6 +70,15 @@ cached List[JMM::ValidationGroup] getAllValidationGroupsFromModel(uml::Model mod
 cached List[JMM::ValidationGroup] getValidationGroups(uml::Dependency dependency):
 	dependency.target.typeSelect(JMM::CompatibilityGroup).first().getValidationGroupsForGroup();
 
+
 cached List[JMM::ValidationGroup] getDefaultValidationGroups(uml::Model model, List[JMM::ValidationGroup] nonDefaultGroups):
 	model.getAllValidationGroupsFromModel().removeAll(nonDefaultGroups);
+
+
+boolean generateValidationAnnotationForParam(String paramContext):
+	if paramContext == "JEAFService" || paramContext == "JEAFServiceProvider"
+	then generateValidationAnnotationsForServiceOperationParametersFromMultiplicity()
+	else if paramContext == "BusinessOperation"
+	then generateValidationAnnotationsForOperationParametersFromMultiplicity()
+	else false;
 

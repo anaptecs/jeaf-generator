@@ -8,6 +8,7 @@
 «EXTENSION functions::Parameter»
 «EXTENSION functions::Dependency»
 «EXTENSION functions::NamedElement»
+«EXTENSION functions::SystemProperties»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateCustomValidation FOR CustomConstraint»
@@ -63,6 +64,11 @@ public @interface «validationClass» {
 «ENDDEFINE»
 
 «DEFINE ValidationAnnotation FOR NamedElement»
+	«EXPAND ValidationAnnotation(null)»
+«ENDDEFINE»
+
+
+«DEFINE ValidationAnnotation(String parameterContext) FOR NamedElement»
     «LET this.getAppliedStereotypes().select(e|e.isValidationStereotype()) AS allDirectValidationStereotypes»
 	
     «LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false).getAppliedStereotypes().select(e|e.isValidationStereotype()) AS allIndirectValidationStereotypes»
@@ -200,8 +206,21 @@ public @interface «validationClass» {
 						«ENDIF»
 					«ENDIF»
 				«ENDLET»
-			«ELSEIF this.isParameter()»
-				«LET this.asParameter() AS property»
+			«ELSEIF this.isParameter() && generateValidationAnnotationForParam(parameterContext)»
+				«LET (Parameter) this AS parameter»
+					«IF parameter.isMultivalued()»
+						«IF optionalValidationDependencies.isEmpty && allValidationStereotypeNames.contains("Size") == false && parameter.lowerForParam() > 0»
+							@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «parameter.lowerForParam()»)
+						«ELSE»
+							@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «parameter.lowerForParam()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
+						«ENDIF»
+					«ELSEIF parameter.type.isPrimitiveType() == false»
+						«IF optionalValidationDependencies.isEmpty && allValidationStereotypeNames.contains("NotNull") == false && parameter.lowerForParam() > 0»
+							@«getEnterpriseJavaPackage()».validation.constraints.NotNull
+						«ELSE»
+							@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)
+						«ENDIF»
+					«ENDIF»
 				«ENDLET»
 			«ENDIF»
 		«ENDLET»

@@ -404,6 +404,7 @@ public abstract class ResellerBase {
   /**
    * @return {@link Integer}
    */
+  @NotNull
   @MyNotNullProperty
   public abstract Integer doSomething( );
 
