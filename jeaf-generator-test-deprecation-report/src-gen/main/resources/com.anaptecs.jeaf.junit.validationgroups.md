@@ -34,6 +34,7 @@
 | `untouchedProperty` | `String` | `1..1` |  |  |  |
 | :bomb: `formerMandatoryProperty` | `String` | `0..1` |  |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
 | :exclamation:`deprecatedProperty` | `String` | `0..1` |  |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| `derivedProperty` | `String` | `1..1` |  | `derived` |  |
 
 <br>
 

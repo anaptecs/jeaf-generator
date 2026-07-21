@@ -1251,6 +1251,12 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateValidationAnnotationsForAttributesFromMultiplicity;
 
   /**
+   * Switch defines whether Java Validation Annotations should be generated on the get operation for derived properties
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForDerivedProperties;
+
+  /**
    * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
    * but also from multiplicity based on parameters operations.
    */
@@ -2636,6 +2642,12 @@ public class GeneratorMojo extends AbstractMojo {
           lLog.info("Generate Validation Annotations for attributes:   "
               + generateValidationAnnotationsForAttributesFromMultiplicity);
         }
+
+        if (generateValidationAnnotationsForDerivedProperties) {
+          lLog.info("Validation Annotations for derived properties:    "
+              + generateValidationAnnotationsForDerivedProperties);
+        }
+
         if (generateValidationAnnotationsForAssociationsFromMultiplicity) {
           lLog.info("Generate Validation Annotations for associations: "
               + generateValidationAnnotationsForAssociationsFromMultiplicity);
@@ -3094,6 +3106,9 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.enable.validation.annotation.attributes",
           generateValidationAnnotationsForAttributesFromMultiplicity.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForDerivedProperties",
+          generateValidationAnnotationsForDerivedProperties.toString());
 
       System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForOperationParametersFromMultiplicity",
           generateValidationAnnotationsForOperationParametersFromMultiplicity.toString());

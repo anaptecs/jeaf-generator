@@ -413,6 +413,10 @@ boolean neverInlineOpenAPIDataTypes():
 	getBooleanSystemProperty("jeaf.generator.neverInlineOpenAPIDataTypes", false);
 
 
+boolean generateValidationAnnotationsForDerivedProperties():
+	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForDerivedProperties", false);
+
+
 boolean generateValidationAnnotationsForOperationParametersFromMultiplicity():
 	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForOperationParametersFromMultiplicity", false);
 
