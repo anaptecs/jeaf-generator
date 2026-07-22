@@ -9,18 +9,22 @@ cached boolean isValidationStereotype(uml::Stereotype stereotype) : !stereotype.
 
 cached boolean hasValidationStereotype(uml::NamedElement element) :
   element.getAppliedStereotypes().selectFirst(e|e.isValidationStereotype()) != null;
-  
+
+
 cached boolean requiresNotNullAnnotation(uml::NamedElement element) :
   if element.isStereotypeApplied("NotEmpty") || element.isStereotypeApplied("NotBlank") || element.isStereotypeApplied("Null") || element.isStereotypeApplied("NotNull")
   then false
   else true;   
-  
+
+
 cached boolean hasErrorCodeOrSeverity(JMM::Validation validation):
   validation.errorCode > 0 || validation.severity.name != "NotUsed";
 
+
 cached List[uml::Stereotype] getValidationStereotypes(uml::Property property):
     property.getAppliedStereotypes().select(e|e.isValidationStereotype()); 
-    
+
+
 cached String getValidationStereotyeAndValue(uml::Property property, uml::Stereotype stereo):
     if stereo.name == "DecimalMax"
     then "@DecimalMax(maxValue=" + property.getValue(stereo, "maxValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ")"
@@ -47,15 +51,18 @@ cached String getValidationStereotyeAndValue(uml::Property property, uml::Stereo
 	                            then "@Pattern(regexp=" + property.getValue(stereo, "regexp") + ")"
 							    else "@" + stereo.name;
  
+ 
 private String getMinSizeValidation(uml::Property property, uml::Stereotype stereo):
     if property.getValue(stereo, "min") != -1
     then "min=" + property.getValue(stereo, "min")
     else "min=0";
-    
+
+
 private String getMaxSizeValidation(uml::Property property, uml::Stereotype stereo):
     if property.getValue(stereo, "max") != -1
     then ", max=" + property.getValue(stereo, "max")
     else ", max=UNLIMITED";    
+
 
 private String getEmailValidation(uml::Property property, uml::Stereotype stereo):
 	if property.getValue(stereo, "regexp") != null
@@ -89,6 +96,11 @@ cached List[uml::Stereotype] getAllDirectValidationStereotypes(uml::NamedElement
 
 cached List[uml::Stereotype] getAllIndirectValidationStereotypes(uml::NamedElement element):
 	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false).getAppliedStereotypes().select(e|e.isValidationStereotype());
+
+
+cached List[uml::Stereotype] getAllValidationStereotypes(uml::NamedElement element):
+	{}.addAll(element.getAllDirectValidationStereotypes()).addAll(element.getAllIndirectValidationStereotypes());
+
 
 cached List[uml::Dependency] getRemoveValidationDependencies(uml::NamedElement element):
 	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == "RemoveValidation").isEmpty == false);

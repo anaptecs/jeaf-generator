@@ -68,12 +68,12 @@ public class MultiVersioningTestServiceReactiveResource {
       method = { RequestMethod.POST })
   @MyNotNullRESTParam
   public Mono<MyPOJOResponse> someRequest(
-      @PathVariable(name = "path-param", required = true) @MyNotNullRESTParam String pPath,
-      @RequestBody(required = true) @MyNotNullRESTParam Mono<MyPojoRequest> pRequest,
-      @PathVariable(name = "firstPropertyfirstProperty", required = true) @RequestHeader(
+      @PathVariable(name = "path-param", required = false) @MyNotNullRESTParam String pPath,
+      @RequestBody(required = false) @MyNotNullRESTParam Mono<MyPojoRequest> pRequest,
+      @PathVariable(name = "firstPropertyfirstProperty", required = false) @RequestHeader(
           name = "firstPropertyfirstProperty",
-          required = true) @MyNotNullRESTParam String pFirstProperty,
-      @RequestHeader(name = "clientTypes", required = true) @MyNotEmptyRESTParam Set<ClientType> pClientTypes,
+          required = false) @MyNotNullRESTParam String pFirstProperty,
+      @RequestHeader(name = "clientTypes", required = false) @MyNotEmptyRESTParam Set<ClientType> pClientTypes,
       ServerWebExchange pServerWebExchange ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.

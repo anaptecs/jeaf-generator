@@ -3,6 +3,7 @@ extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 extension functions::RESTOperation;
 extension functions::RESTResource;
+extension functions::Validation;
 
 cached boolean isBeanParam(uml::Parameter param):
 	param.isStereotypeApplied("BeanParam") || param.type.isStereotypeApplied("BeanParam");
@@ -226,15 +227,26 @@ cached String getRESTProxyName(JMM::RESTResource service, boolean reactive):
     then service.name + "RESTProxyReactive"
     else service.name + "RESTProxy";
 
+private boolean isOptionalRESTParam(uml::Parameter param):
+	param.lowerForREST() < 1 || param.getAllValidationStereotypes().select(e|e.name == "Optional").isEmpty == false || ((List[JMM::Size]) param.clientDependency.select(e | e.isStereotypeApplied("Size"))).select(e | e.min < 1).isEmpty == false;
+
 
 cached boolean isRequiredRESTParam(uml::Parameter param):
-   param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") ||  (param.isStereotypeApplied("Size") && ((JMM::Size) param).min > 0) ||(param.type.isPrimitiveType() && param.lowerForREST() > 0) || param.lowerForREST() > 0;
+	!param.isOptionalRESTParam();
+	//param.isStereotypeApplied("NotNull") || param.isStereotypeApplied("NotEmpty") || param.isStereotypeApplied("NotBlank") ||  (param.isStereotypeApplied("Size") && ((JMM::Size) param).min > 0) ||(param.type.isPrimitiveType() && param.lowerForREST() > 0) || param.lowerForREST() > 0;
+
+
+private boolean isOptionalRESTProperty(uml::Property property):
+	property.lowerForREST() < 1 || property.getAllValidationStereotypes().select(e|e.name == "Optional").isEmpty == false || ((List[JMM::Size]) property.clientDependency.select(e | e.isStereotypeApplied("Size"))).select(e | e.min < 1).isEmpty == false;
 
 
 cached boolean isRequiredRESTProperty(uml::Property property):
-   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank")  ||  (property.isStereotypeApplied("Size") && ((JMM::Size) property).min > 0) || (property.lowerForREST() > 0) || (property.association != null && property.lowerForREST() > 0) || (property.isMultivalued() && property.lowerForREST() > 0);
+	!property.isOptionalRESTProperty();
+	//property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank")  ||  (property.isStereotypeApplied("Size") && ((JMM::Size) property).min > 0) || (property.lowerForREST() > 0) || (property.association != null && property.lowerForREST() > 0) || (property.isMultivalued() && property.lowerForREST() > 0);
 
 
 cached int lowerForREST(uml::MultiplicityElement multiplicityElement):
 	multiplicityElement.lower;
+
+
 
