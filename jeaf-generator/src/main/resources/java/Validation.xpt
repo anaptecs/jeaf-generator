@@ -69,10 +69,10 @@ public @interface «validationClass» {
 
 
 «DEFINE ValidationAnnotation(String parameterContext) FOR NamedElement»
-    «LET this.getAppliedStereotypes().select(e|e.isValidationStereotype()) AS allDirectValidationStereotypes»
+    «LET this.getAllDirectValidationStereotypes() AS allDirectValidationStereotypes»
 	
-    «LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false).getAppliedStereotypes().select(e|e.isValidationStereotype()) AS allIndirectValidationStereotypes»
-    «LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == "RemoveValidation").isEmpty == false) AS removeValidationDepedencies»
+    «LET this.getAllIndirectValidationStereotypes() AS allIndirectValidationStereotypes»
+    «LET this.getRemoveValidationDependencies() AS removeValidationDepedencies»
 	
 	«LET {}.addAll(allDirectValidationStereotypes).addAll(allIndirectValidationStereotypes) AS allValidationStereotypes»
 	«LET allValidationStereotypes.typeSelect(Stereotype).name.toSet() AS allValidationStereotypeNames»

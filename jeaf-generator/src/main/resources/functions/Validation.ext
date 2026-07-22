@@ -82,3 +82,13 @@ boolean generateValidationAnnotationForParam(String paramContext):
 	then generateValidationAnnotationsForOperationParametersFromMultiplicity()
 	else false;
 
+
+cached List[uml::Stereotype] getAllDirectValidationStereotypes(uml::NamedElement element):
+	element.getAppliedStereotypes().select(e|e.isValidationStereotype());
+
+
+cached List[uml::Stereotype] getAllIndirectValidationStereotypes(uml::NamedElement element):
+	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false).getAppliedStereotypes().select(e|e.isValidationStereotype());
+
+cached List[uml::Dependency] getRemoveValidationDependencies(uml::NamedElement element):
+	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == "RemoveValidation").isEmpty == false);
