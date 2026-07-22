@@ -234,6 +234,7 @@ cached boolean isRequiredRESTParam(uml::Parameter param):
 cached boolean isRequiredRESTProperty(uml::Property property):
    property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank")  ||  (property.isStereotypeApplied("Size") && ((JMM::Size) property).min > 0) || (property.lowerForREST() > 0) || (property.association != null && property.lowerForREST() > 0) || (property.isMultivalued() && property.lowerForREST() > 0);
 
+
 cached int lowerForREST(uml::MultiplicityElement multiplicityElement):
 	multiplicityElement.lower;
 
