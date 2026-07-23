@@ -127,7 +127,8 @@ This is the first line of the first comment
 
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
-| `childAttribute` | `java.lang.Integer` | `1..1` |  | `@NotNull`<br> |  |
+| `childAttribute` | `java.lang.Integer` | `1..1` |  | `@NotNull`
+ |  |
 
 <br>
 
@@ -158,21 +159,24 @@ This is the first line of the first comment
 | `aBooleanArray` | `boolean` | `0..*` |  |  |  |
 | `bBooleanArray` | `java.lang.Boolean` | `0..*` |  |  |  |
 | `cBooleanArray` | `boolean` | `0..*` |  |  |  |
-| `aByteArray` | `byte` | `0..*` |  | `@Size(min=0, max=32768)`<br> |  |
+| `aByteArray` | `byte` | `0..*` |  | `@Size(min=0, max=32768)`
+ |  |
 | `bByteArray` | `java.lang.Byte` | `0..*` |  |  |  |
 | `aShortArray` | `short` | `0..*` |  |  |  |
 | `bShortArray` | `java.lang.Short` | `0..*` |  |  |  |
 | `aIntegerArray` | `int` | `0..*` |  |  |  |
 | `bIntegerArray` | `java.lang.Integer` | `0..*` |  |  |  |
 | `cIntegerArray` | `Integer` | `0..*` |  |  |  |
-| `aLongArray` | `long` | `0..*` |  | `@NotEmpty`<br> |  |
+| `aLongArray` | `long` | `0..*` |  | `@NotEmpty`
+ |  |
 | `bLongArray` | `java.lang.Long` | `0..*` |  |  |  |
 | `aBigIntegerArray` | `java.math.BigInteger` | `0..*` |  |  |  |
 | `aCharacterArray` | `char` | `0..*` |  |  |  |
 | `bCharacterArray` | `java.lang.Character` | `0..*` |  |  |  |
 | `aFloatArray` | `float` | `0..*` |  |  |  |
 | `bFloatArray` | `java.lang.Float` | `0..*` |  |  |  |
-| `aDoubleArray` | `double` | `0..*` |  | `@Size(min=4, max=12)`<br> |  |
+| `aDoubleArray` | `double` | `0..*` |  | `@Size(min=4, max=12)`
+ |  |
 | `bDoubleArray` | `java.lang.Double` | `0..*` |  |  |  |
 | `aBigDecimalArray` | `java.math.BigDecimal` | `0..*` |  |  |  |
 | `aStringArray` | `String` | `0..*` |  |  |  |
@@ -347,7 +351,8 @@ This is the first line of the first comment
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
 | `hello` | `java.lang.String` | `1..1` |  |  | <br><br>**Example(s):**<br>- `Hello`- `World!` |
-| `world` | `java.lang.Integer` | `1..1` |  | `@PositiveOrZero`<br> |  |
+| `world` | `java.lang.Integer` | `1..1` |  | `@PositiveOrZero`
+ |  |
 
 <br>
 
@@ -364,21 +369,24 @@ This is the first line of the first comment
 | `aBooleanArray` | `boolean` | `0..*` |  |  |  |
 | `bBooleanArray` | `java.lang.Boolean` | `0..*` |  |  |  |
 | `cBooleanArray` | `boolean` | `0..*` |  |  |  |
-| `aByteArray` | `byte` | `0..*` |  | `@Size(min=0, max=32768)`<br> |  |
+| `aByteArray` | `byte` | `0..*` |  | `@Size(min=0, max=32768)`
+ |  |
 | `bByteArray` | `java.lang.Byte` | `0..*` |  |  |  |
 | `aShortArray` | `short` | `0..*` |  |  |  |
 | `bShortArray` | `java.lang.Short` | `0..*` |  |  |  |
 | `aIntegerArray` | `int` | `0..*` |  |  |  |
 | `bIntegerArray` | `java.lang.Integer` | `0..*` |  |  |  |
 | `cIntegerArray` | `Integer` | `0..*` |  |  |  |
-| `aLongArray` | `long` | `0..*` |  | `@NotEmpty`<br> |  |
+| `aLongArray` | `long` | `0..*` |  | `@NotEmpty`
+ |  |
 | `bLongArray` | `java.lang.Long` | `0..*` |  |  |  |
 | `aBigIntegerArray` | `java.math.BigInteger` | `0..*` |  |  |  |
 | `aCharacterArray` | `char` | `0..*` |  |  |  |
 | `bCharacterArray` | `java.lang.Character` | `0..*` |  |  |  |
 | `aFloatArray` | `float` | `0..*` |  |  |  |
 | `bFloatArray` | `java.lang.Float` | `0..*` |  |  |  |
-| `aDoubleArray` | `double` | `0..*` |  | `@Size(min=4, max=12)`<br> |  |
+| `aDoubleArray` | `double` | `0..*` |  | `@Size(min=4, max=12)`
+ |  |
 | `bDoubleArray` | `java.lang.Double` | `0..*` |  |  |  |
 | `aBigDecimalArray` | `java.math.BigDecimal` | `0..*` |  |  |  |
 | `aStringArray` | `String` | `0..*` |  |  |  |
@@ -399,25 +407,40 @@ This is the first line of the first comment
 | `aBoolean` | `boolean` | `1..1` |  |  |  |
 | `bBoolean` | `java.lang.Boolean` | `1..1` |  |  |  |
 | `cBoolean` | `boolean` | `1..1` |  |  |  |
-| `aByte` | `byte` | `1..1` |  | `@Negative`<br> |  |
-| `bByte` | `java.lang.Byte` | `1..1` |  | `@NegativeOrZero`<br> |  |
-| `aShort` | `short` | `1..1` |  | `@Min(minValue=-237)`<br> |  |
-| `bShort` | `java.lang.Short` | `1..1` |  | `@Positive`<br> |  |
-| `aInteger` | `int` | `1..1` |  | `@PositiveOrZero`<br> |  |
-| `bInteger` | `java.lang.Integer` | `1..1` |  | `@Min(minValue=4711)`<br> |  |
-| `cInteger` | `Integer` | `1..1` |  | `@Min(minValue=100)`<br>`@Max(maxValue=1000)`<br> |  |
+| `aByte` | `byte` | `1..1` |  | `@Negative`
+ |  |
+| `bByte` | `java.lang.Byte` | `1..1` |  | `@NegativeOrZero`
+ |  |
+| `aShort` | `short` | `1..1` |  | `@Min(minValue=-237)`
+ |  |
+| `bShort` | `java.lang.Short` | `1..1` |  | `@Positive`
+ |  |
+| `aInteger` | `int` | `1..1` |  | `@PositiveOrZero`
+ |  |
+| `bInteger` | `java.lang.Integer` | `1..1` |  | `@Min(minValue=4711)`
+ |  |
+| `cInteger` | `Integer` | `1..1` |  | `@Min(minValue=100)`
+<br>`@Max(maxValue=1000)`
+ |  |
 | `aLong` | `long` | `1..1` |  |  |  |
-| `bLong` | `java.lang.Long` | `1..1` |  | `@DecimalMax(maxValue=299792458, inclusive=false)`<br> |  |
-| `aBigInteger` | `java.math.BigInteger` | `1..1` |  | `@DecimalMax(maxValue=3.14159265359, inclusive=true)`<br>`@DecimalMin(minValue=-3.14159265359, inclusive=true)`<br> |  |
+| `bLong` | `java.lang.Long` | `1..1` |  | `@DecimalMax(maxValue=299792458, inclusive=false)`
+ |  |
+| `aBigInteger` | `java.math.BigInteger` | `1..1` |  | `@DecimalMax(maxValue=3.14159265359, inclusive=true)`
+<br>`@DecimalMin(minValue=-3.14159265359, inclusive=true)`
+ |  |
 | `aCharacter` | `char` | `1..1` |  |  |  |
 | `bCharacter` | `java.lang.Character` | `1..1` |  |  |  |
 | `aFloat` | `float` | `1..1` |  |  |  |
 | `bFloat` | `java.lang.Float` | `1..1` |  |  |  |
 | `aDouble` | `double` | `1..1` |  |  |  |
 | `bDouble` | `java.lang.Double` | `1..1` |  |  |  |
-| `aBigDecimal` | `java.math.BigDecimal` | `1..1` |  | `@DecimalMin(minValue=4711.0815, inclusive=true)`<br> |  |
-| `aString` | `String` | `1..1` |  | `@Size(min=8, max=32)`<br> |  |
-| `bString` | `String` | `1..1` |  | `@NotEmpty`<br>`@Size(min=0, max=128)`<br> |  |
+| `aBigDecimal` | `java.math.BigDecimal` | `1..1` |  | `@DecimalMin(minValue=4711.0815, inclusive=true)`
+ |  |
+| `aString` | `String` | `1..1` |  | `@Size(min=8, max=32)`
+ |  |
+| `bString` | `String` | `1..1` |  | `@NotEmpty`
+<br>`@Size(min=0, max=128)`
+ |  |
 
 <br>
 

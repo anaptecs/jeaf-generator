@@ -78,15 +78,13 @@ public @interface «validationClass» {
 	«LET allValidationStereotypes.typeSelect(Stereotype).name.toSet() AS allValidationStereotypeNames»
 
     «FOREACH allValidationStereotypeNames AS stereotypeName»
-    	«LET allDirectValidationStereotypes.select(e|e.name == stereotypeName).first() AS directValidationStereotype»
-    	«LET allIndirectValidationStereotypes.select(e|e.name == stereotypeName) AS indirectValidationStereotypes»
-	    «LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == stereotypeName).isEmpty == false) AS validationDependencies»
-	    
-	    «LET removeValidationDepedencies.select(e|e.getStereotypeValue("RemoveValidation", "removedValidations").contains(stereotypeName)).getValidationGroups() AS removeValidationGroups»
-	    «LET removeValidationGroups.isEmpty == false || validationDependencies.isEmpty == false AS hasValidationGroups»
-	    
-	    «LET (List[JMM::ValidationGroup]) getModel().getAllValidationGroupsFromModel().removeAll(validationDependencies.getValidationGroups()).removeAll(removeValidationGroups) AS defaultValidationGroups»
-	    
+		«LET allDirectValidationStereotypes.select(e|e.name == stereotypeName).first() AS directValidationStereotype»
+		«LET allIndirectValidationStereotypes.select(e|e.name == stereotypeName) AS indirectValidationStereotypes»
+		«LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == stereotypeName).isEmpty == false) AS validationDependencies»
+		«LET removeValidationDepedencies.select(e|e.getStereotypeValue("RemoveValidation", "removedValidations").contains(stereotypeName)).getValidationGroups() AS removeValidationGroups»
+		«LET removeValidationGroups.isEmpty == false || validationDependencies.isEmpty == false AS hasValidationGroups»
+		«LET (List[JMM::ValidationGroup]) getModel().getAllValidationGroupsFromModel().removeAll(validationDependencies.getValidationGroups()).removeAll(removeValidationGroups) AS defaultValidationGroups»
+
 			«IF stereotypeName == "DecimalMin"»
 			  «EXPAND DecimalMinAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	

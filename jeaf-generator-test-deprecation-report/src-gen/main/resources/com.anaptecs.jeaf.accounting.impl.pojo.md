@@ -55,9 +55,12 @@
 
 | Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
 |------|------|:------------:|----------------------|-------------|-------------|
-| `name` | `java.lang.String` | `1..1` |  | `@NotBlank`<br> |  |
-| `firstName` | `java.lang.String` | `1..1` |  | `@NotBlank`<br> |  |
-| `email` | `java.lang.String` | `1..1` |  | `@Email`<br> |  |
+| `name` | `java.lang.String` | `1..1` |  | `@NotBlank`
+ |  |
+| `firstName` | `java.lang.String` | `1..1` |  | `@NotBlank`
+ |  |
+| `email` | `java.lang.String` | `1..1` |  | `@Email`
+ |  |
 | `accounts` | [`Account`](#account) | `0..*` |  |  |  |
 
 <br>

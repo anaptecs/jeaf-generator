@@ -56,7 +56,7 @@
 | Name | Type | Multiplicity | «IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF» Constraints | Description |
 |------|------|:------------:|«IF showAliasInTypesReport()»----------------------|«ENDIF»-------------|-------------|
 «FOREACH pojo.ownedAttribute.select(e|e.ignore() == false && e.isStatic == false) AS attr-»
-| «IF attr.isJEAFDeprecated()»:exclamation:«ELSEIF attr.isBreakingChange()»:bomb: «ENDIF»`«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower()»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF showAliasInTypesReport()»«IF attr.isAlias()»`«attr.asAlias().getAlternateName()»`«ENDIF» | «ENDIF»«IF attr.getValidationStereotypes().isEmpty == false»«FOREACH attr.getValidationStereotypes() AS stereo SEPARATOR "<br>"»`«attr.getValidationStereotyeAndValue(stereo)»`«ENDFOREACH»<br>«ENDIF»«IF attr.isTransient()»`transient`<br>«ENDIF»«IF attr.isDerived»`derived`«ENDIF» | «attr.getMarkdownCommentForReportTable()»«IF attr.hasExample()»<br><br>**Example(s):**<br>«FOREACH attr.asExample().exampleValues AS exampleValue»- `«exampleValue.makeMultiLineCompatible()»`«ENDFOREACH»«ENDIF» |
+| «IF attr.isJEAFDeprecated()»:exclamation:«ELSEIF attr.isBreakingChange()»:bomb: «ENDIF»`«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower()»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF showAliasInTypesReport()»«IF attr.isAlias()»`«attr.asAlias().getAlternateName()»`«ENDIF» | «ENDIF»«EXPAND Validations FOR attr»«IF attr.isTransient()»`transient`<br>«ENDIF»«IF attr.isDerived»`derived`«ENDIF» | «attr.getMarkdownCommentForReportTable()»«IF attr.hasExample()»<br><br>**Example(s):**<br>«FOREACH attr.asExample().exampleValues AS exampleValue»- `«exampleValue.makeMultiLineCompatible()»`«ENDFOREACH»«ENDIF» |
 «ENDFOREACH-»
 
 <br>
@@ -85,5 +85,36 @@
 «ENDFOREACH-»
 «ENDIF-»
 «ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE Validations FOR Property-»
+«LET this.getAllDirectValidationStereotypes() AS allDirectValidationStereotypes-»
+«LET this.getAllIndirectValidationStereotypes() AS allIndirectValidationStereotypes-»
+«LET this.getRemoveValidationDependencies() AS removeValidationDepedencies-»
+«LET {}.addAll(allDirectValidationStereotypes).addAll(allIndirectValidationStereotypes) AS allValidationStereotypes-»
+«LET allValidationStereotypes.typeSelect(Stereotype).name.select(e|e != "Valid").toSet() AS allValidationStereotypeNames-»
+«FOREACH allValidationStereotypeNames AS stereotypeName SEPARATOR "<br>"-»
+«LET allDirectValidationStereotypes.select(e|e.name == stereotypeName).first() AS directValidationStereotype-»
+«LET allIndirectValidationStereotypes.select(e|e.name == stereotypeName) AS indirectValidationStereotypes-»
+«LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == stereotypeName).isEmpty == false) AS validationDependencies-»
+«LET removeValidationDepedencies.select(e|e.getStereotypeValue("RemoveValidation", "removedValidations").contains(stereotypeName)).getValidationGroups() AS removeValidationGroups-»
+«LET removeValidationGroups.isEmpty == false || validationDependencies.isEmpty == false AS hasValidationGroups-»
+«LET (List[JMM::ValidationGroup]) getModel().getAllValidationGroupsFromModel().removeAll(validationDependencies.getValidationGroups()).removeAll(removeValidationGroups) AS defaultValidationGroups-»
+«IF directValidationStereotype != null && hasValidationGroups == false-»
+`«this.getValidationStereotyeAndValue(directValidationStereotype)»`
+«ELSE-»«FOREACH validationDependencies AS dependency SEPARATOR "<br>"»«dependency.getValidationGroups().name.toString(", ")»: `«this.getValidationStereotyeAndValue(dependency.getAppliedStereotypes().selectFirst(e|e.name == stereotypeName))»`«ENDFOREACH»<br>«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»«defaultValidationGroups.name.toString(", ")»: «this.getValidationStereotyeAndValue(directValidationStereotype)»«ENDIF»«ENDIF-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
+«ENDFOREACH-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
+«ENDLET-»
 «ENDDEFINE»
 
