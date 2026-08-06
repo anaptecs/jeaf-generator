@@ -89,7 +89,6 @@ public interface ProductService extends Service {
 
   /**
    */
-  @MyNotNullServiceParam
   void ping( );
 
   /**
@@ -110,7 +109,6 @@ public interface ProductService extends Service {
   /**
    * @param pBeanParam
    */
-  @MyNotNullServiceParam
   void deprecatedBeanParam( @MyNotNullServiceParam BeanParameter pBeanParam );
 
   /**
@@ -138,7 +136,6 @@ public interface ProductService extends Service {
    * @param pProduct <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
-  @MyNotNullServiceParam
   void deprectedComplexRequestBody( @Deprecated @MyNotNullServiceParam Product pProduct );
 
   /**
@@ -152,7 +149,6 @@ public interface ProductService extends Service {
   /**
    * @param pContext
    */
-  @MyNotNullServiceParam
   void loadSpecificThings( @MyNotNullServiceParam SpecialContext pContext );
 
   /**
@@ -248,7 +244,6 @@ public interface ProductService extends Service {
    * @param pSQLTime
    * @param pSQLDate
    */
-  @MyNotNullServiceParam
   void testDateQueryParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
       @MyNotNullServiceParam OffsetTime pStartTime, @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp,
       @MyNotNullServiceParam LocalTime pLocalStartTime, @MyNotNullServiceParam LocalDate pLocalStartDate,
@@ -260,7 +255,6 @@ public interface ProductService extends Service {
    * @param pPath
    * @param pQueryParams
    */
-  @MyNotNullServiceParam
   void testDateQueryParamsBean( @MyNotNullServiceParam String pPath,
       @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
@@ -277,7 +271,6 @@ public interface ProductService extends Service {
    * @param pContentType
    * @param pAccept
    */
-  @MyNotNullServiceParam
   void testSpecialHeaderParams( @MyNotNullServiceParam String authorization, @MyNotNullServiceParam String pContentType,
       @MyNotNullServiceParam String pAccept );
 
@@ -299,13 +292,11 @@ public interface ProductService extends Service {
   /**
    * @param pInlinedBeanParam
    */
-  @MyNotNullServiceParam
   void testNotInlinedBeanParam( @MyNotNullServiceParam NotInlinedBeanParam pInlinedBeanParam );
 
   /**
    * @param pIntegerArray
    */
-  @MyNotNullServiceParam
   void testPrimitiveArray( @MyNotEmptyServiceParam int[] pIntegerArray );
 
   /**
@@ -343,13 +334,11 @@ public interface ProductService extends Service {
    * @param pHeader
    * @param pContext
    */
-  @MyNotNullServiceParam
   void noReturnType( @MyNotNullServiceParam String pHeader, @MyNotNullServiceParam MultiValuedDataType pContext );
 
   /**
    * @param pID
    */
-  @MyNotNullServiceParam
   void deleteSomething( @MyNotNullServiceParam String pID );
 
   /**
@@ -369,14 +358,12 @@ public interface ProductService extends Service {
    * @param pShortCodes
    * @param pJustAByte
    */
-  @MyNotNullServiceParam
   void testDataTypeWithRestrition( @MyNotNullServiceParam StringCode pStringCode, Set<ShortCode> pShortCodes,
       @Min(value = 32) @MyNotNullServiceParam Byte pJustAByte );
 
   /**
    * @param pContext
    */
-  @MyNotNullServiceParam
   void testContext( @MyNotNullServiceParam Context pContext );
 
   /**

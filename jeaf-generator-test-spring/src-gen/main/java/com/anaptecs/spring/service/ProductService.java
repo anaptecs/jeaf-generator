@@ -92,7 +92,6 @@ public interface ProductService extends MonitoringService {
    * <p/>
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    */
-  @MyNotNullServiceParam
   void ping( );
 
   /**
@@ -121,7 +120,6 @@ public interface ProductService extends MonitoringService {
    *
    * @param pBeanParam
    */
-  @MyNotNullServiceParam
   void deprecatedBeanParam( @MyNotNullServiceParam BeanParameter pBeanParam );
 
   /**
@@ -157,7 +155,6 @@ public interface ProductService extends MonitoringService {
    * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
-  @MyNotNullServiceParam
   void deprectedComplexRequestBody( @Deprecated @MyNotNullServiceParam Product pProduct );
 
   /**
@@ -177,7 +174,6 @@ public interface ProductService extends MonitoringService {
    *
    * @param pContext
    */
-  @MyNotNullServiceParam
   void loadSpecificThings( @MyNotNullServiceParam SpecialContext pContext );
 
   /**
@@ -268,7 +264,6 @@ public interface ProductService extends MonitoringService {
    * @param pSQLTime
    * @param pSQLDate
    */
-  @MyNotNullServiceParam
   void testDateQueryParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
       @MyNotNullServiceParam OffsetTime pStartTime, @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp,
       @MyNotNullServiceParam LocalTime pLocalStartTime, @MyNotNullServiceParam LocalDate pLocalStartDate,
@@ -283,7 +278,6 @@ public interface ProductService extends MonitoringService {
    * @param pPath
    * @param pQueryParams
    */
-  @MyNotNullServiceParam
   void testDateQueryParamsBean( @MyNotNullServiceParam String pPath,
       @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
@@ -303,7 +297,6 @@ public interface ProductService extends MonitoringService {
    * @param pSQLTime
    * @param pSQLDate
    */
-  @MyNotNullServiceParam
   void testDateHeaderParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pOffsetDateTime,
       @MyNotNullServiceParam OffsetTime pOffsetTime, @MyNotNullServiceParam LocalDateTime pLocalDateTime,
       @MyNotNullServiceParam LocalTime pLocalTime, @MyNotNullServiceParam LocalDate pLocalDate,
@@ -318,7 +311,6 @@ public interface ProductService extends MonitoringService {
    * @param pPath
    * @param pHeaderParams
    */
-  @MyNotNullServiceParam
   void testDateHeaderParamsBean( @MyNotNullServiceParam String pPath,
       @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
 

@@ -18,7 +18,7 @@
     «EXPAND java::Helper::GenerateAnnotations-»
     «EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
-    «EXPAND java::Helper::NotNullAnnotationForParameter(context) FOR this.getReturnResult()»
+    «EXPAND java::Helper::NotNullAnnotationForParameter(context, reactive) FOR this.getReturnResult()»
 	«getReturnTypeName().getReactiveAwareTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, context)»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»
 
@@ -27,7 +27,7 @@
     «EXPAND java::Helper::GenerateAnnotations-»
     «EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult() -»    
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
-    «EXPAND java::Helper::NotNullAnnotationForParameter("JEAFService") FOR this.getReturnResult()»
+    «EXPAND java::Helper::NotNullAnnotationForParameter("JEAFService", reactive) FOR this.getReturnResult()»
     «IF this.isDefaultOperation() && this.isCustomDefaultImplementationType() == false»default «ENDIF»«getReturnTypeName().getReactiveAwareTypeName(reactive)»  «name» («EXPAND ParameterSignature(true, "JEAFService")»)«getThrownExceptionsAsString()»
     «IF this.isDefaultOperation() && this.isCustomDefaultImplementationType() == false»
         «LET this.asDefaultOperation().operationType AS operationType»
@@ -87,7 +87,7 @@
     «EXPAND functions::Javadoc::JavadocForOperation»
     «EXPAND java::Helper::GenerateAnnotations-»
     «EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult() -»
-    «EXPAND java::Helper::NotNullAnnotationForParameter(context) FOR this.getReturnResult()»
+    «EXPAND java::Helper::NotNullAnnotationForParameter(context, reactive) FOR this.getReturnResult()»
     @Override
     «visibility» «getReturnTypeName().getReactiveAwareTypeName(reactive)» «name» («EXPAND ParameterSignatureNoValidationAnnotation»)«getThrownExceptionsAsString()» {
         «IF getReturnTypeName() != "void"»
@@ -107,7 +107,7 @@
     «EXPAND java::Helper::GenerateAnnotations-»
     «EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult() -»
     «EXPAND Validation::ValidationAnnotation FOR this.getReturnResult()»
-    «EXPAND java::Helper::NotNullAnnotationForParameter("BusinessOperation") FOR this.getReturnResult()»
+    «EXPAND java::Helper::NotNullAnnotationForParameter("BusinessOperation", false) FOR this.getReturnResult()»
     «visibility» abstract «getReturnTypeName()»  «name» («EXPAND ParameterSignature(true, "BusinessOperation")»)«getThrownExceptionsAsString()»;
 «ENDDEFINE»
 
@@ -116,7 +116,7 @@
     «EXPAND functions::Javadoc::JavadocForOperation»
     «EXPAND java::Helper::GenerateAnnotations-»
     «EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult()»
-    «EXPAND java::Helper::NotNullAnnotationForParameter("BusinessOperation") FOR this.getReturnResult()»
+    «EXPAND java::Helper::NotNullAnnotationForParameter("BusinessOperation", false) FOR this.getReturnResult()»
     @Override
 	«visibility» «getReturnTypeName()» «name» («EXPAND ParameterSignature(true, "BusinessOperation")»)«getThrownExceptionsAsString()» {
 	    // TODO: Implement business logic for method.
@@ -140,7 +140,7 @@
 
 «DEFINE ParameterDefinition(boolean addValidation, String context) FOR Parameter»
   «EXPAND java::Helper::GenerateAnnotations-»
-  «IF addValidation»«EXPAND Validation::ValidationAnnotation» «ENDIF» «EXPAND java::Helper::NotNullAnnotationForParameter(context)» «this.getTypeName()» «this.name»
+  «IF addValidation»«EXPAND Validation::ValidationAnnotation» «ENDIF» «EXPAND java::Helper::NotNullAnnotationForParameter(context, false)» «this.getTypeName()» «this.name»
 «ENDDEFINE»
 
 «DEFINE ParameterSignatureNoValidationAnnotation FOR Operation»

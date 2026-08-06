@@ -96,14 +96,12 @@ public interface RESTProductService {
    * <p/>
    * <b>Authorized Roles:</b> <code>`Customer`, `Sales Agent`</code>
    */
-  @MyNotNullServiceParam
   void ping( );
 
   /**
    * <p/>
    * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    */
-  @MyNotNullServiceParam
   void testInit( );
 
   /**
@@ -145,7 +143,6 @@ public interface RESTProductService {
    * @param pTimeUnit
    * @param pExtensibleEnum
    */
-  @MyNotNullServiceParam
   void testEnumParams( @MyNotNullServiceParam ChannelType pChannelType, @MyNotNullServiceParam TimeUnit pTimeUnit,
       @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
 
@@ -157,7 +154,6 @@ public interface RESTProductService {
    * @param pTimeUnit
    * @param pExtensibleEnum
    */
-  @MyNotNullServiceParam
   void testEnumHeaderParams( @MyNotNullServiceParam ChannelType pChannelType, @MyNotNullServiceParam TimeUnit pTimeUnit,
       @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
 
@@ -178,7 +174,6 @@ public interface RESTProductService {
    * @param pSQLDate
    * @param pCalendars
    */
-  @MyNotNullServiceParam
   void testDateQueryParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
       @MyNotNullServiceParam OffsetTime pStartTime, @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp,
       @MyNotNullServiceParam LocalTime pLocalStartTime, @MyNotNullServiceParam LocalDate pLocalStartDate,
@@ -193,7 +188,6 @@ public interface RESTProductService {
    * @param pPath
    * @param pQueryParams
    */
-  @MyNotNullServiceParam
   void testDateQueryParamsBean( @MyNotNullServiceParam String pPath,
       @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
@@ -214,7 +208,6 @@ public interface RESTProductService {
    * @param pSQLDate
    * @param pUtilDates
    */
-  @MyNotNullServiceParam
   void testDateHeaderParams( @MyNotNullServiceParam String pPath, @MyNotNullServiceParam OffsetDateTime pOffsetDateTime,
       @MyNotNullServiceParam OffsetTime pOffsetTime, @MyNotNullServiceParam LocalDateTime pLocalDateTime,
       @MyNotNullServiceParam LocalTime pLocalTime, @MyNotNullServiceParam LocalDate pLocalDate,
@@ -229,7 +222,6 @@ public interface RESTProductService {
    * @param pPath
    * @param pHeaderParams
    */
-  @MyNotNullServiceParam
   void testDateHeaderParamsBean( @MyNotNullServiceParam String pPath,
       @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
 
@@ -240,7 +232,6 @@ public interface RESTProductService {
    * @param pChannelTypeParam
    * @param pContext
    */
-  @MyNotNullServiceParam
   void testCookieParams( @MyNotNullServiceParam ChannelType pChannelTypeParam,
       @MyNotNullServiceParam SpecialContext pContext );
 
@@ -417,7 +408,6 @@ public interface RESTProductService {
    *
    * @param pBookingID
    */
-  @MyNotNullServiceParam
   void testBookingIDAsPathParam( @MyNotNullServiceParam BookingID pBookingID );
 
   /**
@@ -426,7 +416,6 @@ public interface RESTProductService {
    *
    * @param pBookingID
    */
-  @MyNotNullServiceParam
   void testBookingIDAsHeaderParam( BookingID pBookingID );
 
   /**

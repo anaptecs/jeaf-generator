@@ -9,6 +9,7 @@
 «EXTENSION functions::Example»
 «EXTENSION functions::Property»
 «EXTENSION functions::Parameter»
+«EXTENSION functions::NamedElement»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::ToDo»
 «EXTENSION functions::RESTResource»
@@ -632,8 +633,8 @@
     «ENDIF -»
 «ENDDEFINE»
 
-«DEFINE NotNullAnnotationForParameter(String context) FOR uml::Parameter -»
-    «IF lowerForParam() > 0 -»
+«DEFINE NotNullAnnotationForParameter(String context, boolean reactive) FOR uml::Parameter -»
+    «IF lowerForParam() > 0 && ( reactive || (reactive == false && this.type.qualifiedName() != "void")) -»
         «IF context == "RESTResource"»
             «IF isMultivalued() -»
                 «IF generateNotEmptyAnnotationForMultiValuedRESTParameters() -»

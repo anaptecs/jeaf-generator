@@ -24,7 +24,6 @@ public interface PathlessService {
    * @param pHeaderBean
    * @param pTechContext
    */
-  @MyNotNullServiceParam
   void processTechParam( @MyNotNullServiceParam MultiValuedHeaderBeanParam pHeaderBean );
 
   /**

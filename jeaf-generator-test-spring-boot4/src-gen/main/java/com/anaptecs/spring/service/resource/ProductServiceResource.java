@@ -212,7 +212,6 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/", produces = { "application/json" }, method = { RequestMethod.HEAD })
-  @MyNotNullRESTParam
   public void ping( ) {
     // Delegate request to service.
     productService.ping();
@@ -278,7 +277,6 @@ public class ProductServiceResource {
       path = "products/deprecated/beanParams",
       produces = { "application/json" },
       method = { RequestMethod.POST })
-  @MyNotNullRESTParam
   public void deprecatedBeanParam(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
       @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
@@ -348,7 +346,6 @@ public class ProductServiceResource {
       consumes = { "application/json" },
       produces = { "application/json" },
       method = { RequestMethod.POST })
-  @MyNotNullRESTParam
   public void deprectedComplexRequestBody(
       @RequestBody(required = true) @Deprecated @MyNotNullRESTParam Product pProduct ) {
     // Validate request parameter(s).
@@ -382,7 +379,6 @@ public class ProductServiceResource {
   @PreAuthorize("hasAnyRole('NO_ACCESS')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "products/specific/{id}", produces = { "application/json" }, method = { RequestMethod.PATCH })
-  @MyNotNullRESTParam
   public void loadSpecificThings(
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
       @RequestHeader(name = "lang", required = true) @MyNotNullRESTParam Locale pLanguage,
@@ -600,7 +596,6 @@ public class ProductServiceResource {
       path = "products/test-date-query-params/{path}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testDateQueryParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestParam(name = "startTimestamp", required = true) @MyNotNullRESTParam String pStartTimestampAsBasicType,
       @RequestParam(name = "startTime", required = true) @MyNotNullRESTParam String pStartTimeAsBasicType,
@@ -714,7 +709,6 @@ public class ProductServiceResource {
       path = "products/test-date-query-params-beans/{path}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
       @RequestParam(name = "offsetTime", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
@@ -799,7 +793,6 @@ public class ProductServiceResource {
       path = "products/test-date-header-params/{path}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
       @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
@@ -911,7 +904,6 @@ public class ProductServiceResource {
       path = "products/test-date-header-params-beans/{path}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
       @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,

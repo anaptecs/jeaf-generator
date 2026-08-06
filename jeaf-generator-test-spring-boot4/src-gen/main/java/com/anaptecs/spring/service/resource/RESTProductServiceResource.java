@@ -233,7 +233,6 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Customer', 'Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(produces = { "application/json" }, method = { RequestMethod.HEAD })
-  @MyNotNullRESTParam
   public void ping( ) {
     // Delegate request to service.
     rESTProductService.ping();
@@ -245,7 +244,6 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-init", produces = { "application/json" }, method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testInit( ) {
     // Delegate request to service.
     rESTProductService.testInit();
@@ -321,7 +319,6 @@ public class RESTProductServiceResource {
       path = "test-enum-params/{channelType}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testEnumParams(
       @PathVariable(name = "channelType", required = true) @MyNotNullRESTParam ChannelType pChannelType,
       @RequestParam(name = "timeUnit", required = true) @MyNotNullRESTParam TimeUnit pTimeUnit,
@@ -338,7 +335,6 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "test-enum-header-params", produces = { "application/json" }, method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testEnumHeaderParams(
       @RequestHeader(name = "Channel-Type", required = true) @MyNotNullRESTParam ChannelType pChannelType,
       @RequestHeader(name = "Time-Unit", required = true) @MyNotNullRESTParam TimeUnit pTimeUnit,
@@ -358,7 +354,6 @@ public class RESTProductServiceResource {
       path = "test-date-query-params/{path}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testDateQueryParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestParam(name = "startTimestamp", required = true) @MyNotNullRESTParam String pStartTimestampAsBasicType,
       @RequestParam(name = "startTime", required = true) @MyNotNullRESTParam String pStartTimeAsBasicType,
@@ -493,7 +488,6 @@ public class RESTProductServiceResource {
       path = "test-date-query-params-beans/{path}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testDateQueryParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestParam(name = "offsetDateTime", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
       @RequestParam(name = "offsetTime", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
@@ -578,7 +572,6 @@ public class RESTProductServiceResource {
       path = "test-date-header-params/{path}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testDateHeaderParams( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
       @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
@@ -708,7 +701,6 @@ public class RESTProductServiceResource {
       path = "test-date-header-params-beans/{path}",
       produces = { "application/json" },
       method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testDateHeaderParamsBean( @PathVariable(name = "path", required = true) @MyNotNullRESTParam String pPath,
       @RequestHeader(name = "Offset-Date-Time", required = true) @MyNotNullRESTParam String pOffsetDateTimeAsBasicType,
       @RequestHeader(name = "Offset-Time", required = true) @MyNotNullRESTParam String pOffsetTimeAsBasicType,
@@ -790,7 +782,6 @@ public class RESTProductServiceResource {
   @PreAuthorize("hasAnyRole('Sales Agent')")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @RequestMapping(path = "cookies", produces = { "application/json" }, method = { RequestMethod.GET })
-  @MyNotNullRESTParam
   public void testCookieParams(
       @CookieValue(name = "Channel-Type-Param", required = true) @MyNotNullRESTParam ChannelType pChannelTypeParam,
       @RequestHeader(name = "token", required = true) @MyNotNullRESTParam String pAccessToken,
@@ -1520,7 +1511,6 @@ public class RESTProductServiceResource {
       path = "booking-id-as-path-param/{bookingID}",
       produces = { "application/json" },
       method = { RequestMethod.PATCH })
-  @MyNotNullRESTParam
   public void testBookingIDAsPathParam(
       @PathVariable(name = "bookingID", required = true) @MyNotNullRESTParam String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
@@ -1540,7 +1530,6 @@ public class RESTProductServiceResource {
       path = "booking-id-as-header-param",
       produces = { "application/json" },
       method = { RequestMethod.PATCH })
-  @MyNotNullRESTParam
   public void testBookingIDAsHeaderParam(
       @RequestHeader(name = "bookingID", required = false) String pBookingIDAsBasicType ) {
     // Convert basic type parameters into "real" objects.
