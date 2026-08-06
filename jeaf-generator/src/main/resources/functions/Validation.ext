@@ -27,44 +27,72 @@ cached List[uml::Stereotype] getValidationStereotypes(uml::Property property):
 
 cached String getValidationStereotyeAndValue(uml::Property property, uml::Stereotype stereo):
     if stereo.name == "DecimalMax"
-    then "@DecimalMax(maxValue=" + property.getValue(stereo, "maxValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ")"
+    then "@DecimalMax: maxValue=" + property.getValue(stereo, "maxValue") + ", inclusive=" + property.getValue(stereo, "inclusive")
     else
 	    if stereo.name == "DecimalMin"
-	    then "@DecimalMin(minValue=" + property.getValue(stereo, "minValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ")"
+	    then "@DecimalMin: minValue=" + property.getValue(stereo, "minValue") + ", inclusive=" + property.getValue(stereo, "inclusive")
 	    else
 		    if stereo.name == "Digits"
-		    then "@Digits(integer=" + property.getValue(stereo, "integer") + ", fraction=" + property.getValue(stereo, "fraction") + ")"
+		    then "@Digits: integer=" + property.getValue(stereo, "integer") + ", fraction=" + property.getValue(stereo, "fraction")
 		    else
 		        if stereo.name == "Max"
-		        then "@Max(maxValue=" + property.getValue(stereo, "maxValue") + ")"
+		        then "@Max: maxValue=" + property.getValue(stereo, "maxValue")
 		        else
 		            if stereo.name == "Min"
-		            then "@Min(minValue=" + property.getValue(stereo, "minValue") + ")"
+		            then "@Min: minValue=" + property.getValue(stereo, "minValue")
 		            else
 					    if stereo.name == "Size"
-					    then "@Size(" + property.getMinSizeValidation(stereo) + property.getMaxSizeValidation(stereo) + ")"
+					    then "@Size: " + property.getMinSizeValidation(stereo) + property.getMaxSizeValidation(stereo)
 					    else  
 		                    if stereo.name == "Email"
 		                    then property.getEmailValidation(stereo)
 		                    else
 	                            if stereo.name == "Pattern"
-	                            then "@Pattern(regexp=" + property.getValue(stereo, "regexp") + ")"
+	                            then "@Pattern: regexp=" + property.getValue(stereo, "regexp")
 							    else "@" + stereo.name;
  
  
-private String getMinSizeValidation(uml::Property property, uml::Stereotype stereo):
+cached String getValidationStereotyeAndValue(uml::NamedElement property, uml::Stereotype stereo, List[JMM::ValidationGroup] validationGroups):
+	let versions = "versions=" + validationGroups.name.toString(", "):
+    if stereo.name == "DecimalMax"
+    then "@DecimalMax: maxValue=" + property.getValue(stereo, "maxValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ", " + versions
+    else
+	    if stereo.name == "DecimalMin"
+	    then "@DecimalMin: minValue=" + property.getValue(stereo, "minValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ", " + versions
+	    else
+		    if stereo.name == "Digits"
+		    then "@Digits: integer=" + property.getValue(stereo, "integer") + ", fraction=" + property.getValue(stereo, "fraction") + ", " + versions
+		    else
+		        if stereo.name == "Max"
+		        then "@Max: maxValue=" + property.getValue(stereo, "maxValue") + ", " + versions
+		        else
+		            if stereo.name == "Min"
+		            then "@Min: minValue=" + property.getValue(stereo, "minValue") + ", " + versions
+		            else
+					    if stereo.name == "Size"
+					    then "@Size: " + property.getMinSizeValidation(stereo) + property.getMaxSizeValidation(stereo) + ", " + versions
+					    else  
+		                    if stereo.name == "Email"
+		                    then property.getEmailValidation(stereo) + ", " + versions
+		                    else
+	                            if stereo.name == "Pattern"
+	                            then "@Pattern: regexp=" + property.getValue(stereo, "regexp") + ", " + versions
+							    else "@" + stereo.name + ": " + versions;
+ 
+ 
+private String getMinSizeValidation(uml::NamedElement property, uml::Stereotype stereo):
     if property.getValue(stereo, "min") != -1
     then "min=" + property.getValue(stereo, "min")
     else "min=0";
 
 
-private String getMaxSizeValidation(uml::Property property, uml::Stereotype stereo):
+private String getMaxSizeValidation(uml::NamedElement property, uml::Stereotype stereo):
     if property.getValue(stereo, "max") != -1
     then ", max=" + property.getValue(stereo, "max")
     else ", max=UNLIMITED";    
 
 
-private String getEmailValidation(uml::Property property, uml::Stereotype stereo):
+private String getEmailValidation(uml::NamedElement property, uml::Stereotype stereo):
 	if property.getValue(stereo, "regexp") != null
 	then "@Email(regexp=" + property.getValue(stereo, "regexp") + ")"
 	else "@Email";

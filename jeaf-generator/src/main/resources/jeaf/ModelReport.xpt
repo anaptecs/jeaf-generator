@@ -53,10 +53,10 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity | «IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF» Constraints | Description |
-|------|------|:------------:|«IF showAliasInTypesReport()»----------------------|«ENDIF»-------------|-------------|
+| Name | «IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF» Description |
+|------| «IF showAliasInTypesReport()»----------------------|«ENDIF»-------------|
 «FOREACH pojo.ownedAttribute.select(e|e.ignore() == false && e.isStatic == false) AS attr-»
-| «IF attr.isJEAFDeprecated()»:exclamation:«ELSEIF attr.isBreakingChange()»:bomb: «ENDIF»`«attr.name»` | «attr.getPropertyTypeLink()» | `«attr.lower()»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»` | «IF showAliasInTypesReport()»«IF attr.isAlias()»`«attr.asAlias().getAlternateName()»`«ENDIF» | «ENDIF»«EXPAND Validations FOR attr»«IF attr.isTransient()»`transient`<br>«ENDIF»«IF attr.isDerived»`derived`«ENDIF» | «attr.getMarkdownCommentForReportTable()»«IF attr.hasExample()»<br><br>**Example(s):**<br>«FOREACH attr.asExample().exampleValues AS exampleValue»- `«exampleValue.makeMultiLineCompatible()»`«ENDFOREACH»«ENDIF» |
+| «IF attr.isBreakingChange()»<font color="red">«ENDIF»«IF attr.isJEAFDeprecated()»*«ELSE»**«ENDIF»`«attr.name»`«IF attr.isJEAFDeprecated()»*«ELSE»**«ENDIF»«IF attr.isBreakingChange()»</font>«ENDIF» : «attr.getPropertyTypeLink()»   `«attr.lower()»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»`<br>«EXPAND Constraints FOR attr» | «IF showAliasInTypesReport()»«IF attr.isAlias()»`«attr.asAlias().getAlternateName()»`«ENDIF» | «ENDIF»«attr.getMarkdownCommentForReportTable()»«IF attr.hasExample()»<br><br>**Example(s):**<br>«FOREACH attr.asExample().exampleValues AS exampleValue»- `«exampleValue.makeMultiLineCompatible()»`«ENDFOREACH»«ENDIF» |
 «ENDFOREACH-»
 
 <br>
@@ -88,7 +88,7 @@
 «ENDDEFINE»
 
 
-«DEFINE Validations FOR Property-»
+«DEFINE Constraints FOR Property-»
 «LET this.getAllDirectValidationStereotypes() AS allDirectValidationStereotypes-»
 «LET this.getAllIndirectValidationStereotypes() AS allIndirectValidationStereotypes-»
 «LET this.getRemoveValidationDependencies() AS removeValidationDepedencies-»
@@ -101,9 +101,7 @@
 «LET removeValidationDepedencies.select(e|e.getStereotypeValue("RemoveValidation", "removedValidations").contains(stereotypeName)).getValidationGroups() AS removeValidationGroups-»
 «LET removeValidationGroups.isEmpty == false || validationDependencies.isEmpty == false AS hasValidationGroups-»
 «LET (List[JMM::ValidationGroup]) getModel().getAllValidationGroupsFromModel().removeAll(validationDependencies.getValidationGroups()).removeAll(removeValidationGroups) AS defaultValidationGroups-»
-«IF directValidationStereotype != null && hasValidationGroups == false-»
-`«this.getValidationStereotyeAndValue(directValidationStereotype)»`
-«ELSE-»«FOREACH validationDependencies AS dependency SEPARATOR "<br>"»«dependency.getValidationGroups().name.toString(", ")»: `«this.getValidationStereotyeAndValue(dependency.getAppliedStereotypes().selectFirst(e|e.name == stereotypeName))»`«ENDFOREACH»<br>«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»«defaultValidationGroups.name.toString(", ")»: «this.getValidationStereotyeAndValue(directValidationStereotype)»«ENDIF»«ENDIF-»
+«IF directValidationStereotype != null && hasValidationGroups == false-»        `«this.getValidationStereotyeAndValue(directValidationStereotype)»`«ELSE-»«FOREACH validationDependencies AS dependency SEPARATOR "<br>"»        `«dependency.getValidationStereotyeAndValue(dependency.getAppliedStereotypes().selectFirst(e|e.name == stereotypeName), dependency.getValidationGroups())»`«ENDFOREACH»«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»«IF validationDependencies.isEmpty == false»<br>«ENDIF»        `«this.getValidationStereotyeAndValue(directValidationStereotype, defaultValidationGroups)»`«ENDIF»«ENDIF-»
 «ENDLET-»
 «ENDLET-»
 «ENDLET-»

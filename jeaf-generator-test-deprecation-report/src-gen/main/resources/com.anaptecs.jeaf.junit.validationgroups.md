@@ -14,10 +14,10 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
-|------|------|:------------:|----------------------|-------------|-------------|
-| `firstProperty` | `String` | `1..1` |  | V4, V5, V6: `@Optional`<br> |  |
-| `clientTypes` | [`ClientType`](#clienttype) | `1..*` |  | V4, V5, V6: `@Optional`<br> |  |
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`firstProperty`** : `String`   `1..1`<br>        `@Optional: versions=V4, V5, V6` |  |  |
+| **`clientTypes`** : [`ClientType`](#clienttype)   `1..*`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 
 <br>
 
@@ -29,12 +29,12 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
-|------|------|:------------:|----------------------|-------------|-------------|
-| `untouchedProperty` | `String` | `1..1` |  |  |  |
-| :bomb: `formerMandatoryProperty` | `String` | `0..1` |  | V4, V5, V6: `@NotNull`<br> | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
-| :exclamation:`deprecatedProperty` | `String` | `0..1` |  |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
-| `derivedProperty` | `String` | `1..1` |  | V4, V5, V6: `@Optional`<br>`derived` |  |
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`untouchedProperty`** : `String`   `1..1`<br> |  |  |
+| <font color="red">**`formerMandatoryProperty`**</font> : `String`   `0..1`<br>        `@NotNull: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
+| *`deprecatedProperty`* : `String`   `0..1`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| **`derivedProperty`** : `String`   `1..1`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 
 <br>
 
@@ -46,15 +46,15 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
-|------|------|:------------:|----------------------|-------------|-------------|
-| :bomb: `upcomingMandatoryProperty` | `String` | `1..1` |  | V4, V5, V6: `@Optional`<br> | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
-| :bomb: `propertyWithNewConstraints` | `String` | `1..1` |  |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
-| :exclamation:`formerMandatoryRequestProperty` | `String` | `0..1` |  | V4, V5, V6: `@NotNull`<br> | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
-| `untouchedProperty` | `String` | `1..1` |  |  |  |
-| `constraintChangingProperty` | `String` | `1..1` |  | V4, V5, V6: `@Size(min=10, max=20)`<br>V7: @Size(min=10, max=20)<br>V4, V5, V6: `@Optional`<br> |  |
-| `otherPojos` | [`OtherPojo`](#otherpojo) | `1..*` |  | V4, V5, V6: `@Optional`<br> |  |
-| `thePojo` | [`OtherPojo`](#otherpojo) | `1..1` |  | V4, V5, V6: `@Optional`<br> |  |
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| <font color="red">**`upcomingMandatoryProperty`**</font> : `String`   `1..1`<br>        `@Optional: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
+| <font color="red">**`propertyWithNewConstraints`**</font> : `String`   `1..1`<br> |  | :bomb: **Breaking Change Notice (since: , active with: ):**<br> |
+| *`formerMandatoryRequestProperty`* : `String`   `0..1`<br>        `@NotNull: versions=V4, V5, V6` |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| **`untouchedProperty`** : `String`   `1..1`<br> |  |  |
+| **`constraintChangingProperty`** : `String`   `1..1`<br>        `@Size: min=5, max=500, versions=V4, V5, V6`<br>        `@Size: min=10, max=20, versions=V7`<br>        `@Optional: versions=V4, V5, V6` |  |  |
+| **`otherPojos`** : [`OtherPojo`](#otherpojo)   `1..*`<br>        `@Optional: versions=V4, V5, V6` |  |  |
+| **`thePojo`** : [`OtherPojo`](#otherpojo)   `1..1`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 
 <br>
 
@@ -66,15 +66,15 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
-|------|------|:------------:|----------------------|-------------|-------------|
-| `multiValuedProperty` | `String` | `1..*` |  | V4, V5, V6: `@Optional`<br> |  |
-| `decimalProperty` | `java.math.BigDecimal` | `1..1` |  | V4, V5, V6: `@DecimalMax(maxValue=48, inclusive=false)`<br>V7: @DecimalMax(maxValue=48, inclusive=false)<br>V4, V5, V6: `@DecimalMin(minValue=42, inclusive=false)`<br>V7: @DecimalMin(minValue=42, inclusive=false)<br>V4, V5, V6: `@Digits(integer=5, fraction=2)`<br>V7: @Digits(integer=5, fraction=2)<br>V4, V5, V6: `@Optional`<br> |  |
-| `integerProperty` | `java.lang.Integer` | `1..1` |  | V4, V5, V6: `@Min(minValue=333)`<br>V7: @Min(minValue=333)<br>V4, V5, V6: `@Max(maxValue=666)`<br>V7: @Max(maxValue=666)<br><br>V7: @Negative<br><br>V7: @PositiveOrZero<br>V4, V5, V6: `@NegativeOrZero`<br><br>V4, V5, V6: `@Positive`<br> |  |
-| `stringProperty` | `String` | `1..1` |  | V4, V5, V6: `@Pattern(regexp=[A-Z]+)`<br>V7: @Pattern(regexp=[A-Z]+)<br>V4, V5, V6: `@NotBlank`<br> |  |
-| `emailProperty` | `String` | `1..1` |  | <br>V7: @Email<br><br>V7: @NotEmpty |  |
-| `booleanProperty` | `java.lang.Boolean` | `1..1` |  | <br>V7: @AssertTrue<br>V4, V5, V6: `@AssertFalse`<br> |  |
-| `dateTimeProperty` | `java.time.OffsetDateTime` | `1..1` |  | <br>V7: @FutureOrPresent<br><br>V7: @Past<br>V4, V5, V6: `@Future`<br><br>V4, V5, V6: `@PastOrPresent`<br> |  |
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`multiValuedProperty`** : `String`   `1..*`<br>        `@Optional: versions=V4, V5, V6` |  |  |
+| **`decimalProperty`** : `java.math.BigDecimal`   `1..1`<br>        `@DecimalMax: maxValue=49, inclusive=true, versions=V4, V5, V6`<br>        `@DecimalMax: maxValue=48, inclusive=false, versions=V7`<br>        `@DecimalMin: minValue=42, inclusive=true, versions=V4, V5, V6`<br>        `@DecimalMin: minValue=42, inclusive=false, versions=V7`<br>        `@Digits: integer=5, fraction=3, versions=V4, V5, V6`<br>        `@Digits: integer=5, fraction=2, versions=V7`<br>        `@Optional: versions=V4, V5, V6` |  |  |
+| **`integerProperty`** : `java.lang.Integer`   `1..1`<br>        `@Min: minValue=300, versions=V4, V5, V6`<br>        `@Min: minValue=333, versions=V7`<br>        `@Max: maxValue=667, versions=V4, V5, V6`<br>        `@Max: maxValue=666, versions=V7`<br>        `@Negative: versions=V7`<br>        `@PositiveOrZero: versions=V7`<br>        `@NegativeOrZero: versions=V4, V5, V6`<br>        `@Positive: versions=V4, V5, V6` |  |  |
+| **`stringProperty`** : `String`   `1..1`<br>        `@Pattern: regexp=[B-Z]+, versions=V4, V5, V6`<br>        `@Pattern: regexp=[A-Z]+, versions=V7`<br>        `@NotBlank: versions=V4, V5, V6` |  |  |
+| **`emailProperty`** : `String`   `1..1`<br>        `@Email, versions=V7`<br>        `@NotEmpty: versions=V7` |  |  |
+| **`booleanProperty`** : `java.lang.Boolean`   `1..1`<br>        `@AssertTrue: versions=V7`<br>        `@AssertFalse: versions=V4, V5, V6` |  |  |
+| **`dateTimeProperty`** : `java.time.OffsetDateTime`   `1..1`<br>        `@FutureOrPresent: versions=V7`<br>        `@Past: versions=V7`<br>        `@Future: versions=V4, V5, V6`<br>        `@PastOrPresent: versions=V4, V5, V6` |  |  |
 
 <br>
 

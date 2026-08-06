@@ -14,10 +14,10 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
-|------|------|:------------:|----------------------|-------------|-------------|
-| `iban` | `int` | `1..1` |  |  |  |
-| `currency` | `java.util.Currency` | `1..1` |  |  |  |
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`iban`** : `int`   `1..1`<br> |  |  |
+| **`currency`** : `java.util.Currency`   `1..1`<br> |  |  |
 
 <br>
 
@@ -29,13 +29,13 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
-|------|------|:------------:|----------------------|-------------|-------------|
-| `sourceAccount` | [`Account`](#account) | `1..1` |  |  |  |
-| `targetAccount` | [`Account`](#account) | `1..1` |  |  |  |
-| `amount` | `java.math.BigDecimal` | `1..1` |  |  |  |
-| `currency` | `java.util.Currency` | `1..1` |  |  |  |
-| `executionTimestamp` | `java.util.Calendar` | `1..1` |  |  |  |
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`sourceAccount`** : [`Account`](#account)   `1..1`<br> |  |  |
+| **`targetAccount`** : [`Account`](#account)   `1..1`<br> |  |  |
+| **`amount`** : `java.math.BigDecimal`   `1..1`<br> |  |  |
+| **`currency`** : `java.util.Currency`   `1..1`<br> |  |  |
+| **`executionTimestamp`** : `java.util.Calendar`   `1..1`<br> |  |  |
 
 <br>
 
@@ -53,15 +53,12 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
-|------|------|:------------:|----------------------|-------------|-------------|
-| `name` | `java.lang.String` | `1..1` |  | `@NotBlank`
- |  |
-| `firstName` | `java.lang.String` | `1..1` |  | `@NotBlank`
- |  |
-| `email` | `java.lang.String` | `1..1` |  | `@Email`
- |  |
-| `accounts` | [`Account`](#account) | `0..*` |  |  |  |
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`name`** : `java.lang.String`   `1..1`<br>        `@NotBlank` |  |  |
+| **`firstName`** : `java.lang.String`   `1..1`<br>        `@NotBlank` |  |  |
+| **`email`** : `java.lang.String`   `1..1`<br>        `@Email` |  |  |
+| **`accounts`** : [`Account`](#account)   `0..*`<br> |  |  |
 
 <br>
 
@@ -79,9 +76,9 @@
 
 **Properties / Associations**
 
-| Name | Type | Multiplicity |  Legacy Name | Constraints | Description |
-|------|------|:------------:|----------------------|-------------|-------------|
-| `tags` | `String` | `1..1` |  |  |  |
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`tags`** : `String`   `1..1`<br> |  |  |
 
 <br>
 
