@@ -12,6 +12,8 @@
 «EXTENSION functions::BreakingChange»
 «EXTENSION functions::Alias»
 
+«EXTENSION jeafgenerator::api::ModelReportExtensionPoint»
+
 «EXTENSION java::GeneratorCommons»
 
 «EXTENSION org::openarchitectureware::util::stdlib::io»
@@ -23,7 +25,9 @@
 
 «DEFINE PackageReport FOR Package»
 «FILE this.qualifiedName() + ".md" res_gen-»
-# Package `«this.qualifiedName()»`
+«this.getBreadcrumpNavigation()»
+
+# «this.getReportTitle()»
 
 **Types / Enumerations:**
 [TOC levels=2]

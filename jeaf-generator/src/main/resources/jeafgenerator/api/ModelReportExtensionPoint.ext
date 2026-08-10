@@ -1,0 +1,29 @@
+extension functions::NamedElement;
+
+// Target Output: Model Report
+// Description:
+//		Extension point can be used to customize customize outpout of model report.
+
+
+// Target Output: Model Report
+// since: #4
+// Description:
+//		Function returns breadcrump navigation line at the very top of the generated model report.
+//
+// Note:
+//		By default there is no bread crump navigation.
+
+cached String getBreadcrumpNavigation(uml::Package package):
+	"";
+
+
+// Target Output: Model Report
+// since: #4
+// Description:
+//		Function returns the title for a package report
+//
+// Note:
+//		By default this is the name of the Package
+
+cached String getReportTitle(uml::Package package):
+	"Package `" + package.qualifiedName() + "`";
