@@ -1,5 +1,3 @@
-
-
 # Package `com.anaptecs.jeaf.accounting`
 
 **Types / Enumerations:**

@@ -25,8 +25,9 @@
 
 «DEFINE PackageReport FOR Package»
 «FILE this.qualifiedName() + ".md" res_gen-»
+«IF this.getBreadcrumpNavigation().trim().length > 0-»
 «this.getBreadcrumpNavigation()»
-
+«ENDIF-»
 # «this.getReportTitle()»
 
 **Types / Enumerations:**

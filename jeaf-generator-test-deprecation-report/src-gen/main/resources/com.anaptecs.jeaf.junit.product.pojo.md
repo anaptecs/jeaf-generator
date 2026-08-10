@@ -1,5 +1,3 @@
-
-
 # Package `com.anaptecs.jeaf.junit.product.pojo`
 
 **Types / Enumerations:**

@@ -1,5 +1,3 @@
-
-
 # Package `com.anaptecs.jeaf.junit.domainObjects`
 
 **Types / Enumerations:**
