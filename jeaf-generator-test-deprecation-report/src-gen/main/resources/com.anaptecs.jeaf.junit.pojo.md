@@ -42,7 +42,7 @@
 <br>
 
 ## BChildPOJO
-:exclamation:**Deprecation Notice (since: , removed with: ):**<br>
+:exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br>
 
 <br>
 
@@ -112,7 +112,7 @@
 This is the first line of the first comment
 2nd line
 
-:exclamation:**Deprecation Notice (since: Big bang, removed with: Last X-Mas):**<br>We do not like this class any more.
+:exclamation:**Deprecation Notice (since: Big bang, removed with: Last X-Mas, removal date: ):**<br>We do not like this class any more.
 
 <br>
 
@@ -193,7 +193,7 @@ This is the first line of the first comment
 | **`yetAnotherAttribute`** : `boolean`   `1..1`<br> |  |  |
 | **`readonlyAssociation`** : [`ImmutablePOJO`](#immutablepojo)   `0..*`<br> |  |  |
 | **`immutableChildPOJO`** : [`ImmutableChildPOJO`](#immutablechildpojo)   `0..1`<br> |  |  |
-| *`deprecatedRefs`* : [`ImmutableChildPOJO`](#immutablechildpojo)   `0..*`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| *`deprecatedRefs`* : [`ImmutableChildPOJO`](#immutablechildpojo)   `0..*`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br> |
 | **`deprecatedRef`** : [`ChildPOJO`](#childpojo)   `0..1`<br> |  |  |
 
 <br>
@@ -331,13 +331,13 @@ This is the first line of the first comment
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
 | **`parentAttribute`** : `java.lang.String`   `1..1`<br> |  |  |
-| *`weirdAttribute`* : `byte`   `1..1`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| *`weirdAttribute`* : `byte`   `1..1`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br> |
 | **`hello`** : `String`   `1..1`<br> |  |  |
 
 <br>
 
 ## PlainPOJO
-:bomb: **Breaking Change Notice (since: , active with: 47.11):**<br>Announcement for the far away future
+:bomb: **Breaking Change Notice (since: , active with: 47.11, activation date: 2222-12-31):**<br>Announcement for the far away future
 
 
 <br>
@@ -490,5 +490,5 @@ This is the first line of the first comment
 |------|----------------------|----------------------------|
 | `ALPHA` |   |  |
 | `BETA` |   |  |
-| `GAMMA` |   | :bomb: **Breaking Change Notice (since: , active with: 47.11):**<br>X-mas present |
+| `GAMMA` |   | :bomb: **Breaking Change Notice (since: , active with: 47.11, activation date: 2024-12-24):**<br>X-mas present |
 

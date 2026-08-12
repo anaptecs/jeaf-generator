@@ -245,7 +245,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2.1):**&lt;br&gt;&lt;br&gt; Association will required at least 1 object. 
+   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2.1, activation date: ):**&lt;br&gt;&lt;br&gt; Association will required at least 1 object. 
    * @return inventories
    */
   @javax.annotation.Nullable

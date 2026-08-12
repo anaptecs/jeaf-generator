@@ -125,12 +125,12 @@ private cached String getAuthorizedRoles(uml::Element element, String indentatio
     
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
+    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ", removal date: " + element.getDeprecationRemovalDate() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
     else "";
     
 private cached String getBreakingChangeDescriptionInternal(uml::NamedElement element, String indentation):
     if element.isBreakingChange()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (active with " + element.getBreakingChangeActiveWith() +  "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
+    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (active with " + element.getBreakingChangeActiveWith() + ", activation date: " + element.getBreakingChangeActivactionDate() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
     else "";
 
     

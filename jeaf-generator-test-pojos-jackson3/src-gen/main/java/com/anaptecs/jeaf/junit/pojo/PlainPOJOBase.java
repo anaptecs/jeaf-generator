@@ -21,7 +21,8 @@ import tools.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * <p/>
- * <b>Breaking Change with 47.11:</b> Announcement for the far away future
+ * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>activation date:</b> 2222-12-31):
+ * Announcement for the far away future
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

@@ -76,18 +76,22 @@ public class MyPojoRequest {
 
   /**
    * <p/>
-   * <b>Breaking Change with :</b>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-09-13): Property
+   * will become mandatory in the future
    */
   @NotNull(groups = { V7.class })
   private String upcomingMandatoryProperty;
 
   /**
    * <p/>
-   * <b>Breaking Change with :</b>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>activation date:</b> TBD):
    */
   @NotNull
   private String propertyWithNewConstraints;
 
+  /**
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   */
   @Deprecated
   @NotNull(groups = { V4.class, V5.class, V6.class })
   private String formerMandatoryRequestProperty;
@@ -171,16 +175,20 @@ public class MyPojoRequest {
   public static class Builder {
     /**
      * <p/>
-     * <b>Breaking Change with :</b>
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-09-13): Property
+     * will become mandatory in the future
      */
     private String upcomingMandatoryProperty;
 
     /**
      * <p/>
-     * <b>Breaking Change with :</b>
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>activation date:</b> TBD):
      */
     private String propertyWithNewConstraints;
 
+    /**
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+     */
     @Deprecated
     private String formerMandatoryRequestProperty;
 
@@ -237,7 +245,8 @@ public class MyPojoRequest {
     /**
      * Method sets attribute {@link #upcomingMandatoryProperty}.<br/>
      * <p/>
-     * <b>Breaking Change with :</b>
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-09-13): Property
+     * will become mandatory in the future
      *
      * @param pUpcomingMandatoryProperty Value to which {@link #upcomingMandatoryProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -252,7 +261,7 @@ public class MyPojoRequest {
     /**
      * Method sets attribute {@link #propertyWithNewConstraints}.<br/>
      * <p/>
-     * <b>Breaking Change with :</b>
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>activation date:</b> TBD):
      *
      * @param pPropertyWithNewConstraints Value to which {@link #propertyWithNewConstraints} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -269,6 +278,7 @@ public class MyPojoRequest {
      *
      * @param pFormerMandatoryRequestProperty Value to which {@link #formerMandatoryRequestProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
      */
     @Deprecated
     @JsonSetter(nulls = Nulls.SKIP)
@@ -366,7 +376,8 @@ public class MyPojoRequest {
   /**
    * Method returns attribute {@link #upcomingMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change with :</b>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-09-13): Property
+   * will become mandatory in the future
    *
    * @return {@link String} Value to which {@link #upcomingMandatoryProperty} is set.
    */
@@ -378,7 +389,8 @@ public class MyPojoRequest {
   /**
    * Method sets attribute {@link #upcomingMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change with :</b>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-09-13): Property
+   * will become mandatory in the future
    *
    * @param pUpcomingMandatoryProperty Value to which {@link #upcomingMandatoryProperty} should be set.
    */
@@ -390,7 +402,7 @@ public class MyPojoRequest {
   /**
    * Method returns attribute {@link #propertyWithNewConstraints}.<br/>
    * <p/>
-   * <b>Breaking Change with :</b>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>activation date:</b> TBD):
    *
    * @return {@link String} Value to which {@link #propertyWithNewConstraints} is set.
    */
@@ -402,7 +414,7 @@ public class MyPojoRequest {
   /**
    * Method sets attribute {@link #propertyWithNewConstraints}.<br/>
    * <p/>
-   * <b>Breaking Change with :</b>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>activation date:</b> TBD):
    *
    * @param pPropertyWithNewConstraints Value to which {@link #propertyWithNewConstraints} should be set.
    */
@@ -415,6 +427,7 @@ public class MyPojoRequest {
    * Method returns attribute {@link #formerMandatoryRequestProperty}.<br/>
    *
    * @return {@link String} Value to which {@link #formerMandatoryRequestProperty} is set.
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
    */
   @Deprecated
   public String getFormerMandatoryRequestProperty( ) {
@@ -425,6 +438,7 @@ public class MyPojoRequest {
    * Method sets attribute {@link #formerMandatoryRequestProperty}.<br/>
    *
    * @param pFormerMandatoryRequestProperty Value to which {@link #formerMandatoryRequestProperty} should be set.
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
    */
   @Deprecated
   public void setFormerMandatoryRequestProperty( String pFormerMandatoryRequestProperty ) {
