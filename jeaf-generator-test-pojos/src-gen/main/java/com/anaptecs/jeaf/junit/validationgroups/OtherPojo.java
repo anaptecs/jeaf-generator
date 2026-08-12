@@ -85,6 +85,16 @@ public class OtherPojo {
    */
   public static final String DATETIMEPROPERTY = "dateTimeProperty";
 
+  /**
+   * Constant for the name of attribute "positiveValueProperty".
+   */
+  public static final String POSITIVEVALUEPROPERTY = "positiveValueProperty";
+
+  /**
+   * Constant for the name of attribute "negativeProperty".
+   */
+  public static final String NEGATIVEPROPERTY = "negativeProperty";
+
   @Size(min = 1, groups = { V7.class })
   private String[] multiValuedProperty;
 
@@ -101,10 +111,6 @@ public class OtherPojo {
   @Min(value = 300, groups = { V4.class, V5.class, V6.class })
   @Max(value = 666, groups = { V7.class })
   @Max(value = 667, groups = { V4.class, V5.class, V6.class })
-  @Negative(groups = { V7.class })
-  @PositiveOrZero(groups = { V7.class })
-  @NegativeOrZero(groups = { V4.class, V5.class, V6.class })
-  @Positive(groups = { V4.class, V5.class, V6.class })
   @NotNull
   private Integer integerProperty;
 
@@ -130,6 +136,14 @@ public class OtherPojo {
   @NotNull
   private OffsetDateTime dateTimeProperty;
 
+  @PositiveOrZero(groups = { V7.class })
+  @Positive(groups = { V4.class, V5.class, V6.class })
+  private int positiveValueProperty;
+
+  @Negative(groups = { V7.class })
+  @NegativeOrZero(groups = { V4.class, V5.class, V6.class })
+  private int negativeProperty;
+
   /**
    * Initialize object using the passed builder.
    *
@@ -146,6 +160,8 @@ public class OtherPojo {
     emailProperty = pBuilder.emailProperty;
     booleanProperty = pBuilder.booleanProperty;
     dateTimeProperty = pBuilder.dateTimeProperty;
+    positiveValueProperty = pBuilder.positiveValueProperty;
+    negativeProperty = pBuilder.negativeProperty;
   }
 
   /**
@@ -175,10 +191,15 @@ public class OtherPojo {
    *
    * @param pDateTimeProperty Value to which {@link #dateTimeProperty} should be set.
    *
+   * @param pPositiveValueProperty Value to which {@link #positiveValueProperty} should be set.
+   *
+   * @param pNegativeProperty Value to which {@link #negativeProperty} should be set.
+   *
    * @return {@link OtherPojo}
    */
   public static OtherPojo of( String[] pMultiValuedProperty, BigDecimal pDecimalProperty, Integer pIntegerProperty,
-      String pStringProperty, String pEmailProperty, Boolean pBooleanProperty, OffsetDateTime pDateTimeProperty ) {
+      String pStringProperty, String pEmailProperty, Boolean pBooleanProperty, OffsetDateTime pDateTimeProperty,
+      int pPositiveValueProperty, int pNegativeProperty ) {
     var lBuilder = OtherPojo.builder();
     lBuilder.setMultiValuedProperty(pMultiValuedProperty);
     lBuilder.setDecimalProperty(pDecimalProperty);
@@ -187,6 +208,8 @@ public class OtherPojo {
     lBuilder.setEmailProperty(pEmailProperty);
     lBuilder.setBooleanProperty(pBooleanProperty);
     lBuilder.setDateTimeProperty(pDateTimeProperty);
+    lBuilder.setPositiveValueProperty(pPositiveValueProperty);
+    lBuilder.setNegativeProperty(pNegativeProperty);
     return lBuilder.build();
   }
 
@@ -210,6 +233,10 @@ public class OtherPojo {
 
     private OffsetDateTime dateTimeProperty;
 
+    private int positiveValueProperty;
+
+    private int negativeProperty;
+
     /**
      * Use {@link OtherPojo#builder()} instead of private constructor to create new builder.
      */
@@ -229,6 +256,8 @@ public class OtherPojo {
         this.setEmailProperty(pObject.emailProperty);
         this.setBooleanProperty(pObject.booleanProperty);
         this.setDateTimeProperty(pObject.dateTimeProperty);
+        this.setPositiveValueProperty(pObject.positiveValueProperty);
+        this.setNegativeProperty(pObject.negativeProperty);
       }
     }
 
@@ -326,6 +355,32 @@ public class OtherPojo {
     public Builder setDateTimeProperty( OffsetDateTime pDateTimeProperty ) {
       // Assign value to attribute
       dateTimeProperty = pDateTimeProperty;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #positiveValueProperty}.<br/>
+     *
+     * @param pPositiveValueProperty Value to which {@link #positiveValueProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setPositiveValueProperty( int pPositiveValueProperty ) {
+      // Assign value to attribute
+      positiveValueProperty = pPositiveValueProperty;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #negativeProperty}.<br/>
+     *
+     * @param pNegativeProperty Value to which {@link #negativeProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setNegativeProperty( int pNegativeProperty ) {
+      // Assign value to attribute
+      negativeProperty = pNegativeProperty;
       return this;
     }
 
@@ -499,6 +554,44 @@ public class OtherPojo {
     dateTimeProperty = pDateTimeProperty;
   }
 
+  /**
+   * Method returns attribute {@link #positiveValueProperty}.<br/>
+   *
+   * @return int Value to which {@link #positiveValueProperty} is set.
+   */
+  public int getPositiveValueProperty( ) {
+    return positiveValueProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #positiveValueProperty}.<br/>
+   *
+   * @param pPositiveValueProperty Value to which {@link #positiveValueProperty} should be set.
+   */
+  public void setPositiveValueProperty( int pPositiveValueProperty ) {
+    // Assign value to attribute
+    positiveValueProperty = pPositiveValueProperty;
+  }
+
+  /**
+   * Method returns attribute {@link #negativeProperty}.<br/>
+   *
+   * @return int Value to which {@link #negativeProperty} is set.
+   */
+  public int getNegativeProperty( ) {
+    return negativeProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #negativeProperty}.<br/>
+   *
+   * @param pNegativeProperty Value to which {@link #negativeProperty} should be set.
+   */
+  public void setNegativeProperty( int pNegativeProperty ) {
+    // Assign value to attribute
+    negativeProperty = pNegativeProperty;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
@@ -510,6 +603,8 @@ public class OtherPojo {
     lResult = lPrime * lResult + Objects.hashCode(emailProperty);
     lResult = lPrime * lResult + Objects.hashCode(booleanProperty);
     lResult = lPrime * lResult + Objects.hashCode(dateTimeProperty);
+    lResult = lPrime * lResult + positiveValueProperty;
+    lResult = lPrime * lResult + negativeProperty;
     return lResult;
   }
 
@@ -533,7 +628,8 @@ public class OtherPojo {
           && Objects.equals(stringProperty, lOther.stringProperty)
           && Objects.equals(emailProperty, lOther.emailProperty)
           && Objects.equals(booleanProperty, lOther.booleanProperty)
-          && Objects.equals(dateTimeProperty, lOther.dateTimeProperty);
+          && Objects.equals(dateTimeProperty, lOther.dateTimeProperty)
+          && positiveValueProperty == lOther.positiveValueProperty && negativeProperty == lOther.negativeProperty;
     }
     return lEquals;
   }
@@ -581,6 +677,14 @@ public class OtherPojo {
     lBuilder.append(pIndent);
     lBuilder.append("dateTimeProperty: ");
     lBuilder.append(dateTimeProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("positiveValueProperty: ");
+    lBuilder.append(positiveValueProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("negativeProperty: ");
+    lBuilder.append(negativeProperty);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
