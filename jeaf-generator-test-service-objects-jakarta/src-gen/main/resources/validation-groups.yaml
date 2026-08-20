@@ -42,6 +42,7 @@ components:
       additionalProperties: false
       required:
         - untouchedProperty
+        - formerMandatoryProperty
       properties:
         untouchedProperty:
           type: string
@@ -68,12 +69,9 @@ components:
       type: object
       additionalProperties: false
       required:
-        - upcomingMandatoryProperty
         - propertyWithNewConstraints
+        - formerMandatoryRequestProperty
         - untouchedProperty
-        - constraintChangingProperty
-        - otherPojos
-        - thePojo
       properties:
         upcomingMandatoryProperty:
           description: |
@@ -82,7 +80,7 @@ components:
             **Breaking Change Notice (active with 7.0, activation date: 2026-09-13):**<br><br>
             Property will become mandatory in the future
           type: string
-          nullable: false
+          nullable: true
         propertyWithNewConstraints:
           description: |
             
@@ -105,15 +103,15 @@ components:
           nullable: false
         constraintChangingProperty:
           type: string
-          minLength: 10
-          maxLength: 20
-          nullable: false
+          minLength: 5
+          maxLength: 500
+          nullable: true
         otherPojos:
           type: array
           items:
             $ref: '#/components/schemas/OtherPojo'
           uniqueItems: true
-          minItems: 1
+
         thePojo:
           $ref: '#/components/schemas/OtherPojo'
     # com.anaptecs.jeaf.junit.validationgroups.OtherPojo
@@ -121,8 +119,6 @@ components:
       type: object
       additionalProperties: false
       required:
-        - multiValuedProperty
-        - decimalProperty
         - integerProperty
         - stringProperty
         - emailProperty
@@ -135,29 +131,29 @@ components:
           type: array
           items:
             type: string
-          minItems: 1
+
           uniqueItems: true
-          nullable: false
+          nullable: true
         decimalProperty:
           type: number
           format: double
-          maximum: 48
-          exclusiveMaximum: true
+          maximum: 49
+          exclusiveMaximum: false
           minimum: 42
-          exclusiveMinimum: true
+          exclusiveMinimum: false
           nullable: false
         integerProperty:
           type: integer
           format: int32
-          minimum: 333
-          maximum: 666
+          minimum: 300
+          maximum: 667
           nullable: false
         stringProperty:
           type: string
+          minLength: 1
           nullable: false
         emailProperty:
           type: string
-          minLength: 1
           nullable: false
         booleanProperty:
           type: boolean
@@ -170,12 +166,22 @@ components:
           type: integer
           format: int32
           minimum: 0
+          exclusiveMinimum: true
           nullable: false
         negativeProperty:
           type: integer
           format: int32
           maximum: 0
-          exclusiveMaximum: true
+          nullable: false
+        v6Property:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with 8.0, activation date: 2026-10-20):**<br><br>
+            Property will become mandatory.
+          type: string
+          minLength: 0
+          maxLength: 32
           nullable: false
 
     # com.anaptecs.jeaf.junit.validationgroups.ClientType

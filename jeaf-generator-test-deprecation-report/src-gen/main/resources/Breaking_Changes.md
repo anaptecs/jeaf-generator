@@ -61,6 +61,7 @@
 | `MyPojoRequest` | `propertyWithNewConstraints` |  |  |  |  | 
 | `MyPOJOResponse` | `formerMandatoryProperty` |  |  | 7.0 | 2026-09-13 | 
 | `MyPojoRequest` | `upcomingMandatoryProperty` | Property will become mandatory in the future |  | 7.0 | 2026-09-13 | 
+| `OtherPojo` | `v6Property` | Property will become mandatory. |  | 8.0 | 2026-10-20 | 
 
 <br>
 

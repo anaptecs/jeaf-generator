@@ -77,6 +77,7 @@
 | **`dateTimeProperty`** : `java.time.OffsetDateTime`   `1..1`<br>        `@FutureOrPresent: versions=V7`<br>        `@Past: versions=V7`<br>        `@Future: versions=V4, V5, V6`<br>        `@PastOrPresent: versions=V4, V5, V6` |  |  |
 | **`positiveValueProperty`** : `int`   `1..1`<br>        `@PositiveOrZero: versions=V7`<br>        `@Positive: versions=V4, V5, V6` |  |  |
 | **`negativeProperty`** : `int`   `1..1`<br>        `@Negative: versions=V7`<br>        `@NegativeOrZero: versions=V4, V5, V6` |  |  |
+| <font color="red">**`v6Property`**</font> : `String`   `1..1`<br>        `@Size: min=0, max=32, versions=V6`<br>        `@Size: min=10, max=32, versions=V7`<br>        `@Optional: versions=V6` |  | :bomb: **Breaking Change Notice (since: , active with: 8.0, activation date: 2026-10-20):**<br>Property will become mandatory. |
 
 <br>
 

@@ -994,6 +994,16 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false)
   private OpenAPIVersion openAPIVersion = OpenAPIVersion.OPEN_API_3_1;
 
+  /**
+   * Parameter contains the fully qualified name of all validation groups that should be active during OpenAPI
+   * generation. Validation groups are a mechanism that can be used to implement version specific constraints in OpenAPI
+   * as well as in Java.
+   *
+   * Multiple entries have to be separated by <code>","</code>.
+   */
+  @Parameter(required = false)
+  private String activeOpenAPIValidationGroups = "";
+
   @Parameter(required = false, defaultValue = "*.yaml,*.yml")
   private List<String> openAPIExtensions = new ArrayList<>();
 
@@ -2511,6 +2521,7 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
         lLog.info("Generate dependent OpenAPI Specifications:        " + generateDependentOpenAPISpecs);
         lLog.info("Use transitive OpenAPI dependencies:              " + useTransitiveOpenAPIDependencies);
+        lLog.info("Active OpenAPI Validation Groups:                 " + activeOpenAPIValidationGroups);
         lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
         if (validateOpenAPISpec) {
           lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
@@ -3023,6 +3034,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapi.checkOpenAPIDependencies",
           Boolean.toString(!disableOpenAPIDependencyChecks));
       System.setProperty("switch.gen.openapi.version", openAPIVersion.name());
+      System.setProperty(PROPERTY_PREFIX + "activeOpenAPIValidationGroups", activeOpenAPIValidationGroups.toString());
       System.setProperty(PROPERTY_PREFIX + "openAPISpecReferenceDefaultLocation", openAPISpecReferenceDefaultLocation);
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());

@@ -126,9 +126,48 @@ cached List[uml::Stereotype] getAllIndirectValidationStereotypes(uml::NamedEleme
 	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false).getAppliedStereotypes().select(e|e.isValidationStereotype());
 
 
+cached List[uml::Stereotype] getAllIndirectValidationStereotypesForOpenAPI(uml::NamedElement element):
+	element.getValidationDependenciesForOpenAPI().getAppliedStereotypes().select(e|e.isValidationStereotype());
+
+
+cached List[uml::Dependency] getValidationDependenciesForOpenAPI(uml::NamedElement element):
+	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false).select(e|e.getValidationGroups().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty == false);
+
+
 cached List[uml::Stereotype] getAllValidationStereotypes(uml::NamedElement element):
 	{}.addAll(element.getAllDirectValidationStereotypes()).addAll(element.getAllIndirectValidationStereotypes());
 
 
 cached List[uml::Dependency] getRemoveValidationDependencies(uml::NamedElement element):
 	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == "RemoveValidation").isEmpty == false);
+
+
+cached List[JMM::RemoveValidation] getRemoveValidationDependenciesForOpenAPI(uml::NamedElement element):
+	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getValidationGroups().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == "RemoveValidation").isEmpty == false);
+
+
+cached boolean isActiveOpenAPIValidationGroup(JMM::ValidationGroup validationGroup):
+	getActiveOpenAPIValidationGroups().contains(validationGroup.qualifiedName());
+
+
+
+
+
+cached List[String] getAllDirectValidationStereotypeNames(uml::MultiplicityElement element):
+	element.asNamedElement().getAllDirectValidationStereotypes().name;
+
+
+cached List[String] getAllIndirectValidationStereotypeNames(uml::MultiplicityElement element):
+	element.asNamedElement().getAllIndirectValidationStereotypesForOpenAPI().name;
+
+
+cached List[String] getRemovedValidationNames(uml::MultiplicityElement element):
+	element.asNamedElement().getRemoveValidationDependenciesForOpenAPI().removedValidations.toString();
+
+
+cached List[String] getEffectiveDirectValidationStereotyeNames(uml::MultiplicityElement element):
+	{}.addAll(element.getAllDirectValidationStereotypeNames().select(e | element.getRemovedValidationNames().contains(e) == false && element.getAllIndirectValidationStereotypeNames().contains(e) == false));
+
+
+cached List[String] getAllValidationStereotypeNamesForOpenAPI(uml::MultiplicityElement element):
+	{}.addAll(element.getAllIndirectValidationStereotypeNames()).addAll(element.getEffectiveDirectValidationStereotyeNames());

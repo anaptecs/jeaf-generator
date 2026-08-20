@@ -99,6 +99,11 @@ public class OtherPojo {
    */
   public static final String NEGATIVEPROPERTY = "negativeProperty";
 
+  /**
+   * Constant for the name of attribute "v6Property".
+   */
+  public static final String V6PROPERTY = "v6Property";
+
   @Size(min = 1, groups = { V7.class })
   private String[] multiValuedProperty;
 
@@ -149,6 +154,16 @@ public class OtherPojo {
   private int negativeProperty;
 
   /**
+   * <p/>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2026-10-20): Property
+   * will become mandatory.
+   */
+  @Size(min = 10, max = 32, groups = { V7.class })
+  @Size(min = 0, max = 32, groups = { V6.class })
+  @NotNull(groups = { V7.class })
+  private String v6Property;
+
+  /**
    * Initialize object using the passed builder.
    *
    * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
@@ -164,6 +179,7 @@ public class OtherPojo {
     dateTimeProperty = pBuilder.dateTimeProperty;
     positiveValueProperty = pBuilder.positiveValueProperty;
     negativeProperty = pBuilder.negativeProperty;
+    v6Property = pBuilder.v6Property;
   }
 
   /**
@@ -197,11 +213,13 @@ public class OtherPojo {
    *
    * @param pNegativeProperty Value to which {@link #negativeProperty} should be set.
    *
+   * @param pV6Property Value to which {@link #v6Property} should be set.
+   *
    * @return {@link OtherPojo}
    */
   public static OtherPojo of( String[] pMultiValuedProperty, BigDecimal pDecimalProperty, Integer pIntegerProperty,
       String pStringProperty, String pEmailProperty, Boolean pBooleanProperty, OffsetDateTime pDateTimeProperty,
-      int pPositiveValueProperty, int pNegativeProperty ) {
+      int pPositiveValueProperty, int pNegativeProperty, String pV6Property ) {
     var lBuilder = OtherPojo.builder();
     lBuilder.setMultiValuedProperty(pMultiValuedProperty);
     lBuilder.setDecimalProperty(pDecimalProperty);
@@ -212,6 +230,7 @@ public class OtherPojo {
     lBuilder.setDateTimeProperty(pDateTimeProperty);
     lBuilder.setPositiveValueProperty(pPositiveValueProperty);
     lBuilder.setNegativeProperty(pNegativeProperty);
+    lBuilder.setV6Property(pV6Property);
     return lBuilder.build();
   }
 
@@ -240,6 +259,13 @@ public class OtherPojo {
     private int negativeProperty;
 
     /**
+     * <p/>
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2026-10-20): Property
+     * will become mandatory.
+     */
+    private String v6Property;
+
+    /**
      * Use {@link OtherPojo#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -260,6 +286,7 @@ public class OtherPojo {
         this.setDateTimeProperty(pObject.dateTimeProperty);
         this.setPositiveValueProperty(pObject.positiveValueProperty);
         this.setNegativeProperty(pObject.negativeProperty);
+        this.setV6Property(pObject.v6Property);
       }
     }
 
@@ -403,6 +430,22 @@ public class OtherPojo {
     public Builder setNegativeProperty( int pNegativeProperty ) {
       // Assign value to attribute
       negativeProperty = pNegativeProperty;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #v6Property}.<br/>
+     * <p/>
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2026-10-20): Property
+     * will become mandatory.
+     *
+     * @param pV6Property Value to which {@link #v6Property} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setV6Property( @MyNotNullProperty String pV6Property ) {
+      // Assign value to attribute
+      v6Property = pV6Property;
       return this;
     }
 
@@ -610,6 +653,32 @@ public class OtherPojo {
     negativeProperty = pNegativeProperty;
   }
 
+  /**
+   * Method returns attribute {@link #v6Property}.<br/>
+   * <p/>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2026-10-20): Property
+   * will become mandatory.
+   *
+   * @return {@link String} Value to which {@link #v6Property} is set.
+   */
+  @MyNotNullProperty
+  public String getV6Property( ) {
+    return v6Property;
+  }
+
+  /**
+   * Method sets attribute {@link #v6Property}.<br/>
+   * <p/>
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2026-10-20): Property
+   * will become mandatory.
+   *
+   * @param pV6Property Value to which {@link #v6Property} should be set.
+   */
+  public void setV6Property( @MyNotNullProperty String pV6Property ) {
+    // Assign value to attribute
+    v6Property = pV6Property;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
@@ -623,6 +692,7 @@ public class OtherPojo {
     lResult = lPrime * lResult + Objects.hashCode(dateTimeProperty);
     lResult = lPrime * lResult + positiveValueProperty;
     lResult = lPrime * lResult + negativeProperty;
+    lResult = lPrime * lResult + Objects.hashCode(v6Property);
     return lResult;
   }
 
@@ -647,7 +717,8 @@ public class OtherPojo {
           && Objects.equals(emailProperty, lOther.emailProperty)
           && Objects.equals(booleanProperty, lOther.booleanProperty)
           && Objects.equals(dateTimeProperty, lOther.dateTimeProperty)
-          && positiveValueProperty == lOther.positiveValueProperty && negativeProperty == lOther.negativeProperty;
+          && positiveValueProperty == lOther.positiveValueProperty && negativeProperty == lOther.negativeProperty
+          && Objects.equals(v6Property, lOther.v6Property);
     }
     return lEquals;
   }
@@ -703,6 +774,10 @@ public class OtherPojo {
     lBuilder.append(pIndent);
     lBuilder.append("negativeProperty: ");
     lBuilder.append(negativeProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("v6Property: ");
+    lBuilder.append(v6Property);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

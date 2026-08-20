@@ -1,56 +1,98 @@
 «IMPORT uml»
 «IMPORT JMM»
 
-«EXTENSION java::Naming»
 «EXTENSION java::CustomValidationCommons»
 «EXTENSION java::OpenAPIFunctions»
 «EXTENSION java::GeneratorCommons»
 
 «EXTENSION functions::Property»
-
+«EXTENSION functions::Validation»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::MultiplicityElement»
+«EXTENSION functions::Parameter»
+«EXTENSION functions::Dependency»
 
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
+
 «DEFINE OpenAPIRestrictions(String indent) FOR MultiplicityElement -»
-    «FOREACH this.getAppliedStereotypes() AS stereotype -»
-	    «IF stereotype.isValidationStereotype() -»
-			«IF stereotype.name == "DecimalMin" -»
+    «LET this.getAllIndirectValidationStereotypeNames() AS allIndirectValidationStereotypeNames -»
+    «LET this.getEffectiveDirectValidationStereotyeNames() AS effectiveDirectValidationStereotyeNames -»
+	«FOREACH effectiveDirectValidationStereotyeNames AS stereotypeName -»
+            «EXPAND GenerateOpenAPIValidationRestriction(stereotypeName.toString(), indent) FOR this.asNamedElement() -»
+	«ENDFOREACH -»
+    «FOREACH allIndirectValidationStereotypeNames AS stereotypeName -»
+            «EXPAND GenerateOpenAPIValidationRestriction(stereotypeName, indent) FOREACH this.asNamedElement().getValidationDependenciesForOpenAPI() -»
+	«ENDFOREACH -»
+	«IF this.isMultivalued() -»
+		«IF (this.isProperty() && this.asProperty().type.isByteType()) || (this.isParameter() && this.asParameter().type.isByteType()) -»
+		«ELSE-»
+		«IF allIndirectValidationStereotypeNames.contains("Size") -»
+			«LET this.asNamedElement().getValidationDependenciesForOpenAPI().selectFirst(e|e.isStereotypeApplied("Size")).getStereotypeValue("Size", "min") AS minSize -»
+				«IF minSize.length > 0 && minSize.asInteger() > 0 -»
+«indent»      minItems: «minSize»
+				«ENDIF -»
+			«ENDLET -»
+			«LET this.asNamedElement().getValidationDependenciesForOpenAPI().selectFirst(e|e.isStereotypeApplied("Size")).getStereotypeValue("Size", "max") AS maxSize -»
+				«IF maxSize.length > 0 && maxSize.asInteger() > 0 -»
+«indent»      maxItems: «maxSize»
+				«ENDIF -»
+			«ENDLET -»
+		«ELSEIF allIndirectValidationStereotypeNames.contains("Optional") -»«REM»No special handling required as minItems = 0 is the default in OpenAPI«ENDREM»
+		«ELSEIF effectiveDirectValidationStereotyeNames.contains("Size") -»
+			«LET maxValue(this.asNamedElement().getStereotypeValue("Size", "min").asInteger(), this.lower) AS minSize -»
+				«IF minSize > 0 -»
+«indent»      minItems: «minSize»
+				«ENDIF -»
+			«ENDLET -»
+			«LET this.asNamedElement().getStereotypeValue("Size", "max") AS maxSize -»
+				«IF maxSize.length > 0 && maxSize.asInteger() > 0 -»
+«indent»      maxItems: «maxSize»
+				«ENDIF -»
+			«ENDLET -»
+		«ELSEIF this.lowerForOpenAPI() > 0 -»
+«indent»      minItems: «this.lowerForOpenAPI()»
+		«ENDIF -»
+		«ENDIF -»
+	«ENDIF -»
+    «ENDLET -»
+    «ENDLET -»
+«ENDDEFINE»
+
+
+«DEFINE GenerateOpenAPIValidationRestriction(String stereotypeName, String indent) FOR NamedElement -»
+		«IF this.isStereotypeApplied(stereotypeName) -»
+			«IF stereotypeName == "DecimalMin" -»
 			  «EXPAND DecimalMinAnnotation(indent) FOR ((DecimalMin)this)»
-			«ELSEIF stereotype.name == "DecimalMax" -»
+			«ELSEIF stereotypeName == "DecimalMax" -»
 			  «EXPAND DecimalMaxAnnotation(indent) FOR ((DecimalMax)this)»
-			«ELSEIF stereotype.name == "Min" -»
+			«ELSEIF stereotypeName == "Min" -»
 			  «EXPAND MinValueAnnotation(indent) FOR ((Min)this)»
-			«ELSEIF stereotype.name == "Max" -»
+			«ELSEIF stereotypeName == "Max" -»
 			  «EXPAND MaxValueAnnotation(indent) FOR ((Max)this)»
-			«ELSEIF stereotype.name == "Negative" -»
-			  «EXPAND NegativeAnnotation(indent) FOR ((Negative) this)»
-			«ELSEIF stereotype.name == "NegativeOrZero" -»
-			  «EXPAND NegativeOrZeroAnnotation(indent) FOR ((NegativeOrZero) this)»
-			«ELSEIF stereotype.name == "PositiveOrZero" -»
-			  «EXPAND PositiveOrZeroAnnotation(indent) FOR ((PositiveOrZero) this)»
-			«ELSEIF stereotype.name == "Positive" -»
-			  «EXPAND PositiveAnnotation(indent) FOR ((Positive) this)»
-			«ELSEIF stereotype.name == "Size" -»
-			  «IF this.isMultivalued() == false || (this.isProperty() && this.asProperty().type.isByteType() &&  this.asProperty().isMultivalued()) -»
-			  «EXPAND SizeAnnotation(indent) FOR ((Size) this)»
-			  «ELSE -»
-			  «EXPAND SizeAnnotationForArray(indent) FOR ((Size) this)»
+			«ELSEIF stereotypeName == "Negative" -»
+			  «EXPAND NegativeAnnotation(indent) FOR this.asNamedElement()»
+			«ELSEIF stereotypeName == "NegativeOrZero" -»
+			  «EXPAND NegativeOrZeroAnnotation(indent) FOR this.asNamedElement()»
+			«ELSEIF stereotypeName == "PositiveOrZero" -»
+			  «EXPAND PositiveOrZeroAnnotation(indent) FOR this.asNamedElement()»
+			«ELSEIF stereotypeName == "Positive" -»
+			  «EXPAND PositiveAnnotation(indent) FOR this.asNamedElement()»
+			«ELSEIF stereotypeName == "Size" -»
+			  «IF (this.isMultiplicityElement() && this.asMultiplicityElement().isMultivalued() == false) || (this.isDependency() && this.asDependency().source.first().isMultiplicityElement() && this.asDependency().source.first().asMultiplicityElement().isMultivalued() == false) || (this.isProperty() && this.asProperty().type.isByteType() &&  this.asProperty().isMultivalued())  || (this.isParameter() && this.asParameter().type.isByteType() && this.asParameter().type.isByteType()) -»
+			  «EXPAND LengthAnnotation(indent) FOR ((Size) this)»
 			  «ENDIF -»
-			«ELSEIF stereotype.name == "NotEmpty" -»
-			  «IF this.isMultivalued() == false -»
+			«ELSEIF stereotypeName == "NotEmpty" -»
+			  «IF (this.isMultiplicityElement() && this.asMultiplicityElement().isMultivalued() == false) || (this.isDependency() && this.asDependency().source.first().isMultiplicityElement() && this.asDependency().source.first().asMultiplicityElement().isMultivalued() == false) -»
 			  «EXPAND NotEmptyStringAnnotation(indent) FOR ((NotEmpty) this) -»
 			  «ELSE -»
 			  «EXPAND NotEmptyArrayAnnotation(indent) FOR ((NotEmpty) this) -»
 			  «ENDIF -»
-			«ELSEIF stereotype.name == "NotBlank" -»
-			  «EXPAND NotBlankAnnotation(indent) FOR ((NotBlank) this) -»
+			«ELSEIF stereotypeName == "NotBlank" -»
+			  «EXPAND NotBlankAnnotation(indent) FOR this.asNamedElement() -»
 			«ELSE -»
 			«ENDIF -»
-	    «ENDIF -»
-	«ENDFOREACH -»
-    «IF this.isMultivalued() == true && this.lowerForOpenAPI() > 0 && this.isStereotypeApplied("Size") == false -»
-«indent»      minItems: «this.lowerForOpenAPI()»
-    «ENDIF -»
+		«ENDIF -»
 «ENDDEFINE»
 
 
@@ -86,25 +128,25 @@
 «indent»      maximum: «this.maxValue -»
 «ENDDEFINE»
 
-«DEFINE NegativeAnnotation(String indent) FOR Negative -»
+«DEFINE NegativeAnnotation(String indent) FOR NamedElement -»
 «IF isOpenAPIVersion30() -»
 «indent»      maximum: 0
 «indent»      exclusiveMaximum: true«ELSE -»
 «indent»      exclusiveMaximum: 0«ENDIF -»«ENDDEFINE»
 
-«DEFINE NegativeOrZeroAnnotation(String indent) FOR NegativeOrZero -»
+«DEFINE NegativeOrZeroAnnotation(String indent) FOR NamedElement -»
 «indent»      maximum: 0«ENDDEFINE»
 
-«DEFINE PositiveOrZeroAnnotation(String indent) FOR PositiveOrZero -»
+«DEFINE PositiveOrZeroAnnotation(String indent) FOR NamedElement -»
 «indent»      minimum: 0«ENDDEFINE»
 
-«DEFINE PositiveAnnotation(String indent) FOR Positive -»
+«DEFINE PositiveAnnotation(String indent) FOR NamedElement -»
 «IF isOpenAPIVersion30() -»
 «indent»      minimum: 0
 «indent»      exclusiveMinimum: true«ELSE -»
 «indent»      exclusiveMinimum: 0«ENDIF -»«ENDDEFINE»
 
-«DEFINE SizeAnnotation(String indent) FOR Size -»
+«DEFINE LengthAnnotation(String indent) FOR Size -»
           «IF min != -1 && max != -1 -»
 «indent»      minLength: «min»
 «indent»      maxLength: «max»«ELSE-»
@@ -114,6 +156,7 @@
 «indent»      maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
 «DEFINE SizeAnnotationForArray(String indent) FOR Size -»
+          «info("# Size Type: " + this)-»
           «IF min > 0 || lowerForOpenAPI() > 0 -»
 «indent»      minItems: «maxValue(min, lowerForOpenAPI())»
           «ENDIF-»
@@ -128,6 +171,6 @@
 «indent»      minItems: 1
 «ENDDEFINE»
 
-«DEFINE NotBlankAnnotation(String indent) FOR NotBlank -»
+«DEFINE NotBlankAnnotation(String indent) FOR NamedElement -»
 «indent»      minLength: 1
 «ENDDEFINE»

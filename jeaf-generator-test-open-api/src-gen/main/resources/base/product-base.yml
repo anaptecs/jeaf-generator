@@ -1485,7 +1485,7 @@ components:
             format: int64
           minItems: 1
           uniqueItems: true
-          nullable: true
+          nullable: false
         bLongArray:
           type: array
           items:

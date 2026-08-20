@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -92,8 +93,8 @@ public class PrimitiveArraysObjectWithRestrictions {
   private JsonNullable<Set<Integer>> cIntegerArray = JsonNullable.<Set<Integer>>undefined();
 
   public static final String JSON_PROPERTY_A_LONG_ARRAY = "aLongArray";
-  @javax.annotation.Nullable
-  private Set<Long> aLongArray;
+  @javax.annotation.Nonnull
+  private Set<Long> aLongArray = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_B_LONG_ARRAY = "bLongArray";
   private JsonNullable<Set<Long>> bLongArray = JsonNullable.<Set<Long>>undefined();
@@ -557,7 +558,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aLongArray(@javax.annotation.Nullable Set<Long> aLongArray) {
+  public PrimitiveArraysObjectWithRestrictions aLongArray(@javax.annotation.Nonnull Set<Long> aLongArray) {
     this.aLongArray = aLongArray;
     return this;
   }
@@ -574,8 +575,8 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aLongArray
    * @return aLongArray
    */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = false)
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Set<Long> getaLongArray() {
@@ -583,9 +584,10 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = false)
+  @JsonDeserialize(as = LinkedHashSet.class)
+  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setaLongArray(@javax.annotation.Nullable Set<Long> aLongArray) {
+  public void setaLongArray(@javax.annotation.Nonnull Set<Long> aLongArray) {
     this.aLongArray = aLongArray;
   }
 
