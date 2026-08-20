@@ -11,10 +11,10 @@ cached boolean hasValidationStereotype(uml::NamedElement element) :
   element.getAppliedStereotypes().selectFirst(e|e.isValidationStereotype()) != null;
 
 
-cached boolean requiresNotNullAnnotation(uml::NamedElement element) :
-  if element.isStereotypeApplied("NotEmpty") || element.isStereotypeApplied("NotBlank") || element.isStereotypeApplied("Null") || element.isStereotypeApplied("NotNull")
+cached boolean requiresNotNullAnnotation(List[String] stereotypeNames) :
+  if stereotypeNames.contains("NotEmpty") || stereotypeNames.contains("NotBlank") || stereotypeNames.contains("Null") || stereotypeNames.contains("NotNull")
   then false
-  else true;   
+  else true;
 
 
 cached boolean hasErrorCodeOrSeverity(JMM::Validation validation):

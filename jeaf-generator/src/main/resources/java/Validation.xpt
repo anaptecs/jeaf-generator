@@ -73,7 +73,7 @@ public @interface «validationClass» {
     «LET this.getAllIndirectValidationStereotypes() AS allIndirectValidationStereotypes»
     «LET this.getRemoveValidationDependencies() AS removeValidationDepedencies»
 	«LET {}.addAll(allDirectValidationStereotypes).addAll(allIndirectValidationStereotypes) AS allValidationStereotypes»
-	«LET allValidationStereotypes.typeSelect(Stereotype).name.toSet() AS allValidationStereotypeNames»
+	«LET allValidationStereotypes.typeSelect(Stereotype).name.toSet().toList() AS allValidationStereotypeNames»
 
     «FOREACH allValidationStereotypeNames AS stereotypeName»
 		«LET allDirectValidationStereotypes.select(e|e.name == stereotypeName).first() AS directValidationStereotype»
@@ -176,7 +176,7 @@ public @interface «validationClass» {
 								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
 							«ENDIF»
 						«ENDIF»
-						«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == false && property.type.isPrimitiveType() == false && allValidationStereotypeNames.contains("NotNull") == false && this.requiresNotNullAnnotation() && property.lower() > 0»
+						«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == false && property.type.isPrimitiveType() == false && allDirectValidationStereotypes.name.requiresNotNullAnnotation() && property.lower() > 0»
 							«IF optionalValidationDependencies.isEmpty»
 								@«getEnterpriseJavaPackage()».validation.constraints.NotNull
 							«ELSE»
@@ -191,7 +191,7 @@ public @interface «validationClass» {
 								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
 							«ENDIF»
 						«ENDIF»
-						«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isStatic == false && property.isTransient() == false && allValidationStereotypeNames.contains("NotNull") == false && this.requiresNotNullAnnotation() && property.lower() > 0»
+						«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isStatic == false && property.isTransient() == false && allDirectValidationStereotypes.name.requiresNotNullAnnotation() && property.lower() > 0»
 							«IF optionalValidationDependencies.isEmpty»
 								@«getEnterpriseJavaPackage()».validation.constraints.NotNull
 							«ELSE»
