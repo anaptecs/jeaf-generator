@@ -316,7 +316,7 @@ cached boolean isRequiredOpenAPIParam(uml::Parameter param):
    param.getAllValidationStereotypeNamesForOpenAPI().contains("NotNull") || param.getAllValidationStereotypeNamesForOpenAPI().contains("NotEmpty") || param.getAllValidationStereotypeNamesForOpenAPI().contains("NotBlank") || param.lowerForOpenAPI() > 0;
 
 cached boolean isRequiredOpenAPIProperty(uml::Property property):
-   property.getAllValidationStereotypeNamesForOpenAPI().contains("NotNull") || property.getAllValidationStereotypeNamesForOpenAPI().contains("NotEmpty") || property.getAllValidationStereotypeNamesForOpenAPI().contains("NotBlank") || property.lowerForOpenAPI() > 0;
+    property.lowerForOpenAPI() > 0;
    
 cached List[uml::Property] getRequiredOpenAPIProperties(uml::Class class):
     class.getPropertiesForOpenAPI().select(e|e.isRequiredOpenAPIProperty());
@@ -608,8 +608,17 @@ private List[JMM::OpenAPITag] getOpenAPITagsForInterface(uml::Interface interfac
     interface.getTargetDirectedRelationships().source.typeSelect(JMM::OpenAPITag).sortBy(e|e.name);
 
 cached int lowerForOpenAPI(uml::MultiplicityElement multiplicityElement):
-	multiplicityElement.lower;
+    if multiplicityElement.getAllValidationStereotypeNamesForOpenAPI().contains("NotNull") || multiplicityElement.getAllValidationStereotypeNamesForOpenAPI().contains("NotEmpty") || multiplicityElement.getAllValidationStereotypeNamesForOpenAPI().contains("NotBlank")
+    then 1
+    else if multiplicityElement.getAllValidationStereotypeNamesForOpenAPI().contains("Optional")
+    then 0
+    else if multiplicityElement.getAllValidationStereotypeNamesForOpenAPI().contains("Size")
+    then multiplicityElement.getEffectiveLowerBasedOnSize()
+    else multiplicityElement.lower;
 
 
-
+private int getEffectiveLowerBasedOnSize(uml::MultiplicityElement multiplicityElement):
+	if multiplicityElement.getAllIndirectValidationStereotypeNames().contains("Size")
+	then maxValue(multiplicityElement.asNamedElement().getValidationDependenciesForOpenAPI().selectFirst(e| e.isStereotypeApplied("Size")).getStereotypeValue("Size", "min").asInteger(), multiplicityElement.lower)
+	else maxValue(multiplicityElement.getStereotypeValue("Size", "min").asInteger(), multiplicityElement.lower);
 

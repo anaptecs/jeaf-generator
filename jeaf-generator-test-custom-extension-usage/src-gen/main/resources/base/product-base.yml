@@ -492,6 +492,7 @@ components:
           additionalProperties: false
           required:
             - childAAAttribute
+            - sizedArray
             - requiredArray
             - bigIntegerCode
           properties:
@@ -508,7 +509,6 @@ components:
               items:
                 type: 
                   - integer
-                  - "null"
                 format: int32
               minItems: 10
               maxItems: 100
@@ -547,6 +547,8 @@ components:
         - $ref: '#/components/schemas/ParentClass'
         - type: object
           additionalProperties: false
+          required:
+            - childBAttribute
           properties:
             childBAttribute:
               description: >-
@@ -555,7 +557,6 @@ components:
               items:
                 type: 
                   - boolean
-                  - "null"
               minItems: 11
               maxItems: 42
               uniqueItems: true
@@ -1450,6 +1451,7 @@ components:
       additionalProperties: false
       required:
         - aLongArray
+        - aDoubleArray
       properties:
         aBooleanArray:
           type: array
@@ -1580,7 +1582,6 @@ components:
           items:
             type: 
               - number
-              - "null"
             format: double
           minItems: 4
           maxItems: 12

@@ -486,6 +486,7 @@ components:
           additionalProperties: false
           required:
             - childAAAttribute
+            - sizedArray
             - requiredArray
             - bigIntegerCode
           properties:
@@ -505,7 +506,7 @@ components:
               minItems: 10
               maxItems: 100
               uniqueItems: true
-              nullable: true
+              nullable: false
             requiredArray:
               type: array
               items:
@@ -540,6 +541,8 @@ components:
         - $ref: '#/components/schemas/ParentClass'
         - type: object
           additionalProperties: false
+          required:
+            - childBAttribute
           properties:
             childBAttribute:
               description: |
@@ -550,7 +553,7 @@ components:
               minItems: 11
               maxItems: 42
               uniqueItems: true
-              nullable: true
+              nullable: false
             composition:
               description: |
                 the composition
@@ -1415,6 +1418,7 @@ components:
       additionalProperties: false
       required:
         - aLongArray
+        - aDoubleArray
       properties:
         aBooleanArray:
           type: array
@@ -1534,7 +1538,7 @@ components:
           minItems: 4
           maxItems: 12
           uniqueItems: true
-          nullable: true
+          nullable: false
         bDoubleArray:
           type: array
           items:

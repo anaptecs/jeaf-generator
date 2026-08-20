@@ -54,7 +54,7 @@ components:
             **Breaking Change Notice (active with 7.0, activation date: 2026-09-13):**<br><br>
             
           type: string
-          nullable: true
+          nullable: false
         deprecatedProperty:
           description: |
             
@@ -97,7 +97,7 @@ components:
             
           type: string
           deprecated: true
-          nullable: true
+          nullable: false
         untouchedProperty:
           type: string
           nullable: false
@@ -141,7 +141,7 @@ components:
           exclusiveMaximum: false
           minimum: 42
           exclusiveMinimum: false
-          nullable: false
+          nullable: true
         integerProperty:
           type: integer
           format: int32
@@ -182,7 +182,7 @@ components:
           type: string
           minLength: 0
           maxLength: 32
-          nullable: false
+          nullable: true
 
     # com.anaptecs.jeaf.junit.validationgroups.ClientType
     ClientType:

@@ -29,7 +29,7 @@ import java.util.List;
 
 public class ChildB extends ParentClass {
   @JsonProperty("childBAttribute")
-  private List<Boolean> childBAttribute = null;
+  private List<Boolean> childBAttribute = new ArrayList<>();
 
   @JsonProperty("composition")
   private List<ParentClass> composition = null;
@@ -40,9 +40,6 @@ public class ChildB extends ParentClass {
   }
 
   public ChildB addChildBAttributeItem(Boolean childBAttributeItem) {
-    if (this.childBAttribute == null) {
-      this.childBAttribute = new ArrayList<>();
-    }
     this.childBAttribute.add(childBAttributeItem);
     return this;
   }
@@ -51,7 +48,7 @@ public class ChildB extends ParentClass {
    * A child attribute 
    * @return childBAttribute
   **/
-  @Schema(description = "A child attribute ")
+  @Schema(required = true, description = "A child attribute ")
   public List<Boolean> getChildBAttribute() {
     return childBAttribute;
   }

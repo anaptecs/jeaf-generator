@@ -50,8 +50,8 @@
 «indent»      maxItems: «maxSize»
 				«ENDIF -»
 			«ENDLET -»
-		«ELSEIF this.lowerForOpenAPI() > 0 -»
-«indent»      minItems: «this.lowerForOpenAPI()»
+		«ELSEIF this.lower > 0 -»
+«indent»      minItems: «this.lower»
 		«ENDIF -»
 		«ENDIF -»
 	«ENDIF -»

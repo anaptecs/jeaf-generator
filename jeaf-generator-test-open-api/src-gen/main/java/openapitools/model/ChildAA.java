@@ -66,7 +66,8 @@ public class ChildAA extends ChildA {
   private Integer childAAAttribute;
 
   public static final String JSON_PROPERTY_SIZED_ARRAY = "sizedArray";
-  private JsonNullable<Set<Integer>> sizedArray = JsonNullable.<Set<Integer>>undefined();
+  @javax.annotation.Nonnull
+  private Set<Integer> sizedArray = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_REQUIRED_ARRAY = "requiredArray";
   @javax.annotation.Nonnull
@@ -111,20 +112,16 @@ public class ChildAA extends ChildA {
   }
 
 
-  public ChildAA sizedArray(@javax.annotation.Nullable Set<Integer> sizedArray) {
-    this.sizedArray = JsonNullable.<Set<Integer>>of(sizedArray);
+  public ChildAA sizedArray(@javax.annotation.Nonnull Set<Integer> sizedArray) {
+    this.sizedArray = sizedArray;
     return this;
   }
 
   public ChildAA addSizedArrayItem(Integer sizedArrayItem) {
-    if (this.sizedArray == null || !this.sizedArray.isPresent()) {
-      this.sizedArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
+    if (this.sizedArray == null) {
+      this.sizedArray = new LinkedHashSet<>();
     }
-    try {
-      this.sizedArray.get().add(sizedArrayItem);
-    } catch (java.util.NoSuchElementException e) {
-      // this can never happen, as we make sure above that the value is present
-    }
+    this.sizedArray.add(sizedArrayItem);
     return this;
   }
 
@@ -132,27 +129,20 @@ public class ChildAA extends ChildA {
    * Get sizedArray
    * @return sizedArray
    */
-  @javax.annotation.Nullable
-  @JsonIgnore
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_SIZED_ARRAY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Set<Integer> getSizedArray() {
-        return sizedArray.orElse(null);
-  }
-
-  @JsonProperty(value = JSON_PROPERTY_SIZED_ARRAY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Set<Integer>> getSizedArray_JsonNullable() {
     return sizedArray;
   }
-  
-  @JsonProperty(JSON_PROPERTY_SIZED_ARRAY)
-  public void setSizedArray_JsonNullable(JsonNullable<Set<Integer>> sizedArray) {
-    this.sizedArray = sizedArray;
-  }
 
-  public void setSizedArray(@javax.annotation.Nullable Set<Integer> sizedArray) {
-    this.sizedArray = JsonNullable.<Set<Integer>>of(sizedArray);
+
+  @JsonDeserialize(as = LinkedHashSet.class)
+  @JsonProperty(value = JSON_PROPERTY_SIZED_ARRAY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setSizedArray(@javax.annotation.Nonnull Set<Integer> sizedArray) {
+    this.sizedArray = sizedArray;
   }
 
 
@@ -299,7 +289,7 @@ public class ChildAA extends ChildA {
     }
     ChildAA childAA = (ChildAA) o;
     return Objects.equals(this.childAAAttribute, childAA.childAAAttribute) &&
-        equalsNullable(this.sizedArray, childAA.sizedArray) &&
+        Objects.equals(this.sizedArray, childAA.sizedArray) &&
         Objects.equals(this.requiredArray, childAA.requiredArray) &&
         Objects.equals(this.bigIntegerCode, childAA.bigIntegerCode) &&
         Objects.equals(this.integerCode, childAA.integerCode) &&
@@ -313,7 +303,7 @@ public class ChildAA extends ChildA {
 
   @Override
   public int hashCode() {
-    return Objects.hash(childAAAttribute, hashCodeNullable(sizedArray), requiredArray, bigIntegerCode, integerCode, hashCodeNullable(codes), super.hashCode());
+    return Objects.hash(childAAAttribute, sizedArray, requiredArray, bigIntegerCode, integerCode, hashCodeNullable(codes), super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
