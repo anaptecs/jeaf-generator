@@ -108,6 +108,7 @@
 «ENDIF -»
 «ENDDEFINE»
 
+
 «DEFINE DecimalMaxAnnotation(String indent) FOR DecimalMax -»
 «IF isOpenAPIVersion30() -»
 «indent»      maximum: «this.maxValue»
@@ -120,13 +121,16 @@
 «ENDIF -»
 «ENDDEFINE»
 
+
 «DEFINE MinValueAnnotation(String indent) FOR Min-»
 «indent»      minimum: «this.minValue -»
 «ENDDEFINE»
 
+
 «DEFINE MaxValueAnnotation(String indent) FOR Max -»
 «indent»      maximum: «this.maxValue -»
 «ENDDEFINE»
+
 
 «DEFINE NegativeAnnotation(String indent) FOR NamedElement -»
 «IF isOpenAPIVersion30() -»
@@ -134,17 +138,21 @@
 «indent»      exclusiveMaximum: true«ELSE -»
 «indent»      exclusiveMaximum: 0«ENDIF -»«ENDDEFINE»
 
+
 «DEFINE NegativeOrZeroAnnotation(String indent) FOR NamedElement -»
 «indent»      maximum: 0«ENDDEFINE»
 
+
 «DEFINE PositiveOrZeroAnnotation(String indent) FOR NamedElement -»
 «indent»      minimum: 0«ENDDEFINE»
+
 
 «DEFINE PositiveAnnotation(String indent) FOR NamedElement -»
 «IF isOpenAPIVersion30() -»
 «indent»      minimum: 0
 «indent»      exclusiveMinimum: true«ELSE -»
 «indent»      exclusiveMinimum: 0«ENDIF -»«ENDDEFINE»
+
 
 «DEFINE LengthAnnotation(String indent) FOR Size -»
           «IF min != -1 && max != -1 -»
@@ -155,21 +163,16 @@
                   «IF max != -1 -»
 «indent»      maxLength: «max»«ENDIF -»«ENDIF-»«ENDIF-»«ENDDEFINE»
 
-«DEFINE SizeAnnotationForArray(String indent) FOR Size -»
-          «info("# Size Type: " + this)-»
-          «IF min > 0 || lowerForOpenAPI() > 0 -»
-«indent»      minItems: «maxValue(min, lowerForOpenAPI())»
-          «ENDIF-»
-          «IF max != -1 -»
-«indent»      maxItems: «max»«ENDIF -»«ENDDEFINE»
 
 «DEFINE NotEmptyStringAnnotation(String indent) FOR NotEmpty -»
 «indent»      minLength: 1
 «ENDDEFINE»
 
+
 «DEFINE NotEmptyArrayAnnotation(String indent) FOR NotEmpty -»
 «indent»      minItems: 1
 «ENDDEFINE»
+
 
 «DEFINE NotBlankAnnotation(String indent) FOR NamedElement -»
 «indent»      minLength: 1

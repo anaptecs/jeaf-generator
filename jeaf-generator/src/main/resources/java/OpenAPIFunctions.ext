@@ -313,10 +313,10 @@ cached List[uml::Property] getAllAttributesFromHierarchy(uml::Element class):
   JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.getAllAttributesFromHierarchy(org.eclipse.uml2.uml.Element);   
    
 cached boolean isRequiredOpenAPIParam(uml::Parameter param):
-   param.getAllValidationStereotypeNamesForOpenAPI().contains("NotNull") || param.getAllValidationStereotypeNamesForOpenAPI().contains("NotEmpty") || param.getAllValidationStereotypeNamesForOpenAPI().contains("NotBlank") || (param.type.isPrimitiveType() && param.lowerForOpenAPI() > 0) || param.lowerForOpenAPI() > 0;
+   param.getAllValidationStereotypeNamesForOpenAPI().contains("NotNull") || param.getAllValidationStereotypeNamesForOpenAPI().contains("NotEmpty") || param.getAllValidationStereotypeNamesForOpenAPI().contains("NotBlank") || param.lowerForOpenAPI() > 0;
 
 cached boolean isRequiredOpenAPIProperty(uml::Property property):
-   property.getAllValidationStereotypeNamesForOpenAPI().contains("NotNull") || property.getAllValidationStereotypeNamesForOpenAPI().contains("NotEmpty") || property.getAllValidationStereotypeNamesForOpenAPI().contains("NotBlank") || (property.lowerForOpenAPI() > 0) || (property.association != null && property.lowerForOpenAPI() > 0) || (property.isMultivalued() && property.lowerForOpenAPI() > 0);
+   property.getAllValidationStereotypeNamesForOpenAPI().contains("NotNull") || property.getAllValidationStereotypeNamesForOpenAPI().contains("NotEmpty") || property.getAllValidationStereotypeNamesForOpenAPI().contains("NotBlank") || property.lowerForOpenAPI() > 0;
    
 cached List[uml::Property] getRequiredOpenAPIProperties(uml::Class class):
     class.getPropertiesForOpenAPI().select(e|e.isRequiredOpenAPIProperty());
