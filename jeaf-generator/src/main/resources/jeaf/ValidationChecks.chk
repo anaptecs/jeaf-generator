@@ -3,6 +3,7 @@ import JMM;
 
 extension java::GeneratorCommons;
 extension functions::Dependency;
+extension functions::Validation;
 
 
 // Checks for annotation DecimalMin
@@ -73,3 +74,6 @@ context FutureOrPresent if runChecks() && !isDependency() ERROR this.getErrorMes
 
 // Checks for annotation Future
 context Future if runChecks() && !isDependency() ERROR this.getErrorMessage("9151", {((NamedElement)this.owner).name + "." + name, "Future"}): type.isDateForAnnotation();
+
+// Checks for comaptibility groups
+context CompatibilityGroup if runChecks() ERROR  this.getErrorMessage("9187", {name, this.getCompatibilityInfosForGroup().name.toString(", ")}): this.getCompatibilityInfosForGroup().size <= 1;

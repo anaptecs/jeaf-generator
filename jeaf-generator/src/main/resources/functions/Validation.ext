@@ -150,9 +150,6 @@ cached boolean isActiveOpenAPIValidationGroup(JMM::ValidationGroup validationGro
 	getActiveOpenAPIValidationGroups().contains(validationGroup.qualifiedName());
 
 
-
-
-
 cached List[String] getAllDirectValidationStereotypeNames(uml::MultiplicityElement element):
 	element.asNamedElement().getAllDirectValidationStereotypes().name;
 
@@ -171,3 +168,9 @@ cached List[String] getEffectiveDirectValidationStereotyeNames(uml::Multiplicity
 
 cached List[String] getAllValidationStereotypeNamesForOpenAPI(uml::MultiplicityElement element):
 	{}.addAll(element.getAllIndirectValidationStereotypeNames()).addAll(element.getEffectiveDirectValidationStereotyeNames());
+
+
+cached List[JMM::CompatibilityInfo] getCompatibilityInfosForGroup(JMM::CompatibilityGroup group):
+	group.clientDependency.target.typeSelect(JMM::CompatibilityInfo);
+
+
