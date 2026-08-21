@@ -17,6 +17,9 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.annotations.MyNotNullProperty;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V4;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V5;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V6;
 import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -35,12 +38,28 @@ public class MyContext {
    */
   public static final String CLIENTTYPES = "clientTypes";
 
+  /**
+   * Constant for the name of attribute "deprecatedHeader".
+   */
+  @Deprecated
+  public static final String DEPRECATEDHEADER = "deprecatedHeader";
+
   @NotNull(groups = { V7.class })
   private String firstProperty;
 
   @Size(min = 1, groups = { V7.class })
   @NotNull(groups = { V7.class })
   private Set<ClientType> clientTypes;
+
+  /**
+   * <p/>
+   * <b>Header-Param:</b> <code>deprecatedHeader</code>
+   *
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   */
+  @Deprecated
+  @NotNull(groups = { V4.class, V5.class, V6.class })
+  private String deprecatedHeader;
 
   /**
    * Initialize object using the passed builder.
@@ -51,6 +70,7 @@ public class MyContext {
     // Read attribute values from builder.
     firstProperty = pBuilder.firstProperty;
     clientTypes = (pBuilder.clientTypes == null) ? new HashSet<>() : pBuilder.clientTypes;
+    deprecatedHeader = pBuilder.deprecatedHeader;
   }
 
   /**
@@ -90,6 +110,15 @@ public class MyContext {
     private Set<ClientType> clientTypes;
 
     /**
+     * <p/>
+     * <b>Header-Param:</b> <code>deprecatedHeader</code>
+     *
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+     */
+    @Deprecated
+    private String deprecatedHeader;
+
+    /**
      * Use {@link MyContext#builder()} instead of private constructor to create new builder.
      */
     protected Builder( ) {
@@ -103,6 +132,7 @@ public class MyContext {
         // Read attribute values from passed object.
         this.setFirstProperty(pObject.firstProperty);
         this.setClientTypes(pObject.clientTypes);
+        this.setDeprecatedHeader(pObject.deprecatedHeader);
       }
     }
 
@@ -191,6 +221,21 @@ public class MyContext {
     }
 
     /**
+     * Method sets attribute {@link #deprecatedHeader}.<br/>
+     *
+     * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+     */
+    @Deprecated
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setDeprecatedHeader( String pDeprecatedHeader ) {
+      // Assign value to attribute
+      deprecatedHeader = pDeprecatedHeader;
+      return this;
+    }
+
+    /**
      * Method creates a new instance of class MyContext. The object will be initialized with the values of the builder.
      *
      * @return MyContext Created object. The method never returns null.
@@ -275,12 +320,36 @@ public class MyContext {
     clientTypes.clear();
   }
 
+  /**
+   * Method returns attribute {@link #deprecatedHeader}.<br/>
+   *
+   * @return {@link String} Value to which {@link #deprecatedHeader} is set.
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   */
+  @Deprecated
+  public String getDeprecatedHeader( ) {
+    return deprecatedHeader;
+  }
+
+  /**
+   * Method sets attribute {@link #deprecatedHeader}.<br/>
+   *
+   * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   */
+  @Deprecated
+  public void setDeprecatedHeader( String pDeprecatedHeader ) {
+    // Assign value to attribute
+    deprecatedHeader = pDeprecatedHeader;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
     int lResult = 1;
     lResult = lPrime * lResult + Objects.hashCode(firstProperty);
     lResult = lPrime * lResult + Objects.hashCode(clientTypes);
+    lResult = lPrime * lResult + Objects.hashCode(deprecatedHeader);
     return lResult;
   }
 
@@ -298,7 +367,8 @@ public class MyContext {
     }
     else {
       MyContext lOther = (MyContext) pObject;
-      lEquals = Objects.equals(firstProperty, lOther.firstProperty) && Objects.equals(clientTypes, lOther.clientTypes);
+      lEquals = Objects.equals(firstProperty, lOther.firstProperty) && Objects.equals(clientTypes, lOther.clientTypes)
+          && Objects.equals(deprecatedHeader, lOther.deprecatedHeader);
     }
     return lEquals;
   }
@@ -335,6 +405,10 @@ public class MyContext {
         lBuilder.append(System.lineSeparator());
       }
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("deprecatedHeader: ");
+    lBuilder.append(deprecatedHeader);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 

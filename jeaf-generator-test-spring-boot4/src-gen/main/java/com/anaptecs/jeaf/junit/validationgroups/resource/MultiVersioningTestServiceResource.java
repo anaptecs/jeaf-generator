@@ -67,15 +67,15 @@ public class MultiVersioningTestServiceResource {
   public MyPOJOResponse someRequest(
       @PathVariable(name = "path-param", required = false) @MyNotNullRESTParam String pPath,
       @RequestBody(required = false) @MyNotNullRESTParam MyPojoRequest pRequest,
-      @PathVariable(name = "firstPropertyfirstProperty", required = false) @RequestHeader(
-          name = "firstPropertyfirstProperty",
-          required = false) @MyNotNullRESTParam String pFirstProperty,
-      @RequestHeader(name = "clientTypes", required = false) @MyNotEmptyRESTParam Set<ClientType> pClientTypes ) {
+      @RequestHeader(name = "firstProperty", required = false) @MyNotNullRESTParam String pFirstProperty,
+      @RequestHeader(name = "clientTypes", required = false) @MyNotEmptyRESTParam Set<ClientType> pClientTypes,
+      @RequestHeader(name = "deprecatedHeader", required = false) @Deprecated String pDeprecatedHeader ) {
     // Convert parameters into object as "BeanParams" are not supported by Spring Web. This way we do not pollute the
     // service interface but "only" our REST controller.
     var lMyContextBuilder = MyContext.builder();
     lMyContextBuilder.setFirstProperty(pFirstProperty);
     lMyContextBuilder.setClientTypes(pClientTypes);
+    lMyContextBuilder.setDeprecatedHeader(pDeprecatedHeader);
     MyContext myContext = lMyContextBuilder.build();
     // Validate request parameter(s).
     validationExecutor.validateRequest(MultiVersioningTestService.class, pPath, pRequest, myContext);

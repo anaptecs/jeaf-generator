@@ -18,6 +18,7 @@
 |------| ----------------------|-------------|
 | **`firstProperty`** : `String`   `1..1`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 | **`clientTypes`** : [`ClientType`](#clienttype)   `1..*`<br>        `@Optional: versions=V4, V5, V6` |  |  |
+| *`deprecatedHeader`* : `java.lang.String`   `0..1`<br>        `@NotNull: versions=V4, V5, V6` |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br> |
 
 <br>
 

@@ -5,14 +5,61 @@ info:
   version: 1.29.8-SNAPSHOT
 
 paths:
-  # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
-  # So we define NOP operation here as workaround.
-  /nop:
-    get:
-      operationId: noOperation
+  # MultiVersioningTestService
+  /multi-versioning/some-request/{path-param}:
+    post:
+      operationId: someRequest
+      parameters:
+        - name: firstProperty
+          in: header
+          schema:
+            type: string
+        - name: clientTypes
+          in: header
+          schema:
+            type: array
+
+            items:
+              $ref: '#/components/schemas/ClientType'
+            uniqueItems: true
+        - name: deprecatedHeader
+          in: header
+          description: |
+            
+            <br><br>
+            **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+            
+          required: true
+          deprecated: true
+          schema:
+            type: string
+            nullable: false
+        - name: path-param
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 0
+            maxLength: 666
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MyPojoRequest'
       responses:
         '200':
-          description: Nothing is the result of nop ;-)
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyPOJOResponse'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
 
 components:
   securitySchemes:
@@ -34,6 +81,12 @@ components:
           scopes: 
             read:pets: Read pets data
             write:pets: Modify pets
+
+  responses:
+    # com.anaptecs.jeaf.junit.validationgroups.CustomErrorResponse
+    CustomErrorResponse:
+      description: TODO Please add comment to error response type
+
 
   schemas:
     # com.anaptecs.jeaf.junit.validationgroups.MyPOJOResponse

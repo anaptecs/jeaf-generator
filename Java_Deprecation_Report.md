@@ -320,6 +320,8 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Removal date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
+| `MyContext` | |  |  |  |  |
+|   | `deprecatedHeader` |  |  | 7.0 | 2026-09-13 |
 | `MyPOJOResponse` | |  |  |  |  |
 |   | `deprecatedProperty` |  |  | 7.0 | 2026-09-13 |
 | `MyPojoRequest` | |  |  |  |  |

@@ -379,7 +379,7 @@ cached boolean hasOpenAPIProperties(uml::Class pClass):
 
 
 cached List[uml::Property] getOpenAPIProperties(uml::Element class):
-   class.getAllAttributesFromHierarchy().select(e|e.isOpenAPIParameterType());
+   class.getAllAttributesFromHierarchy().select(e|e.isOpenAPIParameterType() && e.ignore() == false && e.ignoreDeprecatedPropertyForOpenAPI() == false);
 
 
 cached List[uml::Property] getAllAttributesFromHierarchy(uml::Element class):

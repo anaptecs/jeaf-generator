@@ -32,6 +32,7 @@
 |   | `Header Param` | `int pParam2` |  |  |  |  |
 | `/api/deprecation/dep3 [GET]` | `REST Operation` | `RESTTestService.deprectaedReturnValue(int)` |  |  |  |  |
 |   | `Response` | `int ` |  |  |  |  |
+| `/multi-versioning/some-request/{path-param} [POST]` | `REST Operation` | `MultiVersioningTestService.someRequest(String, MyPojoRequest, MyContext)` |  |  |  |  |
 | `/products/deprecated/beanParams [POST]` | `REST Operation` | `ProductService.deprecatedBeanParam(BeanParameter)` |  |  |  |  |
 | `/products/deprecated/body [POST]` | `REST Operation` | `ProductService.deprecatedBody(String)` |  |  |  |  |
 |   | `Body` | `String pBody` |  |  |  |  |
