@@ -8,6 +8,8 @@ package com.anaptecs.spring.base;
 import java.util.Locale;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,8 +28,10 @@ public class SpecialContext extends Context {
    */
   public static final String CHANNELTYPE = "channelType";
 
+  @NotNull
   private String specificHeader;
 
+  @NotNull
   private ChannelType channelType;
 
   /**

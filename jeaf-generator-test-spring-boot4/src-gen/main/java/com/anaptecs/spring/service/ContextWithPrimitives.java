@@ -7,6 +7,8 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -47,14 +49,17 @@ public class ContextWithPrimitives {
 
   private boolean aBoolean;
 
+  @NotNull
   private Boolean aBooleanWrapper;
 
   private int anInt;
 
+  @NotNull
   private Integer anInteger;
 
   private long aLong;
 
+  @NotNull
   private Long aVeryLong;
 
   /**

@@ -146,7 +146,8 @@ public class SimpleAssociationBackwardCompatibility {
      *
      * @param pDeprecatedLinks Collection to which {@link #deprecatedLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
+     * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0,
+     * <b>removal date:</b> TBD)
      */
     @Deprecated
     public Builder setDeprecatedLinks( List<SimpleBackwardCompatibility> pDeprecatedLinks ) {
@@ -161,7 +162,8 @@ public class SimpleAssociationBackwardCompatibility {
      * @param pDeprecatedLinks Array of objects that should be added to {@link #deprecatedLinks}. The parameter may be
      * null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
-     * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
+     * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0,
+     * <b>removal date:</b> TBD)
      */
     @Deprecated
     public Builder addToDeprecatedLinks( SimpleBackwardCompatibility... pDeprecatedLinks ) {
@@ -245,7 +247,8 @@ public class SimpleAssociationBackwardCompatibility {
    *
    * @return {@link List<SimpleBackwardCompatibility>} Value to which {@link #deprecatedLinks} is set. The method never
    * returns null and the returned collection is unmodifiable.
-   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
+   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0,
+   * <b>removal date:</b> TBD)
    */
   @Deprecated
   @JsonGetter
@@ -258,7 +261,8 @@ public class SimpleAssociationBackwardCompatibility {
    * Method adds the passed object to {@link #deprecatedLinks}.
    *
    * @param pDeprecatedLinks Object that should be added to {@link #deprecatedLinks}. The parameter must not be null.
-   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
+   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0,
+   * <b>removal date:</b> TBD)
    */
   @Deprecated
   public void addToDeprecatedLinks( SimpleBackwardCompatibility pDeprecatedLinks ) {
@@ -271,7 +275,8 @@ public class SimpleAssociationBackwardCompatibility {
    *
    * @param pDeprecatedLinks Collection with all objects that should be added to {@link #deprecatedLinks}. The parameter
    * must not be null.
-   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0)
+   * @deprecated Wrong type. Switch to <code>newLink</code> instead. (<b>since:</b> 2.0, <b>removed with:</b> 3.0,
+   * <b>removal date:</b> TBD)
    */
   @Deprecated
   public void addToDeprecatedLinks( Collection<SimpleBackwardCompatibility> pDeprecatedLinks ) {

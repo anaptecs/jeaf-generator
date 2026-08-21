@@ -12,6 +12,7 @@ import java.util.Objects;
 import java.util.TreeMap;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -74,16 +75,20 @@ public class Context {
    * <p/>
    * <b>Header-Param:</b> <code>lang</code>
    */
+  @NotNull
   private Locale language;
 
   private long resellerID;
 
   private long pathParam;
 
+  @NotNull
   private String queryParam;
 
+  @NotNull
   private String lang;
 
+  @NotNull
   private IntegerCodeType intCode;
 
   /**

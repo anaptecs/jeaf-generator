@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
  * @version JEAF Release 1.4.x
  * @deprecated This service does not make sense any more.<br/>
  * <br/>
- * The functionality is completely wrong. (<b>since:</b> 1.0, <b>removed with:</b> 2023-12-31)
+ * The functionality is completely wrong. (<b>since:</b> 1.0, <b>removed with:</b> 2023-12-31, <b>removal date:</b> TBD)
  */
 // @Something
 @Deprecated

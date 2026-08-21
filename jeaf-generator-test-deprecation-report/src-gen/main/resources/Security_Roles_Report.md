@@ -153,6 +153,7 @@
 |------------------|---------------|--------------------|
 | `DeprecatedRESTService` | `doSomething()` | `/do/something [GET]` |
 | `IgnorableService` | `ignore()` | `/ignore [GET]` |
+| `MultiVersioningTestService` | `someRequest(String, MyPojoRequest, MyContext)` | `/multi-versioning/some-request/{path-param} [POST]` |
 | `ProductService` | `addCurrencies(CurrencyCode)` | `/products/currencies [POST]` |
 | `ProductService` | `checkIBAN(String)` | `/products/IBAN [POST]` |
 | `ProductService` | `createChannelCode(String)` | `/products/ChannelCode [POST]` |

@@ -1,0 +1,227 @@
+openapi: 3.0.3
+
+info:
+  title: ValidationGroupOpenAPI
+  version: 7.0-PREVIEW
+
+paths:
+  # MultiVersioningTestService
+  /multi-versioning/some-request/{path-param}:
+    post:
+      operationId: someRequest
+      parameters:
+        - name: firstProperty
+          in: header
+          required: true
+          schema:
+            type: string
+            nullable: false
+        - name: clientTypes
+          in: header
+          required: true
+          schema:
+            type: array
+            minItems: 1
+            items:
+              $ref: '#/components/schemas/ClientType'
+            uniqueItems: true
+        - name: path-param
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 11
+            maxLength: 42
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MyPojoRequest'
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyPOJOResponse'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+
+components:
+  securitySchemes:
+    MyOAuthSecuritySchema:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'https://example.com/api/oauth/dialog'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+        implicit:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'TODO Please add required token URL'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+  responses:
+    # com.anaptecs.jeaf.junit.validationgroups.CustomErrorResponse
+    CustomErrorResponse:
+      description: TODO Please add comment to error response type
+
+
+  schemas:
+    # com.anaptecs.jeaf.junit.validationgroups.MyPOJOResponse
+    MyPOJOResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - untouchedProperty
+      properties:
+        untouchedProperty:
+          type: string
+          nullable: false
+        formerMandatoryProperty:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with 7.0, activation date: 2026-09-13):**<br><br>
+            
+          type: string
+          nullable: true
+    # com.anaptecs.jeaf.junit.validationgroups.MyPojoRequest
+    MyPojoRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - upcomingMandatoryProperty
+        - propertyWithNewConstraints
+        - untouchedProperty
+        - constraintChangingProperty
+        - otherPojos
+        - thePojo
+      properties:
+        upcomingMandatoryProperty:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with 7.0, activation date: 2026-09-13):**<br><br>
+            Property will become mandatory in the future
+          type: string
+          nullable: false
+        propertyWithNewConstraints:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with , activation date: ):**<br><br>
+            
+          type: string
+          nullable: false
+        untouchedProperty:
+          type: string
+          nullable: false
+        constraintChangingProperty:
+          type: string
+          minLength: 10
+          maxLength: 20
+          nullable: false
+        otherPojos:
+          type: array
+          items:
+            $ref: '#/components/schemas/OtherPojo'
+          uniqueItems: true
+          minItems: 1
+        thePojo:
+          $ref: '#/components/schemas/OtherPojo'
+    # com.anaptecs.jeaf.junit.validationgroups.OtherPojo
+    OtherPojo:
+      type: object
+      additionalProperties: false
+      required:
+        - multiValuedProperty
+        - decimalProperty
+        - integerProperty
+        - stringProperty
+        - emailProperty
+        - booleanProperty
+        - dateTimeProperty
+        - positiveValueProperty
+        - negativeProperty
+        - v6Property
+      properties:
+        multiValuedProperty:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          uniqueItems: true
+          nullable: false
+        decimalProperty:
+          type: number
+          format: double
+          maximum: 48
+          exclusiveMaximum: true
+          minimum: 42
+          exclusiveMinimum: true
+          nullable: false
+        integerProperty:
+          type: integer
+          format: int32
+          minimum: 333
+          maximum: 666
+          nullable: false
+        stringProperty:
+          type: string
+          nullable: false
+        emailProperty:
+          type: string
+          minLength: 1
+          nullable: false
+        booleanProperty:
+          type: boolean
+          nullable: false
+        dateTimeProperty:
+          type: string
+          format: date-time
+          nullable: false
+        positiveValueProperty:
+          type: integer
+          format: int32
+          minimum: 0
+          nullable: false
+        negativeProperty:
+          type: integer
+          format: int32
+          maximum: 0
+          exclusiveMaximum: true
+          nullable: false
+        v6Property:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with 8.0, activation date: 2026-10-20):**<br><br>
+            Property will become mandatory.
+          type: string
+          minLength: 10
+          maxLength: 32
+          nullable: false
+
+    # com.anaptecs.jeaf.junit.validationgroups.ClientType
+    ClientType:
+      type: string
+      enum:
+        - CLIENT_1
+        - CLIENT_2
+        - CLIENT_3
+
+      

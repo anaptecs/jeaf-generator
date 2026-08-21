@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.service;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullServiceParam;
 
 public interface PathlessService {
@@ -14,6 +16,7 @@ public interface PathlessService {
    *
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
   String getSomething( );
 
@@ -24,8 +27,9 @@ public interface PathlessService {
    * @param pHeaderBean
    * @param pTechContext
    */
+  @NotNull
   @MyNotNullServiceParam
-  void processTechParam( @MyNotNullServiceParam MultiValuedHeaderBeanParam pHeaderBean );
+  void processTechParam( @NotNull @MyNotNullServiceParam MultiValuedHeaderBeanParam pHeaderBean );
 
   /**
    * <p/>
@@ -34,6 +38,7 @@ public interface PathlessService {
    * @param pQuery
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  String testQueryBeanParam( @MyNotNullServiceParam DataTypesQueryBean pQuery );
+  String testQueryBeanParam( @NotNull @MyNotNullServiceParam DataTypesQueryBean pQuery );
 }

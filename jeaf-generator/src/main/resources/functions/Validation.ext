@@ -1,58 +1,176 @@
+extension functions::NamedElement;
+extension functions::Dependency;
+extension functions::SystemProperties;
+
 extension java::GeneratorCommons;
+
 
 cached boolean isValidationStereotype(uml::Stereotype stereotype) : !stereotype.allParents().select(e|e.name == "Validation").isEmpty;
 
 cached boolean hasValidationStereotype(uml::NamedElement element) :
   element.getAppliedStereotypes().selectFirst(e|e.isValidationStereotype()) != null;
-  
-cached boolean requiresNotNullAnnotation(uml::NamedElement element) :
-  if element.isStereotypeApplied("NotEmpty") || element.isStereotypeApplied("NotBlank") || element.isStereotypeApplied("Null") || element.isStereotypeApplied("NotNull")
+
+
+cached boolean requiresNotNullAnnotation(List[String] stereotypeNames) :
+  if stereotypeNames.contains("NotEmpty") || stereotypeNames.contains("NotBlank") || stereotypeNames.contains("Null") || stereotypeNames.contains("NotNull")
   then false
-  else true;   
-  
+  else true;
+
+
 cached boolean hasErrorCodeOrSeverity(JMM::Validation validation):
   validation.errorCode > 0 || validation.severity.name != "NotUsed";
 
+
 cached List[uml::Stereotype] getValidationStereotypes(uml::Property property):
     property.getAppliedStereotypes().select(e|e.isValidationStereotype()); 
-    
+
+
 cached String getValidationStereotyeAndValue(uml::Property property, uml::Stereotype stereo):
     if stereo.name == "DecimalMax"
-    then "@DecimalMax(maxValue=" + property.getValue(stereo, "maxValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ")"
+    then "@DecimalMax: maxValue=" + property.getValue(stereo, "maxValue") + ", inclusive=" + property.getValue(stereo, "inclusive")
     else
 	    if stereo.name == "DecimalMin"
-	    then "@DecimalMin(minValue=" + property.getValue(stereo, "minValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ")"
+	    then "@DecimalMin: minValue=" + property.getValue(stereo, "minValue") + ", inclusive=" + property.getValue(stereo, "inclusive")
 	    else
 		    if stereo.name == "Digits"
-		    then "@Digits(integer=" + property.getValue(stereo, "integer") + ", fraction=" + property.getValue(stereo, "fraction") + ")"
+		    then "@Digits: integer=" + property.getValue(stereo, "integer") + ", fraction=" + property.getValue(stereo, "fraction")
 		    else
 		        if stereo.name == "Max"
-		        then "@Max(maxValue=" + property.getValue(stereo, "maxValue") + ")"
+		        then "@Max: maxValue=" + property.getValue(stereo, "maxValue")
 		        else
 		            if stereo.name == "Min"
-		            then "@Min(minValue=" + property.getValue(stereo, "minValue") + ")"
+		            then "@Min: minValue=" + property.getValue(stereo, "minValue")
 		            else
 					    if stereo.name == "Size"
-					    then "@Size(" + property.getMinSizeValidation(stereo) + property.getMaxSizeValidation(stereo) + ")"
+					    then "@Size: " + property.getMinSizeValidation(stereo) + property.getMaxSizeValidation(stereo)
 					    else  
 		                    if stereo.name == "Email"
 		                    then property.getEmailValidation(stereo)
 		                    else
 	                            if stereo.name == "Pattern"
-	                            then "@Pattern(regexp=" + property.getValue(stereo, "regexp") + ")"
+	                            then "@Pattern: regexp=" + property.getValue(stereo, "regexp")
 							    else "@" + stereo.name;
  
-private String getMinSizeValidation(uml::Property property, uml::Stereotype stereo):
+ 
+cached String getValidationStereotyeAndValue(uml::NamedElement property, uml::Stereotype stereo, List[JMM::ValidationGroup] validationGroups):
+	let versions = "versions=" + validationGroups.name.toString(", "):
+    if stereo.name == "DecimalMax"
+    then "@DecimalMax: maxValue=" + property.getValue(stereo, "maxValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ", " + versions
+    else
+	    if stereo.name == "DecimalMin"
+	    then "@DecimalMin: minValue=" + property.getValue(stereo, "minValue") + ", inclusive=" + property.getValue(stereo, "inclusive") + ", " + versions
+	    else
+		    if stereo.name == "Digits"
+		    then "@Digits: integer=" + property.getValue(stereo, "integer") + ", fraction=" + property.getValue(stereo, "fraction") + ", " + versions
+		    else
+		        if stereo.name == "Max"
+		        then "@Max: maxValue=" + property.getValue(stereo, "maxValue") + ", " + versions
+		        else
+		            if stereo.name == "Min"
+		            then "@Min: minValue=" + property.getValue(stereo, "minValue") + ", " + versions
+		            else
+					    if stereo.name == "Size"
+					    then "@Size: " + property.getMinSizeValidation(stereo) + property.getMaxSizeValidation(stereo) + ", " + versions
+					    else  
+		                    if stereo.name == "Email"
+		                    then property.getEmailValidation(stereo) + ", " + versions
+		                    else
+	                            if stereo.name == "Pattern"
+	                            then "@Pattern: regexp=" + property.getValue(stereo, "regexp") + ", " + versions
+							    else "@" + stereo.name + ": " + versions;
+ 
+ 
+private String getMinSizeValidation(uml::NamedElement property, uml::Stereotype stereo):
     if property.getValue(stereo, "min") != -1
     then "min=" + property.getValue(stereo, "min")
     else "min=0";
-    
-private String getMaxSizeValidation(uml::Property property, uml::Stereotype stereo):
+
+
+private String getMaxSizeValidation(uml::NamedElement property, uml::Stereotype stereo):
     if property.getValue(stereo, "max") != -1
     then ", max=" + property.getValue(stereo, "max")
     else ", max=UNLIMITED";    
 
-private String getEmailValidation(uml::Property property, uml::Stereotype stereo):
+
+private String getEmailValidation(uml::NamedElement property, uml::Stereotype stereo):
 	if property.getValue(stereo, "regexp") != null
 	then "@Email(regexp=" + property.getValue(stereo, "regexp") + ")"
 	else "@Email";
+
+
+cached List[JMM::ValidationGroup] getAllValidationGroupsFromModel(uml::Model model):
+	model.allOwnedElements().typeSelect(JMM::ValidationGroup).select(e|e.isInGeneratorWhitelist());
+
+
+cached List[JMM::ValidationGroup] getValidationGroups(uml::Dependency dependency):
+	dependency.target.typeSelect(JMM::CompatibilityGroup).first().getValidationGroupsForGroup();
+
+
+cached List[JMM::ValidationGroup] getDefaultValidationGroups(uml::Model model, List[JMM::ValidationGroup] nonDefaultGroups):
+	model.getAllValidationGroupsFromModel().removeAll(nonDefaultGroups);
+
+
+boolean generateValidationAnnotationForParam(String paramContext):
+	if paramContext == "JEAFService" || paramContext == "JEAFServiceProvider"
+	then generateValidationAnnotationsForServiceOperationParametersFromMultiplicity()
+	else if paramContext == "BusinessOperation"
+	then generateValidationAnnotationsForOperationParametersFromMultiplicity()
+	else false;
+
+
+cached List[uml::Stereotype] getAllDirectValidationStereotypes(uml::NamedElement element):
+	element.getAppliedStereotypes().select(e|e.isValidationStereotype());
+
+
+cached List[uml::Stereotype] getAllIndirectValidationStereotypes(uml::NamedElement element):
+	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false).getAppliedStereotypes().select(e|e.isValidationStereotype());
+
+
+cached List[uml::Stereotype] getAllIndirectValidationStereotypesForOpenAPI(uml::NamedElement element):
+	element.getValidationDependenciesForOpenAPI().getAppliedStereotypes().select(e|e.isValidationStereotype());
+
+
+cached List[uml::Dependency] getValidationDependenciesForOpenAPI(uml::NamedElement element):
+	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false).select(e|e.getValidationGroups().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty == false);
+
+
+cached List[uml::Stereotype] getAllValidationStereotypes(uml::NamedElement element):
+	{}.addAll(element.getAllDirectValidationStereotypes()).addAll(element.getAllIndirectValidationStereotypes());
+
+
+cached List[uml::Dependency] getRemoveValidationDependencies(uml::NamedElement element):
+	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == "RemoveValidation").isEmpty == false);
+
+
+cached List[JMM::RemoveValidation] getRemoveValidationDependenciesForOpenAPI(uml::NamedElement element):
+	element.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getValidationGroups().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == "RemoveValidation").isEmpty == false);
+
+
+cached boolean isActiveOpenAPIValidationGroup(JMM::ValidationGroup validationGroup):
+	getActiveOpenAPIValidationGroups().contains(validationGroup.qualifiedName());
+
+
+cached List[String] getAllDirectValidationStereotypeNames(uml::MultiplicityElement element):
+	element.asNamedElement().getAllDirectValidationStereotypes().name;
+
+
+cached List[String] getAllIndirectValidationStereotypeNames(uml::MultiplicityElement element):
+	element.asNamedElement().getAllIndirectValidationStereotypesForOpenAPI().name;
+
+
+cached List[String] getRemovedValidationNames(uml::MultiplicityElement element):
+	element.asNamedElement().getRemoveValidationDependenciesForOpenAPI().removedValidations.toString();
+
+
+cached List[String] getEffectiveDirectValidationStereotyeNames(uml::MultiplicityElement element):
+	{}.addAll(element.getAllDirectValidationStereotypeNames().select(e | element.getRemovedValidationNames().contains(e) == false && element.getAllIndirectValidationStereotypeNames().contains(e) == false));
+
+
+cached List[String] getAllValidationStereotypeNamesForOpenAPI(uml::MultiplicityElement element):
+	{}.addAll(element.getAllIndirectValidationStereotypeNames()).addAll(element.getEffectiveDirectValidationStereotyeNames());
+
+
+cached List[JMM::CompatibilityInfo] getCompatibilityInfosForGroup(JMM::CompatibilityGroup group):
+	group.clientDependency.target.typeSelect(JMM::CompatibilityInfo);
+
+

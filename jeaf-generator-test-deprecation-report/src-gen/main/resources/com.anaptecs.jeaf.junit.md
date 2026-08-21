@@ -16,7 +16,7 @@
 | Name |  Legacy Name | Description |
 |------|----------------------|----------------------------|
 | `A` |   |  |
-| :exclamation:`B` |   | :exclamation:**Deprecation Notice (since: , removed with: ):**<br> |
+| :exclamation:`B` |   | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br> |
 | `C` |   |  |
 
 ## MyEnumWithInterface

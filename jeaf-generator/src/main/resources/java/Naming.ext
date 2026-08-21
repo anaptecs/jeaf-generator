@@ -375,17 +375,8 @@ cached Set getOperationNames(uml::Interface interface):
 
 cached boolean hasMultivaluedAssociation(uml::Class class) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.hasMultivaluedAssociation(org.eclipse.uml2.uml.Class);
-    
-cached boolean isValidationStereotype(uml::Stereotype stereotype) : !stereotype.allParents().select(e|e.name == "Validation").isEmpty;
 
-cached boolean hasValidationStereotype(uml::NamedElement element) :
-  element.getAppliedStereotypes().selectFirst(e|e.isValidationStereotype()) != null;
-  
-cached boolean requiresNotNullAnnotation(uml::NamedElement element) :
-  if element.isStereotypeApplied("NotEmpty") || element.isStereotypeApplied("NotBlank") || element.isStereotypeApplied("Null") || element.isStereotypeApplied("NotNull")
-  then false
-  else true;   
-  
+
 cached boolean hasErrorCodeOrSeverity(JMM::Validation validation):
   validation.errorCode > 0 || validation.severity.name != "NotUsed";
 

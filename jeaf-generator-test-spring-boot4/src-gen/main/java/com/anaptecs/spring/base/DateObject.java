@@ -12,6 +12,8 @@ import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -66,16 +68,22 @@ public class DateObject {
    * <li><code>12:07</code></li>
    * </ul>
    */
+  @NotNull
   private LocalTime localTime;
 
+  @NotNull
   private LocalDate localDate;
 
+  @NotNull
   private LocalDateTime localDateTime;
 
+  @NotNull
   private Calendar calendar;
 
+  @NotNull
   private Date sqlDate;
 
+  @NotNull
   private java.util.Date utilDate;
 
   /**

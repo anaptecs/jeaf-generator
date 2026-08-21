@@ -105,6 +105,7 @@ ClassA |   |  |
 ClassB |   |  |
 ClientClass |   |  |
 ClientClass |   |  |
+ClientType |   |  |
 CodeTypeUsageTest |   |  |
 Color |   | There are so many colors. |
 Company |   |  |
@@ -179,6 +180,7 @@ MultiValuedDataType |   |  |
 MultivaluedQueryParamsBean |   |  |
 MutableChildPOJO |   |  |
 MyBusinessObject |   |  |
+MyContext |   |  |
 MyDataType |   |  |
 MyEnumWithInterface |   |  |
 MyPOJOResponse |   |  |
@@ -188,6 +190,7 @@ NotInlinedBeanParam |   |  |
 Offer |   |  |
 OptionalDataType |   |  |
 OtherMappingObject |   |  |
+OtherPojo |   |  |
 Output |   |  |
 POI |   |  |
 POJOWithID |   |  |
@@ -612,8 +615,11 @@ Response |   |  |
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
+ClientType |   |  |
+MyContext |   |  |
 MyPOJOResponse |   |  |
 MyPojoRequest |   |  |
+OtherPojo |   |  |
 
 <br>
 

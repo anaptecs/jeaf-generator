@@ -12,6 +12,7 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -50,14 +51,19 @@ public class Booking {
    */
   public static final String EXECUTIONTIMESTAMP = "executionTimestamp";
 
+  @NotNull
   private Account sourceAccount;
 
+  @NotNull
   private Account targetAccount;
 
+  @NotNull
   private BigDecimal amount;
 
+  @NotNull
   private Currency currency;
 
+  @NotNull
   private Calendar executionTimestamp;
 
   /**

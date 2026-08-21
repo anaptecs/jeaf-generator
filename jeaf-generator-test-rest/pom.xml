@@ -91,7 +91,12 @@
 					<!-- Define whitelist of package in UML model generator should take care when generating code. -->
 					<packages>
 						<package>com.anaptecs.jeaf.accounting</package>
-						<package>com.anaptecs.jeaf.junit</package>
+						<package>com.anaptecs.jeaf.junit.core</package>
+						<package>com.anaptecs.jeaf.junit.deprecation</package>
+						<package>com.anaptecs.jeaf.junit.openapi</package>
+						<package>com.anaptecs.jeaf.junit.rest</package>
+						<package>com.anaptecs.jeaf.junit.scheduling</package>
+						<package>com.anaptecs.jeaf.junit.tx</package>
 						<package>TestProfile</package>
 					</packages>
 

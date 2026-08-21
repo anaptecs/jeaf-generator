@@ -13,6 +13,7 @@ import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -60,6 +61,7 @@ public class SoftLinkChildB extends SoftLinkParent {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #oneLink} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkPartner</code><br/>
    */
+  @NotNull
   private SoftLinkID oneLinkID;
 
   /**

@@ -20,28 +20,47 @@ private boolean javaIsBefore(String referenceDate, String actualDate):
 
 
 cached List[uml::NamedElement] getBreakingChanges(uml::Package package):
-    package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange() && e.getNearestPackage() == package).sortBy(e|e.getBreakingChangeActiveWith());
+	package.allOwnedElements().typeSelect(uml::NamedElement).select(e|e.isInGeneratorWhitelist()).select(e|e.isBreakingChange() && e.getNearestPackage() == package).sortBy(e|e.getBreakingChangeActiveWith());
 
 
 cached List[uml::Package] getPackagesForBreakingChangesReport(uml::Model model):
-    model.getAllBreakingChanges().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
+	model.getAllBreakingChanges().getNearestPackage().toSet().sortBy(e|e.qualifiedName());
 
 
 cached boolean isBreakingChange(uml::Element element):
-    element.isStereotypeApplied("BreakingChange");
+	element.isStereotypeApplied("BreakingChange");
 
 
 cached String getBreakingChangeDescription(uml::NamedElement change):
-    change.getStereotypeValue("BreakingChange", "description").replaceAll("\n", "<br>");
+	change.getStereotypeValue("BreakingChange", "description").replaceAll("\n", "<br>");
 
 
 cached String getBreakingChangeSince(uml::NamedElement change):
-    change.getStereotypeValue("BreakingChange", "since");
+	change.getStereotypeValue("BreakingChange", "since");
+
 
 cached String getBreakingChangeActiveWith(uml::NamedElement change):
-    change.getStereotypeValue("BreakingChange", "activeWith");
+	if change.getBreakingChangeActiveWithInternal().trim().length > 0
+	then change.getBreakingChangeActiveWithInternal().trim()
+	else
+		if change.hasCompatibilityInfo()
+		then change.getCompatibilityInfo().firstNonCompatibleVersion
+		else ""	;
+
+
+private String getBreakingChangeActiveWithInternal(uml::NamedElement change):
+	change.getStereotypeValue("BreakingChange", "activeWith");
 
 
 cached String getBreakingChangeActivactionDate(uml::NamedElement change):
-    change.getStereotypeValue("BreakingChange", "activationDate");
+	if change.getBreakingChangeActivactionDateInternal().trim().length > 0
+	then change.getBreakingChangeActivactionDateInternal().trim()
+	else
+		if change.hasCompatibilityInfo()
+		then change.getCompatibilityInfo().sunsetDate
+		else "";
+
+
+cached String getBreakingChangeActivactionDateInternal(uml::NamedElement change):
+	change.getStereotypeValue("BreakingChange", "activationDate");
 

@@ -40,3 +40,8 @@ cached String getParentClassLink(JMM::POJO pojo):
 	    if pojo.getNearestPackage() == pojo.parents().first().getNearestPackage()
 	    then "[`" + pojo.parents().first().name + "`](#" + pojo.parents().first().name.toLowerCase() + ")"
 	    else "[`" + pojo.parents().first().name + "`](" + pojo.parents().first().getNearestPackage().qualifiedName() + "#" + pojo.parents().first().name.toLowerCase() + ")";
+
+
+cached List[String] getTechnicalConstraintsForReport(uml::Property property):
+	let constraints = {}.toList() : 
+	constraints.add(property.isTransient() -> "transient").add(property.isDerived -> "derived");

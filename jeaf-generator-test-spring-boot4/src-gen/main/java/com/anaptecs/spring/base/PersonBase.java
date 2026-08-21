@@ -8,6 +8,7 @@ package com.anaptecs.spring.base;
 import java.util.Objects;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -37,8 +38,10 @@ public abstract class PersonBase extends Partner {
    */
   public static final String FIRSTNAME = "firstName";
 
+  @NotNull
   private String surname;
 
+  @NotNull
   private String firstName;
 
   /**
@@ -199,6 +202,7 @@ public abstract class PersonBase extends Partner {
   /**
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullProperty
   public abstract String getDisplayName( );
 

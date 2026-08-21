@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -92,8 +93,8 @@ public class PrimitiveArraysObjectWithRestrictions {
   private JsonNullable<Set<Integer>> cIntegerArray = JsonNullable.<Set<Integer>>undefined();
 
   public static final String JSON_PROPERTY_A_LONG_ARRAY = "aLongArray";
-  @javax.annotation.Nullable
-  private Set<Long> aLongArray;
+  @javax.annotation.Nonnull
+  private Set<Long> aLongArray = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_B_LONG_ARRAY = "bLongArray";
   private JsonNullable<Set<Long>> bLongArray = JsonNullable.<Set<Long>>undefined();
@@ -114,7 +115,8 @@ public class PrimitiveArraysObjectWithRestrictions {
   private JsonNullable<Set<Float>> bFloatArray = JsonNullable.<Set<Float>>undefined();
 
   public static final String JSON_PROPERTY_A_DOUBLE_ARRAY = "aDoubleArray";
-  private JsonNullable<Set<Double>> aDoubleArray = JsonNullable.<Set<Double>>undefined();
+  @javax.annotation.Nonnull
+  private Set<Double> aDoubleArray = new LinkedHashSet<>();
 
   public static final String JSON_PROPERTY_B_DOUBLE_ARRAY = "bDoubleArray";
   private JsonNullable<Set<Double>> bDoubleArray = JsonNullable.<Set<Double>>undefined();
@@ -557,7 +559,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aLongArray(@javax.annotation.Nullable Set<Long> aLongArray) {
+  public PrimitiveArraysObjectWithRestrictions aLongArray(@javax.annotation.Nonnull Set<Long> aLongArray) {
     this.aLongArray = aLongArray;
     return this;
   }
@@ -574,8 +576,8 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aLongArray
    * @return aLongArray
    */
-  @javax.annotation.Nullable
-  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = false)
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Set<Long> getaLongArray() {
@@ -583,9 +585,10 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
 
-  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = false)
+  @JsonDeserialize(as = LinkedHashSet.class)
+  @JsonProperty(value = JSON_PROPERTY_A_LONG_ARRAY, required = true)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
-  public void setaLongArray(@javax.annotation.Nullable Set<Long> aLongArray) {
+  public void setaLongArray(@javax.annotation.Nonnull Set<Long> aLongArray) {
     this.aLongArray = aLongArray;
   }
 
@@ -860,20 +863,16 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
 
-  public PrimitiveArraysObjectWithRestrictions aDoubleArray(@javax.annotation.Nullable Set<Double> aDoubleArray) {
-    this.aDoubleArray = JsonNullable.<Set<Double>>of(aDoubleArray);
+  public PrimitiveArraysObjectWithRestrictions aDoubleArray(@javax.annotation.Nonnull Set<Double> aDoubleArray) {
+    this.aDoubleArray = aDoubleArray;
     return this;
   }
 
   public PrimitiveArraysObjectWithRestrictions addADoubleArrayItem(Double aDoubleArrayItem) {
-    if (this.aDoubleArray == null || !this.aDoubleArray.isPresent()) {
-      this.aDoubleArray = JsonNullable.<Set<Double>>of(new LinkedHashSet<>());
+    if (this.aDoubleArray == null) {
+      this.aDoubleArray = new LinkedHashSet<>();
     }
-    try {
-      this.aDoubleArray.get().add(aDoubleArrayItem);
-    } catch (java.util.NoSuchElementException e) {
-      // this can never happen, as we make sure above that the value is present
-    }
+    this.aDoubleArray.add(aDoubleArrayItem);
     return this;
   }
 
@@ -881,27 +880,20 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aDoubleArray
    * @return aDoubleArray
    */
-  @javax.annotation.Nullable
-  @JsonIgnore
+  @javax.annotation.Nonnull
+  @JsonProperty(value = JSON_PROPERTY_A_DOUBLE_ARRAY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public Set<Double> getaDoubleArray() {
-        return aDoubleArray.orElse(null);
-  }
-
-  @JsonProperty(value = JSON_PROPERTY_A_DOUBLE_ARRAY, required = false)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<Set<Double>> getaDoubleArray_JsonNullable() {
     return aDoubleArray;
   }
-  
-  @JsonProperty(JSON_PROPERTY_A_DOUBLE_ARRAY)
-  public void setaDoubleArray_JsonNullable(JsonNullable<Set<Double>> aDoubleArray) {
-    this.aDoubleArray = aDoubleArray;
-  }
 
-  public void setaDoubleArray(@javax.annotation.Nullable Set<Double> aDoubleArray) {
-    this.aDoubleArray = JsonNullable.<Set<Double>>of(aDoubleArray);
+
+  @JsonDeserialize(as = LinkedHashSet.class)
+  @JsonProperty(value = JSON_PROPERTY_A_DOUBLE_ARRAY, required = true)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  public void setaDoubleArray(@javax.annotation.Nonnull Set<Double> aDoubleArray) {
+    this.aDoubleArray = aDoubleArray;
   }
 
 
@@ -1114,7 +1106,7 @@ public class PrimitiveArraysObjectWithRestrictions {
         equalsNullable(this.bCharacterArray, primitiveArraysObjectWithRestrictions.bCharacterArray) &&
         equalsNullable(this.aFloatArray, primitiveArraysObjectWithRestrictions.aFloatArray) &&
         equalsNullable(this.bFloatArray, primitiveArraysObjectWithRestrictions.bFloatArray) &&
-        equalsNullable(this.aDoubleArray, primitiveArraysObjectWithRestrictions.aDoubleArray) &&
+        Objects.equals(this.aDoubleArray, primitiveArraysObjectWithRestrictions.aDoubleArray) &&
         equalsNullable(this.bDoubleArray, primitiveArraysObjectWithRestrictions.bDoubleArray) &&
         equalsNullable(this.aBigDecimalArray, primitiveArraysObjectWithRestrictions.aBigDecimalArray) &&
         equalsNullable(this.aStringArray, primitiveArraysObjectWithRestrictions.aStringArray) &&
@@ -1127,7 +1119,7 @@ public class PrimitiveArraysObjectWithRestrictions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(hashCodeNullable(aBooleanArray), hashCodeNullable(bBooleanArray), hashCodeNullable(cBooleanArray), hashCodeNullable(aByteArray), hashCodeNullable(bByteArray), hashCodeNullable(aShortArray), hashCodeNullable(bShortArray), hashCodeNullable(aIntegerArray), hashCodeNullable(bIntegerArray), hashCodeNullable(cIntegerArray), aLongArray, hashCodeNullable(bLongArray), hashCodeNullable(aBigIntegerArray), hashCodeNullable(aCharacterArray), hashCodeNullable(bCharacterArray), hashCodeNullable(aFloatArray), hashCodeNullable(bFloatArray), hashCodeNullable(aDoubleArray), hashCodeNullable(bDoubleArray), hashCodeNullable(aBigDecimalArray), hashCodeNullable(aStringArray), hashCodeNullable(bStringArray));
+    return Objects.hash(hashCodeNullable(aBooleanArray), hashCodeNullable(bBooleanArray), hashCodeNullable(cBooleanArray), hashCodeNullable(aByteArray), hashCodeNullable(bByteArray), hashCodeNullable(aShortArray), hashCodeNullable(bShortArray), hashCodeNullable(aIntegerArray), hashCodeNullable(bIntegerArray), hashCodeNullable(cIntegerArray), aLongArray, hashCodeNullable(bLongArray), hashCodeNullable(aBigIntegerArray), hashCodeNullable(aCharacterArray), hashCodeNullable(bCharacterArray), hashCodeNullable(aFloatArray), hashCodeNullable(bFloatArray), aDoubleArray, hashCodeNullable(bDoubleArray), hashCodeNullable(aBigDecimalArray), hashCodeNullable(aStringArray), hashCodeNullable(bStringArray));
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {

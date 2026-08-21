@@ -340,7 +340,7 @@ components:
           description: >-
             The magic link.
             <br><br>
-            **Deprecation Notice (since: 2.3.1, removed with: 2.4):**<br><br>
+            **Deprecation Notice (since: 2.3.1, removed with: 2.4, removal date: ):**<br><br>
             Please use "moreLinks" instead.
           type: integer
           format: int64
@@ -350,7 +350,7 @@ components:
           description: >-
             
             <br><br>
-            **Deprecation Notice (since: 1.2, removed with: 3.0):**<br><br>
+            **Deprecation Notice (since: 1.2, removed with: 3.0, removal date: ):**<br><br>
             No good any more
           type: array
           items:
@@ -436,7 +436,7 @@ components:
           
         - `WEB`: 
           <br><br>
-          **Breaking Change Notice (active with 1.47.11):**<br><br>
+          **Breaking Change Notice (active with 1.47.11, activation date: ):**<br><br>
           Added new literal<br>
           <br>
           
@@ -445,7 +445,7 @@ components:
           
         - <del>`LEGACY_POS`</del>: 
           <br><br>
-          **Deprecation Notice (since: , removed with: ):**<br><br>
+          **Deprecation Notice (since: , removed with: , removal date: ):**<br><br>
           I'm `DEPRECATED`.<br>
           <br>
           
@@ -483,7 +483,7 @@ components:
       description: >-
         
         <br><br>
-        **Deprecation Notice (since: 0.5, removed with: 2.0):**<br><br>
+        **Deprecation Notice (since: 0.5, removed with: 2.0, removal date: ):**<br><br>
         Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing`
       deprecated: true
       allOf:
@@ -492,6 +492,7 @@ components:
           additionalProperties: false
           required:
             - childAAAttribute
+            - sizedArray
             - requiredArray
             - bigIntegerCode
           properties:
@@ -508,7 +509,6 @@ components:
               items:
                 type: 
                   - integer
-                  - "null"
                 format: int32
               minItems: 10
               maxItems: 100
@@ -547,6 +547,8 @@ components:
         - $ref: '#/components/schemas/ParentClass'
         - type: object
           additionalProperties: false
+          required:
+            - childBAttribute
           properties:
             childBAttribute:
               description: >-
@@ -555,7 +557,6 @@ components:
               items:
                 type: 
                   - boolean
-                  - "null"
               minItems: 11
               maxItems: 42
               uniqueItems: true
@@ -585,7 +586,7 @@ components:
               description: >-
                 
                 <br><br>
-                **Deprecation Notice (since: , removed with: ):**<br><br>
+                **Deprecation Notice (since: , removed with: , removal date: ):**<br><br>
                 Please  keep `hands off`.
               type: integer
               format: int32
@@ -660,7 +661,7 @@ components:
       description: >-
         
         <br><br>
-        **Breaking Change Notice (active with PI 17):**<br><br>
+        **Breaking Change Notice (active with PI 17, activation date: ):**<br><br>
         Class was changed to an extensible enum. New literals will not be introduced before PI 17.
       type: string
       x-extensible-enum:
@@ -717,7 +718,7 @@ components:
       description: >-
         
         <br><br>
-        **Deprecation Notice (since: , removed with: ):**<br><br>
+        **Deprecation Notice (since: , removed with: , removal date: ):**<br><br>
         Hello `World`.
       type: string
       deprecated: true
@@ -920,7 +921,7 @@ components:
           
         - `DB`: 
           <br><br>
-          **Breaking Change Notice (active with 3.x):**<br><br>
+          **Breaking Change Notice (active with 3.x, activation date: ):**<br><br>
           New literal will occur
           <br><br>
           
@@ -1126,7 +1127,7 @@ components:
               description: >-
                 
                 <br><br>
-                **Breaking Change Notice (active with 2024-12-24):**<br><br>
+                **Breaking Change Notice (active with 2024-12-24, activation date: ):**<br><br>
                 New mandatory association is required to support upcoming features.
               type: array
               items:
@@ -1450,6 +1451,7 @@ components:
       additionalProperties: false
       required:
         - aLongArray
+        - aDoubleArray
       properties:
         aBooleanArray:
           type: array
@@ -1526,7 +1528,6 @@ components:
           items:
             type: 
               - integer
-              - "null"
             format: int64
           minItems: 1
           uniqueItems: true
@@ -1581,7 +1582,6 @@ components:
           items:
             type: 
               - number
-              - "null"
             format: double
           minItems: 4
           maxItems: 12
@@ -1980,7 +1980,7 @@ components:
           description: >-
             
             <br><br>
-            **Breaking Change Notice (active with 1.1):**<br><br>
+            **Breaking Change Notice (active with 1.1, activation date: ):**<br><br>
             Maximum size will be increased.
           type: string
           minLength: 1
@@ -2242,14 +2242,14 @@ components:
             realBooking:
               # the real booking
               # 
-              # **Breaking Change Notice (active with 2.0):**
+              # **Breaking Change Notice (active with 2.0, activation date: ):**
               # Association will be mandatory.
               $ref: '#/components/schemas/Booking'
             inventories:
               description: >-
                 
                 <br><br>
-                **Breaking Change Notice (active with 2.1):**<br><br>
+                **Breaking Change Notice (active with 2.1, activation date: ):**<br><br>
                 Association will required at least 1 object.
               type: array
               items:

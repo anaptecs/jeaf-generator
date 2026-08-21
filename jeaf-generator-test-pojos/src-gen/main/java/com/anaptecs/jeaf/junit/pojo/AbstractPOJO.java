@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.junit.pojo;
 import java.util.Objects;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.generator.annotations.ToDo;
 import com.anaptecs.jeaf.generator.annotations.ToDoType;
@@ -35,6 +36,7 @@ public abstract class AbstractPOJO {
    */
   public static final String ABTRACTATTR = "abtractAttr";
 
+  @NotNull
   private String abtractAttr;
 
   /**

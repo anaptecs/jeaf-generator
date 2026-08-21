@@ -9,6 +9,8 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -138,46 +140,59 @@ public class PrimitiveObject {
 
   private boolean aBoolean;
 
+  @NotNull
   private Boolean bBoolean;
 
   private boolean cBoolean;
 
   private byte aByte;
 
+  @NotNull
   private Byte bByte;
 
   private short aShort;
 
+  @NotNull
   private Short bShort;
 
   private int aInteger;
 
+  @NotNull
   private Integer bInteger;
 
+  @NotNull
   private Integer cInteger;
 
   private long aLong;
 
+  @NotNull
   private Long bLong;
 
+  @NotNull
   private BigInteger aBigInteger;
 
   private char aCharacter;
 
+  @NotNull
   private Character bCharacter;
 
   private float aFloat;
 
+  @NotNull
   private Float bFloat;
 
   private double aDouble;
 
+  @NotNull
   private Double bDouble;
 
+  @NotNull
   private BigDecimal aBigDecimal;
 
+  @NotNull
   private String aString;
 
+  @NotNull
   private String bString;
 
   /**

@@ -2,7 +2,7 @@ openapi: 3.0.3
 
 info:
   title: Product Services
-  version: 1.29.8-SNAPSHOT
+  version: 7.0-PREVIEW
   description: |
     This component represents the OpenAPI interface of the accounting service.<br>
     <br>
@@ -238,7 +238,7 @@ paths:
         description: |
           
           <br><br>
-          **Breaking Change Notice (active with 2.0):**<br><br>
+          **Breaking Change Notice (active with 2.0, activation date: ):**<br><br>
           Parameter will be mandatory
         required: true
         content:
@@ -284,7 +284,7 @@ paths:
       description: |
         
         <br><br>
-        **Deprecation Notice (since: 1.1.1, removed with: 2024-10-20):**<br><br>
+        **Deprecation Notice (since: 1.1.1, removed with: 2024-10-20, removal date: ):**<br><br>
         This request is no longer supported.
       operationId: deprecatedOperation
       deprecated: true
@@ -561,7 +561,7 @@ paths:
           description: |
             
             <br><br>
-            **Deprecation Notice (since: , removed with: 2024-12-24):**<br><br>
+            **Deprecation Notice (since: , removed with: 2024-12-24, removal date: ):**<br><br>
             
           required: true
           deprecated: true
@@ -1119,7 +1119,7 @@ paths:
           description: |
             
             <br><br>
-            **Breaking Change Notice (active with 2.0):**<br><br>
+            **Breaking Change Notice (active with 2.0, activation date: ):**<br><br>
             Has to be in the past
           required: true
           schema:

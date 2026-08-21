@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 import com.anaptecs.jeaf.generator.annotations.BreakingChangeNotice;
@@ -24,7 +25,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * <p/>
- * <b>Breaking Change with 47.11:</b> Announcement for the far away future
+ * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>activation date:</b> 2222-12-31):
+ * Announcement for the far away future
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -58,9 +60,11 @@ public abstract class PlainPOJOBase {
    * </ul>
    */
   @Example(values = { "Hello", "World!" })
+  @NotNull
   private String hello;
 
   @PositiveOrZero
+  @NotNull
   private Integer world;
 
   /**

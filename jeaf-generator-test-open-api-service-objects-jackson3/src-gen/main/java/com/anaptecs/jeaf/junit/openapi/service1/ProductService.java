@@ -81,7 +81,8 @@ public interface ProductService extends Service {
   /**
    * @param pChannelCode
    * <p/>
-   * <b>Breaking Change with 2.0:</b> Parameter will be mandatory
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>activation date:</b> TBD): Parameter will be
+   * mandatory
    * @return {@link ChannelCode}
    */
   @MyNotNullServiceParam
@@ -94,7 +95,8 @@ public interface ProductService extends Service {
 
   /**
    * @return {@link String}
-   * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2024-10-20)
+   * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2024-10-20, <b>removal
+   * date:</b> TBD)
    */
   @Deprecated
   @MyNotNullServiceParam

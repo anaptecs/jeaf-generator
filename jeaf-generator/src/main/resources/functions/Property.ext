@@ -11,48 +11,61 @@ extension java::GeneratorCommons;
 
 cached boolean isProperty(uml::Element element):
     element.isInstanceOf("org.eclipse.uml2.uml.Property");
-    
+
+
 cached uml::Property asProperty(uml::Element element):
     (uml::Property) element;
-    
+
+
 boolean isTransient(uml::Property property):
   property.isStereotypeApplied("Transient") || property.isStereotypeApplied("CompositeDataTypePublicField");
-  
+
+
 boolean isPrimitiveType(uml::Type type) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isPrimitive(org.eclipse.uml2.uml.Type);
+
 
 boolean isBasicType(uml::Type type):
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isBasicType(org.eclipse.uml2.uml.Type);
 
+
 cached boolean belongsToBidirectionalAssociation(uml::Property property):
     property.association != null && property.association.getAllAttributes().select(e|e.isNavigable()).size > 1;
-    
+
+
 cached boolean belongsToTransientBidirectionalAssociation(uml::Property property):
     property.belongsToBidirectionalAssociation() && property.association.getAllAttributes().selectFirst(e|e.isTransient()) != null;
-    
+
+
 cached OpenAPI3Specification getReferencedOpenAPISpecification(Property property):
     property.type.getNearestPackage().getOpenAPISpecificationForPackage();
+
 
 cached boolean checkOpenAPIDependencies(Property property):
     if property.type.isBasicOpenAPIType() || property.type == null || property.getReferencedOpenAPISpecification() == null || property.isSoftLink() || property.getOwnOpenAPISpecification() == null
     then true
     else property.getOwnOpenAPISpecification() == property.getReferencedOpenAPISpecification() || property.getOwnOpenAPISpecification().hasDependency(property.getReferencedOpenAPISpecification());
 
+
 cached boolean checkForOrphanedOpenAPITypes(Property property):
     if property.type.isBasicOpenAPIType() || property.type == null
     then true
     else property.getReferencedOpenAPISpecification() != null;
-    
+
+
 cached boolean hasJavaWrapperTypeForProperty(uml::Property property):
     property.type.hasJavaWrapperType();
+
 
 cached boolean hasJavaWrapperType(uml::Type type):
     if type.isBasicType() && !type.isStringType()
     then true
     else false;
 
+
 cached String getJavaWrapperTypeForProperty(uml::Property property):
     property.type.getJavaWrapperTypeNameForType();
+
 
 cached String getJavaWrapperTypeNameForType(uml::Type type):
     if type.isIntegerType()
@@ -83,7 +96,8 @@ cached boolean hasPredecessorProperty(uml::Property property):
 cached int lower(uml::Property property):
 	property.lower;
 
+
 cached boolean isRequiredProperty(uml::Property property):
-   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || (property.lowerForOpenAPI() > 0) || (property.association != null && property.lowerForOpenAPI() > 0) || (property.isMultivalued() && property.lowerForOpenAPI() > 0);
-   
+   property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || property.lower() > 0;
+
 

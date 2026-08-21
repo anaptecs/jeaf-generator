@@ -412,3 +412,24 @@ boolean generateValidationAnnotationsForBuilderProperties():
 boolean neverInlineOpenAPIDataTypes():
 	getBooleanSystemProperty("jeaf.generator.neverInlineOpenAPIDataTypes", false);
 
+
+boolean generateValidationAnnotationsForDerivedProperties():
+	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForDerivedProperties", false);
+
+
+boolean generateValidationAnnotationsForOperationParametersFromMultiplicity():
+	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForOperationParametersFromMultiplicity", false);
+
+
+boolean generateValidationAnnotationsForServiceOperationParametersFromMultiplicity():
+	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForServiceOperationParametersFromMultiplicity", false);
+
+String getOpenAPISpecVersionInfo():
+	getSystemProperty("jeaf.generator.openAPISpecVersionInfo");
+
+
+List[String] getActiveOpenAPIValidationGroups():
+	getSystemPropertyValues("jeaf.generator.activeOpenAPIValidationGroups");
+
+
+

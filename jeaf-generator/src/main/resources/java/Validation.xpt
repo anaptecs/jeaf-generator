@@ -3,8 +3,12 @@
 «EXTENSION java::Naming»
 «EXTENSION java::GeneratorCommons»
 «EXTENSION java::CustomValidationCommons»
+«EXTENSION functions::Validation»
 «EXTENSION functions::Property»
 «EXTENSION functions::Parameter»
+«EXTENSION functions::Dependency»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::SystemProperties»
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 
 «DEFINE GenerateCustomValidation FOR CustomConstraint»
@@ -60,103 +64,161 @@ public @interface «validationClass» {
 «ENDDEFINE»
 
 «DEFINE ValidationAnnotation FOR NamedElement»
-    «FOREACH this.getAppliedStereotypes() AS stereotype»
-	    «IF stereotype.isValidationStereotype()»
-			«IF stereotype.name == "DecimalMin"»
-			  «EXPAND DecimalMinAnnotation FOR ((DecimalMin)this)»	
+	«EXPAND ValidationAnnotation(null)»
+«ENDDEFINE»
+
+
+«DEFINE ValidationAnnotation(String parameterContext) FOR NamedElement»
+    «LET this.getAllDirectValidationStereotypes() AS allDirectValidationStereotypes»
+    «LET this.getAllIndirectValidationStereotypes() AS allIndirectValidationStereotypes»
+    «LET this.getRemoveValidationDependencies() AS removeValidationDepedencies»
+	«LET {}.addAll(allDirectValidationStereotypes).addAll(allIndirectValidationStereotypes) AS allValidationStereotypes»
+	«LET allValidationStereotypes.typeSelect(Stereotype).name.toSet().toList() AS allValidationStereotypeNames»
+
+    «FOREACH allValidationStereotypeNames AS stereotypeName»
+		«LET allDirectValidationStereotypes.select(e|e.name == stereotypeName).first() AS directValidationStereotype»
+		«LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.name == stereotypeName).isEmpty == false) AS validationDependencies»
+		«LET removeValidationDepedencies.select(e|e.getStereotypeValue("RemoveValidation", "removedValidations").contains(stereotypeName)).getValidationGroups() AS removeValidationGroups»
+		«LET removeValidationGroups.isEmpty == false || validationDependencies.isEmpty == false AS hasValidationGroups»
+		«LET (List[JMM::ValidationGroup]) getModel().getAllValidationGroupsFromModel().removeAll(validationDependencies.getValidationGroups()).removeAll(removeValidationGroups) AS defaultValidationGroups»
+
+			«IF stereotypeName == "DecimalMin"»
+			  «EXPAND DecimalMinAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "DecimalMax"»
-			  «EXPAND DecimalMaxAnnotation FOR ((DecimalMax)this)»	
+			«ELSEIF stereotypeName == "DecimalMax"»
+			  «EXPAND DecimalMaxAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»	
 	
-			«ELSEIF stereotype.name == "Min"»
-			  «EXPAND MinAnnotation FOR ((Min)this)»	
+			«ELSEIF stereotypeName == "Min"»
+			  «EXPAND MinAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»	
 			
-			«ELSEIF stereotype.name == "Max"»
-			  «EXPAND MaxAnnotation FOR ((Max)this)»	
+			«ELSEIF stereotypeName == "Max"»
+			  «EXPAND MaxAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Digits"»
-			  «EXPAND DigitsAnnotation FOR ((Digits) this)»
+			«ELSEIF stereotypeName == "Digits"»
+			  «EXPAND DigitsAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Negative"»
-			  «EXPAND NegativeAnnotation FOR ((Negative) this)»
+			«ELSEIF stereotypeName == "Negative"»
+			  «EXPAND NegativeAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "NegativeOrZero"»
-			  «EXPAND NegativeOrZeroAnnotation FOR ((NegativeOrZero) this)»
+			«ELSEIF stereotypeName == "NegativeOrZero"»
+			  «EXPAND NegativeOrZeroAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "PositiveOrZero"»
-			  «EXPAND PositiveOrZeroAnnotation FOR ((PositiveOrZero) this)»
+			«ELSEIF stereotypeName == "PositiveOrZero"»
+			  «EXPAND PositiveOrZeroAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Positive"»
-			  «EXPAND PositiveAnnotation FOR ((Positive) this)»
+			«ELSEIF stereotypeName == "Positive"»
+			  «EXPAND PositiveAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Size"»
-			  «EXPAND SizeAnnotation FOR ((Size) this)»
+			«ELSEIF stereotypeName == "Size"»
+			  «EXPAND SizeAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Pattern"»
-			  «EXPAND PatternAnnotation FOR ((Pattern) this)»
+			«ELSEIF stereotypeName == "Pattern"»
+			  «EXPAND PatternAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Email"»
-			  «EXPAND EmailAnnotation FOR ((Email) this)»
+			«ELSEIF stereotypeName == "Email"»
+			  «EXPAND EmailAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "NotEmpty"»
-			  «EXPAND NotEmptyAnnotation FOR ((NotEmpty) this)»
+			«ELSEIF stereotypeName == "NotEmpty"»
+			  «EXPAND NotEmptyAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Null"»
-			  «EXPAND NullAnnotation FOR ((Null) this)»
+			«ELSEIF stereotypeName == "Null"»
+			  «EXPAND NullAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "NotNull"»
-			  «EXPAND NotNullAnnotation FOR ((NotNull) this)»
+			«ELSEIF stereotypeName == "NotNull"»
+			  «EXPAND NotNullAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "AssertTrue"»
-			  «EXPAND AssertTrueAnnotation FOR ((AssertTrue) this)»
+			«ELSEIF stereotypeName == "AssertTrue"»
+			  «EXPAND AssertTrueAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "AssertFalse"»
-			  «EXPAND AssertFalseAnnotation FOR ((AssertFalse) this)»
+			«ELSEIF stereotypeName == "AssertFalse"»
+			  «EXPAND AssertFalseAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "NotBlank"»
-			  «EXPAND NotBlankAnnotation FOR ((NotBlank) this)»
+			«ELSEIF stereotypeName == "NotBlank"»
+			  «EXPAND NotBlankAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Past"»
-			  «EXPAND PastAnnotation FOR ((Past) this)»
+			«ELSEIF stereotypeName == "Past"»
+			  «EXPAND PastAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "PastOrPresent"»
-			  «EXPAND PastOrPresentAnnotation FOR ((PastOrPresent) this)»
+			«ELSEIF stereotypeName == "PastOrPresent"»
+			  «EXPAND PastOrPresentAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "FutureOrPresent"»
-			  «EXPAND FutureOrPresentAnnotation FOR ((FutureOrPresent) this)»
+			«ELSEIF stereotypeName == "FutureOrPresent"»
+			  «EXPAND FutureOrPresentAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Future"»
-			  «EXPAND FutureAnnotation FOR ((Future) this)»
+			«ELSEIF stereotypeName == "Future"»
+			  «EXPAND FutureAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
-			«ELSEIF stereotype.name == "Valid" -»
+			«ELSEIF stereotypeName == "Valid" -»
 			  «EXPAND ValidAnnotation FOR ((Valid) this) -»
 			
+			«ELSEIF stereotypeName == "Optional"»
+				«REM»
+					This case is handled in other areas already and is only there to avoid to end up in general ELSE section
+				«ENDREM»
 			«ELSE»
-			  «EXPAND CustomValidationAnnotation (stereotype)»
-			«ENDIF»
-	    «ENDIF»
-	«ENDFOREACH»
-	«IF this.isProperty()»
-		«LET this.asProperty() AS property»
-			«IF property.association == null»
-				«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == true && isStereotypeApplied("Size") == false && property.lower() > 0»
-					@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()»)
-				«ENDIF»
-				«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == false && property.type.isPrimitiveType() == false && this.requiresNotNullAnnotation() && property.lower() > 0»
-					@«getEnterpriseJavaPackage()».validation.constraints.NotNull
-				«ENDIF»
-			«ELSE»
-				«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isMultivalued() && property.isStatic == false && property.isTransient() == false && isStereotypeApplied("Size") == false && property.lower() > 0»
-					@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()»)
-				«ENDIF»
-				«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isStatic == false && property.isTransient() == false && this.requiresNotNullAnnotation() && property.lower() > 0»
-					@«getEnterpriseJavaPackage()».validation.constraints.NotNull
-				«ENDIF»
+			  «EXPAND CustomValidationAnnotation(directValidationStereotype)»
 			«ENDIF»
 		«ENDLET»
-	«ENDIF»
-	«IF this.isStereotypeApplied("Size") == false »
-	«ENDIF»
+		«ENDLET»
+		«ENDLET»
+		«ENDLET»
+		«ENDLET»
+	«ENDFOREACH»
+		«LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.isValidationStereotype() && e.name == "Optional").isEmpty == false) AS optionalValidationDependencies»
+		«LET (List[JMM::ValidationGroup]) this.getModel().getAllValidationGroupsFromModel().removeAll(optionalValidationDependencies.getValidationGroups()) AS leftOverGroups»
+			«IF this.isProperty()»
+				«LET this.asProperty() AS property»
+					«IF property.association == null»
+						«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == true && allValidationStereotypeNames.contains("Size") == false && property.lower() > 0»
+							«IF optionalValidationDependencies.isEmpty»
+								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()»)
+							«ELSE»
+								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
+							«ENDIF»
+						«ENDIF»
+						«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == false && property.type.isPrimitiveType() == false && allDirectValidationStereotypes.name.requiresNotNullAnnotation() && property.lower() > 0»
+							«IF optionalValidationDependencies.isEmpty»
+								@«getEnterpriseJavaPackage()».validation.constraints.NotNull
+							«ELSE»
+								@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)
+							«ENDIF»
+						«ENDIF»
+					«ELSE»
+						«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isMultivalued() && property.isStatic == false && property.isTransient() == false && allValidationStereotypeNames.contains("Size") == false && property.lower() > 0»
+							«IF optionalValidationDependencies.isEmpty»
+								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()»)
+							«ELSE»
+								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
+							«ENDIF»
+						«ENDIF»
+						«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isStatic == false && property.isTransient() == false && allDirectValidationStereotypes.name.requiresNotNullAnnotation() && property.lower() > 0»
+							«IF optionalValidationDependencies.isEmpty»
+								@«getEnterpriseJavaPackage()».validation.constraints.NotNull
+							«ELSE»
+								@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)
+							«ENDIF»
+						«ENDIF»
+					«ENDIF»
+				«ENDLET»
+			«ELSEIF this.isParameter() && generateValidationAnnotationForParam(parameterContext)»
+				«LET (Parameter) this AS parameter»
+					«IF parameter.isMultivalued()»
+						«IF optionalValidationDependencies.isEmpty && allValidationStereotypeNames.contains("Size") == false && parameter.lowerForParam() > 0»
+							@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «parameter.lowerForParam()»)
+						«ELSE»
+							@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «parameter.lowerForParam()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
+						«ENDIF»
+					«ELSEIF parameter.type.isPrimitiveType() == false»
+						«IF optionalValidationDependencies.isEmpty && allValidationStereotypeNames.contains("NotNull") == false && parameter.lowerForParam() > 0»
+							@«getEnterpriseJavaPackage()».validation.constraints.NotNull
+						«ELSE»
+							@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)
+						«ENDIF»
+					«ENDIF»
+				«ENDLET»
+			«ENDIF»
+		«ENDLET»
+		«ENDLET»
 	«IF this.isStereotypeApplied("Valid") == false»
 		«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject"))»
 		@«getEnterpriseJavaPackage()».validation.Valid
@@ -165,100 +227,502 @@ public @interface «validationClass» {
 	    @«getEnterpriseJavaPackage()».validation.Valid
 	    «ENDIF»
     «ENDIF»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
+    «ENDLET»
 «ENDDEFINE»
 
 
-«DEFINE DecimalMinAnnotation FOR DecimalMin»
-   @«getEnterpriseJavaPackage()».validation.constraints.DecimalMin(value = "«this.minValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+«DEFINE DecimalMinAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (DecimalMin) this AS decimalMinAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.DecimalMin(value = "«decimalMinAnnotation.minValue»", inclusive = «decimalMinAnnotation.inclusive» «EXPAND ValidationAnnotationBasics FOR decimalMinAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (DecimalMin) this AS decimalMinAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.DecimalMin(value = "«decimalMinAnnotation.minValue»", inclusive = «decimalMinAnnotation.inclusive» «EXPAND ValidationAnnotationBasics FOR decimalMinAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (DecimalMin) depdendency AS decimalMinAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.DecimalMin(value = "«decimalMinAnnotation.minValue»", inclusive = «decimalMinAnnotation.inclusive» «EXPAND ValidationAnnotationBasics FOR decimalMinAnnotation», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE DecimalMaxAnnotation FOR DecimalMax»
-   @«getEnterpriseJavaPackage()».validation.constraints.DecimalMax(value = "«this.maxValue»", inclusive = «this.inclusive» «EXPAND ValidationAnnotationBasics» )
+
+«DEFINE DecimalMaxAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (DecimalMax) this AS decimalMaxAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.DecimalMax(value = "«decimalMaxAnnotation.maxValue»", inclusive = «decimalMaxAnnotation.inclusive» «EXPAND ValidationAnnotationBasics FOR decimalMaxAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (DecimalMax) this AS decimalMaxAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.DecimalMax(value = "«decimalMaxAnnotation.maxValue»", inclusive = «decimalMaxAnnotation.inclusive» «EXPAND ValidationAnnotationBasics FOR decimalMaxAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (DecimalMax) depdendency AS decimalMaxAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.DecimalMax(value = "«decimalMaxAnnotation.maxValue»", inclusive = «decimalMaxAnnotation.inclusive» «EXPAND ValidationAnnotationBasics FOR decimalMaxAnnotation», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE MinAnnotation FOR Min»
-   @«getEnterpriseJavaPackage()».validation.constraints.Min(value = «this.minValue» «EXPAND ValidationAnnotationBasics»)
+
+«DEFINE MinAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Min) this AS minAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Min(value = «minAnnotation.minValue» «EXPAND ValidationAnnotationBasics FOR minAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Min) this AS minAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Min(value = «minAnnotation.minValue» «EXPAND ValidationAnnotationBasics FOR minAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Min) depdendency AS minAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Min(value = «minAnnotation.minValue» «EXPAND ValidationAnnotationBasics FOR minAnnotation», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE MaxAnnotation FOR Max»
-   @«getEnterpriseJavaPackage()».validation.constraints.Max(value = «this.maxValue» «EXPAND ValidationAnnotationBasics»)
+
+«DEFINE MaxAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Max) this AS maxAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Max(value = «maxAnnotation.maxValue» «EXPAND ValidationAnnotationBasics FOR maxAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Max) this AS maxAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Max(value = «maxAnnotation.maxValue» «EXPAND ValidationAnnotationBasics FOR maxAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Max) depdendency AS maxAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Max(value = «maxAnnotation.maxValue» «EXPAND ValidationAnnotationBasics FOR maxAnnotation», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE DigitsAnnotation FOR Digits»
-   @«getEnterpriseJavaPackage()».validation.constraints.Digits(integer = «integer», fraction = «fraction» «EXPAND ValidationAnnotationBasics»)
+
+«DEFINE DigitsAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Digits) this AS digitsAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Digits(integer = «digitsAnnotation.integer», fraction = «digitsAnnotation.fraction» «EXPAND ValidationAnnotationBasics FOR digitsAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Digits) this AS digitsAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Digits(integer = «digitsAnnotation.integer», fraction = «digitsAnnotation.fraction» «EXPAND ValidationAnnotationBasics FOR digitsAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Digits) depdendency AS digitsAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Digits(integer = «digitsAnnotation.integer», fraction = «digitsAnnotation.fraction» «EXPAND ValidationAnnotationBasics FOR digitsAnnotation», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE NegativeAnnotation FOR Negative»
-   @«getEnterpriseJavaPackage()».validation.constraints.Negative«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE NegativeAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Negative) this AS negativeAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Negative«IF negativeAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR negativeAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Negative) this AS negativeAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Negative(«IF negativeAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR negativeAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Negative) depdendency AS negativeAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Negative(«IF negativeAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR negativeAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE NegativeOrZeroAnnotation FOR NegativeOrZero»
-   @«getEnterpriseJavaPackage()».validation.constraints.NegativeOrZero«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE NegativeOrZeroAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (NegativeOrZero) this AS negativeOrZeroAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.NegativeOrZero«IF negativeOrZeroAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR negativeOrZeroAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (NegativeOrZero) this AS negativeOrZeroAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.NegativeOrZero(«IF negativeOrZeroAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR negativeOrZeroAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (NegativeOrZero) depdendency AS negativeOrZeroAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.NegativeOrZero(«IF negativeOrZeroAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR negativeOrZeroAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE PositiveOrZeroAnnotation FOR PositiveOrZero»
-   @«getEnterpriseJavaPackage()».validation.constraints.PositiveOrZero«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE PositiveOrZeroAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (PositiveOrZero) this AS positiveOrZeroAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.PositiveOrZero«IF positiveOrZeroAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR positiveOrZeroAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (PositiveOrZero) this AS positiveOrZeroAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.PositiveOrZero(«IF positiveOrZeroAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR positiveOrZeroAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (PositiveOrZero) depdendency AS positiveOrZeroAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.PositiveOrZero(«IF positiveOrZeroAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR positiveOrZeroAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE PositiveAnnotation FOR Positive»
-   @«getEnterpriseJavaPackage()».validation.constraints.Positive«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE PositiveAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Positive) this AS positiveAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Positive«IF positiveAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR positiveAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Positive) this AS positiveAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Positive(«IF positiveAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR positiveAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Positive) depdendency AS positiveAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Positive(«IF positiveAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR positiveAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE SizeAnnotation FOR Size»
-   @«getEnterpriseJavaPackage()».validation.constraints.Size(min = «IF min != -1»«min»«ELSE»0«ENDIF», max = «IF max != -1»«max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics»)
+
+«DEFINE SizeAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Size)this AS sizeAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «IF sizeAnnotation.min != -1»«sizeAnnotation.min»«ELSE»0«ENDIF», max = «IF sizeAnnotation.max != -1»«sizeAnnotation.max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics FOR sizeAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Size)this AS sizeAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «IF sizeAnnotation.min != -1»«sizeAnnotation.min»«ELSE»0«ENDIF», max = «IF sizeAnnotation.max != -1»«sizeAnnotation.max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics FOR sizeAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Size) depdendency AS sizeAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «IF sizeAnnotation.min != -1»«sizeAnnotation.min»«ELSE»0«ENDIF», max = «IF sizeAnnotation.max != -1»«sizeAnnotation.max»«ELSE»Integer.MAX_VALUE«ENDIF»«EXPAND ValidationAnnotationBasics FOR sizeAnnotation», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE PatternAnnotation FOR Pattern»
-   @«getEnterpriseJavaPackage()».validation.constraints.Pattern(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {«FOREACH flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
+
+«DEFINE PatternAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Pattern) this AS patternAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Pattern(«IF patternAnnotation.regexp.length > 0»regexp = "«patternAnnotation.regexp»"«ENDIF»«IF patternAnnotation.regexp.length > 0 && patternAnnotation.flags.size > 0», «ENDIF»«IF patternAnnotation.flags.size > 0»flags = {«FOREACH patternAnnotation.flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics FOR patternAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Pattern) this AS patternAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Pattern(«IF patternAnnotation.regexp.length > 0»regexp = "«patternAnnotation.regexp»"«ENDIF»«IF patternAnnotation.regexp.length > 0 && patternAnnotation.flags.size > 0», «ENDIF»«IF patternAnnotation.flags.size > 0»flags = {«FOREACH patternAnnotation.flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics FOR patternAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Pattern) depdendency AS patternAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Pattern(«IF patternAnnotation.regexp.length > 0»regexp = "«patternAnnotation.regexp»"«ENDIF»«IF patternAnnotation.regexp.length > 0 && patternAnnotation.flags.size > 0», «ENDIF»«IF patternAnnotation.flags.size > 0»flags = {«FOREACH patternAnnotation.flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics FOR patternAnnotation», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE EmailAnnotation FOR Email»
-   @«getEnterpriseJavaPackage()».validation.constraints.Email(«IF regexp.length > 0»regexp = "«regexp»"«ENDIF»«IF regexp.length > 0 && flags.size > 0», «ENDIF»«IF flags.size > 0»flags = {«FOREACH flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics»)
+
+«DEFINE EmailAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Email) this AS emailAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Email(«IF emailAnnotation.regexp.length > 0»regexp = "«emailAnnotation.regexp»"«ENDIF»«IF emailAnnotation.regexp.length > 0 && emailAnnotation.flags.size > 0», «ENDIF»«IF emailAnnotation.flags.size > 0»flags = {«FOREACH emailAnnotation.flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»},«ENDIF» «EXPAND ValidationAnnotationBasics FOR emailAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Email) this AS emailAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Email(«IF emailAnnotation.regexp.length > 0»regexp = "«emailAnnotation.regexp»"«ENDIF»«IF emailAnnotation.regexp.length > 0 && emailAnnotation.flags.size > 0», «ENDIF»«IF emailAnnotation.flags.size > 0»flags = {«FOREACH emailAnnotation.flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»},«ENDIF» «IF emailAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasics FOR emailAnnotation»,«ENDIF» «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Email) depdendency AS emailAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Email(«IF emailAnnotation.regexp.length > 0»regexp = "«emailAnnotation.regexp»"«ENDIF»«IF emailAnnotation.regexp.length > 0 && emailAnnotation.flags.size > 0», «ENDIF»«IF emailAnnotation.flags.size > 0»flags = {«FOREACH emailAnnotation.flags AS flag SEPARATOR ", "»«getEnterpriseJavaPackage()».validation.constraints.Pattern.Flag.«flag»«ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics FOR emailAnnotation», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE NotEmptyAnnotation FOR NotEmpty»
-   @«getEnterpriseJavaPackage()».validation.constraints.NotEmpty«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE NotEmptyAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (NotEmpty) this AS notEmptyAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.NotEmpty«IF notEmptyAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR notEmptyAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (NotEmpty) this AS notEmptyAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.NotEmpty(«IF notEmptyAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR notEmptyAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (NotEmpty) depdendency AS notEmptyAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.NotEmpty(«IF notEmptyAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR notEmptyAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE NullAnnotation FOR Null»
-   @«getEnterpriseJavaPackage()».validation.constraints.Null«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE NullAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Null) this AS nullAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Null«IF nullAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR nullAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Null) this AS nullAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Null(«IF nullAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR nullAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Null) depdendency AS nullAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Null(«IF nullAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR nullAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE NotNullAnnotation FOR NotNull»
-   @«getEnterpriseJavaPackage()».validation.constraints.NotNull«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE NotNullAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«LET this.clientDependency.select(e|e.target.typeSelect(JMM::CompatibilityGroup).isEmpty == false && e.getAppliedStereotypes().select(e|e.isValidationStereotype() && e.name == "Optional").isEmpty == false) AS optionalValidationDependencies»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && validationDependencies.isEmpty && optionalValidationDependencies.isEmpty»
+		«LET (NotNull) this AS notNullAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.NotNull«IF notNullAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR notNullAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF optionalValidationDependencies.isEmpty == false»
+			«LET (List[JMM::ValidationGroup]) this.getModel().getAllValidationGroupsFromModel().removeAll(optionalValidationDependencies.getValidationGroups()).removeAll(validationDependencies.getValidationGroups()) AS leftOverGroups»
+			@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)
+			«ENDLET»
+		«ENDIF»
+		«IF validationDependencies.isEmpty == false»
+		@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR validationDependencies.getValidationGroups()»)
+		«ENDIF»
+	«ENDIF»
+	«ENDLET»
 «ENDDEFINE»
 
-«DEFINE AssertTrueAnnotation FOR AssertTrue»
-   @«getEnterpriseJavaPackage()».validation.constraints.AssertTrue«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE AssertTrueAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (AssertTrue) this AS assertTrueAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.AssertTrue«IF assertTrueAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR assertTrueAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (AssertTrue) this AS assertTrueAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.AssertTrue(«IF assertTrueAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR assertTrueAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (AssertTrue) depdendency AS assertTrueAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.AssertTrue(«IF assertTrueAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR assertTrueAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE AssertFalseAnnotation FOR AssertFalse»
-   @«getEnterpriseJavaPackage()».validation.constraints.AssertFalse«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE AssertFalseAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (AssertFalse) this AS assertFalseAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.AssertFalse«IF assertFalseAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR assertFalseAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (AssertFalse) this AS assertFalseAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.AssertFalse(«IF assertFalseAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR assertFalseAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (AssertFalse) depdendency AS assertFalseAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.AssertFalse(«IF assertFalseAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR assertFalseAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE NotBlankAnnotation FOR NotBlank»
-   @«getEnterpriseJavaPackage()».validation.constraints.NotBlank«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE NotBlankAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (NotBlank) this AS notBlankAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.NotBlank«IF notBlankAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR notBlankAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (NotBlank) this AS notBlankAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.NotBlank(«IF notBlankAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR notBlankAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (NotBlank) depdendency AS notBlankAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.NotBlank(«IF notBlankAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR notBlankAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE PastAnnotation FOR Past»
-   @«getEnterpriseJavaPackage()».validation.constraints.Past«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE PastAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Past) this AS pastAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Past«IF pastAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR pastAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Past) this AS pastAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Past(«IF pastAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR pastAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Past) depdendency AS pastAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Past(«IF pastAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR pastAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE PastOrPresentAnnotation FOR PastOrPresent»
-   @«getEnterpriseJavaPackage()».validation.constraints.PastOrPresent«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE PastOrPresentAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (PastOrPresent) this AS pastOrPresentAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.PastOrPresent«IF pastOrPresentAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR pastOrPresentAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (PastOrPresent) this AS pastOrPresentAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.PastOrPresent(«IF pastOrPresentAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR pastOrPresentAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (PastOrPresent) depdendency AS pastOrPresentAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.PastOrPresent(«IF pastOrPresentAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR pastOrPresentAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE FutureOrPresentAnnotation FOR FutureOrPresent»
-   @«getEnterpriseJavaPackage()».validation.constraints.FutureOrPresent«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE FutureOrPresentAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement»
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (FutureOrPresent) this AS futureOrPresentAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.FutureOrPresent«IF futureOrPresentAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR futureOrPresentAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (FutureOrPresent) this AS futureOrPresentAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.FutureOrPresent(«IF futureOrPresentAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR futureOrPresentAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (FutureOrPresent) depdendency AS futureOrPresentAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.FutureOrPresent(«IF futureOrPresentAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR futureOrPresentAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
 
-«DEFINE FutureAnnotation FOR Future»
-   @«getEnterpriseJavaPackage()».validation.constraints.Future«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+
+«DEFINE FutureAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement »
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (Future) this AS futureAnnotation»
+		@«getEnterpriseJavaPackage()».validation.constraints.Future«IF futureAnnotation.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation FOR futureAnnotation»)«ENDIF»
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (Future) this AS futureAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Future(«IF futureAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR futureAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (Future) depdendency AS futureAnnotation»
+			@«getEnterpriseJavaPackage()».validation.constraints.Future(«IF futureAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR futureAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
 «ENDDEFINE»
+
 
 «DEFINE ValidAnnotation FOR Valid -»
-   @«getEnterpriseJavaPackage()».validation.Valid«IF this.hasErrorCodeOrSeverity()»(«EXPAND ValidationAnnotationBasicsEmptyValidation»)«ENDIF»
+@«getEnterpriseJavaPackage()».validation.Valid
 «ENDDEFINE»
+
 
 «DEFINE CustomValidationAnnotation(Stereotype stereotype) FOR Element»
     @«getJavaAnnotatinClassForCustomValidation(stereotype.fqn())-»(
@@ -286,11 +750,18 @@ public @interface «validationClass» {
     )
 «ENDDEFINE»
 
+
 «DEFINE ValidationAnnotationBasics FOR Validation»
 «IF errorCode > 0», message = "«errorCode»"«ENDIF» «IF severity.name != "NotUsed"», payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF»
 «ENDDEFINE»
 
+
 «DEFINE ValidationAnnotationBasicsEmptyValidation FOR Validation -»
 «IF errorCode > 0»message = "«errorCode»"«ENDIF» «IF errorCode > 0 && severity.name != "NotUsed"», «ENDIF» «IF severity.name != "NotUsed"»payload = com.anaptecs.jeaf.tools.api.validation.Severity.«severity.name».class«ENDIF -»
+«ENDDEFINE»
+
+
+«DEFINE ValidationGroupsSection FOR List[JMM::ValidationGroup]»
+groups = {«FOREACH this AS validationGroup SEPARATOR ", "»«validationGroup.qualifiedName()».class«ENDFOREACH»}
 «ENDDEFINE»
 

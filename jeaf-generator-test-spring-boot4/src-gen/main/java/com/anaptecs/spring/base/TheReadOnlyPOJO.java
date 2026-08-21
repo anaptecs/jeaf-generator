@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -49,6 +51,7 @@ public class TheReadOnlyPOJO {
 
   private final DataUnit dataUnit;
 
+  @NotNull
   private final String name;
 
   private final int[] ints;

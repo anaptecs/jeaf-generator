@@ -32,7 +32,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
   /**
    * @deprecated this header param is no longer supported. Please use &quot;xxx&quot; instead. (<b>since:</b> 1.2.3,
-   * <b>removed with:</b> PI.2.3)
+   * <b>removed with:</b> PI.2.3, <b>removal date:</b> TBD)
    */
   @Deprecated
   private String deprecatedHeader;
@@ -91,7 +91,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
 
     /**
      * @deprecated this header param is no longer supported. Please use &quot;xxx&quot; instead. (<b>since:</b> 1.2.3,
-     * <b>removed with:</b> PI.2.3)
+     * <b>removed with:</b> PI.2.3, <b>removal date:</b> TBD)
      */
     @Deprecated
     private String deprecatedHeader;
@@ -132,7 +132,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated this header param is no longer supported. Please use &quot;xxx&quot; instead. (<b>since:</b> 1.2.3,
-     * <b>removed with:</b> PI.2.3)
+     * <b>removed with:</b> PI.2.3, <b>removal date:</b> TBD)
      */
     @Deprecated
     public Builder setDeprecatedHeader( String pDeprecatedHeader ) {
@@ -191,7 +191,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #deprecatedHeader} is set.
    * @deprecated this header param is no longer supported. Please use &quot;xxx&quot; instead. (<b>since:</b> 1.2.3,
-   * <b>removed with:</b> PI.2.3)
+   * <b>removed with:</b> PI.2.3, <b>removal date:</b> TBD)
    */
   @Deprecated
   public String getDeprecatedHeader( ) {
@@ -203,7 +203,7 @@ public class BeanParamWithDeprecations implements ServiceObject {
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    * @deprecated this header param is no longer supported. Please use &quot;xxx&quot; instead. (<b>since:</b> 1.2.3,
-   * <b>removed with:</b> PI.2.3)
+   * <b>removed with:</b> PI.2.3, <b>removal date:</b> TBD)
    */
   @Deprecated
   public void setDeprecatedHeader( String pDeprecatedHeader ) {

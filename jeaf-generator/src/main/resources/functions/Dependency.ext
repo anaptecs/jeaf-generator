@@ -1,0 +1,10 @@
+extension java::GeneratorCommons;
+
+
+cached boolean isDependency(uml::Element element) :
+	JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isDependency(org.eclipse.uml2.uml.Element);
+
+
+cached uml::Dependency asDependency(uml::Element element):
+	(uml::Dependency) element;
+

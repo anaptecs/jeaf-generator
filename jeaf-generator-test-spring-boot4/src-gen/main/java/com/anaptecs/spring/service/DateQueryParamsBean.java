@@ -16,6 +16,8 @@ import java.time.OffsetTime;
 import java.util.Calendar;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -74,24 +76,34 @@ public class DateQueryParamsBean {
    */
   public static final String SQLDATE = "sqlDate";
 
+  @NotNull
   private OffsetDateTime offsetDateTime;
 
+  @NotNull
   private OffsetTime offsetTime;
 
+  @NotNull
   private LocalDateTime localDateTime;
 
+  @NotNull
   private LocalTime localTime;
 
+  @NotNull
   private LocalDate localDate;
 
+  @NotNull
   private java.util.Date utilDate;
 
+  @NotNull
   private Calendar calendar;
 
+  @NotNull
   private Timestamp sqlTimestamp;
 
+  @NotNull
   private Time sqlTime;
 
+  @NotNull
   private Date sqlDate;
 
   /**

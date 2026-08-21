@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -32,8 +33,10 @@ public class ImmutablePOJO {
    */
   public static final String SOMETHING = "something";
 
+  @NotNull
   private final String name;
 
+  @NotNull
   private Integer something;
 
   /**

@@ -78,7 +78,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   private List<Float> bFloatArray = null;
 
   @JsonProperty("aDoubleArray")
-  private List<Double> aDoubleArray = null;
+  private List<Double> aDoubleArray = new ArrayList<>();
 
   @JsonProperty("bDoubleArray")
   private List<Double> bDoubleArray = null;
@@ -521,9 +521,6 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addADoubleArrayItem(Double aDoubleArrayItem) {
-    if (this.aDoubleArray == null) {
-      this.aDoubleArray = new ArrayList<>();
-    }
     this.aDoubleArray.add(aDoubleArrayItem);
     return this;
   }
@@ -532,7 +529,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * Get aDoubleArray
    * @return aDoubleArray
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public List<Double> getADoubleArray() {
     return aDoubleArray;
   }

@@ -7,6 +7,8 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.DoubleCode;
@@ -27,8 +29,10 @@ public class ChildBeanParameterType extends ParentBeanParamType {
    */
   public static final String NORESTPARAM = "noRESTParam";
 
+  @NotNull
   private String childProperty;
 
+  @NotNull
   private String noRESTParam;
 
   /**
