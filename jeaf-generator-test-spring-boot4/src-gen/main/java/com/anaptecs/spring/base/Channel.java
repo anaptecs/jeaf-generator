@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -53,11 +55,13 @@ public class Channel {
   /**
    * Type of the channel
    */
+  @NotNull
   private ChannelType channelType;
 
   /**
    * The business code of the channel
    */
+  @NotNull
   private ChannelCode channelCode;
 
   private final int code;

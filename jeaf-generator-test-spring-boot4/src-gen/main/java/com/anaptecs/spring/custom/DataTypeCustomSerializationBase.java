@@ -7,6 +7,8 @@ package com.anaptecs.spring.custom;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -25,6 +27,7 @@ public abstract class DataTypeCustomSerializationBase {
    */
   public static final String PROPERTY1 = "property1";
 
+  @NotNull
   private String property1;
 
   /**

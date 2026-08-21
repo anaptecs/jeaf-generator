@@ -15,6 +15,8 @@ import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -77,6 +79,8 @@ public abstract class SoftLinkPartnerBase {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #longLinks} is
    * <code>com.anaptecs.jeaf.junit.pojo.softlink.SoftLinkChildA</code><br/>
    */
+  @Size(min = 1)
+  @NotNull
   private List<Long> longLinkIDs;
 
   /**
@@ -489,6 +493,7 @@ public abstract class SoftLinkPartnerBase {
    *
    * @return {@link String} Value to which {@link #derivedSoftLink} is set.
    */
+  @NotNull
   @JsonGetter
   public abstract String getDerivedSoftLinkID( );
 

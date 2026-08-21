@@ -22,16 +22,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 0.5, removed with: 2.0):**&lt;br&gt;&lt;br&gt; Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; 
+ *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 0.5, removed with: 2.0, removal date: ):**&lt;br&gt;&lt;br&gt; Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; 
  */
-@Schema(description = " <br><br> **Deprecation Notice (since: 0.5, removed with: 2.0):**<br><br> Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` ")
+@Schema(description = " <br><br> **Deprecation Notice (since: 0.5, removed with: 2.0, removal date: ):**<br><br> Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` ")
 
 public class ChildAA extends ChildA {
   @JsonProperty("childAAAttribute")
   private Integer childAAAttribute = null;
 
   @JsonProperty("sizedArray")
-  private List<Integer> sizedArray = null;
+  private List<Integer> sizedArray = new ArrayList<>();
 
   @JsonProperty("requiredArray")
   private List<String> requiredArray = new ArrayList<>();
@@ -69,9 +69,6 @@ public class ChildAA extends ChildA {
   }
 
   public ChildAA addSizedArrayItem(Integer sizedArrayItem) {
-    if (this.sizedArray == null) {
-      this.sizedArray = new ArrayList<>();
-    }
     this.sizedArray.add(sizedArrayItem);
     return this;
   }
@@ -80,7 +77,7 @@ public class ChildAA extends ChildA {
    * Get sizedArray
    * @return sizedArray
   **/
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   public List<Integer> getSizedArray() {
     return sizedArray;
   }

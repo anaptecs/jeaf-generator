@@ -16,6 +16,7 @@ import java.util.Set;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyProperty;
@@ -57,6 +58,8 @@ public abstract class ResellerBase {
    */
   public static final String LANGUAGE = "language";
 
+  @Size(min = 1)
+  @NotNull
   private Set<Channel> channels;
 
   /**
@@ -76,6 +79,7 @@ public abstract class ResellerBase {
   @Size(min = 0, max = 32)
   private String name;
 
+  @NotNull
   private Locale language;
 
   /**
@@ -400,6 +404,7 @@ public abstract class ResellerBase {
   /**
    * @return {@link Integer}
    */
+  @NotNull
   @MyNotNullProperty
   public abstract Integer doSomething( );
 

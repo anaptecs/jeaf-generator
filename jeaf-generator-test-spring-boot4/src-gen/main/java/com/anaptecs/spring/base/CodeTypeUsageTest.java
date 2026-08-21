@@ -12,6 +12,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -55,12 +58,16 @@ public class CodeTypeUsageTest {
    */
   public static final String CHARACTERCODE = "characterCode";
 
+  @NotNull
   private BooleanCodeType booleanCode;
 
   private Set<BooleanCodeType> booleanCodeAssociation;
 
+  @Size(min = 1)
+  @NotNull
   private Set<ShortCodeType> shortCodeTypeAssociation;
 
+  @NotNull
   private StringCodeType stringCode;
 
   private CharacterCode characterCode;

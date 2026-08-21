@@ -3,6 +3,7 @@ import uml;
 
 extension java::GeneratorCommons;
 extension functions::Javadoc;
+extension functions::NamedElement;
 
 
 cached boolean isJEAFDeprecated(Element element) :
@@ -34,15 +35,38 @@ cached String getDeprecatedSince(NamedElement element):
 
 
 cached String getDeprecationRemoval(NamedElement element):
-    if element.isJEAFDeprecated()    
-    then element.getStereotypeValue("JEAFDeprecated", "removedWith")
-    else "";
+	if element.isJEAFDeprecated() == false
+	then ""
+	else
+		if element.getDeprecationRemovalInternal().trim().length > 0
+		then element.getDeprecationRemovalInternal().trim()
+		else 
+			if element.hasCompatibilityInfo()
+			then element.getCompatibilityInfo().firstNonCompatibleVersion.trim()
+			else "";
+
+private String getDeprecationRemovalInternal(NamedElement element):
+	if element.isJEAFDeprecated()    
+	then element.getStereotypeValue("JEAFDeprecated", "removedWith")
+	else "";
 
 
 cached String getDeprecationRemovalDate(NamedElement element):
-    if element.isJEAFDeprecated()    
-    then element.getStereotypeValue("JEAFDeprecated", "removalDate")
-    else "";
+	if element.isJEAFDeprecated() == false
+	then ""
+	else
+		if element.getDeprecationRemovalDateInternal().trim().length > 0
+		then element.getDeprecationRemovalDateInternal().trim()
+		else
+			if element.hasCompatibilityInfo()
+			then element.getCompatibilityInfo().sunsetDate
+			else "";
+
+
+private String getDeprecationRemovalDateInternal(NamedElement element):
+	if element.isJEAFDeprecated()
+	then element.getStereotypeValue("JEAFDeprecated", "removalDate")
+	else "";
 
 
 cached boolean isDeprecationComplete(NamedElement element): 

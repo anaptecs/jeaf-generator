@@ -18,10 +18,12 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyServiceParam;
 import com.anaptecs.annotations.MyNotNullServiceParam;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -47,6 +49,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @return {@link List<Product>} My default comment
    */
   @Size(min = 0, max = 4711)
+  @Size(min = 1, groups = { V7.class })
   @MyNotEmptyServiceParam
   Mono<List<Product>> getProducts( );
 
@@ -57,8 +60,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pProductID
    * @return {@link Product} My default comment
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Product> getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
+  Mono<Product> getProduct( @NotEmpty @NotNull @MyNotNullServiceParam String pProductID );
 
   /**
    * <p/>
@@ -67,7 +71,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pProduct My default comment
    * @return boolean
    */
-  Mono<Boolean> createProduct( @MyNotNullServiceParam Product pProduct );
+  Mono<Boolean> createProduct( @NotNull @MyNotNullServiceParam Product pProduct );
 
   /**
    * <p/>
@@ -76,8 +80,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pContext Default Comment
    * @return {@link Sortiment}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Sortiment> getSortiment( @MyNotNullServiceParam Context pContext );
+  Mono<Sortiment> getSortiment( @NotNull @MyNotNullServiceParam Context pContext );
 
   /**
    * <p/>
@@ -86,13 +91,15 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<ChannelCode> createChannelCode( @NotBlank @MyNotNullServiceParam String pChannelCode );
+  Mono<ChannelCode> createChannelCode( @NotBlank @NotNull @MyNotNullServiceParam String pChannelCode );
 
   /**
    * <p/>
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    */
+  @NotNull
   @MyNotNullServiceParam
   Mono<Void> ping( );
 
@@ -103,6 +110,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @return {@link String}
    */
   @Deprecated
+  @NotNull
   @MyNotNullServiceParam
   Mono<String> deprecatedOperation( );
 
@@ -113,8 +121,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pContext
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> deprecatedContext( @MyNotNullServiceParam DeprecatedContext pContext );
+  Mono<String> deprecatedContext( @NotNull @MyNotNullServiceParam DeprecatedContext pContext );
 
   /**
    * <p/>
@@ -122,8 +131,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    *
    * @param pBeanParam
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> deprecatedBeanParam( @MyNotNullServiceParam BeanParameter pBeanParam );
+  Mono<Void> deprecatedBeanParam( @NotNull @MyNotNullServiceParam BeanParameter pBeanParam );
 
   /**
    * <p/>
@@ -135,6 +145,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
+  @NotNull
   @MyNotNullServiceParam
   Mono<String> deprecatedParams( @Deprecated int pParam1 );
 
@@ -146,8 +157,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> deprecatedBody( @Deprecated @MyNotNullServiceParam String pBody );
+  Mono<String> deprecatedBody( @Deprecated @NotNull @MyNotNullServiceParam String pBody );
 
   /**
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
@@ -158,8 +170,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pProduct My default comment <br/>
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> deprectedComplexRequestBody( @Deprecated @MyNotNullServiceParam Product pProduct );
+  Mono<Void> deprectedComplexRequestBody( @Deprecated @NotNull @MyNotNullServiceParam Product pProduct );
 
   /**
    * <p/>
@@ -169,6 +182,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
+  @NotNull
   @MyNotNullServiceParam
   Mono<Product> deprecatedComplexReturn( );
 
@@ -178,8 +192,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    *
    * @param pContext
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> loadSpecificThings( @MyNotNullServiceParam SpecialContext pContext );
+  Mono<Void> loadSpecificThings( @NotNull @MyNotNullServiceParam SpecialContext pContext );
 
   /**
    * <p/>
@@ -188,8 +203,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pChannelCode Channel Code that should be created.
    * @return {@link ChannelCode} Created channel code
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<ChannelCode> createChannelCodeFromObject( @MyNotNullServiceParam ChannelCode pChannelCode );
+  Mono<ChannelCode> createChannelCodeFromObject( @NotNull @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * <p/>
@@ -199,8 +215,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @return {@link List<CurrencyCode>}
    */
   @Size(min = 1, max = 20)
+  @Size(min = 1, groups = { V7.class })
   @MyNotEmptyServiceParam
-  Mono<List<CurrencyCode>> addCurrencies( @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
+  Mono<List<CurrencyCode>> addCurrencies( @Size(min = 1) @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
 
   /**
    * <p/>
@@ -209,8 +226,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<CurrencyCode> isCurrencySupported( @MyNotNullServiceParam CurrencyCode pCurrency );
+  Mono<CurrencyCode> isCurrencySupported( @NotNull @MyNotNullServiceParam CurrencyCode pCurrency );
 
   /**
    * <p/>
@@ -219,8 +237,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<IntegerCodeType> testCodeTypeUsage( @MyNotNullServiceParam StringCodeType pStringCode );
+  Mono<IntegerCodeType> testCodeTypeUsage( @NotNull @MyNotNullServiceParam StringCodeType pStringCode );
 
   /**
    * <p/>
@@ -230,8 +249,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @return {@link String}
    */
   @Size(min = 111, max = 666)
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testLocalBeanParamType( @MyNotNullServiceParam LocalBeanParamType pBeanParam );
+  Mono<String> testLocalBeanParamType( @NotNull @MyNotNullServiceParam LocalBeanParamType pBeanParam );
 
   /**
    * <p/>
@@ -240,8 +260,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pParent
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testExternalBeanParameterType( @MyNotNullServiceParam ParentBeanParamType pParent );
+  Mono<String> testExternalBeanParameterType( @NotNull @MyNotNullServiceParam ParentBeanParamType pParent );
 
   /**
    * <p/>
@@ -250,8 +271,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pChild
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testChildBeanParameter( @MyNotNullServiceParam ChildBeanParameterType pChild );
+  Mono<String> testChildBeanParameter( @NotNull @MyNotNullServiceParam ChildBeanParameterType pChild );
 
   /**
    * <p/>
@@ -269,13 +291,16 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pSQLTime
    * @param pSQLDate
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testDateQueryParams( @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam OffsetDateTime pStartTimestamp, @MyNotNullServiceParam OffsetTime pStartTime,
-      @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp, @MyNotNullServiceParam LocalTime pLocalStartTime,
-      @MyNotNullServiceParam LocalDate pLocalStartDate, @MyNotNullServiceParam Calendar pCalendar,
-      @MyNotNullServiceParam java.util.Date pUtilDate, @MyNotNullServiceParam Timestamp pSQLTimestamp,
-      @MyNotNullServiceParam Time pSQLTime, @MyNotNullServiceParam Date pSQLDate );
+  Mono<Void> testDateQueryParams( @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
+      @NotNull @MyNotNullServiceParam OffsetTime pStartTime,
+      @NotNull @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp,
+      @NotNull @MyNotNullServiceParam LocalTime pLocalStartTime,
+      @NotNull @MyNotNullServiceParam LocalDate pLocalStartDate, @NotNull @MyNotNullServiceParam Calendar pCalendar,
+      @NotNull @MyNotNullServiceParam java.util.Date pUtilDate, @NotNull @MyNotNullServiceParam Timestamp pSQLTimestamp,
+      @NotNull @MyNotNullServiceParam Time pSQLTime, @NotNull @MyNotNullServiceParam Date pSQLDate );
 
   /**
    * <p/>
@@ -284,9 +309,10 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pPath
    * @param pQueryParams
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testDateQueryParamsBean( @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
+  Mono<Void> testDateQueryParamsBean( @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
   /**
    * <p/>
@@ -304,13 +330,16 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pSQLTime
    * @param pSQLDate
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testDateHeaderParams( @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam OffsetDateTime pOffsetDateTime, @MyNotNullServiceParam OffsetTime pOffsetTime,
-      @MyNotNullServiceParam LocalDateTime pLocalDateTime, @MyNotNullServiceParam LocalTime pLocalTime,
-      @MyNotNullServiceParam LocalDate pLocalDate, @MyNotNullServiceParam Calendar pCalendar,
-      @MyNotNullServiceParam java.util.Date pUtilDate, @MyNotNullServiceParam Timestamp pSQLTimestamp,
-      @MyNotNullServiceParam Time pSQLTime, @MyNotNullServiceParam Date pSQLDate );
+  Mono<Void> testDateHeaderParams( @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull @MyNotNullServiceParam OffsetDateTime pOffsetDateTime,
+      @NotNull @MyNotNullServiceParam OffsetTime pOffsetTime,
+      @NotNull @MyNotNullServiceParam LocalDateTime pLocalDateTime,
+      @NotNull @MyNotNullServiceParam LocalTime pLocalTime, @NotNull @MyNotNullServiceParam LocalDate pLocalDate,
+      @NotNull @MyNotNullServiceParam Calendar pCalendar, @NotNull @MyNotNullServiceParam java.util.Date pUtilDate,
+      @NotNull @MyNotNullServiceParam Timestamp pSQLTimestamp, @NotNull @MyNotNullServiceParam Time pSQLTime,
+      @NotNull @MyNotNullServiceParam Date pSQLDate );
 
   /**
    * <p/>
@@ -319,9 +348,10 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pPath
    * @param pHeaderParams
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testDateHeaderParamsBean( @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
+  Mono<Void> testDateHeaderParamsBean( @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
 
   /**
    * <p/>
@@ -331,8 +361,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pAuthenticationToken
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testTechnicalHeaderParam( @MyNotNullServiceParam String pReseller );
+  Mono<String> testTechnicalHeaderParam( @NotNull @MyNotNullServiceParam String pReseller );
 
   /**
    * <p/>
@@ -341,8 +372,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pContext
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testTechnicalHeaderBean( @MyNotNullServiceParam TechnicalHeaderContext pContext );
+  Mono<String> testTechnicalHeaderBean( @NotNull @MyNotNullServiceParam TechnicalHeaderContext pContext );
 
   /**
    * <p/>
@@ -351,6 +383,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @param pCodes
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> processDataTypes( List<AnotherDataType> pCodes );
+  Mono<String> processDataTypes( @Size(min = 0, groups = { V7.class }) List<AnotherDataType> pCodes );
 }

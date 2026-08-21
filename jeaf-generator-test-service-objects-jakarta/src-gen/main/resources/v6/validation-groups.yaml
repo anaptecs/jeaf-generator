@@ -1,0 +1,248 @@
+openapi: 3.0.3
+
+info:
+  title: ValidationGroupOpenAPI
+  version: 1.29.8-SNAPSHOT
+
+paths:
+  # MultiVersioningTestService
+  /multi-versioning/some-request/{path-param}:
+    post:
+      operationId: someRequest
+      parameters:
+        - name: firstProperty
+          in: header
+          schema:
+            type: string
+        - name: clientTypes
+          in: header
+          schema:
+            type: array
+
+            items:
+              $ref: '#/components/schemas/ClientType'
+            uniqueItems: true
+        - name: deprecatedHeader
+          in: header
+          description: |
+            
+            <br><br>
+            **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+            
+          required: true
+          deprecated: true
+          schema:
+            type: string
+            nullable: false
+        - name: path-param
+          in: path
+          required: true
+          schema:
+            type: string
+            nullable: false
+            minLength: 0
+            maxLength: 666
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MyPojoRequest'
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyPOJOResponse'
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
+
+components:
+  securitySchemes:
+    MyOAuthSecuritySchema:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'https://example.com/api/oauth/dialog'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+        implicit:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'TODO Please add required token URL'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+  responses:
+    # com.anaptecs.jeaf.junit.validationgroups.CustomErrorResponse
+    CustomErrorResponse:
+      description: TODO Please add comment to error response type
+
+
+  schemas:
+    # com.anaptecs.jeaf.junit.validationgroups.MyPOJOResponse
+    MyPOJOResponse:
+      type: object
+      additionalProperties: false
+      required:
+        - untouchedProperty
+        - formerMandatoryProperty
+      properties:
+        untouchedProperty:
+          type: string
+          nullable: false
+        formerMandatoryProperty:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with 7.0, activation date: 2026-09-13):**<br><br>
+            
+          type: string
+          nullable: false
+        deprecatedProperty:
+          description: |
+            
+            <br><br>
+            **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+            
+          type: string
+          deprecated: true
+          nullable: true
+    # com.anaptecs.jeaf.junit.validationgroups.MyPojoRequest
+    MyPojoRequest:
+      type: object
+      additionalProperties: false
+      required:
+        - propertyWithNewConstraints
+        - formerMandatoryRequestProperty
+        - untouchedProperty
+      properties:
+        upcomingMandatoryProperty:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with 7.0, activation date: 2026-09-13):**<br><br>
+            Property will become mandatory in the future
+          type: string
+          nullable: true
+        propertyWithNewConstraints:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with , activation date: ):**<br><br>
+            
+          type: string
+          nullable: false
+        formerMandatoryRequestProperty:
+          description: |
+            
+            <br><br>
+            **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+            
+          type: string
+          deprecated: true
+          nullable: false
+        untouchedProperty:
+          type: string
+          nullable: false
+        constraintChangingProperty:
+          type: string
+          minLength: 5
+          maxLength: 500
+          nullable: true
+        otherPojos:
+          type: array
+          items:
+            $ref: '#/components/schemas/OtherPojo'
+          uniqueItems: true
+
+        thePojo:
+          $ref: '#/components/schemas/OtherPojo'
+    # com.anaptecs.jeaf.junit.validationgroups.OtherPojo
+    OtherPojo:
+      type: object
+      additionalProperties: false
+      required:
+        - integerProperty
+        - stringProperty
+        - emailProperty
+        - booleanProperty
+        - dateTimeProperty
+        - positiveValueProperty
+        - negativeProperty
+      properties:
+        multiValuedProperty:
+          type: array
+          items:
+            type: string
+
+          uniqueItems: true
+          nullable: true
+        decimalProperty:
+          type: number
+          format: double
+          maximum: 49
+          exclusiveMaximum: false
+          minimum: 42
+          exclusiveMinimum: false
+          nullable: true
+        integerProperty:
+          type: integer
+          format: int32
+          minimum: 300
+          maximum: 667
+          nullable: false
+        stringProperty:
+          type: string
+          minLength: 1
+          nullable: false
+        emailProperty:
+          type: string
+          nullable: false
+        booleanProperty:
+          type: boolean
+          nullable: false
+        dateTimeProperty:
+          type: string
+          format: date-time
+          nullable: false
+        positiveValueProperty:
+          type: integer
+          format: int32
+          minimum: 0
+          exclusiveMinimum: true
+          nullable: false
+        negativeProperty:
+          type: integer
+          format: int32
+          maximum: 0
+          nullable: false
+        v6Property:
+          description: |
+            
+            <br><br>
+            **Breaking Change Notice (active with 8.0, activation date: 2026-10-20):**<br><br>
+            Property will become mandatory.
+          type: string
+          minLength: 0
+          maxLength: 32
+          nullable: true
+
+    # com.anaptecs.jeaf.junit.validationgroups.ClientType
+    ClientType:
+      type: string
+      enum:
+        - CLIENT_1
+        - CLIENT_2
+        - CLIENT_3
+
+      

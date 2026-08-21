@@ -36,11 +36,11 @@ Enumeration defines the different types of channels that are supported.
 | `CALL_CENTER` |   |  |
 | `MOBILE` |   |  |
 | `TVM` |   |  |
-| `WEB` |   | :bomb: **Breaking Change Notice (since: , active with: 1.47.11):**<br>Added new literal |
-| :exclamation:`LEGACY_POS` |   | :exclamation:**Deprecation Notice (since: , removed with: ):**<br>I'm `DEPRECATED`. |
+| `WEB` |   | :bomb: **Breaking Change Notice (since: , active with: 1.47.11, activation date: ):**<br>Added new literal |
+| :exclamation:`LEGACY_POS` |   | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br>I'm `DEPRECATED`. |
 
 ## ComplexBookingType
-:bomb: **Breaking Change Notice (since: , active with: PI 17):**<br>Class was changed to an extensible enum. New literals will not be introduced before PI 17.
+:bomb: **Breaking Change Notice (since: , active with: PI 17, activation date: ):**<br>Class was changed to an extensible enum. New literals will not be introduced before PI 17.
 
 ### Literals
 
@@ -134,7 +134,7 @@ Test for enums with dynamic literals.
 |------|----------------------|----------------------------|
 | `SBB` |   |  |
 | `SNCF` |   |  |
-| `DB` |   | :bomb: **Breaking Change Notice (since: , active with: 3.x):**<br>New literal will occur |
+| `DB` |   | :bomb: **Breaking Change Notice (since: , active with: 3.x, activation date: ):**<br>New literal will occur |
 
 ## TimeUnit (aka "Zeiteinheit")
 Enumeration represents time units.

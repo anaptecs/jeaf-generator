@@ -7,6 +7,8 @@ package com.anaptecs.spring.base.backward;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -40,6 +42,7 @@ public class SimpleBackwardCompatibility {
   public static final String SUCCESSORPROPERTY = "successorProperty";
 
   @JsonAlias({ "deprecatedProperty" })
+  @NotNull
   private String successorProperty;
 
   /**

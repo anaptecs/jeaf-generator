@@ -8,6 +8,7 @@ package com.anaptecs.jeaf.accounting.impl.pojo;
 import java.util.Objects;
 
 import javax.annotation.Generated;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,6 +28,7 @@ public abstract class PartnerBase {
    */
   public static final String TAGS = "tags";
 
+  @NotNull
   private String tags;
 
   /**

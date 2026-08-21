@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.Objects;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -51,10 +52,12 @@ public class DeprecatedContext {
    * <p/>
    * <b>Header-Param:</b> <code>lang</code>
    */
+  @NotNull
   private Locale language;
 
   private long resellerID;
 
+  @NotNull
   private String queryParam;
 
   /**

@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -55,10 +57,13 @@ public abstract class MasterDataObjectBase {
 
   private List<DataUnit> dataUnits;
 
+  @NotNull
   private Entity entity;
 
+  @NotNull
   private String objectID;
 
+  @NotNull
   private String internalProperty;
 
   /**

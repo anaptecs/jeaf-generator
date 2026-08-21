@@ -346,6 +346,7 @@ components:
           additionalProperties: false
           required:
             - childAAAttribute
+            - sizedArray
             - requiredArray
           properties:
             childAAAttribute:
@@ -361,7 +362,6 @@ components:
               items:
                 type: 
                   - integer
-                  - "null"
                 format: int32
               minItems: 10
               maxItems: 100
@@ -385,6 +385,8 @@ components:
         - $ref: '#/components/schemas/ParentClass'
         - type: object
           additionalProperties: false
+          required:
+            - childBAttribute
           properties:
             childBAttribute:
               description: |
@@ -393,7 +395,6 @@ components:
               items:
                 type: 
                   - boolean
-                  - "null"
               minItems: 11
               maxItems: 42
               uniqueItems: true
@@ -1137,6 +1138,7 @@ components:
       additionalProperties: false
       required:
         - aLongArray
+        - aDoubleArray
       properties:
         aBooleanArray:
           type: array
@@ -1211,7 +1213,6 @@ components:
           items:
             type: 
               - integer
-              - "null"
             format: int64
           minItems: 1
           uniqueItems: true
@@ -1266,7 +1267,6 @@ components:
           items:
             type: 
               - number
-              - "null"
             format: double
           minItems: 4
           maxItems: 12
@@ -1577,6 +1577,7 @@ components:
         Data type represents a product definition
       required:
         - name
+        - image
         - link
         - productID
         - supportedCurrencies
@@ -1600,6 +1601,7 @@ components:
           format: byte
           minLength: 1024
           maxLength: 32768
+          nullable: false
         link:
           type: string
           nullable: false
@@ -1682,7 +1684,7 @@ components:
           description: |
             
             <br><br>
-            **Deprecation Notice (since: 2.0, removed with: 3.0):**<br><br>
+            **Deprecation Notice (since: 2.0, removed with: 3.0, removal date: ):**<br><br>
             Wrong type. Switch to `newLink` instead.
           deprecated: true
           type: array

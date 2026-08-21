@@ -7,6 +7,8 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -30,8 +32,10 @@ public abstract class MySortCriteriaBase {
    */
   public static final String SORTPROPERTY = "sortProperty";
 
+  @NotNull
   private SortOrder sortOrder;
 
+  @NotNull
   private MySortProperty sortProperty;
 
   /**

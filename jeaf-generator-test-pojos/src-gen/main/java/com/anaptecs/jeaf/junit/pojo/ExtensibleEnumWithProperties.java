@@ -5,6 +5,8 @@
  */
 package com.anaptecs.jeaf.junit.pojo;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 public final class ExtensibleEnumWithProperties {
@@ -44,8 +46,10 @@ public final class ExtensibleEnumWithProperties {
       doubleProperty = pDoubleProperty;
     }
 
+    @NotNull
     private final String dataUnitID;
 
+    @NotNull
     private final String name;
 
     private final int order;

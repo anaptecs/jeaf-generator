@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyProperty;
@@ -100,6 +101,7 @@ public class Product implements IProduct {
   private transient boolean resellersBackReferenceInitialized;
 
   @Size(min = 12, max = Integer.MAX_VALUE)
+  @NotNull
   private String name;
 
   /**
@@ -115,13 +117,18 @@ public class Product implements IProduct {
    * <li><code>https://www.company.com/products/1345-345</code></li>
    * </ul>
    */
+  @NotNull
   private URL link;
 
+  @NotNull
   private final UUID productID;
 
   @Size(min = 7, max = 42)
+  @NotNull
   private Set<CurrencyCode> supportedCurrencies;
 
+  @Size(min = 1)
+  @NotNull
   private Set<ProductCode> productCodes;
 
   /**
@@ -135,6 +142,7 @@ public class Product implements IProduct {
    * </ul>
    */
   @Deprecated
+  @NotNull
   private String description;
 
   private transient Set<Sortiment> sortiments;
@@ -143,6 +151,7 @@ public class Product implements IProduct {
    * <br/>
    * <b>Default Value:</b> <code>"https://products.anaptecs.de/123456789"</code>
    */
+  @NotNull
   private String uri;
 
   /**

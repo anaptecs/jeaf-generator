@@ -1,0 +1,9 @@
+extension functions::TypeChecks;
+extension java::GeneratorCommons;
+extension functions::Class;
+
+cached boolean isMultiplicityElement(uml::Element element) :
+	element.isInstanceOf("org.eclipse.uml2.uml.MultiplicityElement");
+  
+cached uml::MultiplicityElement asMultiplicityElement(uml::Element element):
+    (uml::MultiplicityElement) element;

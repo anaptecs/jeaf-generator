@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -35,6 +37,7 @@ public class ParentClass {
    */
   public static final String PARENTATTRIBUTE = "parentAttribute";
 
+  @NotNull
   private String parentAttribute;
 
   /**

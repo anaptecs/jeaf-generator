@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -47,6 +49,7 @@ public class Stop {
   public static final String LINKS = "links";
 
   @JsonAlias({ "bavName", "stopName" })
+  @NotNull
   private String name;
 
   @JsonProperty("_links")

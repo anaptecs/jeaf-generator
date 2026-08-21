@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotNullProperty;
@@ -60,6 +61,7 @@ public class ChildBB extends ChildB {
   @Deprecated
   public static final String DEPRECATEDARRAY = "deprecatedArray";
 
+  @NotNull
   private Long childBBAttribute;
 
   @Deprecated

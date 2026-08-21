@@ -206,13 +206,13 @@
 
 «DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
     «IF this.isJEAFDeprecated() && this.hasMeaningfulDeprecationInfo() -»
- * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.getDeprecatedSince().length > 0»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF», <b>removed with:</b> «IF this.getDeprecationRemoval().length > 0»«this.getDeprecationRemoval()»«ELSE»TBD«ENDIF»)   
+ * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.getDeprecatedSince().length > 0»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF», <b>removed with:</b> «IF this.getDeprecationRemoval().length > 0»«this.getDeprecationRemoval()»«ELSE»TBD«ENDIF», <b>removal date:</b> «IF this.getDeprecationRemovalDate().length > 0»«this.getDeprecationRemovalDate()»«ELSE»TBD«ENDIF»)
     «ENDIF-»
 «ENDDEFINE»
 
 «DEFINE BreakingChangeJavadoc FOR uml::NamedElement -»
     «IF this.isBreakingChange()-»
-    <p/><b>Breaking Change «IF this.getBreakingChangeActiveWith().isConvertableToLocalDate()»on«ELSE»with«ENDIF» «this.getBreakingChangeActiveWith()»:</b> «this.getBreakingChangeDescription().convertCommentForJavadoc()»   
+    <p/><b>Breaking Change</b> (<b>since:</b> «IF this.getBreakingChangeSince().length > 0»«this.getBreakingChangeSince()»«ELSE»TBD«ENDIF», <b>active with:</b> «IF this.getBreakingChangeActiveWith().length > 0»«this.getBreakingChangeActiveWith()»«ELSE»TBD«ENDIF», <b>activation date:</b> «IF this.getBreakingChangeActivactionDate().length > 0»«this.getBreakingChangeActivactionDate()»«ELSE»TBD«ENDIF»): «this.getBreakingChangeDescription().convertCommentForJavadoc()»
     «ENDIF-»
 «ENDDEFINE»
 

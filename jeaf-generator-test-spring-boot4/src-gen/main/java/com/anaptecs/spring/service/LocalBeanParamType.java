@@ -7,6 +7,8 @@ package com.anaptecs.spring.service;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,8 +27,10 @@ public class LocalBeanParamType {
    */
   public static final String LOCALID = "localID";
 
+  @NotNull
   private String localKey;
 
+  @NotNull
   private String localID;
 
   /**

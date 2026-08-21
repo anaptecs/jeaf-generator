@@ -12,6 +12,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.anaptecs.annotations.MyNotEmptyProperty;
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
@@ -62,12 +65,17 @@ public abstract class ComplexBookingIDBase {
 
   private long internalID;
 
+  @NotNull
   private String referenceID;
 
+  @Size(min = 1)
+  @NotNull
   private List<BookingID> bookingIDs;
 
+  @NotNull
   private ComplexBookingType complexBookingType;
 
+  @NotNull
   private Integer anotherID;
 
   private String[] strings;

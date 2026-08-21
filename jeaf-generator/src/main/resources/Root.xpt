@@ -152,6 +152,20 @@
 	«ENDIF»
 «ENDDEFINE»
 
+«DEFINE Root FOR ValidationGroup»
+	«IF (generatePOJOs() == true || generateObjectMappers() == true) && this.isInGeneratorWhitelist() == true»
+		«info("Processing «ValidationGroup» " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND jeaf::ValidationGroup::GenerateValidationGroup»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE Root FOR ValidationGroupHelper»
+	«IF (generatePOJOs() == true || generateObjectMappers() == true) && this.isInGeneratorWhitelist() == true»
+		«info("Processing «ValidationGroupHelper» " + this.name + " (" + (this.fqn()) + ")")»
+		«EXPAND jeaf::ValidationGroup::GenerateValidationGroupHelper»
+	«ENDIF»
+«ENDDEFINE»
+
 «DEFINE Root FOR Interface»
 	«REM»Handle stereotype JEAFService«ENDREM»
 	«IF this.isStereotypeApplied("JEAFService")»

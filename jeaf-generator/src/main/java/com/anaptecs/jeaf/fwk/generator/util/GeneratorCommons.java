@@ -1689,6 +1689,10 @@ public class GeneratorCommons {
 		return pElement instanceof Enumeration;
 	}
 
+	public static boolean isDependency(Element pElement) {
+		return pElement instanceof Dependency;
+	}
+
 	public static List<Slot> getOrderedSlots(EnumerationLiteral pLiteral) {
 		Map<Property, Slot> lSlotsByProperty = new HashMap<Property, Slot>();
 		Iterator<Slot> lIterator = pLiteral.getSlots().iterator();

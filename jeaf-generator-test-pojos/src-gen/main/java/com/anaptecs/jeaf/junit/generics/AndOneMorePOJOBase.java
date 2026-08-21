@@ -14,6 +14,7 @@ import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -47,10 +48,12 @@ public abstract class AndOneMorePOJOBase {
    */
   public static final String MANY = "many";
 
+  @NotNull
   private GenericResponsePOJO<MyBusinessObject> genericProperty;
 
   private Set<GenericResponsePOJO<MyBusinessObject>> genericResponses;
 
+  @NotNull
   private MultiTemplateClass<Message, TemplateEnumTest> multiTemplateClassImpl;
 
   private Set<MultiTemplateClass<Message, TemplateEnumTest>> many;

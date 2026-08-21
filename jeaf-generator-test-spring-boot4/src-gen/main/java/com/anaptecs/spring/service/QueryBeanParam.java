@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.base.BookingCode;
@@ -36,6 +38,7 @@ public class QueryBeanParam {
    */
   public static final String SORTCRITERIA = "sortCriteria";
 
+  @NotNull
   private BookingCode bookingCode;
 
   /**

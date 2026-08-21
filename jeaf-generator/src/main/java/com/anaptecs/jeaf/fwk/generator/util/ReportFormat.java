@@ -13,7 +13,7 @@ public enum ReportFormat {
 		return extension;
 	}
 
-	public static String getExtensioForLiteral(String literal) {
+	public static String getExtensionForLiteral(String literal) {
 		return ReportFormat.valueOf(literal).getExtension();
 	}
 }

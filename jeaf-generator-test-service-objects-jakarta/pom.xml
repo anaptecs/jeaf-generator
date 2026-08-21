@@ -60,10 +60,27 @@
 				<version>${project.version}</version>
 				<executions>
 					<execution>
+						<id>V6</id>
 						<goals>
 							<goal>Generator</goal>
 						</goals>
 						<phase>generate-sources</phase>
+						<configuration>
+							<resourceGenDirectory>${project.basedir}/src-gen/main/resources/v6</resourceGenDirectory>
+							<activeOpenAPIValidationGroups>com.anaptecs.jeaf.junit.validationgroups.validationgroups.V6</activeOpenAPIValidationGroups>
+						</configuration>
+					</execution>
+					<execution>
+						<id>V7</id>
+						<goals>
+							<goal>Generator</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<resourceGenDirectory>${project.basedir}/src-gen/main/resources/v7</resourceGenDirectory>
+							<activeOpenAPIValidationGroups>com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7</activeOpenAPIValidationGroups>
+							<openAPISpecVersionInfo>7.0-PREVIEW</openAPISpecVersionInfo>
+						</configuration>
 					</execution>
 				</executions>
 				<configuration>
@@ -76,7 +93,6 @@
 					<sourceDirectory>${project.basedir}/src-gen/main/java</sourceDirectory>
 					<sourceGenDirectory>${project.basedir}/src-gen/main/java</sourceGenDirectory>
 					<resourceDirectory>${project.basedir}/src-gen/main/resources</resourceDirectory>
-					<resourceGenDirectory>${project.basedir}/src-gen/main/resources</resourceGenDirectory>
 					
 					<enterpriseJavaType>JAVA_EE</enterpriseJavaType>
 					<useArraysOnlyForPrimitives>true</useArraysOnlyForPrimitives>

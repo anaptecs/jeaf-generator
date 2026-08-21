@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
@@ -44,12 +45,14 @@ public class ParentPOJO {
    */
   public static final String HELLO = "hello";
 
+  @NotNull
   private String parentAttribute;
 
   @Deprecated
   @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
   private byte weirdAttribute;
 
+  @NotNull
   private String hello;
 
   /**

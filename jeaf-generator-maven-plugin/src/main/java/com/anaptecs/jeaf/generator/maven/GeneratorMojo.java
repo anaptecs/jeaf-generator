@@ -633,13 +633,13 @@ public class GeneratorMojo extends AbstractMojo {
   // REST Controller
 
   /**
-   * Switch can be used to enable that <code>NotEmpty</code> annotation is generated for REST resources.
+   * Switch can be used to enable that <code>NotNull</code> annotation is generated for REST resources.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateNotNullAnnotationForSingleValuedRESTParameters;
 
   /**
-   * Parameter defines the name of the <code>NotEmpty</code> annotation that should be used for REST resources.
+   * Parameter defines the name of the <code>NotNull</code> annotation that should be used for REST resources.
    */
   @Parameter(required = false)
   private String notNullAnnotationNameForSingleValuedRESTParameters = "";
@@ -994,6 +994,24 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false)
   private OpenAPIVersion openAPIVersion = OpenAPIVersion.OPEN_API_3_1;
 
+  /**
+   * Parameter can be used to explicitly set the version info inside the OpenAPI specification info section. The
+   * parameter is only used if the version is not set explicitly in the UMM model. If the version is neither set in the
+   * UML model nor using this parameter then the Maven project version will be used.
+   */
+  @Parameter(required = false)
+  private String openAPISpecVersionInfo = "";
+
+  /**
+   * Parameter contains the fully qualified name of all validation groups that should be active during OpenAPI
+   * generation. Validation groups are a mechanism that can be used to implement version specific constraints in OpenAPI
+   * as well as in Java.
+   *
+   * Multiple entries have to be separated by <code>","</code>.
+   */
+  @Parameter(required = false)
+  private String activeOpenAPIValidationGroups = "";
+
   @Parameter(required = false, defaultValue = "*.yaml,*.yml")
   private List<String> openAPIExtensions = new ArrayList<>();
 
@@ -1249,6 +1267,26 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateValidationAnnotationsForAttributesFromMultiplicity;
+
+  /**
+   * Switch defines whether Java Validation Annotations should be generated on the get operation for derived properties
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForDerivedProperties;
+
+  /**
+   * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
+   * but also from multiplicity based on parameters operations.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForOperationParametersFromMultiplicity;
+
+  /**
+   * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
+   * but also from multiplicity based on parameters of service operations.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateValidationAnnotationsForServiceOperationParametersFromMultiplicity;
 
   /**
    * Switch defines whether Java Validation Annotations should not only be generated for explicitly modeled annotations
@@ -2491,6 +2529,10 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("Generate OpenAPI Specification:                   " + generateOpenAPISpec);
         lLog.info("Generate dependent OpenAPI Specifications:        " + generateDependentOpenAPISpecs);
         lLog.info("Use transitive OpenAPI dependencies:              " + useTransitiveOpenAPIDependencies);
+        lLog.info("Active OpenAPI Validation Groups:                 " + activeOpenAPIValidationGroups);
+        if (openAPISpecVersionInfo.length() > 0) {
+          lLog.info("OpenAPI Spec Version Info:                        " + openAPISpecVersionInfo);
+        }
         lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
         if (validateOpenAPISpec) {
           lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
@@ -2622,9 +2664,23 @@ public class GeneratorMojo extends AbstractMojo {
           lLog.info("Generate Validation Annotations for attributes:   "
               + generateValidationAnnotationsForAttributesFromMultiplicity);
         }
+
+        if (generateValidationAnnotationsForDerivedProperties) {
+          lLog.info("Validation Annotations for derived properties:    "
+              + generateValidationAnnotationsForDerivedProperties);
+        }
+
         if (generateValidationAnnotationsForAssociationsFromMultiplicity) {
           lLog.info("Generate Validation Annotations for associations: "
               + generateValidationAnnotationsForAssociationsFromMultiplicity);
+        }
+        if (generateValidationAnnotationsForOperationParametersFromMultiplicity) {
+          lLog.info("Validation Annotations for operation parameters:  "
+              + generateValidationAnnotationsForOperationParametersFromMultiplicity);
+        }
+        if (generateValidationAnnotationsForServiceOperationParametersFromMultiplicity) {
+          lLog.info("Validation Annotations for service parameters:   "
+              + generateValidationAnnotationsForServiceOperationParametersFromMultiplicity);
         }
         if (generateValidationAnnotationsForBuilderProperties) {
           lLog.info("Generate Validation Annotations for builder:      "
@@ -2989,6 +3045,10 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapi.checkOpenAPIDependencies",
           Boolean.toString(!disableOpenAPIDependencyChecks));
       System.setProperty("switch.gen.openapi.version", openAPIVersion.name());
+
+      System.setProperty(PROPERTY_PREFIX + "openAPISpecVersionInfo", openAPISpecVersionInfo.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "activeOpenAPIValidationGroups", activeOpenAPIValidationGroups.toString());
       System.setProperty(PROPERTY_PREFIX + "openAPISpecReferenceDefaultLocation", openAPISpecReferenceDefaultLocation);
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());
       System.setProperty("switch.gen.openapi.openAPICommentStyle", openAPICommentStyle.toString());
@@ -3072,6 +3132,16 @@ public class GeneratorMojo extends AbstractMojo {
 
       System.setProperty("switch.gen.enable.validation.annotation.attributes",
           generateValidationAnnotationsForAttributesFromMultiplicity.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForDerivedProperties",
+          generateValidationAnnotationsForDerivedProperties.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForOperationParametersFromMultiplicity",
+          generateValidationAnnotationsForOperationParametersFromMultiplicity.toString());
+
+      System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForServiceOperationParametersFromMultiplicity",
+          generateValidationAnnotationsForServiceOperationParametersFromMultiplicity.toString());
+
       System.setProperty("switch.gen.enable.validation.annotation.associations",
           generateValidationAnnotationsForAssociationsFromMultiplicity.toString());
       System.setProperty(PROPERTY_PREFIX + "generateValidationAnnotationsForBuilderProperties",

@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -39,8 +41,10 @@ public abstract class PlaceRef {
    */
   public static final String TYPE = "type";
 
+  @NotNull
   private String name;
 
+  @NotNull
   private MyType type;
 
   /**

@@ -9,6 +9,7 @@ import java.util.Objects;
 
 import javax.annotation.Generated;
 import javax.validation.ConstraintViolationException;
+import javax.validation.constraints.NotNull;
 
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,12 +32,14 @@ public class MutableChildPOJO extends ImmutablePOJOParent {
    */
   public static final String BOOLEANDEFAULT = "booleanDefault";
 
+  @NotNull
   private Integer writeable;
 
   /**
    * <br/>
    * <b>Default Value:</b> <code>true</code>
    */
+  @NotNull
   private final Boolean booleanDefault;
 
   /**

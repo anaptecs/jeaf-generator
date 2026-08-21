@@ -191,6 +191,9 @@
 «DEFINE AbstractGetterForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
+    «IF generateValidationAnnotationsForDerivedProperties()»
+    	«EXPAND Validation::ValidationAnnotation»
+    «ENDIF»
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@«getJsonGetterFQN()»«ENDIF»
     «EXPAND java::Helper::NotNullAnnotationForProperty»
     «IF this.isSoftLink()»

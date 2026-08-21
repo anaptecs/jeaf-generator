@@ -12,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.anaptecs.spring.composite.ComplexBookingID;
@@ -40,6 +42,7 @@ public class WeirdBooking {
    */
   public static final String ADDITIONALBOOKINGS = "additionalBookings";
 
+  @NotNull
   private ComplexBookingID booking;
 
   private List<ComplexBookingID> additionalBookings;

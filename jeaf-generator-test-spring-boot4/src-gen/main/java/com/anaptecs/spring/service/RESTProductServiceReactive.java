@@ -22,9 +22,12 @@ import java.util.SortedSet;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyServiceParam;
 import com.anaptecs.annotations.MyNotNullServiceParam;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
@@ -52,6 +55,7 @@ public interface RESTProductServiceReactive {
    * @param pMaxResultSize
    * @return {@link List<Product>} My default comment
    */
+  @Size(min = 0, groups = { V7.class })
   Mono<List<Product>> getProducts( int pMaxResultSize );
 
   /**
@@ -61,8 +65,9 @@ public interface RESTProductServiceReactive {
    * @param pProductID
    * @return {@link Product} My default comment
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Product> getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
+  Mono<Product> getProduct( @NotEmpty @NotNull @MyNotNullServiceParam String pProductID );
 
   /**
    * <p/>
@@ -71,7 +76,7 @@ public interface RESTProductServiceReactive {
    * @param pProduct My default comment
    * @return boolean
    */
-  Mono<Boolean> createProduct( @MyNotNullServiceParam Product pProduct );
+  Mono<Boolean> createProduct( @NotNull @MyNotNullServiceParam Product pProduct );
 
   /**
    * <p/>
@@ -80,8 +85,9 @@ public interface RESTProductServiceReactive {
    * @param pContext Default Comment
    * @return {@link Sortiment}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Sortiment> getSortiment( @MyNotNullServiceParam Context pContext );
+  Mono<Sortiment> getSortiment( @NotNull @MyNotNullServiceParam Context pContext );
 
   /**
    * <p/>
@@ -90,13 +96,15 @@ public interface RESTProductServiceReactive {
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<ChannelCode> createChannelCode( @NotBlank @MyNotNullServiceParam String pChannelCode );
+  Mono<ChannelCode> createChannelCode( @NotBlank @NotNull @MyNotNullServiceParam String pChannelCode );
 
   /**
    * <p/>
    * <b>Authorized Roles:</b> <code>`Customer`, `Sales Agent`</code>
    */
+  @NotNull
   @MyNotNullServiceParam
   Mono<Void> ping( );
 
@@ -104,6 +112,7 @@ public interface RESTProductServiceReactive {
    * <p/>
    * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    */
+  @NotNull
   @MyNotNullServiceParam
   Mono<Void> testInit( );
 
@@ -114,7 +123,8 @@ public interface RESTProductServiceReactive {
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  Mono<List<CurrencyCode>> getSupportedCurrencies( @MyNotNullServiceParam ChannelCode pChannelCode );
+  @Size(min = 0, groups = { V7.class })
+  Mono<List<CurrencyCode>> getSupportedCurrencies( @NotNull @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * <p/>
@@ -123,7 +133,8 @@ public interface RESTProductServiceReactive {
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  Mono<List<CurrencyCode>> getSupportedCurrenciesAsync( @MyNotNullServiceParam ChannelCode pChannelCode );
+  @Size(min = 0, groups = { V7.class })
+  Mono<List<CurrencyCode>> getSupportedCurrenciesAsync( @NotNull @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * <p/>
@@ -134,9 +145,10 @@ public interface RESTProductServiceReactive {
    * @param pLocaleQueryParam
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testParams( @MyNotNullServiceParam BigDecimal pBigDecimalHeader, int pIntCookieParam,
-      @MyNotNullServiceParam Locale pLocaleQueryParam );
+  Mono<String> testParams( @NotNull @MyNotNullServiceParam BigDecimal pBigDecimalHeader, int pIntCookieParam,
+      @NotNull @MyNotNullServiceParam Locale pLocaleQueryParam );
 
   /**
    * <p/>
@@ -146,9 +158,11 @@ public interface RESTProductServiceReactive {
    * @param pTimeUnit
    * @param pExtensibleEnum
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testEnumParams( @MyNotNullServiceParam ChannelType pChannelType, @MyNotNullServiceParam TimeUnit pTimeUnit,
-      @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
+  Mono<Void> testEnumParams( @NotNull @MyNotNullServiceParam ChannelType pChannelType,
+      @NotNull @MyNotNullServiceParam TimeUnit pTimeUnit,
+      @NotNull @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
 
   /**
    * <p/>
@@ -158,9 +172,11 @@ public interface RESTProductServiceReactive {
    * @param pTimeUnit
    * @param pExtensibleEnum
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testEnumHeaderParams( @MyNotNullServiceParam ChannelType pChannelType,
-      @MyNotNullServiceParam TimeUnit pTimeUnit, @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
+  Mono<Void> testEnumHeaderParams( @NotNull @MyNotNullServiceParam ChannelType pChannelType,
+      @NotNull @MyNotNullServiceParam TimeUnit pTimeUnit,
+      @NotNull @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
 
   /**
    * <p/>
@@ -179,13 +195,17 @@ public interface RESTProductServiceReactive {
    * @param pSQLDate
    * @param pCalendars
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testDateQueryParams( @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam OffsetDateTime pStartTimestamp, @MyNotNullServiceParam OffsetTime pStartTime,
-      @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp, @MyNotNullServiceParam LocalTime pLocalStartTime,
-      @MyNotNullServiceParam LocalDate pLocalStartDate, @MyNotNullServiceParam Calendar pCalendar,
-      @MyNotNullServiceParam java.util.Date pUtilDate, @MyNotNullServiceParam Timestamp pSQLTimestamp,
-      @MyNotNullServiceParam Time pSQLTime, @MyNotNullServiceParam Date pSQLDate, Set<Calendar> pCalendars );
+  Mono<Void> testDateQueryParams( @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
+      @NotNull @MyNotNullServiceParam OffsetTime pStartTime,
+      @NotNull @MyNotNullServiceParam LocalDateTime pLocalStartTimestamp,
+      @NotNull @MyNotNullServiceParam LocalTime pLocalStartTime,
+      @NotNull @MyNotNullServiceParam LocalDate pLocalStartDate, @NotNull @MyNotNullServiceParam Calendar pCalendar,
+      @NotNull @MyNotNullServiceParam java.util.Date pUtilDate, @NotNull @MyNotNullServiceParam Timestamp pSQLTimestamp,
+      @NotNull @MyNotNullServiceParam Time pSQLTime, @NotNull @MyNotNullServiceParam Date pSQLDate,
+      @Size(min = 0, groups = { V7.class }) Set<Calendar> pCalendars );
 
   /**
    * <p/>
@@ -194,9 +214,10 @@ public interface RESTProductServiceReactive {
    * @param pPath
    * @param pQueryParams
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testDateQueryParamsBean( @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
+  Mono<Void> testDateQueryParamsBean( @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
   /**
    * <p/>
@@ -215,13 +236,17 @@ public interface RESTProductServiceReactive {
    * @param pSQLDate
    * @param pUtilDates
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testDateHeaderParams( @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam OffsetDateTime pOffsetDateTime, @MyNotNullServiceParam OffsetTime pOffsetTime,
-      @MyNotNullServiceParam LocalDateTime pLocalDateTime, @MyNotNullServiceParam LocalTime pLocalTime,
-      @MyNotNullServiceParam LocalDate pLocalDate, @MyNotNullServiceParam Calendar pCalendar,
-      @MyNotNullServiceParam java.util.Date pUtilDate, @MyNotNullServiceParam Timestamp pSQLTimestamp,
-      @MyNotNullServiceParam Time pSQLTime, @MyNotNullServiceParam Date pSQLDate, Set<java.util.Date> pUtilDates );
+  Mono<Void> testDateHeaderParams( @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull @MyNotNullServiceParam OffsetDateTime pOffsetDateTime,
+      @NotNull @MyNotNullServiceParam OffsetTime pOffsetTime,
+      @NotNull @MyNotNullServiceParam LocalDateTime pLocalDateTime,
+      @NotNull @MyNotNullServiceParam LocalTime pLocalTime, @NotNull @MyNotNullServiceParam LocalDate pLocalDate,
+      @NotNull @MyNotNullServiceParam Calendar pCalendar, @NotNull @MyNotNullServiceParam java.util.Date pUtilDate,
+      @NotNull @MyNotNullServiceParam Timestamp pSQLTimestamp, @NotNull @MyNotNullServiceParam Time pSQLTime,
+      @NotNull @MyNotNullServiceParam Date pSQLDate,
+      @Size(min = 0, groups = { V7.class }) Set<java.util.Date> pUtilDates );
 
   /**
    * <p/>
@@ -230,9 +255,10 @@ public interface RESTProductServiceReactive {
    * @param pPath
    * @param pHeaderParams
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testDateHeaderParamsBean( @MyNotNullServiceParam String pPath,
-      @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
+  Mono<Void> testDateHeaderParamsBean( @NotNull @MyNotNullServiceParam String pPath,
+      @NotNull @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
 
   /**
    * <p/>
@@ -241,9 +267,10 @@ public interface RESTProductServiceReactive {
    * @param pChannelTypeParam
    * @param pContext
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testCookieParams( @MyNotNullServiceParam ChannelType pChannelTypeParam,
-      @MyNotNullServiceParam SpecialContext pContext );
+  Mono<Void> testCookieParams( @NotNull @MyNotNullServiceParam ChannelType pChannelTypeParam,
+      @NotNull @MyNotNullServiceParam SpecialContext pContext );
 
   /**
    * <p/>
@@ -253,8 +280,9 @@ public interface RESTProductServiceReactive {
    * @param query2
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testOptionalQueryParams( String query1, int query2 );
+  Mono<String> testOptionalQueryParams( @NotNull(groups = { V7.class }) String query1, int query2 );
 
   /**
    * <p/>
@@ -263,7 +291,7 @@ public interface RESTProductServiceReactive {
    * @param pComplextBookingID
    * @return boolean
    */
-  Mono<Boolean> processComplexBookingID( @MyNotNullServiceParam ComplexBookingID pComplextBookingID );
+  Mono<Boolean> processComplexBookingID( @NotNull @MyNotNullServiceParam ComplexBookingID pComplextBookingID );
 
   /**
    * <p/>
@@ -274,8 +302,11 @@ public interface RESTProductServiceReactive {
    * @param pDoubleCode
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCodeType pDoubleCode );
+  Mono<String> testDataTypesAsHeaderParam( @NotNull(groups = { V7.class }) BookingID pBookingID,
+      @NotNull(groups = { V7.class }) BookingCode pBookingCode,
+      @NotNull(groups = { V7.class }) DoubleCodeType pDoubleCode );
 
   /**
    * <p/>
@@ -284,8 +315,9 @@ public interface RESTProductServiceReactive {
    * @param pContext
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testDataTypesAsHeaderBeanParam( @MyNotNullServiceParam AdvancedHeader pContext );
+  Mono<String> testDataTypesAsHeaderBeanParam( @NotNull @MyNotNullServiceParam AdvancedHeader pContext );
 
   /**
    * <p/>
@@ -294,8 +326,9 @@ public interface RESTProductServiceReactive {
    * @param pIntegerArray
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testPrimitiveArrays( int[] pIntegerArray );
+  Mono<String> testPrimitiveArrays( @Size(min = 0, groups = { V7.class }) int[] pIntegerArray );
 
   /**
    * <p/>
@@ -304,8 +337,9 @@ public interface RESTProductServiceReactive {
    * @param pBookingCode
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testDataTypeAsQueryParam( @MyNotNullServiceParam BookingCode pBookingCode );
+  Mono<String> testDataTypeAsQueryParam( @NotNull @MyNotNullServiceParam BookingCode pBookingCode );
 
   /**
    * <p/>
@@ -314,8 +348,9 @@ public interface RESTProductServiceReactive {
    * @param pBeanParam
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testDataTypeAsBeanQueryParam( @MyNotNullServiceParam QueryBeanParam pBeanParam );
+  Mono<String> testDataTypeAsBeanQueryParam( @NotNull @MyNotNullServiceParam QueryBeanParam pBeanParam );
 
   /**
    * <p/>
@@ -324,8 +359,9 @@ public interface RESTProductServiceReactive {
    * @param pIntValues
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testPrimitiveArrayAsQueryParam( int[] pIntValues );
+  Mono<String> testPrimitiveArrayAsQueryParam( @Size(min = 0, groups = { V7.class }) int[] pIntValues );
 
   /**
    * <p/>
@@ -334,8 +370,9 @@ public interface RESTProductServiceReactive {
    * @param pStrings
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testSimpleTypesAsQueryParams( List<String> pStrings );
+  Mono<String> testSimpleTypesAsQueryParams( @Size(min = 0, groups = { V7.class }) List<String> pStrings );
 
   /**
    * <p/>
@@ -344,8 +381,9 @@ public interface RESTProductServiceReactive {
    * @param pIntegers
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testPrimitiveWrapperArrayAsQueryParam( @MyNotEmptyServiceParam Set<Integer> pIntegers );
+  Mono<String> testPrimitiveWrapperArrayAsQueryParam( @Size(min = 1) @MyNotEmptyServiceParam Set<Integer> pIntegers );
 
   /**
    * <p/>
@@ -354,8 +392,9 @@ public interface RESTProductServiceReactive {
    * @param pBean
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testMultivaluedQueryParamsBean( @MyNotNullServiceParam MultivaluedQueryParamsBean pBean );
+  Mono<String> testMultivaluedQueryParamsBean( @NotNull @MyNotNullServiceParam MultivaluedQueryParamsBean pBean );
 
   /**
    * <p/>
@@ -368,10 +407,13 @@ public interface RESTProductServiceReactive {
    * @param pLocalDates
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes,
-      @MyNotEmptyServiceParam Set<LongCode> pLongCodes, List<BookingID> pBookingIDs, List<OffsetDateTime> pTimestamps,
-      SortedSet<LocalDate> pLocalDates );
+  Mono<String> testMulitvaluedDataTypeAsQueryParam( @Size(min = 0, groups = { V7.class }) List<IntegerCodeType> pCodes,
+      @Size(min = 1) @MyNotEmptyServiceParam Set<LongCode> pLongCodes,
+      @Size(min = 0, groups = { V7.class }) List<BookingID> pBookingIDs,
+      @Size(min = 0, groups = { V7.class }) List<OffsetDateTime> pTimestamps,
+      @Size(min = 0, groups = { V7.class }) SortedSet<LocalDate> pLocalDates );
 
   /**
    * <p/>
@@ -380,8 +422,9 @@ public interface RESTProductServiceReactive {
    * @param pQueryBean
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testMulitvaluedDataTypeAsBeanQueryParam( @MyNotNullServiceParam DataTypesQueryBean pQueryBean );
+  Mono<String> testMulitvaluedDataTypeAsBeanQueryParam( @NotNull @MyNotNullServiceParam DataTypesQueryBean pQueryBean );
 
   /**
    * <p/>
@@ -390,9 +433,10 @@ public interface RESTProductServiceReactive {
    * @param pMultiValuedBean
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
   Mono<String> testMultiValuedHeaderFieldsInBeanParam(
-      @MyNotNullServiceParam MultiValuedHeaderBeanParam pMultiValuedBean );
+      @NotNull @MyNotNullServiceParam MultiValuedHeaderBeanParam pMultiValuedBean );
 
   /**
    * <p/>
@@ -408,10 +452,15 @@ public interface RESTProductServiceReactive {
    * @param pBase64
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testMultiValuedHeaderFields( Set<String> pNames, @MyNotEmptyServiceParam int[] pInts,
-      Set<Double> pDoubles, Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps,
-      Set<OffsetTime> pTimes, byte[] pBase64 );
+  Mono<String> testMultiValuedHeaderFields( @Size(min = 0, groups = { V7.class }) Set<String> pNames,
+      @Size(min = 1) @MyNotEmptyServiceParam int[] pInts, @Size(min = 0, groups = { V7.class }) Set<Double> pDoubles,
+      @Size(min = 0, groups = { V7.class }) Set<StringCode> pCodes,
+      @NotNull(groups = { V7.class }) OffsetDateTime pStartDate,
+      @Size(min = 0, groups = { V7.class }) Set<OffsetDateTime> pTimestamps,
+      @Size(min = 0, groups = { V7.class }) Set<OffsetTime> pTimes,
+      @Size(min = 0, groups = { V7.class }) byte[] pBase64 );
 
   /**
    * <p/>
@@ -419,8 +468,9 @@ public interface RESTProductServiceReactive {
    *
    * @param pBookingID
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testBookingIDAsPathParam( @MyNotNullServiceParam BookingID pBookingID );
+  Mono<Void> testBookingIDAsPathParam( @NotNull @MyNotNullServiceParam BookingID pBookingID );
 
   /**
    * <p/>
@@ -428,8 +478,9 @@ public interface RESTProductServiceReactive {
    *
    * @param pBookingID
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testBookingIDAsHeaderParam( BookingID pBookingID );
+  Mono<Void> testBookingIDAsHeaderParam( @NotNull(groups = { V7.class }) BookingID pBookingID );
 
   /**
    * <p/>
@@ -438,8 +489,9 @@ public interface RESTProductServiceReactive {
    * @param pContext
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testContextWithPrimitives( @MyNotNullServiceParam ContextWithPrimitives pContext );
+  Mono<String> testContextWithPrimitives( @NotNull @MyNotNullServiceParam ContextWithPrimitives pContext );
 
   /**
    * <p/>
@@ -453,7 +505,9 @@ public interface RESTProductServiceReactive {
    * @param pVeryLong
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Mono<String> testPrimitivesAsParams( int pAnInt, @MyNotNullServiceParam Integer pAnInteger, boolean pABoolean,
-      @MyNotNullServiceParam Boolean pBooleanWrapper, long pALong, @MyNotNullServiceParam Long pVeryLong );
+  Mono<String> testPrimitivesAsParams( int pAnInt, @NotNull @MyNotNullServiceParam Integer pAnInteger,
+      boolean pABoolean, @NotNull @MyNotNullServiceParam Boolean pBooleanWrapper, long pALong,
+      @NotNull @MyNotNullServiceParam Long pVeryLong );
 }

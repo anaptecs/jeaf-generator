@@ -1,0 +1,79 @@
+«IMPORT JMM»
+«IMPORT java»
+
+«EXTENSION java::Naming»
+«EXTENSION java::GeneratorCommons»
+«EXTENSION functions::SystemProperties»
+«EXTENSION functions::NamedElement»
+
+
+«DEFINE GenerateValidationGroup FOR ValidationGroup»
+«FILE packagePath() + "/" + name + ".java" src_gen»
+«getFileHeader()»
+package «packageName()»;
+
+/**
+ * Type represents validation group <code>«name»</code>
+ *
+ * It is intended to be used as class object for <code>groups</code> in Java Validation annotations.
+ */
+public interface «name» {
+  /**
+   * Constant for validation group identifier pattern
+   */
+  public static final String IDENTIFIER_PATTERN = "«this.identifier»";
+}
+«ENDFILE»
+«ENDDEFINE»
+
+
+«DEFINE GenerateValidationGroupHelper FOR ValidationGroupHelper»
+«FILE packagePath() + "/" + name + ".java" src_gen»
+«getFileHeader()»
+package «packageName()»;
+
+
+/**
+ * Type can be used to resolve validation groups by an identifier etc.
+ */
+public class «name» {
+  /**
+   * List contains all validation groups that are defined in the UML model.
+   */
+  public static final java.util.List<ValidationGroup> ALL_VALIDATION_GROUPS = java.util.List.of(
+        «FOREACH this.getModel().allOwnedElements().typeSelect(ValidationGroup) AS validationGroup SEPARATOR ", "»
+        new ValidationGroup(«validationGroup.qualifiedName()».class, «validationGroup.qualifiedName()».IDENTIFIER_PATTERN)
+        «ENDFOREACH»
+      );
+
+  /**
+   * Record aggregates information about a validation group.
+   */
+  public static record ValidationGroup(Class<?> validationGroupClass, String identifierPattern) {
+  }
+
+  /**
+   * Operation returns the first validation group that matches to the passed version name.
+   *
+   * @param pVersionName Name version that should be used to identify a validation group.
+   * @return {@link Optional<ValidationGroup>} First validation group that matches if any does.
+   */
+  public static java.util.Optional<ValidationGroup> findMatchingValidationGroup(«IF generateNotNullAnnotationForSingleValuedProperties()»@«notNullAnnotationNameForSingleValuedProperties()»«ENDIF» String pVersionName) {
+    java.util.function.Predicate<ValidationGroup> lPredicate = s -> pVersionName.matches(s.identifierPattern);
+    return findMatchingValidationGroup(lPredicate);
+  }
+
+  /**
+   * Operation returns the first validation group that matches to the passed predicate.
+   *
+   * @param pPredicate Predicate that should be used to identify a validation group.
+   * @return {@link Optional<ValidationGroup>} First validation group that matches if any does.
+   */
+  public static java.util.Optional<ValidationGroup> findMatchingValidationGroup(«IF generateNotNullAnnotationForSingleValuedProperties()»@«notNullAnnotationNameForSingleValuedProperties()»«ENDIF» java.util.function.Predicate<ValidationGroup> pPredicate) {
+    return ALL_VALIDATION_GROUPS.stream().filter(pPredicate).findFirst();
+  }
+}
+
+
+«ENDFILE»
+«ENDDEFINE»

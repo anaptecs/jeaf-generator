@@ -18,10 +18,12 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyServiceParam;
 import com.anaptecs.annotations.MyNotNullServiceParam;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -46,6 +48,7 @@ public interface ProductService extends MonitoringService {
    * @return {@link List<Product>} My default comment
    */
   @Size(min = 0, max = 4711)
+  @Size(min = 1, groups = { V7.class })
   @MyNotEmptyServiceParam
   List<Product> getProducts( );
 
@@ -56,8 +59,9 @@ public interface ProductService extends MonitoringService {
    * @param pProductID
    * @return {@link Product} My default comment
    */
+  @NotNull
   @MyNotNullServiceParam
-  Product getProduct( @NotEmpty @MyNotNullServiceParam String pProductID );
+  Product getProduct( @NotEmpty @NotNull @MyNotNullServiceParam String pProductID );
 
   /**
    * <p/>
@@ -66,7 +70,7 @@ public interface ProductService extends MonitoringService {
    * @param pProduct My default comment
    * @return boolean
    */
-  boolean createProduct( @MyNotNullServiceParam Product pProduct );
+  boolean createProduct( @NotNull @MyNotNullServiceParam Product pProduct );
 
   /**
    * <p/>
@@ -75,8 +79,9 @@ public interface ProductService extends MonitoringService {
    * @param pContext Default Comment
    * @return {@link Sortiment}
    */
+  @NotNull
   @MyNotNullServiceParam
-  Sortiment getSortiment( @MyNotNullServiceParam Context pContext );
+  Sortiment getSortiment( @NotNull @MyNotNullServiceParam Context pContext );
 
   /**
    * <p/>
@@ -85,8 +90,9 @@ public interface ProductService extends MonitoringService {
    * @param pChannelCode
    * @return {@link ChannelCode}
    */
+  @NotNull
   @MyNotNullServiceParam
-  ChannelCode createChannelCode( @NotBlank @MyNotNullServiceParam String pChannelCode );
+  ChannelCode createChannelCode( @NotBlank @NotNull @MyNotNullServiceParam String pChannelCode );
 
   /**
    * <p/>
@@ -101,6 +107,7 @@ public interface ProductService extends MonitoringService {
    * @return {@link String}
    */
   @Deprecated
+  @NotNull
   @MyNotNullServiceParam
   String deprecatedOperation( );
 
@@ -111,8 +118,9 @@ public interface ProductService extends MonitoringService {
    * @param pContext
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  String deprecatedContext( @MyNotNullServiceParam DeprecatedContext pContext );
+  String deprecatedContext( @NotNull @MyNotNullServiceParam DeprecatedContext pContext );
 
   /**
    * <p/>
@@ -132,6 +140,7 @@ public interface ProductService extends MonitoringService {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
+  @NotNull
   @MyNotNullServiceParam
   String deprecatedParams( @Deprecated int pParam1 );
 
@@ -143,8 +152,9 @@ public interface ProductService extends MonitoringService {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  String deprecatedBody( @Deprecated @MyNotNullServiceParam String pBody );
+  String deprecatedBody( @Deprecated @NotNull @MyNotNullServiceParam String pBody );
 
   /**
    * Please be aware that deprecations on complex bodies are not supported. Instead the whole operation needs to be set
@@ -165,6 +175,7 @@ public interface ProductService extends MonitoringService {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
+  @NotNull
   @MyNotNullServiceParam
   Product deprecatedComplexReturn( );
 
@@ -183,8 +194,9 @@ public interface ProductService extends MonitoringService {
    * @param pChannelCode Channel Code that should be created.
    * @return {@link ChannelCode} Created channel code
    */
+  @NotNull
   @MyNotNullServiceParam
-  ChannelCode createChannelCodeFromObject( @MyNotNullServiceParam ChannelCode pChannelCode );
+  ChannelCode createChannelCodeFromObject( @NotNull @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
    * <p/>
@@ -194,8 +206,9 @@ public interface ProductService extends MonitoringService {
    * @return {@link List<CurrencyCode>}
    */
   @Size(min = 1, max = 20)
+  @Size(min = 1, groups = { V7.class })
   @MyNotEmptyServiceParam
-  List<CurrencyCode> addCurrencies( @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
+  List<CurrencyCode> addCurrencies( @Size(min = 1) @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
 
   /**
    * <p/>
@@ -204,8 +217,9 @@ public interface ProductService extends MonitoringService {
    * @param pCurrency
    * @return {@link CurrencyCode}
    */
+  @NotNull
   @MyNotNullServiceParam
-  CurrencyCode isCurrencySupported( @MyNotNullServiceParam CurrencyCode pCurrency );
+  CurrencyCode isCurrencySupported( @NotNull @MyNotNullServiceParam CurrencyCode pCurrency );
 
   /**
    * <p/>
@@ -214,8 +228,9 @@ public interface ProductService extends MonitoringService {
    * @param pStringCode
    * @return {@link IntegerCodeType}
    */
+  @NotNull
   @MyNotNullServiceParam
-  IntegerCodeType testCodeTypeUsage( @MyNotNullServiceParam StringCodeType pStringCode );
+  IntegerCodeType testCodeTypeUsage( @NotNull @MyNotNullServiceParam StringCodeType pStringCode );
 
   /**
    * <p/>
@@ -225,8 +240,9 @@ public interface ProductService extends MonitoringService {
    * @return {@link String}
    */
   @Size(min = 111, max = 666)
+  @NotNull
   @MyNotNullServiceParam
-  String testLocalBeanParamType( @MyNotNullServiceParam LocalBeanParamType pBeanParam );
+  String testLocalBeanParamType( @NotNull @MyNotNullServiceParam LocalBeanParamType pBeanParam );
 
   /**
    * <p/>
@@ -235,8 +251,9 @@ public interface ProductService extends MonitoringService {
    * @param pParent
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  String testExternalBeanParameterType( @MyNotNullServiceParam ParentBeanParamType pParent );
+  String testExternalBeanParameterType( @NotNull @MyNotNullServiceParam ParentBeanParamType pParent );
 
   /**
    * <p/>
@@ -245,8 +262,9 @@ public interface ProductService extends MonitoringService {
    * @param pChild
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  String testChildBeanParameter( @MyNotNullServiceParam ChildBeanParameterType pChild );
+  String testChildBeanParameter( @NotNull @MyNotNullServiceParam ChildBeanParameterType pChild );
 
   /**
    * <p/>
@@ -322,8 +340,9 @@ public interface ProductService extends MonitoringService {
    * @param pAuthenticationToken
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  String testTechnicalHeaderParam( @MyNotNullServiceParam String pReseller );
+  String testTechnicalHeaderParam( @NotNull @MyNotNullServiceParam String pReseller );
 
   /**
    * <p/>
@@ -332,8 +351,9 @@ public interface ProductService extends MonitoringService {
    * @param pContext
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  String testTechnicalHeaderBean( @MyNotNullServiceParam TechnicalHeaderContext pContext );
+  String testTechnicalHeaderBean( @NotNull @MyNotNullServiceParam TechnicalHeaderContext pContext );
 
   /**
    * <p/>
@@ -342,6 +362,7 @@ public interface ProductService extends MonitoringService {
    * @param pCodes
    * @return {@link String}
    */
+  @NotNull
   @MyNotNullServiceParam
-  String processDataTypes( List<AnotherDataType> pCodes );
+  String processDataTypes( @Size(min = 0, groups = { V7.class }) List<AnotherDataType> pCodes );
 }
