@@ -181,7 +181,6 @@ public class ProductServiceResource {
    * {@link ProductService#ping()}
    */
   @HEAD
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response ping( ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
@@ -221,7 +220,6 @@ public class ProductServiceResource {
    */
   @Path("deprecated/beanParams")
   @POST
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response deprecatedBeanParam( @BeanParam @MyNotNullRESTParam BeanParameter pBeanParam ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
@@ -262,7 +260,6 @@ public class ProductServiceResource {
    */
   @Path("deprecated/complexBody")
   @POST
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response deprectedComplexRequestBody( @Deprecated @MyNotNullRESTParam Product pProduct ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
@@ -289,7 +286,6 @@ public class ProductServiceResource {
    */
   @Path("specific/{id}")
   @PATCH
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response loadSpecificThings( @BeanParam @MyNotNullRESTParam SpecialContext pContext,
       @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
     // Add custom headers.
@@ -494,7 +490,6 @@ public class ProductServiceResource {
    */
   @Path("test-date-query-params/{path}")
   @GET
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response testDateQueryParams( @PathParam("path") @MyNotNullRESTParam String pPath,
       @QueryParam("startTimestamp") @MyNotNullRESTParam OffsetDateTime pStartTimestamp,
       @QueryParam("startTime") @MyNotNullRESTParam OffsetTime pStartTime,
@@ -518,7 +513,6 @@ public class ProductServiceResource {
    */
   @Path("test-date-query-params-beans/{path}")
   @GET
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response testDateQueryParamsBean( @PathParam("path") @MyNotNullRESTParam String pPath,
       @BeanParam @MyNotNullRESTParam DateQueryParamsBean pQueryParams ) {
     // Delegate request to service.
@@ -547,7 +541,6 @@ public class ProductServiceResource {
    */
   @Path("special-header-params")
   @GET
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response testSpecialHeaderParams(
       @HeaderParam("authorization") @MyNotNullRESTParam String authorization,
       @HeaderParam("content-type") @MyNotNullRESTParam String pContentType,
@@ -595,7 +588,6 @@ public class ProductServiceResource {
    */
   @Path("testNotInlinedBeanParam")
   @POST
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response testNotInlinedBeanParam(
       @BeanParam @MyNotNullRESTParam NotInlinedBeanParam pInlinedBeanParam ) {
     // Delegate request to service.
@@ -609,7 +601,6 @@ public class ProductServiceResource {
    */
   @Path("testStringArray")
   @POST
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response testPrimitiveArray( @MyNotEmptyRESTParam int[] pIntegerArray ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
@@ -699,7 +690,6 @@ public class ProductServiceResource {
    */
   @Path("no-return-type")
   @POST
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response noReturnType( @HeaderParam("The-Header") @MyNotNullRESTParam String pHeader,
       @BeanParam @MyNotNullRESTParam MultiValuedDataType pContext ) {
     // Delegate request to service.
@@ -713,7 +703,6 @@ public class ProductServiceResource {
    */
   @Path("delete-something/{id}")
   @DELETE
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response deleteSomething( @PathParam("id") @MyNotNullRESTParam String pID ) {
     // Delegate request to service.
     ProductService lService = this.getProductService();
@@ -752,7 +741,6 @@ public class ProductServiceResource {
    */
   @Path("test-string-code-with-restriction/{string-code}")
   @POST
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response testDataTypeWithRestrition(
       @PathParam("string-code") @MyNotNullRESTParam String pStringCodeAsBasicType,
       @QueryParam("short-codes") short[] pShortCodesAsBasicType,
@@ -780,7 +768,6 @@ public class ProductServiceResource {
    */
   @Path("testContext")
   @GET
-  @MyNotNullRESTParam
   public javax.ws.rs.core.Response testContext( @BeanParam @MyNotNullRESTParam Context pContext,
       @javax.ws.rs.core.Context HttpHeaders pHeaders ) {
     // Add custom headers.

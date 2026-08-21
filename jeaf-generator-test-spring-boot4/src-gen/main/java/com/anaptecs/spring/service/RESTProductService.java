@@ -104,7 +104,6 @@ public interface RESTProductService {
    * <b>Authorized Roles:</b> <code>`Customer`, `Sales Agent`</code>
    */
   @NotNull
-  @MyNotNullServiceParam
   void ping( );
 
   /**
@@ -112,7 +111,6 @@ public interface RESTProductService {
    * <b>Authorized Roles:</b> <code>`Sales Agent`</code>
    */
   @NotNull
-  @MyNotNullServiceParam
   void testInit( );
 
   /**
@@ -158,7 +156,6 @@ public interface RESTProductService {
    * @param pExtensibleEnum
    */
   @NotNull
-  @MyNotNullServiceParam
   void testEnumParams( @NotNull @MyNotNullServiceParam ChannelType pChannelType,
       @NotNull @MyNotNullServiceParam TimeUnit pTimeUnit,
       @NotNull @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
@@ -172,7 +169,6 @@ public interface RESTProductService {
    * @param pExtensibleEnum
    */
   @NotNull
-  @MyNotNullServiceParam
   void testEnumHeaderParams( @NotNull @MyNotNullServiceParam ChannelType pChannelType,
       @NotNull @MyNotNullServiceParam TimeUnit pTimeUnit,
       @NotNull @MyNotNullServiceParam ExtensibleEnum pExtensibleEnum );
@@ -195,7 +191,6 @@ public interface RESTProductService {
    * @param pCalendars
    */
   @NotNull
-  @MyNotNullServiceParam
   void testDateQueryParams( @NotNull @MyNotNullServiceParam String pPath,
       @NotNull @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
       @NotNull @MyNotNullServiceParam OffsetTime pStartTime,
@@ -214,7 +209,6 @@ public interface RESTProductService {
    * @param pQueryParams
    */
   @NotNull
-  @MyNotNullServiceParam
   void testDateQueryParamsBean( @NotNull @MyNotNullServiceParam String pPath,
       @NotNull @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
@@ -236,7 +230,6 @@ public interface RESTProductService {
    * @param pUtilDates
    */
   @NotNull
-  @MyNotNullServiceParam
   void testDateHeaderParams( @NotNull @MyNotNullServiceParam String pPath,
       @NotNull @MyNotNullServiceParam OffsetDateTime pOffsetDateTime,
       @NotNull @MyNotNullServiceParam OffsetTime pOffsetTime,
@@ -255,7 +248,6 @@ public interface RESTProductService {
    * @param pHeaderParams
    */
   @NotNull
-  @MyNotNullServiceParam
   void testDateHeaderParamsBean( @NotNull @MyNotNullServiceParam String pPath,
       @NotNull @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
 
@@ -267,7 +259,6 @@ public interface RESTProductService {
    * @param pContext
    */
   @NotNull
-  @MyNotNullServiceParam
   void testCookieParams( @NotNull @MyNotNullServiceParam ChannelType pChannelTypeParam,
       @NotNull @MyNotNullServiceParam SpecialContext pContext );
 
@@ -468,7 +459,6 @@ public interface RESTProductService {
    * @param pBookingID
    */
   @NotNull
-  @MyNotNullServiceParam
   void testBookingIDAsPathParam( @NotNull @MyNotNullServiceParam BookingID pBookingID );
 
   /**
@@ -478,7 +468,6 @@ public interface RESTProductService {
    * @param pBookingID
    */
   @NotNull
-  @MyNotNullServiceParam
   void testBookingIDAsHeaderParam( @NotNull(groups = { V7.class }) BookingID pBookingID );
 
   /**
