@@ -995,6 +995,14 @@ public class GeneratorMojo extends AbstractMojo {
   private OpenAPIVersion openAPIVersion = OpenAPIVersion.OPEN_API_3_1;
 
   /**
+   * Parameter can be used to explicitly set the version info inside the OpenAPI specification info section. The
+   * parameter is only used if the version is not set explicitly in the UMM model. If the version is neither set in the
+   * UML model nor using this parameter then the Maven project version will be used.
+   */
+  @Parameter(required = false)
+  private String openAPISpecVersionInfo = "";
+
+  /**
    * Parameter contains the fully qualified name of all validation groups that should be active during OpenAPI
    * generation. Validation groups are a mechanism that can be used to implement version specific constraints in OpenAPI
    * as well as in Java.
@@ -2522,6 +2530,9 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("Generate dependent OpenAPI Specifications:        " + generateDependentOpenAPISpecs);
         lLog.info("Use transitive OpenAPI dependencies:              " + useTransitiveOpenAPIDependencies);
         lLog.info("Active OpenAPI Validation Groups:                 " + activeOpenAPIValidationGroups);
+        if (openAPISpecVersionInfo.length() > 0) {
+          lLog.info("OpenAPI Spec Version Info:                        " + openAPISpecVersionInfo);
+        }
         lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
         if (validateOpenAPISpec) {
           lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
@@ -3034,6 +3045,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapi.checkOpenAPIDependencies",
           Boolean.toString(!disableOpenAPIDependencyChecks));
       System.setProperty("switch.gen.openapi.version", openAPIVersion.name());
+
+      System.setProperty(PROPERTY_PREFIX + "openAPISpecVersionInfo", openAPISpecVersionInfo.toString());
+
       System.setProperty(PROPERTY_PREFIX + "activeOpenAPIValidationGroups", activeOpenAPIValidationGroups.toString());
       System.setProperty(PROPERTY_PREFIX + "openAPISpecReferenceDefaultLocation", openAPISpecReferenceDefaultLocation);
       System.setProperty("switch.gen.openapi.yaml.11.comapitibility", enableYAML11Compatibility.toString());

@@ -424,6 +424,10 @@ boolean generateValidationAnnotationsForOperationParametersFromMultiplicity():
 boolean generateValidationAnnotationsForServiceOperationParametersFromMultiplicity():
 	getBooleanSystemProperty("jeaf.generator.generateValidationAnnotationsForServiceOperationParametersFromMultiplicity", false);
 
+String getOpenAPISpecVersionInfo():
+	getSystemProperty("jeaf.generator.openAPISpecVersionInfo");
+
+
 List[String] getActiveOpenAPIValidationGroups():
 	getSystemPropertyValues("jeaf.generator.activeOpenAPIValidationGroups");
 

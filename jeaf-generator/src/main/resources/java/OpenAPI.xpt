@@ -7,6 +7,7 @@
 «EXTENSION functions::OpenAPISpecReference»
 «EXTENSION functions::RESTOperation»
 «EXTENSION functions::OpenAPIDataType»
+«EXTENSION functions::SystemProperties»
 
 «EXTENSION jeafgenerator::api::JEAFGeneratorExtensionAPI»
 «EXTENSION jeafgenerator::api::OpenAPISpecificationExtensionPoint»
@@ -46,7 +47,7 @@ openapi: «getOpenAPIVersion()»
 
 info:
   title: «name»
-  version: «IF apiVersion.length > 0»«apiVersion»«ELSE»«getMavenVersion()»«ENDIF»
+  version: «IF apiVersion.length > 0»«apiVersion»«ELSEIF getOpenAPISpecVersionInfo().length > 0»«getOpenAPISpecVersionInfo()»«ELSE»«getMavenVersion()»«ENDIF»
   «IF this.hasComment() -»
   description: «getOpenAPICommentStyle()»
     «this.getCommentForOpenAPIDescription("    ")»
