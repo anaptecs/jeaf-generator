@@ -236,7 +236,7 @@ public class «this.getResourceName(reactive)» {
 	«IF produces.size > 0»@«getEnterpriseJavaPackage()».ws.rs.Produces(«IF produces.size > 1»{«ENDIF»«FOREACH produces AS mediaType SEPARATOR ","»«getEnterpriseJavaPackage()».ws.rs.core.MediaType.«mediaType»«ENDFOREACH»«IF produces.size > 1»}«ENDIF»)«ENDIF»
 	«EXPAND java::Helper::GenerateAnnotations-»
 	«EXPAND java::Helper::GenerateAnnotations FOR this.getReturnResult()-»
-	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource", false) FOR this.getReturnResult()-»
+	«EXPAND java::Helper::NotNullAnnotationForParameter("RESTResource", true) FOR this.getReturnResult()-»
 	public «getEnterpriseJavaPackage()».ws.rs.core.Response  «name» («EXPAND RESTParameterSignature FOR this» «IF this.ownedParameter.select(e|e.hasParamCustomHeaders()).size > 0» «IF ownedParameter.select(e| e.isInputParameter() && e.isParameterSuppressed() == false).size > 0»,«ENDIF» @«getEnterpriseJavaPackage()».ws.rs.core.Context «getEnterpriseJavaPackage()».ws.rs.core.HttpHeaders pHeaders«ENDIF»)«getThrownExceptionsAsString()»{
 	  «IF this.hasDataTypeParameters()»
 	  // Convert basic type parameters into "real" objects.
