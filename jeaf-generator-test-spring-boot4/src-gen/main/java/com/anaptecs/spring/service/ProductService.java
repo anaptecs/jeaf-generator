@@ -99,7 +99,6 @@ public interface ProductService extends MonitoringService {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    */
   @NotNull
-  @MyNotNullServiceParam
   void ping( );
 
   /**
@@ -131,7 +130,6 @@ public interface ProductService extends MonitoringService {
    * @param pBeanParam
    */
   @NotNull
-  @MyNotNullServiceParam
   void deprecatedBeanParam( @NotNull @MyNotNullServiceParam BeanParameter pBeanParam );
 
   /**
@@ -170,7 +168,6 @@ public interface ProductService extends MonitoringService {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @NotNull
-  @MyNotNullServiceParam
   void deprectedComplexRequestBody( @Deprecated @NotNull @MyNotNullServiceParam Product pProduct );
 
   /**
@@ -192,7 +189,6 @@ public interface ProductService extends MonitoringService {
    * @param pContext
    */
   @NotNull
-  @MyNotNullServiceParam
   void loadSpecificThings( @NotNull @MyNotNullServiceParam SpecialContext pContext );
 
   /**
@@ -291,7 +287,6 @@ public interface ProductService extends MonitoringService {
    * @param pSQLDate
    */
   @NotNull
-  @MyNotNullServiceParam
   void testDateQueryParams( @NotNull @MyNotNullServiceParam String pPath,
       @NotNull @MyNotNullServiceParam OffsetDateTime pStartTimestamp,
       @NotNull @MyNotNullServiceParam OffsetTime pStartTime,
@@ -309,7 +304,6 @@ public interface ProductService extends MonitoringService {
    * @param pQueryParams
    */
   @NotNull
-  @MyNotNullServiceParam
   void testDateQueryParamsBean( @NotNull @MyNotNullServiceParam String pPath,
       @NotNull @MyNotNullServiceParam DateQueryParamsBean pQueryParams );
 
@@ -330,7 +324,6 @@ public interface ProductService extends MonitoringService {
    * @param pSQLDate
    */
   @NotNull
-  @MyNotNullServiceParam
   void testDateHeaderParams( @NotNull @MyNotNullServiceParam String pPath,
       @NotNull @MyNotNullServiceParam OffsetDateTime pOffsetDateTime,
       @NotNull @MyNotNullServiceParam OffsetTime pOffsetTime,
@@ -348,7 +341,6 @@ public interface ProductService extends MonitoringService {
    * @param pHeaderParams
    */
   @NotNull
-  @MyNotNullServiceParam
   void testDateHeaderParamsBean( @NotNull @MyNotNullServiceParam String pPath,
       @NotNull @MyNotNullServiceParam DateHeaderParamsBean pHeaderParams );
 
