@@ -33,8 +33,7 @@ public class ClientClass implements ServiceObject {
   @NotNull
   private String name;
 
-  @Valid
-  private transient List<MasterClass> manyMasters;
+  private transient List<@Valid MasterClass> manyMasters;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

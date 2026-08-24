@@ -80,9 +80,8 @@ public abstract class AccountBase implements ServiceObject, Identifiable<Service
    */
   private transient boolean authorizedPersonsBackReferenceInitialized;
 
-  @Valid
   @Size(min = 0, max = 100)
-  private Set<Booking> bookings;
+  private Set<@Valid Booking> bookings;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.

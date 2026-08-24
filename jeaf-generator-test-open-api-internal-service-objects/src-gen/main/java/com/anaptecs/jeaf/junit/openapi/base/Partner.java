@@ -45,9 +45,8 @@ public class Partner implements ServiceObject, Identifiable<ServiceObjectID> {
    */
   private final ServiceObjectID objectID;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<PostalAddress> postalAddresses;
+  private List<@Valid PostalAddress> postalAddresses;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

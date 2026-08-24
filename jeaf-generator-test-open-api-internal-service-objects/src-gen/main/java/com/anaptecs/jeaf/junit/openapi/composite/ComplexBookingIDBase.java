@@ -43,9 +43,8 @@ public abstract class ComplexBookingIDBase implements ServiceObject {
 
   @Size(min = 1)
   @NotNull
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<BookingID> bookingIDs;
+  private List<@Valid BookingID> bookingIDs;
 
   @NotNull
   private ComplexBookingType complexBookingType;

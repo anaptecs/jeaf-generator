@@ -53,8 +53,7 @@ public class CodeTypeUsageTest implements ServiceObject {
 
   private Set<BooleanCodeType> booleanCodeAssociation;
 
-  @Valid
-  private Set<ShortCodeType> shortCodeTypeAssociation;
+  private Set<@Valid ShortCodeType> shortCodeTypeAssociation;
 
   private StringCodeType stringCode;
 

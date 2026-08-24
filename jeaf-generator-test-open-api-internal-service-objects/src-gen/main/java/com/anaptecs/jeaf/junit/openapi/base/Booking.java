@@ -25,8 +25,8 @@ public class Booking implements ServiceObject {
   /**
    * ID of the booking
    */
-  @NotNull
   @Valid
+  @NotNull
   private BookingID bookingID;
 
   /**

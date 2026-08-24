@@ -32,9 +32,8 @@ public class DiscountOffer implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.Campaign</code><br/>
    */
   @Deprecated
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<SoftLink> campaigns;
+  private Set<@Valid SoftLink> campaigns;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

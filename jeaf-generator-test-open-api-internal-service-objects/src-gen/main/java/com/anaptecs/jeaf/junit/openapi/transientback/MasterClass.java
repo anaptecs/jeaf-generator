@@ -30,9 +30,8 @@ public class MasterClass implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<ClientClass> clients;
+  private List<@Valid ClientClass> clients;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.

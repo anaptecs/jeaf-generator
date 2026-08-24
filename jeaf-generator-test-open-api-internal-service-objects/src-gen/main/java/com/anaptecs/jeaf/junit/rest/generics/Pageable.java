@@ -27,9 +27,8 @@ public class Pageable<T> implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<T> objects;
+  private List<@Valid T> objects;
 
   private int size;
 

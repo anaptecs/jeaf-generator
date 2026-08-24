@@ -28,17 +28,16 @@ public class Leg implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @NotNull
   @Valid
+  @NotNull
   private PlaceRef start;
 
-  @NotNull
   @Valid
+  @NotNull
   private PlaceRef stop;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<PlaceRef> stopovers;
+  private List<@Valid PlaceRef> stopovers;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

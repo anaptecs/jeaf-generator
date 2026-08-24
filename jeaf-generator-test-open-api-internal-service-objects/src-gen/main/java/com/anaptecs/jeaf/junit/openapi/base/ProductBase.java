@@ -48,9 +48,8 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
    */
   private final ServiceObjectID objectID;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<Reseller> resellers;
+  private Set<@Valid Reseller> resellers;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
@@ -81,22 +80,19 @@ public abstract class ProductBase implements ServiceObject, Identifiable<Service
 
   @Size(min = 7, max = 42)
   @NotNull
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<CurrencyCode> supportedCurrencies;
+  private Set<@Valid CurrencyCode> supportedCurrencies;
 
   @Size(min = 1)
   @NotNull
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<ProductCode> productCodes;
+  private Set<@Valid ProductCode> productCodes;
 
   @Deprecated
   @NotNull
   private String description;
 
-  @Valid
-  private transient Set<Sortiment> sortiments;
+  private transient Set<@Valid Sortiment> sortiments;
 
   /**
    * <br/>

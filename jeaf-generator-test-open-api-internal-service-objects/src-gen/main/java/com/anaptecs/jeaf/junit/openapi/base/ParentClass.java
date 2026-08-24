@@ -41,9 +41,8 @@ public class ParentClass implements ServiceObject {
   @NotNull
   private String parentAttribute;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<IBAN> ibans;
+  private Set<@Valid IBAN> ibans;
 
   /**
    * I would like to document references to other types.
@@ -56,9 +55,8 @@ public class ParentClass implements ServiceObject {
    * Association is still there be SemVer compliant.
    */
   @Deprecated
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<BankAccount> legacyBankAccounts;
+  private List<@Valid BankAccount> legacyBankAccounts;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

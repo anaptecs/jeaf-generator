@@ -46,9 +46,8 @@ public class ChildB extends ParentClass {
   /**
    * the composition
    */
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<ParentClass> composition;
+  private Set<@Valid ParentClass> composition;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

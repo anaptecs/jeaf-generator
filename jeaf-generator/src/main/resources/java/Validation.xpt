@@ -149,8 +149,12 @@ public @interface «validationClass» {
 			  «EXPAND FutureAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
 			«ELSEIF stereotypeName == "Valid" -»
-			  «EXPAND ValidAnnotation FOR ((Valid) this) -»
-			
+			  «IF this.isProperty() == false»
+			      «EXPAND ValidAnnotation FOR ((Valid) this) -»
+			  «ENDIF»
+				«REM»
+					Properties are already in the section where they are declared.
+				«ENDREM»
 			«ELSEIF stereotypeName == "Optional"»
 				«REM»
 					This case is handled in other areas already and is only there to avoid to end up in general ELSE section
@@ -223,9 +227,6 @@ public @interface «validationClass» {
 		«IF generateValidAnnotationsForClasses() &&(this.isStereotypeApplied("POJO") || this.isStereotypeApplied("ServiceObject") || this.isStereotypeApplied("DomainObject") || this.isStereotypeApplied("PersistentObject"))»
 		@«getEnterpriseJavaPackage()».validation.Valid
 		«ENDIF»
-	    «IF generateValidAnnotationsForAssociations() && this.isProperty() && (this.asProperty().type.isStereotypeApplied("POJO") || this.asProperty().type.isStereotypeApplied("ServiceObject") || this.asProperty().type.isStereotypeApplied("DomainObject") || this.asProperty().type.isStereotypeApplied("PersistentObject") || this.asProperty().type.isTemplateParameter())»
-	    @«getEnterpriseJavaPackage()».validation.Valid
-	    «ENDIF»
     «ENDIF»
     «ENDLET»
     «ENDLET»

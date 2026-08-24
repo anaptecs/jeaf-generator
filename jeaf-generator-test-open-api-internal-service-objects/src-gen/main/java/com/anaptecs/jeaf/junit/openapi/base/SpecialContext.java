@@ -31,13 +31,13 @@ public class SpecialContext extends Context {
    */
   @Deprecated
   @HeaderParam("deprecatedHeader")
-  @NotNull
   @Valid
+  @NotNull
   private IntegerCode deprecatedHeader;
 
   @HeaderParam("deprecatedType")
-  @NotNull
   @Valid
+  @NotNull
   private DeprecatedType deprecatedType;
 
   /**

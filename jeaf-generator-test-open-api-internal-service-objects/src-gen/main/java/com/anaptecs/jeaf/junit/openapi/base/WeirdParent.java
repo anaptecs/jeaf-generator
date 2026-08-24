@@ -39,15 +39,14 @@ public class WeirdParent implements ServiceObject {
   @NotNull
   private String someProperty;
 
-  @NotNull
   @Valid
+  @NotNull
   private ComplexBookingID complexBooking;
 
   @Size(min = 1)
   @NotNull
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<ComplexBookingID> complexBookings;
+  private Set<@Valid ComplexBookingID> complexBookings;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

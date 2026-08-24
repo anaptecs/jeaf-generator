@@ -26,11 +26,10 @@ public class BidirectA implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
-  private transient Set<BidirectB> transientBs;
+  private transient Set<@Valid BidirectB> transientBs;
 
-  @NotNull
   @Valid
+  @NotNull
   private BidirectA parent;
 
   /**

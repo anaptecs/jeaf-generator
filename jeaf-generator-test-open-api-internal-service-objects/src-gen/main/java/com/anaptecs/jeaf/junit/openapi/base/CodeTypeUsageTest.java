@@ -29,26 +29,24 @@ public class CodeTypeUsageTest implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @NotNull
   @Valid
+  @NotNull
   private BooleanCodeType booleanCode;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<BooleanCodeType> booleanCodeAssociation;
+  private Set<@Valid BooleanCodeType> booleanCodeAssociation;
 
-  @Valid
   @Size(min = 1)
   @NotNull
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<ShortCodeType> shortCodeTypeAssociation;
+  private Set<@Valid ShortCodeType> shortCodeTypeAssociation;
 
-  @NotNull
   @Valid
+  @NotNull
   private StringCodeType stringCode;
 
-  @NotNull
   @Valid
+  @NotNull
   private ShortCode shortCode;
 
   /**

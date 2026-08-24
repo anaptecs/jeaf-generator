@@ -194,13 +194,17 @@ public class ClassUtil {
     }
   }
 
+  public static String getTypeName(TypedElement pTypedElement) {
+	  return ClassUtil.getTypeName(pTypedElement, "");
+  }
+
   /**
    * Returns the name of the parameters type. Checks if the parameter is multiple. If it is, "[]" us added.
    * 
    * @param pTypedElement The parameter. Parameter may be null.
    * @return String the name of the parameter's type.
    */
-  public static String getTypeName( TypedElement pTypedElement ) {
+  public static String getTypeName(TypedElement pTypedElement, String pPropertyTypeArgumentAnnotation) {
     // Check parameter.
     Check.checkInvalidParameterNull(pTypedElement, "pParameter");
 
@@ -313,12 +317,14 @@ public class ClassUtil {
       }
 
       if (lCollectionRequired) {
-        lFQN = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + lFQN + ">";
+        lFQN = ClassUtil.getCollectionType(lMultiplicityElement) + "<" + pPropertyTypeArgumentAnnotation + lFQN + ">";
       }
       else if (lArrayRequired) {
-        lFQN = lFQN + "[]";
+        lFQN = pPropertyTypeArgumentAnnotation + lFQN + "[]";
       }
-
+      else {
+    	  lFQN = pPropertyTypeArgumentAnnotation + lFQN;
+      }
     }
     // Property has no type set
     else {
