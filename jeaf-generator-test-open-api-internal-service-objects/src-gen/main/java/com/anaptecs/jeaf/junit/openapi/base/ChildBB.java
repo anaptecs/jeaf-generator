@@ -40,9 +40,8 @@ public class ChildBB extends ChildB {
   private int deprecatedAttribute;
 
   @Deprecated
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<ChildB> deprecatedBs;
+  private Set<@Valid ChildB> deprecatedBs;
 
   @Deprecated
   @Valid

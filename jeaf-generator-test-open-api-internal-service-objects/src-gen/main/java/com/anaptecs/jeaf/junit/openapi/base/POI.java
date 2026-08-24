@@ -38,8 +38,8 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
-  @NotNull
   @Valid
+  @NotNull
   private Long theLink;
 
   /**
@@ -48,9 +48,8 @@ public class POI extends Stop {
    * <code>LinkObject</code><br/>
    */
   @Deprecated
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<SoftLink> evenMoreLinks;
+  private Set<@Valid SoftLink> evenMoreLinks;
 
   /**
    * <p/>
@@ -59,15 +58,13 @@ public class POI extends Stop {
    */
   @Size(min = 2, max = 42)
   @NotNull
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<UICStop> stops;
+  private Set<@Valid UICStop> stops;
 
   @Size(min = 1)
   @NotNull
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<BookingCode> bookingCodes;
+  private Set<@Valid BookingCode> bookingCodes;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

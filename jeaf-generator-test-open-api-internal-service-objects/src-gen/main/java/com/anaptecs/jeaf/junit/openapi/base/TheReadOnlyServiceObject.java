@@ -37,9 +37,8 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    */
   private final boolean[] bits;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private final Set<BookingCode> bookingCodes;
+  private final Set<@Valid BookingCode> bookingCodes;
 
   /**
    * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>removal date:</b> TBD)

@@ -25,8 +25,8 @@ public class BidirectB implements ServiceObject {
   /**
    * the A
    */
-  @NotNull
   @Valid
+  @NotNull
   private BidirectA a;
 
   /**

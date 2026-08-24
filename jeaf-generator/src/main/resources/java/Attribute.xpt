@@ -50,31 +50,38 @@
 
 // processing the properties
 «DEFINE DoPropertyDeclaration FOR Property»
+	«LET this.getRequiredValidAnnotation() AS validAnnotation»
 	«EXPAND functions::Javadoc::JavadocForProperty»
     «EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassPropertyDeclaration(this.type.fqn())»
     «EXPAND java::Helper::GenerateAnnotations-»
 	«EXPAND RESTParamAnnotation»
 	«EXPAND java::Jackson::JSONAlias»
+	«IF this.isMultivalued() == false»«validAnnotation»«ENDIF»
 	«EXPAND Validation::ValidationAnnotation»
-	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly() && belongsToTransientBidirectionalBackReference() == false»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
+	«visibility» «IF isStatic» static «ENDIF» «IF isReadOnly() && belongsToTransientBidirectionalBackReference() == false»final «ENDIF» «IF isTransient()»transient «ENDIF» «IF this.isMultivalued()»«this.getQualifiedNameForProperty(validAnnotation)»«ELSE»«this.getQualifiedNameForProperty("")»«ENDIF» «name»«IF this.isRealInitValue() && this.isMultivalued()== false && this.isStatic == true» = «this.initValue()»«ENDIF»;
+	«ENDLET»
 «ENDDEFINE»
 
 // processing the properties
 «DEFINE SoftLinkPropertyDeclaration FOR SoftLink»
+        «LET this.getRequiredValidAnnotation() AS validAnnotation»
         «EXPAND functions::Javadoc::JavadocForProperty»
         «EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassPropertyDeclaration(this.type.fqn())»
         «EXPAND java::Helper::GenerateAnnotations-»
         «EXPAND RESTParamAnnotation»
         «EXPAND java::Jackson::JSONAlias»
-        «EXPAND Validation::ValidationAnnotation»
         «IF isMultivalued()»
+            «EXPAND Validation::ValidationAnnotation»
             «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().isPOJO() == false»
             @«getJsonSetterFQN()»(nulls = «getNullsFQN()».SKIP)
             «ENDIF»
-            «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«this.getMultivaluedJavaSoftLinkType()»> «this.getSoftLinkPropertyName()»;
+            «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getCollectionType()»<«validAnnotation»«this.getMultivaluedJavaSoftLinkType()»> «this.getSoftLinkPropertyName()»;
         «ELSE»
+            «validAnnotation»
+            «EXPAND Validation::ValidationAnnotation»
             «visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getJavaSoftLinkType()» «this.getSoftLinkPropertyName()»;
         «ENDIF»
+        «ENDLET»
 «ENDDEFINE»
 
 «DEFINE SoftLinkAccessors FOR SoftLink»
@@ -93,18 +100,21 @@
 «DEFINE DoAssociationPropertyDeclaration FOR Property»
 	«EXPAND functions::Javadoc::JavadocForProperty»
 	«IF isNavigable()»
+		«LET this.getRequiredValidAnnotation() AS validAnnotation»
 		«EXPAND jeafgenerator::api::ClassExtensionPoint::BeforeClassPropertyDeclaration(this.type.fqn())»
 		«EXPAND java::Helper::GenerateAnnotations-»
 		«EXPAND RESTParamAnnotation»
 		«EXPAND java::Jackson::JSONAlias»
-		«EXPAND Validation::ValidationAnnotation»
 		«IF isMultivalued()»
+            «EXPAND Validation::ValidationAnnotation»
             «IF generateJacksonAnnotations() && isTransient() == false && this.owner.asClass().isPOJO() == false»
             @«getJsonSetterFQN()»(nulls = «getNullsFQN()».SKIP)
             «ENDIF»
-			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.fqn()» «asInstanceVar()»;
+			«visibility» «IF isReadOnly()»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getQualifiedNameForProperty(validAnnotation)» «asInstanceVar()»;
 		«ELSE»
-			«visibility» «IF isReadOnly() && belongsToTransientBidirectionalBackReference() == false»final «ENDIF» «IF isTransient()»transient «ENDIF» «type.fqn()» «asInstanceVar()»;
+			«validAnnotation»
+			«EXPAND Validation::ValidationAnnotation»
+			«visibility» «IF isReadOnly() && belongsToTransientBidirectionalBackReference() == false»final «ENDIF» «IF isTransient()»transient «ENDIF» «this.getQualifiedNameForProperty("")» «asInstanceVar()»;
 		«ENDIF»
 		
 		
@@ -115,6 +125,7 @@
 		 */
 		private transient boolean «asInstanceVar()»BackReferenceInitialized;
 		«ENDIF»
+		«ENDLET»
 	«ENDIF»
 «ENDDEFINE»
 

@@ -79,8 +79,7 @@ public class CodeTypeUsageTest extends Object implements ServiceObject {
   // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
   @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
-  @Valid
-  private Set<ShortCodeType> shortCodeTypeAssociation;
+  private Set<@Valid ShortCodeType> shortCodeTypeAssociation;
 
   // "com.anaptecs.jeaf.junit.openapi.base.ShortCodeType"
   private int shortCodeTypeAssociationXYZ = 0;

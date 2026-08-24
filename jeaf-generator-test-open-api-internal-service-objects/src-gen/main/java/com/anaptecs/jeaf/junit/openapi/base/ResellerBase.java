@@ -44,17 +44,15 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
 
   @Size(min = 1)
   @NotNull
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<Channel> channels;
+  private List<@Valid Channel> channels;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
    */
   private transient boolean channelsBackReferenceInitialized;
 
-  @Valid
-  private transient Set<Product> products;
+  private transient Set<@Valid Product> products;
 
   /**
    * <p/>

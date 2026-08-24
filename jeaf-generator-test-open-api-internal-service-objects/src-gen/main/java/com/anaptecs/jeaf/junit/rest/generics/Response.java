@@ -27,9 +27,8 @@ public class Response<T> implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<Message> messages;
+  private List<@Valid Message> messages;
 
   @Valid
   private T data;

@@ -37,17 +37,15 @@ public class MultiValuedDataType implements ServiceObject {
    * This is my multivalued test header
    */
   @HeaderParam("stringCodeHeader")
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<StringCode> stringCodeHeader;
+  private List<@Valid StringCode> stringCodeHeader;
 
   /**
    * Multivalued query param
    */
   @QueryParam("longCodeQueryParam")
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<LongCode> longCodeQueryParam;
+  private List<@Valid LongCode> longCodeQueryParam;
 
   /**
    * so many literals are possible

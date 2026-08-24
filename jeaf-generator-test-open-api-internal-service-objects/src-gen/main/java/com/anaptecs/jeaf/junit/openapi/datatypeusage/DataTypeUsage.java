@@ -29,13 +29,12 @@ public class DataTypeUsage implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @NotNull
   @Valid
+  @NotNull
   private MyDataType code;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<MyDataType> codes;
+  private List<@Valid MyDataType> codes;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

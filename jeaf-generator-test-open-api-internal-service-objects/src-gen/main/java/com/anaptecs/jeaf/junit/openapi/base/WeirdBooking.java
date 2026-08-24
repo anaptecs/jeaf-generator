@@ -30,24 +30,23 @@ public class WeirdBooking extends WeirdParent {
    */
   private static final long serialVersionUID = 1L;
 
-  @NotNull
   @Valid
+  @NotNull
   private ComplexBookingID booking;
 
   /**
    * additional bookings
    */
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<ComplexBookingID> additionalBookings;
+  private List<@Valid ComplexBookingID> additionalBookings;
 
   /**
    * soft link<br/>
    * 2nd line<br/>
    * 3rd line
    */
-  @NotNull
   @Valid
+  @NotNull
   private VersionedObjectSoftLink versionedObjectSoftLink;
 
   private int childProperty;

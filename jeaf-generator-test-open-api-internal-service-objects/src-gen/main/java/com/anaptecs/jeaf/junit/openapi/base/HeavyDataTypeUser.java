@@ -22,36 +22,36 @@ public class HeavyDataTypeUser implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @NotNull
   @Valid
+  @NotNull
   private BooleanCode booleanCode;
 
-  @NotNull
   @Valid
+  @NotNull
   private ByteCode byteCode;
 
-  @NotNull
   @Valid
+  @NotNull
   private ShortCode shortCode;
 
-  @NotNull
   @Valid
+  @NotNull
   private IntegerCode integerCode;
 
-  @NotNull
   @Valid
+  @NotNull
   private FloatCode floatCode;
 
-  @NotNull
   @Valid
+  @NotNull
   private DoubleCode doubleCode;
 
-  @NotNull
   @Valid
+  @NotNull
   private BigIntegerCode bigInegerCode;
 
-  @NotNull
   @Valid
+  @NotNull
   private BigDecimalCode bigDecimalCode;
 
   /**

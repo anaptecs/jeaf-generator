@@ -44,15 +44,14 @@ public class ChildAA extends ChildA {
   @Size(min = 1)
   private String[] requiredArray;
 
-  @NotNull
   @Valid
+  @NotNull
   private BigIntegerCode bigIntegerCode;
 
   @Valid
   private IntegerCodeType integerCode;
 
-  @Valid
-  private IntegerCode[] codes;
+  private @Valid IntegerCode[] codes;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

@@ -101,3 +101,13 @@ cached boolean isRequiredProperty(uml::Property property):
    property.isStereotypeApplied("NotNull") || property.isStereotypeApplied("NotEmpty") || property.isStereotypeApplied("NotBlank") || property.lower() > 0;
 
 
+cached String getQualifiedNameForProperty(uml::Property property, String pPropertyTypeArgumentAnnotation):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getTypeName(org.eclipse.uml2.uml.TypedElement, java.lang.String);
+
+
+cached String getRequiredValidAnnotation(uml::Property property):
+	if property.isStereotypeApplied("Valid") || (generateValidAnnotationsForAssociations() && (property.type.isStereotypeApplied("POJO") || property.type.isStereotypeApplied("ServiceObject") || property.type.isStereotypeApplied("DomainObject") || property.type.isStereotypeApplied("PersistentObject") || property.type.isTemplateParameter()))
+	then "@" + getEnterpriseJavaPackage() + ".validation.Valid "
+	else "";
+
+

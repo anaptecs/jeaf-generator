@@ -40,15 +40,21 @@ public class Naming {
   public static final char COMMAND_CLASS_NAME_SEPERATOR = '_';
 
   public static String getUMLQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement ) {
-    return Naming.getFullyQualifiedName(pNamedElement, true);
+    return Naming.getFullyQualifiedName(pNamedElement, true, "");
   }
 
   public static String getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement ) {
-    return Naming.getFullyQualifiedName(pNamedElement, false);
+    return Naming.getFullyQualifiedName(pNamedElement, false, "");
+  }
+  
+  public static String getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement,
+	      Boolean pIgnoreTemplateBinding) {
+	    return Naming.getFullyQualifiedName(pNamedElement, pIgnoreTemplateBinding, "");
   }
 
+
   public static String getFullyQualifiedName( org.eclipse.uml2.uml.NamedElement pNamedElement,
-      Boolean pIgnoreTemplateBinding ) {
+      Boolean pIgnoreTemplateBinding,  String pPropertyTypeArgumentAnnotation) {
     // Check parameter.
     String lQualifiedName;
     if (pNamedElement != null) {
@@ -99,7 +105,7 @@ public class Naming {
       // Get type of property
       else if (pNamedElement instanceof Property) {
         Property lProperty = (Property) pNamedElement;
-        lQualifiedName = ClassUtil.getTypeName(lProperty);
+        lQualifiedName = ClassUtil.getTypeName(lProperty, pPropertyTypeArgumentAnnotation);
       }
       else if (pNamedElement instanceof Operation) {
         Element lOwner = pNamedElement.getOwner();

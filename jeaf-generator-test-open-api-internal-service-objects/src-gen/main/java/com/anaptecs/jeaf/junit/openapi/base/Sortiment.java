@@ -29,9 +29,8 @@ public class Sortiment implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<Product> products;
+  private Set<@Valid Product> products;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.

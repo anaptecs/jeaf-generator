@@ -36,11 +36,10 @@ public class CodeTypeUsageTest implements ServiceObject {
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<BooleanCodeType> booleanCodeAssociation;
 
-  @Valid
   @Size(min = 1)
   @NotNull
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<ShortCodeType> shortCodeTypeAssociation;
+  private Set<@Valid ShortCodeType> shortCodeTypeAssociation;
 
   @NotNull
   private StringCodeType stringCode;

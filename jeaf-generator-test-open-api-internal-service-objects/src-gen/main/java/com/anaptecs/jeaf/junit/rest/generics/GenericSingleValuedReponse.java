@@ -21,8 +21,8 @@ public class GenericSingleValuedReponse<T> extends AbstractResponse<T> {
    */
   private static final long serialVersionUID = 1L;
 
-  @NotNull
   @Valid
+  @NotNull
   private T value;
 
   /**

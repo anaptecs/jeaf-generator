@@ -32,13 +32,11 @@ public abstract class AbstractResponse<T> implements ServiceObject {
    */
   private static final long serialVersionUID = 1L;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<Message> errors;
+  private List<@Valid Message> errors;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<Message> warnings;
+  private List<@Valid Message> warnings;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

@@ -53,9 +53,8 @@ public class Campaign implements ServiceObject {
   @Deprecated
   @Size(min = 1)
   @NotNull
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private Set<Long> moreLinks;
+  private Set<@Valid Long> moreLinks;
 
   /**
    * <p/>
@@ -63,9 +62,8 @@ public class Campaign implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.DiscountOffer</code><br/>
    */
   @Deprecated
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private List<String> discountOffers;
+  private List<@Valid String> discountOffers;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

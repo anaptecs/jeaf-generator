@@ -30,9 +30,8 @@ public class ReadOnlyMaster implements ServiceObject {
   @NotNull
   private final String name;
 
-  @Valid
   @JsonSetter(nulls = Nulls.SKIP)
-  private final List<ReadOnlyClient> clients;
+  private final List<@Valid ReadOnlyClient> clients;
 
   /**
    * Attribute is required for correct handling of bidirectional associations in case of deserialization.
