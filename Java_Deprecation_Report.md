@@ -329,3 +329,14 @@
 
 <br>
 
+### Enumerations with Deprecations
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
+| `ClientType` | |  |  |  |  |
+|   | `CLIENT_3` |  |  | 7.0 |  |
+
+<br>
+

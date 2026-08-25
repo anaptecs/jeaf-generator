@@ -668,9 +668,13 @@ cached List[uml::Property] getPropertiesForOpenAPI(uml::Class class):
 
 
 cached boolean ignoreDeprecatedPropertyForOpenAPI(uml::Property propery):
-	if propery.isDeprecated() && propery.getCompatibilityGroups().isEmpty == false
-	then propery.getCompatibilityGroups().getValidationGroupsForGroup().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty
-	else false;
+	!propery.isElementActiveForOpenAPI();
+
+
+cached boolean isElementActiveForOpenAPI(uml::NamedElement element):
+	if element.isDeprecated() && element.getCompatibilityGroups().isEmpty == false
+	then !element.getCompatibilityGroups().getValidationGroupsForGroup().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty
+	else true;
 
 
 private cached List[String] getTemplateParamNames(uml::Class class):

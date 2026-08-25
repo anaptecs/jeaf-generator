@@ -218,10 +218,19 @@ components:
 
     # com.anaptecs.jeaf.junit.validationgroups.ClientType
     ClientType:
+      description: |
+        <br>
+        Valid Values:
+        
+        - `CLIENT_1`
+          <br><br>
+          
+        - `CLIENT_2`
+          <br><br>
+          
       type: string
       enum:
         - CLIENT_1
         - CLIENT_2
-        - CLIENT_3
 
       

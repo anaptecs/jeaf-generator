@@ -1,34 +1,47 @@
 extension functions::TypeChecks;
 extension java::GeneratorCommons;
 extension java::Naming;
+extension java::OpenAPIFunctions;
 
 
 cached boolean isEnumeration(uml::Element element):
   JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.isEnumeration(org.eclipse.uml2.uml.Element);  
-  
+
+
 cached uml::Enumeration asEnumeration(uml::Element element):
     (uml::Enumeration) element;
-    
+
+
 cached boolean hasUnknownLiteral(uml::Enumeration enum):
     !enum.ownedLiteral.select(e|e.name == "UNKNOWN").isEmpty;
-    
+
+
 cached List[uml::EnumerationLiteral] getPulicLiterals(JMM::OpenAPIEnumeration enum):
     if enum.extensibleEnum 
     then enum.ownedLiteral.select(e|e.name != "UNKNOWN")
     else enum.ownedLiteral;
 
+
+cached List[uml::EnumerationLiteral] getPulicLiteralsForOpenAPI(JMM::OpenAPIEnumeration enum):
+    enum.getPulicLiterals().select(e|e.isElementActiveForOpenAPI());
+
+
 cached boolean isEnumTypeSlot(uml::Slot slot):
     slot.definingFeature.type.isEnumeration(); 
-    
+
+
 cached boolean isStringTypeSlot(uml::Slot slot):
     slot.definingFeature.type.isStringType(); 
-    
+
+
 cached boolean isFloatTypeSlot(uml::Slot slot):
     slot.definingFeature.type.isFloatType(); 
-    
+
+
 cached List[uml::Slot] getOrderedSlots(uml::EnumerationLiteral literal):
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getOrderedSlots(org.eclipse.uml2.uml.EnumerationLiteral);
-    
+
+
 cached String getSlotValue(uml::Slot slot):
     if slot == null
     then "null"
@@ -41,15 +54,18 @@ cached String getSlotValue(uml::Slot slot):
     else if slot.isFloatTypeSlot()
     then slot.value.first().stringValue() + "f"
     else slot.value.first().stringValue(); 
-    
+
+
 private String getMultivaluedSlotValue(uml::Slot slot):
 	if slot.definingFeature.isUnique == false
 	then "java.util.List.of(" + slot.value.collect(e|slot.definingFeature.type.fqn() + "." + e.stringValue()).toString(", ") + ")" 
 	else "java.util.Set.of(" + slot.value.collect(e|slot.definingFeature.type.fqn() + "." + e.stringValue()).toString(", ") + ")";
-    
+
+
 cached String getMissingMandatorySlots(uml::EnumerationLiteral literal):
     literal.javaGetMissingMandatorySlots().toString(", ");
-    
+
+
 private List[String] javaGetMissingMandatorySlots(uml::EnumerationLiteral literal):
     JAVA com.anaptecs.jeaf.fwk.generator.util.GeneratorCommons.getMissingMandatorySlots(org.eclipse.uml2.uml.EnumerationLiteral);
 

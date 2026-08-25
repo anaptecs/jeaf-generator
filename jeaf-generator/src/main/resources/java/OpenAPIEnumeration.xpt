@@ -46,7 +46,7 @@
         Valid Values:
         «ENDIF-»
         
-        «FOREACH this.getPulicLiterals() AS literal-»
+        «FOREACH this.getPulicLiteralsForOpenAPI() AS literal-»
         - «IF literal.isDeprecated() -»<del>«ENDIF»`«literal.getLiteralNameForOpenAPI()»`«IF literal.isDeprecated() -»</del>«ENDIF»«IF literal.hasComment()»: «literal.getCommentForOpenAPIDescription("          ")»«IF literal.getOrderedSlots().size > 0»<br>
           <br>
           
@@ -74,7 +74,7 @@
       «ELSE-»
       enum:
       «ENDIF-»
-        «FOREACH this.getPulicLiterals() AS literal-»        
+        «FOREACH this.getPulicLiteralsForOpenAPI() AS literal-»
         - «openAPILiteralQuotationCharacter()»«literal.getLiteralName()»«openAPILiteralQuotationCharacter()»
         «ENDFOREACH-»
         «IF this.hasDynamicLiterals -»
@@ -110,7 +110,7 @@
           «ELSE-»
 «indentation»          enum:
           «ENDIF-»
-          «FOREACH this.getPulicLiterals() AS literal-»        
+          «FOREACH this.getPulicLiteralsForOpenAPI() AS literal-»        
 «indentation»            - «openAPILiteralQuotationCharacter()»«literal.getLiteralName()»«openAPILiteralQuotationCharacter()»
           «ENDFOREACH-»
           «IF this.hasDynamicLiterals -»
@@ -127,7 +127,7 @@
             «ELSE-»
 «indentation»            enum:
             «ENDIF-»
-            «FOREACH this.getPulicLiterals() AS literal-»        
+            «FOREACH this.getPulicLiteralsForOpenAPI() AS literal-»        
 «indentation»              - «openAPILiteralQuotationCharacter()»«literal.getLiteralName()»«openAPILiteralQuotationCharacter()»
             «ENDFOREACH-»
             «IF this.hasDynamicLiterals -»
