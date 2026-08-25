@@ -97,5 +97,5 @@
 |------|----------------------|----------------------------|
 | `CLIENT_1` |   |  |
 | `CLIENT_2` |   |  |
-| `CLIENT_3` |   |  |
+| :exclamation:`CLIENT_3` |   | :exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br> |
 

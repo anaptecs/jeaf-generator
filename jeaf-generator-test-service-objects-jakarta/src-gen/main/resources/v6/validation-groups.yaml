@@ -239,6 +239,22 @@ components:
 
     # com.anaptecs.jeaf.junit.validationgroups.ClientType
     ClientType:
+      description: |
+        <br>
+        Valid Values:
+        
+        - `CLIENT_1`
+          <br><br>
+          
+        - `CLIENT_2`
+          <br><br>
+          
+        - <del>`CLIENT_3`</del>: 
+          <br><br>
+          **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+          
+          <br><br>
+          
       type: string
       enum:
         - CLIENT_1

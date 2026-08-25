@@ -104,6 +104,8 @@
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 | `ChannelType` | |  |  |  |  |
 |   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |  |
+| `ClientType` | |  |  |  |  |
+|   | `CLIENT_3` |  |  | 7.0 |  |
 | `DeprecatedEnum` | | Hello `World`. |  |  |  |
 | `DeprecatedEnum` | |  |  |  |  |
 | `EnumWithDeprecation` | |  |  |  |  |
