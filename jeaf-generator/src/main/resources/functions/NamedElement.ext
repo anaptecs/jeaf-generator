@@ -68,5 +68,11 @@ cached boolean hasCompatibilityInfo(uml::NamedElement element):
 
 
 cached List[JMM::ValidationGroup] getValidationGroupsForGroup(JMM::CompatibilityGroup group):
-	group.clientDependency.target.typeSelect(JMM::ValidationGroup).sortBy(e|e.qualifiedName());
+	group.clientDependency.target.typeSelect(JMM::ValidationGroup).sortBy(e|e.qualifiedName()).addAll(group.getCompatibilityInfoForGroup().getValidationGroupsForCompatibilityInfo());
+
+
+cached List[JMM::ValidationGroup] getValidationGroupsForCompatibilityInfo(JMM::CompatibilityInfo info):
+	info.clientDependency.target.typeSelect(JMM::ValidationGroup).sortBy(e|e.qualifiedName());
+
+
 	
