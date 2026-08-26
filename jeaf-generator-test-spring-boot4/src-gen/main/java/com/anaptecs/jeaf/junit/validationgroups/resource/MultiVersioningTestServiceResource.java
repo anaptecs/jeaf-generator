@@ -85,4 +85,20 @@ public class MultiVersioningTestServiceResource {
     validationExecutor.validateResponse(MultiVersioningTestService.class, lResponse);
     return lResponse;
   }
+
+  /**
+   * {@link MultiVersioningTestService#deprecatedEndpoint()}
+   */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "deprecated-endpoint", produces = { "application/json" }, method = { RequestMethod.GET })
+  @Deprecated
+  @MyNotNullRESTParam
+  public String deprecatedEndpoint( ) {
+    // Delegate request to service.
+    String lResponse = multiVersioningTestService.deprecatedEndpoint();
+    // Validate response and return it.
+    validationExecutor.validateResponse(MultiVersioningTestService.class, lResponse);
+    return lResponse;
+  }
 }

@@ -8,9 +8,11 @@
 
 | Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   | Removal date |
 |-----------------------|----------------|---------------|:------------------:|:-----------------------:|:------------:|
+| `` | `com.anaptecs.jeaf.junit.validationgroups.AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-09-13 |
 | `/api` | `com.anaptecs.jeaf.junit.rest.RESTTestService` |  |  |  |  |
 | `/deprecation` | `com.anaptecs.jeaf.junit.deprecation.DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |  |
 | `/do/something` | `com.anaptecs.jeaf.junit.rest.DeprecatedRESTService` |  |  |  |  |
+| `/multi-versioning` | `com.anaptecs.jeaf.junit.validationgroups.MultiVersioningTestService` |  |  |  |  |
 | `/products` | `com.anaptecs.jeaf.junit.openapi.service1.ProductService` |  |  |  |  |
 | `/with-deprecations` | `com.anaptecs.jeaf.junit.deprecation.ServiceWithDeprecations` |  |  |  |  |
 
@@ -32,6 +34,8 @@
 |   | `Header Param` | `int pParam2` |  |  |  |  |
 | `/api/deprecation/dep3 [GET]` | `REST Operation` | `RESTTestService.deprectaedReturnValue(int)` |  |  |  |  |
 |   | `Response` | `int ` |  |  |  |  |
+| `/multi-versioning/deprecated-endpoint [GET]` | `REST Operation` | `MultiVersioningTestService.deprecatedEndpoint()` | I'm so deprecated. |  | 7.0 | 2026-09-13 |
+| `/multi-versioning/deprecated-service [POST]` | `REST Operation` | `AnotherDeprecatedRESTService.operationOfADeprecatedService()` |  |  | 7.0 | 2026-09-13 |
 | `/multi-versioning/some-request/{path-param} [POST]` | `REST Operation` | `MultiVersioningTestService.someRequest(String, MyPojoRequest, MyContext)` |  |  |  |  |
 | `/products/deprecated/beanParams [POST]` | `REST Operation` | `ProductService.deprecatedBeanParam(BeanParameter)` |  |  |  |  |
 | `/products/deprecated/body [POST]` | `REST Operation` | `ProductService.deprecatedBody(String)` |  |  |  |  |
@@ -71,7 +75,9 @@
 |   | `deprecatedArray` |  |  |  |  |
 | `DataTypeWithDeprecation` | |  |  |  |  |
 |   | `code` | Time to say goodbye ...<br><br>... blub, blub, blub<br> | just recently | Next version |  |
+| `DeprecatedClass` | |  |  | 7.0 | 2026-09-13 |
 | `DeprecatedDataType` | |  |  |  |  |
+| `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-09-13 |
 | `DeprecatedType` | |  |  |  |  |
 | `DeprecatedType` | | This type will be replaced with .... |  |  |  |
 | `DiscountOffer` | |  |  |  |  |
@@ -108,6 +114,7 @@
 |   | `CLIENT_3` |  |  | 7.0 |  |
 | `DeprecatedEnum` | | Hello `World`. |  |  |  |
 | `DeprecatedEnum` | |  |  |  |  |
+| `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-09-13 |
 | `EnumWithDeprecation` | |  |  |  |  |
 |   | `EGG` | Eggs do not belong to apples. | 0.9 | 1.2 |  |
 

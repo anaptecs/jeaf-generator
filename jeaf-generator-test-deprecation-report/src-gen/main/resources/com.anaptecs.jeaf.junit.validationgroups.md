@@ -6,6 +6,34 @@
 <br>
 
 # Types
+## DeprecatedClass
+:exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br>
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`justAProperty`** : `int`   `1..1`<br> |  |  |
+
+<br>
+
+## DeprecatedOpenAPIDataType
+:exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br>
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`theOneAndOnlyProperty`** : `java.lang.String`   `1..1`<br> |  |  |
+
+<br>
+
 ## MyContext
 
 
@@ -98,4 +126,14 @@
 | `CLIENT_1` |   |  |
 | `CLIENT_2` |   |  |
 | :exclamation:`CLIENT_3` |   | :exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br> |
+
+## DeprecatedOpenAPIEnum
+:exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br>
+
+### Literals
+
+| Name |  Legacy Name | Description |
+|------|----------------------|----------------------------|
+| `ONE` |   |  |
+| `TWO` |   |  |
 

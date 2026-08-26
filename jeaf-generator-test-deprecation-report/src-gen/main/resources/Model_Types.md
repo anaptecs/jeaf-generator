@@ -121,7 +121,10 @@ DataTypeUsage |   |  |
 DataTypeWithConstraints |   |  |
 DataUnit |   |  |
 DateQueryParamsBean |   |  |
+DeprecatedClass |   |  |
 DeprecatedContext |   |  |
+DeprecatedOpenAPIDataType |   |  |
+DeprecatedOpenAPIEnum |   |  |
 DeprecatedServiceObject |   |  |
 DeprecatedType |   |  |
 DirectedEdge |   | Just a simple comment. |
@@ -616,6 +619,9 @@ Response |   |  |
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
 ClientType |   |  |
+DeprecatedClass |   |  |
+DeprecatedOpenAPIDataType |   |  |
+DeprecatedOpenAPIEnum |   |  |
 MyContext |   |  |
 MyPOJOResponse |   |  |
 MyPojoRequest |   |  |
