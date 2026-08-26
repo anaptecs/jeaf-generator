@@ -27,11 +27,11 @@ cached boolean hasOpenAPITypes(JMM::OpenAPI3Specification spec):
 
 
 cached List[JMM::OpenAPIType] getOpenAPITypes(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType).select(e|e.ignore() == false);
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIType).select(e|e.ignore() == false && e.isElementActiveForOpenAPI());
 
 
 cached List[JMM::OpenAPIDataType] getOpenAPIDataTypes(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIDataType).select(e|e.ignore() == false);
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIDataType).select(e|e.ignore() == false && e.isElementActiveForOpenAPI());
 
 
 cached boolean hasOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
@@ -67,7 +67,7 @@ cached boolean hasOpenAPIEnums(JMM::OpenAPI3Specification spec):
 
 
 cached List[JMM::OpenAPIEnumeration] getOpenAPIEnums(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIEnumeration).select(e|e.ignore() == false);
+	spec.clientDependency.supplier.typeSelect(uml::Package).ownedElement.typeSelect(JMM::OpenAPIEnumeration).select(e|e.ignore() == false && e.isElementActiveForOpenAPI());
 
 
 cached boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
@@ -75,15 +75,15 @@ cached boolean referencesRESTResources(JMM::OpenAPI3Specification spec):
 
 
 cached List[JMM::RESTResource] getRESTResources(JMM::OpenAPI3Specification spec):
-	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).select(e|e.ignore() == false).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
+	spec.clientDependency.supplier.typeSelect(JMM::RESTResource).select(e|e.ignore() == false && e.isElementActiveForOpenAPI()).sortBy(e|e.name).sortBy(e|e.getOrderNumber());
 
 
 cached List[JMM::RESTOperation] getRESTOperations(JMM::RESTResource service, String pPath):
-   service.getAllOperations().typeSelect(JMM::RESTOperation).select(e|e.getRESTOperationPath(service) == pPath);
+   service.getAllOperations().typeSelect(JMM::RESTOperation).select(e|e.getRESTOperationPath(service) == pPath && e.isElementActiveForOpenAPI());
 
 
 cached List[String] getPaths(JMM::RESTResource service):
-   service.getAllOperations().typeSelect(JMM::RESTOperation).getRESTOperationPath(service).toSet();
+   service.getAllOperations().typeSelect(JMM::RESTOperation).select(e|e.isElementActiveForOpenAPI()).getRESTOperationPath(service).toSet();
 
 
 cached List[uml::Operation] getAllOperations(uml::Interface interface):

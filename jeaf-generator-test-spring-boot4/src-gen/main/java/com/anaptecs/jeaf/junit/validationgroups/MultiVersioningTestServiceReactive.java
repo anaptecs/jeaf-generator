@@ -34,4 +34,17 @@ public interface MultiVersioningTestServiceReactive {
           groups = { V4.class, V5.class, V6.class }) @NotNull @MyNotNullServiceParam String pPath,
       @NotNull(groups = { V7.class }) @MyNotNullServiceParam MyPojoRequest pRequest,
       @NotNull @MyNotNullServiceParam MyContext myContext );
+
+  /**
+   *
+   * <p/>
+   * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
+   *
+   * @return {@link String}
+   * @deprecated I'm so deprecated. (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   */
+  @Deprecated
+  @NotNull
+  @MyNotNullServiceParam
+  Mono<String> deprecatedEndpoint( );
 }

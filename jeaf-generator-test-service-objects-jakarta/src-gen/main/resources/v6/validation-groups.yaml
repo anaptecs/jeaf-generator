@@ -5,6 +5,25 @@ info:
   version: 1.30.1-SNAPSHOT
 
 paths:
+  # AnotherDeprecatedRESTService
+  /multi-versioning/deprecated-service:
+    post:
+      description: |
+        
+        <br><br>
+        **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+        
+      operationId: operationOfADeprecatedService
+      deprecated: true
+      responses:
+        '204':
+          description: |
+            In case that a request was successful only status code 204 will be returned but no response content will be provided (aka as return type 'void' in many programming languages).
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
   # MultiVersioningTestService
   /multi-versioning/some-request/{path-param}:
     post:
@@ -60,6 +79,28 @@ paths:
           $ref: '#/components/responses/CustomErrorResponse'
         'default':
           $ref: '#/components/responses/CustomErrorResponse'
+  /multi-versioning/deprecated-endpoint:
+    get:
+      description: |
+        
+        <br><br>
+        **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+        I'm so deprecated.
+      operationId: deprecatedEndpoint
+      deprecated: true
+      responses:
+        '200':
+          description: |
+            TODO: Please add comment for response
+          content:
+            application/json:
+              schema:
+                type: string
+    
+        '400':
+          $ref: '#/components/responses/CustomErrorResponse'
+        'default':
+          $ref: '#/components/responses/CustomErrorResponse'
 
 components:
   securitySchemes:
@@ -89,6 +130,23 @@ components:
 
 
   schemas:
+    # com.anaptecs.jeaf.junit.validationgroups.DeprecatedClass
+    DeprecatedClass:
+      type: object
+      additionalProperties: false
+      description: |
+        
+        <br><br>
+        **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+        
+      deprecated: true
+      required:
+        - justAProperty
+      properties:
+        justAProperty:
+          type: integer
+          format: int32
+          nullable: false
     # com.anaptecs.jeaf.junit.validationgroups.MyPOJOResponse
     MyPOJOResponse:
       type: object
@@ -260,5 +318,18 @@ components:
         - CLIENT_1
         - CLIENT_2
         - CLIENT_3
+
+    # com.anaptecs.jeaf.junit.validationgroups.DeprecatedOpenAPIEnum
+    DeprecatedOpenAPIEnum:
+      description: |
+        
+        <br><br>
+        **Deprecation Notice (since: , removed with: 7.0, removal date: 2026-09-13):**<br><br>
+        
+      type: string
+      deprecated: true
+      enum:
+        - ONE
+        - TWO
 
       

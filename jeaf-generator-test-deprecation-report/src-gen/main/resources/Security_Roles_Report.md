@@ -151,8 +151,10 @@
 
 | Service          | Operation     | REST Resource Path |
 |------------------|---------------|--------------------|
+| `AnotherDeprecatedRESTService` | `operationOfADeprecatedService()` | `/multi-versioning/deprecated-service [POST]` |
 | `DeprecatedRESTService` | `doSomething()` | `/do/something [GET]` |
 | `IgnorableService` | `ignore()` | `/ignore [GET]` |
+| `MultiVersioningTestService` | `deprecatedEndpoint()` | `/multi-versioning/deprecated-endpoint [GET]` |
 | `MultiVersioningTestService` | `someRequest(String, MyPojoRequest, MyContext)` | `/multi-versioning/some-request/{path-param} [POST]` |
 | `ProductService` | `addCurrencies(CurrencyCode)` | `/products/currencies [POST]` |
 | `ProductService` | `checkIBAN(String)` | `/products/IBAN [POST]` |

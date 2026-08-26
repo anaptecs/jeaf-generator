@@ -74,11 +74,11 @@ cached boolean isDeprecationComplete(NamedElement element):
 
 
 cached boolean hasDeprecationDetails(NamedElement element):
-    element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0;
+    element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0 || (element.isDeprecated() && element.hasCompatibilityInfo());
 
 
 cached boolean hasMeaningfulDeprecationInfo(NamedElement element):
-    element.getDeprecationDescription().length > 0 || element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0;
+    element.getDeprecationDescription().length > 0 || element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0 || (element.isDeprecated() && element.hasCompatibilityInfo());
 
 
 cached boolean generateBackwardCompatibility(Element deprecated):

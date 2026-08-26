@@ -90,4 +90,21 @@ public class MultiVersioningTestServiceReactiveResource {
         .delayUntil(
             response -> validationExecutor.validateResponse(MultiVersioningTestServiceReactive.class, response));
   }
+
+  /**
+   * {@link com.anaptecs.jeaf.junit.validationgroups.MultiVersioningTestService#deprecatedEndpoint()}
+   */
+  @PreAuthorize("hasAnyRole('NO_ACCESS')")
+  @ResponseStatus(HttpStatus.OK)
+  @RequestMapping(path = "deprecated-endpoint", produces = { "application/json" }, method = { RequestMethod.GET })
+  @Deprecated
+  @MyNotNullRESTParam
+  public Mono<String> deprecatedEndpoint( ServerWebExchange pServerWebExchange ) {
+    return Mono.defer(( ) ->
+    // Delegate request to service.
+    multiVersioningTestService.deprecatedEndpoint())
+        // Validate response.
+        .delayUntil(
+            response -> validationExecutor.validateResponse(MultiVersioningTestServiceReactive.class, response));
+  }
 }
