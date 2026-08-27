@@ -158,7 +158,7 @@ private cached String getInternalDeprecationDescription(uml::NamedElement elemen
 
 
 private cached String getBreakingChangeDescriptionInternal(uml::NamedElement element, String indentation):
-    if element.isBreakingChange()
+    if element.isBreakingChange() && element.isBreakingChangeNoticeRequired()
     then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (active with " + element.getBreakingChangeActiveWith() + ", activation date: " + element.getBreakingChangeActivactionDate() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
     else "";
 
@@ -673,6 +673,12 @@ cached boolean ignoreDeprecatedPropertyForOpenAPI(uml::Property propery):
 
 cached boolean isElementActiveForOpenAPI(uml::NamedElement element):
 	if element.isDeprecated() && element.getCompatibilityGroups().isEmpty == false
+	then !element.getCompatibilityGroups().getValidationGroupsForGroup().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty
+	else true;
+
+
+cached boolean isBreakingChangeNoticeRequired(uml::NamedElement element):
+	if element.getCompatibilityGroups().isEmpty == false
 	then !element.getCompatibilityGroups().getValidationGroupsForGroup().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty
 	else true;
 
