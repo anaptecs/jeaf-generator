@@ -61,7 +61,7 @@
 | Name | «IF showAliasInTypesReport()» «getAliasRowName()» |«ENDIF» Description |
 |------| «IF showAliasInTypesReport()»----------------------|«ENDIF»-------------|
 «FOREACH pojo.ownedAttribute.select(e|e.ignore() == false && e.isStatic == false) AS attr-»
-| «IF attr.isBreakingChange()»<font color="red">«ENDIF»«IF attr.isJEAFDeprecated()»*«ELSE»**«ENDIF»`«attr.name»`«IF attr.isJEAFDeprecated()»*«ELSE»**«ENDIF»«IF attr.isBreakingChange()»</font>«ENDIF» : «attr.getPropertyTypeLink()»   `«attr.lower()»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»`<br>«EXPAND Constraints FOR attr» | «IF showAliasInTypesReport()»«IF attr.isAlias()»`«attr.asAlias().getAlternateName()»`«ENDIF» | «ENDIF»«attr.getMarkdownCommentForReportTable()»«IF attr.hasExample()»<br><br>**Example(s):**<br>«FOREACH attr.asExample().exampleValues AS exampleValue»- `«exampleValue.makeMultiLineCompatible()»`«ENDFOREACH»«ENDIF» |
+| «IF attr.isBreakingChange()»<font color="red">«ENDIF»«IF attr.isJEAFDeprecated()»*«ELSE»**«ENDIF»`«attr.name»`«IF attr.isJEAFDeprecated()»*«ELSE»**«ENDIF»«IF attr.isBreakingChange()»</font>«ENDIF» : «attr.getPropertyTypeLink()»   `[«attr.lower()»..«IF attr.isMultivalued()»*«ELSE»1«ENDIF»]`<br>«EXPAND Constraints FOR attr» | «IF showAliasInTypesReport()»«IF attr.isAlias()»`«attr.asAlias().getAlternateName()»`«ENDIF» | «ENDIF»«attr.getMarkdownCommentForReportTable()»«IF attr.hasExample()»<br><br>**Example(s):**<br>«FOREACH attr.asExample().exampleValues AS exampleValue»- `«exampleValue.makeMultiLineCompatible()»`«ENDFOREACH»«ENDIF» |
 «ENDFOREACH-»
 
 <br>
