@@ -16,9 +16,9 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`transientMaster`** : [`MasterClass`](#masterclass)   `0..1`<br> |  |  |
-| **`name`** : `String`   `1..1`<br> |  |  |
-| **`manyMasters`** : [`MasterClass`](#masterclass)   `0..*`<br> |  |  |
+| **`transientMaster`** : [`MasterClass`](#masterclass)   `[0..1]`<br> |  |  |
+| **`name`** : `String`   `[1..1]`<br> |  |  |
+| **`manyMasters`** : [`MasterClass`](#masterclass)   `[0..*]`<br> |  |  |
 
 <br>
 
@@ -32,9 +32,9 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`clients`** : [`ClientClass`](#clientclass)   `0..*`<br> |  |  |
-| **`name`** : `String`   `1..1`<br> |  |  |
-| **`singleClient`** : [`ClientClass`](#clientclass)   `0..1`<br> |  |  |
+| **`clients`** : [`ClientClass`](#clientclass)   `[0..*]`<br> |  |  |
+| **`name`** : `String`   `[1..1]`<br> |  |  |
+| **`singleClient`** : [`ClientClass`](#clientclass)   `[0..1]`<br> |  |  |
 
 <br>
 
@@ -48,8 +48,8 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`name`** : `String`   `1..1`<br> |  |  |
-| **`transientMaster`** : [`ReadOnlyMaster`](#readonlymaster)   `0..1`<br> |  |  |
+| **`name`** : `String`   `[1..1]`<br> |  |  |
+| **`transientMaster`** : [`ReadOnlyMaster`](#readonlymaster)   `[0..1]`<br> |  |  |
 
 <br>
 
@@ -63,8 +63,8 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`name`** : `String`   `1..1`<br> |  |  |
-| **`clients`** : [`ReadOnlyClient`](#readonlyclient)   `0..*`<br> |  |  |
+| **`name`** : `String`   `[1..1]`<br> |  |  |
+| **`clients`** : [`ReadOnlyClient`](#readonlyclient)   `[0..*]`<br> |  |  |
 
 <br>
 

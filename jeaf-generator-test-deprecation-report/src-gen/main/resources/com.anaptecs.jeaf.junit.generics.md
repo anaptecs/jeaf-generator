@@ -16,10 +16,10 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`genericProperty`** : [`DoSomethingResponse`](#dosomethingresponse)   `1..1`<br> |  |  |
-| **`genericResponses`** : [`DoSomethingResponse`](#dosomethingresponse)   `0..*`<br> |  |  |
-| **`multiTemplateClassImpl`** : [`MultiTemplateClassImpl`](#multitemplateclassimpl)   `1..1`<br> |  |  |
-| **`many`** : [`MultiTemplateClassImpl`](#multitemplateclassimpl)   `0..*`<br> |  |  |
+| **`genericProperty`** : [`DoSomethingResponse`](#dosomethingresponse)   `[1..1]`<br> |  |  |
+| **`genericResponses`** : [`DoSomethingResponse`](#dosomethingresponse)   `[0..*]`<br> |  |  |
+| **`multiTemplateClassImpl`** : [`MultiTemplateClassImpl`](#multitemplateclassimpl)   `[1..1]`<br> |  |  |
+| **`many`** : [`MultiTemplateClassImpl`](#multitemplateclassimpl)   `[0..*]`<br> |  |  |
 
 <br>
 
@@ -33,9 +33,9 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`errors`** : [`Message`](#message)   `0..*`<br> |  |  |
-| **`warnings`** : [`Message`](#message)   `0..*`<br> |  |  |
-| **`value`** : [`T`](#t)   `1..1`<br> |  |  |
+| **`errors`** : [`Message`](#message)   `[0..*]`<br> |  |  |
+| **`warnings`** : [`Message`](#message)   `[0..*]`<br> |  |  |
+| **`value`** : [`T`](#t)   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -49,7 +49,7 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`text`** : `String`   `1..1`<br> |  |  |
+| **`text`** : `String`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -63,9 +63,9 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`object`** : [`T`](#t)   `1..1`<br> |  |  |
-| **`previousState`** : [`E`](#e)   `0..1`<br> |  |  |
-| **`newState`** : [`E`](#e)   `1..1`<br> |  |  |
+| **`object`** : [`T`](#t)   `[1..1]`<br> |  |  |
+| **`previousState`** : [`E`](#e)   `[0..1]`<br> |  |  |
+| **`newState`** : [`E`](#e)   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -79,7 +79,7 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`myBusinessAttribute`** : `int`   `1..1`<br> |  |  |
+| **`myBusinessAttribute`** : `int`   `[1..1]`<br> |  |  |
 
 <br>
 

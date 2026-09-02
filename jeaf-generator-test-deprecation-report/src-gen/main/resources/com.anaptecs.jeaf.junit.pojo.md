@@ -22,7 +22,7 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`abtractAttr`** : `java.lang.String`   `1..1`<br> |  |  |
+| **`abtractAttr`** : `java.lang.String`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -36,8 +36,8 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`readonlyDefault`** : `int`   `1..1`<br> |  |  |
-| **`intWithDefault`** : `java.lang.Integer`   `1..1`<br> |  |  |
+| **`readonlyDefault`** : `int`   `[1..1]`<br> |  |  |
+| **`intWithDefault`** : `java.lang.Integer`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -57,8 +57,8 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`weirdAttribute`** : `byte`   `1..1`<br> |  |  |
-| **`childAttribute`** : `java.lang.Integer`   `1..1`<br> |  |  |
+| **`weirdAttribute`** : `byte`   `[1..1]`<br> |  |  |
+| **`childAttribute`** : `java.lang.Integer`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -72,7 +72,7 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`parentAttribute`** : `java.lang.String`   `1..1`<br> |  |  |
+| **`parentAttribute`** : `java.lang.String`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -86,10 +86,10 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`transientB`** : [`BidirectionalB`](#bidirectionalb)   `0..1`<br> |  |  |
-| **`transientParent`** : [`BidirectionalA`](#bidirectionala)   `0..1`<br> |  |  |
-| **`child`** : [`BidirectionalA`](#bidirectionala)   `0..1`<br> |  |  |
-| **`transientBs`** : [`BidirectionalB`](#bidirectionalb)   `0..*`<br> |  |  |
+| **`transientB`** : [`BidirectionalB`](#bidirectionalb)   `[0..1]`<br> |  |  |
+| **`transientParent`** : [`BidirectionalA`](#bidirectionala)   `[0..1]`<br> |  |  |
+| **`child`** : [`BidirectionalA`](#bidirectionala)   `[0..1]`<br> |  |  |
+| **`transientBs`** : [`BidirectionalB`](#bidirectionalb)   `[0..*]`<br> |  |  |
 
 <br>
 
@@ -103,8 +103,8 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`as`** : [`BidirectionalA`](#bidirectionala)   `0..*`<br> |  |  |
-| **`theAs`** : [`BidirectionalA`](#bidirectionala)   `0..*`<br> |  |  |
+| **`as`** : [`BidirectionalA`](#bidirectionala)   `[0..*]`<br> |  |  |
+| **`theAs`** : [`BidirectionalA`](#bidirectionala)   `[0..*]`<br> |  |  |
 
 <br>
 
@@ -127,7 +127,7 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`childAttribute`** : `java.lang.Integer`   `1..1`<br>        `@NotNull` |  |  |
+| **`childAttribute`** : `java.lang.Integer`   `[1..1]`<br>        `@NotNull` |  |  |
 
 <br>
 
@@ -141,7 +141,7 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`plainPOJOs`** : [`PlainPOJO`](#plainpojo)   `0..*`<br> |  |  |
+| **`plainPOJOs`** : [`PlainPOJO`](#plainpojo)   `[0..*]`<br> |  |  |
 
 <br>
 
@@ -155,28 +155,28 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`aBooleanArray`** : `boolean`   `0..*`<br> |  |  |
-| **`bBooleanArray`** : `java.lang.Boolean`   `0..*`<br> |  |  |
-| **`cBooleanArray`** : `boolean`   `0..*`<br> |  |  |
-| **`aByteArray`** : `byte`   `0..*`<br>        `@Size: min=0, max=32768` |  |  |
-| **`bByteArray`** : `java.lang.Byte`   `0..*`<br> |  |  |
-| **`aShortArray`** : `short`   `0..*`<br> |  |  |
-| **`bShortArray`** : `java.lang.Short`   `0..*`<br> |  |  |
-| **`aIntegerArray`** : `int`   `0..*`<br> |  |  |
-| **`bIntegerArray`** : `java.lang.Integer`   `0..*`<br> |  |  |
-| **`cIntegerArray`** : `Integer`   `0..*`<br> |  |  |
-| **`aLongArray`** : `long`   `0..*`<br>        `@NotEmpty` |  |  |
-| **`bLongArray`** : `java.lang.Long`   `0..*`<br> |  |  |
-| **`aBigIntegerArray`** : `java.math.BigInteger`   `0..*`<br> |  |  |
-| **`aCharacterArray`** : `char`   `0..*`<br> |  |  |
-| **`bCharacterArray`** : `java.lang.Character`   `0..*`<br> |  |  |
-| **`aFloatArray`** : `float`   `0..*`<br> |  |  |
-| **`bFloatArray`** : `java.lang.Float`   `0..*`<br> |  |  |
-| **`aDoubleArray`** : `double`   `0..*`<br>        `@Size: min=4, max=12` |  |  |
-| **`bDoubleArray`** : `java.lang.Double`   `0..*`<br> |  |  |
-| **`aBigDecimalArray`** : `java.math.BigDecimal`   `0..*`<br> |  |  |
-| **`aStringArray`** : `String`   `0..*`<br> |  |  |
-| **`bStringArray`** : `String`   `0..*`<br> |  |  |
+| **`aBooleanArray`** : `boolean`   `[0..*]`<br> |  |  |
+| **`bBooleanArray`** : `java.lang.Boolean`   `[0..*]`<br> |  |  |
+| **`cBooleanArray`** : `boolean`   `[0..*]`<br> |  |  |
+| **`aByteArray`** : `byte`   `[0..*]`<br>        `@Size: min=0, max=32768` |  |  |
+| **`bByteArray`** : `java.lang.Byte`   `[0..*]`<br> |  |  |
+| **`aShortArray`** : `short`   `[0..*]`<br> |  |  |
+| **`bShortArray`** : `java.lang.Short`   `[0..*]`<br> |  |  |
+| **`aIntegerArray`** : `int`   `[0..*]`<br> |  |  |
+| **`bIntegerArray`** : `java.lang.Integer`   `[0..*]`<br> |  |  |
+| **`cIntegerArray`** : `Integer`   `[0..*]`<br> |  |  |
+| **`aLongArray`** : `long`   `[0..*]`<br>        `@NotEmpty` |  |  |
+| **`bLongArray`** : `java.lang.Long`   `[0..*]`<br> |  |  |
+| **`aBigIntegerArray`** : `java.math.BigInteger`   `[0..*]`<br> |  |  |
+| **`aCharacterArray`** : `char`   `[0..*]`<br> |  |  |
+| **`bCharacterArray`** : `java.lang.Character`   `[0..*]`<br> |  |  |
+| **`aFloatArray`** : `float`   `[0..*]`<br> |  |  |
+| **`bFloatArray`** : `java.lang.Float`   `[0..*]`<br> |  |  |
+| **`aDoubleArray`** : `double`   `[0..*]`<br>        `@Size: min=4, max=12` |  |  |
+| **`bDoubleArray`** : `java.lang.Double`   `[0..*]`<br> |  |  |
+| **`aBigDecimalArray`** : `java.math.BigDecimal`   `[0..*]`<br> |  |  |
+| **`aStringArray`** : `String`   `[0..*]`<br> |  |  |
+| **`bStringArray`** : `String`   `[0..*]`<br> |  |  |
 
 <br>
 
@@ -190,11 +190,11 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`yetAnotherAttribute`** : `boolean`   `1..1`<br> |  |  |
-| **`readonlyAssociation`** : [`ImmutablePOJO`](#immutablepojo)   `0..*`<br> |  |  |
-| **`immutableChildPOJO`** : [`ImmutableChildPOJO`](#immutablechildpojo)   `0..1`<br> |  |  |
-| *`deprecatedRefs`* : [`ImmutableChildPOJO`](#immutablechildpojo)   `0..*`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br> |
-| **`deprecatedRef`** : [`ChildPOJO`](#childpojo)   `0..1`<br> |  |  |
+| **`yetAnotherAttribute`** : `boolean`   `[1..1]`<br> |  |  |
+| **`readonlyAssociation`** : [`ImmutablePOJO`](#immutablepojo)   `[0..*]`<br> |  |  |
+| **`immutableChildPOJO`** : [`ImmutableChildPOJO`](#immutablechildpojo)   `[0..1]`<br> |  |  |
+| *`deprecatedRefs`* : [`ImmutableChildPOJO`](#immutablechildpojo)   `[0..*]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br> |
+| **`deprecatedRef`** : [`ChildPOJO`](#childpojo)   `[0..1]`<br> |  |  |
 
 <br>
 
@@ -214,8 +214,8 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`childAttribute`** : `java.lang.String`   `1..1`<br> |  |  |
-| **`anotherChildAttribute`** : `java.lang.Double`   `1..1`<br> |  |  |
+| **`childAttribute`** : `java.lang.String`   `[1..1]`<br> |  |  |
+| **`anotherChildAttribute`** : `java.lang.Double`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -229,8 +229,8 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`name`** : `java.lang.String`   `1..1`<br> |  |  |
-| **`something`** : `java.lang.Integer`   `1..1`<br> |  |  |
+| **`name`** : `java.lang.String`   `[1..1]`<br> |  |  |
+| **`something`** : `java.lang.Integer`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -250,8 +250,8 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`parentAttribute`** : `java.lang.String`   `1..1`<br> |  |  |
-| **`anotherParentAttribute`** : `java.lang.Integer`   `1..1`<br> |  |  |
+| **`parentAttribute`** : `java.lang.String`   `[1..1]`<br> |  |  |
+| **`anotherParentAttribute`** : `java.lang.Integer`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -271,8 +271,8 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`writeable`** : `java.lang.Integer`   `1..1`<br> |  |  |
-| **`booleanDefault`** : `java.lang.Boolean`   `1..1`<br> |  |  |
+| **`writeable`** : `java.lang.Integer`   `[1..1]`<br> |  |  |
+| **`booleanDefault`** : `java.lang.Boolean`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -286,7 +286,7 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`optionalCode`** : `String`   `0..1`<br> |  |  |
+| **`optionalCode`** : `String`   `[0..1]`<br> |  |  |
 
 <br>
 
@@ -300,9 +300,9 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`attr`** : `java.lang.Double`   `1..1`<br> |  |  |
-| **`name`** : `java.lang.String`   `1..1`<br> |  |  |
-| **`integerWithDefault`** : `java.lang.Integer`   `1..1`<br> |  |  |
+| **`attr`** : `java.lang.Double`   `[1..1]`<br> |  |  |
+| **`name`** : `java.lang.String`   `[1..1]`<br> |  |  |
+| **`integerWithDefault`** : `java.lang.Integer`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -316,7 +316,7 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`attr`** : `java.lang.Double`   `1..1`<br> |  |  |
+| **`attr`** : `java.lang.Double`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -330,9 +330,9 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`parentAttribute`** : `java.lang.String`   `1..1`<br> |  |  |
-| *`weirdAttribute`* : `byte`   `1..1`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br> |
-| **`hello`** : `String`   `1..1`<br> |  |  |
+| **`parentAttribute`** : `java.lang.String`   `[1..1]`<br> |  |  |
+| *`weirdAttribute`* : `byte`   `[1..1]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br> |
+| **`hello`** : `String`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -346,8 +346,8 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`hello`** : `java.lang.String`   `1..1`<br> |  | <br><br>**Example(s):**<br>- `Hello`- `World!` |
-| **`world`** : `java.lang.Integer`   `1..1`<br>        `@PositiveOrZero` |  |  |
+| **`hello`** : `java.lang.String`   `[1..1]`<br> |  | <br><br>**Example(s):**<br>- `Hello`- `World!` |
+| **`world`** : `java.lang.Integer`   `[1..1]`<br>        `@PositiveOrZero` |  |  |
 
 <br>
 
@@ -361,28 +361,28 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`aBooleanArray`** : `boolean`   `0..*`<br> |  |  |
-| **`bBooleanArray`** : `java.lang.Boolean`   `0..*`<br> |  |  |
-| **`cBooleanArray`** : `boolean`   `0..*`<br> |  |  |
-| **`aByteArray`** : `byte`   `0..*`<br>        `@Size: min=0, max=32768` |  |  |
-| **`bByteArray`** : `java.lang.Byte`   `0..*`<br> |  |  |
-| **`aShortArray`** : `short`   `0..*`<br> |  |  |
-| **`bShortArray`** : `java.lang.Short`   `0..*`<br> |  |  |
-| **`aIntegerArray`** : `int`   `0..*`<br> |  |  |
-| **`bIntegerArray`** : `java.lang.Integer`   `0..*`<br> |  |  |
-| **`cIntegerArray`** : `Integer`   `0..*`<br> |  |  |
-| **`aLongArray`** : `long`   `0..*`<br>        `@NotEmpty` |  |  |
-| **`bLongArray`** : `java.lang.Long`   `0..*`<br> |  |  |
-| **`aBigIntegerArray`** : `java.math.BigInteger`   `0..*`<br> |  |  |
-| **`aCharacterArray`** : `char`   `0..*`<br> |  |  |
-| **`bCharacterArray`** : `java.lang.Character`   `0..*`<br> |  |  |
-| **`aFloatArray`** : `float`   `0..*`<br> |  |  |
-| **`bFloatArray`** : `java.lang.Float`   `0..*`<br> |  |  |
-| **`aDoubleArray`** : `double`   `0..*`<br>        `@Size: min=4, max=12` |  |  |
-| **`bDoubleArray`** : `java.lang.Double`   `0..*`<br> |  |  |
-| **`aBigDecimalArray`** : `java.math.BigDecimal`   `0..*`<br> |  |  |
-| **`aStringArray`** : `String`   `0..*`<br> |  |  |
-| **`bStringArray`** : `String`   `0..*`<br> |  |  |
+| **`aBooleanArray`** : `boolean`   `[0..*]`<br> |  |  |
+| **`bBooleanArray`** : `java.lang.Boolean`   `[0..*]`<br> |  |  |
+| **`cBooleanArray`** : `boolean`   `[0..*]`<br> |  |  |
+| **`aByteArray`** : `byte`   `[0..*]`<br>        `@Size: min=0, max=32768` |  |  |
+| **`bByteArray`** : `java.lang.Byte`   `[0..*]`<br> |  |  |
+| **`aShortArray`** : `short`   `[0..*]`<br> |  |  |
+| **`bShortArray`** : `java.lang.Short`   `[0..*]`<br> |  |  |
+| **`aIntegerArray`** : `int`   `[0..*]`<br> |  |  |
+| **`bIntegerArray`** : `java.lang.Integer`   `[0..*]`<br> |  |  |
+| **`cIntegerArray`** : `Integer`   `[0..*]`<br> |  |  |
+| **`aLongArray`** : `long`   `[0..*]`<br>        `@NotEmpty` |  |  |
+| **`bLongArray`** : `java.lang.Long`   `[0..*]`<br> |  |  |
+| **`aBigIntegerArray`** : `java.math.BigInteger`   `[0..*]`<br> |  |  |
+| **`aCharacterArray`** : `char`   `[0..*]`<br> |  |  |
+| **`bCharacterArray`** : `java.lang.Character`   `[0..*]`<br> |  |  |
+| **`aFloatArray`** : `float`   `[0..*]`<br> |  |  |
+| **`bFloatArray`** : `java.lang.Float`   `[0..*]`<br> |  |  |
+| **`aDoubleArray`** : `double`   `[0..*]`<br>        `@Size: min=4, max=12` |  |  |
+| **`bDoubleArray`** : `java.lang.Double`   `[0..*]`<br> |  |  |
+| **`aBigDecimalArray`** : `java.math.BigDecimal`   `[0..*]`<br> |  |  |
+| **`aStringArray`** : `String`   `[0..*]`<br> |  |  |
+| **`bStringArray`** : `String`   `[0..*]`<br> |  |  |
 
 <br>
 
@@ -396,28 +396,28 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`aBoolean`** : `boolean`   `1..1`<br> |  |  |
-| **`bBoolean`** : `java.lang.Boolean`   `1..1`<br> |  |  |
-| **`cBoolean`** : `boolean`   `1..1`<br> |  |  |
-| **`aByte`** : `byte`   `1..1`<br>        `@Negative` |  |  |
-| **`bByte`** : `java.lang.Byte`   `1..1`<br>        `@NegativeOrZero` |  |  |
-| **`aShort`** : `short`   `1..1`<br>        `@Min: minValue=-237` |  |  |
-| **`bShort`** : `java.lang.Short`   `1..1`<br>        `@Positive` |  |  |
-| **`aInteger`** : `int`   `1..1`<br>        `@PositiveOrZero` |  |  |
-| **`bInteger`** : `java.lang.Integer`   `1..1`<br>        `@Min: minValue=4711` |  |  |
-| **`cInteger`** : `Integer`   `1..1`<br>        `@Min: minValue=100`<br>        `@Max: maxValue=1000` |  |  |
-| **`aLong`** : `long`   `1..1`<br> |  |  |
-| **`bLong`** : `java.lang.Long`   `1..1`<br>        `@DecimalMax: maxValue=299792458, inclusive=false` |  |  |
-| **`aBigInteger`** : `java.math.BigInteger`   `1..1`<br>        `@DecimalMax: maxValue=3.14159265359, inclusive=true`<br>        `@DecimalMin: minValue=-3.14159265359, inclusive=true` |  |  |
-| **`aCharacter`** : `char`   `1..1`<br> |  |  |
-| **`bCharacter`** : `java.lang.Character`   `1..1`<br> |  |  |
-| **`aFloat`** : `float`   `1..1`<br> |  |  |
-| **`bFloat`** : `java.lang.Float`   `1..1`<br> |  |  |
-| **`aDouble`** : `double`   `1..1`<br> |  |  |
-| **`bDouble`** : `java.lang.Double`   `1..1`<br> |  |  |
-| **`aBigDecimal`** : `java.math.BigDecimal`   `1..1`<br>        `@DecimalMin: minValue=4711.0815, inclusive=true` |  |  |
-| **`aString`** : `String`   `1..1`<br>        `@Size: min=8, max=32` |  |  |
-| **`bString`** : `String`   `1..1`<br>        `@NotEmpty`<br>        `@Size: min=0, max=128` |  |  |
+| **`aBoolean`** : `boolean`   `[1..1]`<br> |  |  |
+| **`bBoolean`** : `java.lang.Boolean`   `[1..1]`<br> |  |  |
+| **`cBoolean`** : `boolean`   `[1..1]`<br> |  |  |
+| **`aByte`** : `byte`   `[1..1]`<br>        `@Negative` |  |  |
+| **`bByte`** : `java.lang.Byte`   `[1..1]`<br>        `@NegativeOrZero` |  |  |
+| **`aShort`** : `short`   `[1..1]`<br>        `@Min: minValue=-237` |  |  |
+| **`bShort`** : `java.lang.Short`   `[1..1]`<br>        `@Positive` |  |  |
+| **`aInteger`** : `int`   `[1..1]`<br>        `@PositiveOrZero` |  |  |
+| **`bInteger`** : `java.lang.Integer`   `[1..1]`<br>        `@Min: minValue=4711` |  |  |
+| **`cInteger`** : `Integer`   `[1..1]`<br>        `@Min: minValue=100`<br>        `@Max: maxValue=1000` |  |  |
+| **`aLong`** : `long`   `[1..1]`<br> |  |  |
+| **`bLong`** : `java.lang.Long`   `[1..1]`<br>        `@DecimalMax: maxValue=299792458, inclusive=false` |  |  |
+| **`aBigInteger`** : `java.math.BigInteger`   `[1..1]`<br>        `@DecimalMax: maxValue=3.14159265359, inclusive=true`<br>        `@DecimalMin: minValue=-3.14159265359, inclusive=true` |  |  |
+| **`aCharacter`** : `char`   `[1..1]`<br> |  |  |
+| **`bCharacter`** : `java.lang.Character`   `[1..1]`<br> |  |  |
+| **`aFloat`** : `float`   `[1..1]`<br> |  |  |
+| **`bFloat`** : `java.lang.Float`   `[1..1]`<br> |  |  |
+| **`aDouble`** : `double`   `[1..1]`<br> |  |  |
+| **`bDouble`** : `java.lang.Double`   `[1..1]`<br> |  |  |
+| **`aBigDecimal`** : `java.math.BigDecimal`   `[1..1]`<br>        `@DecimalMin: minValue=4711.0815, inclusive=true` |  |  |
+| **`aString`** : `String`   `[1..1]`<br>        `@Size: min=8, max=32` |  |  |
+| **`bString`** : `String`   `[1..1]`<br>        `@NotEmpty`<br>        `@Size: min=0, max=128` |  |  |
 
 <br>
 
@@ -431,8 +431,8 @@ This is the first line of the first comment
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`readonlyDefault`** : `int`   `1..1`<br> |  |  |
-| **`booleanDefault`** : `java.lang.Boolean`   `1..1`<br> |  |  |
+| **`readonlyDefault`** : `int`   `[1..1]`<br> |  |  |
+| **`booleanDefault`** : `java.lang.Boolean`   `[1..1]`<br> |  |  |
 
 <br>
 

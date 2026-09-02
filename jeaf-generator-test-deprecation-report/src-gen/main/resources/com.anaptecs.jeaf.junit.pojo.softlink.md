@@ -41,9 +41,9 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`heyBrother`** : [`SoftLinkChildA`](#softlinkchilda)   `0..1`<br> |  |  |
-| **`softLinkPartners`** : [`SoftLinkPartner`](#softlinkpartner)   `0..*`<br> |  |  |
-| **`oneLink`** : [`SoftLinkPartner`](#softlinkpartner)   `1..1`<br> |  |  |
+| **`heyBrother`** : [`SoftLinkChildA`](#softlinkchilda)   `[0..1]`<br> |  |  |
+| **`softLinkPartners`** : [`SoftLinkPartner`](#softlinkpartner)   `[0..*]`<br> |  |  |
+| **`oneLink`** : [`SoftLinkPartner`](#softlinkpartner)   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -57,9 +57,9 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`partners`** : [`SoftLinkPartner`](#softlinkpartner)   `1..*`<br> |  |  |
-| **`thePartner`** : [`SoftLinkPartner`](#softlinkpartner)   `1..1`<br> |  |  |
-| **`readonlyPartner`** : [`SoftLinkPartner`](#softlinkpartner)   `0..1`<br> |  |  |
+| **`partners`** : [`SoftLinkPartner`](#softlinkpartner)   `[1..*]`<br> |  |  |
+| **`thePartner`** : [`SoftLinkPartner`](#softlinkpartner)   `[1..1]`<br> |  |  |
+| **`readonlyPartner`** : [`SoftLinkPartner`](#softlinkpartner)   `[0..1]`<br> |  |  |
 
 <br>
 
@@ -73,14 +73,14 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| **`theBackLink`** : [`SoftLinkParent`](#softlinkparent)   `0..1`<br> |  |  |
-| **`childLinks`** : [`SoftLinkChildA`](#softlinkchilda)   `0..*`<br> |  |  |
-| **`longLinks`** : [`SoftLinkChildA`](#softlinkchilda)   `1..*`<br> |  |  |
-| **`derivedSoftLink`** : [`SoftLinkParent`](#softlinkparent)   `1..1`<br> |  |  |
-| **`theDerivedSoftLinks`** : [`SoftLinkParent`](#softlinkparent)   `0..*`<br> |  |  |
-| **`javaOnlyDerivedSoftLink`** : [`SoftLinkChildA`](#softlinkchilda)   `0..1`<br> |  |  |
-| **`dynamicSoftLink`** : [`SoftLinkChildB`](#softlinkchildb)   `0..1`<br> |  |  |
-| **`multiValuedDynamicSoftLink`** : [`SoftLinkChildA`](#softlinkchilda)   `0..*`<br> |  |  |
+| **`theBackLink`** : [`SoftLinkParent`](#softlinkparent)   `[0..1]`<br> |  |  |
+| **`childLinks`** : [`SoftLinkChildA`](#softlinkchilda)   `[0..*]`<br> |  |  |
+| **`longLinks`** : [`SoftLinkChildA`](#softlinkchilda)   `[1..*]`<br> |  |  |
+| **`derivedSoftLink`** : [`SoftLinkParent`](#softlinkparent)   `[1..1]`<br> |  |  |
+| **`theDerivedSoftLinks`** : [`SoftLinkParent`](#softlinkparent)   `[0..*]`<br> |  |  |
+| **`javaOnlyDerivedSoftLink`** : [`SoftLinkChildA`](#softlinkchilda)   `[0..1]`<br> |  |  |
+| **`dynamicSoftLink`** : [`SoftLinkChildB`](#softlinkchildb)   `[0..1]`<br> |  |  |
+| **`multiValuedDynamicSoftLink`** : [`SoftLinkChildA`](#softlinkchilda)   `[0..*]`<br> |  |  |
 
 <br>
 
