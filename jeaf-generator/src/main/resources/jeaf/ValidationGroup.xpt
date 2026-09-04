@@ -41,7 +41,7 @@ public class «name» {
    * List contains all validation groups that are defined in the UML model.
    */
   public static final java.util.List<ValidationGroup> ALL_VALIDATION_GROUPS = java.util.List.of(
-        «FOREACH this.getModel().allOwnedElements().typeSelect(ValidationGroup) AS validationGroup SEPARATOR ", "»
+        «FOREACH this.getModel().allOwnedElements().typeSelect(ValidationGroup).sortBy(e|e.qualifiedName()) AS validationGroup SEPARATOR ", "»
         new ValidationGroup(«validationGroup.qualifiedName()».class, «validationGroup.qualifiedName()».IDENTIFIER_PATTERN)
         «ENDFOREACH»
       );
