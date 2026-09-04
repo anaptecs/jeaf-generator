@@ -1,5 +1,5 @@
 Element;Package;Details;Description;Since;Active with;Activation Date;
-ServiceWithDeprecations.createSomething;com.anaptecs.jeaf.junit.deprecation;pQueryParam;Parameter will be mandatory.;;PI 13;;
+ServiceWithDeprecations.createSomething"(...)";com.anaptecs.jeaf.junit.deprecation;pQueryParam;Parameter will be mandatory.;;PI 13;;
 Reseller;com.anaptecs.jeaf.junit.openapi.base;name;Maximum size will be increased.;;1.1;;
 ChannelType;com.anaptecs.jeaf.junit.openapi.base;WEB;Added new literal;;1.47.11;;
 WeirdBooking;com.anaptecs.jeaf.junit.openapi.base;realBooking;Association will be mandatory.;;2.0;;
@@ -9,7 +9,7 @@ InventoryType;com.anaptecs.jeaf.junit.openapi.base;DB;New literal will occur;;3.
 MultivaluedQueryParamsBean;com.anaptecs.jeaf.junit.openapi.base;intArray;At least one will become mandatory;;47.11;;
 TheReadOnlyServiceObject;com.anaptecs.jeaf.junit.openapi.base;bits;At least one bit will be expected.;;PI 16;;
 ComplexBookingType;com.anaptecs.jeaf.junit.openapi.base;;Class was changed to an extensible enum. New literals will not be introduced before PI 17.;;PI 17;;
-ProductService.createChannelCode;com.anaptecs.jeaf.junit.openapi.service1;pChannelCode;Parameter will be mandatory;;2.0;;
+ProductService.createChannelCode"(...)";com.anaptecs.jeaf.junit.openapi.service1;pChannelCode;Parameter will be mandatory;;2.0;;
 DateQueryParamsBean;com.anaptecs.jeaf.junit.openapi.service1;localDateTime;Has to be in the past;;2.0;;
 PlainPOJO;com.anaptecs.jeaf.junit.pojo;;Announcement for the far away future;1.2.3;47.11;2222-12-31;
 MyType;com.anaptecs.jeaf.junit.pojo;GAMMA;X-mas present;1.0.0;47.11;2024-12-24;

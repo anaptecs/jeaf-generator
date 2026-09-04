@@ -154,7 +154,10 @@ cached List[uml::Property] getDeprecatedBeanParamProperties(uml::Type type):
 cached String getTypeForDeprecationReport(uml::NamedElement deprecation):
 	if deprecation.isClass() || deprecation.isInterface() || deprecation.isEnumeration()
 	then deprecation.asNamedElement().name
-	else deprecation.owner.asNamedElement().name;
+	else 
+		if deprecation.isOperation()
+		then deprecation.owner.asNamedElement().name + "." +deprecation.name + "(...)"
+		else deprecation.owner.asNamedElement().name;
 
 
 
