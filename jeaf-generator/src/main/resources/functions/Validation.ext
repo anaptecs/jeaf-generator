@@ -99,15 +99,15 @@ private String getEmailValidation(uml::NamedElement property, uml::Stereotype st
 
 
 cached List[JMM::ValidationGroup] getAllValidationGroupsFromModel(uml::Model model):
-	model.allOwnedElements().typeSelect(JMM::ValidationGroup).select(e|e.isInGeneratorWhitelist());
+	model.allOwnedElements().typeSelect(JMM::ValidationGroup).select(e|e.isInGeneratorWhitelist()).sortBy(e|e.qualifiedName());
 
 
 cached List[JMM::ValidationGroup] getValidationGroups(uml::Dependency dependency):
-	dependency.target.typeSelect(JMM::CompatibilityGroup).first().getValidationGroupsForGroup();
+	dependency.target.typeSelect(JMM::CompatibilityGroup).first().getValidationGroupsForGroup().sortBy(e|e.qualifiedName());
 
 
 cached List[JMM::ValidationGroup] getDefaultValidationGroups(uml::Model model, List[JMM::ValidationGroup] nonDefaultGroups):
-	model.getAllValidationGroupsFromModel().removeAll(nonDefaultGroups);
+	model.getAllValidationGroupsFromModel().removeAll(nonDefaultGroups).sortBy(e|e.qualifiedName());
 
 
 boolean generateValidationAnnotationForParam(String paramContext):
