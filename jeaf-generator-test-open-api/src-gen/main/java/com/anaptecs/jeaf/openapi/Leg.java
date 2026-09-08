@@ -26,6 +26,7 @@ import java.util.List;
  */
 
 
+
 public class Leg {
   @JsonProperty("start")
   private PlaceRef start = null;

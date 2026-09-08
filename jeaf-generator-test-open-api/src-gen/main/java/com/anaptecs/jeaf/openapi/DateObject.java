@@ -25,6 +25,7 @@ import java.time.OffsetDateTime;
  */
 
 
+
 public class DateObject {
   @JsonProperty("localTime")
   private String localTime = null;
@@ -53,7 +54,7 @@ public class DateObject {
    * Get localTime
    * @return localTime
   **/
-  @Schema(example = "12:07", required = true, description = "")
+  @Schema(example = "727", required = true, description = "")
   public String getLocalTime() {
     return localTime;
   }

@@ -24,6 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "Type represents a duration.<br>  <br> NOVA 14 Mapping<br> * nova-base.xsd.Dauer ")
 
+
 public class Duration {
   @JsonProperty("value")
   private Integer value = null;

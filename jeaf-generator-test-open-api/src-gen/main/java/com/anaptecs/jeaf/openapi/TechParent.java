@@ -23,6 +23,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 
 
+
 public class TechParent {
   @JsonProperty("techAttribute")
   private String techAttribute = null;

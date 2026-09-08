@@ -23,6 +23,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "Type represents an amount of money.<br>        <br> NOVA 14 Mapping<br> * nova-base.xsd.GeldBetrag ")
 
+
 public class MoneyAmount {
   @JsonProperty("amount")
   private Double amount = null;

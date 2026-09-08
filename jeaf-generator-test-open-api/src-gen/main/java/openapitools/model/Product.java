@@ -49,7 +49,7 @@ import openapitools.JSON;
   Product.JSON_PROPERTY_DESCRIPTION,
   Product.JSON_PROPERTY_URI
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class Product {
   public static final String JSON_PROPERTY_RESELLERS = "resellers";
   @javax.annotation.Nullable
@@ -415,10 +415,7 @@ public class Product {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

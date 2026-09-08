@@ -36,7 +36,7 @@ import openapitools.JSON;
   Channel.JSON_PROPERTY_CODE,
   Channel.JSON_PROPERTY_SELF_SERVICE_CHANNEL
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class Channel {
   public static final String JSON_PROPERTY_CHANNEL_TYPE = "channelType";
   @javax.annotation.Nonnull
@@ -197,10 +197,7 @@ public class Channel {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

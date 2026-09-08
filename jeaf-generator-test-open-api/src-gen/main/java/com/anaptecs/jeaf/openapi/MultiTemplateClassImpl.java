@@ -25,6 +25,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 
 
+
 public class MultiTemplateClassImpl {
   @JsonProperty("object")
   private Message object = null;

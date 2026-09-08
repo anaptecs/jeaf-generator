@@ -28,6 +28,7 @@ import java.util.List;
  */
 
 
+
 public class WeirdBooking extends WeirdParent {
   @JsonProperty("booking")
   private String booking = null;

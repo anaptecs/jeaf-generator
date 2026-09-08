@@ -26,6 +26,7 @@ import java.util.List;
  */
 
 
+
 public class Sortiment {
   @JsonProperty("products")
   private List<Product> products = null;

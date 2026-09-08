@@ -246,9 +246,7 @@
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<!-- RELEASE_VERSION -->
-				<version>7.18.0</version>
-				<!-- /RELEASE_VERSION -->
+				<version>${openapi-generator-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>

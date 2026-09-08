@@ -26,6 +26,7 @@ import java.util.List;
  */
 @Schema(description = " <br><br> **Deprecation Notice (since: 0.5, removed with: 2.0, removal date: ):**<br><br> Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` ")
 
+
 public class ChildAA extends ChildA {
   @JsonProperty("childAAAttribute")
   private Integer childAAAttribute = null;

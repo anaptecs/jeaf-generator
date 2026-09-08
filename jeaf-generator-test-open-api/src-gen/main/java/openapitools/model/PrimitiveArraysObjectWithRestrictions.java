@@ -60,7 +60,7 @@ import openapitools.JSON;
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_A_STRING_ARRAY,
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_B_STRING_ARRAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class PrimitiveArraysObjectWithRestrictions {
   public static final String JSON_PROPERTY_A_BOOLEAN_ARRAY = "aBooleanArray";
   private JsonNullable<Set<Boolean>> aBooleanArray = JsonNullable.<Set<Boolean>>undefined();
@@ -139,7 +139,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addABooleanArrayItem(Boolean aBooleanArrayItem) {
-    if (this.aBooleanArray == null || !this.aBooleanArray.isPresent()) {
+    if (this.aBooleanArray == null || !this.aBooleanArray.isPresent() || this.aBooleanArray.get() == null) {
       this.aBooleanArray = JsonNullable.<Set<Boolean>>of(new LinkedHashSet<>());
     }
     try {
@@ -184,7 +184,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addBBooleanArrayItem(Boolean bBooleanArrayItem) {
-    if (this.bBooleanArray == null || !this.bBooleanArray.isPresent()) {
+    if (this.bBooleanArray == null || !this.bBooleanArray.isPresent() || this.bBooleanArray.get() == null) {
       this.bBooleanArray = JsonNullable.<Set<Boolean>>of(new LinkedHashSet<>());
     }
     try {
@@ -229,7 +229,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addCBooleanArrayItem(Boolean cBooleanArrayItem) {
-    if (this.cBooleanArray == null || !this.cBooleanArray.isPresent()) {
+    if (this.cBooleanArray == null || !this.cBooleanArray.isPresent() || this.cBooleanArray.get() == null) {
       this.cBooleanArray = JsonNullable.<Set<Boolean>>of(new LinkedHashSet<>());
     }
     try {
@@ -340,7 +340,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addAShortArrayItem(Integer aShortArrayItem) {
-    if (this.aShortArray == null || !this.aShortArray.isPresent()) {
+    if (this.aShortArray == null || !this.aShortArray.isPresent() || this.aShortArray.get() == null) {
       this.aShortArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
@@ -385,7 +385,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addBShortArrayItem(Integer bShortArrayItem) {
-    if (this.bShortArray == null || !this.bShortArray.isPresent()) {
+    if (this.bShortArray == null || !this.bShortArray.isPresent() || this.bShortArray.get() == null) {
       this.bShortArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
@@ -430,7 +430,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addAIntegerArrayItem(Integer aIntegerArrayItem) {
-    if (this.aIntegerArray == null || !this.aIntegerArray.isPresent()) {
+    if (this.aIntegerArray == null || !this.aIntegerArray.isPresent() || this.aIntegerArray.get() == null) {
       this.aIntegerArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
@@ -475,7 +475,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addBIntegerArrayItem(Integer bIntegerArrayItem) {
-    if (this.bIntegerArray == null || !this.bIntegerArray.isPresent()) {
+    if (this.bIntegerArray == null || !this.bIntegerArray.isPresent() || this.bIntegerArray.get() == null) {
       this.bIntegerArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
@@ -520,7 +520,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addCIntegerArrayItem(Integer cIntegerArrayItem) {
-    if (this.cIntegerArray == null || !this.cIntegerArray.isPresent()) {
+    if (this.cIntegerArray == null || !this.cIntegerArray.isPresent() || this.cIntegerArray.get() == null) {
       this.cIntegerArray = JsonNullable.<Set<Integer>>of(new LinkedHashSet<>());
     }
     try {
@@ -599,7 +599,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addBLongArrayItem(Long bLongArrayItem) {
-    if (this.bLongArray == null || !this.bLongArray.isPresent()) {
+    if (this.bLongArray == null || !this.bLongArray.isPresent() || this.bLongArray.get() == null) {
       this.bLongArray = JsonNullable.<Set<Long>>of(new LinkedHashSet<>());
     }
     try {
@@ -644,7 +644,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addABigIntegerArrayItem(Long aBigIntegerArrayItem) {
-    if (this.aBigIntegerArray == null || !this.aBigIntegerArray.isPresent()) {
+    if (this.aBigIntegerArray == null || !this.aBigIntegerArray.isPresent() || this.aBigIntegerArray.get() == null) {
       this.aBigIntegerArray = JsonNullable.<Set<Long>>of(new LinkedHashSet<>());
     }
     try {
@@ -689,7 +689,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addACharacterArrayItem(String aCharacterArrayItem) {
-    if (this.aCharacterArray == null || !this.aCharacterArray.isPresent()) {
+    if (this.aCharacterArray == null || !this.aCharacterArray.isPresent() || this.aCharacterArray.get() == null) {
       this.aCharacterArray = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
@@ -734,7 +734,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addBCharacterArrayItem(String bCharacterArrayItem) {
-    if (this.bCharacterArray == null || !this.bCharacterArray.isPresent()) {
+    if (this.bCharacterArray == null || !this.bCharacterArray.isPresent() || this.bCharacterArray.get() == null) {
       this.bCharacterArray = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
@@ -779,7 +779,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addAFloatArrayItem(Float aFloatArrayItem) {
-    if (this.aFloatArray == null || !this.aFloatArray.isPresent()) {
+    if (this.aFloatArray == null || !this.aFloatArray.isPresent() || this.aFloatArray.get() == null) {
       this.aFloatArray = JsonNullable.<Set<Float>>of(new LinkedHashSet<>());
     }
     try {
@@ -824,7 +824,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addBFloatArrayItem(Float bFloatArrayItem) {
-    if (this.bFloatArray == null || !this.bFloatArray.isPresent()) {
+    if (this.bFloatArray == null || !this.bFloatArray.isPresent() || this.bFloatArray.get() == null) {
       this.bFloatArray = JsonNullable.<Set<Float>>of(new LinkedHashSet<>());
     }
     try {
@@ -903,7 +903,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addBDoubleArrayItem(Double bDoubleArrayItem) {
-    if (this.bDoubleArray == null || !this.bDoubleArray.isPresent()) {
+    if (this.bDoubleArray == null || !this.bDoubleArray.isPresent() || this.bDoubleArray.get() == null) {
       this.bDoubleArray = JsonNullable.<Set<Double>>of(new LinkedHashSet<>());
     }
     try {
@@ -948,7 +948,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addABigDecimalArrayItem(Double aBigDecimalArrayItem) {
-    if (this.aBigDecimalArray == null || !this.aBigDecimalArray.isPresent()) {
+    if (this.aBigDecimalArray == null || !this.aBigDecimalArray.isPresent() || this.aBigDecimalArray.get() == null) {
       this.aBigDecimalArray = JsonNullable.<Set<Double>>of(new LinkedHashSet<>());
     }
     try {
@@ -993,7 +993,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addAStringArrayItem(String aStringArrayItem) {
-    if (this.aStringArray == null || !this.aStringArray.isPresent()) {
+    if (this.aStringArray == null || !this.aStringArray.isPresent() || this.aStringArray.get() == null) {
       this.aStringArray = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
@@ -1038,7 +1038,7 @@ public class PrimitiveArraysObjectWithRestrictions {
   }
 
   public PrimitiveArraysObjectWithRestrictions addBStringArrayItem(String bStringArrayItem) {
-    if (this.bStringArray == null || !this.bStringArray.isPresent()) {
+    if (this.bStringArray == null || !this.bStringArray.isPresent() || this.bStringArray.get() == null) {
       this.bStringArray = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
@@ -1164,10 +1164,7 @@ public class PrimitiveArraysObjectWithRestrictions {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

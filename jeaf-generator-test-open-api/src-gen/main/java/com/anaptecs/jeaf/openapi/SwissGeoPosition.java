@@ -20,6 +20,7 @@ import com.anaptecs.jeaf.openapi.GeoPosition;
  */
 
 
+
 public class SwissGeoPosition extends GeoPosition {
 
   @Override

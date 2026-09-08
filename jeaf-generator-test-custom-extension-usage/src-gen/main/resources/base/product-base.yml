@@ -244,7 +244,8 @@ components:
         - a
       properties:
         a:
-          # the A
+          description: >-
+            the A
           $ref: '#/components/schemas/BidirectA'
 
     # com.anaptecs.jeaf.junit.openapi.base.Booking
@@ -378,7 +379,8 @@ components:
         - selfServiceChannel
       properties:
         channelType:
-          # Type of the channel
+          description: >-
+            Type of the channel
           $ref: '#/components/schemas/ChannelType'
         channelCode:
           description: >-
@@ -599,7 +601,7 @@ components:
                 $ref: '#/components/schemas/ChildB'
               uniqueItems: true
             deprecatedParent:
-              # Property "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              deprecated: true
               $ref: '#/components/schemas/ParentClass'
             deprecatedArray:
               type: string
@@ -738,10 +740,12 @@ components:
         - previousName
       properties:
         start:
-          # The start
+          description: >-
+            The start
           $ref: '#/components/schemas/Stop'
         end:
-          # The end
+          description: >-
+            The end
           $ref: '#/components/schemas/Stop'
         previousName:
           description: >-
@@ -1169,8 +1173,9 @@ components:
           uniqueItems: true
           nullable: true
         theBankAccount:
-          # I would like to document references to other types.
-          # Property "theBankAccount" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+          description: >-
+            I would like to document references to other types.
+          deprecated: true
           $ref: '#/components/schemas/BankAccount'
         legacyBankAccounts:
           description: >-
@@ -2240,10 +2245,11 @@ components:
               format: int32
               nullable: false
             realBooking:
-              # the real booking
-              # 
-              # **Breaking Change Notice (active with 2.0, activation date: ):**
-              # Association will be mandatory.
+              description: >-
+                the real booking
+                <br><br>
+                **Breaking Change Notice (active with 2.0, activation date: ):**<br><br>
+                Association will be mandatory.
               $ref: '#/components/schemas/Booking'
             inventories:
               description: >-

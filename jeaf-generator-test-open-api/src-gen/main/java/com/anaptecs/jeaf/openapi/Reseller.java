@@ -26,6 +26,7 @@ import java.util.List;
  */
 
 
+
 public class Reseller {
   @JsonProperty("channels")
   private List<Channel> channels = new ArrayList<>();

@@ -24,6 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 
 
+
 public class BusinessChild extends BusinessParent {
   @JsonProperty("childAttribute")
   private String childAttribute = null;

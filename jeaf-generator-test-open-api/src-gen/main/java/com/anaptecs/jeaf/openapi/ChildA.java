@@ -26,6 +26,7 @@ import java.util.List;
  */
 @Schema(description = "single line class comment ")
 
+
 public class ChildA extends ParentClass {
   @JsonProperty("childAAttribute")
   private Integer childAAttribute = null;

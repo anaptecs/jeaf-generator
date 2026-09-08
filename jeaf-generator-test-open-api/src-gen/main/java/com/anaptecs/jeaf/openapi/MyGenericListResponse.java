@@ -27,6 +27,7 @@ import java.util.List;
  */
 
 
+
 public class MyGenericListResponse {
   @JsonProperty("errors")
   private List<Message> errors = null;

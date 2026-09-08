@@ -27,6 +27,7 @@ import java.util.List;
  */
 
 
+
 public class AndOneMorePOJO {
   @JsonProperty("genericProperty")
   private DoSomethingResponse genericProperty = null;

@@ -26,6 +26,7 @@ import java.util.List;
  */
 
 
+
 public class PartnerContainer {
   @JsonProperty("partners")
   private List<Partner> partners = null;

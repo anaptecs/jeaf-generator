@@ -26,6 +26,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * BusinessParent
  */
 
+
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true )
 @JsonSubTypes({
   @JsonSubTypes.Type(value = BusinessChild.class, name = "BusinessChild"),

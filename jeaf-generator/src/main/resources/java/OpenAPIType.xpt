@@ -79,15 +79,11 @@
           «EXPAND java::OpenAPIEnumeration::InlineOpenAPIEnumeration(attribute, "") FOR attribute.type.asOpenAPIType() -»
           «ELSE -»
           «IF attribute.hasComment() -»
-            «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false && attribute.isSoftLink() == false-»
-          # «attribute.getCommentForOpenAPIDescription("          # ").replaceAll("<br>", "")»
-            «ELSE-»
-              «IF attribute.hasMultiLineComment()-»
+            «IF attribute.hasMultiLineComment()-»
           description: «getOpenAPICommentStyle()»
             «attribute.getCommentForOpenAPIDescription("            ")»
-              «ELSE-»
+            «ELSE-»
           description: «attribute.getCommentForOpenAPIDescription("            ")»
-              «ENDIF-»
             «ENDIF-»
           «ENDIF-»
           «IF attribute.type.isBasicOpenAPIType() || attribute.isSoftLink() -»
@@ -186,7 +182,7 @@
           «ELSE-»
             «IF attribute.isMultivalued() == false && this.hasMultivaluedTemplateBinding(attribute) == false -»
               «IF attribute.isDeprecated() -»
-          # Property "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+          deprecated: true
               «ENDIF-»
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
           oneOf:
@@ -291,15 +287,11 @@
           «EXPAND java::OpenAPIEnumeration::InlineOpenAPIEnumeration(attribute, "    ") FOR attribute.type.asOpenAPIType() -»
           «ELSE -»
           «IF attribute.hasComment() -»
-            «IF attribute.type.isBasicOpenAPIType() == false && attribute.isMultivalued() == false && attribute.isSoftLink() == false-»
-              # «attribute.getCommentForOpenAPIDescription("              # ").replaceAll("<br>", "")»
-            «ELSE-»
-              «IF attribute.hasMultiLineComment()-»
+            «IF attribute.hasMultiLineComment()-»
               description: «getOpenAPICommentStyle()»
                 «attribute.getCommentForOpenAPIDescription("                ")»
-              «ELSE-»
+            «ELSE-»
               description: «attribute.getCommentForOpenAPIDescription("                ")»
-              «ENDIF-»
             «ENDIF-»
           «ENDIF-»
           «IF attribute.type.isBasicOpenAPIType() || attribute.isSoftLink() -»
@@ -405,7 +397,7 @@
           «ELSE-»
             «IF attribute.isMultivalued() == false-»
               «IF attribute.isDeprecated() -»
-              # Property "«attribute.getAttributeName()»" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              deprecated: true
               «ENDIF-»
               «IF isOneOfForClassHierachieEnabled() && attribute.type.getAllConcreteSubclasses().size > 0 -»
               oneOf:

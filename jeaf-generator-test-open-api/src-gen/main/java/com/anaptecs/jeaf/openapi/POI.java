@@ -28,6 +28,7 @@ import java.util.List;
  */
 
 
+
 public class POI extends Stop {
   @JsonProperty("description")
   private String description = null;

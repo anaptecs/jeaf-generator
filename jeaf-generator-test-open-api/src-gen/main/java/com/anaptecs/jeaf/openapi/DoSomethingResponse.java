@@ -27,6 +27,7 @@ import java.util.List;
  */
 
 
+
 public class DoSomethingResponse {
   @JsonProperty("errors")
   private List<Message> errors = null;
