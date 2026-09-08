@@ -7,8 +7,8 @@
 		<version>1.30.3-SNAPSHOT</version>
 	</parent>
 
-	<name>JEAF Generator Test OpenAPI</name>
-	<artifactId>jeaf-generator-test-open-api</artifactId>
+	<name>JEAF Generator Test OpenAPI 3.1</name>
+	<artifactId>jeaf-generator-test-open-api-31</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -146,7 +146,7 @@
 					<validateOpenAPISpec>true</validateOpenAPISpec>
 					<useTransitiveOpenAPIDependencies>true</useTransitiveOpenAPIDependencies>
 					<generateDependentOpenAPISpecs>true</generateDependentOpenAPISpecs>
-					<openAPIVersion>OPEN_API_3_0</openAPIVersion>
+					<openAPIVersion>OPEN_API_3_1</openAPIVersion>
 					<enableYAML11Compatibility>true</enableYAML11Compatibility>
 					
 					<softLinkSuffix>ID</softLinkSuffix>
@@ -169,6 +169,7 @@
 				</configuration>
 			</plugin>
 
+			<!--
 			<plugin>
 				<groupId>io.swagger.codegen.v3</groupId>
 				<artifactId>swagger-codegen-maven-plugin</artifactId>
@@ -242,6 +243,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			-->
 
 			<plugin>
 				<groupId>org.openapitools</groupId>

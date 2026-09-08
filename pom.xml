@@ -70,6 +70,8 @@
 		
 		<javaparser-core.version>3.28.0</javaparser-core.version>
 		<swagger-parser.version>2.1.47</swagger-parser.version>
+		<swagger.codegen.plugin.version>3.0.82</swagger.codegen.plugin.version>
+		<openapi-generator-maven-plugin.version>7.25.0</openapi-generator-maven-plugin.version>
 		<log4j-to-slf4j.version>2.25.3</log4j-to-slf4j.version>
 		<equalsverifier.version>3.19.4</equalsverifier.version>
 		<flexmark.version>0.64.8</flexmark.version>
@@ -113,6 +115,7 @@
 		<module>jeaf-generator-test-junit-testcases</module>
 		<module>jeaf-generator-test-open-api-dependent-spec</module>
 		<module>jeaf-generator-test-open-api</module>
+		<module>jeaf-generator-test-open-api-31</module>
 		<module>jeaf-generator-test-open-api-service-objects</module>
     	<module>jeaf-generator-test-open-api-service-objects-jackson3</module>
 		<module>jeaf-generator-test-open-api-internal-service-objects</module>
