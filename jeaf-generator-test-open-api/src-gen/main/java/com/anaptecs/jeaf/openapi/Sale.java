@@ -24,6 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "Chännel<br> €<br> Ö ")
 
+
 public class Sale {
   @JsonProperty("transactionAmount")
   private Double transactionAmount = null;

@@ -32,7 +32,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   MyBusinessObject.JSON_PROPERTY_MY_BUSINESS_ATTRIBUTE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class MyBusinessObject {
   public static final String JSON_PROPERTY_MY_BUSINESS_ATTRIBUTE = "myBusinessAttribute";
   @javax.annotation.Nonnull
@@ -100,10 +100,7 @@ public class MyBusinessObject {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

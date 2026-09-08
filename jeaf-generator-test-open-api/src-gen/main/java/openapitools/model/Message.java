@@ -32,7 +32,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   Message.JSON_PROPERTY_TEXT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class Message {
   public static final String JSON_PROPERTY_TEXT = "text";
   @javax.annotation.Nonnull
@@ -100,10 +100,7 @@ public class Message {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

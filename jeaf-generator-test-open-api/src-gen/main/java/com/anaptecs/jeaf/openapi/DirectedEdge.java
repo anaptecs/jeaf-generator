@@ -24,6 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Schema(description = "Just a simple comment. ")
 
+
 public class DirectedEdge {
   @JsonProperty("start")
   private Stop start = null;

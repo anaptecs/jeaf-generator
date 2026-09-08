@@ -20,6 +20,7 @@ import com.anaptecs.jeaf.openapi.StopPlaceRef;
  */
 
 
+
 public class CHStopPlace extends StopPlaceRef {
 
   @Override

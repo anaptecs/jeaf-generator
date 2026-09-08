@@ -25,6 +25,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * PlaceRef
  */
 
+
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true )
 @JsonSubTypes({
   @JsonSubTypes.Type(value = UICStopPlace.class, name = "UICStopPlace"),

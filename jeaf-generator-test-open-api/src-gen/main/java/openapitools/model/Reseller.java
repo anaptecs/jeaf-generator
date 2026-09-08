@@ -37,7 +37,7 @@ import openapitools.JSON;
   Reseller.JSON_PROPERTY_NAME,
   Reseller.JSON_PROPERTY_LANGUAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class Reseller {
   public static final String JSON_PROPERTY_CHANNELS = "channels";
   @javax.annotation.Nonnull
@@ -175,10 +175,7 @@ public class Reseller {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

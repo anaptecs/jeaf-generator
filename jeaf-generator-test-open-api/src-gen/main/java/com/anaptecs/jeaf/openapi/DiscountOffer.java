@@ -25,6 +25,7 @@ import java.util.List;
  */
 
 
+
 public class DiscountOffer {
   @JsonProperty("campaignIDs")
   private List<String> campaignIDs = null;

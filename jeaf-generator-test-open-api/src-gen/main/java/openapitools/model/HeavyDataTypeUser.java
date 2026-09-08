@@ -39,7 +39,7 @@ import openapitools.JSON;
   HeavyDataTypeUser.JSON_PROPERTY_BIG_INEGER_CODE,
   HeavyDataTypeUser.JSON_PROPERTY_BIG_DECIMAL_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class HeavyDataTypeUser {
   public static final String JSON_PROPERTY_BOOLEAN_CODE = "booleanCode";
   @javax.annotation.Nonnull
@@ -327,10 +327,7 @@ public class HeavyDataTypeUser {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

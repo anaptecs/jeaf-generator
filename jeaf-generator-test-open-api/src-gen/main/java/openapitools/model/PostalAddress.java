@@ -35,7 +35,7 @@ import openapitools.JSON;
   PostalAddress.JSON_PROPERTY_CITY,
   PostalAddress.JSON_PROPERTY_POSTAL_CODE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class PostalAddress {
   public static final String JSON_PROPERTY_STREET = "street";
   @javax.annotation.Nonnull
@@ -196,10 +196,7 @@ public class PostalAddress {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

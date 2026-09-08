@@ -25,6 +25,7 @@ import java.util.List;
  */
 
 
+
 public class SoftLinkPartner {
   @JsonProperty("theBackLinkID")
   private String theBackLinkID = null;

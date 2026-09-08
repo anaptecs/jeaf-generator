@@ -25,6 +25,7 @@ import java.util.List;
  */
 
 
+
 public class PrimitiveArraysObjectWithRestrictions {
   @JsonProperty("aBooleanArray")
   private List<Boolean> aBooleanArray = null;

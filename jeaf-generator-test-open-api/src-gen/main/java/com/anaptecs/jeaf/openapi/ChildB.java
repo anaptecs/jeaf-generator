@@ -27,6 +27,7 @@ import java.util.List;
  */
 @Schema(description = "Multi<br> line<br> class<br> comment ")
 
+
 public class ChildB extends ParentClass {
   @JsonProperty("childBAttribute")
   private List<Boolean> childBAttribute = new ArrayList<>();

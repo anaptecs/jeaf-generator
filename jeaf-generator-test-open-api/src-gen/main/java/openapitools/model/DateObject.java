@@ -39,7 +39,7 @@ import openapitools.JSON;
   DateObject.JSON_PROPERTY_SQL_DATE,
   DateObject.JSON_PROPERTY_UTIL_DATE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class DateObject {
   public static final String JSON_PROPERTY_LOCAL_TIME = "localTime";
   @javax.annotation.Nonnull
@@ -262,10 +262,7 @@ public class DateObject {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

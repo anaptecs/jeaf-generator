@@ -33,7 +33,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   BidirectB.JSON_PROPERTY_A
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class BidirectB {
   public static final String JSON_PROPERTY_A = "a";
   @javax.annotation.Nonnull
@@ -101,10 +101,7 @@ public class BidirectB {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

@@ -20,6 +20,7 @@ import com.anaptecs.jeaf.openapi.PlaceRef;
  */
 
 
+
 public class StopPlaceRef extends PlaceRef {
 
   @Override

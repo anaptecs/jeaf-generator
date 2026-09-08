@@ -43,7 +43,7 @@ import openapitools.JSON;
   Campaign.JSON_PROPERTY_MORE_LINK_I_DS,
   Campaign.JSON_PROPERTY_DISCOUNT_OFFER_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class Campaign {
   public static final String JSON_PROPERTY_THE_LINK_I_D = "theLinkID";
   @Deprecated
@@ -143,7 +143,7 @@ public class Campaign {
   }
 
   public Campaign addDiscountOfferIDsItem(String discountOfferIDsItem) {
-    if (this.discountOfferIDs == null || !this.discountOfferIDs.isPresent()) {
+    if (this.discountOfferIDs == null || !this.discountOfferIDs.isPresent() || this.discountOfferIDs.get() == null) {
       this.discountOfferIDs = JsonNullable.<List<String>>of(new ArrayList<>());
     }
     try {
@@ -234,10 +234,7 @@ public class Campaign {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

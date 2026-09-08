@@ -195,7 +195,8 @@ components:
         - a
       properties:
         a:
-          # the A
+          description: |
+            the A
           $ref: '#/components/schemas/BidirectA'
 
     # com.anaptecs.spring.base.Booking
@@ -254,10 +255,12 @@ components:
         - selfServiceChannel
       properties:
         channelType:
-          # Type of the channel
+          description: |
+            Type of the channel
           $ref: '#/components/schemas/ChannelType'
         channelCode:
-          # The business code of the channel
+          description: |
+            The business code of the channel
           $ref: '#/components/schemas/ChannelCode'
         code:
           type: integer
@@ -432,7 +435,7 @@ components:
                 $ref: '#/components/schemas/ChildB'
               uniqueItems: true
             deprecatedParent:
-              # Property "deprecatedParent" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+              deprecated: true
               $ref: '#/components/schemas/ParentClass'
             deprecatedArray:
               type: string
@@ -573,10 +576,12 @@ components:
         - previousName
       properties:
         start:
-          # The start
+          description: |
+            The start
           $ref: '#/components/schemas/Stop'
         end:
-          # The end
+          description: |
+            The end
           $ref: '#/components/schemas/Stop'
         previousName:
           description: |
@@ -1695,7 +1700,7 @@ components:
           items:
             $ref: '#/components/schemas/SimpleBackwardCompatibility'
         oldSingleLink:
-          # Property "oldSingleLink" is marked as deprecated. However OpenAPI does not support to mark references to complex types as deprecated.
+          deprecated: true
           $ref: '#/components/schemas/SimpleBackwardCompatibility'
         newSingleLink:
           $ref: '#/components/schemas/SimpleBackwardCompatibility'

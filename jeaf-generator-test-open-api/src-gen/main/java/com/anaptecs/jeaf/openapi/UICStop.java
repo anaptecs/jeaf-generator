@@ -27,6 +27,7 @@ import java.util.List;
  */
 @Schema(description = " <br><br> Alternate Name: `Haltestelle` ")
 
+
 public class UICStop extends Stop {
   @JsonProperty("uicCode")
   private String uicCode = null;

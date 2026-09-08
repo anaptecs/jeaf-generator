@@ -25,6 +25,7 @@ import java.util.List;
  */
 
 
+
 public class Campaign {
   @JsonProperty("theLinkID")
   private Long theLinkID = null;

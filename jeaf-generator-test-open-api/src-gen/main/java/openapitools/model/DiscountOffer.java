@@ -38,7 +38,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   DiscountOffer.JSON_PROPERTY_CAMPAIGN_I_DS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.18.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
 public class DiscountOffer {
   public static final String JSON_PROPERTY_CAMPAIGN_I_DS = "campaignIDs";
   @Deprecated
@@ -54,7 +54,7 @@ public class DiscountOffer {
   }
 
   public DiscountOffer addCampaignIDsItem(String campaignIDsItem) {
-    if (this.campaignIDs == null || !this.campaignIDs.isPresent()) {
+    if (this.campaignIDs == null || !this.campaignIDs.isPresent() || this.campaignIDs.get() == null) {
       this.campaignIDs = JsonNullable.<Set<String>>of(new LinkedHashSet<>());
     }
     try {
@@ -141,10 +141,7 @@ public class DiscountOffer {
    * (except the first line).
    */
   private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return o == null ? "null" : o.toString().replace("\n", "\n    ");
   }
 
 }

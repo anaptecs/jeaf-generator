@@ -28,6 +28,7 @@ import java.util.List;
  * Partner
  */
 
+
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true )
 @JsonSubTypes({
   @JsonSubTypes.Type(value = Company.class, name = "Company"),

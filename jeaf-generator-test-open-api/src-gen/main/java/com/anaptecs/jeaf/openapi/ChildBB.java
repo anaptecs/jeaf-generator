@@ -27,6 +27,7 @@ import java.util.List;
  */
 
 
+
 public class ChildBB extends ChildB {
   @JsonProperty("childBBAttribute")
   private Long childBBAttribute = null;

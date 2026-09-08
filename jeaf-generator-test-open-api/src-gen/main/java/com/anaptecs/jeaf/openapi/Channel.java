@@ -24,6 +24,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 
 
+
 public class Channel {
   @JsonProperty("channelType")
   private ChannelType channelType = null;

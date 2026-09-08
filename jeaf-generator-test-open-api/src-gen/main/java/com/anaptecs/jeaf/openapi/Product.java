@@ -26,6 +26,7 @@ import java.util.List;
  */
 @Schema(description = "Data type represents a product definition <br><br> Alternate Name: `Produkt` ")
 
+
 public class Product {
   @JsonProperty("resellers")
   private List<Reseller> resellers = null;
