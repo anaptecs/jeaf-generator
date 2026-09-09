@@ -2,7 +2,6 @@ extension java::GeneratorCommons;
 extension functions::Class;
 extension functions::RESTOperation;
 extension jeaf::RESTFunctions;
-extension jeaf::RESTFunctions;
 extension java::Naming;
 extension java::OpenAPIFunctions;
 
@@ -76,4 +75,8 @@ String getValidationExecutorFQN(boolean reactive):
 	if reactive 
 	then "com.anaptecs.jeaf.validation.api.ValidationExecutorReactive"
 	else "com.anaptecs.jeaf.validation.api.ValidationExecutor";
+
+
+cached boolean hasCompositeDataTypes(JMM::RESTResource resource):
+	resource.getCompositeDataTypes().isEmpty == false;
 
