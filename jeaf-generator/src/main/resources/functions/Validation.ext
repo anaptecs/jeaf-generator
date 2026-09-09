@@ -99,7 +99,7 @@ private String getEmailValidation(uml::NamedElement property, uml::Stereotype st
 
 
 cached List[JMM::ValidationGroup] getAllValidationGroupsFromModel(uml::Model model):
-	model.allOwnedElements().typeSelect(JMM::ValidationGroup).select(e|e.isInGeneratorWhitelist()).sortBy(e|e.qualifiedName());
+	model.allOwnedElements().typeSelect(JMM::ValidationGroup).sortBy(e|e.qualifiedName());
 
 
 cached List[JMM::ValidationGroup] getValidationGroups(uml::Dependency dependency):
