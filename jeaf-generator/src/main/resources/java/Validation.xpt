@@ -185,14 +185,14 @@ public @interface «validationClass» {
 						«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == true && allValidationStereotypeNames.contains("Size") == false && property.lower() > 0»
 							«IF optionalValidationDependencies.isEmpty»
 								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()»)
-							«ELSE»
+							«ELSEIF leftOverGroups.size > 0»
 								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
 							«ENDIF»
 						«ENDIF»
 						«IF generateValidationAnnotationsForAttributesFromMultiplicity() && property.isStatic == false && property.isTransient() == false && property.isMultivalued() == false && property.type.isPrimitiveType() == false && allDirectValidationStereotypes.name.requiresNotNullAnnotation() && property.lower() > 0»
 							«IF optionalValidationDependencies.isEmpty»
 								@«getEnterpriseJavaPackage()».validation.constraints.NotNull
-							«ELSE»
+							«ELSEIF leftOverGroups.size > 0»
 								@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)
 							«ENDIF»
 						«ENDIF»
@@ -200,14 +200,14 @@ public @interface «validationClass» {
 						«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isMultivalued() && property.isStatic == false && property.isTransient() == false && allValidationStereotypeNames.contains("Size") == false && property.lower() > 0»
 							«IF optionalValidationDependencies.isEmpty»
 								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()»)
-							«ELSE»
+							«ELSEIF leftOverGroups.size > 0»
 								@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «property.lower()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
 							«ENDIF»
 						«ENDIF»
 						«IF generateValidationAnnotationsForAssociationsFromMultiplicity() && property.isStatic == false && property.isTransient() == false && allDirectValidationStereotypes.name.requiresNotNullAnnotation() && property.lower() > 0»
 							«IF optionalValidationDependencies.isEmpty»
 								@«getEnterpriseJavaPackage()».validation.constraints.NotNull
-							«ELSE»
+							«ELSEIF leftOverGroups.size > 0»
 								@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)
 							«ENDIF»
 						«ENDIF»
@@ -218,13 +218,13 @@ public @interface «validationClass» {
 					«IF parameter.isMultivalued() && parameter.lowerForParam() > 0»
 						«IF optionalValidationDependencies.isEmpty»
 							@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «parameter.lowerForParam()»)
-						«ELSE»
+						«ELSEIF leftOverGroups.size > 0»
 							@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «parameter.lowerForParam()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
 						«ENDIF»
 					«ELSEIF parameter.type.isPrimitiveType() == false && allValidationStereotypeNames.contains("NotNull") == false && parameter.lowerForParam() > 0»
 						«IF optionalValidationDependencies.isEmpty»
 							@«getEnterpriseJavaPackage()».validation.constraints.NotNull
-						«ELSE»
+						«ELSEIF leftOverGroups.size > 0»
 							@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)
 						«ENDIF»
 					«ENDIF»
