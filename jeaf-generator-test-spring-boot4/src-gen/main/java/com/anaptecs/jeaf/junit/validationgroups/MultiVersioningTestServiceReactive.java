@@ -31,7 +31,7 @@ public interface MultiVersioningTestServiceReactive {
       @Size(min = 11, max = 42, groups = { V7.class }) @Size(
           min = 0,
           max = 666,
-          groups = { V4.class, V5.class, V6.class }) @NotNull @MyNotNullServiceParam String pPath,
+          groups = { V4.class, V5.class, V6.class }) @MyNotNullServiceParam String pPath,
       @NotNull(groups = { V7.class }) @MyNotNullServiceParam MyPojoRequest pRequest,
       @NotNull @MyNotNullServiceParam MyContext myContext );
 

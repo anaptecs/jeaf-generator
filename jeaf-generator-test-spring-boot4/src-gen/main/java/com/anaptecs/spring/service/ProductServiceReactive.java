@@ -23,7 +23,6 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyServiceParam;
 import com.anaptecs.annotations.MyNotNullServiceParam;
-import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.spring.base.AnotherDataType;
 import com.anaptecs.spring.base.BeanParameter;
 import com.anaptecs.spring.base.ChannelCode;
@@ -49,7 +48,6 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @return {@link List<Product>} My default comment
    */
   @Size(min = 0, max = 4711)
-  @Size(min = 1, groups = { V7.class })
   @MyNotEmptyServiceParam
   Mono<List<Product>> getProducts( );
 
@@ -215,7 +213,6 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @return {@link List<CurrencyCode>}
    */
   @Size(min = 1, max = 20)
-  @Size(min = 1, groups = { V7.class })
   @MyNotEmptyServiceParam
   Mono<List<CurrencyCode>> addCurrencies( @Size(min = 1) @MyNotEmptyServiceParam List<CurrencyCode> pCurrencies );
 
@@ -249,7 +246,6 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * @return {@link String}
    */
   @Size(min = 111, max = 666)
-  @NotNull
   @MyNotNullServiceParam
   Mono<String> testLocalBeanParamType( @NotNull @MyNotNullServiceParam LocalBeanParamType pBeanParam );
 
@@ -385,5 +381,5 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<String> processDataTypes( @Size(min = 0, groups = { V7.class }) List<AnotherDataType> pCodes );
+  Mono<String> processDataTypes( List<AnotherDataType> pCodes );
 }

@@ -27,7 +27,6 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyServiceParam;
 import com.anaptecs.annotations.MyNotNullServiceParam;
-import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
@@ -55,7 +54,6 @@ public interface RESTProductServiceReactive {
    * @param pMaxResultSize
    * @return {@link List<Product>} My default comment
    */
-  @Size(min = 0, groups = { V7.class })
   Mono<List<Product>> getProducts( int pMaxResultSize );
 
   /**
@@ -123,7 +121,6 @@ public interface RESTProductServiceReactive {
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  @Size(min = 0, groups = { V7.class })
   Mono<List<CurrencyCode>> getSupportedCurrencies( @NotNull @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
@@ -133,7 +130,6 @@ public interface RESTProductServiceReactive {
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  @Size(min = 0, groups = { V7.class })
   Mono<List<CurrencyCode>> getSupportedCurrenciesAsync( @NotNull @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
@@ -205,7 +201,7 @@ public interface RESTProductServiceReactive {
       @NotNull @MyNotNullServiceParam LocalDate pLocalStartDate, @NotNull @MyNotNullServiceParam Calendar pCalendar,
       @NotNull @MyNotNullServiceParam java.util.Date pUtilDate, @NotNull @MyNotNullServiceParam Timestamp pSQLTimestamp,
       @NotNull @MyNotNullServiceParam Time pSQLTime, @NotNull @MyNotNullServiceParam Date pSQLDate,
-      @Size(min = 0, groups = { V7.class }) Set<Calendar> pCalendars );
+      Set<Calendar> pCalendars );
 
   /**
    * <p/>
@@ -245,8 +241,7 @@ public interface RESTProductServiceReactive {
       @NotNull @MyNotNullServiceParam LocalTime pLocalTime, @NotNull @MyNotNullServiceParam LocalDate pLocalDate,
       @NotNull @MyNotNullServiceParam Calendar pCalendar, @NotNull @MyNotNullServiceParam java.util.Date pUtilDate,
       @NotNull @MyNotNullServiceParam Timestamp pSQLTimestamp, @NotNull @MyNotNullServiceParam Time pSQLTime,
-      @NotNull @MyNotNullServiceParam Date pSQLDate,
-      @Size(min = 0, groups = { V7.class }) Set<java.util.Date> pUtilDates );
+      @NotNull @MyNotNullServiceParam Date pSQLDate, Set<java.util.Date> pUtilDates );
 
   /**
    * <p/>
@@ -282,7 +277,7 @@ public interface RESTProductServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<String> testOptionalQueryParams( @NotNull(groups = { V7.class }) String query1, int query2 );
+  Mono<String> testOptionalQueryParams( String query1, int query2 );
 
   /**
    * <p/>
@@ -304,9 +299,7 @@ public interface RESTProductServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<String> testDataTypesAsHeaderParam( @NotNull(groups = { V7.class }) BookingID pBookingID,
-      @NotNull(groups = { V7.class }) BookingCode pBookingCode,
-      @NotNull(groups = { V7.class }) DoubleCodeType pDoubleCode );
+  Mono<String> testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCodeType pDoubleCode );
 
   /**
    * <p/>
@@ -328,7 +321,7 @@ public interface RESTProductServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<String> testPrimitiveArrays( @Size(min = 0, groups = { V7.class }) int[] pIntegerArray );
+  Mono<String> testPrimitiveArrays( int[] pIntegerArray );
 
   /**
    * <p/>
@@ -361,7 +354,7 @@ public interface RESTProductServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<String> testPrimitiveArrayAsQueryParam( @Size(min = 0, groups = { V7.class }) int[] pIntValues );
+  Mono<String> testPrimitiveArrayAsQueryParam( int[] pIntValues );
 
   /**
    * <p/>
@@ -372,7 +365,7 @@ public interface RESTProductServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<String> testSimpleTypesAsQueryParams( @Size(min = 0, groups = { V7.class }) List<String> pStrings );
+  Mono<String> testSimpleTypesAsQueryParams( List<String> pStrings );
 
   /**
    * <p/>
@@ -409,11 +402,9 @@ public interface RESTProductServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<String> testMulitvaluedDataTypeAsQueryParam( @Size(min = 0, groups = { V7.class }) List<IntegerCodeType> pCodes,
-      @Size(min = 1) @MyNotEmptyServiceParam Set<LongCode> pLongCodes,
-      @Size(min = 0, groups = { V7.class }) List<BookingID> pBookingIDs,
-      @Size(min = 0, groups = { V7.class }) List<OffsetDateTime> pTimestamps,
-      @Size(min = 0, groups = { V7.class }) SortedSet<LocalDate> pLocalDates );
+  Mono<String> testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes,
+      @Size(min = 1) @MyNotEmptyServiceParam Set<LongCode> pLongCodes, List<BookingID> pBookingIDs,
+      List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates );
 
   /**
    * <p/>
@@ -454,13 +445,9 @@ public interface RESTProductServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<String> testMultiValuedHeaderFields( @Size(min = 0, groups = { V7.class }) Set<String> pNames,
-      @Size(min = 1) @MyNotEmptyServiceParam int[] pInts, @Size(min = 0, groups = { V7.class }) Set<Double> pDoubles,
-      @Size(min = 0, groups = { V7.class }) Set<StringCode> pCodes,
-      @NotNull(groups = { V7.class }) OffsetDateTime pStartDate,
-      @Size(min = 0, groups = { V7.class }) Set<OffsetDateTime> pTimestamps,
-      @Size(min = 0, groups = { V7.class }) Set<OffsetTime> pTimes,
-      @Size(min = 0, groups = { V7.class }) byte[] pBase64 );
+  Mono<String> testMultiValuedHeaderFields( Set<String> pNames, @Size(min = 1) @MyNotEmptyServiceParam int[] pInts,
+      Set<Double> pDoubles, Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps,
+      Set<OffsetTime> pTimes, byte[] pBase64 );
 
   /**
    * <p/>
@@ -480,7 +467,7 @@ public interface RESTProductServiceReactive {
    */
   @NotNull
   @MyNotNullServiceParam
-  Mono<Void> testBookingIDAsHeaderParam( @NotNull(groups = { V7.class }) BookingID pBookingID );
+  Mono<Void> testBookingIDAsHeaderParam( BookingID pBookingID );
 
   /**
    * <p/>

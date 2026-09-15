@@ -81,6 +81,15 @@ public @interface «validationClass» {
 		«LET removeValidationDepedencies.select(e|e.getStereotypeValue("RemoveValidation", "removedValidations").contains(stereotypeName)).getValidationGroups() AS removeValidationGroups»
 		«LET removeValidationGroups.isEmpty == false || validationDependencies.isEmpty == false AS hasValidationGroups»
 		«LET (List[JMM::ValidationGroup]) getModel().getAllValidationGroupsFromModel().removeAll(validationDependencies.getValidationGroups()).removeAll(removeValidationGroups) AS defaultValidationGroups»
+		«IF false -»
+		// stereotypeName: «stereotypeName»
+		// directValidationStereotype: «directValidationStereotype.name»
+		// validationDependencies: «validationDependencies.getValidationGroups().name»
+		// removeValidationGroups: «removeValidationGroups.name.toString(", ")»
+		// allValidationGroups: «this.getModel().getAllValidationGroupsFromModel().qualifiedName().toString(", ")»
+		// defaultValidationGroups: «defaultValidationGroups.name.toString(", ")»
+		// hasValidationGroups: «hasValidationGroups»
+		«ENDIF -»
 
 			«IF stereotypeName == "DecimalMin"»
 			  «EXPAND DecimalMinAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
@@ -204,16 +213,16 @@ public @interface «validationClass» {
 						«ENDIF»
 					«ENDIF»
 				«ENDLET»
-			«ELSEIF this.isParameter() && generateValidationAnnotationForParam(parameterContext)»
+			«ELSEIF this.isParameter() && generateValidationAnnotationForParam(parameterContext) && allValidationStereotypeNames.contains("Size") == false && allValidationStereotypeNames.contains("NotNull") == false»
 				«LET (Parameter) this AS parameter»
-					«IF parameter.isMultivalued()»
-						«IF optionalValidationDependencies.isEmpty && allValidationStereotypeNames.contains("Size") == false && parameter.lowerForParam() > 0»
+					«IF parameter.isMultivalued() && parameter.lowerForParam() > 0»
+						«IF optionalValidationDependencies.isEmpty»
 							@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «parameter.lowerForParam()»)
 						«ELSE»
 							@«getEnterpriseJavaPackage()».validation.constraints.Size(min = «parameter.lowerForParam()», «EXPAND ValidationGroupsSection FOR leftOverGroups»)
 						«ENDIF»
-					«ELSEIF parameter.type.isPrimitiveType() == false»
-						«IF optionalValidationDependencies.isEmpty && allValidationStereotypeNames.contains("NotNull") == false && parameter.lowerForParam() > 0»
+					«ELSEIF parameter.type.isPrimitiveType() == false && allValidationStereotypeNames.contains("NotNull") == false && parameter.lowerForParam() > 0»
+						«IF optionalValidationDependencies.isEmpty»
 							@«getEnterpriseJavaPackage()».validation.constraints.NotNull
 						«ELSE»
 							@«getEnterpriseJavaPackage()».validation.constraints.NotNull(«EXPAND ValidationGroupsSection FOR leftOverGroups»)

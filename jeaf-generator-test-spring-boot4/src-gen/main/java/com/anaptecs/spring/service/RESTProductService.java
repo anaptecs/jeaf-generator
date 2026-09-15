@@ -27,7 +27,6 @@ import javax.validation.constraints.Size;
 
 import com.anaptecs.annotations.MyNotEmptyServiceParam;
 import com.anaptecs.annotations.MyNotNullServiceParam;
-import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.spring.base.BookingCode;
 import com.anaptecs.spring.base.BookingID;
 import com.anaptecs.spring.base.ChannelCode;
@@ -54,7 +53,6 @@ public interface RESTProductService {
    * @param pMaxResultSize
    * @return {@link List<Product>} My default comment
    */
-  @Size(min = 0, groups = { V7.class })
   List<Product> getProducts( int pMaxResultSize );
 
   /**
@@ -120,7 +118,6 @@ public interface RESTProductService {
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  @Size(min = 0, groups = { V7.class })
   List<CurrencyCode> getSupportedCurrencies( @NotNull @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
@@ -130,7 +127,6 @@ public interface RESTProductService {
    * @param pChannelCode
    * @return {@link List<CurrencyCode>}
    */
-  @Size(min = 0, groups = { V7.class })
   List<CurrencyCode> getSupportedCurrenciesAsync( @NotNull @MyNotNullServiceParam ChannelCode pChannelCode );
 
   /**
@@ -199,7 +195,7 @@ public interface RESTProductService {
       @NotNull @MyNotNullServiceParam LocalDate pLocalStartDate, @NotNull @MyNotNullServiceParam Calendar pCalendar,
       @NotNull @MyNotNullServiceParam java.util.Date pUtilDate, @NotNull @MyNotNullServiceParam Timestamp pSQLTimestamp,
       @NotNull @MyNotNullServiceParam Time pSQLTime, @NotNull @MyNotNullServiceParam Date pSQLDate,
-      @Size(min = 0, groups = { V7.class }) Set<Calendar> pCalendars );
+      Set<Calendar> pCalendars );
 
   /**
    * <p/>
@@ -237,8 +233,7 @@ public interface RESTProductService {
       @NotNull @MyNotNullServiceParam LocalTime pLocalTime, @NotNull @MyNotNullServiceParam LocalDate pLocalDate,
       @NotNull @MyNotNullServiceParam Calendar pCalendar, @NotNull @MyNotNullServiceParam java.util.Date pUtilDate,
       @NotNull @MyNotNullServiceParam Timestamp pSQLTimestamp, @NotNull @MyNotNullServiceParam Time pSQLTime,
-      @NotNull @MyNotNullServiceParam Date pSQLDate,
-      @Size(min = 0, groups = { V7.class }) Set<java.util.Date> pUtilDates );
+      @NotNull @MyNotNullServiceParam Date pSQLDate, Set<java.util.Date> pUtilDates );
 
   /**
    * <p/>
@@ -272,7 +267,7 @@ public interface RESTProductService {
    */
   @NotNull
   @MyNotNullServiceParam
-  String testOptionalQueryParams( @NotNull(groups = { V7.class }) String query1, int query2 );
+  String testOptionalQueryParams( String query1, int query2 );
 
   /**
    * <p/>
@@ -294,9 +289,7 @@ public interface RESTProductService {
    */
   @NotNull
   @MyNotNullServiceParam
-  String testDataTypesAsHeaderParam( @NotNull(groups = { V7.class }) BookingID pBookingID,
-      @NotNull(groups = { V7.class }) BookingCode pBookingCode,
-      @NotNull(groups = { V7.class }) DoubleCodeType pDoubleCode );
+  String testDataTypesAsHeaderParam( BookingID pBookingID, BookingCode pBookingCode, DoubleCodeType pDoubleCode );
 
   /**
    * <p/>
@@ -318,7 +311,7 @@ public interface RESTProductService {
    */
   @NotNull
   @MyNotNullServiceParam
-  String testPrimitiveArrays( @Size(min = 0, groups = { V7.class }) int[] pIntegerArray );
+  String testPrimitiveArrays( int[] pIntegerArray );
 
   /**
    * <p/>
@@ -351,7 +344,7 @@ public interface RESTProductService {
    */
   @NotNull
   @MyNotNullServiceParam
-  String testPrimitiveArrayAsQueryParam( @Size(min = 0, groups = { V7.class }) int[] pIntValues );
+  String testPrimitiveArrayAsQueryParam( int[] pIntValues );
 
   /**
    * <p/>
@@ -362,7 +355,7 @@ public interface RESTProductService {
    */
   @NotNull
   @MyNotNullServiceParam
-  String testSimpleTypesAsQueryParams( @Size(min = 0, groups = { V7.class }) List<String> pStrings );
+  String testSimpleTypesAsQueryParams( List<String> pStrings );
 
   /**
    * <p/>
@@ -399,11 +392,9 @@ public interface RESTProductService {
    */
   @NotNull
   @MyNotNullServiceParam
-  String testMulitvaluedDataTypeAsQueryParam( @Size(min = 0, groups = { V7.class }) List<IntegerCodeType> pCodes,
-      @Size(min = 1) @MyNotEmptyServiceParam Set<LongCode> pLongCodes,
-      @Size(min = 0, groups = { V7.class }) List<BookingID> pBookingIDs,
-      @Size(min = 0, groups = { V7.class }) List<OffsetDateTime> pTimestamps,
-      @Size(min = 0, groups = { V7.class }) SortedSet<LocalDate> pLocalDates );
+  String testMulitvaluedDataTypeAsQueryParam( List<IntegerCodeType> pCodes,
+      @Size(min = 1) @MyNotEmptyServiceParam Set<LongCode> pLongCodes, List<BookingID> pBookingIDs,
+      List<OffsetDateTime> pTimestamps, SortedSet<LocalDate> pLocalDates );
 
   /**
    * <p/>
@@ -444,13 +435,9 @@ public interface RESTProductService {
    */
   @NotNull
   @MyNotNullServiceParam
-  String testMultiValuedHeaderFields( @Size(min = 0, groups = { V7.class }) Set<String> pNames,
-      @Size(min = 1) @MyNotEmptyServiceParam int[] pInts, @Size(min = 0, groups = { V7.class }) Set<Double> pDoubles,
-      @Size(min = 0, groups = { V7.class }) Set<StringCode> pCodes,
-      @NotNull(groups = { V7.class }) OffsetDateTime pStartDate,
-      @Size(min = 0, groups = { V7.class }) Set<OffsetDateTime> pTimestamps,
-      @Size(min = 0, groups = { V7.class }) Set<OffsetTime> pTimes,
-      @Size(min = 0, groups = { V7.class }) byte[] pBase64 );
+  String testMultiValuedHeaderFields( Set<String> pNames, @Size(min = 1) @MyNotEmptyServiceParam int[] pInts,
+      Set<Double> pDoubles, Set<StringCode> pCodes, OffsetDateTime pStartDate, Set<OffsetDateTime> pTimestamps,
+      Set<OffsetTime> pTimes, byte[] pBase64 );
 
   /**
    * <p/>
@@ -468,7 +455,7 @@ public interface RESTProductService {
    * @param pBookingID
    */
   @NotNull
-  void testBookingIDAsHeaderParam( @NotNull(groups = { V7.class }) BookingID pBookingID );
+  void testBookingIDAsHeaderParam( BookingID pBookingID );
 
   /**
    * <p/>
