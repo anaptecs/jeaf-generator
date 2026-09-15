@@ -166,7 +166,7 @@ public class OtherPojo {
       activeWith = "8.0",
       activationDate = "2026-10-20")
   @Size(min = 10, max = 32, groups = { V7.class })
-  @Size(min = 0, max = 32, groups = { V6.class })
+  @Size(min = 0, max = 32, groups = { V4.class, V5.class, V6.class })
   @NotNull(groups = { V7.class })
   private String v6Property;
 

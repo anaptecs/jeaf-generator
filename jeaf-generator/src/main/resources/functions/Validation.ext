@@ -98,7 +98,10 @@ private String getEmailValidation(uml::NamedElement property, uml::Stereotype st
 	else "@Email";
 
 
-cached List[JMM::ValidationGroup] getAllValidationGroupsFromModel(uml::Model model):
+List[JMM::ValidationGroup] getAllValidationGroupsFromModel(uml::Model model):
+	{}.addAll(model.interalGetAllValidationGroupsFromModel());
+
+cached List[JMM::ValidationGroup] interalGetAllValidationGroupsFromModel(uml::Model model):
 	model.allOwnedElements().typeSelect(JMM::ValidationGroup).sortBy(e|e.qualifiedName());
 
 

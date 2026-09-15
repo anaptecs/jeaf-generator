@@ -1,0 +1,43 @@
+extension java::GeneratorCommons;
+extension functions::NamedElement;
+
+
+Void loadUMLDiagrams(String csvFile):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.umldiagram.UMLDiagramHelper.loadUMLDiagrams(java.lang.String);
+
+cached boolean hasDiagrams(uml::Package package):
+	!package.getDiagramNames().isEmpty;
+
+cached List[String] getDiagramNames(uml::Package package):
+	package.qualifiedName().getDiagramNamesForPackage().replaceFirst("^\\[\\d+\\]\\s*", "");
+	
+private List[String] getDiagramNamesForPackage(String pPackageName):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.umldiagram.UMLDiagramHelper.getDiagramNamesForPackage(java.lang.String);
+	
+cached List[String] getDiagramIDs(uml::Package package):
+	package.qualifiedName().getDiagramIDsForPackage();
+
+private List[String] getDiagramIDsForPackage(String pPackageName):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.umldiagram.UMLDiagramHelper.getDiagramIDsForPackage(java.lang.String);
+	
+cached List[String] getDiagramDiagramTypes(uml::Package package):
+	package.qualifiedName().getDiagramDiagramTypesForPackage();
+
+private List[String] getDiagramDiagramTypesForPackage(String pPackageName):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.umldiagram.UMLDiagramHelper.getDiagramDiagramTypesForPackage(java.lang.String);
+	
+cached List[String] getDiagramImagePaths(uml::Package package):
+	package.qualifiedName().getDiagramImagePathsForPackage();
+
+private List[String] getDiagramImagePathsForPackage(String pPackageName):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.umldiagram.UMLDiagramHelper.getDiagramImagePathsForPackage(java.lang.String);
+	
+cached List[String] getDiagramComments(uml::Package package):
+	package.qualifiedName().getDiagramCommentsForPackage().trim().replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&amp;#160;", "<br>").convertHTML2Markdown().replaceAll("<br />", "<br>").replaceAll("<br/>", "<br>").replaceAll("&quot;", "\"").replaceAll("\n", "<br>\n");
+
+private List[String] getDiagramCommentsForPackage(String pPackageName):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.umldiagram.UMLDiagramHelper.getDiagramCommentsForPackage(java.lang.String);
+
+private String convertHTML2Markdown(String html):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.umldiagram.UMLDiagramHelper.convertHTML2Markdown(java.lang.String);
+	
