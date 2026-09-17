@@ -1269,7 +1269,7 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean generateValidationAnnotationsForAttributesFromMultiplicity;
 
   /**
-   * Switch defines whether Java Validation Annotations should be generated on the get operation for derived properties
+   * Switch defines whether Java Validation Annotations should be generated on the get operation for derived properties.
    */
   @Parameter(required = false, defaultValue = "false")
   private Boolean generateValidationAnnotationsForDerivedProperties;
