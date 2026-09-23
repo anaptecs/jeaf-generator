@@ -206,7 +206,7 @@
 
 «DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
     «IF this.isJEAFDeprecated() && this.hasMeaningfulDeprecationInfo() -»
- * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.getDeprecatedSince().length > 0»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF», <b>removed with:</b> «IF this.getDeprecationRemoval().length > 0»«this.getDeprecationRemoval()»«ELSE»TBD«ENDIF», <b>go live date:</b> «IF this.getDeprecationRemovalDate().length > 0»«this.getDeprecationRemovalDate()»«ELSE»TBD«ENDIF»)
+ * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.getDeprecatedSince().length > 0»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF», <b>removed with:</b> «IF this.getDeprecationRemoval().length > 0»«this.getDeprecationRemoval()»«ELSE»TBD«ENDIF», <b>go live date:</b> «IF this.getDeprecationGoLiveDate().length > 0»«this.getDeprecationGoLiveDate()»«ELSE»TBD«ENDIF»)
     «ENDIF-»
 «ENDDEFINE»
 

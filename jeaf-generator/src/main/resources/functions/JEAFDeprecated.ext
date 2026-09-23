@@ -52,7 +52,7 @@ private String getDeprecationRemovalInternal(NamedElement element):
 	else "";
 
 
-cached String getDeprecationRemovalDate(NamedElement element):
+cached String getDeprecationGoLiveDate(NamedElement element):
 	if element.isJEAFDeprecated() == false
 	then ""
 	else

@@ -68,7 +68,7 @@ cached String getMarkdownCommentForReportTable(uml::NamedElement element):
 
 cached String getDeprecationNoticeForReport(uml::NamedElement element):
 	if element.isJEAFDeprecated()
-	then element.getLineBreaks() + ":exclamation:**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ", go live date: " + element.getDeprecationRemovalDate() + "):**<br>" + element.getDeprecationDescriptionForMarkup()
+	then element.getLineBreaks() + ":exclamation:**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ", go live date: " + element.getDeprecationGoLiveDate() + "):**<br>" + element.getDeprecationDescriptionForMarkup()
 	else "";
 
 cached String getBreakingChangeNoticeForReport(uml::NamedElement element):

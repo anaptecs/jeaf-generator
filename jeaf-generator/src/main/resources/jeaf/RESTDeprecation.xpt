@@ -35,7 +35,7 @@
 | Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-----------------------|----------------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.typeSelect(RESTResource).sortBy(e|e.path) AS element-»
-| `«element.path»` | `«element.fqn()»` | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
+| `«element.path»` | `«element.fqn()»` | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» |
 «ENDFOREACH-»
 «IF deprecations.typeSelect(RESTResource).size == 0-»
 | No REST Resurces are marked as deprecated. |
@@ -50,13 +50,13 @@
 | Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|--------|----------------------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.typeSelect(RESTOperation).sortBy(e|e.getFullPath()) AS element-»
-| `«element.getFullPath()»` | `REST Operation` | `«EXPAND OperationName FOR element»` | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
+| `«element.getFullPath()»` | `REST Operation` | `«EXPAND OperationName FOR element»` | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» |
     «IF element.hasDeprecatedParameters()-»
         «FOREACH element.getDeprecatedParameters() AS param-»
-|   | `«EXPAND RESTOperationParamType FOR param»` | `«EXPAND RESTOperationParamName FOR param»` | «param.getDeprecationDescriptionForMarkup()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
+|   | `«EXPAND RESTOperationParamType FOR param»` | `«EXPAND RESTOperationParamName FOR param»` | «param.getDeprecationDescriptionForMarkup()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» |
         «ENDFOREACH-»
         «FOREACH element.getDeprecatedBeanParameters() AS param-»
-|   | `«EXPAND RESTOperationBeanParamType FOR param»` | `«EXPAND RESTOperationBeanParamName FOR param»` | «param.getDeprecationDescriptionForMarkup()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
+|   | `«EXPAND RESTOperationBeanParamType FOR param»` | `«EXPAND RESTOperationBeanParamName FOR param»` | «param.getDeprecationDescriptionForMarkup()» | «param.getDeprecatedSince()» | «param.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
@@ -73,10 +73,10 @@
 | Type   | Element   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.select(e|e.isOpenAPIType() || e.isOpenAPIDataType()).sortBy(e|e.name) AS element-»
-| `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
+| `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» |
     «IF element.asClass().hasDeprecatedProperties()-»
         «FOREACH element.asClass().getDeprecatedProperties() AS property-»
-|   | `«property.name»` | «property.getDeprecationDescriptionForMarkup()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
+|   | `«property.name»` | «property.getDeprecationDescriptionForMarkup()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
@@ -94,10 +94,10 @@
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasRESTDeprecation()).sortBy(e|e.name) AS element-»
-| `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
+| `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» |
     «IF element.asEnumeration().hasDeprecatedLiterals()-»
         «FOREACH element.asEnumeration().getDeprecatedLiterals() AS literal-»
-|   | `«literal.name»` | «literal.getDeprecationDescriptionForMarkup()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
+|   | `«literal.name»` | «literal.getDeprecationDescriptionForMarkup()» | «literal.getDeprecatedSince()» | «literal.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» |
         «ENDFOREACH-»
     «ENDIF-»
 «ENDFOREACH-»
