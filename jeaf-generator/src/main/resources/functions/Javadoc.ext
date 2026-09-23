@@ -73,7 +73,7 @@ cached String getDeprecationNoticeForReport(uml::NamedElement element):
 
 cached String getBreakingChangeNoticeForReport(uml::NamedElement element):
 	if element.isBreakingChange()
-	then element.getLineBreaks() + ":bomb: **Breaking Change Notice " + "(since: " + "" + ", active with: " + element.getBreakingChangeActiveWith() + ", go live date: " + element.getBreakingChangeActivactionDate() + "):**<br>" + element.getBreakingChangeDescription()
+	then element.getLineBreaks() + ":bomb: **Breaking Change Notice " + "(since: " + "" + ", active with: " + element.getBreakingChangeActiveWith() + ", go live date: " + element.getBreakingChangeGoLiveDate() + "):**<br>" + element.getBreakingChangeDescription()
 	else "";
 	
 private getLineBreaks(uml::NamedElement element):

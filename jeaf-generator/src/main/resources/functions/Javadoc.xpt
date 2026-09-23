@@ -212,7 +212,7 @@
 
 «DEFINE BreakingChangeJavadoc FOR uml::NamedElement -»
     «IF this.isBreakingChange()-»
-    <p/><b>Breaking Change</b> (<b>since:</b> «IF this.getBreakingChangeSince().length > 0»«this.getBreakingChangeSince()»«ELSE»TBD«ENDIF», <b>active with:</b> «IF this.getBreakingChangeActiveWith().length > 0»«this.getBreakingChangeActiveWith()»«ELSE»TBD«ENDIF», <b>go live date:</b> «IF this.getBreakingChangeActivactionDate().length > 0»«this.getBreakingChangeActivactionDate()»«ELSE»TBD«ENDIF»): «this.getBreakingChangeDescription().convertCommentForJavadoc()»
+    <p/><b>Breaking Change</b> (<b>since:</b> «IF this.getBreakingChangeSince().length > 0»«this.getBreakingChangeSince()»«ELSE»TBD«ENDIF», <b>active with:</b> «IF this.getBreakingChangeActiveWith().length > 0»«this.getBreakingChangeActiveWith()»«ELSE»TBD«ENDIF», <b>go live date:</b> «IF this.getBreakingChangeGoLiveDate().length > 0»«this.getBreakingChangeGoLiveDate()»«ELSE»TBD«ENDIF»): «this.getBreakingChangeDescription().convertCommentForJavadoc()»
     «ENDIF-»
 «ENDDEFINE»
 

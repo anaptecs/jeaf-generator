@@ -159,7 +159,7 @@
 			@«toDoAnnotationClassName()»(plannedChanges = {«FOREACH this.getToDoPlannedChanges() AS change SEPARATOR ", "»«toDoTypeClassName()».«change»«ENDFOREACH»}, description = "«this.getToDoDescription()»", since = "«this.getToDoSince()»")
 		«ENDIF-»
 		«IF this.isBreakingChange() && breakingChangeNoticeAnnotationClassName().length > 0 -»
-			@«breakingChangeNoticeAnnotationClassName()»(description = "«this.getBreakingChangeDescription()»", since = "«this.getBreakingChangeSince()»", activeWith = "«this.getBreakingChangeActiveWith()»", goLiveDate = "«this.getBreakingChangeActivactionDate()»")
+			@«breakingChangeNoticeAnnotationClassName()»(description = "«this.getBreakingChangeDescription()»", since = "«this.getBreakingChangeSince()»", activeWith = "«this.getBreakingChangeActiveWith()»", goLiveDate = "«this.getBreakingChangeGoLiveDate()»")
 		«ENDIF-»
 		«IF this.isDeprecated() && deprecationNoticeAnnotationClassName().length > 0 -»
 			@«deprecationNoticeAnnotationClassName()»(description = "«this.getDeprecationDescription()»", since = "«this.getDeprecatedSince()»", removedWith = "«this.getDeprecationRemoval()»", goLiveDate = "«this.getDeprecationGoLiveDate()»")

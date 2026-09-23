@@ -56,15 +56,15 @@ cached String getDeprecationGoLiveDate(NamedElement element):
 	if element.isJEAFDeprecated() == false
 	then ""
 	else
-		if element.getDeprecationRemovalDateInternal().trim().length > 0
-		then element.getDeprecationRemovalDateInternal().trim()
+		if element.getDeprecationGoLiveDateInternal().trim().length > 0
+		then element.getDeprecationGoLiveDateInternal().trim()
 		else
 			if element.hasCompatibilityInfo() && element.getCompatibilityInfo().hasFirstNonCompatibleVersion()
 			then element.getCompatibilityInfo().getFirstNonCompatibleVersion().goLiveDate.trim()
 			else "";
 
 
-private String getDeprecationRemovalDateInternal(NamedElement element):
+private String getDeprecationGoLiveDateInternal(NamedElement element):
 	if element.isJEAFDeprecated()
 	then element.getStereotypeValue("JEAFDeprecated", "goLiveDate")
 	else "";
