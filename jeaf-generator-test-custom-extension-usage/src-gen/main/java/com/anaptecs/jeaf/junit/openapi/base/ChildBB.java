@@ -73,7 +73,7 @@ public class ChildBB extends ChildB {
   private int childBBAttributeXYZ = 0;
 
   /**
-   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>removal date:</b>
+   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
    * TBD)
    */
   // "int"
@@ -170,7 +170,7 @@ public class ChildBB extends ChildB {
     private int childBBAttributeXYZ = 0;
 
     /**
-     * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>removal
+     * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live
      * date:</b> TBD)
      */
     // "int"
@@ -382,7 +382,7 @@ public class ChildBB extends ChildB {
      *
      * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>removal
+     * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live
      * date:</b> TBD)
      */
     @Deprecated
@@ -545,7 +545,7 @@ public class ChildBB extends ChildB {
    * Method returns attribute {@link #deprecatedAttribute}.<br/>
    *
    * @return int Value to which {@link #deprecatedAttribute} is set.
-   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>removal date:</b>
+   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
    * TBD)
    */
   @Deprecated
@@ -558,7 +558,7 @@ public class ChildBB extends ChildB {
    * Method sets attribute {@link #deprecatedAttribute}.<br/>
    *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
-   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>removal date:</b>
+   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
    * TBD)
    */
   @Deprecated

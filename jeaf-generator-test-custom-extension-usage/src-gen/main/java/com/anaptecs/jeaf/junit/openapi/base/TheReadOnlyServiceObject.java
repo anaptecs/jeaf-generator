@@ -62,8 +62,8 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>activation date:</b> TBD): At least one
-   * bit will be expected.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>go live date:</b> TBD): At least one bit
+   * will be expected.
    */
   // "boolean"
   @ClassPropertyDeclaration
@@ -82,7 +82,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   private int bookingCodesXYZ = 0;
 
   /**
-   * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>removal date:</b> TBD)
+   * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>go live date:</b> TBD)
    */
   // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
   @ClassPropertyDeclaration
@@ -151,8 +151,8 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>activation date:</b> TBD): At least one
-     * bit will be expected.
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>go live date:</b> TBD): At least one bit
+     * will be expected.
      */
     // "boolean"
     @BuilderPropertyDeclaration
@@ -171,7 +171,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
     private int bookingCodesXYZ = 0;
 
     /**
-     * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>removal date:</b> TBD)
+     * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>go live date:</b> TBD)
      */
     // "com.anaptecs.jeaf.junit.openapi.base.InventoryType"
     @BuilderPropertyDeclaration
@@ -224,8 +224,8 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
     /**
      * Method sets attribute {@link #bits}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>activation date:</b> TBD): At least one
-     * bit will be expected.
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>go live date:</b> TBD): At least one bit
+     * will be expected.
      *
      * @param pBits Value to which {@link #bits} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -295,7 +295,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
      *
      * @param pInventoryType Value to which {@link #inventoryType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>removal date:</b> TBD)
+     * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>go live date:</b> TBD)
      */
     @Deprecated
     @JEAFCustomAnnotationTest
@@ -357,8 +357,8 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
   /**
    * Method returns attribute {@link #bits}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>activation date:</b> TBD): At least one
-   * bit will be expected.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>go live date:</b> TBD): At least one bit
+   * will be expected.
    *
    * @return boolean[] Value to which {@link #bits} is set.
    */
@@ -408,7 +408,7 @@ public class TheReadOnlyServiceObject extends Object implements ServiceObject {
    * Method returns association {@link #inventoryType}.<br/>
    *
    * @return {@link InventoryType} Value to which {@link #inventoryType} is set.
-   * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>removal date:</b> TBD)
+   * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>go live date:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest

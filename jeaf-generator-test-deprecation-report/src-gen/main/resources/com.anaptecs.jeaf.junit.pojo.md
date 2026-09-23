@@ -337,7 +337,7 @@ This is the first line of the first comment
 <br>
 
 ## PlainPOJO
-:bomb: **Breaking Change Notice (since: , active with: 47.11, activation date: 2222-12-31):**<br>Announcement for the far away future
+:bomb: **Breaking Change Notice (since: , active with: 47.11, go live date: 2222-12-31):**<br>Announcement for the far away future
 
 
 <br>
@@ -490,5 +490,5 @@ This is the first line of the first comment
 |------|----------------------|----------------------------|
 | `ALPHA` |   |  |
 | `BETA` |   |  |
-| `GAMMA` |   | :bomb: **Breaking Change Notice (since: , active with: 47.11, activation date: 2024-12-24):**<br>X-mas present |
+| `GAMMA` |   | :bomb: **Breaking Change Notice (since: , active with: 47.11, go live date: 2024-12-24):**<br>X-mas present |
 

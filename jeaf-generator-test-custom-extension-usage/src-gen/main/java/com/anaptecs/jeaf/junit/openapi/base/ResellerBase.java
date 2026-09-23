@@ -90,8 +90,8 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>activation date:</b> TBD): Maximum size will
-   * be increased.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will be
+   * increased.
    */
   // "java.lang.String"
   @ClassPropertyDeclaration
@@ -178,8 +178,8 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>activation date:</b> TBD): Maximum size
-     * will be increased.
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will
+     * be increased.
      */
     // "java.lang.String"
     @BuilderPropertyDeclaration
@@ -269,8 +269,8 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
     /**
      * Method sets attribute {@link #name}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>activation date:</b> TBD): Maximum size
-     * will be increased.
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will
+     * be increased.
      *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
@@ -538,8 +538,8 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
   /**
    * Method returns attribute {@link #name}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>activation date:</b> TBD): Maximum size will
-   * be increased.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will be
+   * increased.
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
@@ -551,8 +551,8 @@ public abstract class ResellerBase extends Object implements ServiceObject, Iden
   /**
    * Method sets attribute {@link #name}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>activation date:</b> TBD): Maximum size will
-   * be increased.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will be
+   * increased.
    *
    * @param pName Value to which {@link #name} should be set.
    */

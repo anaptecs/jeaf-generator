@@ -16,7 +16,7 @@ public enum MyType {
   ALPHA, BETA,
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> 1.0.0, <b>active with:</b> 47.11, <b>activation date:</b> 2024-12-24): X-mas
+   * <b>Breaking Change</b> (<b>since:</b> 1.0.0, <b>active with:</b> 47.11, <b>go live date:</b> 2024-12-24): X-mas
    * present
    */
   GAMMA;

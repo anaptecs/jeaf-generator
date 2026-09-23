@@ -52,14 +52,14 @@ public abstract class MyPOJOResponseBase {
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-12-24):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
    */
   @BreakingChangeNotice(description = "", since = "", activeWith = "7.0", goLiveDate = "2026-12-24")
   @NotNull(groups = { V4.class, V5.class, V6.class })
   private String formerMandatoryProperty;
 
   /**
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
    */
   @Deprecated
   @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
@@ -90,13 +90,13 @@ public abstract class MyPOJOResponseBase {
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-12-24):
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
      */
     @BreakingChangeNotice(description = "", since = "", activeWith = "7.0", goLiveDate = "2026-12-24")
     private String formerMandatoryProperty;
 
     /**
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
      */
     @Deprecated
     @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
@@ -136,7 +136,7 @@ public abstract class MyPOJOResponseBase {
     /**
      * Method sets attribute {@link #formerMandatoryProperty}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-12-24):
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
      *
      * @param pFormerMandatoryProperty Value to which {@link #formerMandatoryProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
@@ -154,7 +154,7 @@ public abstract class MyPOJOResponseBase {
      *
      * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
      */
     @Deprecated
     @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
@@ -211,7 +211,7 @@ public abstract class MyPOJOResponseBase {
   /**
    * Method returns attribute {@link #formerMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-12-24):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
    *
    * @return {@link String} Value to which {@link #formerMandatoryProperty} is set.
    */
@@ -223,7 +223,7 @@ public abstract class MyPOJOResponseBase {
   /**
    * Method sets attribute {@link #formerMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>activation date:</b> 2026-12-24):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
    *
    * @param pFormerMandatoryProperty Value to which {@link #formerMandatoryProperty} should be set.
    */
@@ -237,7 +237,7 @@ public abstract class MyPOJOResponseBase {
    * Method returns attribute {@link #deprecatedProperty}.<br/>
    *
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
    */
   @Deprecated
   @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
@@ -249,7 +249,7 @@ public abstract class MyPOJOResponseBase {
    * Method sets attribute {@link #deprecatedProperty}.<br/>
    *
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
    */
   @Deprecated
   @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")

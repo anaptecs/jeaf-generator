@@ -10,7 +10,7 @@ import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
 
 /**
  * <p/>
- * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>activation date:</b> 2222-12-31):
+ * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31):
  * Announcement for the far away future
  *
  * @author JEAF Generator

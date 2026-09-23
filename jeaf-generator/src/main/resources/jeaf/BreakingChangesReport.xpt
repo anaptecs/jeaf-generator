@@ -51,7 +51,7 @@
 
 
 «DEFINE BreakingChangesTablePerPackage FOR List[uml::NamedElement]-»
-| Element  | Details    | Description  | Since | Active with | Activation Date |
+| Element  | Details    | Description  | Since | Active with | Go Live Date |
 |----------|------------|--------------|:-----:|:-----------:|:---------------:|
 «IF this.isEmpty == false -»
     «FOREACH this AS change -»
@@ -82,7 +82,7 @@
 
 
 «DEFINE BreakingChangesTable FOR List[uml::NamedElement]-»
-| Element  | Details    | Description  | Since | Active with | Activation Date |
+| Element  | Details    | Description  | Since | Active with | Go Live Date |
 |----------|------------|--------------|:-----:|:-----------:|:---------------:|
 «IF this.isEmpty == false -»
     «FOREACH this AS change -»
@@ -99,7 +99,7 @@
 
 «DEFINE BreakingChangesCSV FOR Model»
 «FILE getBreakingChangesCSVFileName() res_gen-»
-Element;Package;Details;Description;Since;Active with;Activation Date;
+Element;Package;Details;Description;Since;Active with;Go Live Date;
 «FOREACH this.getPackagesForBreakingChangesReport() AS package-»
 «FOREACH package.getBreakingChanges() AS change-»
         «IF change.isProperty() || change.isEnumerationLiteral() -»

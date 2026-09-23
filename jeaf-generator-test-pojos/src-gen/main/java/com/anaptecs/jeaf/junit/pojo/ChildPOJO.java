@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
- * @deprecated We do not like this class any more. (<b>since:</b> Big bang, <b>removed with:</b> Last X-Mas, <b>removal
+ * @deprecated We do not like this class any more. (<b>since:</b> Big bang, <b>removed with:</b> Last X-Mas, <b>go live
  * date:</b> TBD)
  */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")

@@ -17,7 +17,7 @@ public enum Color {
    */
   WHITE, BLACK, GREEN,
   /**
-   * @deprecated We do not like this color any more. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>removal date:</b>
+   * @deprecated We do not like this color any more. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
    * TBD)
    */
   @Deprecated

@@ -37,7 +37,7 @@ public enum ChannelType {
    * <b>Attribute values:</b><br/>
    * - <code>code = "WEB"</code><br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.47.11, <b>activation date:</b> TBD): Added new
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.47.11, <b>go live date:</b> TBD): Added new
    * literal
    */
   @JEAFCustomAnnotationTest
@@ -48,7 +48,7 @@ public enum ChannelType {
    * <b>Attribute values:</b><br/>
    * - <code>code = "PRISMA"</code><br/>
    *
-   * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>removal date:</b> TBD)
+   * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest

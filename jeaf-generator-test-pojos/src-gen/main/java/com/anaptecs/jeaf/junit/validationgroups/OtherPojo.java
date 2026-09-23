@@ -157,8 +157,8 @@ public class OtherPojo {
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2027-05-01): Property
-   * will become mandatory.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property will
+   * become mandatory.
    */
   @BreakingChangeNotice(
       description = "Property will become mandatory.",
@@ -269,7 +269,7 @@ public class OtherPojo {
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2027-05-01): Property
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property
      * will become mandatory.
      */
     @BreakingChangeNotice(
@@ -430,7 +430,7 @@ public class OtherPojo {
     /**
      * Method sets attribute {@link #v6Property}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2027-05-01): Property
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property
      * will become mandatory.
      *
      * @param pV6Property Value to which {@link #v6Property} should be set.
@@ -659,8 +659,8 @@ public class OtherPojo {
   /**
    * Method returns attribute {@link #v6Property}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2027-05-01): Property
-   * will become mandatory.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property will
+   * become mandatory.
    *
    * @return {@link String} Value to which {@link #v6Property} is set.
    */
@@ -676,8 +676,8 @@ public class OtherPojo {
   /**
    * Method sets attribute {@link #v6Property}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>activation date:</b> 2027-05-01): Property
-   * will become mandatory.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property will
+   * become mandatory.
    *
    * @param pV6Property Value to which {@link #v6Property} should be set.
    */

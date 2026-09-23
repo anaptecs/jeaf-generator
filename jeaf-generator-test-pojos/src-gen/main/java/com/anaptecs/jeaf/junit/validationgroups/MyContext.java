@@ -57,7 +57,7 @@ public class MyContext {
   private Set<ClientType> clientTypes;
 
   /**
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
    */
   @Deprecated
   @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
@@ -115,7 +115,7 @@ public class MyContext {
     private Set<ClientType> clientTypes;
 
     /**
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
      */
     @Deprecated
     @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
@@ -208,7 +208,7 @@ public class MyContext {
      *
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
      */
     @Deprecated
     @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
@@ -323,7 +323,7 @@ public class MyContext {
    * Method returns attribute {@link #deprecatedHeader}.<br/>
    *
    * @return {@link String} Value to which {@link #deprecatedHeader} is set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
    */
   @Deprecated
   @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
@@ -335,7 +335,7 @@ public class MyContext {
    * Method sets attribute {@link #deprecatedHeader}.<br/>
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
    */
   @Deprecated
   @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")

@@ -159,7 +159,7 @@ private cached String getInternalDeprecationDescription(uml::NamedElement elemen
 
 private cached String getBreakingChangeDescriptionInternal(uml::NamedElement element, String indentation):
     if element.isBreakingChange() && element.isBreakingChangeNoticeRequired()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (active with " + element.getBreakingChangeActiveWith() + ", activation date: " + element.getBreakingChangeActivactionDate() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
+    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (active with " + element.getBreakingChangeActiveWith() + ", go live date: " + element.getBreakingChangeActivactionDate() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
     else "";
 
 
