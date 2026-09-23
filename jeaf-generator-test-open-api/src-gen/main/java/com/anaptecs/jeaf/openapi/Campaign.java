@@ -42,10 +42,10 @@ public class Campaign {
   }
 
    /**
-   * The magic link. &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 2.3.1, removed with: 2.4, removal date: ):**&lt;br&gt;&lt;br&gt; Please use \&quot;moreLinks\&quot; instead. 
+   * The magic link. &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 2.3.1, removed with: 2.4, go live date: ):**&lt;br&gt;&lt;br&gt; Please use \&quot;moreLinks\&quot; instead. 
    * @return theLinkID
   **/
-  @Schema(description = "The magic link. <br><br> **Deprecation Notice (since: 2.3.1, removed with: 2.4, removal date: ):**<br><br> Please use \"moreLinks\" instead. ")
+  @Schema(description = "The magic link. <br><br> **Deprecation Notice (since: 2.3.1, removed with: 2.4, go live date: ):**<br><br> Please use \"moreLinks\" instead. ")
   public Long getTheLinkID() {
     return theLinkID;
   }
@@ -65,10 +65,10 @@ public class Campaign {
   }
 
    /**
-   *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 1.2, removed with: 3.0, removal date: ):**&lt;br&gt;&lt;br&gt; No good any more 
+   *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 1.2, removed with: 3.0, go live date: ):**&lt;br&gt;&lt;br&gt; No good any more 
    * @return moreLinkIDs
   **/
-  @Schema(required = true, description = " <br><br> **Deprecation Notice (since: 1.2, removed with: 3.0, removal date: ):**<br><br> No good any more ")
+  @Schema(required = true, description = " <br><br> **Deprecation Notice (since: 1.2, removed with: 3.0, go live date: ):**<br><br> No good any more ")
   public List<Long> getMoreLinkIDs() {
     return moreLinkIDs;
   }

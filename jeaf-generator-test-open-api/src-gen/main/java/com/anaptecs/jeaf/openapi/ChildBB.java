@@ -68,10 +68,10 @@ public class ChildBB extends ChildB {
   }
 
    /**
-   *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: , removed with: , removal date: ):**&lt;br&gt;&lt;br&gt; Please  keep &#x60;hands off&#x60;. 
+   *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: , removed with: , go live date: ):**&lt;br&gt;&lt;br&gt; Please  keep &#x60;hands off&#x60;. 
    * @return deprecatedAttribute
   **/
-  @Schema(required = true, description = " <br><br> **Deprecation Notice (since: , removed with: , removal date: ):**<br><br> Please  keep `hands off`. ")
+  @Schema(required = true, description = " <br><br> **Deprecation Notice (since: , removed with: , go live date: ):**<br><br> Please  keep `hands off`. ")
   public Integer getDeprecatedAttribute() {
     return deprecatedAttribute;
   }

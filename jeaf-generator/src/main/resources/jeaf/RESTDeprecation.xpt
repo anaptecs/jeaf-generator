@@ -32,7 +32,7 @@
 
 <br>
 
-| Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-----------------------|----------------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.typeSelect(RESTResource).sortBy(e|e.path) AS element-»
 | `«element.path»` | `«element.fqn()»` | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
@@ -47,7 +47,7 @@
 
 <br>
 
-| Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|--------|----------------------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.typeSelect(RESTOperation).sortBy(e|e.getFullPath()) AS element-»
 | `«element.getFullPath()»` | `REST Operation` | `«EXPAND OperationName FOR element»` | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
@@ -70,7 +70,7 @@
 
 <br>
 
-| Type   | Element   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Type   | Element   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.select(e|e.isOpenAPIType() || e.isOpenAPIDataType()).sortBy(e|e.name) AS element-»
 | `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
@@ -91,7 +91,7 @@
 
 <br>
 
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.select(e|e.isOpenAPIEnumeration()).select(e|e.hasRESTDeprecation()).sortBy(e|e.name) AS element-»
 | `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |

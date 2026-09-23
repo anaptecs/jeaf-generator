@@ -37,7 +37,7 @@ Enumeration defines the different types of channels that are supported.
 | `MOBILE` |   |  |
 | `TVM` |   |  |
 | `WEB` |   | :bomb: **Breaking Change Notice (since: , active with: 1.47.11, activation date: ):**<br>Added new literal |
-| :exclamation:`LEGACY_POS` |   | :exclamation:**Deprecation Notice (since: , removed with: , removal date: ):**<br>I'm `DEPRECATED`. |
+| :exclamation:`LEGACY_POS` |   | :exclamation:**Deprecation Notice (since: , removed with: , go live date: ):**<br>I'm `DEPRECATED`. |
 
 ## ComplexBookingType
 :bomb: **Breaking Change Notice (since: , active with: PI 17, activation date: ):**<br>Class was changed to an extensible enum. New literals will not be introduced before PI 17.

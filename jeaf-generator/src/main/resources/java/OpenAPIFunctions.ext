@@ -153,7 +153,7 @@ private cached String getAuthorizedRoles(uml::Element element, String indentatio
 
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ", removal date: " + element.getDeprecationRemovalDate() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
+    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ", go live date: " + element.getDeprecationRemovalDate() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
     else "";
 
 

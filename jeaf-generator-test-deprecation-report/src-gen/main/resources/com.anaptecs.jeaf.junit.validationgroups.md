@@ -7,7 +7,7 @@
 
 # Types
 ## DeprecatedClass
-:exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-12-24):**<br>
+:exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br>
 
 
 <br>
@@ -21,7 +21,7 @@
 <br>
 
 ## DeprecatedOpenAPIDataType
-:exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-12-24):**<br>
+:exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br>
 
 
 <br>
@@ -46,7 +46,7 @@
 |------| ----------------------|-------------|
 | **`firstProperty`** : `String`   `[1..1]`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 | **`clientTypes`** : [`ClientType`](#clienttype)   `[1..*]`<br>        `@Optional: versions=V4, V5, V6` |  |  |
-| *`deprecatedHeader`* : `java.lang.String`   `[0..1]`<br>        `@NotNull: versions=V4, V5, V6` |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-12-24):**<br> |
+| *`deprecatedHeader`* : `java.lang.String`   `[0..1]`<br>        `@NotNull: versions=V4, V5, V6` |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br> |
 
 <br>
 
@@ -62,7 +62,7 @@
 |------| ----------------------|-------------|
 | **`untouchedProperty`** : `String`   `[1..1]`<br> |  |  |
 | <font color="red">**`formerMandatoryProperty`**</font> : `String`   `[0..1]`<br>        `@NotNull: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 7.0, activation date: 2026-12-24):**<br> |
-| *`deprecatedProperty`* : `String`   `[0..1]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-12-24):**<br> |
+| *`deprecatedProperty`* : `String`   `[0..1]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br> |
 | **`derivedProperty`** : `String`   `[1..1]`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 
 <br>
@@ -79,7 +79,7 @@
 |------| ----------------------|-------------|
 | <font color="red">**`upcomingMandatoryProperty`**</font> : `String`   `[1..1]`<br>        `@Optional: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 7.0, activation date: 2026-12-24):**<br>Property will become mandatory in the future |
 | <font color="red">**`propertyWithNewConstraints`**</font> : `String`   `[1..1]`<br> |  | :bomb: **Breaking Change Notice (since: , active with: , activation date: ):**<br> |
-| *`formerMandatoryRequestProperty`* : `String`   `[0..1]`<br>        `@NotNull: versions=V4, V5, V6` |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-12-24):**<br> |
+| *`formerMandatoryRequestProperty`* : `String`   `[0..1]`<br>        `@NotNull: versions=V4, V5, V6` |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br> |
 | **`untouchedProperty`** : `String`   `[1..1]`<br> |  |  |
 | **`constraintChangingProperty`** : `String`   `[1..1]`<br>        `@Size: min=5, max=500, versions=V4, V5, V6`<br>        `@Size: min=10, max=20, versions=V7`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 | **`otherPojos`** : [`OtherPojo`](#otherpojo)   `[1..*]`<br>        `@Optional: versions=V4, V5, V6` |  |  |
@@ -125,10 +125,10 @@
 |------|----------------------|----------------------------|
 | `CLIENT_1` |   |  |
 | `CLIENT_2` |   |  |
-| :exclamation:`CLIENT_3` |   | :exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-12-24):**<br> |
+| :exclamation:`CLIENT_3` |   | :exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br> |
 
 ## DeprecatedOpenAPIEnum
-:exclamation:**Deprecation Notice (since: , removed with: 7.0, removal date: 2026-12-24):**<br>
+:exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br>
 
 ### Literals
 

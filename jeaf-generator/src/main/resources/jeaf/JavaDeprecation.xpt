@@ -45,7 +45,7 @@
 
 <br>
 
-| Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed | Removal date |
+| Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed | Go live date |
 |---------|------|----------------------|-------------|------------------|-----------------------|:------------:|
 «FOREACH deprecations AS element -»
 | `«element.getNearestPackage().qualifiedName()»` | «IF element.isClass() || element.isInterface() || element.isEnumeration()»`«element.asNamedElement().name »`«ELSE»`«element.owner.asNamedElement().name »`«ENDIF» | «IF !element.isClass() &&  !element.isInterface()»`«element.name »`«ENDIF» | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
@@ -73,7 +73,7 @@ No deprecations published.
 
 <br>
 
-| Service Name   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |----------------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.typeSelect(JEAFService).typeSelect(JEAFDeprecated).sortBy(e|e.asNamedElement().fqn()).asNamedElement() AS service-»
 | `«service.name»` | «service.getDeprecationDescriptionForMarkup()» | «service.getDeprecatedSince()» | «service.getDeprecationRemoval()» | «service.getDeprecationRemovalDate()» |
@@ -89,7 +89,7 @@ No deprecations published.
 «IF service.hasDeprecatedOperations() || true -»
 #### `«service.name»`
 
-| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH service.getDeprecatedOperations().sortBy(e|e.name) AS operation-»
 | `«EXPAND OperationName FOR operation»` | | «operation.getDeprecationDescriptionForMarkup()» | «operation.getDeprecatedSince()» | «operation.getDeprecationRemoval()» | «operation.getDeprecationRemovalDate()» |
@@ -109,7 +109,7 @@ No deprecations published.
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.select(e|e.isPOJO() || e.isServiceObject() || e.isDomainObject() || e.isPersistentObject()).sortBy(e|e.fqn()) AS element-»
 | `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
@@ -132,7 +132,7 @@ No deprecations published.
 
 <br>
 
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasJavaDeprecation()).sortBy(e|e.fqn()) AS element-»
 | `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationRemovalDate()» |
@@ -150,7 +150,7 @@ No deprecations published.
 
 <br>
 
-| Type | Property   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Type | Property   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |------|------------|---------------|:------------------:|:-----------------------:|:------------:|
 «FOREACH deprecations.select(e|e.owner.isJEAFEnumeration()).typeSelect(uml::Property) AS property-»
 | `«property.owner.asNamedElement().name»` | `«property.name»` | «property.getDeprecationDescriptionForMarkup()» | «property.getDeprecatedSince()» | «property.getDeprecationRemoval()» | «property.getDeprecationRemovalDate()» |
@@ -173,7 +173,7 @@ No deprecations published.
 
 «DEFINE DeprecationsCSV FOR Model»
 «FILE getDeprecationCSVFileName() res_gen-»
-Type;Package;Property / Operation;HTTP Header;Description;Deprecated since;Planned to be removed;Removal Date;
+Type;Package;Property / Operation;HTTP Header;Description;Deprecated since;Planned to be removed;Go Live Date;
 «FOREACH this.getPackagesForJavaDeprecationsReport() AS package-»
 «FOREACH package.getJavaDeprecations() AS deprecation-»
 «IF deprecation.isDeprecated()-»

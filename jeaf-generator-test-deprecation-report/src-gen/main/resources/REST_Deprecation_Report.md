@@ -6,7 +6,7 @@
 
 <br>
 
-| Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-----------------------|----------------|---------------|:------------------:|:-----------------------:|:------------:|
 | `` | `com.anaptecs.jeaf.junit.validationgroups.AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-12-24 |
 | `/api` | `com.anaptecs.jeaf.junit.rest.RESTTestService` |  |  |  |  |
@@ -22,7 +22,7 @@
 
 <br>
 
-| Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|--------|----------------------|---------------|:------------------:|:-----------------------:|:------------:|
 | `/api/beanParam2 [POST]` | `REST Operation` | `RESTTestService.handleBeanParam1(BeanParameter)` |  |  |  |  |
 | `/api/dep/async [POST]` | `REST Operation` | `RESTTestService.deprecatedAsyncParam(int)` |  |  |  |  |
@@ -61,7 +61,7 @@
 
 <br>
 
-| Type   | Element   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Type   | Element   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 | `Campaign` | |  |  |  |  |
 |   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |  |
@@ -106,7 +106,7 @@
 
 <br>
 
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 | `ChannelType` | |  |  |  |  |
 |   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |  |
