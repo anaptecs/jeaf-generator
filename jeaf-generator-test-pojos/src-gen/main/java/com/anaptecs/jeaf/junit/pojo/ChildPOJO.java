@@ -29,7 +29,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  * @deprecated We do not like this class any more. (<b>since:</b> Big bang, <b>removed with:</b> Last X-Mas, <b>go live
- * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
+ * date:</b> TBD, <b>end of compatibility period:</b> TBD)
  */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
@@ -39,7 +39,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     since = "Big bang",
     removedWith = "Last X-Mas",
     goLiveDate = "",
-    endOfCompatibilityPhase = "")
+    endOfCompatibilityPeriod = "")
 @JsonDeserialize(builder = ChildPOJO.Builder.class)
 public class ChildPOJO extends ParentPOJO {
   /**
@@ -105,7 +105,7 @@ public class ChildPOJO extends ParentPOJO {
       since = "Big bang",
       removedWith = "Last X-Mas",
       goLiveDate = "",
-      endOfCompatibilityPhase = "")
+      endOfCompatibilityPeriod = "")
   public static class Builder extends ParentPOJO.Builder {
     private Integer childAttribute;
 
@@ -148,7 +148,7 @@ public class ChildPOJO extends ParentPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
     @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {

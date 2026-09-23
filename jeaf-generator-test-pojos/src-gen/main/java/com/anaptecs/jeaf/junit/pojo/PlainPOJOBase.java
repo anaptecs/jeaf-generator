@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 /**
  * <p/>
  * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31, <b>end of
- * compatibility phase:</b> TBD): Announcement for the far away future
+ * compatibility period:</b> TBD): Announcement for the far away future
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -38,7 +38,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     since = "1.2.3",
     activeWith = "47.11",
     goLiveDate = "2222-12-31",
-    endOfCompatibilityPhase = "")
+    endOfCompatibilityPeriod = "")
 @JsonDeserialize(builder = PlainPOJO.Builder.class)
 public abstract class PlainPOJOBase {
   /**
@@ -230,7 +230,7 @@ public abstract class PlainPOJOBase {
   /**
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public abstract void doDeprectedStuff( );
 
   /**
@@ -241,13 +241,13 @@ public abstract class PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public abstract String doSomething( @Deprecated @DeprecationNotice(
       description = "",
       since = "",
       removedWith = "",
       goLiveDate = "",
-      endOfCompatibilityPhase = "") int pParam1, int pParam2 );
+      endOfCompatibilityPeriod = "") int pParam1, int pParam2 );
 
   @Override
   public int hashCode( ) {

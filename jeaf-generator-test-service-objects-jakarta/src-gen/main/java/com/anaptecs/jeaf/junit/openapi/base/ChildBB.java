@@ -57,7 +57,7 @@ public class ChildBB extends ChildB {
 
   /**
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD, <b>end of compatibility phase:</b> TBD)
+   * TBD, <b>end of compatibility period:</b> TBD)
    */
   @Deprecated
   private int deprecatedAttribute;
@@ -133,7 +133,7 @@ public class ChildBB extends ChildB {
 
     /**
      * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live
-     * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
+     * date:</b> TBD, <b>end of compatibility period:</b> TBD)
      */
     @Deprecated
     private int deprecatedAttribute;
@@ -305,7 +305,7 @@ public class ChildBB extends ChildB {
      * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live
-     * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
+     * date:</b> TBD, <b>end of compatibility period:</b> TBD)
      */
     @Deprecated
     public Builder setDeprecatedAttribute( int pDeprecatedAttribute ) {
@@ -429,7 +429,7 @@ public class ChildBB extends ChildB {
    *
    * @return int Value to which {@link #deprecatedAttribute} is set.
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD, <b>end of compatibility phase:</b> TBD)
+   * TBD, <b>end of compatibility period:</b> TBD)
    */
   @Deprecated
   public int getDeprecatedAttribute( ) {
@@ -441,7 +441,7 @@ public class ChildBB extends ChildB {
    *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD, <b>end of compatibility phase:</b> TBD)
+   * TBD, <b>end of compatibility period:</b> TBD)
    */
   @Deprecated
   public void setDeprecatedAttribute( int pDeprecatedAttribute ) {

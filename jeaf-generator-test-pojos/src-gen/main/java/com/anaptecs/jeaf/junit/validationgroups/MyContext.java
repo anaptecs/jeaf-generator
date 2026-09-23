@@ -51,7 +51,7 @@ public class MyContext {
       since = "",
       removedWith = "7.0",
       goLiveDate = "2026-12-24",
-      endOfCompatibilityPhase = "2026-09-13")
+      endOfCompatibilityPeriod = "2026-09-13")
   public static final String DEPRECATEDHEADER = "deprecatedHeader";
 
   @NotNull(groups = { V7.class })
@@ -63,7 +63,7 @@ public class MyContext {
 
   /**
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
-   * phase:</b> 2026-09-13)
+   * period:</b> 2026-09-13)
    */
   @Deprecated
   @DeprecationNotice(
@@ -71,7 +71,7 @@ public class MyContext {
       since = "",
       removedWith = "7.0",
       goLiveDate = "2026-12-24",
-      endOfCompatibilityPhase = "2026-09-13")
+      endOfCompatibilityPeriod = "2026-09-13")
   @NotNull(groups = { V4.class, V5.class, V6.class })
   private String deprecatedHeader;
 
@@ -127,7 +127,7 @@ public class MyContext {
 
     /**
      * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
-     * compatibility phase:</b> 2026-09-13)
+     * compatibility period:</b> 2026-09-13)
      */
     @Deprecated
     @DeprecationNotice(
@@ -135,7 +135,7 @@ public class MyContext {
         since = "",
         removedWith = "7.0",
         goLiveDate = "2026-12-24",
-        endOfCompatibilityPhase = "2026-09-13")
+        endOfCompatibilityPeriod = "2026-09-13")
     private String deprecatedHeader;
 
     /**
@@ -226,7 +226,7 @@ public class MyContext {
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
-     * compatibility phase:</b> 2026-09-13)
+     * compatibility period:</b> 2026-09-13)
      */
     @Deprecated
     @DeprecationNotice(
@@ -234,7 +234,7 @@ public class MyContext {
         since = "",
         removedWith = "7.0",
         goLiveDate = "2026-12-24",
-        endOfCompatibilityPhase = "2026-09-13")
+        endOfCompatibilityPeriod = "2026-09-13")
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setDeprecatedHeader( String pDeprecatedHeader ) {
       // Assign value to attribute
@@ -347,7 +347,7 @@ public class MyContext {
    *
    * @return {@link String} Value to which {@link #deprecatedHeader} is set.
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
-   * phase:</b> 2026-09-13)
+   * period:</b> 2026-09-13)
    */
   @Deprecated
   @DeprecationNotice(
@@ -355,7 +355,7 @@ public class MyContext {
       since = "",
       removedWith = "7.0",
       goLiveDate = "2026-12-24",
-      endOfCompatibilityPhase = "2026-09-13")
+      endOfCompatibilityPeriod = "2026-09-13")
   public String getDeprecatedHeader( ) {
     return deprecatedHeader;
   }
@@ -365,7 +365,7 @@ public class MyContext {
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
-   * phase:</b> 2026-09-13)
+   * period:</b> 2026-09-13)
    */
   @Deprecated
   @DeprecationNotice(
@@ -373,7 +373,7 @@ public class MyContext {
       since = "",
       removedWith = "7.0",
       goLiveDate = "2026-12-24",
-      endOfCompatibilityPhase = "2026-09-13")
+      endOfCompatibilityPeriod = "2026-09-13")
   public void setDeprecatedHeader( String pDeprecatedHeader ) {
     // Assign value to attribute
     deprecatedHeader = pDeprecatedHeader;

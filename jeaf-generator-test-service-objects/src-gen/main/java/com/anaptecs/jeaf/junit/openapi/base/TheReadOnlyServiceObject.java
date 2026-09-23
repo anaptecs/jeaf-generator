@@ -47,7 +47,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
   /**
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): At least one bit will be expected.
+   * compatibility period:</b> TBD): At least one bit will be expected.
    */
   private final boolean[] bits;
 
@@ -55,7 +55,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
   /**
    * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>go live date:</b> TBD,
-   * <b>end of compatibility phase:</b> TBD)
+   * <b>end of compatibility period:</b> TBD)
    */
   @Deprecated
   private final InventoryType inventoryType;
@@ -118,7 +118,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
     /**
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): At least one bit will be expected.
+     * compatibility period:</b> TBD): At least one bit will be expected.
      */
     private boolean[] bits;
 
@@ -126,7 +126,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
 
     /**
      * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>go live date:</b> TBD,
-     * <b>end of compatibility phase:</b> TBD)
+     * <b>end of compatibility period:</b> TBD)
      */
     @Deprecated
     private InventoryType inventoryType;
@@ -167,7 +167,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
      * Method sets attribute {@link #bits}.<br/>
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): At least one bit will be expected.
+     * compatibility period:</b> TBD): At least one bit will be expected.
      *
      * @param pBits Value to which {@link #bits} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -217,7 +217,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
      * @param pInventoryType Value to which {@link #inventoryType} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>go live date:</b> TBD,
-     * <b>end of compatibility phase:</b> TBD)
+     * <b>end of compatibility period:</b> TBD)
      */
     @Deprecated
     public Builder setInventoryType( InventoryType pInventoryType ) {
@@ -264,7 +264,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    * Method returns attribute {@link #bits}.<br/>
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 16, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): At least one bit will be expected.
+   * compatibility period:</b> TBD): At least one bit will be expected.
    *
    * @return boolean[] Value to which {@link #bits} is set.
    */
@@ -295,7 +295,7 @@ public class TheReadOnlyServiceObject implements ServiceObject {
    *
    * @return {@link InventoryType} Value to which {@link #inventoryType} is set.
    * @deprecated Let's reproduce #65 (<b>since:</b> not too long, <b>removed with:</b> 99.9, <b>go live date:</b> TBD,
-   * <b>end of compatibility phase:</b> TBD)
+   * <b>end of compatibility period:</b> TBD)
    */
   @Deprecated
   public InventoryType getInventoryType( ) {

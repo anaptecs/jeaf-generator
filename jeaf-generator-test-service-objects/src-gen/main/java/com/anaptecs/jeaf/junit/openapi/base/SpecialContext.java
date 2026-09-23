@@ -37,7 +37,7 @@ public class SpecialContext extends Context {
 
   /**
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24, <b>go live date:</b> TBD, <b>end of compatibility
-   * phase:</b> TBD)
+   * period:</b> TBD)
    */
   @Deprecated
   private IntegerCode deprecatedHeader;
@@ -118,7 +118,7 @@ public class SpecialContext extends Context {
 
     /**
      * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD)
+     * compatibility period:</b> TBD)
      */
     @Deprecated
     private IntegerCode deprecatedHeader;
@@ -246,7 +246,7 @@ public class SpecialContext extends Context {
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD)
+     * compatibility period:</b> TBD)
      */
     @Deprecated
     public Builder setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {
@@ -317,7 +317,7 @@ public class SpecialContext extends Context {
    *
    * @return {@link IntegerCode} Value to which {@link #deprecatedHeader} is set.
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24, <b>go live date:</b> TBD, <b>end of compatibility
-   * phase:</b> TBD)
+   * period:</b> TBD)
    */
   @Deprecated
   public IntegerCode getDeprecatedHeader( ) {
@@ -329,7 +329,7 @@ public class SpecialContext extends Context {
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2024-12-24, <b>go live date:</b> TBD, <b>end of compatibility
-   * phase:</b> TBD)
+   * period:</b> TBD)
    */
   @Deprecated
   public void setDeprecatedHeader( IntegerCode pDeprecatedHeader ) {

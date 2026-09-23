@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.junit.deprecation.DeprecatedService;
  * @deprecated This service does not make sense any more.<br/>
  * <br/>
  * The functionality is completely wrong. (<b>since:</b> 1.0, <b>removed with:</b> 2023-12-31, <b>go live date:</b> TBD,
- * <b>end of compatibility phase:</b> TBD)
+ * <b>end of compatibility period:</b> TBD)
  */
 @Path("/nova/prefix/deprecation")
 @Consumes(MediaType.APPLICATION_JSON)

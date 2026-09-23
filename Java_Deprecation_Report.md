@@ -6,8 +6,8 @@
 
 <br>
 
-| Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed | Go live date | End of Compatibility Phase |
-|---------|------|----------------------|-------------|------------------|-----------------------|:------------:|:--------------------------:|
+| Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed | Go live date | End of Compatibility Period |
+|---------|------|----------------------|-------------|------------------|-----------------------|:------------:|:---------------------------:|
 | `com.anaptecs.jeaf.junit.rest` | `RESTTestService` | `deprecatedOperation` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base` | `DeprecatedContext` |  |  |  | 2022-07-25 |  |  |
 | `com.anaptecs.jeaf.junit.openapi.base` | `SpecialContext` | `deprecatedHeader` |  |  | 2024-12-24 |  |  |
@@ -26,15 +26,15 @@
 
 <br>
 
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `EnumWithDeprecatedProperty` | |  |  |  |  |  |
 |   | `B` |  |  |  |  |  |
 
 <br>
 
-| Type | Property   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|------|------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Type | Property   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|------|------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `EnumWithDeprecatedProperty` | `doNotUse` | Very outdated | 08.15 | 47.11 |  |  |
 
 <br>
@@ -51,24 +51,24 @@
 
 <br>
 
-| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|----------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|----------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedTestService` |  |  |  |  |  |
 
 <br>
 
 #### `BusinessObjectTestService`
 
-| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `deprectedOperation()` | |  |  |  |  |  |
 
 <br>
 
 #### `JEAFTestService`
 
-| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `checkRequiredService_2()` | |  |  |  |  |  |
 
 <br>
@@ -78,7 +78,7 @@
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedServiceObject` | |  |  |  |  |  |
 | `PartiallyDeprecatedServiceObject` | |  |  |  |  |  |
 |   | `outdated` |  |  |  |  |  |
@@ -91,8 +91,8 @@
 
 <br>
 
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `Color` | |  |  |  |  |  |
 |   | `LightGreen` | We do not like this color any more. |  |  |  |  |
 | `Farbe` | |  |  |  |  |  |
@@ -107,16 +107,16 @@
 
 <br>
 
-| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|----------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|----------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |  |  |
 
 <br>
 
 #### `ServiceWithDeprecations`
 
-| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `createSomething()` | | Resources can no longer be explicitly be created. | 0.9 | 1.2.3 |  |  |
 | `createSomething(JustAType, String, String, BeanParamWithDeprecations)` | |  |  |  |  |  |
 |   | `String pHeader` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |  |  |  |
@@ -129,7 +129,7 @@
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `BeanParamWithDeprecations` | |  |  |  |  |  |
 |   | `deprecatedHeader` | this header param is no longer supported. Please use "xxx" instead. | 1.2.3 | PI.2.3 |  |  |
 | `JustAType` | |  |  |  |  |  |
@@ -146,7 +146,7 @@
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedDomainObject` | |  |  |  |  |  |
 | `Price` | |  |  |  |  |  |
 |   | `price` |  |  |  |  |  |
@@ -169,7 +169,7 @@
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedPO` | |  |  |  |  |  |
 |   | `deprecated` |  |  |  |  |  |
 |   | `publicClass` |  |  |  |  |  |
@@ -191,7 +191,7 @@
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `BeanParameter` | |  |  |  |  |  |
 |   | `oldStyle` |  |  |  |  |  |
 | `Campaign` | |  |  |  |  |  |
@@ -229,8 +229,8 @@
 
 <br>
 
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `ChannelType` | |  |  |  |  |  |
 |   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |  |  |
 
@@ -242,8 +242,8 @@
 
 #### `ProductService`
 
-| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `deprecatedBody(String)` | |  |  |  |  |  |
 |   | `String pBody` |  |  |  |  |  |
 | `deprecatedComplexReturn()` | |  |  |  |  |  |
@@ -266,7 +266,7 @@
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `BChildPOJO` | |  |  |  |  |  |
 | `ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |  |  |
 | `ImmutableAssociationPOJO` | |  |  |  |  |  |
@@ -284,16 +284,16 @@
 
 <br>
 
-| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|----------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|----------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedRESTService` |  |  |  |  |  |
 
 <br>
 
 #### `RESTTestService`
 
-| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `deprecatedAsync(int)` | |  |  |  |  |  |
 | `deprecatedAsyncParam(int)` | |  |  |  |  |  |
 |   | `int pParam1` |  |  |  |  |  |
@@ -318,24 +318,24 @@
 
 <br>
 
-| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|----------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|----------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 
 <br>
 
 #### `AnotherDeprecatedRESTService`
 
-| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `operationOfADeprecatedService()` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 
 <br>
 
 #### `MultiVersioningTestService`
 
-| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `deprecatedEndpoint()` | | I'm so deprecated. |  | 7.0 | 2026-12-24 | 2026-09-13 |
 
 <br>
@@ -345,7 +345,7 @@
 <br>
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 | `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 | `MyContext` | |  |  |  |  |  |
@@ -361,8 +361,8 @@
 
 <br>
 
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
-|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
 | `ClientType` | |  |  |  |  |  |
 |   | `CLIENT_3` |  |  | 7.0 |  |  |
 | `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |

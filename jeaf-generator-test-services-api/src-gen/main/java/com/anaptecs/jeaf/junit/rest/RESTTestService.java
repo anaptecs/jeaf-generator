@@ -77,7 +77,7 @@ public interface RESTTestService extends Service {
    * This is not the right operation any longer.<br/>
    * <br/>
    * Sorry!!! (<b>since:</b> a very long time, <b>removed with:</b> 2023-12-13, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD)
+   * compatibility period:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest

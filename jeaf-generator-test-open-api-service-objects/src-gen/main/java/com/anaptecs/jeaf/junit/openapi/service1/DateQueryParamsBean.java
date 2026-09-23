@@ -43,7 +43,7 @@ public class DateQueryParamsBean implements ServiceObject {
   /**
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Has to be in the past
+   * compatibility period:</b> TBD): Has to be in the past
    */
   @QueryParam("localDateTime")
   @NotNull
@@ -168,7 +168,7 @@ public class DateQueryParamsBean implements ServiceObject {
     /**
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): Has to be in the past
+     * compatibility period:</b> TBD): Has to be in the past
      */
     private LocalDateTime localDateTime;
 
@@ -240,7 +240,7 @@ public class DateQueryParamsBean implements ServiceObject {
      * Method sets attribute {@link #localDateTime}.<br/>
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): Has to be in the past
+     * compatibility period:</b> TBD): Has to be in the past
      *
      * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -403,7 +403,7 @@ public class DateQueryParamsBean implements ServiceObject {
    * Method returns attribute {@link #localDateTime}.<br/>
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Has to be in the past
+   * compatibility period:</b> TBD): Has to be in the past
    *
    * @return {@link LocalDateTime} Value to which {@link #localDateTime} is set.
    */
@@ -416,7 +416,7 @@ public class DateQueryParamsBean implements ServiceObject {
    * Method sets attribute {@link #localDateTime}.<br/>
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Has to be in the past
+   * compatibility period:</b> TBD): Has to be in the past
    *
    * @param pLocalDateTime Value to which {@link #localDateTime} should be set.
    */

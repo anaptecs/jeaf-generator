@@ -11,7 +11,7 @@ public enum ClientType {
   CLIENT_1, CLIENT_2,
   /**
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
-   * phase:</b> 2026-09-13)
+   * period:</b> 2026-09-13)
    */
   @Deprecated
   @DeprecationNotice(
@@ -19,6 +19,6 @@ public enum ClientType {
       since = "",
       removedWith = "7.0",
       goLiveDate = "2026-12-24",
-      endOfCompatibilityPhase = "2026-09-13")
+      endOfCompatibilityPeriod = "2026-09-13")
   CLIENT_3;
 }

@@ -55,7 +55,7 @@ public class WeirdBooking extends WeirdParent {
    * the real booking
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Association will be mandatory.
+   * compatibility period:</b> TBD): Association will be mandatory.
    */
   @Valid
   private Booking realBooking;
@@ -63,7 +63,7 @@ public class WeirdBooking extends WeirdParent {
   /**
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.1, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Association will required at least 1 object.
+   * compatibility period:</b> TBD): Association will required at least 1 object.
    */
   @JsonSetter(nulls = Nulls.SKIP)
   private Set<InventoryType> inventories;
@@ -172,14 +172,14 @@ public class WeirdBooking extends WeirdParent {
      * the real booking
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): Association will be mandatory.
+     * compatibility period:</b> TBD): Association will be mandatory.
      */
     private Booking realBooking;
 
     /**
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.1, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): Association will required at least 1 object.
+     * compatibility period:</b> TBD): Association will required at least 1 object.
      */
     private Set<InventoryType> inventories;
 
@@ -330,7 +330,7 @@ public class WeirdBooking extends WeirdParent {
      * Method sets association {@link #realBooking}.<br/>
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): Association will be mandatory.
+     * compatibility period:</b> TBD): Association will be mandatory.
      *
      * @param pRealBooking Value to which {@link #realBooking} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -344,7 +344,7 @@ public class WeirdBooking extends WeirdParent {
      * Method sets association {@link #inventories}.<br/>
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.1, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): Association will required at least 1 object.
+     * compatibility period:</b> TBD): Association will required at least 1 object.
      *
      * @param pInventories Collection to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -364,7 +364,7 @@ public class WeirdBooking extends WeirdParent {
      * Method adds the passed objects to association {@link #inventories}.<br/>
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.1, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): Association will required at least 1 object.
+     * compatibility period:</b> TBD): Association will required at least 1 object.
      *
      * @param pInventories Array of objects that should be added to {@link #inventories}. The parameter may be null.
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
@@ -383,7 +383,7 @@ public class WeirdBooking extends WeirdParent {
      * Method sets association {@link #inventories}.<br/>
      * <p/>
      * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.1, <b>go live date:</b> TBD, <b>end of
-     * compatibility phase:</b> TBD): Association will required at least 1 object.
+     * compatibility period:</b> TBD): Association will required at least 1 object.
      *
      * @param pInventories Array with objects to which {@link #inventories} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -564,7 +564,7 @@ public class WeirdBooking extends WeirdParent {
    * the real booking
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Association will be mandatory.
+   * compatibility period:</b> TBD): Association will be mandatory.
    *
    * @return {@link Booking} Value to which {@link #realBooking} is set.
    */
@@ -577,7 +577,7 @@ public class WeirdBooking extends WeirdParent {
    * the real booking
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Association will be mandatory.
+   * compatibility period:</b> TBD): Association will be mandatory.
    *
    * @param pRealBooking Value to which {@link #realBooking} should be set.
    */
@@ -596,7 +596,7 @@ public class WeirdBooking extends WeirdParent {
    * Method returns association {@link #inventories}.<br/>
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.1, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Association will required at least 1 object.
+   * compatibility period:</b> TBD): Association will required at least 1 object.
    *
    * @return {@link Set<InventoryType>} Value to which {@link #inventories} is set. The method never returns null and
    * the returned collection is modifiable.
@@ -610,7 +610,7 @@ public class WeirdBooking extends WeirdParent {
    * Method adds the passed object to {@link #inventories}.
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.1, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Association will required at least 1 object.
+   * compatibility period:</b> TBD): Association will required at least 1 object.
    *
    * @param pInventories Object that should be added to {@link #inventories}. The parameter must not be null.
    */
@@ -625,7 +625,7 @@ public class WeirdBooking extends WeirdParent {
    * Method adds all passed objects to {@link #inventories}.
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.1, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Association will required at least 1 object.
+   * compatibility period:</b> TBD): Association will required at least 1 object.
    *
    * @param pInventories Collection with all objects that should be added to {@link #inventories}. The parameter must
    * not be null.

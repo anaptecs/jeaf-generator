@@ -85,7 +85,7 @@ public interface ProductService extends Service {
    * @param pChannelCode
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Parameter will be mandatory
+   * compatibility period:</b> TBD): Parameter will be mandatory
    * @return {@link ChannelCode}
    */
   @JEAFCustomAnnotationTest
@@ -99,7 +99,7 @@ public interface ProductService extends Service {
   /**
    * @return {@link String}
    * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2024-10-20, <b>go live
-   * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
+   * date:</b> TBD, <b>end of compatibility period:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest

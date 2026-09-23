@@ -70,7 +70,7 @@ private String getDeprecationGoLiveDateInternal(NamedElement element):
 	else "";
 	
 
-cached String getDeprecationEndOfCompatibilityPhase(NamedElement element):
+cached String getDeprecationEndOfCompatibilityPeriod(NamedElement element):
 	if element.isJEAFDeprecated() && element.hasCompatibilityInfo()
 	then element.getCompatibilityInfo().endOfLifeDate.trim()
 	else "";

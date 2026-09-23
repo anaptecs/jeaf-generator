@@ -30,7 +30,7 @@ public enum ChannelType {
    * - <code>code = "WEB"</code><br/>
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.47.11, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): Added new literal
+   * compatibility period:</b> TBD): Added new literal
    */
   WEB("WEB"),
   /**
@@ -40,7 +40,7 @@ public enum ChannelType {
    * - <code>code = "PRISMA"</code><br/>
    *
    * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD,
-   * <b>end of compatibility phase:</b> TBD)
+   * <b>end of compatibility period:</b> TBD)
    */
   @Deprecated
   LEGACY_POS("PRISMA");

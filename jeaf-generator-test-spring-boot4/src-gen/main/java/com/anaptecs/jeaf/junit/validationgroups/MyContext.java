@@ -56,7 +56,7 @@ public class MyContext {
    * <b>Header-Param:</b> <code>deprecatedHeader</code>
    *
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
-   * phase:</b> 2026-09-13)
+   * period:</b> 2026-09-13)
    */
   @Deprecated
   @NotNull(groups = { V4.class, V5.class, V6.class })
@@ -115,7 +115,7 @@ public class MyContext {
      * <b>Header-Param:</b> <code>deprecatedHeader</code>
      *
      * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
-     * compatibility phase:</b> 2026-09-13)
+     * compatibility period:</b> 2026-09-13)
      */
     @Deprecated
     private String deprecatedHeader;
@@ -228,7 +228,7 @@ public class MyContext {
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
-     * compatibility phase:</b> 2026-09-13)
+     * compatibility period:</b> 2026-09-13)
      */
     @Deprecated
     @JsonSetter(nulls = Nulls.SKIP)
@@ -328,7 +328,7 @@ public class MyContext {
    *
    * @return {@link String} Value to which {@link #deprecatedHeader} is set.
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
-   * phase:</b> 2026-09-13)
+   * period:</b> 2026-09-13)
    */
   @Deprecated
   public String getDeprecatedHeader( ) {
@@ -340,7 +340,7 @@ public class MyContext {
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
    * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
-   * phase:</b> 2026-09-13)
+   * period:</b> 2026-09-13)
    */
   @Deprecated
   public void setDeprecatedHeader( String pDeprecatedHeader ) {

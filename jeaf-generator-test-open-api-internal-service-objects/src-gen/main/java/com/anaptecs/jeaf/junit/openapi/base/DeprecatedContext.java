@@ -24,7 +24,7 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 2022-07-25, <b>go live date:</b> TBD, <b>end of compatibility
- * phase:</b> TBD)
+ * period:</b> TBD)
  */
 @Valid
 @Deprecated

@@ -153,13 +153,13 @@ private cached String getAuthorizedRoles(uml::Element element, String indentatio
 
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ", go live date: " + element.getDeprecationGoLiveDate() + ", end of compatibility phase: "+ element.getDeprecationEndOfCompatibilityPhase() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
+    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ", go live date: " + element.getDeprecationGoLiveDate() + ", end of compatibility period: "+ element.getDeprecationEndOfCompatibilityPeriod() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
     else "";
 
 
 private cached String getBreakingChangeDescriptionInternal(uml::NamedElement element, String indentation):
     if element.isBreakingChange() && element.isBreakingChangeNoticeRequired()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (active with " + element.getBreakingChangeActiveWith() + ", go live date: " + element.getBreakingChangeGoLiveDate() + ", end of compatibility phase: "+ element.getBreakingChangeEndOfCompatibilityPhase() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
+    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (active with " + element.getBreakingChangeActiveWith() + ", go live date: " + element.getBreakingChangeGoLiveDate() + ", end of compatibility period: "+ element.getBreakingChangeEndOfCompatibilityPeriod() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
     else "";
 
 

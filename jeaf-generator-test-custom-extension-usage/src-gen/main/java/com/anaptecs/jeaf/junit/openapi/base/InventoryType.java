@@ -15,7 +15,7 @@ public enum InventoryType {
   /**
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 3.x, <b>go live date:</b> TBD, <b>end of
-   * compatibility phase:</b> TBD): New literal will occur
+   * compatibility period:</b> TBD): New literal will occur
    */
   @JEAFCustomAnnotationTest
   DB;

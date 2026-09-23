@@ -338,7 +338,7 @@ components:
           description: |
             The magic link.
             <br><br>
-            **Deprecation Notice (since: 2.3.1, removed with: 2.4, go live date: , end of compatibility phase: ):**<br><br>
+            **Deprecation Notice (since: 2.3.1, removed with: 2.4, go live date: , end of compatibility period: ):**<br><br>
             Please use "moreLinks" instead.
           type: integer
           format: int64
@@ -348,7 +348,7 @@ components:
           description: |
             
             <br><br>
-            **Deprecation Notice (since: 1.2, removed with: 3.0, go live date: , end of compatibility phase: ):**<br><br>
+            **Deprecation Notice (since: 1.2, removed with: 3.0, go live date: , end of compatibility period: ):**<br><br>
             No good any more
           type: array
           items:
@@ -435,7 +435,7 @@ components:
           
         - `WEB`: 
           <br><br>
-          **Breaking Change Notice (active with 1.47.11, go live date: , end of compatibility phase: ):**<br><br>
+          **Breaking Change Notice (active with 1.47.11, go live date: , end of compatibility period: ):**<br><br>
           Added new literal<br>
           <br>
           
@@ -444,7 +444,7 @@ components:
           
         - <del>`LEGACY_POS`</del>: 
           <br><br>
-          **Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**<br><br>
+          **Deprecation Notice (since: , removed with: , go live date: , end of compatibility period: ):**<br><br>
           I'm `DEPRECATED`.<br>
           <br>
           
@@ -482,7 +482,7 @@ components:
       description: |
         
         <br><br>
-        **Deprecation Notice (since: 0.5, removed with: 2.0, go live date: , end of compatibility phase: ):**<br><br>
+        **Deprecation Notice (since: 0.5, removed with: 2.0, go live date: , end of compatibility period: ):**<br><br>
         Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing`
       deprecated: true
       allOf:
@@ -585,7 +585,7 @@ components:
               description: |
                 
                 <br><br>
-                **Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**<br><br>
+                **Deprecation Notice (since: , removed with: , go live date: , end of compatibility period: ):**<br><br>
                 Please  keep `hands off`.
               type: integer
               format: int32
@@ -660,7 +660,7 @@ components:
       description: |
         
         <br><br>
-        **Breaking Change Notice (active with PI 17, go live date: , end of compatibility phase: ):**<br><br>
+        **Breaking Change Notice (active with PI 17, go live date: , end of compatibility period: ):**<br><br>
         Class was changed to an extensible enum. New literals will not be introduced before PI 17.
       type: string
       x-extensible-enum:
@@ -717,7 +717,7 @@ components:
       description: |
         
         <br><br>
-        **Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**<br><br>
+        **Deprecation Notice (since: , removed with: , go live date: , end of compatibility period: ):**<br><br>
         Hello `World`.
       type: string
       deprecated: true
@@ -919,7 +919,7 @@ components:
           
         - `DB`: 
           <br><br>
-          **Breaking Change Notice (active with 3.x, go live date: , end of compatibility phase: ):**<br><br>
+          **Breaking Change Notice (active with 3.x, go live date: , end of compatibility period: ):**<br><br>
           New literal will occur
           <br><br>
           
@@ -1125,7 +1125,7 @@ components:
               description: |
                 
                 <br><br>
-                **Breaking Change Notice (active with 2024-12-24, go live date: , end of compatibility phase: ):**<br><br>
+                **Breaking Change Notice (active with 2024-12-24, go live date: , end of compatibility period: ):**<br><br>
                 New mandatory association is required to support upcoming features.
               type: array
               items:
@@ -1979,7 +1979,7 @@ components:
           description: |
             
             <br><br>
-            **Breaking Change Notice (active with 1.1, go live date: , end of compatibility phase: ):**<br><br>
+            **Breaking Change Notice (active with 1.1, go live date: , end of compatibility period: ):**<br><br>
             Maximum size will be increased.
           type: string
           minLength: 1
@@ -2242,14 +2242,14 @@ components:
               description: |
                 the real booking
                 <br><br>
-                **Breaking Change Notice (active with 2.0, go live date: , end of compatibility phase: ):**<br><br>
+                **Breaking Change Notice (active with 2.0, go live date: , end of compatibility period: ):**<br><br>
                 Association will be mandatory.
               $ref: '#/components/schemas/Booking'
             inventories:
               description: |
                 
                 <br><br>
-                **Breaking Change Notice (active with 2.1, go live date: , end of compatibility phase: ):**<br><br>
+                **Breaking Change Notice (active with 2.1, go live date: , end of compatibility period: ):**<br><br>
                 Association will required at least 1 object.
               type: array
               items:

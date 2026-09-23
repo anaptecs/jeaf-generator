@@ -4,7 +4,7 @@
 
 ## Breaking changes planned to be activated with next major release `4711.0` (planned publishing date 2024-12-24)
 
-| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Phase |
+| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Period |
 |----------|------------|--------------|:-----:|:-----------:|:------------:|:--------------------------:|
 | `com.anaptecs.jeaf.junit.openapi.base.POI` | `stops` | New mandatory association is required to support upcoming features. |  | 2024-12-24 |  |  |
 
@@ -14,7 +14,7 @@
 
 ## Package `com.anaptecs.jeaf.junit.deprecation`
 
-| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Phase |
+| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Period |
 |----------|------------|--------------|:-----:|:-----------:|:------------:|:--------------------------:|
 | `ServiceWithDeprecations.createSomething` | `pQueryParam` | Parameter will be mandatory. |  | PI 13 |  |  |
 
@@ -22,7 +22,7 @@
 
 ## Package `com.anaptecs.jeaf.junit.openapi.base`
 
-| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Phase |
+| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Period |
 |----------|------------|--------------|:-----:|:-----------:|:------------:|:--------------------------:|
 | `Reseller` | `name` | Maximum size will be increased. |  | 1.1 |  |  |
 | `ChannelType` | `WEB` | Added new literal |  | 1.47.11 |  |  |
@@ -38,7 +38,7 @@
 
 ## Package `com.anaptecs.jeaf.junit.openapi.service1`
 
-| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Phase |
+| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Period |
 |----------|------------|--------------|:-----:|:-----------:|:------------:|:--------------------------:|
 | `ProductService.createChannelCode` | `pChannelCode` | Parameter will be mandatory |  | 2.0 |  |  |
 | `DateQueryParamsBean` | `localDateTime` | Has to be in the past |  | 2.0 |  |  |
@@ -47,7 +47,7 @@
 
 ## Package `com.anaptecs.jeaf.junit.pojo`
 
-| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Phase |
+| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Period |
 |----------|------------|--------------|:-----:|:-----------:|:------------:|:--------------------------:|
 | `PlainPOJO` | | Announcement for the far away future | 1.2.3 | 47.11 | 2222-12-31 |  |
 | `MyType` | `GAMMA` | X-mas present | 1.0.0 | 47.11 | 2024-12-24 |  |
@@ -56,7 +56,7 @@
 
 ## Package `com.anaptecs.jeaf.junit.validationgroups`
 
-| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Phase |
+| Element  | Details    | Description  | Since | Active with | Go Live Date | End of Compatibility Period |
 |----------|------------|--------------|:-----:|:-----------:|:------------:|:--------------------------:|
 | `MyPojoRequest` | `propertyWithNewConstraints` |  |  |  |  |  |
 | `MyPOJOResponse` | `formerMandatoryProperty` |  |  | 7.0 | 2026-12-24 | 2026-09-13 |

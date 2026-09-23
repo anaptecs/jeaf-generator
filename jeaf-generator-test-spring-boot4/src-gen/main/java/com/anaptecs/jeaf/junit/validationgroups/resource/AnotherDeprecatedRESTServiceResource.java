@@ -19,7 +19,7 @@ import com.anaptecs.jeaf.validation.api.ValidationExecutor;
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
- * phase:</b> 2026-09-13)
+ * period:</b> 2026-09-13)
  */
 @RequestMapping(path = "/nova/prefix")
 @RestController
