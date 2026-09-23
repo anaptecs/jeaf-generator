@@ -22,9 +22,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 /**
- *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 0.5, removed with: 2.0, go live date: ):**&lt;br&gt;&lt;br&gt; Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; 
+ *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: 0.5, removed with: 2.0, go live date: , end of compatibility phase: ):**&lt;br&gt;&lt;br&gt; Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be &#x60;java.lang.Nothing&#x60; 
  */
-@Schema(description = " <br><br> **Deprecation Notice (since: 0.5, removed with: 2.0, go live date: ):**<br><br> Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` ")
+@Schema(description = " <br><br> **Deprecation Notice (since: 0.5, removed with: 2.0, go live date: , end of compatibility phase: ):**<br><br> Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` ")
 
 
 public class ChildAA extends ChildA {

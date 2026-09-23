@@ -20,7 +20,8 @@ public enum EnumWithDeprecatedProperty {
   private final int myProperty;
 
   /**
-   * @deprecated Very outdated (<b>since:</b> 08.15, <b>removed with:</b> 47.11, <b>go live date:</b> TBD)
+   * @deprecated Very outdated (<b>since:</b> 08.15, <b>removed with:</b> 47.11, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD)
    */
   @Deprecated
   private final String doNotUse;
@@ -38,7 +39,8 @@ public enum EnumWithDeprecatedProperty {
    * Method returns attribute {@link #doNotUse}.<br/>
    *
    * @return {@link String} Value to which {@link #doNotUse} is set.
-   * @deprecated Very outdated (<b>since:</b> 08.15, <b>removed with:</b> 47.11, <b>go live date:</b> TBD)
+   * @deprecated Very outdated (<b>since:</b> 08.15, <b>removed with:</b> 47.11, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD)
    */
   @Deprecated
   public String getDoNotUse( ) {

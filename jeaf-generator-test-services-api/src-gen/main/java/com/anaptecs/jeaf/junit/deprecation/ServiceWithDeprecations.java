@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 public interface ServiceWithDeprecations extends Service {
   /**
    * @deprecated Resources can no longer be explicitly be created. (<b>since:</b> 0.9, <b>removed with:</b> 1.2.3, <b>go
-   * live date:</b> TBD)
+   * live date:</b> TBD, <b>end of compatibility phase:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest

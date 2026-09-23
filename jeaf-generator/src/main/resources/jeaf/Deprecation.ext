@@ -174,5 +174,5 @@ cached String getHeaderNameForDeprecationReport(uml::NamedElement deprecation):
 
 
 List[String] getRowForDeprecationReportAsXLSX(uml::NamedElement deprecation):
-	{ deprecation.getTypeForDeprecationReport(), deprecation.getNearestPackage().qualifiedName(), deprecation.getPropertyOrOperationForDeprecationReport(), deprecation.getHeaderNameForDeprecationReport(), deprecation.getDeprecationDescriptionForMarkup(), deprecation.getDeprecatedSince(), deprecation.getDeprecationRemoval(), deprecation.getDeprecationGoLiveDate()};
+	{ deprecation.getTypeForDeprecationReport(), deprecation.getNearestPackage().qualifiedName(), deprecation.getPropertyOrOperationForDeprecationReport(), deprecation.getHeaderNameForDeprecationReport(), deprecation.getDeprecationDescriptionForMarkup(), deprecation.getDeprecatedSince(), deprecation.getDeprecationRemoval(), deprecation.getDeprecationGoLiveDate(), deprecation.getDeprecationEndOfCompatibilityPhase()};
 

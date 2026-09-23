@@ -113,7 +113,7 @@ public class ChildBB extends ChildB {
   }
 
   /**
-   *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: , removed with: , go live date: ):**&lt;br&gt;&lt;br&gt; Please  keep &#x60;hands off&#x60;. 
+   *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**&lt;br&gt;&lt;br&gt; Please  keep &#x60;hands off&#x60;. 
    * @return deprecatedAttribute
    * @deprecated
    */

@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: , removed with: , go live date: ):**&lt;br&gt;&lt;br&gt; Hello &#x60;World&#x60;. 
+ *  &lt;br&gt;&lt;br&gt; **Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**&lt;br&gt;&lt;br&gt; Hello &#x60;World&#x60;. 
  */
 @Deprecated
 public enum DeprecatedEnum {

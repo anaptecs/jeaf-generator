@@ -74,7 +74,7 @@ public class ChildBB extends ChildB {
 
   /**
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD)
+   * TBD, <b>end of compatibility phase:</b> TBD)
    */
   // "int"
   @ClassPropertyDeclaration
@@ -171,7 +171,7 @@ public class ChildBB extends ChildB {
 
     /**
      * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live
-     * date:</b> TBD)
+     * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
      */
     // "int"
     @BuilderPropertyDeclaration
@@ -383,7 +383,7 @@ public class ChildBB extends ChildB {
      * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live
-     * date:</b> TBD)
+     * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
      */
     @Deprecated
     @JEAFCustomAnnotationTest
@@ -546,7 +546,7 @@ public class ChildBB extends ChildB {
    *
    * @return int Value to which {@link #deprecatedAttribute} is set.
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD)
+   * TBD, <b>end of compatibility phase:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest
@@ -559,7 +559,7 @@ public class ChildBB extends ChildB {
    *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
    * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD)
+   * TBD, <b>end of compatibility phase:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest

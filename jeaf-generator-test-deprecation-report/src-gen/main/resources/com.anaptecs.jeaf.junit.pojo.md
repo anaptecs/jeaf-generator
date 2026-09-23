@@ -42,7 +42,7 @@
 <br>
 
 ## BChildPOJO
-:exclamation:**Deprecation Notice (since: , removed with: , go live date: ):**<br>
+:exclamation:**Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**<br>
 
 <br>
 
@@ -112,7 +112,7 @@
 This is the first line of the first comment
 2nd line
 
-:exclamation:**Deprecation Notice (since: Big bang, removed with: Last X-Mas, go live date: ):**<br>We do not like this class any more.
+:exclamation:**Deprecation Notice (since: Big bang, removed with: Last X-Mas, go live date: , end of compatibility phase: ):**<br>We do not like this class any more.
 
 <br>
 
@@ -193,7 +193,7 @@ This is the first line of the first comment
 | **`yetAnotherAttribute`** : `boolean`   `[1..1]`<br> |  |  |
 | **`readonlyAssociation`** : [`ImmutablePOJO`](#immutablepojo)   `[0..*]`<br> |  |  |
 | **`immutableChildPOJO`** : [`ImmutableChildPOJO`](#immutablechildpojo)   `[0..1]`<br> |  |  |
-| *`deprecatedRefs`* : [`ImmutableChildPOJO`](#immutablechildpojo)   `[0..*]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , go live date: ):**<br> |
+| *`deprecatedRefs`* : [`ImmutableChildPOJO`](#immutablechildpojo)   `[0..*]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**<br> |
 | **`deprecatedRef`** : [`ChildPOJO`](#childpojo)   `[0..1]`<br> |  |  |
 
 <br>
@@ -331,7 +331,7 @@ This is the first line of the first comment
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
 | **`parentAttribute`** : `java.lang.String`   `[1..1]`<br> |  |  |
-| *`weirdAttribute`* : `byte`   `[1..1]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , go live date: ):**<br> |
+| *`weirdAttribute`* : `byte`   `[1..1]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**<br> |
 | **`hello`** : `String`   `[1..1]`<br> |  |  |
 
 <br>

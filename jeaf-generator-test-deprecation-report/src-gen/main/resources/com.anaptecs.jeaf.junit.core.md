@@ -18,11 +18,11 @@ There are so many colors.
 | `WHITE` |   | Bright white |
 | `BLACK` |   |  |
 | `GREEN` |   |  |
-| :exclamation:`LightGreen` |   | :exclamation:**Deprecation Notice (since: , removed with: , go live date: ):**<br>We do not like this color any more. |
+| :exclamation:`LightGreen` |   | :exclamation:**Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**<br>We do not like this color any more. |
 | `LIGHT_GREEN` |   |  |
 
 ## Farbe
-:exclamation:**Deprecation Notice (since: , removed with: , go live date: ):**<br>
+:exclamation:**Deprecation Notice (since: , removed with: , go live date: , end of compatibility phase: ):**<br>
 
 ### Literals
 

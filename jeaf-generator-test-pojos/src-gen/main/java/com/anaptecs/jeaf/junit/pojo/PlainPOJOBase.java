@@ -230,7 +230,7 @@ public abstract class PlainPOJOBase {
   /**
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
   public abstract void doDeprectedStuff( );
 
   /**
@@ -241,10 +241,13 @@ public abstract class PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
-  public abstract String doSomething(
-      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "") int pParam1,
-      int pParam2 );
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
+  public abstract String doSomething( @Deprecated @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "",
+      goLiveDate = "",
+      endOfCompatibilityPhase = "") int pParam1, int pParam2 );
 
   @Override
   public int hashCode( ) {

@@ -61,7 +61,7 @@ public class PlainPOJO extends PlainPOJOBase {
   /**
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
   @Override
   public void doDeprectedStuff( ) {
     // TODO: Implement business logic for method.
@@ -75,11 +75,14 @@ public class PlainPOJO extends PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
   @Override
-  public String doSomething(
-      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "") int pParam1,
-      int pParam2 ) {
+  public String doSomething( @Deprecated @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "",
+      goLiveDate = "",
+      endOfCompatibilityPhase = "") int pParam1, int pParam2 ) {
     // TODO: Implement business logic for method.
     return null;
   }

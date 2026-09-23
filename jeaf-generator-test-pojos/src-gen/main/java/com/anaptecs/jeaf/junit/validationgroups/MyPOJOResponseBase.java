@@ -49,7 +49,12 @@ public abstract class MyPOJOResponseBase {
    * Constant for the name of attribute "deprecatedProperty".
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+  @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public static final String DEPRECATEDPROPERTY = "deprecatedProperty";
 
   @NotNull
@@ -70,10 +75,16 @@ public abstract class MyPOJOResponseBase {
   private String formerMandatoryProperty;
 
   /**
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+  @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   private String deprecatedProperty;
 
   /**
@@ -113,10 +124,16 @@ public abstract class MyPOJOResponseBase {
     private String formerMandatoryProperty;
 
     /**
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13)
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+    @DeprecationNotice(
+        description = "",
+        since = "",
+        removedWith = "7.0",
+        goLiveDate = "2026-12-24",
+        endOfCompatibilityPhase = "2026-09-13")
     private String deprecatedProperty;
 
     /**
@@ -177,10 +194,16 @@ public abstract class MyPOJOResponseBase {
      *
      * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13)
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+    @DeprecationNotice(
+        description = "",
+        since = "",
+        removedWith = "7.0",
+        goLiveDate = "2026-12-24",
+        endOfCompatibilityPhase = "2026-09-13")
     @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setDeprecatedProperty( String pDeprecatedProperty ) {
       // Assign value to attribute
@@ -272,10 +295,16 @@ public abstract class MyPOJOResponseBase {
    * Method returns attribute {@link #deprecatedProperty}.<br/>
    *
    * @return {@link String} Value to which {@link #deprecatedProperty} is set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+  @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public String getDeprecatedProperty( ) {
     return deprecatedProperty;
   }
@@ -284,10 +313,16 @@ public abstract class MyPOJOResponseBase {
    * Method sets attribute {@link #deprecatedProperty}.<br/>
    *
    * @param pDeprecatedProperty Value to which {@link #deprecatedProperty} should be set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+  @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public void setDeprecatedProperty( String pDeprecatedProperty ) {
     // Assign value to attribute
     deprecatedProperty = pDeprecatedProperty;

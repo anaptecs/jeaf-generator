@@ -91,7 +91,8 @@ public class MyPojoRequest {
   private String propertyWithNewConstraints;
 
   /**
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
   @NotNull(groups = { V4.class, V5.class, V6.class })
@@ -189,7 +190,8 @@ public class MyPojoRequest {
     private String propertyWithNewConstraints;
 
     /**
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13)
      */
     @Deprecated
     private String formerMandatoryRequestProperty;
@@ -281,7 +283,8 @@ public class MyPojoRequest {
      *
      * @param pFormerMandatoryRequestProperty Value to which {@link #formerMandatoryRequestProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13)
      */
     @Deprecated
     @JsonSetter(nulls = Nulls.SKIP)
@@ -432,7 +435,8 @@ public class MyPojoRequest {
    * Method returns attribute {@link #formerMandatoryRequestProperty}.<br/>
    *
    * @return {@link String} Value to which {@link #formerMandatoryRequestProperty} is set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
   public String getFormerMandatoryRequestProperty( ) {
@@ -443,7 +447,8 @@ public class MyPojoRequest {
    * Method sets attribute {@link #formerMandatoryRequestProperty}.<br/>
    *
    * @param pFormerMandatoryRequestProperty Value to which {@link #formerMandatoryRequestProperty} should be set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
   public void setFormerMandatoryRequestProperty( String pFormerMandatoryRequestProperty ) {

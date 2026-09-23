@@ -6,13 +6,13 @@
 
 <br>
 
-| Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed | Go live date |
-|---------|------|----------------------|-------------|------------------|-----------------------|:------------:|
-| `com.anaptecs.jeaf.junit.rest` | `RESTTestService` | `deprecatedOperation` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |  |
-| `com.anaptecs.jeaf.junit.openapi.base` | `DeprecatedContext` |  |  |  | 2022-07-25 |  |
-| `com.anaptecs.jeaf.junit.openapi.base` | `SpecialContext` | `deprecatedHeader` |  |  | 2024-12-24 |  |
-| `com.anaptecs.jeaf.junit.openapi.service1` | `ProductService` | `deprecatedOperation` | This request is no longer supported. | 1.1.1 | 2024-10-20 |  |
-| `com.anaptecs.jeaf.junit.deprecation` | `DeprecatedService` |  | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |  |
+| Package | Type | Property / Operation | Description | Deprecated since | Planned to be removed | Go live date | End of Compatibility Phase |
+|---------|------|----------------------|-------------|------------------|-----------------------|:------------:|:--------------------------:|
+| `com.anaptecs.jeaf.junit.rest` | `RESTTestService` | `deprecatedOperation` | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |  |  |
+| `com.anaptecs.jeaf.junit.openapi.base` | `DeprecatedContext` |  |  |  | 2022-07-25 |  |  |
+| `com.anaptecs.jeaf.junit.openapi.base` | `SpecialContext` | `deprecatedHeader` |  |  | 2024-12-24 |  |  |
+| `com.anaptecs.jeaf.junit.openapi.service1` | `ProductService` | `deprecatedOperation` | This request is no longer supported. | 1.1.1 | 2024-10-20 |  |  |
+| `com.anaptecs.jeaf.junit.deprecation` | `DeprecatedService` |  | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |  |  |
 
 <br>
 
@@ -28,14 +28,14 @@
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
-| `EnumWithDeprecatedProperty` | |  |  |  |  |
-|   | `B` |  |  |  |  |
+| `EnumWithDeprecatedProperty` | |  |  |  |  |  |
+|   | `B` |  |  |  |  |  |
 
 <br>
 
 | Type | Property   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |------|------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `EnumWithDeprecatedProperty` | `doNotUse` | Very outdated | 08.15 | 47.11 |  |
+| `EnumWithDeprecatedProperty` | `doNotUse` | Very outdated | 08.15 | 47.11 |  |  |
 
 <br>
 
@@ -53,7 +53,7 @@
 
 | Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |----------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `DeprecatedTestService` |  |  |  |  |
+| `DeprecatedTestService` |  |  |  |  |  |
 
 <br>
 
@@ -61,7 +61,7 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `deprectedOperation()` | |  |  |  |  |
+| `deprectedOperation()` | |  |  |  |  |  |
 
 <br>
 
@@ -69,7 +69,7 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `checkRequiredService_2()` | |  |  |  |  |
+| `checkRequiredService_2()` | |  |  |  |  |  |
 
 <br>
 
@@ -79,11 +79,11 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `DeprecatedServiceObject` | |  |  |  |  |
-| `PartiallyDeprecatedServiceObject` | |  |  |  |  |
-|   | `outdated` |  |  |  |  |
-|   | `deprecatedRef` |  |  |  |  |
-|   | `deprecatedRefs` |  |  |  |  |
+| `DeprecatedServiceObject` | |  |  |  |  |  |
+| `PartiallyDeprecatedServiceObject` | |  |  |  |  |  |
+|   | `outdated` |  |  |  |  |  |
+|   | `deprecatedRef` |  |  |  |  |  |
+|   | `deprecatedRefs` |  |  |  |  |  |
 
 <br>
 
@@ -93,9 +93,9 @@
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
-| `Color` | |  |  |  |  |
-|   | `LightGreen` | We do not like this color any more. |  |  |  |
-| `Farbe` | |  |  |  |  |
+| `Color` | |  |  |  |  |  |
+|   | `LightGreen` | We do not like this color any more. |  |  |  |  |
+| `Farbe` | |  |  |  |  |  |
 
 <br>
 
@@ -109,7 +109,7 @@
 
 | Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |----------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |  |
+| `DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |  |  |
 
 <br>
 
@@ -117,10 +117,10 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `createSomething()` | | Resources can no longer be explicitly be created. | 0.9 | 1.2.3 |  |
-| `createSomething(JustAType, String, String, BeanParamWithDeprecations)` | |  |  |  |  |
-|   | `String pHeader` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |  |  |
-|   | `String pQueryParam` |  |  |  |  |
+| `createSomething()` | | Resources can no longer be explicitly be created. | 0.9 | 1.2.3 |  |  |
+| `createSomething(JustAType, String, String, BeanParamWithDeprecations)` | |  |  |  |  |  |
+|   | `String pHeader` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |  |  |  |
+|   | `String pQueryParam` |  |  |  |  |  |
 
 <br>
 
@@ -130,10 +130,10 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `BeanParamWithDeprecations` | |  |  |  |  |
-|   | `deprecatedHeader` | this header param is no longer supported. Please use "xxx" instead. | 1.2.3 | PI.2.3 |  |
-| `JustAType` | |  |  |  |  |
-|   | `legacy` | Hello |  |  |  |
+| `BeanParamWithDeprecations` | |  |  |  |  |  |
+|   | `deprecatedHeader` | this header param is no longer supported. Please use "xxx" instead. | 1.2.3 | PI.2.3 |  |  |
+| `JustAType` | |  |  |  |  |  |
+|   | `legacy` | Hello |  |  |  |  |
 
 <br>
 
@@ -147,12 +147,12 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `DeprecatedDomainObject` | |  |  |  |  |
-| `Price` | |  |  |  |  |
-|   | `price` |  |  |  |  |
-|   | `reiseweg` |  |  |  |  |
-|   | `verbindungspunkte` |  |  |  |  |
-| `Reiseweg` | |  |  |  |  |
+| `DeprecatedDomainObject` | |  |  |  |  |  |
+| `Price` | |  |  |  |  |  |
+|   | `price` |  |  |  |  |  |
+|   | `reiseweg` |  |  |  |  |  |
+|   | `verbindungspunkte` |  |  |  |  |  |
+| `Reiseweg` | |  |  |  |  |  |
 
 <br>
 
@@ -170,11 +170,11 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `DeprecatedPO` | |  |  |  |  |
-|   | `deprecated` |  |  |  |  |
-|   | `publicClass` |  |  |  |  |
-|   | `baseClasses` |  |  |  |  |
-| `PublicClassBO` | |  |  |  |  |
+| `DeprecatedPO` | |  |  |  |  |  |
+|   | `deprecated` |  |  |  |  |  |
+|   | `publicClass` |  |  |  |  |  |
+|   | `baseClasses` |  |  |  |  |  |
+| `PublicClassBO` | |  |  |  |  |  |
 
 <br>
 
@@ -192,36 +192,36 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `BeanParameter` | |  |  |  |  |
-|   | `oldStyle` |  |  |  |  |
-| `Campaign` | |  |  |  |  |
-|   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |  |
-|   | `moreLinks` | No good any more | 1.2 | 3.0 |  |
-|   | `discountOffers` |  |  |  |  |
-| `ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` | 0.5 | 2.0 |  |
-| `ChildBB` | |  |  |  |  |
-|   | `deprecatedAttribute` | Please  keep `hands off`. |  |  |  |
-|   | `deprecatedBs` |  |  |  |  |
-|   | `deprecatedParent` |  |  |  |  |
-|   | `deprecatedArray` |  |  |  |  |
-| `DeprecatedContext` | |  |  | 2022-07-25 |  |
-| `DeprecatedType` | |  |  |  |  |
-| `DiscountOffer` | |  |  |  |  |
-|   | `campaigns` |  |  |  |  |
-| `POI` | |  |  |  |  |
-|   | `theLink` |  |  |  |  |
-|   | `evenMoreLinks` |  |  |  |  |
-| `ParentClass` | |  |  |  |  |
-|   | `theBankAccount` |  |  |  |  |
-|   | `legacyBankAccounts` |  |  |  |  |
-| `Sortiment` | |  |  |  |  |
-|   | `types` |  |  |  |  |
-| `SpecialContext` | |  |  |  |  |
-|   | `deprecatedHeader` |  |  | 2024-12-24 |  |
-| `TheReadOnlyServiceObject` | |  |  |  |  |
-|   | `inventoryType` | Let's reproduce #65 | not too long | 99.9 |  |
-| `UICStop` | |  |  |  |  |
-|   | `inlineStopType` |  |  |  |  |
+| `BeanParameter` | |  |  |  |  |  |
+|   | `oldStyle` |  |  |  |  |  |
+| `Campaign` | |  |  |  |  |  |
+|   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |  |  |
+|   | `moreLinks` | No good any more | 1.2 | 3.0 |  |  |
+|   | `discountOffers` |  |  |  |  |  |
+| `ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` | 0.5 | 2.0 |  |  |
+| `ChildBB` | |  |  |  |  |  |
+|   | `deprecatedAttribute` | Please  keep `hands off`. |  |  |  |  |
+|   | `deprecatedBs` |  |  |  |  |  |
+|   | `deprecatedParent` |  |  |  |  |  |
+|   | `deprecatedArray` |  |  |  |  |  |
+| `DeprecatedContext` | |  |  | 2022-07-25 |  |  |
+| `DeprecatedType` | |  |  |  |  |  |
+| `DiscountOffer` | |  |  |  |  |  |
+|   | `campaigns` |  |  |  |  |  |
+| `POI` | |  |  |  |  |  |
+|   | `theLink` |  |  |  |  |  |
+|   | `evenMoreLinks` |  |  |  |  |  |
+| `ParentClass` | |  |  |  |  |  |
+|   | `theBankAccount` |  |  |  |  |  |
+|   | `legacyBankAccounts` |  |  |  |  |  |
+| `Sortiment` | |  |  |  |  |  |
+|   | `types` |  |  |  |  |  |
+| `SpecialContext` | |  |  |  |  |  |
+|   | `deprecatedHeader` |  |  | 2024-12-24 |  |  |
+| `TheReadOnlyServiceObject` | |  |  |  |  |  |
+|   | `inventoryType` | Let's reproduce #65 | not too long | 99.9 |  |  |
+| `UICStop` | |  |  |  |  |  |
+|   | `inlineStopType` |  |  |  |  |  |
 
 <br>
 
@@ -231,8 +231,8 @@
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
-| `ChannelType` | |  |  |  |  |
-|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |  |
+| `ChannelType` | |  |  |  |  |  |
+|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |  |  |
 
 <br>
 
@@ -244,16 +244,16 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `deprecatedBody(String)` | |  |  |  |  |
-|   | `String pBody` |  |  |  |  |
-| `deprecatedComplexReturn()` | |  |  |  |  |
-|   | `Product ` |  |  |  |  |
-| `deprecatedOperation()` | | This request is no longer supported. | 1.1.1 | 2024-10-20 |  |
-| `deprecatedParams(int)` | |  |  |  |  |
-|   | `int pParam1` |  |  |  |  |
-|   | `String ` |  |  |  |  |
-| `deprectedComplexRequestBody(Product)` | |  |  |  |  |
-|   | `Product pProduct` |  |  |  |  |
+| `deprecatedBody(String)` | |  |  |  |  |  |
+|   | `String pBody` |  |  |  |  |  |
+| `deprecatedComplexReturn()` | |  |  |  |  |  |
+|   | `Product ` |  |  |  |  |  |
+| `deprecatedOperation()` | | This request is no longer supported. | 1.1.1 | 2024-10-20 |  |  |
+| `deprecatedParams(int)` | |  |  |  |  |  |
+|   | `int pParam1` |  |  |  |  |  |
+|   | `String ` |  |  |  |  |  |
+| `deprectedComplexRequestBody(Product)` | |  |  |  |  |  |
+|   | `Product pProduct` |  |  |  |  |  |
 
 <br>
 
@@ -267,12 +267,12 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `BChildPOJO` | |  |  |  |  |
-| `ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |  |
-| `ImmutableAssociationPOJO` | |  |  |  |  |
-|   | `deprecatedRefs` |  |  |  |  |
-| `ParentPOJO` | |  |  |  |  |
-|   | `weirdAttribute` |  |  |  |  |
+| `BChildPOJO` | |  |  |  |  |  |
+| `ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |  |  |
+| `ImmutableAssociationPOJO` | |  |  |  |  |  |
+|   | `deprecatedRefs` |  |  |  |  |  |
+| `ParentPOJO` | |  |  |  |  |  |
+|   | `weirdAttribute` |  |  |  |  |  |
 
 <br>
 
@@ -286,7 +286,7 @@
 
 | Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |----------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `DeprecatedRESTService` |  |  |  |  |
+| `DeprecatedRESTService` |  |  |  |  |  |
 
 <br>
 
@@ -294,15 +294,15 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `deprecatedAsync(int)` | |  |  |  |  |
-| `deprecatedAsyncParam(int)` | |  |  |  |  |
-|   | `int pParam1` |  |  |  |  |
-|   | `String ` |  |  |  |  |
-| `deprecatedOperation()` | | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |  |
-| `deprecatedParameter(int, int)` | |  |  |  |  |
-|   | `int pParam2` |  |  |  |  |
-| `deprectaedReturnValue(int)` | |  |  |  |  |
-|   | `int ` |  |  |  |  |
+| `deprecatedAsync(int)` | |  |  |  |  |  |
+| `deprecatedAsyncParam(int)` | |  |  |  |  |  |
+|   | `int pParam1` |  |  |  |  |  |
+|   | `String ` |  |  |  |  |  |
+| `deprecatedOperation()` | | Please use something else.<br><br>This is not the right operation any longer.<br><br>Sorry!!! | a very long time | 2023-12-13 |  |  |
+| `deprecatedParameter(int, int)` | |  |  |  |  |  |
+|   | `int pParam2` |  |  |  |  |  |
+| `deprectaedReturnValue(int)` | |  |  |  |  |  |
+|   | `int ` |  |  |  |  |  |
 
 <br>
 
@@ -320,7 +320,7 @@
 
 | Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |----------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-12-24 |
+| `AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 
 <br>
 
@@ -328,7 +328,7 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `operationOfADeprecatedService()` | |  |  | 7.0 | 2026-12-24 |
+| `operationOfADeprecatedService()` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 
 <br>
 
@@ -336,7 +336,7 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `deprecatedEndpoint()` | | I'm so deprecated. |  | 7.0 | 2026-12-24 |
+| `deprecatedEndpoint()` | | I'm so deprecated. |  | 7.0 | 2026-12-24 | 2026-09-13 |
 
 <br>
 
@@ -346,14 +346,14 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 |
-| `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 |
-| `MyContext` | |  |  |  |  |
-|   | `deprecatedHeader` |  |  | 7.0 | 2026-12-24 |
-| `MyPOJOResponse` | |  |  |  |  |
-|   | `deprecatedProperty` |  |  | 7.0 | 2026-12-24 |
-| `MyPojoRequest` | |  |  |  |  |
-|   | `formerMandatoryRequestProperty` |  |  | 7.0 | 2026-12-24 |
+| `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
+| `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
+| `MyContext` | |  |  |  |  |  |
+|   | `deprecatedHeader` |  |  | 7.0 | 2026-12-24 |  |
+| `MyPOJOResponse` | |  |  |  |  |  |
+|   | `deprecatedProperty` |  |  | 7.0 | 2026-12-24 |  |
+| `MyPojoRequest` | |  |  |  |  |  |
+|   | `formerMandatoryRequestProperty` |  |  | 7.0 | 2026-12-24 |  |
 
 <br>
 
@@ -363,9 +363,9 @@
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
-| `ClientType` | |  |  |  |  |
-|   | `CLIENT_3` |  |  | 7.0 |  |
-| `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-12-24 |
+| `ClientType` | |  |  |  |  |  |
+|   | `CLIENT_3` |  |  | 7.0 |  |  |
+| `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 
 <br>
 

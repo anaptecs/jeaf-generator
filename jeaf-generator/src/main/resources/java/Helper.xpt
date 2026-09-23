@@ -162,7 +162,7 @@
 			@«breakingChangeNoticeAnnotationClassName()»(description = "«this.getBreakingChangeDescription()»", since = "«this.getBreakingChangeSince()»", activeWith = "«this.getBreakingChangeActiveWith()»", goLiveDate = "«this.getBreakingChangeGoLiveDate()»", endOfCompatibilityPhase = "«this.getBreakingChangeEndOfCompatibilityPhase()»")
 		«ENDIF-»
 		«IF this.isDeprecated() && deprecationNoticeAnnotationClassName().length > 0 -»
-			@«deprecationNoticeAnnotationClassName()»(description = "«this.getDeprecationDescription()»", since = "«this.getDeprecatedSince()»", removedWith = "«this.getDeprecationRemoval()»", goLiveDate = "«this.getDeprecationGoLiveDate()»")
+			@«deprecationNoticeAnnotationClassName()»(description = "«this.getDeprecationDescription()»", since = "«this.getDeprecatedSince()»", removedWith = "«this.getDeprecationRemoval()»", goLiveDate = "«this.getDeprecationGoLiveDate()»", endOfCompatibilityPhase = "«this.getDeprecationEndOfCompatibilityPhase()»")
 		«ENDIF-»
 	«ENDIF-»
 «ENDDEFINE»

@@ -37,7 +37,7 @@ public class Campaign implements ServiceObject {
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    *
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4, <b>go live
-   * date:</b> TBD)
+   * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
    */
   @Deprecated
   private long theLinkID;
@@ -47,7 +47,8 @@ public class Campaign implements ServiceObject {
    * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
    * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
    *
-   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD)
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD)
    */
   @Deprecated
   @Size(min = 1)
@@ -121,7 +122,7 @@ public class Campaign implements ServiceObject {
      * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
      *
      * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4, <b>go live
-     * date:</b> TBD)
+     * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
      */
     @Deprecated
     private long theLinkID;
@@ -131,7 +132,8 @@ public class Campaign implements ServiceObject {
      * This class uses so called soft links for decoupling. The actual type that is hidden by {@link #moreLinks} is
      * <code>com.anaptecs.jeaf.junit.openapi.base.LinkObject</code><br/>
      *
-     * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD)
+     * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD, <b>end of
+     * compatibility phase:</b> TBD)
      */
     @Deprecated
     private Set<Long> moreLinkIDs;
@@ -168,7 +170,7 @@ public class Campaign implements ServiceObject {
      * @param pTheLink Value to which {@link #theLink} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4, <b>go live
-     * date:</b> TBD)
+     * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
      */
     @Deprecated
     public Builder setTheLinkID( long pTheLink ) {
@@ -181,7 +183,8 @@ public class Campaign implements ServiceObject {
      *
      * @param pMoreLinks Collection to which {@link #moreLinks} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD)
+     * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD, <b>end of
+     * compatibility phase:</b> TBD)
      */
     @Deprecated
     public Builder setMoreLinkIDs( @MyNotEmptyProperty Set<Long> pMoreLinks ) {
@@ -245,7 +248,7 @@ public class Campaign implements ServiceObject {
    *
    * @return {@link long} Value to which {@link #theLink} is set.
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4, <b>go live
-   * date:</b> TBD)
+   * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
    */
   @Deprecated
   public long getTheLinkID( ) {
@@ -258,7 +261,7 @@ public class Campaign implements ServiceObject {
    *
    * @param pTheLink Value to which {@link #theLink} should be set.
    * @deprecated Please use &quot;moreLinks&quot; instead. (<b>since:</b> 2.3.1, <b>removed with:</b> 2.4, <b>go live
-   * date:</b> TBD)
+   * date:</b> TBD, <b>end of compatibility phase:</b> TBD)
    */
   @Deprecated
   public void setTheLinkID( long pTheLink ) {
@@ -273,7 +276,8 @@ public class Campaign implements ServiceObject {
    *
    * @return {@link Set<Long>} Value to which {@link #moreLinks} is set. The method never returns null and the returned
    * collection is modifiable.
-   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD)
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD)
    */
   @Deprecated
   @MyNotEmptyProperty
@@ -286,7 +290,8 @@ public class Campaign implements ServiceObject {
    * Method adds the passed object to {@link #moreLinks}.
    *
    * @param pMoreLinks Object that should be added to {@link #moreLinks}. The parameter must not be null.
-   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD)
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD)
    */
   @Deprecated
   public void addToMoreLinkIDs( Long pMoreLinks ) {
@@ -301,7 +306,8 @@ public class Campaign implements ServiceObject {
    *
    * @param pMoreLinks Collection with all objects that should be added to {@link #moreLinks}. The parameter must not be
    * null.
-   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD)
+   * @deprecated No good any more (<b>since:</b> 1.2, <b>removed with:</b> 3.0, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD)
    */
   @Deprecated
   public void addToMoreLinkIDs( Collection<Long> pMoreLinks ) {

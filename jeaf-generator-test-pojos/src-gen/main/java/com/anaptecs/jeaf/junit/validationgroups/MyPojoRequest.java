@@ -57,7 +57,12 @@ public class MyPojoRequest {
    * Constant for the name of attribute "formerMandatoryRequestProperty".
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+  @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public static final String FORMERMANDATORYREQUESTPROPERTY = "formerMandatoryRequestProperty";
 
   /**
@@ -104,10 +109,16 @@ public class MyPojoRequest {
   private String propertyWithNewConstraints;
 
   /**
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+  @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   @NotNull(groups = { V4.class, V5.class, V6.class })
   private String formerMandatoryRequestProperty;
 
@@ -212,10 +223,16 @@ public class MyPojoRequest {
     private String propertyWithNewConstraints;
 
     /**
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13)
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+    @DeprecationNotice(
+        description = "",
+        since = "",
+        removedWith = "7.0",
+        goLiveDate = "2026-12-24",
+        endOfCompatibilityPhase = "2026-09-13")
     private String formerMandatoryRequestProperty;
 
     private String untouchedProperty;
@@ -292,10 +309,16 @@ public class MyPojoRequest {
      *
      * @param pFormerMandatoryRequestProperty Value to which {@link #formerMandatoryRequestProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13)
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+    @DeprecationNotice(
+        description = "",
+        since = "",
+        removedWith = "7.0",
+        goLiveDate = "2026-12-24",
+        endOfCompatibilityPhase = "2026-09-13")
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setFormerMandatoryRequestProperty( String pFormerMandatoryRequestProperty ) {
       // Assign value to attribute
@@ -467,10 +490,16 @@ public class MyPojoRequest {
    * Method returns attribute {@link #formerMandatoryRequestProperty}.<br/>
    *
    * @return {@link String} Value to which {@link #formerMandatoryRequestProperty} is set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+  @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public String getFormerMandatoryRequestProperty( ) {
     return formerMandatoryRequestProperty;
   }
@@ -479,10 +508,16 @@ public class MyPojoRequest {
    * Method sets attribute {@link #formerMandatoryRequestProperty}.<br/>
    *
    * @param pFormerMandatoryRequestProperty Value to which {@link #formerMandatoryRequestProperty} should be set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+   * phase:</b> 2026-09-13)
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
+  @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public void setFormerMandatoryRequestProperty( String pFormerMandatoryRequestProperty ) {
     // Assign value to attribute
     formerMandatoryRequestProperty = pFormerMandatoryRequestProperty;

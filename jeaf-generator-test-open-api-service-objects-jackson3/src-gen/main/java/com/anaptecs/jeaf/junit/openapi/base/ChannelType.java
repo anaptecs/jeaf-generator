@@ -43,7 +43,8 @@ public enum ChannelType {
    * <b>Attribute values:</b><br/>
    * - <code>code = "PRISMA"</code><br/>
    *
-   * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD)
+   * @deprecated I'm <code>DEPRECATED</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD,
+   * <b>end of compatibility phase:</b> TBD)
    */
   @Deprecated
   LEGACY_POS("PRISMA");
