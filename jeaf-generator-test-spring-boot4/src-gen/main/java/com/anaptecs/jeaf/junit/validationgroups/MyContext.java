@@ -55,7 +55,7 @@ public class MyContext {
    * <p/>
    * <b>Header-Param:</b> <code>deprecatedHeader</code>
    *
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
    */
   @Deprecated
   @NotNull(groups = { V4.class, V5.class, V6.class })
@@ -113,7 +113,7 @@ public class MyContext {
      * <p/>
      * <b>Header-Param:</b> <code>deprecatedHeader</code>
      *
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
      */
     @Deprecated
     private String deprecatedHeader;
@@ -225,7 +225,7 @@ public class MyContext {
      *
      * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+     * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
      */
     @Deprecated
     @JsonSetter(nulls = Nulls.SKIP)
@@ -324,7 +324,7 @@ public class MyContext {
    * Method returns attribute {@link #deprecatedHeader}.<br/>
    *
    * @return {@link String} Value to which {@link #deprecatedHeader} is set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
    */
   @Deprecated
   public String getDeprecatedHeader( ) {
@@ -335,7 +335,7 @@ public class MyContext {
    * Method sets attribute {@link #deprecatedHeader}.<br/>
    *
    * @param pDeprecatedHeader Value to which {@link #deprecatedHeader} should be set.
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
    */
   @Deprecated
   public void setDeprecatedHeader( String pDeprecatedHeader ) {

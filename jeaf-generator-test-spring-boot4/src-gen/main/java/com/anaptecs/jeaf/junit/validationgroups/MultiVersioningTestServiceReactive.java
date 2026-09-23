@@ -41,7 +41,7 @@ public interface MultiVersioningTestServiceReactive {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @return {@link String}
-   * @deprecated I'm so deprecated. (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   * @deprecated I'm so deprecated. (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
    */
   @Deprecated
   @NotNull

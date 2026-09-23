@@ -47,7 +47,7 @@
 
 <br>
 
-### Services with Deprecations 
+### Services with Deprecations
 
 <br>
 
@@ -103,7 +103,7 @@
 
 <br>
 
-### Services with Deprecations 
+### Services with Deprecations
 
 <br>
 
@@ -280,7 +280,7 @@
 
 <br>
 
-### Services with Deprecations 
+### Services with Deprecations
 
 <br>
 
@@ -314,13 +314,13 @@
 
 <br>
 
-### Services with Deprecations 
+### Services with Deprecations
 
 <br>
 
 | Service Name   | Description   | Deprecated since   | Planned to be removed   | Removal date |
 |----------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-09-13 |
+| `AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-12-24 |
 
 <br>
 
@@ -328,7 +328,7 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Removal date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `operationOfADeprecatedService()` | |  |  | 7.0 | 2026-09-13 |
+| `operationOfADeprecatedService()` | |  |  | 7.0 | 2026-12-24 |
 
 <br>
 
@@ -336,7 +336,7 @@
 
 | Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Removal date |
 |-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `deprecatedEndpoint()` | | I'm so deprecated. |  | 7.0 | 2026-09-13 |
+| `deprecatedEndpoint()` | | I'm so deprecated. |  | 7.0 | 2026-12-24 |
 
 <br>
 
@@ -346,14 +346,14 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Removal date |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `DeprecatedClass` | |  |  | 7.0 | 2026-09-13 |
-| `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-09-13 |
+| `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 |
+| `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 |
 | `MyContext` | |  |  |  |  |
-|   | `deprecatedHeader` |  |  | 7.0 | 2026-09-13 |
+|   | `deprecatedHeader` |  |  | 7.0 | 2026-12-24 |
 | `MyPOJOResponse` | |  |  |  |  |
-|   | `deprecatedProperty` |  |  | 7.0 | 2026-09-13 |
+|   | `deprecatedProperty` |  |  | 7.0 | 2026-12-24 |
 | `MyPojoRequest` | |  |  |  |  |
-|   | `formerMandatoryRequestProperty` |  |  | 7.0 | 2026-09-13 |
+|   | `formerMandatoryRequestProperty` |  |  | 7.0 | 2026-12-24 |
 
 <br>
 
@@ -365,7 +365,7 @@
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 | `ClientType` | |  |  |  |  |
 |   | `CLIENT_3` |  |  | 7.0 |  |
-| `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-09-13 |
+| `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-12-24 |
 
 <br>
 

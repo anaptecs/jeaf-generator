@@ -1,6 +1,7 @@
 extension java::GeneratorCommons;
 extension functions::NamedElement;
 extension functions::SystemProperties;
+extension functions::CompatibilityInfo;
 
 
 cached List[uml::NamedElement] getAllBreakingChanges(uml::Package package):
@@ -43,8 +44,8 @@ cached String getBreakingChangeActiveWith(uml::NamedElement change):
 	if change.getBreakingChangeActiveWithInternal().trim().length > 0
 	then change.getBreakingChangeActiveWithInternal().trim()
 	else
-		if change.hasCompatibilityInfo()
-		then change.getCompatibilityInfo().firstNonCompatibleVersion
+		if change.hasCompatibilityInfo() && change.getCompatibilityInfo().hasFirstNonCompatibleVersion()
+		then change.getCompatibilityInfo().getFirstNonCompatibleVersion().baseVersion.trim()
 		else ""	;
 
 
@@ -56,11 +57,19 @@ cached String getBreakingChangeActivactionDate(uml::NamedElement change):
 	if change.getBreakingChangeActivactionDateInternal().trim().length > 0
 	then change.getBreakingChangeActivactionDateInternal().trim()
 	else
-		if change.hasCompatibilityInfo()
-		then change.getCompatibilityInfo().sunsetDate
+		if change.hasCompatibilityInfo() && change.getCompatibilityInfo().hasFirstNonCompatibleVersion()
+		then change.getCompatibilityInfo().getFirstNonCompatibleVersion().goLiveDate.trim()
 		else "";
 
 
 cached String getBreakingChangeActivactionDateInternal(uml::NamedElement change):
-	change.getStereotypeValue("BreakingChange", "activationDate");
+	change.getStereotypeValue("BreakingChange", "goLiveDate");
 
+
+cached String getBreakingChangeEndOfCompatibilityPhase(uml::NamedElement element):
+	if element.isBreakingChange() && element.hasCompatibilityInfo()
+	then element.getCompatibilityInfo().endOfLifeDate.trim()
+	else "";
+
+
+	

@@ -37,7 +37,7 @@ public class ParentPOJO {
    * Constant for the name of attribute "weirdAttribute".
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
   public static final String WEIRDATTRIBUTE = "weirdAttribute";
 
   /**
@@ -49,7 +49,7 @@ public class ParentPOJO {
   private String parentAttribute;
 
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
   private byte weirdAttribute;
 
   @NotNull
@@ -107,7 +107,7 @@ public class ParentPOJO {
     private String parentAttribute;
 
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
     private byte weirdAttribute;
 
     private String hello;
@@ -150,7 +150,7 @@ public class ParentPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {
       // Assign value to attribute
@@ -219,7 +219,7 @@ public class ParentPOJO {
    * @return byte Value to which {@link #weirdAttribute} is set.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
   public byte getWeirdAttribute( ) {
     return weirdAttribute;
   }
@@ -230,7 +230,7 @@ public class ParentPOJO {
    * @param pWeirdAttribute Value to which {@link #weirdAttribute} should be set.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
   public void setWeirdAttribute( byte pWeirdAttribute ) {
     // Assign value to attribute
     weirdAttribute = pWeirdAttribute;

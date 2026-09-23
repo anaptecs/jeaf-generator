@@ -23,10 +23,6 @@ public enum MyType {
    * <b>Breaking Change</b> (<b>since:</b> 1.0.0, <b>active with:</b> 47.11, <b>activation date:</b> 2024-12-24): X-mas
    * present
    */
-  @BreakingChangeNotice(
-      description = "X-mas present",
-      since = "1.0.0",
-      activeWith = "47.11",
-      activationDate = "2024-12-24")
+  @BreakingChangeNotice(description = "X-mas present", since = "1.0.0", activeWith = "47.11", goLiveDate = "2024-12-24")
   GAMMA;
 }

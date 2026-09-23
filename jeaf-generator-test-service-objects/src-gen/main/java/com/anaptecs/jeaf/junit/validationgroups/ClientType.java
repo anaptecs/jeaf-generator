@@ -8,7 +8,7 @@ package com.anaptecs.jeaf.junit.validationgroups;
 public enum ClientType {
   CLIENT_1, CLIENT_2,
   /**
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
    */
   @Deprecated
   CLIENT_3;

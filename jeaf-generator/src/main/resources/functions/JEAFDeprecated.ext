@@ -4,6 +4,7 @@ import uml;
 extension java::GeneratorCommons;
 extension functions::Javadoc;
 extension functions::NamedElement;
+extension functions::CompatibilityInfo;
 
 
 cached boolean isJEAFDeprecated(Element element) :
@@ -41,8 +42,8 @@ cached String getDeprecationRemoval(NamedElement element):
 		if element.getDeprecationRemovalInternal().trim().length > 0
 		then element.getDeprecationRemovalInternal().trim()
 		else 
-			if element.hasCompatibilityInfo()
-			then element.getCompatibilityInfo().firstNonCompatibleVersion.trim()
+			if element.hasCompatibilityInfo() && element.getCompatibilityInfo().hasFirstNonCompatibleVersion()
+			then element.getCompatibilityInfo().getFirstNonCompatibleVersion().baseVersion.trim()
 			else "";
 
 private String getDeprecationRemovalInternal(NamedElement element):
@@ -58,14 +59,20 @@ cached String getDeprecationRemovalDate(NamedElement element):
 		if element.getDeprecationRemovalDateInternal().trim().length > 0
 		then element.getDeprecationRemovalDateInternal().trim()
 		else
-			if element.hasCompatibilityInfo()
-			then element.getCompatibilityInfo().sunsetDate
+			if element.hasCompatibilityInfo() && element.getCompatibilityInfo().hasFirstNonCompatibleVersion()
+			then element.getCompatibilityInfo().getFirstNonCompatibleVersion().goLiveDate.trim()
 			else "";
 
 
 private String getDeprecationRemovalDateInternal(NamedElement element):
 	if element.isJEAFDeprecated()
-	then element.getStereotypeValue("JEAFDeprecated", "removalDate")
+	then element.getStereotypeValue("JEAFDeprecated", "goLiveDate")
+	else "";
+	
+
+cached String getDeprecationEndOfCompatibilityPhase(NamedElement element):
+	if element.isJEAFDeprecated() && element.hasCompatibilityInfo()
+	then element.getCompatibilityInfo().endOfLifeDate.trim()
 	else "";
 
 
@@ -95,5 +102,3 @@ cached Property getSuccessorAsProperty(Property property):
 
 cached boolean hasPropertyWithBckwardCompatibility(Class class):
     class.allOwnedElements().typeSelect(Property).select(e|e.generateBackwardCompatibility()).size > 0;
-
-

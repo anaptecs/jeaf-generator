@@ -20,7 +20,7 @@ import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
     description = "Announcement for the far away future",
     since = "1.2.3",
     activeWith = "47.11",
-    activationDate = "2222-12-31")
+    goLiveDate = "2222-12-31")
 public class PlainPOJO extends PlainPOJOBase {
   /**
    * Initialize object. Nothing special to do.
@@ -60,7 +60,7 @@ public class PlainPOJO extends PlainPOJOBase {
   /**
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
   @Override
   public void doDeprectedStuff( ) {
     // TODO: Implement business logic for method.
@@ -74,10 +74,10 @@ public class PlainPOJO extends PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
   @Override
   public String doSomething(
-      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "") int pParam1,
+      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "") int pParam1,
       int pParam2 ) {
     // TODO: Implement business logic for method.
     return null;

@@ -59,9 +59,9 @@
 | Element  | Details    | Description  | Since | Active with | Activation Date |
 |----------|------------|--------------|:-----:|:-----------:|:---------------:|
 | `MyPojoRequest` | `propertyWithNewConstraints` |  |  |  |  | 
-| `MyPOJOResponse` | `formerMandatoryProperty` |  |  | 7.0 | 2026-09-13 | 
-| `MyPojoRequest` | `upcomingMandatoryProperty` | Property will become mandatory in the future |  | 7.0 | 2026-09-13 | 
-| `OtherPojo` | `v6Property` | Property will become mandatory. |  | 8.0 | 2026-10-20 | 
+| `MyPOJOResponse` | `formerMandatoryProperty` |  |  | 7.0 | 2026-12-24 | 
+| `MyPojoRequest` | `upcomingMandatoryProperty` | Property will become mandatory in the future |  | 7.0 | 2026-12-24 | 
+| `OtherPojo` | `v6Property` | Property will become mandatory. |  | 8.0 | 2027-05-01 | 
 
 <br>
 

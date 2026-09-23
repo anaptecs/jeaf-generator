@@ -20,12 +20,12 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
- * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+ * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
  */
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Deprecated
-@DeprecationNotice(description = "", since = "", removedWith = "7.0", removalDate = "2026-09-13")
+@DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
 @JsonDeserialize(builder = DeprecatedClass.Builder.class)
 public class DeprecatedClass {
   /**
@@ -76,7 +76,7 @@ public class DeprecatedClass {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "7.0", removalDate = "2026-09-13")
+  @DeprecationNotice(description = "", since = "", removedWith = "7.0", goLiveDate = "2026-12-24")
   public static class Builder {
     private int justAProperty;
 

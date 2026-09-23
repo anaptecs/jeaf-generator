@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
- * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+ * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
  */
 @Deprecated
 public interface AnotherDeprecatedRESTServiceReactive {
@@ -21,7 +21,7 @@ public interface AnotherDeprecatedRESTServiceReactive {
    * <p/>
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
-   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+   * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-12-24)
    */
   @Deprecated
   @NotNull

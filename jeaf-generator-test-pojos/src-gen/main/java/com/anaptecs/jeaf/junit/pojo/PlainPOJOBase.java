@@ -37,7 +37,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     description = "Announcement for the far away future",
     since = "1.2.3",
     activeWith = "47.11",
-    activationDate = "2222-12-31")
+    goLiveDate = "2222-12-31")
 @JsonDeserialize(builder = PlainPOJO.Builder.class)
 public abstract class PlainPOJOBase {
   /**
@@ -229,7 +229,7 @@ public abstract class PlainPOJOBase {
   /**
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
   public abstract void doDeprectedStuff( );
 
   /**
@@ -240,9 +240,9 @@ public abstract class PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
   public abstract String doSomething(
-      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "") int pParam1,
+      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "") int pParam1,
       int pParam2 );
 
   @Override

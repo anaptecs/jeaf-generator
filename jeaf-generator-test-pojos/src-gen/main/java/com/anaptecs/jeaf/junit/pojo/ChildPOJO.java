@@ -38,7 +38,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     description = "We do not like this class any more.",
     since = "Big bang",
     removedWith = "Last X-Mas",
-    removalDate = "")
+    goLiveDate = "")
 @JsonDeserialize(builder = ChildPOJO.Builder.class)
 public class ChildPOJO extends ParentPOJO {
   /**
@@ -103,7 +103,7 @@ public class ChildPOJO extends ParentPOJO {
       description = "We do not like this class any more.",
       since = "Big bang",
       removedWith = "Last X-Mas",
-      removalDate = "")
+      goLiveDate = "")
   public static class Builder extends ParentPOJO.Builder {
     private Integer childAttribute;
 
@@ -146,7 +146,7 @@ public class ChildPOJO extends ParentPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "")
     @JsonSetter(nulls = Nulls.SKIP)
     @Override
     public Builder setWeirdAttribute( byte pWeirdAttribute ) {
