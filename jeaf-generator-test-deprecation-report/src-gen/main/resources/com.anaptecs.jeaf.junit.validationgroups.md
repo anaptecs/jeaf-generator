@@ -61,7 +61,7 @@
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
 | **`untouchedProperty`** : `String`   `[1..1]`<br> |  |  |
-| <font color="red">**`formerMandatoryProperty`**</font> : `String`   `[0..1]`<br>        `@NotNull: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 7.0, go live date: 2026-12-24):**<br> |
+| <font color="red">**`formerMandatoryProperty`**</font> : `String`   `[0..1]`<br>        `@NotNull: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 7.0, go live date: 2026-12-24, end of compatibility phase: 2026-09-13):**<br> |
 | *`deprecatedProperty`* : `String`   `[0..1]`<br> |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br> |
 | **`derivedProperty`** : `String`   `[1..1]`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 
@@ -77,8 +77,8 @@
 
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
-| <font color="red">**`upcomingMandatoryProperty`**</font> : `String`   `[1..1]`<br>        `@Optional: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 7.0, go live date: 2026-12-24):**<br>Property will become mandatory in the future |
-| <font color="red">**`propertyWithNewConstraints`**</font> : `String`   `[1..1]`<br> |  | :bomb: **Breaking Change Notice (since: , active with: , go live date: ):**<br> |
+| <font color="red">**`upcomingMandatoryProperty`**</font> : `String`   `[1..1]`<br>        `@Optional: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 7.0, go live date: 2026-12-24, end of compatibility phase: 2026-09-13):**<br>Property will become mandatory in the future |
+| <font color="red">**`propertyWithNewConstraints`**</font> : `String`   `[1..1]`<br> |  | :bomb: **Breaking Change Notice (since: , active with: , go live date: , end of compatibility phase: ):**<br> |
 | *`formerMandatoryRequestProperty`* : `String`   `[0..1]`<br>        `@NotNull: versions=V4, V5, V6` |  | :exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24):**<br> |
 | **`untouchedProperty`** : `String`   `[1..1]`<br> |  |  |
 | **`constraintChangingProperty`** : `String`   `[1..1]`<br>        `@Size: min=5, max=500, versions=V4, V5, V6`<br>        `@Size: min=10, max=20, versions=V7`<br>        `@Optional: versions=V4, V5, V6` |  |  |
@@ -106,7 +106,7 @@
 | **`dateTimeProperty`** : `java.time.OffsetDateTime`   `[1..1]`<br>        `@FutureOrPresent: versions=V7`<br>        `@Past: versions=V7`<br>        `@Future: versions=V4, V5, V6`<br>        `@PastOrPresent: versions=V4, V5, V6` |  |  |
 | **`positiveValueProperty`** : `int`   `[1..1]`<br>        `@PositiveOrZero: versions=V7`<br>        `@Positive: versions=V4, V5, V6` |  |  |
 | **`negativeProperty`** : `int`   `[1..1]`<br>        `@Negative: versions=V7`<br>        `@NegativeOrZero: versions=V4, V5, V6` |  |  |
-| <font color="red">**`v6Property`**</font> : `String`   `[1..1]`<br>        `@Size: min=0, max=32, versions=V4, V5, V6`<br>        `@Size: min=10, max=32, versions=V7`<br>        `@Optional: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 8.0, go live date: 2027-05-01):**<br>Property will become mandatory. |
+| <font color="red">**`v6Property`**</font> : `String`   `[1..1]`<br>        `@Size: min=0, max=32, versions=V4, V5, V6`<br>        `@Size: min=10, max=32, versions=V7`<br>        `@Optional: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 8.0, go live date: 2027-05-01, end of compatibility phase: 2026-10-20):**<br>Property will become mandatory. |
 
 <br>
 

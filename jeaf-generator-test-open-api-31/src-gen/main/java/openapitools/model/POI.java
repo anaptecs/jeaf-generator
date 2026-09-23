@@ -186,7 +186,7 @@ public class POI extends Stop {
   }
 
   /**
-   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2024-12-24, go live date: ):**&lt;br&gt;&lt;br&gt; New mandatory association is required to support upcoming features. 
+   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2024-12-24, go live date: , end of compatibility phase: ):**&lt;br&gt;&lt;br&gt; New mandatory association is required to support upcoming features. 
    * @return stops
    */
   @javax.annotation.Nonnull

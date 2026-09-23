@@ -438,7 +438,7 @@ components:
           
         - `WEB`: 
           <br><br>
-          **Breaking Change Notice (active with 1.47.11, go live date: ):**<br><br>
+          **Breaking Change Notice (active with 1.47.11, go live date: , end of compatibility phase: ):**<br><br>
           Added new literal<br>
           <br>
           
@@ -663,7 +663,7 @@ components:
       description: >-
         
         <br><br>
-        **Breaking Change Notice (active with PI 17, go live date: ):**<br><br>
+        **Breaking Change Notice (active with PI 17, go live date: , end of compatibility phase: ):**<br><br>
         Class was changed to an extensible enum. New literals will not be introduced before PI 17.
       type: string
       x-extensible-enum:
@@ -925,7 +925,7 @@ components:
           
         - `DB`: 
           <br><br>
-          **Breaking Change Notice (active with 3.x, go live date: ):**<br><br>
+          **Breaking Change Notice (active with 3.x, go live date: , end of compatibility phase: ):**<br><br>
           New literal will occur
           <br><br>
           
@@ -1131,7 +1131,7 @@ components:
               description: >-
                 
                 <br><br>
-                **Breaking Change Notice (active with 2024-12-24, go live date: ):**<br><br>
+                **Breaking Change Notice (active with 2024-12-24, go live date: , end of compatibility phase: ):**<br><br>
                 New mandatory association is required to support upcoming features.
               type: array
               items:
@@ -1985,7 +1985,7 @@ components:
           description: >-
             
             <br><br>
-            **Breaking Change Notice (active with 1.1, go live date: ):**<br><br>
+            **Breaking Change Notice (active with 1.1, go live date: , end of compatibility phase: ):**<br><br>
             Maximum size will be increased.
           type: string
           minLength: 1
@@ -2248,14 +2248,14 @@ components:
               description: >-
                 the real booking
                 <br><br>
-                **Breaking Change Notice (active with 2.0, go live date: ):**<br><br>
+                **Breaking Change Notice (active with 2.0, go live date: , end of compatibility phase: ):**<br><br>
                 Association will be mandatory.
               $ref: '#/components/schemas/Booking'
             inventories:
               description: >-
                 
                 <br><br>
-                **Breaking Change Notice (active with 2.1, go live date: ):**<br><br>
+                **Breaking Change Notice (active with 2.1, go live date: , end of compatibility phase: ):**<br><br>
                 Association will required at least 1 object.
               type: array
               items:

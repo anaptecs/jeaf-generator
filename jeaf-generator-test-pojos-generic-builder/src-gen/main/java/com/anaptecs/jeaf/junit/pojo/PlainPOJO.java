@@ -7,8 +7,8 @@ package com.anaptecs.jeaf.junit.pojo;
 
 /**
  * <p/>
- * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31):
- * Announcement for the far away future
+ * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31, <b>end of
+ * compatibility phase:</b> TBD): Announcement for the far away future
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

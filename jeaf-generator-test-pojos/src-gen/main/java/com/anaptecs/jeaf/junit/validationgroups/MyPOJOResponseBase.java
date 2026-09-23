@@ -37,7 +37,12 @@ public abstract class MyPOJOResponseBase {
   /**
    * Constant for the name of attribute "formerMandatoryProperty".
    */
-  @BreakingChangeNotice(description = "", since = "", activeWith = "7.0", goLiveDate = "2026-12-24")
+  @BreakingChangeNotice(
+      description = "",
+      since = "",
+      activeWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public static final String FORMERMANDATORYPROPERTY = "formerMandatoryProperty";
 
   /**
@@ -52,9 +57,15 @@ public abstract class MyPOJOResponseBase {
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * compatibility phase:</b> 2026-09-13):
    */
-  @BreakingChangeNotice(description = "", since = "", activeWith = "7.0", goLiveDate = "2026-12-24")
+  @BreakingChangeNotice(
+      description = "",
+      since = "",
+      activeWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   @NotNull(groups = { V4.class, V5.class, V6.class })
   private String formerMandatoryProperty;
 
@@ -90,9 +101,15 @@ public abstract class MyPOJOResponseBase {
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13):
      */
-    @BreakingChangeNotice(description = "", since = "", activeWith = "7.0", goLiveDate = "2026-12-24")
+    @BreakingChangeNotice(
+        description = "",
+        since = "",
+        activeWith = "7.0",
+        goLiveDate = "2026-12-24",
+        endOfCompatibilityPhase = "2026-09-13")
     private String formerMandatoryProperty;
 
     /**
@@ -136,12 +153,18 @@ public abstract class MyPOJOResponseBase {
     /**
      * Method sets attribute {@link #formerMandatoryProperty}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13):
      *
      * @param pFormerMandatoryProperty Value to which {@link #formerMandatoryProperty} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
      */
-    @BreakingChangeNotice(description = "", since = "", activeWith = "7.0", goLiveDate = "2026-12-24")
+    @BreakingChangeNotice(
+        description = "",
+        since = "",
+        activeWith = "7.0",
+        goLiveDate = "2026-12-24",
+        endOfCompatibilityPhase = "2026-09-13")
     @JsonSetter(nulls = Nulls.SKIP)
     public BuilderBase setFormerMandatoryProperty( String pFormerMandatoryProperty ) {
       // Assign value to attribute
@@ -211,11 +234,17 @@ public abstract class MyPOJOResponseBase {
   /**
    * Method returns attribute {@link #formerMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * compatibility phase:</b> 2026-09-13):
    *
    * @return {@link String} Value to which {@link #formerMandatoryProperty} is set.
    */
-  @BreakingChangeNotice(description = "", since = "", activeWith = "7.0", goLiveDate = "2026-12-24")
+  @BreakingChangeNotice(
+      description = "",
+      since = "",
+      activeWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public String getFormerMandatoryProperty( ) {
     return formerMandatoryProperty;
   }
@@ -223,11 +252,17 @@ public abstract class MyPOJOResponseBase {
   /**
    * Method sets attribute {@link #formerMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * compatibility phase:</b> 2026-09-13):
    *
    * @param pFormerMandatoryProperty Value to which {@link #formerMandatoryProperty} should be set.
    */
-  @BreakingChangeNotice(description = "", since = "", activeWith = "7.0", goLiveDate = "2026-12-24")
+  @BreakingChangeNotice(
+      description = "",
+      since = "",
+      activeWith = "7.0",
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public void setFormerMandatoryProperty( String pFormerMandatoryProperty ) {
     // Assign value to attribute
     formerMandatoryProperty = pFormerMandatoryProperty;

@@ -43,13 +43,14 @@ public class MyPojoRequest {
       description = "Property will become mandatory in the future",
       since = "",
       activeWith = "7.0",
-      goLiveDate = "2026-12-24")
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public static final String UPCOMINGMANDATORYPROPERTY = "upcomingMandatoryProperty";
 
   /**
    * Constant for the name of attribute "propertyWithNewConstraints".
    */
-  @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "")
+  @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
   public static final String PROPERTYWITHNEWCONSTRAINTS = "propertyWithNewConstraints";
 
   /**
@@ -81,22 +82,24 @@ public class MyPojoRequest {
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24): Property will
-   * become mandatory in the future
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * compatibility phase:</b> 2026-09-13): Property will become mandatory in the future
    */
   @BreakingChangeNotice(
       description = "Property will become mandatory in the future",
       since = "",
       activeWith = "7.0",
-      goLiveDate = "2026-12-24")
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   @NotNull(groups = { V7.class })
   private String upcomingMandatoryProperty;
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD):
    */
-  @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "")
+  @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
   @NotNull
   private String propertyWithNewConstraints;
 
@@ -189,21 +192,23 @@ public class MyPojoRequest {
   public static class Builder {
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24): Property
-     * will become mandatory in the future
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13): Property will become mandatory in the future
      */
     @BreakingChangeNotice(
         description = "Property will become mandatory in the future",
         since = "",
         activeWith = "7.0",
-        goLiveDate = "2026-12-24")
+        goLiveDate = "2026-12-24",
+        endOfCompatibilityPhase = "2026-09-13")
     private String upcomingMandatoryProperty;
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD):
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD, <b>end of
+     * compatibility phase:</b> TBD):
      */
-    @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "")
+    @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
     private String propertyWithNewConstraints;
 
     /**
@@ -246,8 +251,8 @@ public class MyPojoRequest {
     /**
      * Method sets attribute {@link #upcomingMandatoryProperty}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24): Property
-     * will become mandatory in the future
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * compatibility phase:</b> 2026-09-13): Property will become mandatory in the future
      *
      * @param pUpcomingMandatoryProperty Value to which {@link #upcomingMandatoryProperty} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -256,7 +261,8 @@ public class MyPojoRequest {
         description = "Property will become mandatory in the future",
         since = "",
         activeWith = "7.0",
-        goLiveDate = "2026-12-24")
+        goLiveDate = "2026-12-24",
+        endOfCompatibilityPhase = "2026-09-13")
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setUpcomingMandatoryProperty( String pUpcomingMandatoryProperty ) {
       // Assign value to attribute
@@ -267,12 +273,13 @@ public class MyPojoRequest {
     /**
      * Method sets attribute {@link #propertyWithNewConstraints}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD):
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD, <b>end of
+     * compatibility phase:</b> TBD):
      *
      * @param pPropertyWithNewConstraints Value to which {@link #propertyWithNewConstraints} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
-    @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "")
+    @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setPropertyWithNewConstraints( String pPropertyWithNewConstraints ) {
       // Assign value to attribute
@@ -395,8 +402,8 @@ public class MyPojoRequest {
   /**
    * Method returns attribute {@link #upcomingMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24): Property will
-   * become mandatory in the future
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * compatibility phase:</b> 2026-09-13): Property will become mandatory in the future
    *
    * @return {@link String} Value to which {@link #upcomingMandatoryProperty} is set.
    */
@@ -404,7 +411,8 @@ public class MyPojoRequest {
       description = "Property will become mandatory in the future",
       since = "",
       activeWith = "7.0",
-      goLiveDate = "2026-12-24")
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public String getUpcomingMandatoryProperty( ) {
     return upcomingMandatoryProperty;
   }
@@ -412,8 +420,8 @@ public class MyPojoRequest {
   /**
    * Method sets attribute {@link #upcomingMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24): Property will
-   * become mandatory in the future
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * compatibility phase:</b> 2026-09-13): Property will become mandatory in the future
    *
    * @param pUpcomingMandatoryProperty Value to which {@link #upcomingMandatoryProperty} should be set.
    */
@@ -421,7 +429,8 @@ public class MyPojoRequest {
       description = "Property will become mandatory in the future",
       since = "",
       activeWith = "7.0",
-      goLiveDate = "2026-12-24")
+      goLiveDate = "2026-12-24",
+      endOfCompatibilityPhase = "2026-09-13")
   public void setUpcomingMandatoryProperty( String pUpcomingMandatoryProperty ) {
     // Assign value to attribute
     upcomingMandatoryProperty = pUpcomingMandatoryProperty;
@@ -430,11 +439,12 @@ public class MyPojoRequest {
   /**
    * Method returns attribute {@link #propertyWithNewConstraints}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD):
    *
    * @return {@link String} Value to which {@link #propertyWithNewConstraints} is set.
    */
-  @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "")
+  @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
   public String getPropertyWithNewConstraints( ) {
     return propertyWithNewConstraints;
   }
@@ -442,11 +452,12 @@ public class MyPojoRequest {
   /**
    * Method sets attribute {@link #propertyWithNewConstraints}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD):
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> TBD, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD):
    *
    * @param pPropertyWithNewConstraints Value to which {@link #propertyWithNewConstraints} should be set.
    */
-  @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "")
+  @BreakingChangeNotice(description = "", since = "", activeWith = "", goLiveDate = "", endOfCompatibilityPhase = "")
   public void setPropertyWithNewConstraints( String pPropertyWithNewConstraints ) {
     // Assign value to attribute
     propertyWithNewConstraints = pPropertyWithNewConstraints;

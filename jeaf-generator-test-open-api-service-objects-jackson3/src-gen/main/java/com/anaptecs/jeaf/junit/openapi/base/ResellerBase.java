@@ -57,8 +57,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will be
-   * increased.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD): Maximum size will be increased.
    */
   @NotBlank
   @Size(min = 0, max = 32)
@@ -122,8 +122,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will
-     * be increased.
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD, <b>end of
+     * compatibility phase:</b> TBD): Maximum size will be increased.
      */
     private String name;
 
@@ -193,8 +193,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
     /**
      * Method sets attribute {@link #name}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will
-     * be increased.
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD, <b>end of
+     * compatibility phase:</b> TBD): Maximum size will be increased.
      *
      * @param pName Value to which {@link #name} should be set.
      * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
@@ -421,8 +421,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   /**
    * Method returns attribute {@link #name}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will be
-   * increased.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD): Maximum size will be increased.
    *
    * @return {@link String} Value to which {@link #name} is set.
    */
@@ -434,8 +434,8 @@ public abstract class ResellerBase implements ServiceObject, Identifiable<Servic
   /**
    * Method sets attribute {@link #name}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD): Maximum size will be
-   * increased.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.1, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD): Maximum size will be increased.
    *
    * @param pName Value to which {@link #name} should be set.
    */

@@ -103,7 +103,8 @@ public class OtherPojo {
       description = "Property will become mandatory.",
       since = "",
       activeWith = "8.0",
-      goLiveDate = "2027-05-01")
+      goLiveDate = "2027-05-01",
+      endOfCompatibilityPhase = "2026-10-20")
   public static final String V6PROPERTY = "v6Property";
 
   @Size(min = 1, groups = { V7.class })
@@ -157,14 +158,15 @@ public class OtherPojo {
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property will
-   * become mandatory.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01, <b>end of
+   * compatibility phase:</b> 2026-10-20): Property will become mandatory.
    */
   @BreakingChangeNotice(
       description = "Property will become mandatory.",
       since = "",
       activeWith = "8.0",
-      goLiveDate = "2027-05-01")
+      goLiveDate = "2027-05-01",
+      endOfCompatibilityPhase = "2026-10-20")
   @Size(min = 10, max = 32, groups = { V7.class })
   @Size(min = 0, max = 32, groups = { V4.class, V5.class, V6.class })
   @NotNull(groups = { V7.class })
@@ -269,14 +271,15 @@ public class OtherPojo {
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property
-     * will become mandatory.
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01, <b>end of
+     * compatibility phase:</b> 2026-10-20): Property will become mandatory.
      */
     @BreakingChangeNotice(
         description = "Property will become mandatory.",
         since = "",
         activeWith = "8.0",
-        goLiveDate = "2027-05-01")
+        goLiveDate = "2027-05-01",
+        endOfCompatibilityPhase = "2026-10-20")
     private String v6Property;
 
     /**
@@ -430,8 +433,8 @@ public class OtherPojo {
     /**
      * Method sets attribute {@link #v6Property}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property
-     * will become mandatory.
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01, <b>end of
+     * compatibility phase:</b> 2026-10-20): Property will become mandatory.
      *
      * @param pV6Property Value to which {@link #v6Property} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -440,7 +443,8 @@ public class OtherPojo {
         description = "Property will become mandatory.",
         since = "",
         activeWith = "8.0",
-        goLiveDate = "2027-05-01")
+        goLiveDate = "2027-05-01",
+        endOfCompatibilityPhase = "2026-10-20")
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setV6Property( String pV6Property ) {
       // Assign value to attribute
@@ -659,8 +663,8 @@ public class OtherPojo {
   /**
    * Method returns attribute {@link #v6Property}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property will
-   * become mandatory.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01, <b>end of
+   * compatibility phase:</b> 2026-10-20): Property will become mandatory.
    *
    * @return {@link String} Value to which {@link #v6Property} is set.
    */
@@ -668,7 +672,8 @@ public class OtherPojo {
       description = "Property will become mandatory.",
       since = "",
       activeWith = "8.0",
-      goLiveDate = "2027-05-01")
+      goLiveDate = "2027-05-01",
+      endOfCompatibilityPhase = "2026-10-20")
   public String getV6Property( ) {
     return v6Property;
   }
@@ -676,8 +681,8 @@ public class OtherPojo {
   /**
    * Method sets attribute {@link #v6Property}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01): Property will
-   * become mandatory.
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 8.0, <b>go live date:</b> 2027-05-01, <b>end of
+   * compatibility phase:</b> 2026-10-20): Property will become mandatory.
    *
    * @param pV6Property Value to which {@link #v6Property} should be set.
    */
@@ -685,7 +690,8 @@ public class OtherPojo {
       description = "Property will become mandatory.",
       since = "",
       activeWith = "8.0",
-      goLiveDate = "2027-05-01")
+      goLiveDate = "2027-05-01",
+      endOfCompatibilityPhase = "2026-10-20")
   public void setV6Property( String pV6Property ) {
     // Assign value to attribute
     v6Property = pV6Property;

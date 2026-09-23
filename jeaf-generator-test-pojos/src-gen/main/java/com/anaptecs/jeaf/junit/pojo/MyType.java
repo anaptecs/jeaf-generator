@@ -20,9 +20,14 @@ public enum MyType {
   ALPHA, BETA,
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> 1.0.0, <b>active with:</b> 47.11, <b>go live date:</b> 2024-12-24): X-mas
-   * present
+   * <b>Breaking Change</b> (<b>since:</b> 1.0.0, <b>active with:</b> 47.11, <b>go live date:</b> 2024-12-24, <b>end of
+   * compatibility phase:</b> TBD): X-mas present
    */
-  @BreakingChangeNotice(description = "X-mas present", since = "1.0.0", activeWith = "47.11", goLiveDate = "2024-12-24")
+  @BreakingChangeNotice(
+      description = "X-mas present",
+      since = "1.0.0",
+      activeWith = "47.11",
+      goLiveDate = "2024-12-24",
+      endOfCompatibilityPhase = "")
   GAMMA;
 }

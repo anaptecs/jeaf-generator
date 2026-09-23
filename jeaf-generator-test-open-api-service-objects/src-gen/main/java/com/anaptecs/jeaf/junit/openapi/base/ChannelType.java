@@ -33,8 +33,8 @@ public enum ChannelType {
    * <b>Attribute values:</b><br/>
    * - <code>code = "WEB"</code><br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.47.11, <b>go live date:</b> TBD): Added new
-   * literal
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 1.47.11, <b>go live date:</b> TBD, <b>end of
+   * compatibility phase:</b> TBD): Added new literal
    */
   WEB("WEB"),
   /**
