@@ -93,7 +93,7 @@ public class Reseller {
   }
 
   /**
-   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 1.1, activation date: ):**&lt;br&gt;&lt;br&gt; Maximum size will be increased. 
+   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 1.1, go live date: , end of compatibility period: ):**&lt;br&gt;&lt;br&gt; Maximum size will be increased. 
    * @return name
    */
   @javax.annotation.Nonnull

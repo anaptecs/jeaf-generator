@@ -9,8 +9,9 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 /**
  * <p/>
- * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 17, <b>activation date:</b> TBD): Class was changed
- * to an extensible enum. New literals will not be introduced before PI 17.
+ * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 17, <b>go live date:</b> TBD, <b>end of
+ * compatibility period:</b> TBD): Class was changed to an extensible enum. New literals will not be introduced before
+ * PI 17.
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x

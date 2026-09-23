@@ -197,7 +197,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   * the real booking &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2.0, activation date: ):**&lt;br&gt;&lt;br&gt; Association will be mandatory. 
+   * the real booking &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2.0, go live date: , end of compatibility period: ):**&lt;br&gt;&lt;br&gt; Association will be mandatory. 
    * @return realBooking
    */
   @javax.annotation.Nullable
@@ -230,7 +230,7 @@ public class WeirdBooking extends WeirdParent {
   }
 
   /**
-   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2.1, activation date: ):**&lt;br&gt;&lt;br&gt; Association will required at least 1 object. 
+   *  &lt;br&gt;&lt;br&gt; **Breaking Change Notice (active with 2.1, go live date: , end of compatibility period: ):**&lt;br&gt;&lt;br&gt; Association will required at least 1 object. 
    * @return inventories
    */
   @javax.annotation.Nullable

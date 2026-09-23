@@ -25,8 +25,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * <p/>
- * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>activation date:</b> 2222-12-31):
- * Announcement for the far away future
+ * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31, <b>end of
+ * compatibility period:</b> TBD): Announcement for the far away future
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -37,7 +37,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     description = "Announcement for the far away future",
     since = "1.2.3",
     activeWith = "47.11",
-    activationDate = "2222-12-31")
+    goLiveDate = "2222-12-31",
+    endOfCompatibilityPeriod = "")
 @JsonDeserialize(builder = PlainPOJO.Builder.class)
 public abstract class PlainPOJOBase {
   /**
@@ -229,7 +230,7 @@ public abstract class PlainPOJOBase {
   /**
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public abstract void doDeprectedStuff( );
 
   /**
@@ -240,10 +241,13 @@ public abstract class PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
-  public abstract String doSomething(
-      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "") int pParam1,
-      int pParam2 );
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
+  public abstract String doSomething( @Deprecated @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "",
+      goLiveDate = "",
+      endOfCompatibilityPeriod = "") int pParam1, int pParam2 );
 
   @Override
   public int hashCode( ) {

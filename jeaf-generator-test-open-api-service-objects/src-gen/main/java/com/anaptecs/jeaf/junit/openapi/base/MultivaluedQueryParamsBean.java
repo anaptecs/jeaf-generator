@@ -24,8 +24,8 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>activation date:</b> TBD): At least one
-   * will become mandatory
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>go live date:</b> TBD, <b>end of
+   * compatibility period:</b> TBD): At least one will become mandatory
    */
   @QueryParam("intArray")
   private int[] intArray;
@@ -83,8 +83,8 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   public static class Builder {
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>activation date:</b> TBD): At least one
-     * will become mandatory
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>go live date:</b> TBD, <b>end of
+     * compatibility period:</b> TBD): At least one will become mandatory
      */
     private int[] intArray;
 
@@ -114,8 +114,8 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
     /**
      * Method sets attribute {@link #intArray}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>activation date:</b> TBD): At least one
-     * will become mandatory
+     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>go live date:</b> TBD, <b>end of
+     * compatibility period:</b> TBD): At least one will become mandatory
      *
      * @param pIntArray Value to which {@link #intArray} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
@@ -192,8 +192,8 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   /**
    * Method returns attribute {@link #intArray}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>activation date:</b> TBD): At least one
-   * will become mandatory
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>go live date:</b> TBD, <b>end of
+   * compatibility period:</b> TBD): At least one will become mandatory
    *
    * @return int[] Value to which {@link #intArray} is set.
    */
@@ -211,8 +211,8 @@ public class MultivaluedQueryParamsBean implements ServiceObject {
   /**
    * Method sets attribute {@link #intArray}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>activation date:</b> TBD): At least one
-   * will become mandatory
+   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 47.11, <b>go live date:</b> TBD, <b>end of
+   * compatibility period:</b> TBD): At least one will become mandatory
    *
    * @param pIntArray Value to which {@link #intArray} should be set.
    */

@@ -159,10 +159,10 @@
 			@«toDoAnnotationClassName()»(plannedChanges = {«FOREACH this.getToDoPlannedChanges() AS change SEPARATOR ", "»«toDoTypeClassName()».«change»«ENDFOREACH»}, description = "«this.getToDoDescription()»", since = "«this.getToDoSince()»")
 		«ENDIF-»
 		«IF this.isBreakingChange() && breakingChangeNoticeAnnotationClassName().length > 0 -»
-			@«breakingChangeNoticeAnnotationClassName()»(description = "«this.getBreakingChangeDescription()»", since = "«this.getBreakingChangeSince()»", activeWith = "«this.getBreakingChangeActiveWith()»", activationDate = "«this.getBreakingChangeActivactionDate()»")
+			@«breakingChangeNoticeAnnotationClassName()»(description = "«this.getBreakingChangeDescription()»", since = "«this.getBreakingChangeSince()»", activeWith = "«this.getBreakingChangeActiveWith()»", goLiveDate = "«this.getBreakingChangeGoLiveDate()»", endOfCompatibilityPeriod = "«this.getBreakingChangeEndOfCompatibilityPeriod()»")
 		«ENDIF-»
 		«IF this.isDeprecated() && deprecationNoticeAnnotationClassName().length > 0 -»
-			@«deprecationNoticeAnnotationClassName()»(description = "«this.getDeprecationDescription()»", since = "«this.getDeprecatedSince()»", removedWith = "«this.getDeprecationRemoval()»", removalDate = "«this.getDeprecationRemovalDate()»")
+			@«deprecationNoticeAnnotationClassName()»(description = "«this.getDeprecationDescription()»", since = "«this.getDeprecatedSince()»", removedWith = "«this.getDeprecationRemoval()»", goLiveDate = "«this.getDeprecationGoLiveDate()»", endOfCompatibilityPeriod = "«this.getDeprecationEndOfCompatibilityPeriod()»")
 		«ENDIF-»
 	«ENDIF-»
 «ENDDEFINE»
