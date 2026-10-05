@@ -77,7 +77,7 @@
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedServiceObject` | |  |  |  |  |  |
 | `PartiallyDeprecatedServiceObject` | |  |  |  |  |  |
@@ -128,7 +128,7 @@
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `BeanParamWithDeprecations` | |  |  |  |  |  |
 |   | `deprecatedHeader` | this header param is no longer supported. Please use "xxx" instead. | 1.2.3 | PI.2.3 |  |  |
@@ -145,7 +145,7 @@
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedDomainObject` | |  |  |  |  |  |
 | `Price` | |  |  |  |  |  |
@@ -168,7 +168,7 @@
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedPO` | |  |  |  |  |  |
 |   | `deprecated` |  |  |  |  |  |
@@ -190,7 +190,7 @@
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `BeanParameter` | |  |  |  |  |  |
 |   | `oldStyle` |  |  |  |  |  |
@@ -265,7 +265,7 @@
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `BChildPOJO` | |  |  |  |  |  |
 | `ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |  |  |
@@ -344,7 +344,7 @@
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 | `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 | `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |

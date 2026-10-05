@@ -109,7 +109,7 @@ No deprecations published.
 
 <br>
 
-| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date |
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
 «FOREACH deprecations.select(e|e.isPOJO() || e.isServiceObject() || e.isDomainObject() || e.isPersistentObject()).sortBy(e|e.fqn()) AS element-»
 | `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» | «element.getDeprecationEndOfCompatibilityPeriod()» |
