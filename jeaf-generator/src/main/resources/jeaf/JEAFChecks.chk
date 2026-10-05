@@ -133,3 +133,6 @@ context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false
 
 context Model if generateNotNullAnnotationForSingleValuedProperties() ERROR this.getErrorMessage("9176", {"NotNull", "notNullAnnotationNameForSingleValuedProperties"}): notNullAnnotationNameForSingleValuedProperties().length > 0;
 context Model if generateNotEmptyAnnotationForMultiValuedProperties() ERROR this.getErrorMessage("9176", {"NotEmpty", "notEmptyAnnotationNameForMultiValuedProperties"}): notNullAnnotationNameForSingleValuedProperties().length > 0;
+
+
+context CompatibilityInfo if this.runChecks() && ignore() == false ERROR this.getErrorMessage("9188", {this.name}): this.clientDependency.typeSelect(JMM::FirstIncompatibleVersion).size <= 1;

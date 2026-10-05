@@ -20,7 +20,8 @@ import tools.jackson.databind.annotation.JsonPOJOBuilder;
 /**
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
- * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>removal date:</b> 2026-09-13)
+ * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility
+ * period:</b> 2026-09-13)
  */
 @Deprecated
 @JsonAutoDetect(

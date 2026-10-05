@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
 @Deprecated
-@DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+@DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
 @JsonDeserialize(builder = BChildPOJO.Builder.class)
 public class BChildPOJO extends BParentPOJO {
   /**
@@ -88,7 +88,7 @@ public class BChildPOJO extends BParentPOJO {
   @JsonPOJOBuilder(withPrefix = "set")
   @JsonIgnoreProperties(ignoreUnknown = true)
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public static class Builder extends BParentPOJO.Builder {
     private byte weirdAttribute;
 

@@ -49,14 +49,14 @@ public class ImmutableAssociationPOJO {
    * Constant for the name of attribute "deprecatedRefs".
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public static final String DEPRECATEDREFS = "deprecatedRefs";
 
   /**
    * Constant for the name of attribute "deprecatedRef".
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public static final String DEPRECATEDREF = "deprecatedRef";
 
   private final boolean yetAnotherAttribute;
@@ -66,11 +66,11 @@ public class ImmutableAssociationPOJO {
   private final ImmutableChildPOJO immutableChildPOJO;
 
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   private Set<ImmutableChildPOJO> deprecatedRefs;
 
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   private ChildPOJO deprecatedRef;
 
   /**
@@ -126,11 +126,11 @@ public class ImmutableAssociationPOJO {
     private ImmutableChildPOJO immutableChildPOJO;
 
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
     private Set<ImmutableChildPOJO> deprecatedRefs;
 
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
     private ChildPOJO deprecatedRef;
 
     /**
@@ -221,7 +221,7 @@ public class ImmutableAssociationPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
     @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
     public Builder setDeprecatedRefs( Set<ImmutableChildPOJO> pDeprecatedRefs ) {
       // To ensure immutability we have to copy the content of the passed collection.
@@ -242,7 +242,7 @@ public class ImmutableAssociationPOJO {
      * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
     public Builder addToDeprecatedRefs( ImmutableChildPOJO... pDeprecatedRefs ) {
       if (pDeprecatedRefs != null) {
         if (deprecatedRefs == null) {
@@ -260,7 +260,7 @@ public class ImmutableAssociationPOJO {
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
      */
     @Deprecated
-    @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+    @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setDeprecatedRef( ChildPOJO pDeprecatedRef ) {
       deprecatedRef = pDeprecatedRef;
@@ -326,7 +326,7 @@ public class ImmutableAssociationPOJO {
    * null and the returned collection is unmodifiable.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public Set<ImmutableChildPOJO> getDeprecatedRefs( ) {
     // Return all ImmutableChildPOJO objects as unmodifiable collection.
     return Collections.unmodifiableSet(deprecatedRefs);
@@ -338,7 +338,7 @@ public class ImmutableAssociationPOJO {
    * @param pDeprecatedRefs Object that should be added to {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public void addToDeprecatedRefs( ImmutableChildPOJO pDeprecatedRefs ) {
     // Check parameter "pDeprecatedRefs" for invalid value null.
     Check.checkInvalidParameterNull(pDeprecatedRefs, "pDeprecatedRefs");
@@ -353,7 +353,7 @@ public class ImmutableAssociationPOJO {
    * must not be null.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public void addToDeprecatedRefs( Collection<ImmutableChildPOJO> pDeprecatedRefs ) {
     // Check parameter "pDeprecatedRefs" for invalid value null.
     Check.checkInvalidParameterNull(pDeprecatedRefs, "pDeprecatedRefs");
@@ -369,7 +369,7 @@ public class ImmutableAssociationPOJO {
    * @param pDeprecatedRefs Object that should be removed from {@link #deprecatedRefs}. The parameter must not be null.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public void removeFromDeprecatedRefs( ImmutableChildPOJO pDeprecatedRefs ) {
     // Check parameter for invalid value null.
     Check.checkInvalidParameterNull(pDeprecatedRefs, "pDeprecatedRefs");
@@ -381,7 +381,7 @@ public class ImmutableAssociationPOJO {
    * Method removes all objects from {@link #deprecatedRefs}.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public void clearDeprecatedRefs( ) {
     // Remove all objects from association "deprecatedRefs".
     deprecatedRefs.clear();
@@ -393,7 +393,7 @@ public class ImmutableAssociationPOJO {
    * @return {@link ChildPOJO} Value to which {@link #deprecatedRef} is set.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public ChildPOJO getDeprecatedRef( ) {
     return deprecatedRef;
   }
@@ -404,7 +404,7 @@ public class ImmutableAssociationPOJO {
    * @param pDeprecatedRef Value to which {@link #deprecatedRef} should be set.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public void setDeprecatedRef( ChildPOJO pDeprecatedRef ) {
     deprecatedRef = pDeprecatedRef;
   }
@@ -413,7 +413,7 @@ public class ImmutableAssociationPOJO {
    * Method unsets {@link #deprecatedRef}.
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   public final void unsetDeprecatedRef( ) {
     deprecatedRef = null;
   }

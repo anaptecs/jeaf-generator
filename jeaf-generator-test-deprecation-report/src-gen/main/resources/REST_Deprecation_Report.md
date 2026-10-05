@@ -6,9 +6,9 @@
 
 <br>
 
-| Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Deprecated Resource   | Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |-----------------------|----------------|---------------|:------------------:|:-----------------------:|:------------:|
-| `` | `com.anaptecs.jeaf.junit.validationgroups.AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-09-13 |
+| `` | `com.anaptecs.jeaf.junit.validationgroups.AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-12-24 |
 | `/api` | `com.anaptecs.jeaf.junit.rest.RESTTestService` |  |  |  |  |
 | `/deprecation` | `com.anaptecs.jeaf.junit.deprecation.DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |  |
 | `/do/something` | `com.anaptecs.jeaf.junit.rest.DeprecatedRESTService` |  |  |  |  |
@@ -22,7 +22,7 @@
 
 <br>
 
-| Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Path   | Type   | Deprecated Element   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|--------|----------------------|---------------|:------------------:|:-----------------------:|:------------:|
 | `/api/beanParam2 [POST]` | `REST Operation` | `RESTTestService.handleBeanParam1(BeanParameter)` |  |  |  |  |
 | `/api/dep/async [POST]` | `REST Operation` | `RESTTestService.deprecatedAsyncParam(int)` |  |  |  |  |
@@ -34,8 +34,8 @@
 |   | `Header Param` | `int pParam2` |  |  |  |  |
 | `/api/deprecation/dep3 [GET]` | `REST Operation` | `RESTTestService.deprectaedReturnValue(int)` |  |  |  |  |
 |   | `Response` | `int ` |  |  |  |  |
-| `/multi-versioning/deprecated-endpoint [GET]` | `REST Operation` | `MultiVersioningTestService.deprecatedEndpoint()` | I'm so deprecated. |  | 7.0 | 2026-09-13 |
-| `/multi-versioning/deprecated-service [POST]` | `REST Operation` | `AnotherDeprecatedRESTService.operationOfADeprecatedService()` |  |  | 7.0 | 2026-09-13 |
+| `/multi-versioning/deprecated-endpoint [GET]` | `REST Operation` | `MultiVersioningTestService.deprecatedEndpoint()` | I'm so deprecated. |  | 7.0 | 2026-12-24 |
+| `/multi-versioning/deprecated-service [POST]` | `REST Operation` | `AnotherDeprecatedRESTService.operationOfADeprecatedService()` |  |  | 7.0 | 2026-12-24 |
 | `/multi-versioning/some-request/{path-param} [POST]` | `REST Operation` | `MultiVersioningTestService.someRequest(String, MyPojoRequest, MyContext)` |  |  |  |  |
 | `/products/deprecated/beanParams [POST]` | `REST Operation` | `ProductService.deprecatedBeanParam(BeanParameter)` |  |  |  |  |
 | `/products/deprecated/body [POST]` | `REST Operation` | `ProductService.deprecatedBody(String)` |  |  |  |  |
@@ -61,7 +61,7 @@
 
 <br>
 
-| Type   | Element   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Type   | Element   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |--------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 | `Campaign` | |  |  |  |  |
 |   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |  |
@@ -75,9 +75,9 @@
 |   | `deprecatedArray` |  |  |  |  |
 | `DataTypeWithDeprecation` | |  |  |  |  |
 |   | `code` | Time to say goodbye ...<br><br>... blub, blub, blub<br> | just recently | Next version |  |
-| `DeprecatedClass` | |  |  | 7.0 | 2026-09-13 |
+| `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 |
 | `DeprecatedDataType` | |  |  |  |  |
-| `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-09-13 |
+| `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 |
 | `DeprecatedType` | |  |  |  |  |
 | `DeprecatedType` | | This type will be replaced with .... |  |  |  |
 | `DiscountOffer` | |  |  |  |  |
@@ -106,7 +106,7 @@
 
 <br>
 
-| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Removal date |
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|
 | `ChannelType` | |  |  |  |  |
 |   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |  |
@@ -114,7 +114,7 @@
 |   | `CLIENT_3` |  |  | 7.0 |  |
 | `DeprecatedEnum` | | Hello `World`. |  |  |  |
 | `DeprecatedEnum` | |  |  |  |  |
-| `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-09-13 |
+| `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-12-24 |
 | `EnumWithDeprecation` | |  |  |  |  |
 |   | `EGG` | Eggs do not belong to apples. | 0.9 | 1.2 |  |
 

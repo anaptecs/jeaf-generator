@@ -23,8 +23,8 @@ public enum Color {
   BLACK, @JEAFCustomAnnotationTest
   GREEN,
   /**
-   * @deprecated We do not like this color any more. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>removal date:</b>
-   * TBD)
+   * @deprecated We do not like this color any more. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
+   * TBD, <b>end of compatibility period:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest

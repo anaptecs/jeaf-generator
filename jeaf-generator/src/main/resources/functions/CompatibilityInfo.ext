@@ -1,0 +1,7 @@
+
+
+cached JMM::CompatibilityInfo getFirstNonCompatibleVersion(JMM::CompatibilityInfo compatibilityInfo):
+	compatibilityInfo.clientDependency.typeSelect(JMM::FirstIncompatibleVersion).first().target.first();
+	
+cached boolean hasFirstNonCompatibleVersion(JMM::CompatibilityInfo compatibilityInfo):
+	compatibilityInfo.getFirstNonCompatibleVersion() != null;

@@ -10,8 +10,8 @@ import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
 
 /**
  * <p/>
- * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>activation date:</b> 2222-12-31):
- * Announcement for the far away future
+ * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31, <b>end of
+ * compatibility period:</b> TBD): Announcement for the far away future
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -20,7 +20,8 @@ import com.anaptecs.jeaf.generator.annotations.DeprecationNotice;
     description = "Announcement for the far away future",
     since = "1.2.3",
     activeWith = "47.11",
-    activationDate = "2222-12-31")
+    goLiveDate = "2222-12-31",
+    endOfCompatibilityPeriod = "")
 public class PlainPOJO extends PlainPOJOBase {
   /**
    * Initialize object. Nothing special to do.
@@ -60,7 +61,7 @@ public class PlainPOJO extends PlainPOJOBase {
   /**
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   @Override
   public void doDeprectedStuff( ) {
     // TODO: Implement business logic for method.
@@ -74,11 +75,14 @@ public class PlainPOJO extends PlainPOJOBase {
    * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "")
+  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
   @Override
-  public String doSomething(
-      @Deprecated @DeprecationNotice(description = "", since = "", removedWith = "", removalDate = "") int pParam1,
-      int pParam2 ) {
+  public String doSomething( @Deprecated @DeprecationNotice(
+      description = "",
+      since = "",
+      removedWith = "",
+      goLiveDate = "",
+      endOfCompatibilityPeriod = "") int pParam1, int pParam2 ) {
     // TODO: Implement business logic for method.
     return null;
   }
