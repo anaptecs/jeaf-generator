@@ -3866,7 +3866,7 @@ public class GeneratorMojo extends AbstractMojo {
   private void copyOpenAPISpecDependencies( ) throws MojoExecutionException {
     this.getLog().info("Copying dependent OpenAPI specs.");
     if (openAPISpecDependencies.isEmpty() == false) {
-      Plugin lDependencyPlugin = plugin("org.apache.maven.plugins", "maven-dependency-plugin");
+      Plugin lDependencyPlugin = plugin("org.apache.maven.plugins", "maven-dependency-plugin", "3.11.0");
       String lUnpackGoal = goal("unpack");
 
       // Create elements for spec dependencies.
