@@ -98,16 +98,16 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
 
   /**
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   String deprecatedParams( @Deprecated int pParam1 );
 
   /**
    * @param pBody <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String}
    */
   String deprecatedBody( @Deprecated String pBody );
@@ -117,13 +117,13 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * to deprecated.
    *
    * @param pProduct My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   void deprectedComplexRequestBody( @Deprecated Product pProduct );
 
   /**
    * @return {@link Product} My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   Product deprecatedComplexReturn( );

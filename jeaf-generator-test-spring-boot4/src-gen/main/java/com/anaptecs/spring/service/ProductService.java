@@ -135,9 +135,9 @@ public interface ProductService extends MonitoringService {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @NotNull
@@ -149,7 +149,7 @@ public interface ProductService extends MonitoringService {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @param pBody <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String}
    */
   @NotNull
@@ -163,7 +163,7 @@ public interface ProductService extends MonitoringService {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @param pProduct My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @NotNull
   void deprectedComplexRequestBody( @Deprecated @NotNull @MyNotNullServiceParam Product pProduct );
@@ -173,7 +173,7 @@ public interface ProductService extends MonitoringService {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @return {@link Product} My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @NotNull

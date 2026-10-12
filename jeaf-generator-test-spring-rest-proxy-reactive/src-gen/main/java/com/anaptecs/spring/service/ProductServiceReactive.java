@@ -92,16 +92,16 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
 
   /**
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   Mono<String> deprecatedParams( @Deprecated int pParam1 );
 
   /**
    * @param pBody <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String}
    */
   Mono<String> deprecatedBody( @Deprecated String pBody );
@@ -111,13 +111,13 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * to deprecated.
    *
    * @param pProduct My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   Mono<Void> deprectedComplexRequestBody( @Deprecated Product pProduct );
 
   /**
    * @return {@link Product} My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   Mono<Product> deprecatedComplexReturn( );

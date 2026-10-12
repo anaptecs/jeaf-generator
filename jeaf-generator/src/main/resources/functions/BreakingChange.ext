@@ -35,9 +35,16 @@ cached boolean isBreakingChange(uml::Element element):
 cached String getBreakingChangeDescription(uml::NamedElement change):
 	change.getStereotypeValue("BreakingChange", "description").replaceAll("\n", "<br>");
 
+cached boolean hasBreakingChangeSince(uml::NamedElement change):
+	change.getBreakingChangeSince().length > 0;
+
 
 cached String getBreakingChangeSince(uml::NamedElement change):
-	change.getStereotypeValue("BreakingChange", "since");
+	change.getStereotypeValue("BreakingChange", "since").trim();
+
+
+cached boolean hasBreakingChangeActiveWith(uml::NamedElement change):
+	change.getBreakingChangeActiveWith().length > 0;
 
 
 cached String getBreakingChangeActiveWith(uml::NamedElement change):
@@ -53,6 +60,10 @@ private String getBreakingChangeActiveWithInternal(uml::NamedElement change):
 	change.getStereotypeValue("BreakingChange", "activeWith");
 
 
+cached boolean hasBreakingChangeGoLiveDate(uml::NamedElement change):
+	change.getBreakingChangeGoLiveDate().length > 0;
+
+
 cached String getBreakingChangeGoLiveDate(uml::NamedElement change):
 	if change.getBreakingChangeGoLiveDateInternal().trim().length > 0
 	then change.getBreakingChangeGoLiveDateInternal().trim()
@@ -64,6 +75,10 @@ cached String getBreakingChangeGoLiveDate(uml::NamedElement change):
 
 cached String getBreakingChangeGoLiveDateInternal(uml::NamedElement change):
 	change.getStereotypeValue("BreakingChange", "goLiveDate");
+
+
+cached boolean hasBreakingChangeEndOfCompatibilityPeriod(uml::NamedElement element):
+	element.getBreakingChangeEndOfCompatibilityPeriod().length > 0;
 
 
 cached String getBreakingChangeEndOfCompatibilityPeriod(uml::NamedElement element):

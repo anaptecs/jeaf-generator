@@ -7,8 +7,8 @@ package com.anaptecs.jeaf.junit.pojo;
 
 /**
  * <p/>
- * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31, <b>end of
- * compatibility period:</b> TBD): Announcement for the far away future
+ * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31):
+ * Announcement for the far away future
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -59,10 +59,10 @@ public class PlainPOJO extends PlainPOJOBase {
 
   /**
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @param pParam2
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @Override

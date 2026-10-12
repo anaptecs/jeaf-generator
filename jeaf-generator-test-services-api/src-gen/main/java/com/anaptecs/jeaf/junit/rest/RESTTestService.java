@@ -76,8 +76,7 @@ public interface RESTTestService extends Service {
    * <br/>
    * This is not the right operation any longer.<br/>
    * <br/>
-   * Sorry!!! (<b>since:</b> a very long time, <b>removed with:</b> 2023-12-13, <b>go live date:</b> TBD, <b>end of
-   * compatibility period:</b> TBD)
+   * Sorry!!! (<b>since:</b> a very long time, <b>removed with:</b> 2023-12-13)
    */
   @Deprecated
   @JEAFCustomAnnotationTest
@@ -86,7 +85,7 @@ public interface RESTTestService extends Service {
   /**
    * @param pParam1
    * @param pParam2 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @JEAFCustomAnnotationTest
   void deprecatedParameter( @JEAFCustomAnnotationTest int pParam1, @Deprecated @JEAFCustomAnnotationTest int pParam2 );
@@ -94,7 +93,7 @@ public interface RESTTestService extends Service {
   /**
    * @param pParam1
    * @return int <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @JEAFCustomAnnotationTest
   @Deprecated
@@ -102,9 +101,9 @@ public interface RESTTestService extends Service {
 
   /**
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @JEAFCustomAnnotationTest
   @Deprecated

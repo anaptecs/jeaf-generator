@@ -12,8 +12,7 @@ import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 @JEAFCustomAnnotationTest
 public interface ServiceWithDeprecations extends Service {
   /**
-   * @deprecated Resources can no longer be explicitly be created. (<b>since:</b> 0.9, <b>removed with:</b> 1.2.3, <b>go
-   * live date:</b> TBD, <b>end of compatibility period:</b> TBD)
+   * @deprecated Resources can no longer be explicitly be created. (<b>since:</b> 0.9, <b>removed with:</b> 1.2.3)
    */
   @Deprecated
   @JEAFCustomAnnotationTest
@@ -23,12 +22,11 @@ public interface ServiceWithDeprecations extends Service {
    * @param pBody
    * @param pHeader <br/>
    * <b>Deprecated. </b> <i>Please do not use this header any longer. No matter what you pass here it will be ignored.
-   * (<b>since:</b> , <b>removed with:</b> )
+   * (<b>since:</b> )
    * @param pQueryParam <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> PI 13, <b>go live date:</b> TBD, <b>end of
-   * compatibility period:</b> TBD): Parameter will be mandatory.
+   * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> PI 13): Parameter will be mandatory.
    * @param pContext
    */
   @JEAFCustomAnnotationTest
