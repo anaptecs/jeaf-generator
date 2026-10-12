@@ -74,7 +74,7 @@
 |   | `deprecatedParent` |  |  |  |  |
 |   | `deprecatedArray` |  |  |  |  |
 | `DataTypeWithDeprecation` | |  |  |  |  |
-|   | `code` | Time to say goodbye ...<br><br>... blub, blub, blub<br> | just recently | Next version |  |
+|   | `code` | Time to say goodbye ...<br><br>... blub, blub, blub | just recently | Next version |  |
 | `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 |
 | `DeprecatedDataType` | |  |  |  |  |
 | `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 |

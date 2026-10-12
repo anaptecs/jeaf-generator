@@ -25,8 +25,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
  * <p/>
- * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31, <b>end of
- * compatibility period:</b> TBD): Announcement for the far away future
+ * <b>Breaking Change</b> (<b>since:</b> 1.2.3, <b>active with:</b> 47.11, <b>go live date:</b> 2222-12-31):
+ * Announcement for the far away future
  *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
@@ -37,8 +37,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     description = "Announcement for the far away future",
     since = "1.2.3",
     activeWith = "47.11",
-    goLiveDate = "2222-12-31",
-    endOfCompatibilityPeriod = "")
+    goLiveDate = "2222-12-31")
 @JsonDeserialize(builder = PlainPOJO.Builder.class)
 public abstract class PlainPOJOBase {
   /**
@@ -230,24 +229,20 @@ public abstract class PlainPOJOBase {
   /**
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
+  @DeprecationNotice(description = "", since = "")
   public abstract void doDeprectedStuff( );
 
   /**
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @param pParam2
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
-  @DeprecationNotice(description = "", since = "", removedWith = "", goLiveDate = "", endOfCompatibilityPeriod = "")
-  public abstract String doSomething( @Deprecated @DeprecationNotice(
-      description = "",
-      since = "",
-      removedWith = "",
-      goLiveDate = "",
-      endOfCompatibilityPeriod = "") int pParam1, int pParam2 );
+  @DeprecationNotice(description = "", since = "")
+  public abstract String doSomething( @Deprecated @DeprecationNotice(description = "", since = "") int pParam1,
+      int pParam2 );
 
   @Override
   public int hashCode( ) {

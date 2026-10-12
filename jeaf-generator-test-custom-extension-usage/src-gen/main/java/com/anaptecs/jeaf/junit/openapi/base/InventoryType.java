@@ -14,8 +14,7 @@ public enum InventoryType {
   SNCF,
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 3.x, <b>go live date:</b> TBD, <b>end of
-   * compatibility period:</b> TBD): New literal will occur
+   * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> 3.x): New literal will occur
    */
   @JEAFCustomAnnotationTest
   DB;

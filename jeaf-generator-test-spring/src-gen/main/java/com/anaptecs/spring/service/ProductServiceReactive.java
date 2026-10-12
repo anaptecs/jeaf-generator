@@ -130,9 +130,9 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @MyNotNullServiceParam
@@ -143,7 +143,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @param pBody <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String}
    */
   @MyNotNullServiceParam
@@ -156,7 +156,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @param pProduct My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @MyNotNullServiceParam
   Mono<Void> deprectedComplexRequestBody( @Deprecated @MyNotNullServiceParam Product pProduct );
@@ -166,7 +166,7 @@ public interface ProductServiceReactive extends MonitoringServiceReactive {
    * <b>Authorized Roles:</b> <code>`NO_ACCESS`</code>
    *
    * @return {@link Product} My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @MyNotNullServiceParam

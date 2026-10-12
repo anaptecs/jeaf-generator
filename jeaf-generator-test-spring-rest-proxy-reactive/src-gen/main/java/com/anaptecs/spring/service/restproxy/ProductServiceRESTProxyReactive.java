@@ -396,9 +396,9 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
 
   /**
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @Override
@@ -428,7 +428,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
 
   /**
    * @param pBody <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String}
    */
   @Override
@@ -461,7 +461,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
    * to deprecated.
    *
    * @param pProduct My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Override
   public Mono<Void> deprectedComplexRequestBody( @Deprecated Product pProduct ) {
@@ -490,7 +490,7 @@ public class ProductServiceRESTProxyReactive implements ProductServiceReactive {
 
   /**
    * @return {@link Product} My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @Override

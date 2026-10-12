@@ -8,31 +8,39 @@ extension functions::CompatibilityInfo;
 
 
 cached boolean isJEAFDeprecated(Element element) :
-  element.isStereotypeApplied("JEAFDeprecated");
+	element.isStereotypeApplied("JEAFDeprecated");
 
 
 cached JEAFDeprecated asDeprecated(Element element):
-    (JEAFDeprecated) element;
+	(JEAFDeprecated) element;
 
 
 cached String getDeprecationDescription(NamedElement element):
-    if element.isJEAFDeprecated()
-    then element.getStereotypeValue("JEAFDeprecated", "description")
-    else "";
+	if element.isJEAFDeprecated()
+	then element.getStereotypeValue("JEAFDeprecated", "description").trim()
+	else "";
 
 
 cached String getDeprecationDescriptionForMarkup(NamedElement element):
-    element.getDeprecationDescription().replaceAll("\n", "<br>");
+	element.getDeprecationDescription().replaceAll("\n", "<br>");
 
 
 cached String getDeprecationDescriptionForJavadoc(NamedElement element):
-    element.getDeprecationDescription().convertCommentForJavadoc();
+	element.getDeprecationDescription().convertCommentForJavadoc();
+
+
+cached boolean hasDeprecatedSince(NamedElement element):
+	element.getDeprecatedSince().length > 0;
 
 
 cached String getDeprecatedSince(NamedElement element):
-    if element.isJEAFDeprecated()
-    then element.getStereotypeValue("JEAFDeprecated", "since")
-    else "";
+	if element.isJEAFDeprecated()
+	then element.getStereotypeValue("JEAFDeprecated", "since")
+	else "";
+
+
+cached boolean hasDeprecationRemoval(NamedElement element):
+	element.getDeprecationRemoval().length > 0;
 
 
 cached String getDeprecationRemoval(NamedElement element):
@@ -46,10 +54,15 @@ cached String getDeprecationRemoval(NamedElement element):
 			then element.getCompatibilityInfo().getFirstNonCompatibleVersion().baseVersion.trim()
 			else "";
 
+
 private String getDeprecationRemovalInternal(NamedElement element):
 	if element.isJEAFDeprecated()    
 	then element.getStereotypeValue("JEAFDeprecated", "removedWith")
 	else "";
+
+
+cached boolean hasDeprecationGoLiveDate(NamedElement element):
+	element.getDeprecationGoLiveDate().length > 0;
 
 
 cached String getDeprecationGoLiveDate(NamedElement element):
@@ -68,7 +81,11 @@ private String getDeprecationGoLiveDateInternal(NamedElement element):
 	if element.isJEAFDeprecated()
 	then element.getStereotypeValue("JEAFDeprecated", "goLiveDate")
 	else "";
-	
+
+
+cached boolean hasDeprecationEndOfCompatibilityPeriod(NamedElement element):
+	element.getDeprecationEndOfCompatibilityPeriod().length > 0;
+
 
 cached String getDeprecationEndOfCompatibilityPeriod(NamedElement element):
 	if element.isJEAFDeprecated() && element.hasCompatibilityInfo()
@@ -77,28 +94,28 @@ cached String getDeprecationEndOfCompatibilityPeriod(NamedElement element):
 
 
 cached boolean isDeprecationComplete(NamedElement element): 
-    element.getDeprecationDescription().length > 0 && element.getDeprecatedSince().length > 0 && element.getDeprecationRemoval().length > 0;
+	element.getDeprecationDescription().length > 0 && element.getDeprecatedSince().length > 0 && element.getDeprecationRemoval().length > 0;
 
 
 cached boolean hasDeprecationDetails(NamedElement element):
-    element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0 || (element.isDeprecated() && element.hasCompatibilityInfo());
+	element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0 || (element.isDeprecated() && element.hasCompatibilityInfo());
 
 
 cached boolean hasMeaningfulDeprecationInfo(NamedElement element):
-    element.getDeprecationDescription().length > 0 || element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0 || (element.isDeprecated() && element.hasCompatibilityInfo());
+	element.getDeprecationDescription().length > 0 || element.getDeprecatedSince().length > 0 || element.getDeprecationRemoval().length > 0 || (element.isDeprecated() && element.hasCompatibilityInfo());
 
 
 cached boolean generateBackwardCompatibility(Element deprecated):
-    deprecated.getStereotypeValueAsBoolean("JEAFDeprecated", "generateBackwardCompatibility", false);
+	deprecated.getStereotypeValueAsBoolean("JEAFDeprecated", "generateBackwardCompatibility", false);
 
 
 cached String getSuccessorName(Element deprecated):
-    deprecated.getStereotypeValue("JEAFDeprecated", "successorName");
+	deprecated.getStereotypeValue("JEAFDeprecated", "successorName");
 
 
 cached Property getSuccessorAsProperty(Property property):
-    property.owner.allOwnedElements().typeSelect(Property).selectFirst(e|e.name == property.getSuccessorName());
+	property.owner.allOwnedElements().typeSelect(Property).selectFirst(e|e.name == property.getSuccessorName());
 
 
 cached boolean hasPropertyWithBckwardCompatibility(Class class):
-    class.allOwnedElements().typeSelect(Property).select(e|e.generateBackwardCompatibility()).size > 0;
+	class.allOwnedElements().typeSelect(Property).select(e|e.generateBackwardCompatibility()).size > 0;

@@ -50,7 +50,7 @@ public abstract class MyPOJOResponseBase {
 
   /**
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
    * compatibility period:</b> 2026-09-13):
    */
   @NotNull(groups = { V4.class, V5.class, V6.class })
@@ -86,7 +86,7 @@ public abstract class MyPOJOResponseBase {
 
     /**
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
      * compatibility period:</b> 2026-09-13):
      */
     private String formerMandatoryProperty;
@@ -132,7 +132,7 @@ public abstract class MyPOJOResponseBase {
     /**
      * Method sets attribute {@link #formerMandatoryProperty}.<br/>
      * <p/>
-     * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+     * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
      * compatibility period:</b> 2026-09-13):
      *
      * @param pFormerMandatoryProperty Value to which {@link #formerMandatoryProperty} should be set.
@@ -197,7 +197,7 @@ public abstract class MyPOJOResponseBase {
   /**
    * Method returns attribute {@link #formerMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
    * compatibility period:</b> 2026-09-13):
    *
    * @return {@link String} Value to which {@link #formerMandatoryProperty} is set.
@@ -209,7 +209,7 @@ public abstract class MyPOJOResponseBase {
   /**
    * Method sets attribute {@link #formerMandatoryProperty}.<br/>
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
+   * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
    * compatibility period:</b> 2026-09-13):
    *
    * @param pFormerMandatoryProperty Value to which {@link #formerMandatoryProperty} should be set.

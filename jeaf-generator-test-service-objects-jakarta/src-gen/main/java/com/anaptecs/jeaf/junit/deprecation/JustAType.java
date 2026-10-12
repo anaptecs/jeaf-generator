@@ -31,8 +31,7 @@ public class JustAType implements ServiceObject {
   private int attribute;
 
   /**
-   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD, <b>end of compatibility
-   * period:</b> TBD)
+   * @deprecated Hello (<b>since:</b> TBD)
    */
   @Deprecated
   private double legacy;
@@ -90,8 +89,7 @@ public class JustAType implements ServiceObject {
     private int attribute;
 
     /**
-     * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD, <b>end of compatibility
-     * period:</b> TBD)
+     * @deprecated Hello (<b>since:</b> TBD)
      */
     @Deprecated
     private double legacy;
@@ -130,8 +128,7 @@ public class JustAType implements ServiceObject {
      *
      * @param pLegacy Value to which {@link #legacy} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD, <b>end of compatibility
-     * period:</b> TBD)
+     * @deprecated Hello (<b>since:</b> TBD)
      */
     @Deprecated
     public Builder setLegacy( double pLegacy ) {
@@ -188,8 +185,7 @@ public class JustAType implements ServiceObject {
    * Method returns attribute {@link #legacy}.<br/>
    *
    * @return double Value to which {@link #legacy} is set.
-   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD, <b>end of compatibility
-   * period:</b> TBD)
+   * @deprecated Hello (<b>since:</b> TBD)
    */
   @Deprecated
   public double getLegacy( ) {
@@ -200,8 +196,7 @@ public class JustAType implements ServiceObject {
    * Method sets attribute {@link #legacy}.<br/>
    *
    * @param pLegacy Value to which {@link #legacy} should be set.
-   * @deprecated Hello (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b> TBD, <b>end of compatibility
-   * period:</b> TBD)
+   * @deprecated Hello (<b>since:</b> TBD)
    */
   @Deprecated
   public void setLegacy( double pLegacy ) {

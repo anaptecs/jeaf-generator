@@ -73,8 +73,7 @@ public class ChildBB extends ChildB {
   private int childBBAttributeXYZ = 0;
 
   /**
-   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD, <b>end of compatibility period:</b> TBD)
+   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD)
    */
   // "int"
   @ClassPropertyDeclaration
@@ -170,8 +169,7 @@ public class ChildBB extends ChildB {
     private int childBBAttributeXYZ = 0;
 
     /**
-     * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live
-     * date:</b> TBD, <b>end of compatibility period:</b> TBD)
+     * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD)
      */
     // "int"
     @BuilderPropertyDeclaration
@@ -382,8 +380,7 @@ public class ChildBB extends ChildB {
      *
      * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
      * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
-     * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live
-     * date:</b> TBD, <b>end of compatibility period:</b> TBD)
+     * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD)
      */
     @Deprecated
     @JEAFCustomAnnotationTest
@@ -545,8 +542,7 @@ public class ChildBB extends ChildB {
    * Method returns attribute {@link #deprecatedAttribute}.<br/>
    *
    * @return int Value to which {@link #deprecatedAttribute} is set.
-   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD, <b>end of compatibility period:</b> TBD)
+   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest
@@ -558,8 +554,7 @@ public class ChildBB extends ChildB {
    * Method sets attribute {@link #deprecatedAttribute}.<br/>
    *
    * @param pDeprecatedAttribute Value to which {@link #deprecatedAttribute} should be set.
-   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD, <b>removed with:</b> TBD, <b>go live date:</b>
-   * TBD, <b>end of compatibility period:</b> TBD)
+   * @deprecated Please keep <code>hands off</code>. (<b>since:</b> TBD)
    */
   @Deprecated
   @JEAFCustomAnnotationTest

@@ -42,12 +42,12 @@
     «EXPAND SecurityRolesComment -»
     «EXPAND BreakingChangeJavadoc -»
     «FOREACH this.getInputParameters() AS param -»
- * @param «param.name» «param.getJavadocCommentForParameter()» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()», <b>removed with:</b> «param.getDeprecationRemoval()»)«ENDIF»    
+ * @param «param.name» «param.getJavadocCommentForParameter()» «IF param.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«param.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «param.getDeprecatedSince()»«IF param.hasDeprecationRemoval()», <b>removed with:</b> «param.getDeprecationRemoval()»«ENDIF»«IF param.hasDeprecationGoLiveDate()», <b>go live date:</b> «param.getDeprecationGoLiveDate()»«ENDIF»«IF param.hasDeprecationEndOfCompatibilityPeriod()», end of compatibility period: «param.getDeprecationEndOfCompatibilityPeriod()»«ENDIF»)«ENDIF»
 «EXPAND BreakingChangeJavadoc FOR param-»
     «ENDFOREACH -»
     «IF this.hasReturnType() && this.getReturnTypeName() != "void" -»
     «LET this.getReturnType() AS returnType -»
- * @return «IF this.returnsPrimitiveType() == false»{@link «ENDIF»«this.getReturnTypeName()»«IF this.returnsPrimitiveType() == false»}«ENDIF» «returnType.getJavadocCommentForParameter()» «IF returnType.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«returnType.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «returnType.getDeprecatedSince()», <b>removed with:</b> «returnType.getDeprecationRemoval()»)«ENDIF»
+ * @return «IF this.returnsPrimitiveType() == false»{@link «ENDIF»«this.getReturnTypeName()»«IF this.returnsPrimitiveType() == false»}«ENDIF» «returnType.getJavadocCommentForParameter()» «IF returnType.isJEAFDeprecated()»<br/><b>Deprecated. </b> <i>«returnType.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «returnType.getDeprecatedSince()»«IF returnType.hasDeprecationRemoval()», <b>removed with:</b> «returnType.getDeprecationRemoval()»«ENDIF»«IF returnType.hasDeprecationGoLiveDate()», <b>go live date:</b> «returnType.getDeprecationGoLiveDate()»«ENDIF»«IF returnType.hasDeprecationEndOfCompatibilityPeriod()», end of compatibility period: «returnType.getDeprecationEndOfCompatibilityPeriod()»«ENDIF»)«ENDIF»
 «EXPAND BreakingChangeJavadoc FOR returnType -»
     «ENDLET-»
     «ENDIF -»
@@ -206,13 +206,13 @@
 
 «DEFINE DeprecatedJavadoc FOR uml::NamedElement -»
     «IF this.isJEAFDeprecated() && this.hasMeaningfulDeprecationInfo() -»
- * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.getDeprecatedSince().length > 0»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF», <b>removed with:</b> «IF this.getDeprecationRemoval().length > 0»«this.getDeprecationRemoval()»«ELSE»TBD«ENDIF», <b>go live date:</b> «IF this.getDeprecationGoLiveDate().length > 0»«this.getDeprecationGoLiveDate()»«ELSE»TBD«ENDIF», <b>end of compatibility period:</b> «IF this.getDeprecationEndOfCompatibilityPeriod().length > 0»«this.getDeprecationEndOfCompatibilityPeriod()»«ELSE»TBD«ENDIF»)
+ * @deprecated «this.getDeprecationDescriptionForJavadoc()» (<b>since:</b> «IF this.hasDeprecatedSince()»«this.getDeprecatedSince()»«ELSE»TBD«ENDIF»«IF this.hasDeprecationRemoval()», <b>removed with:</b> «this.getDeprecationRemoval()»«ENDIF»«IF this.hasDeprecationGoLiveDate()», <b>go live date:</b> «this.getDeprecationGoLiveDate()»«ENDIF»«IF this.hasDeprecationEndOfCompatibilityPeriod()», <b>end of compatibility period:</b> «this.getDeprecationEndOfCompatibilityPeriod()»«ENDIF»)
     «ENDIF-»
 «ENDDEFINE»
 
 «DEFINE BreakingChangeJavadoc FOR uml::NamedElement -»
     «IF this.isBreakingChange()-»
-    <p/><b>Breaking Change</b> (<b>since:</b> «IF this.getBreakingChangeSince().length > 0»«this.getBreakingChangeSince()»«ELSE»TBD«ENDIF», <b>active with:</b> «IF this.getBreakingChangeActiveWith().length > 0»«this.getBreakingChangeActiveWith()»«ELSE»TBD«ENDIF», <b>go live date:</b> «IF this.getBreakingChangeGoLiveDate().length > 0»«this.getBreakingChangeGoLiveDate()»«ELSE»TBD«ENDIF», <b>end of compatibility period:</b> «IF this.getBreakingChangeEndOfCompatibilityPeriod().length > 0»«this.getBreakingChangeEndOfCompatibilityPeriod()»«ELSE»TBD«ENDIF»): «this.getBreakingChangeDescription().convertCommentForJavadoc()»
+    <p/><b>Breaking Change</b> (<b>since:</b> «IF this.hasBreakingChangeSince()»«this.getBreakingChangeSince()»«ENDIF»«IF this.hasBreakingChangeActiveWith()», <b>active with:</b> «this.getBreakingChangeActiveWith()»«ENDIF»«IF this.hasBreakingChangeGoLiveDate()», <b>go live date:</b> «this.getBreakingChangeGoLiveDate()»«ENDIF»«IF this.hasBreakingChangeEndOfCompatibilityPeriod()», <b>end of compatibility period:</b> «this.getBreakingChangeEndOfCompatibilityPeriod()»«ENDIF»): «this.getBreakingChangeDescription().convertCommentForJavadoc()»
     «ENDIF-»
 «ENDDEFINE»
 

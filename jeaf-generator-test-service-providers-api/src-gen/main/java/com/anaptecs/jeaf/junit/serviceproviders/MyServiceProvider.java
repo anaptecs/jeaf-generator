@@ -21,9 +21,9 @@ public interface MyServiceProvider extends ServiceProvider {
   /**
    * @param pParam1
    * @param pParam2 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   String doSomething( int pParam1, @Deprecated int pParam2 );

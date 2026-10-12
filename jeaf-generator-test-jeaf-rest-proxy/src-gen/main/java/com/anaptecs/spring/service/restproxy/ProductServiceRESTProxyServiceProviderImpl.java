@@ -322,9 +322,9 @@ public final class ProductServiceRESTProxyServiceProviderImpl
 
   /**
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @Override
@@ -346,7 +346,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
 
   /**
    * @param pBody <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String}
    */
   @Override
@@ -371,7 +371,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
    * to deprecated.
    *
    * @param pProduct My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Override
   public void deprectedComplexRequestBody( @Deprecated Product pProduct ) {
@@ -391,7 +391,7 @@ public final class ProductServiceRESTProxyServiceProviderImpl
 
   /**
    * @return {@link Product} My default comment <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   @Override

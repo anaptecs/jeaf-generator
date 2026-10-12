@@ -84,8 +84,7 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
   /**
    * @param pChannelCode
    * <p/>
-   * <b>Breaking Change</b> (<b>since:</b> TBD, <b>active with:</b> 2.0, <b>go live date:</b> TBD, <b>end of
-   * compatibility period:</b> TBD): Parameter will be mandatory
+   * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> 2.0): Parameter will be mandatory
    * @return {@link ChannelCode}
    */
   ChannelCode createChannelCode( @NotBlank String pChannelCode );
@@ -96,8 +95,7 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
 
   /**
    * @return {@link String}
-   * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2024-10-20, <b>go live
-   * date:</b> TBD, <b>end of compatibility period:</b> TBD)
+   * @deprecated This request is no longer supported. (<b>since:</b> 1.1.1, <b>removed with:</b> 2024-10-20)
    */
   @Deprecated
   String deprecatedOperation( );
@@ -115,16 +113,16 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
 
   /**
    * @param pParam1 <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   String deprecatedParams( @Deprecated int pParam1 );
 
   /**
    * @param pBody <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    * @return {@link String}
    */
   String deprecatedBody( @Deprecated String pBody );
@@ -134,13 +132,13 @@ public interface ProductServiceRESTProxyServiceProvider extends ServiceProvider 
    * to deprecated.
    *
    * @param pProduct <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   void deprectedComplexRequestBody( @Deprecated Product pProduct );
 
   /**
    * @return {@link Product} <br/>
-   * <b>Deprecated. </b> <i> (<b>since:</b> , <b>removed with:</b> )
+   * <b>Deprecated. </b> <i> (<b>since:</b> )
    */
   @Deprecated
   Product deprecatedComplexReturn( );
