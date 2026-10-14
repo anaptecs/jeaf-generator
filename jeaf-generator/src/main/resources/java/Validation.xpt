@@ -157,6 +157,9 @@ public @interface «validationClass» {
 			«ELSEIF stereotypeName == "Future"»
 			  «EXPAND FutureAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
+			«ELSEIF stereotypeName == "EnumSubset"»
+			  «EXPAND EnumSubsetAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
+	
 			«ELSEIF stereotypeName == "Valid" -»
 			  «IF this.isProperty() == false»
 			      «EXPAND ValidAnnotation FOR ((Valid) this) -»
@@ -723,6 +726,28 @@ public @interface «validationClass» {
 		«FOREACH validationDependencies AS depdendency»
 			«LET (Future) depdendency AS futureAnnotation»
 			@«getEnterpriseJavaPackage()».validation.constraints.Future(«IF futureAnnotation.hasErrorCodeOrSeverity()»«EXPAND ValidationAnnotationBasicsEmptyValidation FOR futureAnnotation», «ENDIF»«EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE EnumSubsetAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement »
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (EnumSubset)this AS enumSubsetAnnotation»
+			@«enumSubsetAnnotationClassName()»(«IF enumSubsetAnnotation.allowedLiterals.isEmpty == false»allowedLiterals = {«FOREACH enumSubsetAnnotation.allowedLiterals AS name SEPARATOR ", "» "«name»"«ENDFOREACH»}«ELSE»notAllowedLiterals ={ «FOREACH enumSubsetAnnotation.notAllowedLiterals AS name SEPARATOR ", "» "«name»" «ENDFOREACH»}«ENDIF»«EXPAND ValidationAnnotationBasics FOR enumSubsetAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (EnumSubset)this AS enumSubsetAnnotation»
+			@«enumSubsetAnnotationClassName()»(«IF enumSubsetAnnotation.allowedLiterals.isEmpty == false»allowedLiterals = {«FOREACH enumSubsetAnnotation.allowedLiterals AS name SEPARATOR ", "» "«name»"«ENDFOREACH»}«ELSE»notAllowedLiterals ={ «FOREACH enumSubsetAnnotation.notAllowedLiterals AS name SEPARATOR ", "» "«name»" «ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics FOR enumSubsetAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (EnumSubset) depdendency AS enumSubsetAnnotation»
+			@«enumSubsetAnnotationClassName()»(«IF enumSubsetAnnotation.allowedLiterals.isEmpty == false»allowedLiterals = {«FOREACH enumSubsetAnnotation.allowedLiterals AS name SEPARATOR ", "» "«name»"«ENDFOREACH»}«ELSE»notAllowedLiterals ={ «FOREACH enumSubsetAnnotation.notAllowedLiterals AS name SEPARATOR ", "» "«name»" «ENDFOREACH»}«ENDIF», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
 			«ENDLET»
 		«ENDFOREACH»
 	«ENDIF»

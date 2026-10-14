@@ -49,7 +49,10 @@ cached String getValidationStereotyeAndValue(uml::Property property, uml::Stereo
 		                    else
 	                            if stereo.name == "Pattern"
 	                            then "@Pattern: regexp=" + property.getValue(stereo, "regexp")
-							    else "@" + stereo.name;
+	                            else
+									if stereo.name == "EnumSubset"
+									then "@EnumSubset:" + property.getEnumSubsetProperty(stereo, "allowedLiterals") + property.getEnumSubsetProperty(stereo, "notAllowedLiterals")
+									else "@" + stereo.name;
  
  
 cached String getValidationStereotyeAndValue(uml::NamedElement property, uml::Stereotype stereo, List[JMM::ValidationGroup] validationGroups):
@@ -77,9 +80,17 @@ cached String getValidationStereotyeAndValue(uml::NamedElement property, uml::St
 		                    else
 	                            if stereo.name == "Pattern"
 	                            then "@Pattern: regexp=" + property.getValue(stereo, "regexp") + ", " + versions
-							    else "@" + stereo.name + ": " + versions;
- 
- 
+	                            else
+									if stereo.name == "EnumSubset"
+									then "@EnumSubset:" + property.getEnumSubsetProperty(stereo, "allowedLiterals") + property.getEnumSubsetProperty(stereo, "notAllowedLiterals") + ", " + versions
+									else "@" + stereo.name + ": " + versions;
+
+private String getEnumSubsetProperty(uml::NamedElement property, uml::Stereotype stereo, String tagName):
+	if property.getValue(stereo, tagName).toString().length > 2
+	then " " +tagName + "=" + property.getValue(stereo, tagName).toString().replaceAll("\\[", "{").replaceAll("\\]", "}")
+	else "";
+
+
 private String getMinSizeValidation(uml::NamedElement property, uml::Stereotype stereo):
     if property.getValue(stereo, "min") != -1
     then "min=" + property.getValue(stereo, "min")

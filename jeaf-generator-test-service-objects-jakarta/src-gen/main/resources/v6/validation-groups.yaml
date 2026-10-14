@@ -237,6 +237,8 @@ components:
         - dateTimeProperty
         - positiveValueProperty
         - negativeProperty
+        - myLimitiedColor
+        - myColor
       properties:
         multiValuedProperty:
           type: array
@@ -294,6 +296,15 @@ components:
           minLength: 0
           maxLength: 32
           nullable: true
+        myLimitiedColor:
+          $ref: '#/components/schemas/MyLimitiedColor'
+        myColors:
+          type: array
+          items:
+            $ref: '#/components/schemas/MyLimitiedColor'
+          uniqueItems: true
+        myColor:
+          $ref: '#/components/schemas/MyLimitiedColor'
 
     # com.anaptecs.jeaf.junit.validationgroups.ClientType
     ClientType:
@@ -331,5 +342,15 @@ components:
       enum:
         - ONE
         - TWO
+
+    # com.anaptecs.jeaf.junit.validationgroups.MyLimitiedColor
+    MyLimitiedColor:
+      type: string
+      x-extensible-enum:
+        - RED
+        - GREEN
+        - BLUE
+        - BLACK
+        - WHITE
 
       

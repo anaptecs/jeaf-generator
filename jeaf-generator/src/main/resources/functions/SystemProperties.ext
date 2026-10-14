@@ -432,4 +432,7 @@ List[String] getActiveOpenAPIValidationGroups():
 	getSystemPropertyValues("jeaf.generator.activeOpenAPIValidationGroups");
 
 
+String enumSubsetAnnotationClassName():
+	getSystemProperty("jeaf.generator.enumSubsetAnnotationClassName").trim();
+
 
