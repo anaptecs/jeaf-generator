@@ -186,6 +186,7 @@ MyBusinessObject |   |  |
 MyContext |   |  |
 MyDataType |   |  |
 MyEnumWithInterface |   |  |
+MyLimitiedColor |   |  |
 MyPOJOResponse |   |  |
 MyPojoRequest |   |  |
 MyType |  MyFormerName |  |
@@ -623,6 +624,7 @@ DeprecatedClass |   |  |
 DeprecatedOpenAPIDataType |   |  |
 DeprecatedOpenAPIEnum |   |  |
 MyContext |   |  |
+MyLimitiedColor |   |  |
 MyPOJOResponse |   |  |
 MyPojoRequest |   |  |
 OtherPojo |   |  |

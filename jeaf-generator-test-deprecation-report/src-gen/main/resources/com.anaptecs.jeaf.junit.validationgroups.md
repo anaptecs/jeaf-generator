@@ -107,6 +107,9 @@
 | **`positiveValueProperty`** : `int`   `[1..1]`<br>        `@PositiveOrZero: versions=V7`<br>        `@Positive: versions=V4, V5, V6` |  |  |
 | **`negativeProperty`** : `int`   `[1..1]`<br>        `@Negative: versions=V7`<br>        `@NegativeOrZero: versions=V4, V5, V6` |  |  |
 | <font color="red">**`v6Property`**</font> : `String`   `[1..1]`<br>        `@Size: min=0, max=32, versions=V4, V5, V6`<br>        `@Size: min=10, max=32, versions=V7`<br>        `@Optional: versions=V4, V5, V6` |  | :bomb: **Breaking Change Notice (since: , active with: 8.0, go live date: 2027-05-01, end of compatibility period: 2026-10-20):**<br>Property will become mandatory. |
+| **`myLimitiedColor`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[1..1]`<br>        `@EnumSubset: notAllowedLiterals={WHITE, BLACK}` |  |  |
+| **`myColors`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[0..*]`<br>        `@EnumSubset: allowedLiterals={RED, GREEN, BLUE}, versions=V7` |  |  |
+| **`myColor`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[1..1]`<br>        `@EnumSubset: allowedLiterals={WHITE, RED}, versions=V4, V5, V6`<br>        `@EnumSubset: notAllowedLiterals={BLACK, WHITE}, versions=V7` |  |  |
 
 <br>
 
@@ -136,4 +139,18 @@
 |------|----------------------|----------------------------|
 | `ONE` |   |  |
 | `TWO` |   |  |
+
+## MyLimitiedColor
+
+
+### Literals
+
+| Name |  Legacy Name | Description |
+|------|----------------------|----------------------------|
+| `RED` |   |  |
+| `GREEN` |   |  |
+| `BLUE` |   |  |
+| `BLACK` |   |  |
+| `WHITE` |   |  |
+| `UNKNOWN` |  | Please be aware that this enum is an extensible enum. This means that new literals can be introduced without prior notice. |
 

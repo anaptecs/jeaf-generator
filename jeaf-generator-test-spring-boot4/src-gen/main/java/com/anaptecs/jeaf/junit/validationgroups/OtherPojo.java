@@ -8,7 +8,11 @@ package com.anaptecs.jeaf.junit.validationgroups;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.AssertTrue;
@@ -38,6 +42,7 @@ import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V4;
 import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V5;
 import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V6;
 import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
+import com.anaptecs.jeaf.validation.api.EnumSubset;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -104,6 +109,21 @@ public class OtherPojo {
    */
   public static final String V6PROPERTY = "v6Property";
 
+  /**
+   * Constant for the name of attribute "myLimitiedColor".
+   */
+  public static final String MYLIMITIEDCOLOR = "myLimitiedColor";
+
+  /**
+   * Constant for the name of attribute "myColors".
+   */
+  public static final String MYCOLORS = "myColors";
+
+  /**
+   * Constant for the name of attribute "myColor".
+   */
+  public static final String MYCOLOR = "myColor";
+
   @Size(min = 1, groups = { V7.class })
   private String[] multiValuedProperty;
 
@@ -163,6 +183,18 @@ public class OtherPojo {
   @NotNull(groups = { V7.class })
   private String v6Property;
 
+  @EnumSubset(notAllowedLiterals = { "WHITE", "BLACK" })
+  @NotNull
+  private MyLimitiedColor myLimitiedColor;
+
+  @EnumSubset(allowedLiterals = { "RED", "GREEN", "BLUE" }, groups = { V7.class })
+  private Set<MyLimitiedColor> myColors;
+
+  @EnumSubset(notAllowedLiterals = { "BLACK", "WHITE" }, groups = { V7.class })
+  @EnumSubset(allowedLiterals = { "WHITE", "RED" }, groups = { V4.class, V5.class, V6.class })
+  @NotNull
+  private MyLimitiedColor myColor;
+
   /**
    * Initialize object using the passed builder.
    *
@@ -180,6 +212,9 @@ public class OtherPojo {
     positiveValueProperty = pBuilder.positiveValueProperty;
     negativeProperty = pBuilder.negativeProperty;
     v6Property = pBuilder.v6Property;
+    myLimitiedColor = pBuilder.myLimitiedColor;
+    myColors = (pBuilder.myColors == null) ? new HashSet<>() : pBuilder.myColors;
+    myColor = pBuilder.myColor;
   }
 
   /**
@@ -215,11 +250,16 @@ public class OtherPojo {
    *
    * @param pV6Property Value to which {@link #v6Property} should be set.
    *
+   * @param pMyLimitiedColor Value to which {@link #myLimitiedColor} should be set.
+   *
+   * @param pMyColor Value to which {@link #myColor} should be set.
+   *
    * @return {@link OtherPojo}
    */
   public static OtherPojo of( String[] pMultiValuedProperty, BigDecimal pDecimalProperty, Integer pIntegerProperty,
       String pStringProperty, String pEmailProperty, Boolean pBooleanProperty, OffsetDateTime pDateTimeProperty,
-      int pPositiveValueProperty, int pNegativeProperty, String pV6Property ) {
+      int pPositiveValueProperty, int pNegativeProperty, String pV6Property, MyLimitiedColor pMyLimitiedColor,
+      MyLimitiedColor pMyColor ) {
     var lBuilder = OtherPojo.builder();
     lBuilder.setMultiValuedProperty(pMultiValuedProperty);
     lBuilder.setDecimalProperty(pDecimalProperty);
@@ -231,6 +271,8 @@ public class OtherPojo {
     lBuilder.setPositiveValueProperty(pPositiveValueProperty);
     lBuilder.setNegativeProperty(pNegativeProperty);
     lBuilder.setV6Property(pV6Property);
+    lBuilder.setMyLimitiedColor(pMyLimitiedColor);
+    lBuilder.setMyColor(pMyColor);
     return lBuilder.build();
   }
 
@@ -265,6 +307,12 @@ public class OtherPojo {
      */
     private String v6Property;
 
+    private MyLimitiedColor myLimitiedColor;
+
+    private Set<MyLimitiedColor> myColors;
+
+    private MyLimitiedColor myColor;
+
     /**
      * Use {@link OtherPojo#builder()} instead of private constructor to create new builder.
      */
@@ -287,6 +335,9 @@ public class OtherPojo {
         this.setPositiveValueProperty(pObject.positiveValueProperty);
         this.setNegativeProperty(pObject.negativeProperty);
         this.setV6Property(pObject.v6Property);
+        this.setMyLimitiedColor(pObject.myLimitiedColor);
+        this.setMyColors(pObject.myColors);
+        this.setMyColor(pObject.myColor);
       }
     }
 
@@ -446,6 +497,82 @@ public class OtherPojo {
     public Builder setV6Property( @MyNotNullProperty String pV6Property ) {
       // Assign value to attribute
       v6Property = pV6Property;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #myLimitiedColor}.<br/>
+     *
+     * @param pMyLimitiedColor Value to which {@link #myLimitiedColor} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setMyLimitiedColor( @MyNotNullProperty MyLimitiedColor pMyLimitiedColor ) {
+      myLimitiedColor = pMyLimitiedColor;
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #myColors}.<br/>
+     *
+     * @param pMyColors Collection to which {@link #myColors} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP, contentNulls = Nulls.SKIP)
+    public Builder setMyColors( Set<MyLimitiedColor> pMyColors ) {
+      // To ensure immutability we have to copy the content of the passed collection.
+      if (pMyColors != null) {
+        myColors = new HashSet<MyLimitiedColor>(pMyColors);
+      }
+      else {
+        myColors = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method adds the passed objects to association {@link #myColors}.<br/>
+     *
+     * @param pMyColors Array of objects that should be added to {@link #myColors}. The parameter may be null.
+     * @return {@link Builder} Instance of this builder to support chaining. Method never returns null.
+     */
+    public Builder addToMyColors( MyLimitiedColor... pMyColors ) {
+      if (pMyColors != null) {
+        if (myColors == null) {
+          myColors = new HashSet<MyLimitiedColor>();
+        }
+        myColors.addAll(Arrays.asList(pMyColors));
+      }
+      return this;
+    }
+
+    /**
+     * Method sets association {@link #myColors}.<br/>
+     *
+     * @param pMyColors Array with objects to which {@link #myColors} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setMyColors( MyLimitiedColor... pMyColors ) {
+      // Copy the content of the passed array.
+      if (pMyColors != null) {
+        myColors = new HashSet<MyLimitiedColor>(Arrays.asList(pMyColors));
+      }
+      else {
+        myColors = null;
+      }
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #myColor}.<br/>
+     *
+     * @param pMyColor Value to which {@link #myColor} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setMyColor( @MyNotNullProperty MyLimitiedColor pMyColor ) {
+      // Assign value to attribute
+      myColor = pMyColor;
       return this;
     }
 
@@ -679,6 +806,104 @@ public class OtherPojo {
     v6Property = pV6Property;
   }
 
+  /**
+   * Method returns association {@link #myLimitiedColor}.<br/>
+   *
+   * @return {@link MyLimitiedColor} Value to which {@link #myLimitiedColor} is set.
+   */
+  @MyNotNullProperty
+  public MyLimitiedColor getMyLimitiedColor( ) {
+    return myLimitiedColor;
+  }
+
+  /**
+   * Method sets association {@link #myLimitiedColor}.<br/>
+   *
+   * @param pMyLimitiedColor Value to which {@link #myLimitiedColor} should be set.
+   */
+  public void setMyLimitiedColor( @MyNotNullProperty MyLimitiedColor pMyLimitiedColor ) {
+    myLimitiedColor = pMyLimitiedColor;
+  }
+
+  /**
+   * Method unsets {@link #myLimitiedColor}.
+   */
+  public final void unsetMyLimitiedColor( ) {
+    myLimitiedColor = null;
+  }
+
+  /**
+   * Method returns association {@link #myColors}.<br/>
+   *
+   * @return {@link Set<MyLimitiedColor>} Value to which {@link #myColors} is set. The method never returns null and the
+   * returned collection is unmodifiable.
+   */
+  public Set<MyLimitiedColor> getMyColors( ) {
+    // Return all MyLimitiedColor objects as unmodifiable collection.
+    return Collections.unmodifiableSet(myColors);
+  }
+
+  /**
+   * Method adds the passed object to {@link #myColors}.
+   *
+   * @param pMyColors Object that should be added to {@link #myColors}. The parameter must not be null.
+   */
+  public void addToMyColors( MyLimitiedColor pMyColors ) {
+    // Add passed object to collection of associated MyLimitiedColor objects.
+    myColors.add(pMyColors);
+  }
+
+  /**
+   * Method adds all passed objects to {@link #myColors}.
+   *
+   * @param pMyColors Collection with all objects that should be added to {@link #myColors}. The parameter must not be
+   * null.
+   */
+  public void addToMyColors( Collection<MyLimitiedColor> pMyColors ) {
+    // Add all passed objects.
+    for (MyLimitiedColor lNextObject : pMyColors) {
+      this.addToMyColors(lNextObject);
+    }
+  }
+
+  /**
+   * Method removes the passed object from {@link #myColors}.<br/>
+   *
+   * @param pMyColors Object that should be removed from {@link #myColors}. The parameter must not be null.
+   */
+  public void removeFromMyColors( MyLimitiedColor pMyColors ) {
+    // Remove passed object from collection of associated MyLimitiedColor objects.
+    myColors.remove(pMyColors);
+  }
+
+  /**
+   * Method removes all objects from {@link #myColors}.
+   */
+  public void clearMyColors( ) {
+    // Remove all objects from association "myColors".
+    myColors.clear();
+  }
+
+  /**
+   * Method returns attribute {@link #myColor}.<br/>
+   *
+   * @return {@link MyLimitiedColor} Value to which {@link #myColor} is set.
+   */
+  @MyNotNullProperty
+  public MyLimitiedColor getMyColor( ) {
+    return myColor;
+  }
+
+  /**
+   * Method sets attribute {@link #myColor}.<br/>
+   *
+   * @param pMyColor Value to which {@link #myColor} should be set.
+   */
+  public void setMyColor( @MyNotNullProperty MyLimitiedColor pMyColor ) {
+    // Assign value to attribute
+    myColor = pMyColor;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
@@ -693,6 +918,9 @@ public class OtherPojo {
     lResult = lPrime * lResult + positiveValueProperty;
     lResult = lPrime * lResult + negativeProperty;
     lResult = lPrime * lResult + Objects.hashCode(v6Property);
+    lResult = lPrime * lResult + Objects.hashCode(myLimitiedColor);
+    lResult = lPrime * lResult + Objects.hashCode(myColors);
+    lResult = lPrime * lResult + Objects.hashCode(myColor);
     return lResult;
   }
 
@@ -718,7 +946,8 @@ public class OtherPojo {
           && Objects.equals(booleanProperty, lOther.booleanProperty)
           && Objects.equals(dateTimeProperty, lOther.dateTimeProperty)
           && positiveValueProperty == lOther.positiveValueProperty && negativeProperty == lOther.negativeProperty
-          && Objects.equals(v6Property, lOther.v6Property);
+          && Objects.equals(v6Property, lOther.v6Property) && Objects.equals(myLimitiedColor, lOther.myLimitiedColor)
+          && Objects.equals(myColors, lOther.myColors) && Objects.equals(myColor, lOther.myColor);
     }
     return lEquals;
   }
@@ -778,6 +1007,31 @@ public class OtherPojo {
     lBuilder.append(pIndent);
     lBuilder.append("v6Property: ");
     lBuilder.append(v6Property);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("myLimitiedColor: ");
+    lBuilder.append(myLimitiedColor);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("myColors: ");
+    if (myColors != null) {
+      lBuilder.append(myColors.size());
+      lBuilder.append(" element(s)");
+    }
+    else {
+      lBuilder.append(" null");
+    }
+    lBuilder.append(System.lineSeparator());
+    if (myColors != null) {
+      for (MyLimitiedColor lNext : myColors) {
+        lBuilder.append(pIndent + "    ");
+        lBuilder.append(lNext.toString());
+        lBuilder.append(System.lineSeparator());
+      }
+    }
+    lBuilder.append(pIndent);
+    lBuilder.append("myColor: ");
+    lBuilder.append(myColor);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

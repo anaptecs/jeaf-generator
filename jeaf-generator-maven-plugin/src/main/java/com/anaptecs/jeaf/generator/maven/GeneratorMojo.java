@@ -656,6 +656,9 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false)
   private String notEmptyAnnotationNameForMultiValuedRESTParameters = "";
 
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.validation.api.EnumSubset")
+  private String enumSubsetAnnotationClassName;
+
   /**
    * Switch defines whether POJO's should be serializable or not.
    */
@@ -2389,6 +2392,7 @@ public class GeneratorMojo extends AbstractMojo {
           lLog.info(
               "NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedProperties);
         }
+        lLog.info("Enum subset annotation class name:                " + enumSubsetAnnotationClassName);
       }
 
       if (this.generateServices()) {
@@ -2985,6 +2989,7 @@ public class GeneratorMojo extends AbstractMojo {
           generateNotEmptyAnnotationForMultiValuedRESTParameters.toString());
       System.setProperty(PROPERTY_PREFIX + "notEmptyAnnotationNameForMultiValuedRESTParameters",
           notEmptyAnnotationNameForMultiValuedRESTParameters.toString());
+      System.setProperty(PROPERTY_PREFIX + "enumSubsetAnnotationClassName", enumSubsetAnnotationClassName);
 
       System.setProperty("switch.gen.immutable.classes", generateImmutableClasses.toString());
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());

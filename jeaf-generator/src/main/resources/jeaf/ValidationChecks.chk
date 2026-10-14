@@ -4,6 +4,7 @@ import JMM;
 extension java::GeneratorCommons;
 extension functions::Dependency;
 extension functions::Validation;
+extension functions::NamedElement;
 
 
 // Checks for annotation DecimalMin
@@ -77,3 +78,6 @@ context Future if runChecks() && !isDependency() ERROR this.getErrorMessage("915
 
 // Checks for comaptibility groups
 context CompatibilityGroup if runChecks() ERROR  this.getErrorMessage("9187", {name, this.getCompatibilityInfosForGroup().name.toString(", ")}): this.getCompatibilityInfosForGroup().size <= 1;
+
+context EnumSubset if runChecks() ERROR this.getErrorMessage("9189", {name, ((NamedElement)this.owner).qualifiedName()}): !(this.allowedLiterals.size > 0 && this.notAllowedLiterals.size > 0);
+context EnumSubset if runChecks() ERROR this.getErrorMessage("9190", {name, ((NamedElement)this.owner).qualifiedName()}): !(this.allowedLiterals.size == 0 && this.notAllowedLiterals.size == 0);
