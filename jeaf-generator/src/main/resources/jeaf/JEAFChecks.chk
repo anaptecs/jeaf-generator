@@ -60,6 +60,7 @@ context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHash
 context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9167", {owner.asNamedElement().fqn() + "." + name}): templateBinding.first().parameterSubstitution.isEmpty == false && templateBinding.first().parameterSubstitution.first().actual != null;
 
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
+context Property if runChecks("POJO") && class != null && class.isStereotypeApplied("POJO") && ignore() == false ERROR this.getErrorMessage("9191", {name, owner.asNamedElement().qualifiedName(), this.getCompatibilityGroups().name.toString(", ")}): this.getCompatibilityGroups().size < 2;
 context CompositeDataTypePublicField if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9157", {((NamedElement)owner).name + "." + name}): this.type.isStringType();
 context POJO if runChecks("POJO") && ignore() == false WARNING this.getWarningMessage("9122", {"POJO", name}): ownedComment.size  > 0;
 context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getJavaGenericSoftLinkType().length > 0;
@@ -135,4 +136,8 @@ context Model if generateNotNullAnnotationForSingleValuedProperties() ERROR this
 context Model if generateNotEmptyAnnotationForMultiValuedProperties() ERROR this.getErrorMessage("9176", {"NotEmpty", "notEmptyAnnotationNameForMultiValuedProperties"}): notNullAnnotationNameForSingleValuedProperties().length > 0;
 
 
+context CompatibilityGroup if this.runChecks() && ignore() == false ERROR this.getErrorMessage("9192", {name}): this.clientDependency.target.typeSelect(JMM::CompatibilityInfo).size == 1;
+
 context CompatibilityInfo if this.runChecks() && ignore() == false ERROR this.getErrorMessage("9188", {this.name}): this.clientDependency.typeSelect(JMM::FirstIncompatibleVersion).size <= 1;
+
+
