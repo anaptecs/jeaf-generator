@@ -18,7 +18,8 @@ extension entity::ModelProperties;
 
 // Checks for stereotype RESTResource
 context RESTResource if runChecks("RESTResource") && ignore() == false ERROR this.getErrorMessage("9104", {name}): this.hasValidRESTResourcePath() == true;
-context RESTResource if runChecks("RESTResource") && ignore() == false ERROR	this.getErrorMessage("9130", {"RESTResource", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
+context RESTResource if runChecks("RESTResource") && ignore() == false ERROR this.getErrorMessage("9130", {"RESTResource", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
+context RESTResource if runChecks("RESTResource") && ignore() == false ERROR this.getErrorMessage("9128", {"RESTResource", name}): ownedOperation.forAll( e | e.hasReturnType() == true);
 
 
 // Checks for stereotype RESTOperation
