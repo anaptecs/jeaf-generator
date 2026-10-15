@@ -75,6 +75,7 @@
 |   | `deprecatedArray` |  |  |  |  |
 | `DataTypeWithDeprecation` | |  |  |  |  |
 |   | `code` | Time to say goodbye ...<br><br>... blub, blub, blub | just recently | Next version |  |
+| `DeprecatedChildClassForValidationGroups` | |  | 5.x | 8.0 | 2027-05-01 |
 | `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 |
 | `DeprecatedDataType` | |  |  |  |  |
 | `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 |

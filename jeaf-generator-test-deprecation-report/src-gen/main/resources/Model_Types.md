@@ -121,6 +121,7 @@ DataTypeUsage |   |  |
 DataTypeWithConstraints |   |  |
 DataUnit |   |  |
 DateQueryParamsBean |   |  |
+DeprecatedChildClassForValidationGroups |   |  |
 DeprecatedClass |   |  |
 DeprecatedContext |   |  |
 DeprecatedOpenAPIDataType |   |  |
@@ -202,6 +203,7 @@ POJOWithIDnMethod |   |  |
 Pageable |   |  |
 ParentBeanParamType |   |  |
 ParentClass |   |  |
+ParentClassForValidationGroups |   |  |
 ParentPOJO |   |  |
 PartiallyDeprecatedServiceObject |   |  |
 Partner |   |  |
@@ -620,6 +622,7 @@ Response |   |  |
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
 ClientType |   |  |
+DeprecatedChildClassForValidationGroups |   |  |
 DeprecatedClass |   |  |
 DeprecatedOpenAPIDataType |   |  |
 DeprecatedOpenAPIEnum |   |  |
@@ -628,6 +631,7 @@ MyLimitiedColor |   |  |
 MyPOJOResponse |   |  |
 MyPojoRequest |   |  |
 OtherPojo |   |  |
+ParentClassForValidationGroups |   |  |
 
 <br>
 

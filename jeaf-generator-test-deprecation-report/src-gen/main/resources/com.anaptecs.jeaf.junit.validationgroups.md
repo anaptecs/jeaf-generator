@@ -6,6 +6,26 @@
 <br>
 
 # Types
+## DeprecatedChildClassForValidationGroups
+:exclamation:**Deprecation Notice (since: 5.x, removed with: 8.0, go live date: 2027-05-01, end of compatibility period: 2026-10-20):**<br>
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+| Parent Class  | [`ParentClassForValidationGroups`](#parentclassforvalidationgroups) |
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`myProperty`** : `String`   `[1..1]`<br> |  |  |
+
+<br>
+
 ## DeprecatedClass
 :exclamation:**Deprecation Notice (since: , removed with: 7.0, go live date: 2026-12-24, end of compatibility period: 2026-09-13):**<br>
 
@@ -110,6 +130,20 @@
 | **`myLimitiedColor`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[1..1]`<br>        `@EnumSubset: notAllowedLiterals={WHITE, BLACK}` |  |  |
 | **`myColors`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[0..*]`<br>        `@EnumSubset: allowedLiterals={RED, GREEN, BLUE}, versions=V7` |  |  |
 | **`myColor`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[1..1]`<br>        `@EnumSubset: allowedLiterals={WHITE, RED}, versions=V4, V5, V6`<br>        `@EnumSubset: notAllowedLiterals={BLACK, WHITE}, versions=V7` |  |  |
+
+<br>
+
+## ParentClassForValidationGroups
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`parentProperty`** : `String`   `[1..1]`<br> |  |  |
 
 <br>
 
