@@ -153,23 +153,23 @@ private cached String getAuthorizedRoles(uml::Element element, String indentatio
 
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + element.getDeprecationRemovalInternal() + element.getDeprecationGoLiveDateInternal() + element.getDeprecationEndOfCompatibilityPeriodInternal() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
+    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + element.getDeprecationRemovalString() + element.getDeprecationGoLiveDateString() + element.getDeprecationEndOfCompatibilityPeriodString() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
     else "";
 
 
-private String getDeprecationRemovalInternal(uml::NamedElement element):
+private String getDeprecationRemovalString(uml::NamedElement element):
 	if element.hasDeprecationRemoval()
 	then ", removed with: " + element.getDeprecationRemoval()
 	else "";
 
 
-private String getDeprecationGoLiveDateInternal(uml::NamedElement element):
+private String getDeprecationGoLiveDateString(uml::NamedElement element):
 	if element.hasDeprecationGoLiveDate()
 	then ", go live date: " + element.getDeprecationGoLiveDate()
 	else "";
 
 
-private String getDeprecationEndOfCompatibilityPeriodInternal(uml::NamedElement element):
+private String getDeprecationEndOfCompatibilityPeriodString(uml::NamedElement element):
 	if element.hasDeprecationEndOfCompatibilityPeriod()
 	then ", end of compatibility period: " + element.getDeprecationEndOfCompatibilityPeriod()
 	else "";
@@ -177,8 +177,26 @@ private String getDeprecationEndOfCompatibilityPeriodInternal(uml::NamedElement 
 
 private cached String getBreakingChangeDescriptionInternal(uml::NamedElement element, String indentation):
     if element.isBreakingChange() && element.isBreakingChangeNoticeRequired()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (active with " + element.getBreakingChangeActiveWith() + ", go live date: " + element.getBreakingChangeGoLiveDate() + ", end of compatibility period: "+ element.getBreakingChangeEndOfCompatibilityPeriod() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
+    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (since: " + element.getBreakingChangeSince() + element.getBreakingChangeActiveWithString() + element.getBreakingChangeGoLiveDateString() + element.getBreakingChangeEndOfCompatibilityPeriodString() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
     else "";
+
+
+private String getBreakingChangeActiveWithString(uml::NamedElement element):
+	if element.hasBreakingChangeActiveWith()
+	then ", active with: " + element.getBreakingChangeActiveWith()
+	else "";
+
+
+private String getBreakingChangeGoLiveDateString(uml::NamedElement element):
+	if element.hasDeprecationGoLiveDate()
+	then ", go live date: " + element.getBreakingChangeGoLiveDate()
+	else "";
+
+
+private String getBreakingChangeEndOfCompatibilityPeriodString(uml::NamedElement element):
+	if element.hasBreakingChangeEndOfCompatibilityPeriod()
+	then ", end of compatibility period: " + element.getBreakingChangeEndOfCompatibilityPeriod()
+	else "";
 
 
 cached boolean hasMultiLineComment(uml::Element element) :

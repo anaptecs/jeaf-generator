@@ -117,7 +117,7 @@ components:
           description: |
             
             <br><br>
-            **Breaking Change Notice (active with , go live date: , end of compatibility period: ):**<br><br>
+            **Breaking Change Notice (since: ):**<br><br>
             
           type: string
           nullable: false
@@ -217,6 +217,24 @@ components:
           uniqueItems: true
         myColor:
           $ref: '#/components/schemas/MyLimitiedColor'
+    # com.anaptecs.jeaf.junit.validationgroups.ParentClassForValidationGroups
+    ParentClassForValidationGroups:
+      type: object
+      additionalProperties: false
+      discriminator:
+        propertyName: typeMapping
+        mapping:
+          ParentClassForValidationGroups: '#/components/schemas/ParentClassForValidationGroups'
+      required:
+        - typeMapping
+        - parentProperty
+      properties:
+        typeMapping:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        parentProperty:
+          type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.validationgroups.ClientType
     ClientType:

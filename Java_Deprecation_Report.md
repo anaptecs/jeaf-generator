@@ -346,6 +346,7 @@
 
 | Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
+| `DeprecatedChildClassForValidationGroups` | |  | 5.x | 8.0 | 2027-05-01 | 2026-10-20 |
 | `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 | `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
 | `MyContext` | |  |  |  |  |  |

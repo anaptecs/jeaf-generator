@@ -68,16 +68,55 @@ cached String getMarkdownCommentForReportTable(uml::NamedElement element):
 
 cached String getDeprecationNoticeForReport(uml::NamedElement element):
 	if element.isJEAFDeprecated()
-	then element.getLineBreaks() + ":exclamation:**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + ", removed with: " + element.getDeprecationRemoval() + ", go live date: " + element.getDeprecationGoLiveDate() + ", end of compatibility period: " + element.getDeprecationEndOfCompatibilityPeriod() + "):**<br>" + element.getDeprecationDescriptionForMarkup()
+	then element.getLineBreaks() + ":exclamation:**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + element.getDeprecationRemovalString() + element.getDeprecationGoLiveDateString() + element.getDeprecationEndOfCompatibilityPeriodString() + "):**<br>" + element.getDeprecationDescriptionForMarkup()
 	else "";
 
 cached String getBreakingChangeNoticeForReport(uml::NamedElement element):
 	if element.isBreakingChange()
-	then element.getLineBreaks() + ":bomb: **Breaking Change Notice " + "(since: " + "" + ", active with: " + element.getBreakingChangeActiveWith() + ", go live date: " + element.getBreakingChangeGoLiveDate() + ", end of compatibility period: " + element.getBreakingChangeEndOfCompatibilityPeriod() +"):**<br>" + element.getBreakingChangeDescription()
+	then element.getLineBreaks() + ":bomb: **Breaking Change Notice " + "(since: " + element.getBreakingChangeSince() + element.getBreakingChangeActiveWithString() + element.getBreakingChangeGoLiveDateString() + element.getBreakingChangeEndOfCompatibilityPeriodString() +"):**<br>" + element.getBreakingChangeDescription()
 	else "";
 	
 private getLineBreaks(uml::NamedElement element):
 	if element.getMarkdownComment().length > 0
 	then "\n\n"
 	else "";
+
+private String getDeprecationRemovalString(uml::NamedElement element):
+	if element.hasDeprecationRemoval()
+	then ", removed with: " + element.getDeprecationRemoval()
+	else "";
+
+
+private String getDeprecationGoLiveDateString(uml::NamedElement element):
+	if element.hasDeprecationGoLiveDate()
+	then ", go live date: " + element.getDeprecationGoLiveDate()
+	else "";
+
+
+private String getDeprecationEndOfCompatibilityPeriodString(uml::NamedElement element):
+	if element.hasDeprecationEndOfCompatibilityPeriod()
+	then ", end of compatibility period: " + element.getDeprecationEndOfCompatibilityPeriod()
+	else "";
+
+private String getBreakingChangeActiveWithString(uml::NamedElement element):
+	if element.hasBreakingChangeActiveWith()
+	then ", active with: " + element.getBreakingChangeActiveWith()
+	else "";
+
+
+private String getBreakingChangeGoLiveDateString(uml::NamedElement element):
+	if element.hasDeprecationGoLiveDate()
+	then ", go live date: " + element.getBreakingChangeGoLiveDate()
+	else "";
+
+
+private String getBreakingChangeEndOfCompatibilityPeriodString(uml::NamedElement element):
+	if element.hasBreakingChangeEndOfCompatibilityPeriod()
+	then ", end of compatibility period: " + element.getBreakingChangeEndOfCompatibilityPeriod()
+	else "";
+
+
+
+
+
 	

@@ -130,6 +130,24 @@ components:
 
 
   schemas:
+    # com.anaptecs.jeaf.junit.validationgroups.DeprecatedChildClassForValidationGroups
+    DeprecatedChildClassForValidationGroups:
+      description: |
+        
+        <br><br>
+        **Deprecation Notice (since: 5.x, removed with: 8.0, go live date: 2027-05-01, end of compatibility period: 2026-10-20):**<br><br>
+        
+      deprecated: true
+      allOf:
+        - $ref: '#/components/schemas/ParentClassForValidationGroups'
+        - type: object
+          additionalProperties: false
+          required:
+            - myProperty
+          properties:
+            myProperty:
+              type: string
+              nullable: false
     # com.anaptecs.jeaf.junit.validationgroups.DeprecatedClass
     DeprecatedClass:
       type: object
@@ -162,7 +180,7 @@ components:
           description: |
             
             <br><br>
-            **Breaking Change Notice (active with 7.0, go live date: 2026-12-24, end of compatibility period: 2026-09-13):**<br><br>
+            **Breaking Change Notice (since: , active with: 7.0, end of compatibility period: 2026-09-13):**<br><br>
             
           type: string
           nullable: false
@@ -188,7 +206,7 @@ components:
           description: |
             
             <br><br>
-            **Breaking Change Notice (active with 7.0, go live date: 2026-12-24, end of compatibility period: 2026-09-13):**<br><br>
+            **Breaking Change Notice (since: , active with: 7.0, end of compatibility period: 2026-09-13):**<br><br>
             Property will become mandatory in the future
           type: string
           nullable: true
@@ -196,7 +214,7 @@ components:
           description: |
             
             <br><br>
-            **Breaking Change Notice (active with , go live date: , end of compatibility period: ):**<br><br>
+            **Breaking Change Notice (since: ):**<br><br>
             
           type: string
           nullable: false
@@ -290,7 +308,7 @@ components:
           description: |
             
             <br><br>
-            **Breaking Change Notice (active with 8.0, go live date: 2027-05-01, end of compatibility period: 2026-10-20):**<br><br>
+            **Breaking Change Notice (since: , active with: 8.0, end of compatibility period: 2026-10-20):**<br><br>
             Property will become mandatory.
           type: string
           minLength: 0
@@ -305,6 +323,25 @@ components:
           uniqueItems: true
         myColor:
           $ref: '#/components/schemas/MyLimitiedColor'
+    # com.anaptecs.jeaf.junit.validationgroups.ParentClassForValidationGroups
+    ParentClassForValidationGroups:
+      type: object
+      additionalProperties: false
+      discriminator:
+        propertyName: typeMapping
+        mapping:
+          ParentClassForValidationGroups: '#/components/schemas/ParentClassForValidationGroups'
+          DeprecatedChildClassForValidationGroups: '#/components/schemas/DeprecatedChildClassForValidationGroups'
+      required:
+        - typeMapping
+        - parentProperty
+      properties:
+        typeMapping:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        parentProperty:
+          type: string
+          nullable: false
 
     # com.anaptecs.jeaf.junit.validationgroups.ClientType
     ClientType:
