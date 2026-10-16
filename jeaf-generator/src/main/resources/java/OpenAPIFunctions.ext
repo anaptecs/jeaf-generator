@@ -554,7 +554,7 @@ cached List[uml::Class] getResponseHeaderGroups(uml::Operation operation) :
 
 
 cached List[uml::Property] getHeaderFields(uml::Operation operation) :
-   operation.getResponseHeaderGroups().ownedAttribute;
+   operation.getResponseHeaderGroups().ownedAttribute.select(e|e.isElementActiveForOpenAPI()).sortBy(e|e.name);
 
 
 cached boolean hasResponseHeaderFields(uml::Operation operation) :
@@ -570,7 +570,7 @@ cached boolean hasResponseHeaderGroupsForResponseType(uml::Class response):
 
 
 cached List[uml::Property] getHeaderFieldsForResponseType(uml::Class response) :
-   response.getResponseHeaderGroupsForResponseType().ownedAttribute;
+   response.getResponseHeaderGroupsForResponseType().ownedAttribute.select(e|e.isElementActiveForOpenAPI()).sortBy(e|e.name);
 
 
 cached boolean hasCustomResponse(JMM::OpenAPI3Specification spec):
