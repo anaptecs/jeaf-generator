@@ -612,7 +612,7 @@ components:
             «ENDFOREACH-»
           «IF operation.hasResponseHeaderFields() -»
           headers:
-            «FOREACH operation.getHeaderFields().sortBy(e|e.name) AS headerField -»
+            «FOREACH operation.getHeaderFields() AS headerField -»
             «headerField.name»:
               schema:
                 type: «headerField.type.getOpenAPIType(this)»
@@ -660,7 +660,7 @@ components:
       «ENDIF-»
       «IF this.hasResponseHeaderGroupsForResponseType() -»
       headers:
-        «FOREACH this.getHeaderFieldsForResponseType().sortBy(e|e.name) AS headerField -»
+        «FOREACH this.getHeaderFieldsForResponseType() AS headerField -»
         «headerField.name»:
           schema:
             type: «headerField.type.getOpenAPIType(spec)»
