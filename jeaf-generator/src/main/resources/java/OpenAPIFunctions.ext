@@ -188,7 +188,7 @@ private String getBreakingChangeActiveWithString(uml::NamedElement element):
 
 
 private String getBreakingChangeGoLiveDateString(uml::NamedElement element):
-	if element.hasDeprecationGoLiveDate()
+	if element.hasBreakingChangeGoLiveDate()
 	then ", go live date: " + element.getBreakingChangeGoLiveDate()
 	else "";
 
