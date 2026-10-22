@@ -60,8 +60,7 @@ public abstract class AbtractWithDerivedProperty {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
-  public abstract String getDerivedProperty( );
+  public abstract @MyNotNullProperty String getDerivedProperty( );
 
   @Override
   public int hashCode( ) {

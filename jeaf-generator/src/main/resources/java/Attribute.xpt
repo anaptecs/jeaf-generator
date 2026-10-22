@@ -202,19 +202,15 @@
 «DEFINE AbstractGetterForDerivedProperty FOR Property»
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
-    «IF generateValidationAnnotationsForDerivedProperties()»
-    	«EXPAND Validation::ValidationAnnotation»
-    «ENDIF»
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@«getJsonGetterFQN()»«ENDIF»
-    «EXPAND java::Helper::NotNullAnnotationForProperty»
     «IF this.isSoftLink()»
     	«IF this.isMultivalued()»
-			«IF this.isInternalProperty() == false»public«ENDIF» abstract «this.getCollectionType()»<«this.asSoftLink().getMultivaluedJavaSoftLinkType()»> get«this.getSoftLinkPropertyName().toFirstUpper()»();
+			«IF this.isInternalProperty() == false»public«ENDIF» abstract «EXPAND java::Helper::NotNullAnnotationForProperty» «IF generateValidationAnnotationsForDerivedProperties()»«EXPAND Validation::ValidationAnnotation»«ENDIF» «this.getCollectionType()»<«this.asSoftLink().getMultivaluedJavaSoftLinkType()»> get«this.getSoftLinkPropertyName().toFirstUpper()»();
     	«ELSE»
-			«IF this.isInternalProperty() == false»public«ENDIF» abstract «this.asSoftLink().getJavaSoftLinkType()» get«this.getSoftLinkPropertyName().toFirstUpper()»();
+			«IF this.isInternalProperty() == false»public«ENDIF» abstract «EXPAND java::Helper::NotNullAnnotationForProperty» «IF generateValidationAnnotationsForDerivedProperties()»«EXPAND Validation::ValidationAnnotation»«ENDIF» «this.asSoftLink().getJavaSoftLinkType()» get«this.getSoftLinkPropertyName().toFirstUpper()»();
     	«ENDIF»
     «ELSE»
-    	«IF this.isInternalProperty() == false»public«ENDIF» abstract «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false»is«name.toFirstUpper()»«ELSE»«asGetter()»«ENDIF»();
+    	«IF this.isInternalProperty() == false»public«ENDIF» abstract «EXPAND java::Helper::NotNullAnnotationForProperty» «IF generateValidationAnnotationsForDerivedProperties()»«EXPAND Validation::ValidationAnnotation»«ENDIF» «this.fqn()» «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false»is«name.toFirstUpper()»«ELSE»«asGetter()»«ENDIF»();
     «ENDIF»
     «IF generateJacksonAnnotations() && this.isAddToJSON() && this.isMultivalued()»
         @«getJsonSetterFQN()»
@@ -228,16 +224,15 @@
     «EXPAND functions::Javadoc::JavadocForPropertyGetter»
     «EXPAND java::Helper::GenerateAnnotations-»
     «IF generateJacksonAnnotations() && this.isAddToJSON()»@«getJsonGetterFQN()»«ENDIF»
-    «EXPAND java::Helper::NotNullAnnotationForProperty»
     @Override
     «IF this.isSoftLink()»
     	«IF this.isMultivalued()»
-			«IF this.isInternalProperty() == false»public«ENDIF» «this.getCollectionType()»<«this.asSoftLink().getMultivaluedJavaSoftLinkType()»> get«this.getSoftLinkPropertyName().toFirstUpper()»() {
+			«IF this.isInternalProperty() == false»public«ENDIF» «EXPAND java::Helper::NotNullAnnotationForProperty»«IF generateValidationAnnotationsForDerivedProperties()»«EXPAND Validation::ValidationAnnotation»«ENDIF» «this.getCollectionType()»<«this.asSoftLink().getMultivaluedJavaSoftLinkType()»> get«this.getSoftLinkPropertyName().toFirstUpper()»() {
     	«ELSE»
-			«IF this.isInternalProperty() == false»public«ENDIF» «this.asSoftLink().getJavaSoftLinkType()» get«this.getSoftLinkPropertyName().toFirstUpper()»() {
+			«IF this.isInternalProperty() == false»public«ENDIF» «EXPAND java::Helper::NotNullAnnotationForProperty»«IF generateValidationAnnotationsForDerivedProperties()»«EXPAND Validation::ValidationAnnotation»«ENDIF» «this.asSoftLink().getJavaSoftLinkType()» get«this.getSoftLinkPropertyName().toFirstUpper()»() {
     	«ENDIF»
     «ELSE»
-	    «IF this.isInternalProperty() == false»public«ENDIF» «IF this.association == null»«this.fqn()»«ELSE»«this.fqn()»«ENDIF» «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false»is«name.toFirstUpper()»«ELSE»«asGetter()»«ENDIF»() {
+	    «IF this.isInternalProperty() == false»public«ENDIF» «EXPAND java::Helper::NotNullAnnotationForProperty»«IF generateValidationAnnotationsForDerivedProperties()»«EXPAND Validation::ValidationAnnotation»«ENDIF» «this.fqn()» «IF type.isPrimitiveType() && type.isBooleanType() && this.isMultivalued() == false»is«name.toFirstUpper()»«ELSE»«asGetter()»«ENDIF»() {
     «ENDIF»
         // TODO Implement method for derived property "«this.name»".
         «IF this.type.isPrimitiveType() && this.isMultivalued() == false»

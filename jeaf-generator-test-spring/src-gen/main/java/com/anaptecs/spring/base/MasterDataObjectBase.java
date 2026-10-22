@@ -348,8 +348,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
-  public abstract String getDerivedProperty( );
+  public abstract @MyNotNullProperty String getDerivedProperty( );
 
   /**
    * Method returns association {@link #derivedDataUnits}.<br/>
@@ -400,8 +399,7 @@ public abstract class MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
-  @MyNotNullProperty
-  public abstract String getDerivedString( );
+  public abstract @MyNotNullProperty String getDerivedString( );
 
   @Override
   public int hashCode( ) {

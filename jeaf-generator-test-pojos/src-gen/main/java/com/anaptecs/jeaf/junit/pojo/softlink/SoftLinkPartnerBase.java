@@ -493,9 +493,8 @@ public abstract class SoftLinkPartnerBase {
    *
    * @return {@link String} Value to which {@link #derivedSoftLink} is set.
    */
-  @NotNull
   @JsonGetter
-  public abstract String getDerivedSoftLinkID( );
+  public abstract @NotNull String getDerivedSoftLinkID( );
 
   /**
    * Method returns association {@link #theDerivedSoftLinks}.<br/>

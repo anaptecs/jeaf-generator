@@ -55,8 +55,7 @@ public abstract class AbtractWithDerivedProperty {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
-  public abstract String getDerivedProperty( );
+  public abstract @MyNotNullProperty String getDerivedProperty( );
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

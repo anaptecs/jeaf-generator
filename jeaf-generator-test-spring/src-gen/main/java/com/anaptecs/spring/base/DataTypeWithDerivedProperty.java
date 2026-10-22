@@ -77,9 +77,8 @@ public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
   @Override
-  public String getDerivedProperty( ) {
+  public @MyNotNullProperty String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
     return null;
   }

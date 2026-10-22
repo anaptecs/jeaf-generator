@@ -63,9 +63,8 @@ public class Channel extends ChannelBase {
    *
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
-  @MyNotNullProperty
   @Override
-  public String getDerivedSomething( ) {
+  public @MyNotNullProperty String getDerivedSomething( ) {
     // TODO Implement method for derived property "derivedSomething".
     return null;
   }

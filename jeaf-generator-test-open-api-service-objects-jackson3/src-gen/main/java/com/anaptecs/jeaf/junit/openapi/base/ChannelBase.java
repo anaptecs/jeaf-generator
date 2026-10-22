@@ -311,8 +311,7 @@ public abstract class ChannelBase implements ServiceObject {
    *
    * @return {@link String} Value to which {@link #derivedSomething} is set.
    */
-  @MyNotNullProperty
-  public abstract String getDerivedSomething( );
+  public abstract @MyNotNullProperty String getDerivedSomething( );
 
   /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned

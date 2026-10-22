@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 
 public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase {
@@ -77,9 +79,8 @@ public class DataTypeWithDerivedProperty extends DataTypeWithDerivedPropertyBase
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
   @Override
-  public String getDerivedProperty( ) {
+  public @MyNotNullProperty @NotNull String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
     return null;
   }
