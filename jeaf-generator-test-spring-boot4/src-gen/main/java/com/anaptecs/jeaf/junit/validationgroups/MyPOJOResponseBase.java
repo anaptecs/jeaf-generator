@@ -13,6 +13,7 @@ import com.anaptecs.annotations.MyNotNullProperty;
 import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V4;
 import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V5;
 import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V6;
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
 import com.anaptecs.jeaf.validation.api.spring.SpringValidationExecutor;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -263,8 +264,7 @@ public abstract class MyPOJOResponseBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
-  public abstract String getDerivedProperty( );
+  public abstract @MyNotNullProperty @NotNull(groups = { V7.class }) String getDerivedProperty( );
 
   @Override
   public int hashCode( ) {

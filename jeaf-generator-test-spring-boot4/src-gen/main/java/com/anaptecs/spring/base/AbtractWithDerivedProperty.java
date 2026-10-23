@@ -5,6 +5,8 @@
  */
 package com.anaptecs.spring.base;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -60,8 +62,7 @@ public abstract class AbtractWithDerivedProperty {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
-  public abstract String getDerivedProperty( );
+  public abstract @MyNotNullProperty @NotNull String getDerivedProperty( );
 
   @Override
   public int hashCode( ) {

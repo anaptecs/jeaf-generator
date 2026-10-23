@@ -7,6 +7,8 @@ package com.anaptecs.jeaf.junit.pojo.softlink;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonGetter;
 
 public class SoftLinkPartner extends SoftLinkPartnerBase {
@@ -55,7 +57,7 @@ public class SoftLinkPartner extends SoftLinkPartnerBase {
    */
   @JsonGetter
   @Override
-  public String getDerivedSoftLinkID( ) {
+  public @NotNull String getDerivedSoftLinkID( ) {
     // TODO Implement method for derived property "derivedSoftLink".
     return null;
   }

@@ -347,8 +347,7 @@ public abstract class MyPOJOResponseBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @NotNull(groups = { V7.class })
-  public abstract String getDerivedProperty( );
+  public abstract @NotNull(groups = { V7.class }) String getDerivedProperty( );
 
   @Override
   public int hashCode( ) {

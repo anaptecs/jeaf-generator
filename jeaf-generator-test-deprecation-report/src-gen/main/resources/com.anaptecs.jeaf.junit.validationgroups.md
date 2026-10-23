@@ -130,6 +130,8 @@
 | **`myLimitiedColor`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[1..1]`<br>        `@EnumSubset: notAllowedLiterals={WHITE, BLACK}` |  |  |
 | **`myColors`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[0..*]`<br>        `@EnumSubset: allowedLiterals={RED, GREEN, BLUE}, versions=V7` |  |  |
 | **`myColor`** : [`MyLimitiedColor`](#mylimitiedcolor)   `[1..1]`<br>        `@EnumSubset: allowedLiterals={WHITE, RED}, versions=V4, V5, V6`<br>        `@EnumSubset: notAllowedLiterals={BLACK, WHITE}, versions=V7` |  |  |
+| **`derivedString`** : `String`   `[1..1]`<br>        `@Size: min=1, max=111` |  |  |
+| **`derivedList`** : `String`   `[0..*]`<br>        `@Size: min=7, max=42` |  |  |
 
 <br>
 

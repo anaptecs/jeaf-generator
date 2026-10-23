@@ -71,9 +71,8 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
   @Override
-  public String getDerivedProperty( ) {
+  public @MyNotNullProperty String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
     return null;
   }
@@ -141,9 +140,8 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
-  @MyNotNullProperty
   @Override
-  public String getDerivedString( ) {
+  public @MyNotNullProperty String getDerivedString( ) {
     // TODO Implement method for derived property "derivedString".
     return null;
   }

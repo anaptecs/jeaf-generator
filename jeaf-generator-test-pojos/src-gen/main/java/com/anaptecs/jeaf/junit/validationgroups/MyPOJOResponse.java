@@ -5,6 +5,10 @@
  */
 package com.anaptecs.jeaf.junit.validationgroups;
 
+import javax.validation.constraints.NotNull;
+
+import com.anaptecs.jeaf.junit.validationgroups.validationgroups.V7;
+
 public class MyPOJOResponse extends MyPOJOResponseBase {
   /**
    * Initialize object. Nothing special to do.
@@ -47,7 +51,7 @@ public class MyPOJOResponse extends MyPOJOResponseBase {
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
   @Override
-  public String getDerivedProperty( ) {
+  public @NotNull(groups = { V7.class }) String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
     return null;
   }

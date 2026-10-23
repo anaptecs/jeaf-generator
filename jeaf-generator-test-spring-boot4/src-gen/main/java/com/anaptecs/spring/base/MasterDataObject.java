@@ -7,6 +7,8 @@ package com.anaptecs.spring.base;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import com.anaptecs.annotations.MyNotNullProperty;
 import com.fasterxml.jackson.annotation.JsonGetter;
 
@@ -71,9 +73,8 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedProperty} is set.
    */
-  @MyNotNullProperty
   @Override
-  public String getDerivedProperty( ) {
+  public @MyNotNullProperty @NotNull String getDerivedProperty( ) {
     // TODO Implement method for derived property "derivedProperty".
     return null;
   }
@@ -141,9 +142,8 @@ public class MasterDataObject extends MasterDataObjectBase {
    *
    * @return {@link String} Value to which {@link #derivedString} is set.
    */
-  @MyNotNullProperty
   @Override
-  public String getDerivedString( ) {
+  public @MyNotNullProperty @NotNull String getDerivedString( ) {
     // TODO Implement method for derived property "derivedString".
     return null;
   }
