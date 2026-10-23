@@ -9,6 +9,7 @@ package com.anaptecs.jeaf.junit.generics;
  * Just a generic type.
  *
  * @param <T> Template Parameter Comment
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  */

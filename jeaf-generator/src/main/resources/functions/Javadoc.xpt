@@ -25,9 +25,11 @@
     «EXPAND BreakingChangeJavadoc -»
     «IF this.isClass() && this.asClass().hasTemplateParameter()-»
     	«FOREACH this.asClass().ownedTemplateSignature.ownedParameter.ownedParameteredElement.asNamedElement() AS templateParam-»
-* @param <«templateParam.name»> «templateParam.owner.ownedComment.first().convertCommentObjectForJavadoc()»     	
+ * @param <«templateParam.name»> 
+ *          «templateParam.owner.ownedComment.first().convertCommentObjectForJavadoc()»     	
     	«ENDFOREACH-»
     «ENDIF-»
+ *
  * @author «getAuthor()»
  * @version «getVersion()»
     «EXPAND DeprecatedJavadoc -»

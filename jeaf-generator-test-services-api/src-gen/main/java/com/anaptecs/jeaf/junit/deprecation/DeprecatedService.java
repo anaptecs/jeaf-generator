@@ -9,6 +9,7 @@ import com.anaptecs.jeaf.core.api.Service;
 import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 
 /**
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  * @deprecated This service does not make sense any more.<br/>

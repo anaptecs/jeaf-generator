@@ -11,6 +11,7 @@ import com.anaptecs.annotations.MyNotNullServiceParam;
 import reactor.core.publisher.Mono;
 
 /**
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  * @deprecated (<b>since:</b> TBD, <b>removed with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of compatibility

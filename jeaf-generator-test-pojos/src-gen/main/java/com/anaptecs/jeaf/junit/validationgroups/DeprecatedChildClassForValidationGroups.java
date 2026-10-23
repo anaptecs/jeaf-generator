@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 /**
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  * @deprecated (<b>since:</b> 5.x, <b>removed with:</b> 8.0, <b>go live date:</b> 2027-05-01, <b>end of compatibility

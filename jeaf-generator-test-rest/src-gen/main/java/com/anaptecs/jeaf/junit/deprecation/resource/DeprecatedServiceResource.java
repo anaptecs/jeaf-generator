@@ -14,6 +14,7 @@ import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.junit.deprecation.DeprecatedService;
 
 /**
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.4.x
  * @deprecated This service does not make sense any more.<br/>

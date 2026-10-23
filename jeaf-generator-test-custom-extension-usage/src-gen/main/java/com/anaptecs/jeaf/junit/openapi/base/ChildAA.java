@@ -19,6 +19,7 @@ import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 
 @Generated("Before Class Declaration. Here an annontation cloud be added.")
 /**
+ *
  * @author JEAF Generator
  * @version JEAF Release 1.6.x
  * @deprecated Please do not use this class any longer. There are better alternatives but I do not tell you which ones.
