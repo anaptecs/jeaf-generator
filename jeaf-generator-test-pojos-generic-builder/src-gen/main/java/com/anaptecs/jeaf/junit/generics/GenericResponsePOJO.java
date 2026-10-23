@@ -5,6 +5,13 @@
  */
 package com.anaptecs.jeaf.junit.generics;
 
+/**
+ * Just a generic type.
+ *
+ * @param <T> Template Parameter Comment
+ * @author JEAF Generator
+ * @version JEAF Release 1.4.x
+ */
 public class GenericResponsePOJO<T> extends GenericResponsePOJOBase<T> {
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"

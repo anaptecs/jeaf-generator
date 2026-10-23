@@ -24,7 +24,7 @@
 <br>
 
 ## GenericResponsePOJO
-
+Just a generic type.
 
 
 <br>

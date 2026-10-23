@@ -146,7 +146,7 @@ Farbe |   |  |
 FloatCode |   |  |
 FloatCodeType |   |  |
 GenericPageableResponse |   |  |
-GenericResponsePOJO |   |  |
+GenericResponsePOJO |   | Just a generic type. |
 GenericSingleValuedReponse |   |  |
 GeoPosition |   |  |
 HeavyDataTypeUser |   |  |
@@ -330,7 +330,7 @@ VerkehrsmittelTyp |   |  |
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
 AndOneMorePOJO |   |  |
-GenericResponsePOJO |   |  |
+GenericResponsePOJO |   | Just a generic type. |
 Message |   |  |
 MultiTemplateClass |   |  |
 MyBusinessObject |   |  |
