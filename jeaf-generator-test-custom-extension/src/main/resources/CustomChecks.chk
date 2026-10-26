@@ -1,8 +1,19 @@
 import uml;
 import JMM;
+
 extension Custom;
+extension functions::Checks;
+extension functions::NamedElement;
+
+extension java::GeneratorCommons;
 
 
 context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 WARNING "Fake-Error: Custom check failed." : this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).get(0).revision >= 99;
 
 context Model ERROR "Property for custom template is missing": getProperty("jeaf.test") == "Hello Custom Template";
+
+context Parameter if runNonMandatoryChecks("Parameter") ERROR this.getExclusionElementName() + " Plain Checks: " + " [CUSTOM-001] Parameter names must start with prefix 'p'": this.name.startsWith("p");
+
+context Property if runNonMandatoryChecks() ERROR this.getExclusionElementName() + " [CUSTOM-002] Property name ends with invalid suffix." : !this.name.endsWith("Id");
+
+context ServiceObject if runNonMandatoryChecks("ServiceObject") ERROR this.getExclusionElementName() +  " [CUSTOM-003] Class name ends with invalid suffix." : !this.name.endsWith("Subclass");

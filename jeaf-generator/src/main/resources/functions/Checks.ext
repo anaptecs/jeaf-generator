@@ -1,0 +1,39 @@
+extension java::GeneratorCommons;
+extension functions::SystemProperties;
+extension functions::Class;
+extension functions::Enumeration;
+extension functions::Property;
+extension functions::NamedElement;
+extension functions::Parameter;
+
+
+cached boolean runNonMandatoryChecks(uml::NamedElement element):
+	runNonMandatoryChecks(element, "");
+
+
+cached boolean runNonMandatoryChecks(uml::NamedElement element, String stereotype):
+	if element.isExcludedFromNonMandatoryChecks()
+	then false
+	else runChecks(element, stereotype);
+
+
+private cached isExcludedFromNonMandatoryChecks(uml::NamedElement element):
+	if element.getExclusionElementName().length > 0
+	then element.getExclusionElementName().isExcluded()
+	else false;
+
+cached getExclusionElementName(uml::NamedElement element):
+	if element.isClass() || element.isEnumeration()
+	then element.qualifiedName()
+	else if element.isProperty()
+	then (element.owner.asNamedElement().qualifiedName() + "." + element.name)
+	else if element.isParameter()
+	then (element.owner.asNamedElement().qualifiedName() + "()." + element.name)
+	else "";
+
+
+
+private cached boolean isExcluded(String qualifiedName):
+	nonMandatoryCheckExclusions().contains(qualifiedName);
+
+
