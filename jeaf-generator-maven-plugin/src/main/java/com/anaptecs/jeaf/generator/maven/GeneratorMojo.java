@@ -203,6 +203,24 @@ public class GeneratorMojo extends AbstractMojo {
   private List<String> customCheckFiles;
 
   /**
+   * Name of the model elements that should be excluded from non-mandatory checks. Non-mandatory checks are checks that
+   * are not required to produce legal code. Typical examples for such checks are custom checks that are used to enforce
+   * project-specific guidelines.<br/>
+   * <br/>
+   * <b>Examples:</b>
+   * <ul>
+   * <li>Class / Interface ("fully qualified name"): <code>com.anaptecs.jeaf.test.Account</code> or
+   * <code>com.anaptecs.jeaf.test.MyService</code></li>
+   * <li>Property ("fully qualified name of class"."property name"):
+   * <code>com.anaptecs.jeaf.test.Account.name</code></li>
+   * <li>Operation ("fully qualified name of class>.<operation name>.<parameter name>"):
+   * <code>com.anaptecs.jeaf.test.MyService.doSomething.size</code></li>
+   * </ul>
+   */
+  @Parameter(required = false, defaultValue = " ")
+  private List<String> nonMandatoryCheckExclusions;
+
+  /**
    * Directory where all files that belong to the "src" directory will be written to.
    */
   @Parameter(required = false)
@@ -2778,6 +2796,13 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info(" ");
       }
 
+      if (nonMandatoryCheckExclusions.isEmpty() == false) {
+        lLog.info(" ");
+        lLog.info(
+            "Non mandatory check exclusions:                   " + String.join("; ", nonMandatoryCheckExclusions));
+        lLog.info(" ");
+      }
+
       if (generateJavaClasses()) {
         lLog.info(" ");
         lLog.info("Javadoc Company Tag:                              " + fileHeaderCompany);
@@ -2908,6 +2933,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("list.pkgs.whitelist", this.getPackageWhitelist());
       System.setProperty(PROPERTY_PREFIX + "runAllChecks", this.runAllChecks().toString());
       System.setProperty(PROPERTY_PREFIX + "skipModelChecks", this.skipModelChecks().toString());
+      System.setProperty(PROPERTY_PREFIX + "nonMandatoryCheckExclusions",
+          String.join(";", nonMandatoryCheckExclusions));
 
       System.setProperty("switch.gen.custom.constraints", generateCustomConstraints.toString());
       System.setProperty("switch.gen.global.parts", generateGlobalParts.toString());

@@ -111,6 +111,14 @@
 						<package>com.anaptecs.jeaf.junit.core</package>
 						<package>com.anaptecs.jeaf.junit.otherpackage</package>
 					</packages>
+					
+					<nonMandatoryCheckExclusions>
+						<nonMandatoryCheckExclusion>com.anaptecs.jeaf.junit.openapi.service1.ProductService.testSpecialHeaderParams().authorization</nonMandatoryCheckExclusion>
+						<nonMandatoryCheckExclusion>com.anaptecs.jeaf.junit.openapi.service1.ProductService.testOptionalQueryParams().query1</nonMandatoryCheckExclusion>
+						<nonMandatoryCheckExclusion>com.anaptecs.jeaf.junit.openapi.service1.ProductService.testOptionalQueryParams().query2</nonMandatoryCheckExclusion>
+						<nonMandatoryCheckExclusion>com.anaptecs.jeaf.junit.otherpackage.Output.myId</nonMandatoryCheckExclusion>
+						<nonMandatoryCheckExclusion>com.anaptecs.jeaf.junit.otherpackage.InputSubclass</nonMandatoryCheckExclusion>
+					</nonMandatoryCheckExclusions>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
 					<generateServiceObjects>true</generateServiceObjects>

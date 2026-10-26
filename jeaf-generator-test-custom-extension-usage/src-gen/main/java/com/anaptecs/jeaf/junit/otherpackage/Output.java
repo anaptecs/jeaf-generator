@@ -9,6 +9,8 @@ import javax.annotation.processing.Generated;
 import javax.validation.ConstraintViolationException;
 
 import com.anaptecs.jeaf.core.api.ServiceObject;
+import com.anaptecs.jeaf.junit.extension.BuilderPropertyDeclaration;
+import com.anaptecs.jeaf.junit.extension.ClassPropertyDeclaration;
 import com.anaptecs.jeaf.junit.extension.JEAFCustomAnnotationTest;
 import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
 import com.anaptecs.jeaf.xfun.api.checks.Check;
@@ -20,6 +22,20 @@ public class Output extends Object implements ServiceObject {
    * Default serial version uid.
    */
   private static final long serialVersionUID = 1L;
+
+  /**
+   * Constant for the name of attribute "myId".
+   */
+  @JEAFCustomAnnotationTest
+  public static final String MYID = "myId";
+
+  // "String"
+  @ClassPropertyDeclaration
+  @JEAFCustomAnnotationTest
+  private String myId;
+
+  // "String"
+  private int myIdXYZ = 0;
 
   /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
@@ -36,6 +52,10 @@ public class Output extends Object implements ServiceObject {
   protected Output( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Read attribute values from builder.
+    myId = pBuilder.myId;
+    // "String"
+    myIdXYZ = pBuilder.myIdXYZ;
   }
 
   /**
@@ -52,6 +72,14 @@ public class Output extends Object implements ServiceObject {
    */
   @JEAFCustomAnnotationTest
   public static class Builder {
+    // "String"
+    @BuilderPropertyDeclaration
+    @JEAFCustomAnnotationTest
+    private String myId;
+
+    // "String"
+    private int myIdXYZ = 0;
+
     /**
      * Use {@link Output#builder()} instead of private constructor to create new builder.
      */
@@ -62,6 +90,29 @@ public class Output extends Object implements ServiceObject {
      * Use {@link Output#builder(Output)} instead of private constructor to create new builder.
      */
     protected Builder( Output pObject ) {
+      if (pObject != null) {
+        // Read attribute values from passed object.
+        this.setMyId(pObject.myId);
+      }
+    }
+
+    /**
+     * Method sets attribute {@link #myId}.<br/>
+     *
+     * @param pMyId Value to which {@link #myId} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JEAFCustomAnnotationTest
+    public Builder setMyId( String pMyId ) {
+      // Assign value to attribute
+      myId = pMyId;
+      return this;
+    }
+
+    public Builder setMyIdXYZ( int value ) {
+      // "String"
+      myIdXYZ = value;
+      return this;
     }
     // Ooops, I also forgot to implement that for our builders ;-(
 
@@ -88,6 +139,36 @@ public class Output extends Object implements ServiceObject {
     }
   }
 
+  /**
+   * Method returns attribute {@link #myId}.<br/>
+   *
+   * @return {@link String} Value to which {@link #myId} is set.
+   */
+  @JEAFCustomAnnotationTest
+  public String getMyId( ) {
+    return myId;
+  }
+
+  /**
+   * Method sets attribute {@link #myId}.<br/>
+   *
+   * @param pMyId Value to which {@link #myId} should be set.
+   */
+  @JEAFCustomAnnotationTest
+  public void setMyId( String pMyId ) {
+    // Assign value to attribute
+    myId = pMyId;
+  }
+
+  public int getMyIdXYZ( ) {
+    // "String"
+    return myIdXYZ;
+  }
+
+  public void setMyIdXYZ( int value ) {
+    myIdXYZ = value;
+  }
+
   public void doSomethingGenerated( ) {
     // Ooops, I forget to implement that ;-)
   }
@@ -102,6 +183,10 @@ public class Output extends Object implements ServiceObject {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("myId: ");
+    lBuilder.append(myId);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

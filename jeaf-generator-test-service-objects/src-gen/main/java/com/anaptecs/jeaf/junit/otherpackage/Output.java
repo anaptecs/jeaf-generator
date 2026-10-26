@@ -18,6 +18,13 @@ public class Output implements ServiceObject {
   private static final long serialVersionUID = 1L;
 
   /**
+   * Constant for the name of attribute "myId".
+   */
+  public static final String MYID = "myId";
+
+  private String myId;
+
+  /**
    * Default constructor is only intended to be used for deserialization by tools like Jackson for JSON. For "normal"
    * object creation builder should be used instead.
    */
@@ -32,6 +39,8 @@ public class Output implements ServiceObject {
   protected Output( Builder pBuilder ) {
     // Ensure that builder is not null.
     Check.checkInvalidParameterNull(pBuilder, "pBuilder");
+    // Read attribute values from builder.
+    myId = pBuilder.myId;
   }
 
   /**
@@ -47,10 +56,13 @@ public class Output implements ServiceObject {
    * Convenience method to create new instance of class Output.
    *
    *
+   * @param pMyId Value to which {@link #myId} should be set.
+   *
    * @return {@link Output}
    */
-  public static Output of( ) {
+  public static Output of( String pMyId ) {
     var lBuilder = Output.builder();
+    lBuilder.setMyId(pMyId);
     return lBuilder.build();
   }
 
@@ -58,6 +70,8 @@ public class Output implements ServiceObject {
    * Class implements builder to create a new instance of class <code>Output</code>.
    */
   public static class Builder {
+    private String myId;
+
     /**
      * Use {@link Output#builder()} instead of private constructor to create new builder.
      */
@@ -68,6 +82,22 @@ public class Output implements ServiceObject {
      * Use {@link Output#builder(Output)} instead of private constructor to create new builder.
      */
     protected Builder( Output pObject ) {
+      if (pObject != null) {
+        // Read attribute values from passed object.
+        this.setMyId(pObject.myId);
+      }
+    }
+
+    /**
+     * Method sets attribute {@link #myId}.<br/>
+     *
+     * @param pMyId Value to which {@link #myId} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public Builder setMyId( String pMyId ) {
+      // Assign value to attribute
+      myId = pMyId;
+      return this;
     }
 
     /**
@@ -96,6 +126,25 @@ public class Output implements ServiceObject {
   }
 
   /**
+   * Method returns attribute {@link #myId}.<br/>
+   *
+   * @return {@link String} Value to which {@link #myId} is set.
+   */
+  public String getMyId( ) {
+    return myId;
+  }
+
+  /**
+   * Method sets attribute {@link #myId}.<br/>
+   *
+   * @param pMyId Value to which {@link #myId} should be set.
+   */
+  public void setMyId( String pMyId ) {
+    // Assign value to attribute
+    myId = pMyId;
+  }
+
+  /**
    * Method returns a StringBuilder that can be used to create a String representation of this object. The returned
    * StringBuilder also takes care about attributes of super classes.
    *
@@ -105,6 +154,10 @@ public class Output implements ServiceObject {
     StringBuilder lBuilder = new StringBuilder();
     lBuilder.append(pIndent);
     lBuilder.append(this.getClass().getName());
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("myId: ");
+    lBuilder.append(myId);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
