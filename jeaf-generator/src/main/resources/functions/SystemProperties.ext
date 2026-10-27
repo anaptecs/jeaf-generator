@@ -439,3 +439,7 @@ String enumSubsetAnnotationClassName():
 List[String] nonMandatoryCheckExclusions():
 	getSystemPropertyValues("jeaf.generator.nonMandatoryCheckExclusions");
 
+boolean disableAllNonMandatoryChecks():
+	getBooleanSystemProperty("jeaf.generator.disableAllNonMandatoryChecks", false);
+
+

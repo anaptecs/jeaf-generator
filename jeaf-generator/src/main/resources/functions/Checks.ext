@@ -12,9 +12,12 @@ cached boolean runNonMandatoryChecks(uml::NamedElement element):
 
 
 cached boolean runNonMandatoryChecks(uml::NamedElement element, String stereotype):
-	if element.isExcludedFromNonMandatoryChecks()
+	if disableAllNonMandatoryChecks()
 	then false
-	else runChecks(element, stereotype);
+	else
+		if element.isExcludedFromNonMandatoryChecks()
+		then false
+		else runChecks(element, stereotype);
 
 
 private cached isExcludedFromNonMandatoryChecks(uml::NamedElement element):

@@ -221,6 +221,12 @@ public class GeneratorMojo extends AbstractMojo {
   private List<String> nonMandatoryCheckExclusions;
 
   /**
+   * Parameter can be used to disable all non-mandatory checks.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean disableAllNonMandatoryChecks;
+
+  /**
    * Directory where all files that belong to the "src" directory will be written to.
    */
   @Parameter(required = false)
@@ -2796,6 +2802,11 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info(" ");
       }
 
+      if (disableAllNonMandatoryChecks) {
+        lLog.info(" ");
+        lLog.info("Disable all non-mandatory checks:                 " + disableAllNonMandatoryChecks);
+        lLog.info(" ");
+      }
       if (nonMandatoryCheckExclusions.isEmpty() == false) {
         lLog.info(" ");
         lLog.info(
@@ -2933,8 +2944,10 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("list.pkgs.whitelist", this.getPackageWhitelist());
       System.setProperty(PROPERTY_PREFIX + "runAllChecks", this.runAllChecks().toString());
       System.setProperty(PROPERTY_PREFIX + "skipModelChecks", this.skipModelChecks().toString());
+
       System.setProperty(PROPERTY_PREFIX + "nonMandatoryCheckExclusions",
           String.join(";", nonMandatoryCheckExclusions));
+      System.setProperty(PROPERTY_PREFIX + "disableAllNonMandatoryChecks", disableAllNonMandatoryChecks.toString());
 
       System.setProperty("switch.gen.custom.constraints", generateCustomConstraints.toString());
       System.setProperty("switch.gen.global.parts", generateGlobalParts.toString());
