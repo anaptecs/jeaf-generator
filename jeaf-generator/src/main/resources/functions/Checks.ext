@@ -5,6 +5,7 @@ extension functions::Enumeration;
 extension functions::Property;
 extension functions::NamedElement;
 extension functions::Parameter;
+extension functions::Operation;
 
 
 cached boolean runNonMandatoryChecks(uml::NamedElement element):
@@ -32,6 +33,8 @@ cached getExclusionElementName(uml::NamedElement element):
 	then (element.owner.asNamedElement().qualifiedName() + "." + element.name)
 	else if element.isParameter()
 	then (element.owner.asNamedElement().qualifiedName() + "()." + element.name)
+	else if element.isOperation()
+	then (element.qualifiedName() + "()")
 	else "";
 
 
