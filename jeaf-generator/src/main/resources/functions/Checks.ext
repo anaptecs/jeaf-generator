@@ -34,7 +34,7 @@ cached getExclusionElementName(uml::NamedElement element):
 	else if element.isParameter()
 	then (element.owner.asNamedElement().qualifiedName() + "()." + element.name)
 	else if element.isOperation()
-	then (element.qualifiedName() + "()")
+	then element.qualifiedName() + "()"
 	else "";
 
 
