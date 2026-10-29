@@ -9,21 +9,25 @@ extension functions::Operation;
 
 
 cached boolean runNonMandatoryChecks(uml::NamedElement element):
-	runNonMandatoryChecks(element, "");
+	runNonMandatoryChecks(element, "", "");
 
 
-cached boolean runNonMandatoryChecks(uml::NamedElement element, String stereotype):
+cached boolean runNonMandatoryChecks(uml::NamedElement element, String checkCode):
+	runNonMandatoryChecks(element, checkCode, "");
+
+
+cached boolean runNonMandatoryChecks(uml::NamedElement element, String checkCode, String stereotype):
 	if disableAllNonMandatoryChecks()
 	then false
 	else
-		if element.isExcludedFromNonMandatoryChecks()
+		if element.isExcludedFromNonMandatoryChecks(checkCode)
 		then false
 		else runChecks(element, stereotype);
 
 
-private cached isExcludedFromNonMandatoryChecks(uml::NamedElement element):
+private cached isExcludedFromNonMandatoryChecks(uml::NamedElement element, String checkCode):
 	if element.getExclusionElementName().length > 0
-	then element.getExclusionElementName().isExcluded()
+	then element.getExclusionElementName().isExcludedFromCheck(checkCode)
 	else false;
 
 cached getExclusionElementName(uml::NamedElement element):
@@ -38,8 +42,7 @@ cached getExclusionElementName(uml::NamedElement element):
 	else "";
 
 
-
-private cached boolean isExcluded(String qualifiedName):
-	nonMandatoryCheckExclusions().contains(qualifiedName);
+private cached boolean isExcludedFromCheck(String pModelElementName, String pCheckCode):
+	JAVA com.anaptecs.jeaf.fwk.generator.checks.CheckExclusionCache.isExcluded(java.lang.String, java.lang.String);
 
 
