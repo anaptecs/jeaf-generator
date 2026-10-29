@@ -35,6 +35,8 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.anaptecs.jeaf.fwk.generator.checks.CheckExclusion;
+import com.anaptecs.jeaf.fwk.generator.checks.CheckExclusionCache;
 import com.anaptecs.jeaf.fwk.generator.util.EnterpriseJavaType;
 import com.anaptecs.jeaf.fwk.generator.util.JacksonVersion;
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
@@ -207,7 +209,7 @@ public class GeneratorMojo extends AbstractMojo {
    * are not required to produce legal code. Typical examples for such checks are custom checks that are used to enforce
    * project-specific guidelines.<br/>
    * <br/>
-   * <b>Examples:</b>
+   * <b>Model Element Naming Schema:</b>
    * <ul>
    * <li>Class / Interface ("fully qualified name"): <code>com.anaptecs.jeaf.test.Account</code> or
    * <code>com.anaptecs.jeaf.test.MyService</code></li>
@@ -216,9 +218,28 @@ public class GeneratorMojo extends AbstractMojo {
    * <li>Operation ("fully qualified name of class>.<operation name>.<parameter name>"):
    * <code>com.anaptecs.jeaf.test.MyService.doSomething.size</code></li>
    * </ul>
+   * <br/>
+   * <br/>
+   * <b>Example Configuration:</b> <br/>
+   * <code>
+   * &lt;nonMandatoryCheckExclusions&gt;<br/>
+   * &lt;nonMandatoryCheckExclusion&gt;<br/>
+   * &lt;modelElementName&gt;com.anaptecs.jeaf.junit.otherpackage.InputSubclass</modelElementName&gt;<br/>
+   * &lt;/nonMandatoryCheckExclusion&gt;<br/>
+   *<br/>
+   * &lt;nonMandatoryCheckExclusion&gt;<br/>
+   * &lt;modelElementName&gt;com.anaptecs.jeaf.junit.openapi.service1.ProductService.testSpecialHeaderParams().authorization&lt;/modelElementName><br/>
+   * &lt;excludedChecks&gt;CUSTOM-001;CUSTOM-4711&lt;/excludedChecks&gt;<br/>
+   * &lt;/nonMandatoryCheckExclusion&gt;<br/>
+   * <br/>
+   * &lt;nonMandatoryCheckExclusion&gt;<br/>
+   * &lt;modelElementName&gt;com.anaptecs.jeaf.junit.otherpackage.Output.myId&lt;/modelElementName&gt;<br/>
+   * &lt;/nonMandatoryCheckExclusion&gt;<br/>
+   * &lt;/nonMandatoryCheckExclusions><br/>
+   * </code>
    */
-  @Parameter(required = false, defaultValue = " ")
-  private List<String> nonMandatoryCheckExclusions;
+  @Parameter(required = false)
+  private List<CheckExclusion> nonMandatoryCheckExclusions = new ArrayList<>();
 
   /**
    * Parameter can be used to disable all non-mandatory checks.
@@ -2810,7 +2831,8 @@ public class GeneratorMojo extends AbstractMojo {
       if (nonMandatoryCheckExclusions.isEmpty() == false) {
         lLog.info(" ");
         lLog.info(
-            "Non mandatory check exclusions:                   " + String.join("; ", nonMandatoryCheckExclusions));
+            "Non mandatory check exclusions:                   "
+                + String.join("; ", nonMandatoryCheckExclusions.stream().map(e -> e.getModelElementName()).toList()));
         lLog.info(" ");
       }
 
@@ -2945,9 +2967,9 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "runAllChecks", this.runAllChecks().toString());
       System.setProperty(PROPERTY_PREFIX + "skipModelChecks", this.skipModelChecks().toString());
 
-      System.setProperty(PROPERTY_PREFIX + "nonMandatoryCheckExclusions",
-          String.join(";", nonMandatoryCheckExclusions));
+      // Set exclusions
       System.setProperty(PROPERTY_PREFIX + "disableAllNonMandatoryChecks", disableAllNonMandatoryChecks.toString());
+      CheckExclusionCache.setExclusions(nonMandatoryCheckExclusions);
 
       System.setProperty("switch.gen.custom.constraints", generateCustomConstraints.toString());
       System.setProperty("switch.gen.global.parts", generateGlobalParts.toString());

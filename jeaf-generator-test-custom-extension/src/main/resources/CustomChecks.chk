@@ -12,8 +12,8 @@ context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(Mode
 
 context Model ERROR "Property for custom template is missing": getProperty("jeaf.test") == "Hello Custom Template";
 
-context Parameter if runNonMandatoryChecks("Parameter") ERROR this.getExclusionElementName() + " Plain Checks: " + " [CUSTOM-001] Parameter names must start with prefix 'p'": this.name.startsWith("p");
+context Parameter if runNonMandatoryChecks("CUSTOM-001", "Parameter") ERROR this.getExclusionElementName() + " Plain Checks: " + " [CUSTOM-001] Parameter names must start with prefix 'p'": this.name.startsWith("p");
 
 context Property if runNonMandatoryChecks() ERROR this.getExclusionElementName() + " [CUSTOM-002] Property name ends with invalid suffix." : !this.name.endsWith("Id");
 
-context ServiceObject if runNonMandatoryChecks("ServiceObject") ERROR this.getExclusionElementName() +  " [CUSTOM-003] Class name ends with invalid suffix." : !this.name.endsWith("Subclass");
+context ServiceObject if runNonMandatoryChecks("", "ServiceObject") ERROR this.getExclusionElementName() +  " [CUSTOM-003] Class name ends with invalid suffix." : !this.name.endsWith("Subclass");
