@@ -209,22 +209,26 @@ public class GeneratorMojo extends AbstractMojo {
    * are not required to produce legal code. Typical examples for such checks are custom checks that are used to enforce
    * project-specific guidelines.<br/>
    * <br/>
+   * It is possible to either exclude an model element from all non-mandatory checks or to just disable certain checks.
+   * <br/>
+   * <br/>
    * <b>Model Element Naming Schema:</b>
    * <ul>
    * <li>Class / Interface ("fully qualified name"): <code>com.anaptecs.jeaf.test.Account</code> or
    * <code>com.anaptecs.jeaf.test.MyService</code></li>
    * <li>Property ("fully qualified name of class"."property name"):
    * <code>com.anaptecs.jeaf.test.Account.name</code></li>
-   * <li>Operation ("fully qualified name of class>.<operation name>.<parameter name>"):
-   * <code>com.anaptecs.jeaf.test.MyService.doSomething.size</code></li>
+   * <li>Operation ("fully qualified name of class"."operation name"()):
+   * <code>com.anaptecs.jeaf.test.MyService.doSomething()</code></li>
+   * <li>Parameter ("fully qualified name of class"."operation name"()."parameter name"):
+   * <code>com.anaptecs.jeaf.test.MyService.doSomething().size</code></li>
    * </ul>
-   * <br/>
    * <br/>
    * <b>Example Configuration:</b> <br/>
    * <code>
    * &lt;nonMandatoryCheckExclusions&gt;<br/>
    * &lt;nonMandatoryCheckExclusion&gt;<br/>
-   * &lt;modelElementName&gt;com.anaptecs.jeaf.junit.otherpackage.InputSubclass</modelElementName&gt;<br/>
+   * &lt;modelElementName&gt;com.anaptecs.jeaf.junit.otherpackage.InputSubclass&lt;/modelElementName&gt;<br/>
    * &lt;/nonMandatoryCheckExclusion&gt;<br/>
    *<br/>
    * &lt;nonMandatoryCheckExclusion&gt;<br/>
