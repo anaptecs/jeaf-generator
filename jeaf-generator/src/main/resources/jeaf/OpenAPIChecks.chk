@@ -54,6 +54,7 @@ context OpenAPIResponse if runChecks("OpenAPIResponse") && ignore() == false ERR
 // Checks for stereotype OpenAPIType
 context OpenAPIType if runChecks("OpenAPIType") && ignore() == false ERROR this.getErrorMessage("9124", {"OpenAPIType", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
 context OpenAPIType if runChecks("OpenAPIType") && ignore() == false ERROR this.getErrorMessage("9125", {"OpenAPIType", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.name.length > 0);
+context OpenAPIType if runChecks("OpenAPIType") && ignore() == false && this.parents().size > 0 ERROR this.getErrorMessage("9193", { this.qualifiedName(), this.parents().qualifiedName().toString(", ")}) : this.parents().size == 1;
 
 context OpenAPIType if runChecks("OpenAPIType") && ignore() == false WARNING this.getWarningMessage("9122", {"OpenAPIType", name}): ownedComment.size  > 0;
 
