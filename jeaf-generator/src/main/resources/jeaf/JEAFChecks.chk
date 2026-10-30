@@ -57,6 +57,9 @@ context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessag
 context POJO if runChecks("POJO") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
 context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()) WARNING this.getWarningMessage("9163", {this.fqn()}): this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations();
 
+context POJO if runChecks("POJO") && ignore() == false && this.parents().size > 0 ERROR this.getErrorMessage("9193", { this.qualifiedName(), this.parents().qualifiedName().toString(", ")}) : this.parents().size == 1;
+context POJO if runChecks("POJO") && ignore() == false && this.parents().size > 0 ERROR this.getErrorMessage("9194", { this.qualifiedName()}) : this.parents().first().asClass().hasTemplateParameter() == false;
+
 context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9167", {owner.asNamedElement().fqn() + "." + name}): templateBinding.first().parameterSubstitution.isEmpty == false && templateBinding.first().parameterSubstitution.first().actual != null;
 
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
