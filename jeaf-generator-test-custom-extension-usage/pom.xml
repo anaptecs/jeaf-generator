@@ -133,6 +133,11 @@
 						<nonMandatoryCheckExclusion>
 							<modelElementName>com.anaptecs.jeaf.junit.otherpackage.InputSubclass</modelElementName>
 						</nonMandatoryCheckExclusion>
+
+						<nonMandatoryCheckExclusion>
+							<modelElementName>com.anaptecs.jeaf.junit.rest.generics.Message</modelElementName>
+							<excludedChecks>9195</excludedChecks>
+						</nonMandatoryCheckExclusion>
 					</nonMandatoryCheckExclusions>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
@@ -147,11 +152,14 @@
 					<generateOpenAPISpec>true</generateOpenAPISpec>
 					<validateOpenAPISpec>true</validateOpenAPISpec>
 					<addIgnoredHeadersToOpenAPISpec>true</addIgnoredHeadersToOpenAPISpec>
+					<openAPINamespacePackages>com.anaptecs.jeaf.junit</openAPINamespacePackages>
 					<openAPICommentStyle>&gt;-</openAPICommentStyle>
 					<openAPILiteralQuotationCharacter>'</openAPILiteralQuotationCharacter>
 					<openAPIExampleQuotationCharacter>'</openAPIExampleQuotationCharacter>
 					<restDefaultSuccessStatusCode>201</restDefaultSuccessStatusCode>
 					<restDefaultVoidStatusCode>202</restDefaultVoidStatusCode>
+					
+
 
 					<!-- Define information that are written to file headers -->
 					<fileHeaderCompany>anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany</fileHeaderCompany>

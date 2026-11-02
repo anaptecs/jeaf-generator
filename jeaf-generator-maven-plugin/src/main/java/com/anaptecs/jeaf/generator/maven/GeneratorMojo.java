@@ -1175,6 +1175,26 @@ public class GeneratorMojo extends AbstractMojo {
   private String openAPITermsOfUseURL = "";
 
   /**
+   * This parameter can be used to define a namespace for a set of OpenAPI specifications. OpenAPI itself does not
+   * provide a built-in concept of namespaces. For a given namespace, JEAF Generator ensures that all schema element
+   * names are unique within that scope.<br/>
+   * <br/>
+   * This is particularly useful when the generated OpenAPI specifications are consumed by code generation tools other
+   * than the JEAF Generator. Many code generators do not support assigning separate packages when working with multiple
+   * OpenAPI specifications. In such scenarios, it is essential that all schema elements have unique names to avoid
+   * naming conflicts during code generation.<br/>
+   * <br/>
+   * The name space can be build by one of more package name. Multiple packages have to be separated by ";"<br/>
+   * <br/>
+   * <b>Example:</b>
+   * <ul>
+   * <li><code>&lt;openAPINamespacePackages&gt;com.anaptecs.jeaf.junit;com.anaptecs.jeaf.spring&lt;/openAPINamespacePackages&gt;</code></li>
+   * </ul>
+   */
+  @Parameter(required = false)
+  private String openAPINamespacePackages = "";
+
+  /**
    * OpenAPI standard defines that for whatever reason some header fields should not be mentioned in the OpenAPI
    * specification e.g. 'Authorization' header. However from an overall perspective it still might make sense to
    * explicitly show the for better documentation purposes. This can be done by setting this property to
@@ -2623,6 +2643,9 @@ public class GeneratorMojo extends AbstractMojo {
         if (openAPITermsOfUseURL.isEmpty() == false) {
           lLog.info("OpenAPI Terms of Use URL:                         " + openAPITermsOfUseURL);
         }
+        if (openAPINamespacePackages.isEmpty() == false) {
+          lLog.info("OpenAPI namespace packages:                       " + openAPINamespacePackages);
+        }
 
         lLog.info("Add ignored header fields to OpenAPI spec:        " + addIgnoredHeadersToOpenAPISpec);
         lLog.info("Suppress not required nullable in OpenAPI spec:   " + suppressNotRequiredNullableInOpenAPISpec);
@@ -3132,6 +3155,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.openapi.openAPILicenseName", openAPILicenseName.toString());
       System.setProperty("switch.gen.openapi.openAPILicenseURL", openAPILicenseURL.toString());
       System.setProperty("switch.gen.openapi.openAPITermsOfUseURL", openAPITermsOfUseURL.toString());
+      System.setProperty(PROPERTY_PREFIX + "openAPINamespacePackages", openAPINamespacePackages);
 
       System.setProperty("switch.gen.rest.suppress.technical.headers", suppressTechnicalHeaders.toString());
       System.setProperty("switch.gen.openapi.addIgnoredHeadersToOpenAPISpec",
