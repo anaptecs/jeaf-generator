@@ -814,3 +814,18 @@ private int getEffectiveLowerBasedOnSize(uml::MultiplicityElement multiplicityEl
 	then maxValue(multiplicityElement.asNamedElement().getValidationDependenciesForOpenAPI().selectFirst(e| e.isStereotypeApplied("Size")).getStereotypeValue("Size", "min").asInteger(), multiplicityElement.lower)
 	else maxValue(multiplicityElement.getStereotypeValue("Size", "min").asInteger(), multiplicityElement.lower);
 
+
+cached List[uml::NamedElement] getAllOpenAPIElementsBySimpleName(uml::NamedElement element, List[String] packageNames):
+	packageNames.collect(e|element.getModel().getAllOpenAPIModelElements().select(e | e.qualifiedName().startsWith(packageNames.first()) && element.name == e.name)).flatten();
+
+
+cached List[uml::NamedElement] getAllOpenAPIModelElements(uml::Model model):
+	model.allOwnedElements().typeSelect(JMM::OpenAPIType)
+	  .addAll(model.allOwnedElements().typeSelect(JMM::OpenAPIDataType))
+	  .addAll(model.allOwnedElements().typeSelect(JMM::OpenAPIEnumeration));
+
+
+//this.getModel().getAllOpenAPIModelElements("com.anaptecs.jeaf.junit").select(e|e.name == this.name)
+
+
+

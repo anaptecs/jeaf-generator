@@ -440,3 +440,7 @@ boolean disableAllNonMandatoryChecks():
 	getBooleanSystemProperty("jeaf.generator.disableAllNonMandatoryChecks", false);
 
 
+List[String] openAPINamespacePackages():
+	getSystemPropertyValues("jeaf.generator.openAPINamespacePackages");
+
+
