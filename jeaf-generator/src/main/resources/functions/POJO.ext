@@ -1,6 +1,9 @@
 extension java::GeneratorCommons;
 extension functions::OpenAPIDataType;
 extension functions::Class;
+extension functions::SystemProperties;
+extension functions::NamedElement;
+
 
 cached boolean isPOJO(uml::Element element):
     element.isStereotypeApplied("POJO");
@@ -29,4 +32,31 @@ cached boolean requiresCustomImplementationForPOJO(JMM::POJO pojo):
 	if pojo.isAbstract
 	then !(pojo.ownedOperation.size == 0 && pojo.hasCustomImplementation == false                                         && (pojo.compositeDataTypeCustomSerialization == false || (pojo.compositeDataTypeCustomSerialization == true && pojo.generateInternalViewOfCompositeDataType() == false)))
 	else !(pojo.ownedOperation.size == 0 && pojo.hasCustomImplementation == false && pojo.hasDerivedProperties() == false && (pojo.compositeDataTypeCustomSerialization == false || (pojo.compositeDataTypeCustomSerialization == true && pojo.generateInternalViewOfCompositeDataType() == false)));
-	
+
+
+cached String getJacksonDefaultImpl(JMM::POJO class):
+	if class.getJSONDefaultImplClass() != null
+	then class.getJSONDefaultImplClass().qualifiedName()
+	else 
+		if class.ignoreUnknownSubtypesForPOJO()
+		then "java.lang.Void"
+		else "";
+
+
+private cached boolean ignoreUnknownSubtypesForPOJO(JMM::POJO class):
+	if class.ignoreUnknownSubtypes.name == "DEFAULT"
+	then ignoreUnknownSubtypesDefault()
+	else 
+		if class.ignoreUnknownSubtypes.name == "TRUE"
+		then true
+		else false;
+
+
+private cached uml::Class getJSONDefaultImplClass(uml::Class class):
+	class.getAllSubclasses().add(class).typeSelect(JMM::JSONDefaultImpl).first();
+
+
+private cached List[uml::Class] getAllSubclasses(uml::Type class) :
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllSubclasses(org.eclipse.uml2.uml.Type);
+
+

@@ -1,5 +1,8 @@
 extension java::GeneratorCommons;
 extension functions::OpenAPIDataType;
+extension functions::SystemProperties;
+extension functions::NamedElement;
+
 
 cached boolean isServiceObject(uml::Element element):
     element.isStereotypeApplied("ServiceObject");
@@ -17,4 +20,30 @@ cached boolean generateOfOperationForServiceObject(uml::Class class, boolean def
     		if class.asServiceObject().ofMethod.name == "DEFAULT"
     		then defaultValue
     		else true;
-    
+
+cached String getJacksonDefaultImpl(JMM::ServiceObject class):
+	if class.getJSONDefaultImplClass() != null
+	then class.getJSONDefaultImplClass().qualifiedName()
+	else 
+		if class.ignoreUnknownSubtypesForSO()
+		then "java.lang.Void"
+		else "";
+
+
+private cached boolean ignoreUnknownSubtypesForSO(JMM::ServiceObject class):
+	if class.ignoreUnknownSubtypes.name == "DEFAULT"
+	then ignoreUnknownSubtypesDefault()
+	else 
+		if class.ignoreUnknownSubtypes.name == "TRUE"
+		then true
+		else false;
+
+
+private cached List[uml::Class] getJSONDefaultImplClass(uml::Class class):
+	class.getAllSubclasses().add(class).typeSelect(JMM::JSONDefaultImpl).first();
+
+
+private cached List[uml::Class] getAllSubclasses(uml::Type class) :
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllSubclasses(org.eclipse.uml2.uml.Type);
+
+

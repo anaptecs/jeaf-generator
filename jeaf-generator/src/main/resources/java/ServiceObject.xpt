@@ -8,6 +8,7 @@
 «EXTENSION org::openarchitectureware::util::stdlib::io»
 «EXTENSION functions::SoftLink»
 «EXTENSION functions::JEAFDeprecated»
+«EXTENSION functions::ServiceObject»
 
 «IMPORT JMM»
 
@@ -29,7 +30,7 @@
 	«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 	«EXPAND java::Validation::ValidationAnnotation»
 	«EXPAND java::Helper::GenerateAnnotations -»
-	«EXPAND java::Jackson::JacksonClassAnnotations("") -»
+	«EXPAND java::Jackson::JacksonClassAnnotations("", this.getJacksonDefaultImpl()) -»
 	public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 		/**
 		 * Default serial version uid.
@@ -264,7 +265,7 @@
 	  «EXPAND functions::Javadoc::JavadocForType»
 	  «EXPAND java::Validation::ValidationAnnotation»
 	  «EXPAND java::Helper::GenerateAnnotations -»
-	  «EXPAND java::Jackson::JacksonClassAnnotations("Base") -»
+	  «EXPAND java::Jackson::JacksonClassAnnotations("Base", this.getJacksonDefaultImpl()) -»
 	  public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» extends «name»Base«this.getTemplateParams()» {
 	    /**
 	     * Default serial version uid.

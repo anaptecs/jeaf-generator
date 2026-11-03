@@ -23,7 +23,12 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
 @SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "typeMapping", visible = true)
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "typeMapping",
+    defaultImpl = Void.class,
+    visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(
     value = DeprecatedChildClassForValidationGroups.class,
     name = "DeprecatedChildClassForValidationGroups") })

@@ -26,7 +26,12 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
     plannedChanges = { ToDoType.CHANGE_PACKAGE, ToDoType.UPDATE_DOCUMENTATION },
     description = "Should be moved to package `com.anaptecs.jeaf.other`.",
     since = "1.2.3")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType", visible = true)
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "objectType",
+    defaultImpl = MutableChildPOJO.class,
+    visible = true)
 @JsonSubTypes({ @JsonSubTypes.Type(value = ImmutablePOJOParent.class, name = "ImmutablePOJOParent"),
   @JsonSubTypes.Type(value = ImmutableChildPOJO.class, name = "ImmutableChildPOJO"),
   @JsonSubTypes.Type(value = MutableChildPOJO.class, name = "MutableChildPOJO") })
