@@ -60,7 +60,7 @@ import openapitools.JSON;
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_A_STRING_ARRAY,
   PrimitiveArraysObjectWithRestrictions.JSON_PROPERTY_B_STRING_ARRAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.25.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
 public class PrimitiveArraysObjectWithRestrictions {
   public static final String JSON_PROPERTY_A_BOOLEAN_ARRAY = "aBooleanArray";
   private JsonNullable<Set<Boolean>> aBooleanArray = JsonNullable.<Set<Boolean>>undefined();

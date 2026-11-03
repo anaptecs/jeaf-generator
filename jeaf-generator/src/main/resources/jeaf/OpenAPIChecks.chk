@@ -100,4 +100,8 @@ context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isO
 context BeanParam if runChecks("BeanParam") && ignore() == false ERROR this.getErrorMessage("9186", {this.qualifiedName()}) : this.ownedElement.typeSelect(Property).select(e|e.hasNoRESTParamStereotype()).size == 0;
 
 context OpenAPIType if runNonMandatoryChecks("9195", "OpenAPIType") && openAPINamespacePackages().isEmpty == false ERROR this.getErrorMessage("9195", {this.name, openAPINamespacePackages().toString(", "), this.getAllOpenAPIElementsBySimpleName(openAPINamespacePackages()).owner.asNamedElement().qualifiedName().sortBy(e|e).toString(", ")} ): this.getAllOpenAPIElementsBySimpleName(openAPINamespacePackages()).size == 1;
+context OpenAPIDataType if runNonMandatoryChecks("9195", "OpenAPIDataType") && openAPINamespacePackages().isEmpty == false ERROR this.getErrorMessage("9195", {this.name, openAPINamespacePackages().toString(", "), this.getAllOpenAPIElementsBySimpleName(openAPINamespacePackages()).owner.asNamedElement().qualifiedName().sortBy(e|e).toString(", ")} ): this.getAllOpenAPIElementsBySimpleName(openAPINamespacePackages()).size == 1;
+context OpenAPIEnumeration if runNonMandatoryChecks("9195", "OpenAPIEnumeration") && openAPINamespacePackages().isEmpty == false ERROR this.getErrorMessage("9195", {this.name, openAPINamespacePackages().toString(", "), this.getAllOpenAPIElementsBySimpleName(openAPINamespacePackages()).owner.asNamedElement().qualifiedName().sortBy(e|e).toString(", ")} ): this.getAllOpenAPIElementsBySimpleName(openAPINamespacePackages()).size == 1;
+
+
 

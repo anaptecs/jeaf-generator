@@ -138,6 +138,10 @@
 							<modelElementName>com.anaptecs.jeaf.junit.rest.generics.Message</modelElementName>
 							<excludedChecks>9195</excludedChecks>
 						</nonMandatoryCheckExclusion>
+						<nonMandatoryCheckExclusion>
+							<modelElementName>com.anaptecs.jeaf.junit.openapi.base.DeprecatedType</modelElementName>
+							<excludedChecks>9195</excludedChecks>
+						</nonMandatoryCheckExclusion>
 					</nonMandatoryCheckExclusions>
 
 					<!-- Define what should be generated. By default nothing is generated. -->
