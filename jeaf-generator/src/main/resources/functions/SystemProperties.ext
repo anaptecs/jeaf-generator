@@ -444,3 +444,5 @@ List[String] openAPINamespacePackages():
 	getSystemPropertyValues("jeaf.generator.openAPINamespacePackages");
 
 
+boolean ignoreUnknownSubtypesDefault():
+	getBooleanSystemProperty("jeaf.generator.ignoreUnknownSubtypesDefault", false);

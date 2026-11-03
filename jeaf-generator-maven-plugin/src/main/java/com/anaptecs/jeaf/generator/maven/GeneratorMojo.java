@@ -1411,6 +1411,22 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean enableSemVerForJSON;
 
   /**
+   * Parameter can be used to configure the default behavior for unknown subtypes in Jackson deserialization. This value
+   * provided her will be used as soon as no specific behavior is defined for a class in the UML model, what most likely
+   * will be the default.<br/>
+   * <br/>
+   * This information is only relevant during Jackson deserialization when no explicit type mapping is available for the
+   * detected type. A typical scenario is when the client and server use different versions of the same API and a new
+   * class has been introduced into an existing class hierarchy.<br/>
+   * <br/>
+   * In addition to this tag here, it is also possible to control behavior using stereotype
+   * <code>«JSONDefaultImpl»</code> and tagged value <code>ignoreUnknownSubtypes</code> from stereotypes
+   * <code>«POJO»</code> / <code>«ServiceObject»</code>.
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean ignoreUnknownSubtypesDefault;
+
+  /**
    * Parameter defines if JSON serializers should be generated.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -2670,6 +2686,7 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info(
             "Generate @JsonSetter for builders:                " + generateJsonSetterAnnotationOnBuilderOperations);
         lLog.info("Enable SemVer for JSON serialization:             " + enableSemVerForJSON);
+        lLog.info("Ignore unknown subtypes default value:            " + ignoreUnknownSubtypesDefault);
         lLog.info("Supported Jackson versions:                       " + this.toString(jacksonVersions));
         lLog.info("Suffix for Jackson 2 specific classes:            " + jackson2Suffix.trim());
         lLog.info("Sub package for Jackson 2 specific classes:       " + jackson2Subpackage.trim());
@@ -3176,6 +3193,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "generateJsonSetterAnnotationOnBuilderOperations",
           generateJsonSetterAnnotationOnBuilderOperations.toString());
       System.setProperty("switch.gen.enable.json.semver", enableSemVerForJSON.toString());
+      System.setProperty(PROPERTY_PREFIX + "ignoreUnknownSubtypesDefault", ignoreUnknownSubtypesDefault.toString());
       System.setProperty("switch.gen.json.serializers", generateJSONSerializers.toString());
       System.setProperty("switch.gen.enable.name.constants", generateConstantsForAttributeNames.toString());
       System.setProperty("switch.gen.target.runtime", targetRuntime.name());

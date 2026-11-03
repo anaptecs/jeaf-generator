@@ -11,6 +11,11 @@
 «EXTENSION functions::Builder»
 «EXTENSION functions::POJO»
 
+
+«EXTENSION org::openarchitectureware::util::stdlib::io»
+
+
+
 «IMPORT JMM»
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -31,7 +36,7 @@
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 				«EXPAND java::Validation::ValidationAnnotation»
 				«EXPAND java::Helper::GenerateAnnotations-»
-				«EXPAND java::Jackson::JacksonClassAnnotations("") -»				
+				«EXPAND java::Jackson::JacksonClassAnnotations("", this.getJacksonDefaultImpl()) -»
 				public «IF isAbstract»abstract«ENDIF» class «name»«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«IF makePOJOsSerializable()»
                     /**
@@ -167,7 +172,7 @@
 				«EXPAND java::Helper::GenerateSuppressWarningsAnnotation»
 		        «EXPAND java::Validation::ValidationAnnotation -»      
 			    «EXPAND java::Helper::GenerateAnnotations-»
-			    «EXPAND java::Jackson::JacksonClassAnnotations("Base") -»
+			    «EXPAND java::Jackson::JacksonClassAnnotations("Base", this.getJacksonDefaultImpl()) -»
 				public abstract class «name»Base«this.getTemplateParams()» «EXPAND SuperClassDeclaration» «EXPAND InterfaceDeclarations» {
 					«IF makePOJOsSerializable()»
                     /**

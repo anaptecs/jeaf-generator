@@ -91,12 +91,9 @@ cached String getDiscriminatorValue(uml::Class class):
     if class.isStereotypeApplied("OpenAPITypeMapping")
     then ((JMM::OpenAPITypeMapping) class).getDiscriminatorValueInternal()
     else class.name;
-    
+
+
 private String getDiscriminatorValueInternal(JMM::OpenAPITypeMapping class):
     if class.discriminatorValue.length > 0
     then class.discriminatorValue
     else class.name;
-    
-    
- 
-       
