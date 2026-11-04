@@ -66,6 +66,7 @@ AbstractPOJO |   |  |
 AbstractResponse |   |  |
 AdvancedPOJO |   |  |
 AndOneMorePOJO |   |  |
+Animal |   |  |
 Assortment |   |  |
 BChildPOJO |   |  |
 BParentPOJO |   |  |
@@ -92,6 +93,7 @@ ByteCode |   |  |
 ByteCodeType |   |  |
 CHStopPlace |   |  |
 Campaign |   |  |
+Cat |   |  |
 Channel |   |  |
 ChannelCode |   |  |
 ChannelType |  Kanal | Enumeration defines the different types of channels that are supported. |
@@ -130,10 +132,12 @@ DeprecatedServiceObject |   |  |
 DeprecatedType |   |  |
 DirectedEdge |   | Just a simple comment. |
 DiscountOffer |   |  |
+Dog |   |  |
 DoubleCode |   |  |
 DoubleCodeType |   |  |
 DynamicEnum |   | Test for enums with dynamic literals. |
 DynamicExtensibleEnum |   |  |
+Elephant |   |  |
 EmptyEnum |   |  |
 EmptyExentibleEnum |   |  |
 Entity |   |  |
@@ -272,6 +276,7 @@ WrapperArrayServiceObject |   |  |
 WrapperDatatypeServiceObject |   |  |
 WrapperTypesServiceObject |   |  |
 YetAnotherPOJO |   |  |
+Zoo |   |  |
 
 <br>
 
@@ -621,17 +626,22 @@ Response |   |  |
 
 | Type     | Legacy Name | Description  |
 |----------|---------------------|------------|
+Animal |   |  |
+Cat |   |  |
 ClientType |   |  |
 DeprecatedChildClassForValidationGroups |   |  |
 DeprecatedClass |   |  |
 DeprecatedOpenAPIDataType |   |  |
 DeprecatedOpenAPIEnum |   |  |
+Dog |   |  |
+Elephant |   |  |
 MyContext |   |  |
 MyLimitiedColor |   |  |
 MyPOJOResponse |   |  |
 MyPojoRequest |   |  |
 OtherPojo |   |  |
 ParentClassForValidationGroups |   |  |
+Zoo |   |  |
 
 <br>
 
