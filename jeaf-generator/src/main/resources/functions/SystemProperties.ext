@@ -436,6 +436,10 @@ String enumSubsetAnnotationClassName():
 	getSystemProperty("jeaf.generator.enumSubsetAnnotationClassName").trim();
 
 
+String typeRestrictionAnnotationClassName():
+	getSystemProperty("jeaf.generator.typeRestrictionAnnotationClassName").trim();
+
+
 boolean disableAllNonMandatoryChecks():
 	getBooleanSystemProperty("jeaf.generator.disableAllNonMandatoryChecks", false);
 

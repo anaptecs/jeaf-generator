@@ -705,8 +705,25 @@ public class GeneratorMojo extends AbstractMojo {
   @Parameter(required = false)
   private String notEmptyAnnotationNameForMultiValuedRESTParameters = "";
 
+  /**
+   * Parameter defines the name of the <code>EnumSubset</code> annotation that should be used for validations.<br/>
+   * <br/>
+   * For further details please refer to <code>com.anaptecs.jeaf.validation.api.EnumSubset</code> in JEAF Validation
+   * API. Besides the default value it is also possible to use a custom implementation. This must be build similar to
+   * the default implementation.
+   */
   @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.validation.api.EnumSubset")
   private String enumSubsetAnnotationClassName;
+
+  /**
+   * Parameter defines the name of the <code>TypeRestriction</code> annotation that should be used for validations.<br/>
+   * <br/>
+   * For further details please refer to <code>com.anaptecs.jeaf.validation.api.TypeRestriction</code> in JEAF
+   * Validation API. Besides the default value it is also possible to use a custom implementation. This must be build
+   * similar to the default implementation.
+   */
+  @Parameter(required = false, defaultValue = "com.anaptecs.jeaf.validation.api.TypeRestriction")
+  private String typeRestrictionAnnotationClassName;
 
   /**
    * Switch defines whether POJO's should be serializable or not.
@@ -2478,6 +2495,7 @@ public class GeneratorMojo extends AbstractMojo {
               "NotEmpty annotation name:                         " + notEmptyAnnotationNameForMultiValuedProperties);
         }
         lLog.info("Enum subset annotation class name:                " + enumSubsetAnnotationClassName);
+        lLog.info("Type restriction annotation class name:           " + typeRestrictionAnnotationClassName);
       }
 
       if (this.generateServices()) {
@@ -3096,6 +3114,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "notEmptyAnnotationNameForMultiValuedRESTParameters",
           notEmptyAnnotationNameForMultiValuedRESTParameters.toString());
       System.setProperty(PROPERTY_PREFIX + "enumSubsetAnnotationClassName", enumSubsetAnnotationClassName);
+      System.setProperty(PROPERTY_PREFIX + "typeRestrictionAnnotationClassName", typeRestrictionAnnotationClassName);
 
       System.setProperty("switch.gen.immutable.classes", generateImmutableClasses.toString());
       System.setProperty("switch.gen.serializable.pojos", makePOJOsSerializable.toString());

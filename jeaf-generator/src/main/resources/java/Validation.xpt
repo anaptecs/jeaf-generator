@@ -160,6 +160,9 @@ public @interface «validationClass» {
 			«ELSEIF stereotypeName == "EnumSubset"»
 			  «EXPAND EnumSubsetAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
 	
+			«ELSEIF stereotypeName == "TypeRestriction"»
+			  «EXPAND TypeRestrictionAnnotation(directValidationStereotype, validationDependencies, defaultValidationGroups, hasValidationGroups) FOR this»
+	
 			«ELSEIF stereotypeName == "Valid" -»
 			  «IF this.isProperty() == false»
 			      «EXPAND ValidAnnotation FOR ((Valid) this) -»
@@ -748,6 +751,28 @@ public @interface «validationClass» {
 		«FOREACH validationDependencies AS depdendency»
 			«LET (EnumSubset) depdendency AS enumSubsetAnnotation»
 			@«enumSubsetAnnotationClassName()»(«IF enumSubsetAnnotation.allowedLiterals.isEmpty == false»allowedLiterals = {«FOREACH enumSubsetAnnotation.allowedLiterals AS name SEPARATOR ", "» "«name»"«ENDFOREACH»}«ELSE»notAllowedLiterals ={ «FOREACH enumSubsetAnnotation.notAllowedLiterals AS name SEPARATOR ", "» "«name»" «ENDFOREACH»}«ENDIF», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
+			«ENDLET»
+		«ENDFOREACH»
+	«ENDIF»
+«ENDDEFINE»
+
+
+«DEFINE TypeRestrictionAnnotation(Stereotype directValidationStereotype, List[Dependency] validationDependencies, List[JMM::ValidationGroup] defaultValidationGroups, boolean hasValidationGroups) FOR NamedElement »
+	«REM»No validation groups needed (= only direct validation and no indirect validation stereotypes)«ENDREM»
+	«IF directValidationStereotype != null && hasValidationGroups == false»
+		«LET (TypeRestriction)this AS typeRestrictionAnnotation»
+			@«typeRestrictionAnnotationClassName()»(allowSubtypes=«typeRestrictionAnnotation.allowSubtypes», «IF typeRestrictionAnnotation.allowedTypes.isEmpty == false»allowedTypes = {«FOREACH typeRestrictionAnnotation.allowedTypes AS name SEPARATOR ", "» «name».class«ENDFOREACH»}«ELSE»notAllowedTypes ={ «FOREACH typeRestrictionAnnotation.notAllowedTypes AS name SEPARATOR ", "» «name».class «ENDFOREACH»}«ENDIF»«EXPAND ValidationAnnotationBasics FOR typeRestrictionAnnotation»)
+		«ENDLET»
+	«REM»Resolve validation groups for which the validation should be applied«ENDREM»
+	«ELSE»
+		«IF directValidationStereotype != null && defaultValidationGroups.isEmpty == false»
+			«LET (TypeRestriction)this AS typeRestrictionAnnotation»
+			@«typeRestrictionAnnotationClassName()»(allowSubtypes=«typeRestrictionAnnotation.allowSubtypes», «IF typeRestrictionAnnotation.allowedTypes.isEmpty == false»allowedTypes = {«FOREACH typeRestrictionAnnotation.allowedTypes AS name SEPARATOR ", "» «name».class«ENDFOREACH»}«ELSE»notAllowedTypes ={ «FOREACH typeRestrictionAnnotation.notAllowedTypes AS name SEPARATOR ", "» «name».class «ENDFOREACH»}«ENDIF» «EXPAND ValidationAnnotationBasics FOR typeRestrictionAnnotation», «EXPAND ValidationGroupsSection FOR defaultValidationGroups»)
+			«ENDLET»
+		«ENDIF»
+		«FOREACH validationDependencies AS depdendency»
+			«LET (TypeRestriction) depdendency AS typeRestrictionAnnotation»
+			@«typeRestrictionAnnotationClassName()»(allowSubtypes=«typeRestrictionAnnotation.allowSubtypes», «IF typeRestrictionAnnotation.allowedTypes.isEmpty == false»allowedTypes = {«FOREACH typeRestrictionAnnotation.allowedTypes AS name SEPARATOR ", "» «name».class«ENDFOREACH»}«ELSE»notAllowedTypes ={ «FOREACH typeRestrictionAnnotation.notAllowedTypes AS name SEPARATOR ", "» «name».class «ENDFOREACH»}«ENDIF», «EXPAND ValidationGroupsSection FOR depdendency.getValidationGroups()»)
 			«ENDLET»
 		«ENDFOREACH»
 	«ENDIF»

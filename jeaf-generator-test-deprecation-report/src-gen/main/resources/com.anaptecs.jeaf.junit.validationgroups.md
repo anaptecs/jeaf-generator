@@ -6,6 +6,38 @@
 <br>
 
 # Types
+## Animal
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+
+<br>
+
+## Cat
+
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+| Parent Class  | [`Animal`](#animal) |
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+
+<br>
+
 ## DeprecatedChildClassForValidationGroups
 :exclamation:**Deprecation Notice (since: 5.x, removed with: 8.0, go live date: 2027-05-01, end of compatibility period: 2026-10-20):**<br>
 
@@ -51,6 +83,44 @@
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
 | **`theOneAndOnlyProperty`** : `java.lang.String`   `[1..1]`<br> |  |  |
+
+<br>
+
+## Dog
+
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+| Parent Class  | [`Animal`](#animal) |
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+
+<br>
+
+## Elephant
+
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+| Parent Class  | [`Animal`](#animal) |
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
 
 <br>
 
@@ -146,6 +216,21 @@
 | Name |  Legacy Name | Description |
 |------| ----------------------|-------------|
 | **`parentProperty`** : `String`   `[1..1]`<br> |  |  |
+
+<br>
+
+## Zoo
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+| **`allAnimals`** : [`Animal`](#animal)   `[0..*]`<br>        `@TypeRestriction: versions=V4, V5, V6`<br>        `@TypeRestriction: versions=V7` |  |  |
+| **`endangeredSpecies`** : [`Animal`](#animal)   `[0..*]`<br>        `@TypeRestriction` |  |  |
 
 <br>
 

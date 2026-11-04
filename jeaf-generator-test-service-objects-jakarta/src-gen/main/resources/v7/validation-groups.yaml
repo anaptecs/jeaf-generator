@@ -81,6 +81,36 @@ components:
 
 
   schemas:
+    # com.anaptecs.jeaf.junit.validationgroups.Animal
+    Animal:
+      type: object
+      additionalProperties: false
+      discriminator:
+        propertyName: objectType
+      required:
+        - objectType
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+    # com.anaptecs.jeaf.junit.validationgroups.Cat
+    Cat:
+      allOf:
+        - $ref: '#/components/schemas/Animal'
+        - type: object
+          additionalProperties: false
+    # com.anaptecs.jeaf.junit.validationgroups.Dog
+    Dog:
+      allOf:
+        - $ref: '#/components/schemas/Animal'
+        - type: object
+          additionalProperties: false
+    # com.anaptecs.jeaf.junit.validationgroups.Elephant
+    Elephant:
+      allOf:
+        - $ref: '#/components/schemas/Animal'
+        - type: object
+          additionalProperties: false
     # com.anaptecs.jeaf.junit.validationgroups.MyPOJOResponse
     MyPOJOResponse:
       type: object
@@ -235,6 +265,21 @@ components:
         parentProperty:
           type: string
           nullable: false
+    # com.anaptecs.jeaf.junit.validationgroups.Zoo
+    Zoo:
+      type: object
+      additionalProperties: false
+      properties:
+        allAnimals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Animal'
+          uniqueItems: true
+        endangeredSpecies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Animal'
+          uniqueItems: true
 
     # com.anaptecs.jeaf.junit.validationgroups.ClientType
     ClientType:
