@@ -1,0 +1,31 @@
+
+«EXTENSION jeaf::Deprecation»
+«EXTENSION functions::SystemProperties»
+«EXTENSION functions::ExcelHelper»
+«EXTENSION functions::NamedElement»
+«EXTENSION functions::BreakingChange»
+«EXTENSION functions::Property»
+«EXTENSION functions::Parameter»
+«EXTENSION functions::EnumerationLiteral»
+
+«EXTENSION java::GeneratorCommons»
+
+«DEFINE MigrationReportExcel FOR uml::Model»
+	«clearRowCollector()»
+	«FOREACH this.getPackagesForJavaDeprecationsReport() AS package-»
+		«FOREACH package.getJavaDeprecations().addAll(package.getBreakingChanges()).sortBy(e|e.qualifiedName()) AS element-»
+		«IF element.isDeprecated()-»
+			«addRow(element.getDeprecationRowForMigrationReportAsXLSX())»
+		«ELSEIF element.isBreakingChange()» -
+			«IF element.isProperty() || element.isEnumerationLiteral()»
+				«addRow({element.owner.asNamedElement().name, package.qualifiedName(), element.name, element.getBreakingChangeHeaderName(), "Breaking Change", element.getBreakingChangeDescription(), element.getBreakingChangeSince(), element.getBreakingChangeActiveWith(), element.getBreakingChangeGoLiveDate(), element.getBreakingChangeEndOfCompatibilityPeriod()})»
+			«ELSEIF element.isParameter() -»
+				«addRow({element.owner.owner.asNamedElement().name + "." + element.owner.asNamedElement().name + "(...)", package.qualifiedName(), element.name, element.getBreakingChangeHeaderName(), "Breaking Change", element.getBreakingChangeDescription(), element.getBreakingChangeSince(), element.getBreakingChangeActiveWith(), element.getBreakingChangeGoLiveDate(), element.getBreakingChangeEndOfCompatibilityPeriod()})»
+			«ELSE -»
+				«addRow({element.name, package.qualifiedName(),  "", element.getBreakingChangeHeaderName(), "Breaking Change", element.getBreakingChangeDescription(), element.getBreakingChangeSince(), element.getBreakingChangeActiveWith(), element.getBreakingChangeGoLiveDate(), element.getBreakingChangeEndOfCompatibilityPeriod()})»
+			«ENDIF-»
+		«ENDIF-»
+		«ENDFOREACH -»
+	«ENDFOREACH -»
+	«writeRowsToExcelTemplate("Migration_Report_Template.xlsx", getSystemProperty("path.res.gen", ".") + "/" + migrationReportFileName())»
+«ENDDEFINE»

@@ -273,6 +273,17 @@
 |   | `deprecatedRefs` |  |  |  |  |  |
 | `ParentPOJO` | |  |  |  |  |  |
 |   | `weirdAttribute` |  |  |  |  |  |
+| `PlainPOJO` | |  |  |  |  |  |
+
+<br>
+
+### Enumerations with Deprecations
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
+| No enumerations are marked as deprecated. |
 
 <br>
 

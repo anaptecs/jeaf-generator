@@ -892,6 +892,20 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean breakingChangesReportGroupByPackage;
 
   /**
+   * Switch enables the generation of a migration report about the model parts which are configured to be processed. The
+   * migration report is based an model elements that are tagged with stereotype "BreakingChange" or "JEAFDeprecated".
+   */
+  @Parameter(required = false, defaultValue = "false")
+  private Boolean generateMigrationReport;
+
+  /**
+   * Name of the file that contains the migration changes report. The file extension will be chosen based on the report
+   * format.
+   */
+  @Parameter(required = false, defaultValue = "Migration_Report")
+  private String migrationReportFileName;
+
+  /**
    * Switch enables the generation of a REST / OpenAPI deprecation report about the model parts which are configured to
    * be processed.
    */
@@ -2595,6 +2609,12 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info(" ");
       }
 
+      if (generateMigrationReport) {
+        lLog.info("Generate Migration Report                         " + generateMigrationReport);
+        lLog.info("Migration Report File Name                        " + migrationReportFileName);
+        lLog.info(" ");
+      }
+
       if (generateRESTDeprecationReport) {
         lLog.info("Generate REST Deprecation Report                  " + generateRESTDeprecationReport);
         lLog.info("REST Deprecation Report Name                      " + restDeprecationReportName);
@@ -3144,6 +3164,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("switch.gen.breaking.changes.report.filename", breakingChangesReportFileName.toString());
       System.setProperty("switch.gen.breaking.changes.report.groupByPackage",
           breakingChangesReportGroupByPackage.toString());
+      System.setProperty(PROPERTY_PREFIX + "generateMigrationReport", generateMigrationReport.toString());
+      System.setProperty(PROPERTY_PREFIX + "migrationReportFileName", migrationReportFileName.toString());
 
       System.setProperty("switch.gen.rest.deprecation.report", generateRESTDeprecationReport.toString());
       System.setProperty("switch.gen.rest.deprecation.report.name", restDeprecationReportName.toString());
