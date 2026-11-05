@@ -1,5 +1,7 @@
 extension java::GeneratorCommons;
+
 extension functions::NamedElement;
+extension functions::HeaderParam;
 extension functions::SystemProperties;
 extension functions::CompatibilityInfo;
 
@@ -30,6 +32,12 @@ cached List[uml::Package] getPackagesForBreakingChangesReport(uml::Model model):
 
 cached boolean isBreakingChange(uml::Element element):
 	element.isStereotypeApplied("BreakingChange");
+
+
+cached String getBreakingChangeHeaderName(uml::NamedElement element):
+	if element.isHeaderParam()
+	then element.asHeaderParam().getHeaderParamName()
+	else "";
 
 
 cached String getBreakingChangeDescription(uml::NamedElement change):

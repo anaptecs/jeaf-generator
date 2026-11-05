@@ -128,13 +128,13 @@ No deprecations published.
 «ENDIF-»
 «IF deprecations.select(e|e.isJEAFEnumeration() || e.owner.isJEAFEnumeration()).isEmpty == false -»
 ### Enumerations with Deprecations
-«IF deprecations.select(e|e.isJEAFEnumeration()).isEmpty == false -»
+«IF deprecations.select(e|e.isJEAFEnumeration() || e.owner.isJEAFEnumeration()).isEmpty == false -»
 
 <br>
 
 | Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
 |---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
-«FOREACH deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasJavaDeprecation()).sortBy(e|e.fqn()) AS element-»
+«FOREACH deprecations.select(e|e.isJEAFEnumeration()).select(e|e.hasJavaDeprecation()).addAll(deprecations.owner.select(e|e.isJEAFEnumeration() && e.hasJavaDeprecation())).toSet().sortBy(e|e.fqn()) AS element-»
 | `«element.name»` | | «element.getDeprecationDescriptionForMarkup()» | «element.getDeprecatedSince()» | «element.getDeprecationRemoval()» | «element.getDeprecationGoLiveDate()» | «element.getDeprecationEndOfCompatibilityPeriod()» |
     «IF element.asEnumeration().hasDeprecatedLiterals()-»
         «FOREACH element.asEnumeration().getDeprecatedLiterals() AS literal-»

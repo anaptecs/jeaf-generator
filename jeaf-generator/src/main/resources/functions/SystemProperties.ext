@@ -450,3 +450,11 @@ List[String] openAPINamespacePackages():
 
 boolean ignoreUnknownSubtypesDefault():
 	getBooleanSystemProperty("jeaf.generator.ignoreUnknownSubtypesDefault", false);
+
+
+boolean generateMigrationReport():
+	getBooleanSystemProperty("jeaf.generator.generateMigrationReport", false);
+
+
+String migrationReportFileName():
+	getSystemProperty("jeaf.generator.migrationReportFileName").trim() + ".xlsx";

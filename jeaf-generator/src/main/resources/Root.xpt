@@ -36,6 +36,11 @@
        «EXPAND jeaf::BreakingChangesReport::BreakingChangesXLSX»
     «ENDIF»
     
+    «IF generateMigrationReport()»
+       «info("Generating Migration Report")»
+       «EXPAND jeaf::MigrationReport::MigrationReportExcel»
+    «ENDIF»
+    
 	«IF generateRESTDeprecationReport()»
 	   «info("Generating REST Deprecation Report")»
 	   «EXPAND jeaf::RESTDeprecation::RESTDeprecationReport»
