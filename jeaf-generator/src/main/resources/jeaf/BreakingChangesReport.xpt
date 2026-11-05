@@ -117,7 +117,6 @@ Element;Package;Details;Description;Since;Active with;Go Live Date;End of Compat
 
 «DEFINE BreakingChangesXLSX FOR Model»
 	«clearRowCollector()»
-	
 	«FOREACH this.getPackagesForBreakingChangesReport() AS package»
 		«FOREACH package.getBreakingChanges() AS change»
 		«IF change.isProperty() || change.isEnumerationLiteral()»

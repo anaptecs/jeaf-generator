@@ -381,3 +381,206 @@
 
 <br>
 
+## Package `com.anaptecs.jeaf.junit.deprecation`
+
+<br>
+
+### Services with Deprecations
+
+<br>
+
+| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|----------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
+| `DeprecatedService` | This service does not make sense any more.<br><br>The functionality is completely wrong. | 1.0 | 2023-12-31 |  |  |
+
+<br>
+
+#### `ServiceWithDeprecations`
+
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
+| `createSomething()` | | Resources can no longer be explicitly be created. | 0.9 | 1.2.3 |  |  |
+| `createSomething(JustAType, String, String, BeanParamWithDeprecations)` | |  |  |  |  |  |
+|   | `String pHeader` | Please do not use this header any longer. No matter what you pass here it will be ignored. |  |  |  |  |
+|   | `String pQueryParam` |  |  |  |  |  |
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
+| `BeanParamWithDeprecations` | |  |  |  |  |  |
+|   | `deprecatedHeader` | this header param is no longer supported. Please use "xxx" instead. | 1.2.3 | PI.2.3 |  |  |
+| `JustAType` | |  |  |  |  |  |
+|   | `legacy` | Hello |  |  |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.openapi.base`
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
+| `BeanParameter` | |  |  |  |  |  |
+|   | `oldStyle` |  |  |  |  |  |
+| `Campaign` | |  |  |  |  |  |
+|   | `theLink` | Please use "moreLinks" instead. | 2.3.1 | 2.4 |  |  |
+|   | `moreLinks` | No good any more | 1.2 | 3.0 |  |  |
+|   | `discountOffers` |  |  |  |  |  |
+| `ChildAA` | | Please do not use this class any longer. There are better alternatives but I do not tell you which ones. May be `java.lang.Nothing` | 0.5 | 2.0 |  |  |
+| `ChildBB` | |  |  |  |  |  |
+|   | `deprecatedAttribute` | Please  keep `hands off`. |  |  |  |  |
+|   | `deprecatedBs` |  |  |  |  |  |
+|   | `deprecatedParent` |  |  |  |  |  |
+|   | `deprecatedArray` |  |  |  |  |  |
+| `DeprecatedContext` | |  |  | 2022-07-25 |  |  |
+| `DeprecatedType` | |  |  |  |  |  |
+| `DiscountOffer` | |  |  |  |  |  |
+|   | `campaigns` |  |  |  |  |  |
+| `POI` | |  |  |  |  |  |
+|   | `theLink` |  |  |  |  |  |
+|   | `evenMoreLinks` |  |  |  |  |  |
+| `ParentClass` | |  |  |  |  |  |
+|   | `theBankAccount` |  |  |  |  |  |
+|   | `legacyBankAccounts` |  |  |  |  |  |
+| `Sortiment` | |  |  |  |  |  |
+|   | `types` |  |  |  |  |  |
+| `SpecialContext` | |  |  |  |  |  |
+|   | `deprecatedHeader` |  |  | 2024-12-24 |  |  |
+| `TheReadOnlyServiceObject` | |  |  |  |  |  |
+|   | `inventoryType` | Let's reproduce #65 | not too long | 99.9 |  |  |
+| `UICStop` | |  |  |  |  |  |
+|   | `inlineStopType` |  |  |  |  |  |
+
+<br>
+
+### Enumerations with Deprecations
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
+| `ChannelType` | |  |  |  |  |  |
+|   | `LEGACY_POS` | I'm `DEPRECATED`. |  |  |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.openapi.service1`
+
+<br>
+
+#### `ProductService`
+
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
+| `deprecatedBody(String)` | |  |  |  |  |  |
+|   | `String pBody` |  |  |  |  |  |
+| `deprecatedComplexReturn()` | |  |  |  |  |  |
+|   | `Product ` |  |  |  |  |  |
+| `deprecatedOperation()` | | This request is no longer supported. | 1.1.1 | 2024-10-20 |  |  |
+| `deprecatedParams(int)` | |  |  |  |  |  |
+|   | `int pParam1` |  |  |  |  |  |
+|   | `String ` |  |  |  |  |  |
+| `deprectedComplexRequestBody(Product)` | |  |  |  |  |  |
+|   | `Product pProduct` |  |  |  |  |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.pojo`
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
+| `BChildPOJO` | |  |  |  |  |  |
+| `ChildPOJO` | | We do not like this class any more. | Big bang | Last X-Mas |  |  |
+| `ImmutableAssociationPOJO` | |  |  |  |  |  |
+|   | `deprecatedRefs` |  |  |  |  |  |
+| `ParentPOJO` | |  |  |  |  |  |
+|   | `weirdAttribute` |  |  |  |  |  |
+| `PlainPOJO` | |  |  |  |  |  |
+
+<br>
+
+### Enumerations with Deprecations
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
+| No enumerations are marked as deprecated. |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.validationgroups`
+
+<br>
+
+### Services with Deprecations
+
+<br>
+
+| Service Name   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|----------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
+| `AnotherDeprecatedRESTService` |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
+
+<br>
+
+#### `AnotherDeprecatedRESTService`
+
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
+| `operationOfADeprecatedService()` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
+
+<br>
+
+#### `MultiVersioningTestService`
+
+| Operation   |  Parameter   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|-------------|--------------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
+| `deprecatedEndpoint()` | | I'm so deprecated. |  | 7.0 | 2026-12-24 | 2026-09-13 |
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
+| `DeprecatedChildClassForValidationGroups` | |  | 5.x | 8.0 | 2027-05-01 | 2026-10-20 |
+| `DeprecatedClass` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
+| `DeprecatedOpenAPIDataType` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
+| `MyContext` | |  |  |  |  |  |
+|   | `deprecatedHeader` |  |  | 7.0 | 2026-12-24 |  |
+| `MyPOJOResponse` | |  |  |  |  |  |
+|   | `deprecatedProperty` |  |  | 7.0 | 2026-12-24 |  |
+| `MyPojoRequest` | |  |  |  |  |  |
+|   | `formerMandatoryRequestProperty` |  |  | 7.0 | 2026-12-24 |  |
+
+<br>
+
+### Enumerations with Deprecations
+
+<br>
+
+| Enumeration   | Literal   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|---------------|-----------|---------------|:------------------:|:-----------------------:|:------------:|:---------------------------:|
+| `ClientType` | |  |  |  |  |  |
+|   | `CLIENT_3` |  |  | 7.0 |  |  |
+| `DeprecatedOpenAPIEnum` | |  |  | 7.0 | 2026-12-24 | 2026-09-13 |
+
+<br>
+

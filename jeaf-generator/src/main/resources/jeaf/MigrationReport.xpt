@@ -12,8 +12,8 @@
 
 «DEFINE MigrationReportExcel FOR uml::Model»
 	«clearRowCollector()»
-	«FOREACH this.getPackagesForJavaDeprecationsReport() AS package-»
-		«FOREACH package.getJavaDeprecations().addAll(package.getBreakingChanges()).sortBy(e|e.qualifiedName()) AS element-»
+	«FOREACH this.getPackagesForJavaDeprecationsReport().addAll(this.getPackagesForBreakingChangesReport()).toSet() AS package-»
+		«FOREACH package.getJavaDeprecations().addAll(package.getBreakingChanges()).toSet().sortBy(e|e.qualifiedName()) AS element-»
 		«IF element.isDeprecated()-»
 			«addRow(element.getDeprecationRowForMigrationReportAsXLSX())»
 		«ELSEIF element.isBreakingChange()» -
