@@ -57,7 +57,7 @@ import openapitools.JSON;
   PrimitiveArraysObject.JSON_PROPERTY_B_STRING_ARRAY,
   PrimitiveArraysObject.JSON_PROPERTY_C_STRING_ARRAY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class PrimitiveArraysObject {
   public static final String JSON_PROPERTY_A_BOOLEAN_ARRAY = "aBooleanArray";
   @javax.annotation.Nullable

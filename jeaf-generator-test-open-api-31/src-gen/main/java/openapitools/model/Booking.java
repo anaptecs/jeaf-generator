@@ -32,7 +32,7 @@ import openapitools.JSON;
 @JsonPropertyOrder({
   Booking.JSON_PROPERTY_BOOKING_I_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.27.0")
 public class Booking {
   public static final String JSON_PROPERTY_BOOKING_I_D = "bookingID";
   @javax.annotation.Nonnull
