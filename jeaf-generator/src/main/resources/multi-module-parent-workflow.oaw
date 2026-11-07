@@ -9,7 +9,7 @@
 
 	<!-- Execute checks -->    
 	<!-- JMM version check -->
-	<component class="org.openarchitectureware.check.CheckComponent">
+	<component class="com.anaptecs.jeaf.fwk.generator.workflow.CachingCheckComponent">
 		<metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
 		<metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
 			<profile value="${profile.file}"/>
@@ -24,7 +24,7 @@
 	</component>
 
 	<!-- Check UML model -->
-	<component class="org.openarchitectureware.check.CheckComponent">
+	<component class="com.anaptecs.jeaf.fwk.generator.workflow.CachingCheckComponent">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 		<metaModel idRef="CustomProfile"/>
@@ -49,7 +49,7 @@
 	</component>
 
 	<!-- Run Generator for Maven -->
-	<component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+	<component id="generator" class="com.anaptecs.jeaf.fwk.generator.workflow.CachingGenerator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 		<metaModel idRef="CustomProfile"/>
@@ -68,7 +68,7 @@
 	</component>
 
 	<!-- Write log message to console -->
-	<component id="generator" class="org.openarchitectureware.xpand2.Generator" skipOnErrors="true">
+	<component id="generator" class="com.anaptecs.jeaf.fwk.generator.workflow.CachingGenerator" skipOnErrors="true">
 		<metaModel idRef="UmlMM"/>
 		<metaModel idRef="${profile.name}"/>
 		<metaModel idRef="CustomProfile"/>
