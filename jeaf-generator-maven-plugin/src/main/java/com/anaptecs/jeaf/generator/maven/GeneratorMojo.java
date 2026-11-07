@@ -28,10 +28,15 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.StringJoiner;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -3941,7 +3946,11 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Method runs the code formatter plugin
+   * Method organizes the imports of all generated Java files (and the files in the source directory unless this is
+   * disabled).
+   *
+   * The files are independent of each other, so they are processed in parallel (one thread per available processor).
+   * Each file is processed only once, even if source and generated source directory are the same.
    *
    * @throws MojoExecutionException
    */
@@ -3961,22 +3970,14 @@ public class GeneratorMojo extends AbstractMojo {
             lFiles.addAll(FileUtils.listFiles(lSourceDirectory, lExtensions, true));
           }
         }
-        ImportProcessor lProcessor = new ImportProcessor();
-        lProcessor.setRemoveUnusedImports(removeUnusedImports);
-        for (File formatFile : lFiles) {
-          try {
-            this.getLog().debug("Beautifying imports on " + formatFile.getPath());
-            Charset lUTF8 = StandardCharsets.UTF_8;
-            String[] lSplit = importGroups.split(",");
-            String output =
-                lProcessor.organizeImports(FileUtils.readFileToString(formatFile, lUTF8), Arrays.asList(lSplit));
-            FileUtils.writeStringToFile(formatFile, output, lUTF8);
-          }
-          catch (com.github.javaparser.ParseException e) {
-            // Don't allow a single file error to kill the whole process.
-            this.getLog().error("Beautifier error on " + formatFile.getCanonicalPath() + ": " + e.getMessage());
-          }
+
+        // Avoid that the same file is processed twice (and in parallel) if source and generated source directory are
+        // the same.
+        Map<String, File> lUniqueFiles = new LinkedHashMap<>();
+        for (File lFile : lFiles) {
+          lUniqueFiles.putIfAbsent(lFile.getCanonicalPath(), lFile);
         }
+        this.beautifyImports(lUniqueFiles.values(), Arrays.asList(importGroups.split(",")));
       }
       catch (FileNotFoundException e) {
         throw new MojoExecutionException("FileNotFound creating beautifier output: " + sourceGenDirectory, e);
@@ -3984,6 +3985,70 @@ public class GeneratorMojo extends AbstractMojo {
       catch (IOException e) {
         throw new MojoExecutionException("Error creating beautifier output: " + sourceGenDirectory, e);
       }
+    }
+  }
+
+  /**
+   * Method organizes the imports of the passed files in parallel.
+   *
+   * @param pFiles Files that should be processed. Each file must only be contained once.
+   * @param pImportGroups Import groups that define the order of the imports.
+   * @throws IOException if a file can not be read or written.
+   * @throws MojoExecutionException if processing is interrupted or fails unexpectedly.
+   */
+  private void beautifyImports( Collection<File> pFiles, List<String> pImportGroups )
+    throws IOException, MojoExecutionException {
+    int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), pFiles.size()));
+    ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
+    try {
+      List<Future<Void>> lResults = new ArrayList<>(pFiles.size());
+      for (File lFile : pFiles) {
+        lResults.add(lExecutor.submit(( ) -> {
+          this.beautifyImports(lFile, pImportGroups);
+          return null;
+        }));
+      }
+      for (Future<Void> lResult : lResults) {
+        try {
+          lResult.get();
+        }
+        catch (ExecutionException e) {
+          if (e.getCause() instanceof IOException) {
+            throw (IOException) e.getCause();
+          }
+          throw new MojoExecutionException("Unexpected error while beautifying imports.", e.getCause());
+        }
+      }
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new MojoExecutionException("Interrupted while beautifying imports.", e);
+    }
+    finally {
+      lExecutor.shutdownNow();
+    }
+  }
+
+  /**
+   * Method organizes the imports of the passed file. A separate {@link ImportProcessor} is used for every file, so that
+   * files can be processed in parallel.
+   *
+   * @param pFile File that should be processed.
+   * @param pImportGroups Import groups that define the order of the imports.
+   * @throws IOException if the file can not be read or written.
+   */
+  private void beautifyImports( File pFile, List<String> pImportGroups ) throws IOException {
+    try {
+      this.getLog().debug("Beautifying imports on " + pFile.getPath());
+      ImportProcessor lProcessor = new ImportProcessor();
+      lProcessor.setRemoveUnusedImports(removeUnusedImports);
+      Charset lUTF8 = StandardCharsets.UTF_8;
+      String lOutput = lProcessor.organizeImports(FileUtils.readFileToString(pFile, lUTF8), pImportGroups);
+      FileUtils.writeStringToFile(pFile, lOutput, lUTF8);
+    }
+    catch (com.github.javaparser.ParseException e) {
+      // Don't allow a single file error to kill the whole process.
+      this.getLog().error("Beautifier error on " + pFile.getCanonicalPath() + ": " + e.getMessage());
     }
   }
 
