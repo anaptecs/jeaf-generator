@@ -46,8 +46,7 @@ cached boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
     spec.getOpenAPIParameters().size > 0;
 
 
-// Security schemes don't depend on the spec but only on the model. Delegating to a function that is cached per model
-// ensures that the whole model is only traversed once instead of once per spec.
+// Result only depends on the model, so traverse it once per model instead of once per spec.
 cached List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
     spec.getModel().getAllOpenAPISecuritySchemes();
 

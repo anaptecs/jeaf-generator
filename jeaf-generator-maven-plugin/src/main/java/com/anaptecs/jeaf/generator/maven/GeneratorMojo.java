@@ -348,12 +348,8 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean useMultiModuleWorkflow;
 
   /**
-   * Switch enables profiling of model checks and code generation. This is intended to analyze performance problems,
-   * e.g. with large UML models. If enabled, JEAF Generator logs the templates and functions that took most of the time
-   * after the UML model was processed. The complete profile is written to file
-   * <code>${project.build.directory}/jeaf-generator-profile.csv</code>.
-   *
-   * Profiling can also be enabled from the command line: <code>-Djeaf.generator.profileGeneration=true</code>
+   * Switch enables profiling of model checks and code generation: the slowest templates and functions are logged, the
+   * complete profile is written to <code>${project.build.directory}/jeaf-generator-profile.csv</code>.
    */
   @Parameter(required = false, defaultValue = "false", property = "jeaf.generator.profileGeneration")
   private Boolean profileGeneration;
@@ -3966,13 +3962,7 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Method organizes the imports of all generated Java files (and the files in the source directory unless this is
-   * disabled).
-   *
-   * The files are independent of each other, so they are processed in parallel (one thread per available processor).
-   * Each file is processed only once, even if source and generated source directory are the same.
-   *
-   * @throws MojoExecutionException
+   * Organizes the imports of all generated Java files (and of the source directory unless disabled) in parallel.
    */
   private void executeImportBeautifier( ) throws MojoExecutionException {
     if (disableFormatting == true || disableSourceFormatting == true) {
@@ -3991,8 +3981,7 @@ public class GeneratorMojo extends AbstractMojo {
           }
         }
 
-        // Avoid that the same file is processed twice (and in parallel) if source and generated source directory are
-        // the same.
+        // Source and generated source directory may be the same.
         Map<String, File> lUniqueFiles = new LinkedHashMap<>();
         for (File lFile : lFiles) {
           lUniqueFiles.putIfAbsent(lFile.getCanonicalPath(), lFile);
@@ -4009,12 +3998,7 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Method organizes the imports of the passed files in parallel.
-   *
-   * @param pFiles Files that should be processed. Each file must only be contained once.
-   * @param pImportGroups Import groups that define the order of the imports.
-   * @throws IOException if a file can not be read or written.
-   * @throws MojoExecutionException if processing is interrupted or fails unexpectedly.
+   * @param pFiles Each file must only be contained once.
    */
   private void beautifyImports( Collection<File> pFiles, List<String> pImportGroups )
     throws IOException, MojoExecutionException {
@@ -4050,12 +4034,7 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Method organizes the imports of the passed file. A separate {@link ImportProcessor} is used for every file, so that
-   * files can be processed in parallel.
-   *
-   * @param pFile File that should be processed.
-   * @param pImportGroups Import groups that define the order of the imports.
-   * @throws IOException if the file can not be read or written.
+   * Uses its own {@link ImportProcessor}, as it's called in parallel.
    */
   private void beautifyImports( File pFile, List<String> pImportGroups ) throws IOException {
     try {

@@ -17,9 +17,7 @@ import org.openarchitectureware.xtend.ast.Around;
 import org.openarchitectureware.xtend.ast.Extension;
 
 /**
- * Execution context for checks and extensions that caches the resolution of called extensions (see
- * {@link ExtensionResolutionCache}). All clones (oAW clones the context e.g. for every called extension) share the same
- * cache.
+ * Execution context with cached extension resolution (see {@link ExtensionResolutionCache}).
  */
 public class CachingExecutionContextImpl extends ExecutionContextImpl {
   private final ExtensionResolutionCache extensionCache;
@@ -41,7 +39,7 @@ public class CachingExecutionContextImpl extends ExecutionContextImpl {
   }
 
   /**
-   * All other <code>cloneWith...()</code> operations use this operation, so they also return a caching context.
+   * Used by all <code>cloneWith...()</code> operations, so clones share the cache.
    */
   @Override
   public ExecutionContextImpl cloneContext( ) {

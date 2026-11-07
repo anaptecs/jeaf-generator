@@ -12,34 +12,16 @@ import org.openarchitectureware.type.Type;
 import org.openarchitectureware.xtend.ast.Extension;
 
 /**
- * Cache for the resolution of Xtend extensions (functions) that are called from checks, extensions and templates.
- *
- * oAW 4.3.1 resolves the called extension on every call by searching linearly through all extensions that are visible
- * from the current resource ({@link org.openarchitectureware.type.baseimpl.PolymorphicResolver#getExtension}). This
- * also applies to extensions marked as <code>cached</code>, as their result is only cached after the extension was
- * resolved. Profiling showed that about 60% of the time for model checks and code generation is spent there.
- *
- * The result of the resolution only depends on the current resource (it defines the visible extensions), the name of
- * the extension and the types of the parameters. So it can be cached for the whole execution of a workflow component.
- *
- * One instance is shared between an execution context and all its clones. oAW executes workflows single-threaded, so no
- * synchronization is needed.
+ * Caches the resolution of called Xtend extensions. oAW 4.3.1 searches linearly through all visible extensions on every
+ * call (also for <code>cached</code> ones), which took about 60% of the generation time. The result only depends on
+ * current resource, name and parameter types. Shared by a context and its clones; oAW runs single-threaded.
  */
 public class ExtensionResolutionCache {
   /**
-   * Resolved extensions. Value <code>null</code> means that no matching extension exists.
+   * Value <code>null</code>: no matching extension exists.
    */
   private final Map<Key, Extension> resolvedExtensions = new HashMap<>();
 
-  /**
-   * Returns the cached extension or resolves it using the passed resolver.
-   *
-   * @param pResource Resource from which the extension is called. May be <code>null</code>.
-   * @param pName Name of the called extension.
-   * @param pParameterTypes Types of the parameters.
-   * @param pResolver Resolves the extension if it isn't cached yet.
-   * @return {@link Extension} Resolved extension or <code>null</code> if there is none.
-   */
   public Extension getExtension( Resource pResource, String pName, Type[] pParameterTypes,
       Supplier<Extension> pResolver ) {
     Key lKey = new Key(pResource, pName, pParameterTypes);
@@ -52,7 +34,7 @@ public class ExtensionResolutionCache {
   }
 
   /**
-   * Key of the cache. Resources are compared by identity, as oAW loads each resource only once.
+   * Resources are compared by identity, as oAW loads each resource only once.
    */
   private static final class Key {
     private final Resource resource;

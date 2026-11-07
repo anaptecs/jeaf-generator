@@ -9,13 +9,11 @@ import org.openarchitectureware.type.MetaModel;
 import org.openarchitectureware.workflow.WorkflowContext;
 
 /**
- * Check component that uses {@link CachingExecutionContextImpl}, so that the resolution of called extensions is cached
- * (see {@link ExtensionResolutionCache}). Apart from that it behaves exactly like oAW's {@link CheckComponent}.
+ * Check component with cached extension resolution (see {@link ExtensionResolutionCache}).
  */
 public class CachingCheckComponent extends CheckComponent {
   /**
-   * Same as {@link org.openarchitectureware.expression.AbstractExpressionsUsingWorkflowComponent#getExecutionContext}
-   * (oAW 4.3.1) but creates a caching context.
+   * Same as in oAW 4.3.1, but creates a caching context.
    */
   @Override
   protected ExecutionContextImpl getExecutionContext( WorkflowContext pContext ) {
