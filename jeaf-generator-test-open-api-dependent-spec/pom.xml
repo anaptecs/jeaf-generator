@@ -8,6 +8,10 @@
 	</parent>
 
 	<name>JEAF Generator Test OpenAPI dependent Spec</name>
+
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 	<artifactId>jeaf-generator-test-open-api-dependent-spec</artifactId>
 	<packaging>jar</packaging>
 

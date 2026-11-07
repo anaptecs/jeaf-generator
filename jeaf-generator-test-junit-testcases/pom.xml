@@ -8,6 +8,10 @@
 	</parent>
 
 	<name>JEAF Generator Test JUnit Test Cases</name>
+
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 	<artifactId>jeaf-generator-test-junit-testcases</artifactId>
 	<packaging>jar</packaging>
 

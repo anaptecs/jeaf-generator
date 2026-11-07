@@ -8,6 +8,10 @@
 	</parent>
 
 	<name>JEAF Generator Test Spring REST Proxy</name>
+
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 	<artifactId>jeaf-generator-test-spring-rest-proxy</artifactId>
 	<packaging>jar</packaging>
 
