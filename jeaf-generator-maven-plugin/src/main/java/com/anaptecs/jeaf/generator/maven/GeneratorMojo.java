@@ -348,6 +348,17 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean useMultiModuleWorkflow;
 
   /**
+   * Switch enables profiling of model checks and code generation. This is intended to analyze performance problems,
+   * e.g. with large UML models. If enabled, JEAF Generator logs the templates and functions that took most of the time
+   * after the UML model was processed. The complete profile is written to file
+   * <code>${project.build.directory}/jeaf-generator-profile.csv</code>.
+   *
+   * Profiling can also be enabled from the command line: <code>-Djeaf.generator.profileGeneration=true</code>
+   */
+  @Parameter(required = false, defaultValue = "false", property = "jeaf.generator.profileGeneration")
+  private Boolean profileGeneration;
+
+  /**
    * List of resource files that should be ignored when generating message constants classes from resource files.
    */
   @Parameter(required = false, defaultValue = " ")
@@ -2379,6 +2390,11 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info(" ");
       }
 
+      if (profileGeneration) {
+        lLog.info("Profile generation:                               " + profileGeneration);
+        lLog.info(" ");
+      }
+
       if (generateCustomConstraints) {
         lLog.info("Generate Custmom Constraints:                     " + generateCustomConstraints);
       }
@@ -3475,7 +3491,11 @@ public class GeneratorMojo extends AbstractMojo {
         WorkflowRunner lRunner = new WorkflowRunner();
 
         String lWorkflowFile = this.getWorkflowFile();
+        GenerationProfile lProfile = profileGeneration ? GenerationProfile.start() : null;
         lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
+        if (lProfile != null) {
+          lProfile.report(this.getLog(), new File(mavenProject.getBuild().getDirectory(), "jeaf-generator-profile.csv"));
+        }
       }
     }
     else {

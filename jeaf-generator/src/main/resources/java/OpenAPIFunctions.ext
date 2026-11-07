@@ -46,8 +46,13 @@ cached boolean hasOpenAPIParameters(JMM::OpenAPI3Specification spec):
     spec.getOpenAPIParameters().size > 0;
 
 
+// Security schemes don't depend on the spec but only on the model. Delegating to a function that is cached per model
+// ensures that the whole model is only traversed once instead of once per spec.
 cached List[JMM::OpenAPISecurityScheme] getOpenAPISecuritySchemes(JMM::OpenAPI3Specification spec):
-    spec.getModel().allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
+    spec.getModel().getAllOpenAPISecuritySchemes();
+
+cached List[JMM::OpenAPISecurityScheme] getAllOpenAPISecuritySchemes(uml::Model model):
+    model.allOwnedElements().typeSelect(JMM::OpenAPISecurityScheme).select(e|e.isInGeneratorWhitelist() == true).sortBy(e|e.name);
 
 
 cached List[JMM::OpenAPIResponse] getResponses(JMM::OpenAPI3Specification spec):
