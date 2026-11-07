@@ -8,6 +8,10 @@
 	</parent>
 
 	<name>JEAF Generator Test POM Generation</name>
+
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 	<artifactId>jeaf-generator-test-pom-generation</artifactId>
 	<packaging>jar</packaging>
 

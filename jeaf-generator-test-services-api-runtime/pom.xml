@@ -8,6 +8,10 @@
 	</parent>
 
 	<name>JEAF Generator Test Services API Runtime</name>
+
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 	<artifactId>jeaf-generator-test-services-api-runtime</artifactId>
 	<packaging>jar</packaging>
 

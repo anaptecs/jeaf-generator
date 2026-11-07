@@ -8,6 +8,10 @@
 	</parent>
 
 	<name>JEAF Generator Test Spring Boot 3</name>
+
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 	<artifactId>jeaf-generator-test-spring-boot3</artifactId>
 	<packaging>jar</packaging>
 

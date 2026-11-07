@@ -8,6 +8,10 @@
 	</parent>
 
 	<name>JEAF Generator Test Service Providers API</name>
+
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 	<artifactId>jeaf-generator-test-service-providers-api</artifactId>
 	<packaging>jar</packaging>
 
