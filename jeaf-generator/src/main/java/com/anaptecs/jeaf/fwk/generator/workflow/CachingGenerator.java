@@ -20,14 +20,9 @@ import org.openarchitectureware.xpand2.output.Output;
 import org.openarchitectureware.xpand2.pr.ProtectedRegionResolverImpl;
 
 /**
- * Xpand generator component that uses {@link CachingXpandExecutionContextImpl}, so that the resolution of called
- * extensions is cached (see {@link ExtensionResolutionCache}).
- *
- * oAW's {@link Generator} creates its execution context inside {@link Generator#invokeInternal2}, so this operation is
- * re-implemented here with the same behavior as in oAW 4.3.1. Private helper operations of {@link Generator} are called
- * via reflection, so that outlets, output and the expand statement are created exactly as by oAW. Only the verbose
- * profiling log (<code>verboseProfileFilename</code>), which isn't used by JEAF Generator, isn't supported; if it's
- * configured, oAW's implementation without cache is used.
+ * Xpand generator with cached extension resolution (see {@link ExtensionResolutionCache}). oAW creates the execution
+ * context inside {@link Generator#invokeInternal2}, so it's re-implemented here (oAW 4.3.1); private helpers are called
+ * via reflection. With <code>verboseProfileFilename</code> oAW's implementation is used.
  */
 public class CachingGenerator extends Generator {
   private static final Method GET_OUTPUT = CachingGenerator.getGeneratorMethod("getOutput");
@@ -107,9 +102,6 @@ public class CachingGenerator extends Generator {
     verboseProfileFilename = pVerboseProfileFilename;
   }
 
-  /**
-   * Same as {@link Generator#invokeInternal2} (oAW 4.3.1) but with a caching execution context.
-   */
   @Override
   protected void invokeInternal2( WorkflowContext pContext, ProgressMonitor pMonitor, Issues pIssues ) {
     if (verboseProfileFilename != null) {

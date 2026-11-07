@@ -22,14 +22,11 @@ import org.openarchitectureware.xtend.ast.Around;
 import org.openarchitectureware.xtend.ast.Extension;
 
 /**
- * Execution context for Xpand templates that caches the resolution of called extensions (see
- * {@link ExtensionResolutionCache}). All clones (oAW clones the context e.g. for every called extension or template
- * definition) share the same cache.
+ * Xpand execution context with cached extension resolution (see {@link ExtensionResolutionCache}).
  */
 public class CachingXpandExecutionContextImpl extends XpandExecutionContextImpl {
   /**
-   * Field <code>XpandExecutionContextImpl.registeredAdvices</code> is private, but has to be copied when the context is
-   * cloned (as done by {@link XpandExecutionContextImpl#cloneContext()}).
+   * Private in oAW, but has to be copied when the context is cloned.
    */
   private static final Field REGISTERED_ADVICES_FIELD;
 
@@ -70,8 +67,7 @@ public class CachingXpandExecutionContextImpl extends XpandExecutionContextImpl 
   }
 
   /**
-   * Same as {@link XpandExecutionContextImpl#cloneContext()} but creates a caching context. All other
-   * <code>cloneWith...()</code> operations use this operation, so they also return a caching context.
+   * Used by all <code>cloneWith...()</code> operations, so clones share the cache.
    */
   @Override
   public XpandExecutionContextImpl cloneContext( ) {

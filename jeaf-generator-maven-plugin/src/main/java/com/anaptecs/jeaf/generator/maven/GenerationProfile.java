@@ -20,43 +20,24 @@ import org.openarchitectureware.util.ProfileCollector;
 import org.openarchitectureware.util.ProfileCollector.ProfileEntry;
 
 /**
- * Profile of model checks and code generation, based on oAW's {@link ProfileCollector}.
- *
- * oAW records every call of a template (EXPAND) and of an Xtend function in a thread local {@link ProfileCollector}.
- * The collected values are never reset, so they cumulate over all generator runs of a Maven build (e.g. all modules of
- * a multi-module build). That's why this class takes a snapshot when a generator run starts and reports only the
- * difference.
+ * Profile of a generator run based on oAW's {@link ProfileCollector}. Its values cumulate over all modules of a Maven
+ * build, so only the difference to the snapshot taken at the start is reported.
  */
 class GenerationProfile {
-  /**
-   * Number of entries that are written to the log.
-   */
   private static final int LOGGED_ENTRIES = 30;
 
-  /**
-   * Values per template or function at the start of the generator run.
-   */
   private final Map<String, Entry> start;
 
   private GenerationProfile( Map<String, Entry> pStart ) {
     start = pStart;
   }
 
-  /**
-   * Method starts profiling of a generator run.
-   *
-   * @return {@link GenerationProfile} Profile that has to be reported after the generator run.
-   */
   static GenerationProfile start( ) {
     return new GenerationProfile(capture());
   }
 
   /**
-   * Method writes the profile of the generator run to the log (entries with the highest net time) and the complete
-   * profile to the passed CSV file.
-   *
-   * @param pLog Log to which the summary is written.
-   * @param pFile CSV file to which the complete profile is written.
+   * Logs the entries with the highest net time and writes the complete profile to the passed CSV file.
    */
   void report( Log pLog, File pFile ) {
     List<Entry> lEntries = new ArrayList<>();
@@ -106,9 +87,6 @@ class GenerationProfile {
     return lEntries;
   }
 
-  /**
-   * Values of a template or function.
-   */
   private static final class Entry {
     private final String name;
 
