@@ -3963,6 +3963,8 @@ public class GeneratorMojo extends AbstractMojo {
 
   /**
    * Organizes the imports of all generated Java files (and of the source directory unless disabled) in parallel.
+   *
+   * @throws MojoExecutionException
    */
   private void executeImportBeautifier( ) throws MojoExecutionException {
     if (disableFormatting == true || disableSourceFormatting == true) {
