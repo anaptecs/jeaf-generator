@@ -476,7 +476,7 @@ private String javaGetModulePackagingType(String moduleType):
 
 
 List[String] getTechnicalDependenciesForJavaModule():
-	if addRequiredTechnicalDepdendencies() == false
+	if addRequiredTechnicalDependencies() == false
 	then {}
 	else 
 		if generateJacksonAnnotations() && isJackson3Enabled()
@@ -485,6 +485,6 @@ List[String] getTechnicalDependenciesForJavaModule():
 
 
 List[String] getTechnicalDependenciesForServiceModule(JMM::MavenProject project):
-	if addRequiredTechnicalDepdendencies() && (generateReactiveServiceInterfaces() || initialProjectGeneration() || project.generateReactiveServices()) 
+	if addRequiredTechnicalDependencies() && (generateReactiveServiceInterfaces() || initialProjectGeneration() || project.generateReactiveServices()) 
 	then {"io.projectreactor:reactor-core"}
 	else {};
