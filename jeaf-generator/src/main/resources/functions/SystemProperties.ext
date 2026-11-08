@@ -256,8 +256,8 @@ boolean isMavenProjectGeneratedFromModelTemplate():
 	getBooleanSystemProperty("jeaf.generator.mavenProjectGeneratedFromModelTemplate", false);
 
 
-boolean addRequiredTechnicalDepdendencies():
-	getBooleanSystemProperty("jeaf.generator.addRequiredTechnicalDepdendencies", true);
+boolean addRequiredTechnicalDependencies():
+	getBooleanSystemProperty("jeaf.generator.addRequiredTechnicalDependencies", true);
 
 
 boolean isUMLArtifactGAVDefined():

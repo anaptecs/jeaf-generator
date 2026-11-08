@@ -2119,9 +2119,11 @@ public class GeneratorMojo extends AbstractMojo {
    *
    * By default, technical dependencies are added automatically.
    *
+   * The former misspelled parameter name <code>addRequiredTechnicalDepdendencies</code> is still supported as
+   * deprecated alias.
    */
-  @Parameter(required = false, defaultValue = "true")
-  private Boolean addRequiredTechnicalDepdendencies;
+  @Parameter(required = false, defaultValue = "true", alias = "addRequiredTechnicalDepdendencies")
+  private Boolean addRequiredTechnicalDependencies;
 
   /**
    * This parameter can be used to define a pattern that is applied to determine the issue tracking URL for a domain
@@ -2980,7 +2982,7 @@ public class GeneratorMojo extends AbstractMojo {
       lLog.info("XMI path within UML artifact for project:         " + mavenProjectGenerationUMLModelArtifactXMIPath);
       lLog.info("UML model file for project:                       " + mavenProjectGenerationUMLModelFile);
 
-      lLog.info("Add required technical dependencies:              " + addRequiredTechnicalDepdendencies);
+      lLog.info("Add required technical dependencies:              " + addRequiredTechnicalDependencies);
       lLog.info("Issue Tracking URL pattern:                       " + issueTrackingURLPattern);
       lLog.info(" ");
     }
@@ -3380,8 +3382,8 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "mavenProjectGenerationUMLModelArtifactXMIPath",
           mavenProjectGenerationUMLModelArtifactXMIPath);
       System.setProperty(PROPERTY_PREFIX + "mavenProjectGenerationUMLModelFile", mavenProjectGenerationUMLModelFile);
-      System.setProperty(PROPERTY_PREFIX + "addRequiredTechnicalDepdendencies",
-          addRequiredTechnicalDepdendencies.toString());
+      System.setProperty(PROPERTY_PREFIX + "addRequiredTechnicalDependencies",
+          addRequiredTechnicalDependencies.toString());
 
       System.setProperty(PROPERTY_PREFIX + "mavenRepoBaseURL", mavenRepoBaseURL);
       System.setProperty(PROPERTY_PREFIX + "generateReleaseNotes", generateReleaseNotes.toString());
