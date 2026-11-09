@@ -72,19 +72,19 @@ context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false WAR
 
 
 // Checks for stereotype PathParam
-context PathParam if runChecks("PathParam") && ignore() == false && isParameter() ERROR this.getErrorMessage("9120", {this.fqn()}): ((uml::Parameter) this).lowerForParam() == 1;
-context PathParam if runChecks("PathParam") && ignore() == false && isProperty() ERROR this.getErrorMessage("9120", {this.fqn()}): ((uml::Property) this).lower() == 1;
-context PathParam if runChecks("PathParam") && ignore() == false ERROR this.getErrorMessage("9120", {this.fqn()}): this.isMultivalued() == false;
+context PathParam if runChecks("PathParam") && ignore() == false && isParameter() ERROR this.getErrorMessage("9120", {this.getElementNameForMessage()}): ((uml::Parameter) this).lowerForParam() == 1;
+context PathParam if runChecks("PathParam") && ignore() == false && isProperty() ERROR this.getErrorMessage("9120", {this.getElementNameForMessage()}): ((uml::Property) this).lower() == 1;
+context PathParam if runChecks("PathParam") && ignore() == false ERROR this.getErrorMessage("9120", {this.getElementNameForMessage()}): this.isMultivalued() == false;
 
 // Checks for stereotype HeaderParam
-context HeaderParam if runChecks("HeaderParam") && ignore() == false WARNING this.getWarningMessage("9153", {owner.asNamedElement().fqn(), this.getRESTHeaderParamName(), name}): this.isIgnoredHeaderParam() == false;
-context HeaderParam if runChecks("HeaderParam") && ignore() == false ERROR this.getErrorMessage("9155", {owner.asNamedElement().fqn(), this.getRESTHeaderParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
+context HeaderParam if runChecks("HeaderParam") && ignore() == false WARNING this.getWarningMessage("9153", {owner.asNamedElement().getElementNameForMessage(), this.getRESTHeaderParamName(), name}): this.isIgnoredHeaderParam() == false;
+context HeaderParam if runChecks("HeaderParam") && ignore() == false ERROR this.getErrorMessage("9155", {owner.asNamedElement().getElementNameForMessage(), this.getRESTHeaderParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
 
 // Checks for stereotype QueryParam
-context QueryParam if runChecks("QueryParam") && ignore() == false ERROR this.getErrorMessage("9156", {owner.asNamedElement().fqn(), this.getRESTQueryParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
+context QueryParam if runChecks("QueryParam") && ignore() == false ERROR this.getErrorMessage("9156", {owner.asNamedElement().getElementNameForMessage(), this.getRESTQueryParamName(), name}): !(isRESTLibraryJAXRS() && generateRESTResources() && this.isMultivalued() && this.getCollectionType() == "java.util.Collection");
 
 // Checks for stereotype BeanParam
-context BeanParam if runChecks("RESTOperation") && ignore() == false WARNING this.getWarningMessage("9103", {this.fqn(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage().toString()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;
+context BeanParam if runChecks("RESTOperation") && ignore() == false WARNING this.getWarningMessage("9103", {this.getElementNameForMessage(), this.getOpenAPIIncompatibleBeanProperties().asPropertyErrorMessage().toString()}): this.getOpenAPIIncompatibleBeanProperties().size == 0;
 
 // Checks for deprecations that are not supported by OpenAPI
 context Property if owner.asNamedElement().runChecks("OpenAPIType") && ignore() == false WARNING this.getWarningMessage("9154", {owner.asNamedElement().name + "." + name}): !(this.isMultivalued() == false && this.type.isClassifierTemplateParameter()== true  && this.type.isBasicOpenAPIType() == false && this.isDeprecated() && owner.isStereotypeApplied("OpenAPIType"));

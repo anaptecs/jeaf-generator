@@ -171,8 +171,9 @@ public class Naming {
       if (lHasOwnerName && lElementName.isEmpty() == false) {
         lName = lOwnerName + "." + lElementName;
       }
-      // Unnamed elements (e.g. return parameters) are identified by their owner.
-      else if (lHasOwnerName) {
+      // Unnamed elements (e.g. return parameters) are identified by their owner. Unnamed elements in a package (e.g.
+      // dependencies) get no name, so that messages describe them as unnamed element in the package.
+      else if (lHasOwnerName && lOwner instanceof Package == false) {
         lName = lOwnerName;
       }
       else {

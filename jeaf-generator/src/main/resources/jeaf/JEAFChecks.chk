@@ -27,8 +27,8 @@ context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR t
 context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9127", {"ServiceObject", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9130", {"ServiceObject", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9160", {name}): this.isStereotypeApplied("POJO") == false;
-context ServiceObject if runChecks("ServiceObject") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
-context Operation if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context ServiceObject if runChecks("ServiceObject") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.getElementNameForMessage()}): compositeDataTypePublicFieldName.length > 0;
+context Operation if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().getElementNameForMessage()}): this.isValidIdentifierName();
 
 
 
@@ -38,8 +38,8 @@ context ServiceObject if runChecks("ServiceObject") && ignore() == false WARNING
 context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getJavaGenericSoftLinkType().length > 0;
 context SoftLink if ((NamedElement) owner).runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9164", {name, ((NamedElement)owner).name}): this.belongsToBidirectionalAssociation() == false;
 
-context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
-context Property if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context ServiceObject if runChecks("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.getElementNameForMessage()}): this.isValidIdentifierName();
+context Property if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().getElementNameForMessage()}): this.isValidIdentifierName();
 
 context Property if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == true  && ignore() == false  ERROR   this.getErrorMessage("9179",   {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower() == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false && this.hasDefaultValueForEnumProperty() == false);
 context Property if owner.asNamedElement().runChecks("ServiceObject") && owner.isStereotypeApplied("ServiceObject") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == false && ignore() == false  WARNING this.getWarningMessage("9179", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower() == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false && this.hasDefaultValueForEnumProperty() == false);
@@ -54,13 +54,13 @@ context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessag
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9129", {"POJO", name}): ownedOperation.forAll( e | e.name.length > 0);
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9130", {"POJO", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9160", {name}): this.isStereotypeApplied("ServiceObject") == false;
-context POJO if runChecks("POJO") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.fqn()}): compositeDataTypePublicFieldName.length > 0;
-context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()) WARNING this.getWarningMessage("9163", {this.fqn()}): this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations();
+context POJO if runChecks("POJO") && ignore() == false && compositeDataType ERROR this.getErrorMessage("9162", {this.getElementNameForMessage()}): compositeDataTypePublicFieldName.length > 0;
+context POJO if runChecks("POJO") && ignore() == false && (generateEqualsAndHashCode() || generateEqualsAndHashCodeForStandardClasses()) WARNING this.getWarningMessage("9163", {this.getElementNameForMessage()}): this.hasBidirectionalAssociations() == false || this.hasOnlyTransientBidirectionalAssociations();
 
 context POJO if runChecks("POJO") && ignore() == false && this.parents().size > 0 ERROR this.getErrorMessage("9193", { this.qualifiedName(), this.parents().qualifiedName().toString(", ")}) : this.parents().size == 1;
 context POJO if runChecks("POJO") && ignore() == false && this.parents().size > 0 ERROR this.getErrorMessage("9194", { this.qualifiedName()}) : this.parents().first().asClass().hasTemplateParameter() == false;
 
-context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9167", {owner.asNamedElement().fqn() + "." + name}): templateBinding.first().parameterSubstitution.isEmpty == false && templateBinding.first().parameterSubstitution.first().actual != null;
+context POJO if runChecks("POJO") && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9167", {this.getElementNameForMessage()}): templateBinding.first().parameterSubstitution.isEmpty == false && templateBinding.first().parameterSubstitution.first().actual != null;
 
 context Property if isNavigable() && class != null && class.isStereotypeApplied("POJO") && runChecks() && ignore() == false ERROR this.getErrorMessage("9135", {class.name, type.name}):	!isUnnamed();
 context Property if runChecks("POJO") && class != null && class.isStereotypeApplied("POJO") && ignore() == false ERROR this.getErrorMessage("9191", {name, owner.asNamedElement().qualifiedName(), this.getCompatibilityGroups().name.toString(", ")}): this.getCompatibilityGroups().size < 2;
@@ -69,15 +69,15 @@ context POJO if runChecks("POJO") && ignore() == false WARNING this.getWarningMe
 context SoftLink if softLinkType.name == "CustomGenericType" && ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9158", {((NamedElement)owner).name + "." + name}): getJavaGenericSoftLinkType().length > 0;
 context SoftLink if ((NamedElement) owner).runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9164", {name, ((NamedElement)owner).name}): this.belongsToBidirectionalAssociation() == false;
 
-context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
-context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false  ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
-context Operation if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context POJO if runChecks("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.getElementNameForMessage()}): this.isValidIdentifierName();
+context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false  ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().getElementNameForMessage()}): this.isValidIdentifierName();
+context Operation if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().getElementNameForMessage()}): this.isValidIdentifierName();
 
 context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == true  && ignore() == false  ERROR   this.getErrorMessage("9179",   {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower() == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false);
 context Property if owner.asNamedElement().runChecks("POJO") && owner.isStereotypeApplied("POJO") && type != null && enforceExplicitDefaultValueForOptionalPrimitives() == false && ignore() == false  WARNING this.getWarningMessage("9179", {owner.asNamedElement().fqn(), name}): !(type.isPrimitiveType() && this.lower() == 0 && this.upper == 1 && this.hasDefaultValueForBasicTypeProperty() == false);
 
 // Checks for template bindings
-context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.size == 1;
+context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.isEmpty == false ERROR this.getErrorMessage("9168", {this.getElementNameForMessage()}): templateBinding.size == 1;
 context Class if this.getNearestPackage().runChecks() && ignore() == false && templateBinding.size == 1 ERROR this.getErrorMessage("9178", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.parameterSubstitution.size > 0;
 context Class if this.getNearestPackage().runChecks() && ignore() == false && allowTypeWildcardsForGenerics() == false && templateBinding.size == 1 ERROR this.getErrorMessage("9178", {this.getNearestPackage().qualifiedName() + "." + this.name}): templateBinding.parameterSubstitution.select(e|e.actual.size == 0).size == 0;
 
@@ -93,9 +93,9 @@ context Property if isNavigable() && class != null && class.isStereotypeApplied(
 
 context DomainObject if runChecks("DomainObject") && ignore() == false WARNING this.getWarningMessage("9122", {"DomainObject", name}): ownedComment.size  > 0;
 
-context DomainObject if runChecks("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.fqn()}): this.isValidIdentifierName();
-context Property if owner.asNamedElement().runChecks("DomainObject") && owner.isStereotypeApplied("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
-context Operation if owner.asNamedElement().runChecks("DomainObject") && owner.isStereotypeApplied("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context DomainObject if runChecks("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "class", this.getElementNameForMessage()}): this.isValidIdentifierName();
+context Property if owner.asNamedElement().runChecks("DomainObject") && owner.isStereotypeApplied("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().getElementNameForMessage()}): this.isValidIdentifierName();
+context Operation if owner.asNamedElement().runChecks("DomainObject") && owner.isStereotypeApplied("DomainObject") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().getElementNameForMessage()}): this.isValidIdentifierName();
 
 
 // Checks for stereotype JEAFService
@@ -103,18 +103,18 @@ context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9127", {"JEAFService", name}): ownedOperation.forAll( e | e.areAllInputParametersNamed() == true);
 context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9130", {"JEAFService", name}): ownedOperation.forAll( e | e.hasOnlySupportedParamaterTypes());
 context JEAFService if runChecks("JEAFService") && ignore() == false WARNING this.getWarningMessage("9122", {"JEAFService", name}): ownedComment.size  > 0;
-context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "interface", this.fqn()}): this.isValidIdentifierName();
-context Operation if owner.asNamedElement().runChecks("JEAFService") && owner.isStereotypeApplied("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context JEAFService if runChecks("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "interface", this.getElementNameForMessage()}): this.isValidIdentifierName();
+context Operation if owner.asNamedElement().runChecks("JEAFService") && owner.isStereotypeApplied("JEAFService") && ignore() == false ERROR this.getErrorMessage("9170", {name, "operation", owner.asNamedElement().getElementNameForMessage()}): this.isValidIdentifierName();
 context Parameter if owner.owner.asNamedElement().runChecks("JEAFService") && owner.owner.isStereotypeApplied("JEAFService") && owner.ignore() == false ERROR this.getErrorMessage("9177", {name, owner.owner.asNamedElement().name + "." +  owner.asNamedElement().name + "(...)"}): this.type != null; 
 
 
 // Checks for stereotype JEAFEnumeration
 context JEAFEnumeration if runChecks("JEAFEnumeration") && ignore() == false WARNING this.getWarningMessage("9122", {"JEAFEnumeration", name}): ownedComment.size  > 0;
-context JEAFEnumeration if runChecks("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "enumeration", this.fqn()}): this.isValidIdentifierName();
-context Property if owner.asNamedElement().runChecks("JEAFEnumeration") && owner.isStereotypeApplied("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().fqn()}): this.isValidIdentifierName();
+context JEAFEnumeration if runChecks("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "enumeration", this.getElementNameForMessage()}): this.isValidIdentifierName();
+context Property if owner.asNamedElement().runChecks("JEAFEnumeration") && owner.isStereotypeApplied("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "property", owner.asNamedElement().getElementNameForMessage()}): this.isValidIdentifierName();
 
 context EnumerationLiteral if runChecks("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9169", {this.getMissingMandatorySlots(), name, owner.asNamedElement().name}): this.getMissingMandatorySlots().length == 0;
-context EnumerationLiteral if runChecks("JEAFEnumeration") && owner.isStereotypeApplied("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "literal", this.fqn()}): this.isValidIdentifierName();
+context EnumerationLiteral if runChecks("JEAFEnumeration") && owner.isStereotypeApplied("JEAFEnumeration") && ignore() == false ERROR this.getErrorMessage("9170", {name, "literal", this.getElementNameForMessage()}): this.isValidIdentifierName();
 
 
 // Checks for stereotype QueryObject
@@ -128,7 +128,7 @@ context JEAFActivity if runChecks("JEAFActivity") && ignore() == false ERROR thi
 context Ignore if runChecks() WARNING this.getWarningMessage("9152", {this.getElementNameForMessage()}): false;
 
 // Checks for stereotype JEAFDeprecation
-context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false WARNING this.asNamedElement().getWarningMessage("9161", {owner.asNamedElement().fqn() + "." + this.asNamedElement().name}): this.asNamedElement().isDeprecationComplete();
+context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false WARNING this.asNamedElement().getWarningMessage("9161", {this.asNamedElement().getElementNameForMessage()}): this.asNamedElement().isDeprecationComplete();
 
 context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && (this.getSuccessorName() != null && this.getSuccessorName().length > 0) ERROR this.asNamedElement().getErrorMessage("9173", {this.asNamedElement().fqn()}): this.isProperty();
 context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && this.generateBackwardCompatibility() ERROR this.asNamedElement().getErrorMessage("9173", {this.asNamedElement().fqn()}): this.isProperty();
