@@ -22,7 +22,8 @@ import org.openarchitectureware.xtend.ast.Around;
 import org.openarchitectureware.xtend.ast.Extension;
 
 /**
- * Xpand execution context with cached extension resolution (see {@link ExtensionResolutionCache}).
+ * Xpand execution context with cached extension resolution (see {@link ExtensionResolutionCache}) and type lookup
+ * (see {@link CachingTypeSystemImpl}).
  */
 public class CachingXpandExecutionContextImpl extends XpandExecutionContextImpl {
   /**
@@ -45,7 +46,8 @@ public class CachingXpandExecutionContextImpl extends XpandExecutionContextImpl 
   public CachingXpandExecutionContextImpl( Output pOutput, ProtectedRegionResolver pProtectedRegionResolver,
       Map<String, Variable> pGlobalVars, ExceptionHandler pExceptionHandler,
       NullEvaluationHandler pNullEvaluationHandler ) {
-    super(pOutput, pProtectedRegionResolver, pGlobalVars, pExceptionHandler, pNullEvaluationHandler);
+    super(new CachingTypeSystemImpl(), pOutput, pProtectedRegionResolver, pGlobalVars, pExceptionHandler,
+        pNullEvaluationHandler);
     extensionCache = new ExtensionResolutionCache();
   }
 

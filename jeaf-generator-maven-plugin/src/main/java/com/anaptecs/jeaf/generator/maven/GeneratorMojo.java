@@ -4185,13 +4185,15 @@ public class GeneratorMojo extends AbstractMojo {
       // Copy dependent OpenAPI specs
       this.copyOpenAPISpecDependencies();
 
-      // Run validation
-      for (String lNextOpenAPISpec : this.resolveOpenAPISpecs(resourceGenDirectory)) {
+      // Run validation. Specs are validated in parallel, results are logged in the order of the specs.
+      List<String> lOpenAPISpecs = this.resolveOpenAPISpecs(resourceGenDirectory);
+      List<List<String>> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
+      for (int i = 0; i < lOpenAPISpecs.size(); i++) {
+        String lNextOpenAPISpec = lOpenAPISpecs.get(i);
         this.getLog().info("");
         this.getLog().info("Validating OpenAPI specification " + lNextOpenAPISpec);
 
-        // Validate OpenAPI spec.
-        List<String> lErrorMessages = this.validateOpenAPISpec(lNextOpenAPISpec, validateReferencedOpenAPISpecs);
+        List<String> lErrorMessages = lValidationResults.get(i);
 
         if (lErrorMessages.isEmpty() == false) {
           lInvalidSpecs.add(lNextOpenAPISpec);
@@ -4214,6 +4216,37 @@ public class GeneratorMojo extends AbstractMojo {
     if (lInvalidSpecs.isEmpty() == false) {
       throw new MojoExecutionException("Validation of the following OpenAPI specification(s) failed: "
           + Arrays.toString(lInvalidSpecs.toArray()) + "\nPlease check error messages above for more details.");
+    }
+  }
+
+  /**
+   * @return {@link List} Error messages per spec, in the order of the passed specs.
+   */
+  private List<List<String>> validateOpenAPISpecs( List<String> pFileNames ) throws MojoExecutionException {
+    int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), pFileNames.size()));
+    ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
+    try {
+      List<Future<List<String>>> lResults = new ArrayList<>(pFileNames.size());
+      for (String lFileName : pFileNames) {
+        lResults.add(lExecutor.submit(( ) -> this.validateOpenAPISpec(lFileName, validateReferencedOpenAPISpecs)));
+      }
+      List<List<String>> lErrorMessages = new ArrayList<>(pFileNames.size());
+      for (Future<List<String>> lResult : lResults) {
+        try {
+          lErrorMessages.add(lResult.get());
+        }
+        catch (ExecutionException e) {
+          throw new MojoExecutionException("Unexpected error while validating OpenAPI specifications.", e.getCause());
+        }
+      }
+      return lErrorMessages;
+    }
+    catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new MojoExecutionException("Interrupted while validating OpenAPI specifications.", e);
+    }
+    finally {
+      lExecutor.shutdownNow();
     }
   }
 
