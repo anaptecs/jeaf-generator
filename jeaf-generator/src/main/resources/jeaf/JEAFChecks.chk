@@ -125,7 +125,7 @@ context QueryObject if runChecks("QueryObject") && ignore() == false WARNING thi
 context JEAFActivity if runChecks("JEAFActivity") && ignore() == false ERROR this.getWarningMessage("9131", {name, this.getReturnParameterCount().toString()}): this.getReturnParameterCount()  == 1;
 
 // Checks for stereotype Ignore
-context Ignore if runChecks() WARNING this.getWarningMessage("9152", {name}): false;
+context Ignore if runChecks() WARNING this.getWarningMessage("9152", {this.getElementNameForMessage()}): false;
 
 // Checks for stereotype JEAFDeprecation
 context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false WARNING this.asNamedElement().getWarningMessage("9161", {owner.asNamedElement().fqn() + "." + this.asNamedElement().name}): this.asNamedElement().isDeprecationComplete();
