@@ -25,6 +25,7 @@
 	«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH allSpecs»
 	
 	«FOREACH allSpecs AS spec»
+		«info("Processing «OpenAPI3Specification» " + spec.name + " (" + (spec.getNearestPackage().fqn()) + ")")»
 		«EXPAND java::OpenAPI::GenerateOpenAPI FOR spec»
 	«ENDFOREACH»
 	
