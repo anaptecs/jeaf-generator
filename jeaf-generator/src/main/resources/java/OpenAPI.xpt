@@ -25,14 +25,11 @@
 	«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH allSpecs»
 	
 	«FOREACH allSpecs AS spec»
-		«info("Processing «OpenAPI3Specification» " + spec.name + " (" + (spec.getNearestPackage().fqn()) + ")")»
-		«info("Dependent Specs: " + spec.getDependentOpenAPISpecs(true).name)»
 		«EXPAND java::OpenAPI::GenerateOpenAPI FOR spec»
 	«ENDFOREACH»
 	
 	«IF generateDependentOpenAPISpecs()»
 		«FOREACH allSpecs.getDependentOpenAPISpecs(useTransitiveOpenAPIDependencies()) AS dependentSpec»
-			«info("Processing dependent «OpenAPI3Specification» " + dependentSpec.name + " (" + (dependentSpec.getNearestPackage().fqn()) + ")")»
 			«EXPAND java::OpenAPI::GenerateOpenAPI FOR dependentSpec»
 		«ENDFOREACH»
 	«ENDIF»
