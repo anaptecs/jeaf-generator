@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Enumeration;
@@ -127,6 +128,59 @@ public class Naming {
     }
 
     return lQualifiedName;
+  }
+
+  /**
+   * Method returns the name of the passed element as it is used in messages (e.g. results of model checks). In contrast
+   * to {@link #getFullyQualifiedName(NamedElement)}, which returns the name as it is used in generated code (e.g. the
+   * type of a property), the element itself is identified: classes, interfaces, enumerations and packages by their
+   * fully qualified name, all other elements (e.g. properties, parameters, enumeration literals) by the name of their
+   * owner followed by their own name, e.g. <code>com.anaptecs.Customer.name</code>.
+   *
+   * @param pNamedElement Element whose name should be returned. The parameter may be null.
+   * @return {@link String} Name of the element for messages. The method never returns null.
+   */
+  public static String getElementNameForMessage( NamedElement pNamedElement ) {
+    String lName;
+    if (pNamedElement == null) {
+      lName = "unknown";
+    }
+    else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
+        || pNamedElement instanceof Enumeration || pNamedElement instanceof PrimitiveType) {
+      lName = Naming.getFullyQualifiedName(pNamedElement, true);
+    }
+    else if (pNamedElement instanceof Package) {
+      lName = ClassUtil.getPackageName(pNamedElement);
+    }
+    else {
+      // Name of the owner. Association ends that are owned by the association belong to the type of the other end.
+      Element lOwner = pNamedElement.getOwner();
+      if (pNamedElement instanceof Property && lOwner instanceof Association) {
+        Property lOtherEnd = ((Property) pNamedElement).getOtherEnd();
+        if (lOtherEnd != null && lOtherEnd.getType() != null) {
+          lOwner = lOtherEnd.getType();
+        }
+      }
+      String lOwnerName = null;
+      if (lOwner instanceof NamedElement && ((NamedElement) lOwner).getName() != null) {
+        lOwnerName = Naming.getElementNameForMessage((NamedElement) lOwner);
+      }
+      String lElementName = pNamedElement.getName() != null ? pNamedElement.getName() : "";
+      boolean lHasOwnerName =
+          lOwnerName != null && lOwnerName.isEmpty() == false && lOwnerName.equals("unknown") == false;
+      if (lHasOwnerName && lElementName.isEmpty() == false) {
+        lName = lOwnerName + "." + lElementName;
+      }
+      // Unnamed elements (e.g. return parameters) are identified by their owner. Unnamed elements in a package (e.g.
+      // dependencies) get no name, so that messages describe them as unnamed element in the package.
+      else if (lHasOwnerName && lOwner instanceof Package == false) {
+        lName = lOwnerName;
+      }
+      else {
+        lName = lElementName;
+      }
+    }
+    return lName;
   }
 
   public static String getTemplateBindingFQN( Class pTemplateClass ) {

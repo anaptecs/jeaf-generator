@@ -14,6 +14,11 @@ cached String qualifiedName(uml::NamedElement element):
 	element.fqn();
 
 
+// Name of the element itself as it's used in messages (e.g. "com.anaptecs.Customer.name" for a property), see Naming.getElementNameForMessage(...).
+cached String getElementNameForMessage(uml::NamedElement element):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getElementNameForMessage(org.eclipse.uml2.uml.NamedElement);
+
+
 cached String asLocalVariable(uml::NamedElement element):
 	element.asLocalVar();
 
