@@ -80,4 +80,7 @@ cached List[JMM::ValidationGroup] getValidationGroupsForCompatibilityInfo(JMM::C
 	info.clientDependency.target.typeSelect(JMM::ValidationGroup).sortBy(e|e.qualifiedName());
 
 
+cached String getElementNameForMessage(uml::NamedElement element):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getElementNameForMessage(org.eclipse.uml2.uml.NamedElement);
+
 	

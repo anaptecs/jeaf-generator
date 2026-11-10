@@ -46,3 +46,5 @@ private cached boolean isExcludedFromCheck(String pModelElementName, String pChe
 	JAVA com.anaptecs.jeaf.fwk.generator.checks.CheckExclusionCache.isExcluded(java.lang.String, java.lang.String);
 
 
+cached String getModelElementInfo(uml::Element element):
+	" (Model element: " + element.asNamedElement().getElementNameForMessage() + ")"; 
