@@ -47,6 +47,10 @@ cached boolean checkOpenAPIDependencies(Property property):
     else property.getOwnOpenAPISpecification() == property.getReferencedOpenAPISpecification() || property.getOwnOpenAPISpecification().hasDependency(property.getReferencedOpenAPISpecification());
 
 
+cached boolean checkOpenAPIDependenciesForInheritance(Class class):
+	class.getOwnOpenAPISpecification() == class.parents().first().getOwnOpenAPISpecification() || class.getOwnOpenAPISpecification().hasDependency(class.parents().first().getOwnOpenAPISpecification());
+
+
 cached boolean checkForOrphanedOpenAPITypes(Property property):
     if property.type.isBasicOpenAPIType() || property.type == null
     then true
