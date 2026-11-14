@@ -174,6 +174,7 @@
 | **`constraintChangingProperty`** : `String`   `[1..1]`<br>        `@Size: min=5, max=500, versions=V4, V5, V6`<br>        `@Size: min=10, max=20, versions=V7`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 | **`otherPojos`** : [`OtherPojo`](#otherpojo)   `[1..*]`<br>        `@Optional: versions=V4, V5, V6` |  |  |
 | **`thePojo`** : [`OtherPojo`](#otherpojo)   `[1..1]`<br>        `@Optional: versions=V4, V5, V6` |  |  |
+| **`diffProperty`** : `String`   `[1..1]`<br> |  |  |
 
 <br>
 

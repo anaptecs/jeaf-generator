@@ -137,6 +137,7 @@ components:
         - constraintChangingProperty
         - otherPojos
         - thePojo
+        - diffProperty
       properties:
         upcomingMandatoryProperty:
           description: |
@@ -167,6 +168,9 @@ components:
           minItems: 1
         thePojo:
           $ref: '#/components/schemas/OtherPojo'
+        diffProperty:
+          type: string
+          nullable: false
     # com.anaptecs.jeaf.junit.validationgroups.OtherPojo
     OtherPojo:
       type: object

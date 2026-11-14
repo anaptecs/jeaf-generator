@@ -13,6 +13,9 @@ extension functions::Property;
 extension functions::Enumeration;
 extension functions::SoftLink;
 extension functions::SystemProperties;
+extension functions::Checks;
+extension functions::Property;
+
 
 
 // Checks for stereotype JEAFComponent
@@ -132,8 +135,11 @@ context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false
 
 context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && (this.getSuccessorName() != null && this.getSuccessorName().length > 0) ERROR this.asNamedElement().getErrorMessage("9173", {this.asNamedElement().fqn()}): this.isProperty();
 context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && this.generateBackwardCompatibility() ERROR this.asNamedElement().getErrorMessage("9173", {this.asNamedElement().fqn()}): this.isProperty();
-context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && this.generateBackwardCompatibility() && this.getSuccessorName().length > 0 && (this.owner.isPOJO() || this.owner.isServiceObject()) ERROR this.asNamedElement().getErrorMessage("9174", {this.getSuccessorName(),  owner.asNamedElement().fqn(), this.owner.getAllAttributesFromHierarchy().name.toString(", ")}): this.owner.getAllAttributesFromHierarchy().name.contains(this.getSuccessorName());
+context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && this.generateBackwardCompatibility() && this.getSuccessorName().length > 0 && (this.owner.isPOJO() || this.owner.isServiceObject()) ERROR this.asNamedElement().getErrorMessage("9174", {this.getSuccessorName(),  owner.asNamedElement().fqn(), this.owner.getAllAttributesFromHierarchy().name.toString(", ")}): this.owner.getAllAttributesFromHierarchy().select(e|e.name == this.getSuccessorName()).size == 1;
 context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && this.generateBackwardCompatibility() ERROR this.asNamedElement().getErrorMessage("9175", {this.asNamedElement().name,  owner.asNamedElement().fqn()}): this.getSuccessorName() != null && this.getSuccessorName().trim().length > 0;
+context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && this.generateBackwardCompatibility() && this.owner.getAllAttributesFromHierarchy().select(e|e.name == this.getSuccessorName()).size == 1 ERROR this.asNamedElement().getErrorMessage("9198", {this.asProperty().name, this.getSuccessorName()}): this.owner.getAllAttributesFromHierarchy().selectFirst(e|e.name == this.getSuccessorName()).type == this.asProperty().type;
+context JEAFDeprecated if this.asNamedElement().runChecks() && ignore() == false && this.generateBackwardCompatibility() && this.owner.getAllAttributesFromHierarchy().select(e|e.name == this.getSuccessorName()).size == 1 ERROR this.asNamedElement().getErrorMessage("9198", {"Type" + this.asProperty().name, this.getSuccessorName()}): this.owner.getAllAttributesFromHierarchy().selectFirst(e|e.name == this.getSuccessorName()).isMultivalued() == this.asProperty().isMultivalued();
+
 
 context Model if generateNotNullAnnotationForSingleValuedProperties() ERROR this.getErrorMessage("9176", {"NotNull", "notNullAnnotationNameForSingleValuedProperties"}): notNullAnnotationNameForSingleValuedProperties().length > 0;
 context Model if generateNotEmptyAnnotationForMultiValuedProperties() ERROR this.getErrorMessage("9176", {"NotEmpty", "notEmptyAnnotationNameForMultiValuedProperties"}): notNullAnnotationNameForSingleValuedProperties().length > 0;
@@ -143,4 +149,4 @@ context CompatibilityGroup if this.runChecks() && ignore() == false ERROR this.g
 
 context CompatibilityInfo if this.runChecks() && ignore() == false ERROR this.getErrorMessage("9188", {this.name}): this.clientDependency.typeSelect(JMM::FirstIncompatibleVersion).size <= 1;
 
-
+context Association if runNonMandatoryChecks() ERROR this.getErrorMessage("9197", {this.member.last().asNamedElement().getElementNameForMessage(), this.member.first().asNamedElement().getElementNameForMessage()}): this.getCompatibilityGroups().size == 0;
