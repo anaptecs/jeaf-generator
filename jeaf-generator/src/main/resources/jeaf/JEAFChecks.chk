@@ -13,6 +13,7 @@ extension functions::Property;
 extension functions::Enumeration;
 extension functions::SoftLink;
 extension functions::SystemProperties;
+extension functions::Checks;
 
 
 // Checks for stereotype JEAFComponent
@@ -143,4 +144,4 @@ context CompatibilityGroup if this.runChecks() && ignore() == false ERROR this.g
 
 context CompatibilityInfo if this.runChecks() && ignore() == false ERROR this.getErrorMessage("9188", {this.name}): this.clientDependency.typeSelect(JMM::FirstIncompatibleVersion).size <= 1;
 
-
+context Association if runNonMandatoryChecks() ERROR this.getErrorMessage("9197", {this.member.last().asNamedElement().getElementNameForMessage(), this.member.first().asNamedElement().getElementNameForMessage()}): this.getCompatibilityGroups().size == 0;
