@@ -255,6 +255,57 @@ This is the first line of the first comment
 
 <br>
 
+## JSONDefaultChildA
+
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+| Parent Class  | [`JSONDefaultParent`](#jsondefaultparent) |
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+
+<br>
+
+## JSONDefaultChildB
+
+
+<br>
+
+| Type Details | Details         | 
+|--------------|-----------------|
+| Parent Class  | [`JSONDefaultParent`](#jsondefaultparent) |
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+
+<br>
+
+## JSONDefaultParent
+
+
+
+<br>
+
+**Properties / Associations**
+
+| Name |  Legacy Name | Description |
+|------| ----------------------|-------------|
+
+<br>
+
 ## MutableChildPOJO
 
 

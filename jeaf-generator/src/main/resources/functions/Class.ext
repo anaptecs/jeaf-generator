@@ -1,7 +1,10 @@
 extension functions::TypeChecks;
 extension functions::Property;
 extension functions::POJO;
+extension functions::NamedElement;
 extension functions::ServiceObject;
+extension functions::SystemProperties;
+
 extension java::GeneratorCommons;
 extension java::OpenAPIFunctions;
 
@@ -97,3 +100,58 @@ private String getDiscriminatorValueInternal(JMM::OpenAPITypeMapping class):
     if class.discriminatorValue.length > 0
     then class.discriminatorValue
     else class.name;
+
+
+cached String getJacksonDefaultImpl(uml::Class class):
+	if class.getJSONDefaultImplClass() != null
+	then class.getJSONDefaultImplClass().qualifiedName()
+	else 
+		if class.isPOJO()
+		then
+			class.asPOJO().getJacksonDefaultImplForPOJO()
+		else
+			if class.isServiceObject()
+			then 
+				class.asServiceObject().getJacksonDefaultImplForServiceObject()
+			else "";
+
+
+private String getJacksonDefaultImplForPOJO(JMM::POJO class):
+	if class.ignoreUnknownSubtypesForPOJO()
+	then "java.lang.Void"
+	else "";
+
+
+private String getJacksonDefaultImplForServiceObject(JMM::ServiceObject class):
+	if class.ignoreUnknownSubtypesForServiceObject()
+	then "java.lang.Void"
+	else "";
+
+
+private cached boolean ignoreUnknownSubtypesForPOJO(JMM::POJO class):
+	if class.ignoreUnknownSubtypes.name == "DEFAULT"
+	then ignoreUnknownSubtypesDefault()
+	else 
+		if class.ignoreUnknownSubtypes.name == "TRUE"
+		then true
+		else false;
+
+
+private cached boolean ignoreUnknownSubtypesForServiceObject(JMM::ServiceObject class):
+	if class.ignoreUnknownSubtypes.name == "DEFAULT"
+	then ignoreUnknownSubtypesDefault()
+	else 
+		if class.ignoreUnknownSubtypes.name == "TRUE"
+		then true
+		else false;
+
+
+private cached uml::Class getJSONDefaultImplClass(uml::Class class):
+	if class.isStereotypeApplied("JSONDefaultImpl")
+	then class
+	else class.getAllSubclasses().add(class).typeSelect(JMM::JSONDefaultImpl).first();
+
+
+private cached List[uml::Class] getAllSubclasses(uml::Type class) :
+	JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getAllSubclasses(org.eclipse.uml2.uml.Type);
+

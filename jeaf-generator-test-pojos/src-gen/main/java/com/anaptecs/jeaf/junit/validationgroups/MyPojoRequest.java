@@ -86,6 +86,11 @@ public class MyPojoRequest {
   public static final String THEPOJO = "thePojo";
 
   /**
+   * Constant for the name of attribute "diffProperty".
+   */
+  public static final String DIFFPROPERTY = "diffProperty";
+
+  /**
    * <p/>
    * <b>Breaking Change</b> (<b>since:</b> , <b>active with:</b> 7.0, <b>go live date:</b> 2026-12-24, <b>end of
    * compatibility period:</b> 2026-09-13): Property will become mandatory in the future
@@ -137,6 +142,9 @@ public class MyPojoRequest {
   @NotNull(groups = { V7.class })
   private OtherPojo thePojo;
 
+  @NotNull
+  private String diffProperty;
+
   /**
    * Initialize object using the passed builder.
    *
@@ -153,6 +161,7 @@ public class MyPojoRequest {
     constraintChangingProperty = pBuilder.constraintChangingProperty;
     otherPojos = (pBuilder.otherPojos == null) ? new HashSet<>() : pBuilder.otherPojos;
     thePojo = pBuilder.thePojo;
+    diffProperty = pBuilder.diffProperty;
   }
 
   /**
@@ -180,10 +189,13 @@ public class MyPojoRequest {
    *
    * @param pThePojo Value to which {@link #thePojo} should be set.
    *
+   * @param pDiffProperty Value to which {@link #diffProperty} should be set.
+   *
    * @return {@link MyPojoRequest}
    */
   public static MyPojoRequest of( String pUpcomingMandatoryProperty, String pPropertyWithNewConstraints,
-      String pUntouchedProperty, String pConstraintChangingProperty, Set<OtherPojo> pOtherPojos, OtherPojo pThePojo ) {
+      String pUntouchedProperty, String pConstraintChangingProperty, Set<OtherPojo> pOtherPojos, OtherPojo pThePojo,
+      String pDiffProperty ) {
     var lBuilder = MyPojoRequest.builder();
     lBuilder.setUpcomingMandatoryProperty(pUpcomingMandatoryProperty);
     lBuilder.setPropertyWithNewConstraints(pPropertyWithNewConstraints);
@@ -191,6 +203,7 @@ public class MyPojoRequest {
     lBuilder.setConstraintChangingProperty(pConstraintChangingProperty);
     lBuilder.setOtherPojos(pOtherPojos);
     lBuilder.setThePojo(pThePojo);
+    lBuilder.setDiffProperty(pDiffProperty);
     return lBuilder.build();
   }
 
@@ -241,6 +254,8 @@ public class MyPojoRequest {
 
     private OtherPojo thePojo;
 
+    private String diffProperty;
+
     /**
      * Use {@link MyPojoRequest#builder()} instead of private constructor to create new builder.
      */
@@ -260,6 +275,7 @@ public class MyPojoRequest {
         this.setConstraintChangingProperty(pObject.constraintChangingProperty);
         this.setOtherPojos(pObject.otherPojos);
         this.setThePojo(pObject.thePojo);
+        this.setDiffProperty(pObject.diffProperty);
       }
     }
 
@@ -392,6 +408,19 @@ public class MyPojoRequest {
     @JsonSetter(nulls = Nulls.SKIP)
     public Builder setThePojo( OtherPojo pThePojo ) {
       thePojo = pThePojo;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #diffProperty}.<br/>
+     *
+     * @param pDiffProperty Value to which {@link #diffProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setDiffProperty( String pDiffProperty ) {
+      // Assign value to attribute
+      diffProperty = pDiffProperty;
       return this;
     }
 
@@ -639,6 +668,25 @@ public class MyPojoRequest {
     thePojo = null;
   }
 
+  /**
+   * Method returns attribute {@link #diffProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #diffProperty} is set.
+   */
+  public String getDiffProperty( ) {
+    return diffProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #diffProperty}.<br/>
+   *
+   * @param pDiffProperty Value to which {@link #diffProperty} should be set.
+   */
+  public void setDiffProperty( String pDiffProperty ) {
+    // Assign value to attribute
+    diffProperty = pDiffProperty;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
@@ -650,6 +698,7 @@ public class MyPojoRequest {
     lResult = lPrime * lResult + Objects.hashCode(constraintChangingProperty);
     lResult = lPrime * lResult + Objects.hashCode(otherPojos);
     lResult = lPrime * lResult + Objects.hashCode(thePojo);
+    lResult = lPrime * lResult + Objects.hashCode(diffProperty);
     return lResult;
   }
 
@@ -672,7 +721,8 @@ public class MyPojoRequest {
           && Objects.equals(formerMandatoryRequestProperty, lOther.formerMandatoryRequestProperty)
           && Objects.equals(untouchedProperty, lOther.untouchedProperty)
           && Objects.equals(constraintChangingProperty, lOther.constraintChangingProperty)
-          && Objects.equals(otherPojos, lOther.otherPojos) && Objects.equals(thePojo, lOther.thePojo);
+          && Objects.equals(otherPojos, lOther.otherPojos) && Objects.equals(thePojo, lOther.thePojo)
+          && Objects.equals(diffProperty, lOther.diffProperty);
     }
     return lEquals;
   }
@@ -734,6 +784,10 @@ public class MyPojoRequest {
       lBuilder.append(" null");
       lBuilder.append(System.lineSeparator());
     }
+    lBuilder.append(pIndent);
+    lBuilder.append("diffProperty: ");
+    lBuilder.append(diffProperty);
+    lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
 
