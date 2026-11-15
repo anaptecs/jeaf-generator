@@ -169,6 +169,9 @@ InputSubclass |   |  |
 IntegerCode |   |  |
 IntegerCodeType |   |  |
 InventoryType |   |  |
+JSONDefaultChildA |   |  |
+JSONDefaultChildB |   |  |
+JSONDefaultParent |   |  |
 JustAType |   |  |
 Leg |   |  |
 LinkObject |   |  |
@@ -542,6 +545,9 @@ ImmutableAssociationPOJO |   |  |
 ImmutableChildPOJO |   |  |
 ImmutablePOJO |   |  |
 ImmutablePOJOParent |   |  |
+JSONDefaultChildA |   |  |
+JSONDefaultChildB |   |  |
+JSONDefaultParent |   |  |
 MasterClass |   |  |
 MutableChildPOJO |   |  |
 MyType |  MyFormerName |  |

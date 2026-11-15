@@ -1,0 +1,155 @@
+/*
+ * anaptecs GmbH, Ricarda-Huch-Str. 71, 72760 Reutlingen, Germany
+ *
+ * Copyright 2004 - 2019. All rights reserved.
+ */
+package com.anaptecs.jeaf.junit.pojo;
+
+import javax.annotation.Generated;
+import javax.validation.ConstraintViolationException;
+
+import com.anaptecs.jeaf.tools.api.validation.ValidationTools;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+
+@Generated("com.anaptecs.jeaf.generator.JEAFGenerator")
+@SuppressWarnings("JEAF_SUPPRESS_WARNINGS")
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "objectType",
+    defaultImpl = JSONDefaultChildB.class,
+    visible = true)
+@JsonDeserialize(builder = JSONDefaultChildB.JSONDefaultChildBBuilderImpl.class)
+public class JSONDefaultChildB extends JSONDefaultParent {
+  /**
+   * Initialize object using the passed builder.
+   *
+   * @param pBuilder Builder that should be used to initialize this object. The parameter must not be null.
+   */
+  protected JSONDefaultChildB( JSONDefaultChildBBuilder<?, ?> pBuilder ) {
+    // Call constructor of super class.
+    super(pBuilder);
+  }
+
+  /**
+   * Method returns a new builder.
+   *
+   * @return {@link JSONDefaultChildBBuilder} New builder that can be used to create new JSONDefaultChildB objects.
+   */
+  public static JSONDefaultChildBBuilder<?, ?> builder( ) {
+    return new JSONDefaultChildBBuilderImpl();
+  }
+
+  /**
+   * Convenience method to create new instance of class JSONDefaultChildB.
+   *
+   *
+   * @return {@link JSONDefaultChildB}
+   */
+  public static JSONDefaultChildB of( ) {
+    var lBuilder = JSONDefaultChildB.builder();
+    return lBuilder.build();
+  }
+
+  /**
+   * Class implements builder to create a new instance of class <code>JSONDefaultChildB</code>.
+   */
+  @JsonPOJOBuilder(withPrefix = "set")
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public static abstract class JSONDefaultChildBBuilder<T extends JSONDefaultChildB, B extends JSONDefaultChildBBuilder<T, B>>
+      extends JSONDefaultParentBuilder<T, B> {
+    /**
+     * Use {@link JSONDefaultChildB#builder()} instead of private constructor to create new builder.
+     */
+    protected JSONDefaultChildBBuilder( ) {
+      super();
+    }
+
+    /**
+     * Use {@link JSONDefaultChildB#builder(JSONDefaultChildB)} instead of private constructor to create new builder.
+     */
+    protected JSONDefaultChildBBuilder( JSONDefaultChildB pObject ) {
+      super(pObject);
+    }
+
+    /**
+     * Method creates a new instance of class JSONDefaultChildB. The object will be initialized with the values of the
+     * builder.
+     *
+     * @return JSONDefaultChildB Created object. The method never returns null.
+     */
+    public abstract T build( );
+
+    /**
+     * Method creates a new validated instance of class JSONDefaultChildB. The object will be initialized with the
+     * values of the builder and validated afterwards.
+     *
+     * @return JSONDefaultChildB Created and validated object. The method never returns null.
+     * @throws ConstraintViolationException in case that one or more validations for the created object failed.
+     */
+    public JSONDefaultChildB buildValidated( ) throws ConstraintViolationException {
+      JSONDefaultChildB lObject = this.build();
+      ValidationTools.getValidationTools().enforceObjectValidation(lObject);
+      return lObject;
+    }
+  }
+
+  static final class JSONDefaultChildBBuilderImpl
+      extends JSONDefaultChildBBuilder<JSONDefaultChildB, JSONDefaultChildBBuilderImpl> {
+    protected JSONDefaultChildBBuilderImpl( ) {
+    }
+
+    protected JSONDefaultChildBBuilderImpl( JSONDefaultChildB pObject ) {
+      super(pObject);
+    }
+
+    @Override
+    protected JSONDefaultChildBBuilderImpl self( ) {
+      return this;
+    }
+
+    @Override
+    public JSONDefaultChildB build( ) {
+      return new JSONDefaultChildB(this);
+    }
+  }
+
+  @Override
+  public int hashCode( ) {
+    return super.hashCode();
+  }
+
+  @Override
+  public boolean equals( Object pObject ) {
+    boolean lEquals;
+    if (this == pObject) {
+      lEquals = true;
+    }
+    else if (pObject == null) {
+      lEquals = false;
+    }
+    else if (!super.equals(pObject)) {
+      lEquals = false;
+    }
+    else if (this.getClass() != pObject.getClass()) {
+      lEquals = false;
+    }
+    else {
+      lEquals = true;
+    }
+    return lEquals;
+  }
+
+  /**
+   * Method creates a new builder and initializes it with the data of this object.
+   *
+   * @return {@link JSONDefaultChildBBuilder} New builder that can be used to create new JSONDefaultChildB objects. The
+   * method never returns null.
+   */
+  public JSONDefaultChildBBuilder<?, ?> toBuilder( ) {
+    return new JSONDefaultChildBBuilderImpl(this);
+  }
+}

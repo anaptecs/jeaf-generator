@@ -1499,7 +1499,7 @@ public class ClassUtil {
   }
 
   /**
-   * Method returns all direct subclasses of the passed class.
+   * Method returns all subclasses of the passed class.
    * 
    * @param pBaseClass Class whose subclasses should be returned. The parameter must not be null.
    * @return {@link List} All subclasses of the passed class. The method never returns null.

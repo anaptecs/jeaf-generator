@@ -14,6 +14,7 @@
 «EXTENSION functions::Builder»
 «EXTENSION functions::Jackson»
 «EXTENSION jeaf::RESTFunctions»
+«EXTENSION functions::NamedElement»
 
 «IMPORT uml»
 «IMPORT JMM»
@@ -30,11 +31,13 @@
 		@«getJsonIgnorePropertiesFQN()»(value = "«this.getDescriminatorPropertyName()»")
 		  «ENDIF»
 		@«getJsonTypeInfoFQN()»(use = «getJsonTypeInfoFQN()».Id.NAME, include = «getJsonTypeInfoFQN()».As.PROPERTY, property = "«this.getDescriminatorPropertyName()»" «IF defaultImplClass.length > 0», defaultImpl=«defaultImplClass».class«ENDIF», visible = true)
-		«IF this.suppressSubtypesMapping() == false»
+		  «IF this.suppressSubtypesMapping() == false»
 		@«getJsonSubTypesFQN()»({
 		  «EXPAND SubtypesAnnotation -»
 		 })
-		 «ENDIF»
+		  «ENDIF»
+		«ELSEIF this.isStereotypeApplied("JSONDefaultImpl") && this.getTopLevelClass().getJacksonDefaultImpl() != this.qualifiedName()»
+			@«getJsonTypeInfoFQN()»(use = «getJsonTypeInfoFQN()».Id.NAME, include = «getJsonTypeInfoFQN()».As.PROPERTY, property = "«this.getDescriminatorPropertyName()»", defaultImpl=«this.name».class, visible = true)
 		«ENDIF»
 		«IF needsToImplementIdentifiable() == true»
 			@«getJsonIdentityInfoFQN()»(property = "objectID", generator = «getObjectIdGeneratorsFQN()».PropertyGenerator.class)
