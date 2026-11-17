@@ -1078,6 +1078,15 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean validateReferencedOpenAPISpecs;
 
   /**
+   * Regular expression (see {@link java.util.regex.Pattern}) to exclude files from OpenAPI validation. All YAML files
+   * in <code>resourceGenDirectory</code> are validated as OpenAPI specifications. If other YAML files are generated
+   * into the same directory (e.g. by custom templates) they can be excluded by this parameter. The expression has to
+   * match the complete file name (without directory), e.g. <code>.*-nam\.ya?ml</code>. By default no file is excluded.
+   */
+  @Parameter(required = false)
+  private String openAPIValidationExcludePattern;
+
+  /**
    * Parameter defines which OpenAPI version is used when generating OpenAPI specifications. As there are breaking
    * changes between OpenAPI 3.0 and 3.1 unfortunately it is required to define that as part of the Maven build.
    * Depending on the OpenAPI version different checks on the model have to be applied. <br>
@@ -2682,6 +2691,9 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
         if (validateOpenAPISpec) {
           lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
+          if (openAPIValidationExcludePattern != null && openAPIValidationExcludePattern.isEmpty() == false) {
+            lLog.info("OpenAPI Validation exclude pattern:               " + openAPIValidationExcludePattern);
+          }
         }
         lLog.info("Disable OpenAPI Dependency Checks:                " + disableOpenAPIDependencyChecks);
         lLog.info("OpenAPI spec reference default location:          " + openAPISpecReferenceDefaultLocation);
@@ -4186,7 +4198,8 @@ public class GeneratorMojo extends AbstractMojo {
       this.copyOpenAPISpecDependencies();
 
       // Run validation. Specs are validated in parallel, results are logged in the order of the specs.
-      List<String> lOpenAPISpecs = this.resolveOpenAPISpecs(resourceGenDirectory);
+      List<String> lOpenAPISpecs = new OpenAPIValidationFileFilter(openAPIValidationExcludePattern, this.getLog())
+          .filter(this.resolveOpenAPISpecs(resourceGenDirectory));
       List<List<String>> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
       for (int i = 0; i < lOpenAPISpecs.size(); i++) {
         String lNextOpenAPISpec = lOpenAPISpecs.get(i);
@@ -4261,6 +4274,9 @@ public class GeneratorMojo extends AbstractMojo {
     List<String> lErrorMessages;
     if (lResult == null) {
       lErrorMessages = List.of("Parsing of OpenAPI Specification in file " + pFileName + " failed for unknown reason.");
+    }
+    else if (lResult.getMessages() == null) {
+      lErrorMessages = Collections.emptyList();
     }
     else {
       lErrorMessages = lResult.getMessages();
