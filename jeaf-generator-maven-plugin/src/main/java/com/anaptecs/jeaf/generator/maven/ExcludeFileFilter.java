@@ -17,7 +17,7 @@ import org.apache.maven.plugin.logging.Log;
 /**
  * Class filters files that should not be validated as OpenAPI specification based on a regular expression.
  */
-class FileFilter {
+class ExcludeFileFilter {
   /**
    * Compiled exclude pattern. Null if no file should be excluded.
    */
@@ -36,7 +36,7 @@ class FileFilter {
    * @param pLog Log to trace excluded files. The parameter must not be null.
    * @throws MojoFailureException if the passed pattern is not a valid regular expression.
    */
-  FileFilter( String pExcludePattern, Log pLog ) throws MojoFailureException {
+  ExcludeFileFilter( String pExcludePattern, Log pLog ) throws MojoFailureException {
     log = pLog;
     if (pExcludePattern == null || pExcludePattern.isEmpty()) {
       excludePattern = null;

@@ -1089,7 +1089,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Filter based on <code>openAPIValidationExcludePattern</code>, created when the configuration is checked.
    */
-  private FileFilter openAPIValidationFilter;
+  private ExcludeFileFilter openAPIValidationFilter;
 
   /**
    * Parameter defines which OpenAPI version is used when generating OpenAPI specifications. As there are breaking
@@ -2254,7 +2254,7 @@ public class GeneratorMojo extends AbstractMojo {
           "Configuration parameter 'mavenProjectUMLPackage' is not defined even though it is required.");
     }
     // Invalid exclude pattern is reported before generation starts, even if OpenAPI validation is disabled.
-    openAPIValidationFilter = new FileFilter(openAPIValidationExcludePattern, this.getLog());
+    openAPIValidationFilter = new ExcludeFileFilter(openAPIValidationExcludePattern, this.getLog());
   }
 
   private void resolveArtifactVersions( ) {

@@ -16,7 +16,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.SystemStreamLog;
 import org.junit.jupiter.api.Test;
 
-public class FileFilterTest {
+public class ExcludeFileFilterTest {
   private static final String DIR = "target" + File.separator + "res-gen" + File.separator;
 
   private static final List<String> FILES =
@@ -24,26 +24,26 @@ public class FileFilterTest {
 
   @Test
   void testNoPatternKeepsAllFiles( ) throws MojoFailureException {
-    assertEquals(FILES, new FileFilter(null, new SystemStreamLog()).filter(FILES));
-    assertEquals(FILES, new FileFilter("", new SystemStreamLog()).filter(FILES));
+    assertEquals(FILES, new ExcludeFileFilter(null, new SystemStreamLog()).filter(FILES));
+    assertEquals(FILES, new ExcludeFileFilter("", new SystemStreamLog()).filter(FILES));
   }
 
   @Test
   void testPatternExcludesMatchingFileNames( ) throws MojoFailureException {
-    FileFilter lFilter = new FileFilter(".*-nam\\.ya?ml", new SystemStreamLog());
+    ExcludeFileFilter lFilter = new ExcludeFileFilter(".*-nam\\.ya?ml", new SystemStreamLog());
     assertEquals(List.of(DIR + "product-api.yaml"), lFilter.filter(FILES));
   }
 
   @Test
   void testPatternIsMatchedAgainstFileNameOnly( ) throws MojoFailureException {
     // Pattern matches the directory part of the path but not the file name itself.
-    assertEquals(FILES, new FileFilter("target.*", new SystemStreamLog()).filter(FILES));
+    assertEquals(FILES, new ExcludeFileFilter("target.*", new SystemStreamLog()).filter(FILES));
   }
 
   @Test
   void testInvalidPattern( ) {
     MojoFailureException lException = assertThrows(MojoFailureException.class,
-        ( ) -> new FileFilter("([", new SystemStreamLog()));
+        ( ) -> new ExcludeFileFilter("([", new SystemStreamLog()));
     assertTrue(lException.getMessage().contains("openAPIValidationExcludePattern"));
   }
 }
