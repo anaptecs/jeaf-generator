@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
 
 /**
@@ -34,9 +34,9 @@ class FileFilter {
    * @param pExcludePattern Regular expression that has to match the complete file name (without directory). If null or
    * empty no file will be excluded.
    * @param pLog Log to trace excluded files. The parameter must not be null.
-   * @throws MojoExecutionException if the passed pattern is not a valid regular expression.
+   * @throws MojoFailureException if the passed pattern is not a valid regular expression.
    */
-  FileFilter( String pExcludePattern, Log pLog ) throws MojoExecutionException {
+  FileFilter( String pExcludePattern, Log pLog ) throws MojoFailureException {
     log = pLog;
     if (pExcludePattern == null || pExcludePattern.isEmpty()) {
       excludePattern = null;
@@ -46,7 +46,7 @@ class FileFilter {
         excludePattern = Pattern.compile(pExcludePattern);
       }
       catch (PatternSyntaxException e) {
-        throw new MojoExecutionException("Invalid regular expression '" + pExcludePattern
+        throw new MojoFailureException("Invalid regular expression '" + pExcludePattern
             + "' for parameter openAPIValidationExcludePattern: " + e.getMessage(), e);
       }
     }
@@ -65,11 +65,16 @@ class FileFilter {
     List<String> lResult = new ArrayList<>(pFiles.size());
     for (String lNextFile : pFiles) {
       if (excludePattern.matcher(new File(lNextFile).getName()).matches()) {
-        log.debug("Excluding file from OpenAPI validation: " + lNextFile);
+        log.info("Excluding file from OpenAPI validation: " + lNextFile);
       }
       else {
         lResult.add(lNextFile);
       }
+    }
+    // A too broad pattern would silently disable OpenAPI validation.
+    if (lResult.isEmpty() && pFiles.isEmpty() == false) {
+      log.warn("All OpenAPI specifications are excluded from validation by pattern '" + excludePattern.pattern()
+          + "' (parameter openAPIValidationExcludePattern).");
     }
     return lResult;
   }

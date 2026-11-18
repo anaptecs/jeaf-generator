@@ -1087,6 +1087,11 @@ public class GeneratorMojo extends AbstractMojo {
   private String openAPIValidationExcludePattern;
 
   /**
+   * Filter based on <code>openAPIValidationExcludePattern</code>, created when the configuration is checked.
+   */
+  private FileFilter openAPIValidationFilter;
+
+  /**
    * Parameter defines which OpenAPI version is used when generating OpenAPI specifications. As there are breaking
    * changes between OpenAPI 3.0 and 3.1 unfortunately it is required to define that as part of the Maven build.
    * Depending on the OpenAPI version different checks on the model have to be applied. <br>
@@ -2248,6 +2253,8 @@ public class GeneratorMojo extends AbstractMojo {
       throw new MojoFailureException(
           "Configuration parameter 'mavenProjectUMLPackage' is not defined even though it is required.");
     }
+    // Invalid exclude pattern is reported before generation starts, even if OpenAPI validation is disabled.
+    openAPIValidationFilter = new FileFilter(openAPIValidationExcludePattern, this.getLog());
   }
 
   private void resolveArtifactVersions( ) {
@@ -4199,24 +4206,27 @@ public class GeneratorMojo extends AbstractMojo {
       this.copyOpenAPISpecDependencies();
 
       // Run validation. Specs are validated in parallel, results are logged in the order of the specs.
-      List<String> lOpenAPISpecs = new FileFilter(openAPIValidationExcludePattern, this.getLog())
-          .filter(this.resolveOpenAPISpecs(resourceGenDirectory));
-      List<List<String>> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
+      List<String> lOpenAPISpecs = openAPIValidationFilter.filter(this.resolveOpenAPISpecs(resourceGenDirectory));
+      List<OpenAPIValidationResult> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
       for (int i = 0; i < lOpenAPISpecs.size(); i++) {
         String lNextOpenAPISpec = lOpenAPISpecs.get(i);
         this.getLog().info("");
         this.getLog().info("Validating OpenAPI specification " + lNextOpenAPISpec);
 
-        List<String> lErrorMessages = lValidationResults.get(i);
+        OpenAPIValidationResult lValidationResult = lValidationResults.get(i);
+        List<String> lErrorMessages = lValidationResult.errors();
 
         if (lErrorMessages.isEmpty() == false) {
           lInvalidSpecs.add(lNextOpenAPISpec);
         }
-        else {
+        else if (lValidationResult.warnings().isEmpty()) {
           this.getLog().info("No issues detected.");
         }
 
-        // Trace error message.
+        // Trace warnings and error messages.
+        for (String lNextMessage : lValidationResult.warnings()) {
+          this.getLog().warn(lNextMessage);
+        }
         for (String lNextMessage : lErrorMessages) {
           this.getLog().error(lNextMessage);
         }
@@ -4234,18 +4244,24 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * @return {@link List} Error messages per spec, in the order of the passed specs.
+   * Warnings and error messages of the validation of one OpenAPI specification.
    */
-  private List<List<String>> validateOpenAPISpecs(List<String> pFileNames) throws MojoExecutionException {
+  private record OpenAPIValidationResult(List<String> errors, List<String> warnings) {
+  }
+
+  /**
+   * @return {@link List} Validation result per spec, in the order of the passed specs.
+   */
+  private List<OpenAPIValidationResult> validateOpenAPISpecs(List<String> pFileNames) throws MojoExecutionException {
     int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), pFileNames.size()));
     ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
     try {
-      List<Future<List<String>>> lResults = new ArrayList<>(pFileNames.size());
+      List<Future<OpenAPIValidationResult>> lResults = new ArrayList<>(pFileNames.size());
       for (String lFileName : pFileNames) {
         lResults.add(lExecutor.submit(( ) -> this.validateOpenAPISpec(lFileName, validateReferencedOpenAPISpecs)));
       }
-      List<List<String>> lErrorMessages = new ArrayList<>(pFileNames.size());
-      for (Future<List<String>> lResult : lResults) {
+      List<OpenAPIValidationResult> lErrorMessages = new ArrayList<>(pFileNames.size());
+      for (Future<OpenAPIValidationResult> lResult : lResults) {
         try {
           lErrorMessages.add(lResult.get());
         }
@@ -4264,7 +4280,7 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-  private List<String> validateOpenAPISpec(String pFileName, boolean pValidateReferencedOpenAPISpecs) {
+  private OpenAPIValidationResult validateOpenAPISpec(String pFileName, boolean pValidateReferencedOpenAPISpecs) {
     ParseOptions lOptions = new ParseOptions();
     lOptions.setResolve(pValidateReferencedOpenAPISpecs);
 
@@ -4273,16 +4289,23 @@ public class GeneratorMojo extends AbstractMojo {
         new OpenAPIParser().readLocation(pFileName.replaceAll("\\\\", "/"), (List<AuthorizationValue>) null, lOptions);
 
     List<String> lErrorMessages;
+    List<String> lWarnings;
     if (lResult == null) {
       lErrorMessages = List.of("Parsing of OpenAPI Specification in file " + pFileName + " failed for unknown reason.");
-    }
-    else if (lResult.getMessages() == null) {
-      lErrorMessages = Collections.emptyList();
+      lWarnings = Collections.emptyList();
     }
     else {
-      lErrorMessages = lResult.getMessages();
+      lErrorMessages = lResult.getMessages() != null ? lResult.getMessages() : Collections.emptyList();
+      // E.g. empty files or YAML files that are no OpenAPI specification. Only a warning to not break existing builds.
+      if (lResult.getOpenAPI() == null && lErrorMessages.isEmpty()) {
+        lWarnings = List.of("File " + pFileName
+            + " does not contain an OpenAPI specification. Please consider to exclude it using parameter 'openAPIValidationExcludePattern'.");
+      }
+      else {
+        lWarnings = Collections.emptyList();
+      }
     }
-    return lErrorMessages;
+    return new OpenAPIValidationResult(lErrorMessages, lWarnings);
   }
 
   private List<String> resolveOpenAPISpecs(String pDirectory) throws IOException {
