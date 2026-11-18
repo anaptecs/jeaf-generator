@@ -2694,8 +2694,9 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
         if (validateOpenAPISpec) {
           lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
-          if (openAPIValidationExcludePattern != null && openAPIValidationExcludePattern.isEmpty() == false) {
-            lLog.info("OpenAPI Validation exclude pattern:               " + openAPIValidationExcludePattern);
+          if (openAPIValidationFilter.getExcludePattern() != null) {
+            lLog.info(
+                "OpenAPI Validation exclude pattern:               " + openAPIValidationFilter.getExcludePattern());
           }
         }
         lLog.info("Disable OpenAPI Dependency Checks:                " + disableOpenAPIDependencyChecks);

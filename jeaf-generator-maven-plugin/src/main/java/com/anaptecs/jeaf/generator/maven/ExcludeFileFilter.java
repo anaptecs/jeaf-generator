@@ -1,5 +1,5 @@
 /**
- * Copyright 2004 - 2019 anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
+ * Copyright 2004 - 2026 anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
  *
  * All rights reserved.
  */
@@ -32,13 +32,13 @@ class ExcludeFileFilter {
    * Initialize object.
    *
    * @param pExcludePattern Regular expression that has to match the complete file name (without directory). If null or
-   * empty no file will be excluded.
+   * blank no file will be excluded.
    * @param pLog Log to trace excluded files. The parameter must not be null.
    * @throws MojoFailureException if the passed pattern is not a valid regular expression.
    */
   ExcludeFileFilter( String pExcludePattern, Log pLog ) throws MojoFailureException {
     log = pLog;
-    if (pExcludePattern == null || pExcludePattern.isEmpty()) {
+    if (pExcludePattern == null || pExcludePattern.isBlank()) {
       excludePattern = null;
     }
     else {
@@ -50,6 +50,13 @@ class ExcludeFileFilter {
             + "' for parameter openAPIValidationExcludePattern: " + e.getMessage(), e);
       }
     }
+  }
+
+  /**
+   * @return {@link String} Exclude pattern or null if no file is excluded.
+   */
+  String getExcludePattern( ) {
+    return excludePattern != null ? excludePattern.pattern() : null;
   }
 
   /**

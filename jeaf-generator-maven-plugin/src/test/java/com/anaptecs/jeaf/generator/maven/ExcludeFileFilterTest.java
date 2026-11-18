@@ -1,11 +1,12 @@
 /**
- * Copyright 2004 - 2019 anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
+ * Copyright 2004 - 2026 anaptecs GmbH, Burgstr. 96, 72764 Reutlingen, Germany
  *
  * All rights reserved.
  */
 package com.anaptecs.jeaf.generator.maven;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -25,14 +26,18 @@ public class ExcludeFileFilterTest {
 
   @Test
   void testNoPatternKeepsAllFiles( ) throws MojoFailureException {
-    assertEquals(FILES, new ExcludeFileFilter(null, new SystemStreamLog()).filter(FILES));
-    assertEquals(FILES, new ExcludeFileFilter("", new SystemStreamLog()).filter(FILES));
+    for (String lPattern : new String[] { null, "", "   " }) {
+      ExcludeFileFilter lFilter = new ExcludeFileFilter(lPattern, new SystemStreamLog());
+      assertEquals(FILES, lFilter.filter(FILES));
+      assertNull(lFilter.getExcludePattern());
+    }
   }
 
   @Test
   void testPatternExcludesMatchingFileNames( ) throws MojoFailureException {
     ExcludeFileFilter lFilter = new ExcludeFileFilter(".*-nam\\.ya?ml", new SystemStreamLog());
     assertEquals(List.of(DIR + "product-api.yaml"), lFilter.filter(FILES));
+    assertEquals(".*-nam\\.ya?ml", lFilter.getExcludePattern());
   }
 
   @Test
