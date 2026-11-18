@@ -68,7 +68,7 @@ context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && 
 context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false ERROR this.getErrorMessage("9119", {name}): this.superClass.size == 0;
 
 context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false WARNING this.getWarningMessage("9122", {"OpenAPIDataType", name}): ownedComment.size  > 0;
-context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false WARNING this.getWarningMessage("9159", {name}): attribute.select(e|e.isReadOnly()) == 0;
+context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false WARNING this.getWarningMessage("9159", {name}): attribute.select(e|e.isReadOnly() == false).size == 0;
 
 
 // Checks for stereotype PathParam
