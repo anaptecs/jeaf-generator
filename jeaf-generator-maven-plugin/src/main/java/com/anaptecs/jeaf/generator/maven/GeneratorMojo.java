@@ -68,10 +68,6 @@ import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 import de.plushnikov.doctorjim.ImportProcessor;
-import io.swagger.parser.OpenAPIParser;
-import io.swagger.v3.parser.core.models.AuthorizationValue;
-import io.swagger.v3.parser.core.models.ParseOptions;
-import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
@@ -1076,6 +1072,20 @@ public class GeneratorMojo extends AbstractMojo {
    */
   @Parameter(required = false, defaultValue = "true")
   private Boolean validateReferencedOpenAPISpecs;
+
+  /**
+   * Regular expression (see {@link java.util.regex.Pattern}) to exclude files from OpenAPI validation. All YAML files
+   * in <code>resourceGenDirectory</code> are validated as OpenAPI specifications. If other YAML files are generated
+   * into the same directory (e.g. by custom templates) they can be excluded by this parameter. The expression has to
+   * match the complete file name (without directory), e.g. <code>.*-nam\.ya?ml</code>. By default no file is excluded.
+   */
+  @Parameter(required = false)
+  private String openAPIValidationExcludePattern;
+
+  /**
+   * Filter based on <code>openAPIValidationExcludePattern</code>, created when the configuration is checked.
+   */
+  private ExcludeFileFilter openAPIValidationFilter;
 
   /**
    * Parameter defines which OpenAPI version is used when generating OpenAPI specifications. As there are breaking
@@ -2239,6 +2249,8 @@ public class GeneratorMojo extends AbstractMojo {
       throw new MojoFailureException(
           "Configuration parameter 'mavenProjectUMLPackage' is not defined even though it is required.");
     }
+    // Invalid exclude pattern is reported before generation starts, even if OpenAPI validation is disabled.
+    openAPIValidationFilter = new ExcludeFileFilter(openAPIValidationExcludePattern, this.getLog());
   }
 
   private void resolveArtifactVersions( ) {
@@ -2682,6 +2694,10 @@ public class GeneratorMojo extends AbstractMojo {
         lLog.info("Validate OpenAPI Specification:                   " + validateOpenAPISpec);
         if (validateOpenAPISpec) {
           lLog.info("Validate referenced OpenAPI Specifications:       " + validateReferencedOpenAPISpecs);
+          if (openAPIValidationFilter.getExcludePattern() != null) {
+            lLog.info(
+                "OpenAPI Validation exclude pattern:               " + openAPIValidationFilter.getExcludePattern());
+          }
         }
         lLog.info("Disable OpenAPI Dependency Checks:                " + disableOpenAPIDependencyChecks);
         lLog.info("OpenAPI spec reference default location:          " + openAPISpecReferenceDefaultLocation);
@@ -3492,7 +3508,8 @@ public class GeneratorMojo extends AbstractMojo {
         GenerationProfile lProfile = profileGeneration ? GenerationProfile.start() : null;
         lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
         if (lProfile != null) {
-          lProfile.report(this.getLog(), new File(mavenProject.getBuild().getDirectory(), "jeaf-generator-profile.csv"));
+          lProfile.report(this.getLog(),
+              new File(mavenProject.getBuild().getDirectory(), "jeaf-generator-profile.csv"));
         }
       }
     }
@@ -4004,7 +4021,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * @param pFiles Each file must only be contained once.
    */
-  private void beautifyImports( Collection<File> pFiles, List<String> pImportGroups )
+  private void beautifyImports(Collection<File> pFiles, List<String> pImportGroups)
     throws IOException, MojoExecutionException {
     int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), pFiles.size()));
     ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
@@ -4040,7 +4057,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Uses its own {@link ImportProcessor}, as it's called in parallel.
    */
-  private void beautifyImports( File pFile, List<String> pImportGroups ) throws IOException {
+  private void beautifyImports(File pFile, List<String> pImportGroups) throws IOException {
     try {
       this.getLog().debug("Beautifying imports on " + pFile.getPath());
       ImportProcessor lProcessor = new ImportProcessor();
@@ -4186,23 +4203,27 @@ public class GeneratorMojo extends AbstractMojo {
       this.copyOpenAPISpecDependencies();
 
       // Run validation. Specs are validated in parallel, results are logged in the order of the specs.
-      List<String> lOpenAPISpecs = this.resolveOpenAPISpecs(resourceGenDirectory);
-      List<List<String>> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
+      List<String> lOpenAPISpecs = openAPIValidationFilter.filter(this.resolveOpenAPISpecs(resourceGenDirectory));
+      List<OpenAPISpecValidator.Result> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
       for (int i = 0; i < lOpenAPISpecs.size(); i++) {
         String lNextOpenAPISpec = lOpenAPISpecs.get(i);
         this.getLog().info("");
         this.getLog().info("Validating OpenAPI specification " + lNextOpenAPISpec);
 
-        List<String> lErrorMessages = lValidationResults.get(i);
+        OpenAPISpecValidator.Result lValidationResult = lValidationResults.get(i);
+        List<String> lErrorMessages = lValidationResult.errors();
 
         if (lErrorMessages.isEmpty() == false) {
           lInvalidSpecs.add(lNextOpenAPISpec);
         }
-        else {
+        else if (lValidationResult.warnings().isEmpty()) {
           this.getLog().info("No issues detected.");
         }
 
-        // Trace error message.
+        // Trace warnings and error messages.
+        for (String lNextMessage : lValidationResult.warnings()) {
+          this.getLog().warn(lNextMessage);
+        }
         for (String lNextMessage : lErrorMessages) {
           this.getLog().error(lNextMessage);
         }
@@ -4220,18 +4241,19 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * @return {@link List} Error messages per spec, in the order of the passed specs.
+   * @return {@link List} Validation result per spec, in the order of the passed specs.
    */
-  private List<List<String>> validateOpenAPISpecs( List<String> pFileNames ) throws MojoExecutionException {
+  private List<OpenAPISpecValidator.Result> validateOpenAPISpecs(List<String> pFileNames)
+    throws MojoExecutionException {
     int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), pFileNames.size()));
     ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
     try {
-      List<Future<List<String>>> lResults = new ArrayList<>(pFileNames.size());
+      List<Future<OpenAPISpecValidator.Result>> lResults = new ArrayList<>(pFileNames.size());
       for (String lFileName : pFileNames) {
-        lResults.add(lExecutor.submit(( ) -> this.validateOpenAPISpec(lFileName, validateReferencedOpenAPISpecs)));
+        lResults.add(lExecutor.submit(( ) -> OpenAPISpecValidator.validate(lFileName, validateReferencedOpenAPISpecs)));
       }
-      List<List<String>> lErrorMessages = new ArrayList<>(pFileNames.size());
-      for (Future<List<String>> lResult : lResults) {
+      List<OpenAPISpecValidator.Result> lErrorMessages = new ArrayList<>(pFileNames.size());
+      for (Future<OpenAPISpecValidator.Result> lResult : lResults) {
         try {
           lErrorMessages.add(lResult.get());
         }
@@ -4250,23 +4272,6 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-  private List<String> validateOpenAPISpec(String pFileName, boolean pValidateReferencedOpenAPISpecs) {
-    ParseOptions lOptions = new ParseOptions();
-    lOptions.setResolve(pValidateReferencedOpenAPISpecs);
-
-    // Workaround for https://github.com/OpenAPITools/openapi-generator/issues/14648
-    SwaggerParseResult lResult =
-        new OpenAPIParser().readLocation(pFileName.replaceAll("\\\\", "/"), (List<AuthorizationValue>) null, lOptions);
-
-    List<String> lErrorMessages;
-    if (lResult == null) {
-      lErrorMessages = List.of("Parsing of OpenAPI Specification in file " + pFileName + " failed for unknown reason.");
-    }
-    else {
-      lErrorMessages = lResult.getMessages();
-    }
-    return lErrorMessages;
-  }
 
   private List<String> resolveOpenAPISpecs(String pDirectory) throws IOException {
     FilenameFilter lFilter = FileTools.getFileTools().createExtensionFilenameFilter(List.of("*.yaml", "*.yml"), null);

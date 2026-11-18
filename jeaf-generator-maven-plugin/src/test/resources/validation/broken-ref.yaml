@@ -1,0 +1,12 @@
+openapi: 3.0.3
+info:
+  title: Broken
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        price:
+          $ref: './does-not-exist.yaml#/components/schemas/Price'
