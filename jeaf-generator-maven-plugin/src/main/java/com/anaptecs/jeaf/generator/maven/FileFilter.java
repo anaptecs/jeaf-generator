@@ -17,7 +17,7 @@ import org.apache.maven.plugin.logging.Log;
 /**
  * Class filters files that should not be validated as OpenAPI specification based on a regular expression.
  */
-class OpenAPIValidationFileFilter {
+class FileFilter {
   /**
    * Compiled exclude pattern. Null if no file should be excluded.
    */
@@ -36,7 +36,7 @@ class OpenAPIValidationFileFilter {
    * @param pLog Log to trace excluded files. The parameter must not be null.
    * @throws MojoExecutionException if the passed pattern is not a valid regular expression.
    */
-  OpenAPIValidationFileFilter( String pExcludePattern, Log pLog ) throws MojoExecutionException {
+  FileFilter( String pExcludePattern, Log pLog ) throws MojoExecutionException {
     log = pLog;
     if (pExcludePattern == null || pExcludePattern.isEmpty()) {
       excludePattern = null;
@@ -58,14 +58,14 @@ class OpenAPIValidationFileFilter {
    * @param pFiles Files that should be filtered. The parameter must not be null.
    * @return {@link List} Files that do not match the exclude pattern.
    */
-  List<String> filter( List<String> pFiles ) {
+  List<String> filter(List<String> pFiles) {
     if (excludePattern == null) {
       return pFiles;
     }
     List<String> lResult = new ArrayList<>(pFiles.size());
     for (String lNextFile : pFiles) {
       if (excludePattern.matcher(new File(lNextFile).getName()).matches()) {
-        log.info("Excluding file from OpenAPI validation: " + lNextFile);
+        log.debug("Excluding file from OpenAPI validation: " + lNextFile);
       }
       else {
         lResult.add(lNextFile);

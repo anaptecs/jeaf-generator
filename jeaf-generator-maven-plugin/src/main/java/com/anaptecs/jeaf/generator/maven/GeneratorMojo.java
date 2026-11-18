@@ -3504,7 +3504,8 @@ public class GeneratorMojo extends AbstractMojo {
         GenerationProfile lProfile = profileGeneration ? GenerationProfile.start() : null;
         lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
         if (lProfile != null) {
-          lProfile.report(this.getLog(), new File(mavenProject.getBuild().getDirectory(), "jeaf-generator-profile.csv"));
+          lProfile.report(this.getLog(),
+              new File(mavenProject.getBuild().getDirectory(), "jeaf-generator-profile.csv"));
         }
       }
     }
@@ -4016,7 +4017,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * @param pFiles Each file must only be contained once.
    */
-  private void beautifyImports( Collection<File> pFiles, List<String> pImportGroups )
+  private void beautifyImports(Collection<File> pFiles, List<String> pImportGroups)
     throws IOException, MojoExecutionException {
     int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), pFiles.size()));
     ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
@@ -4052,7 +4053,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * Uses its own {@link ImportProcessor}, as it's called in parallel.
    */
-  private void beautifyImports( File pFile, List<String> pImportGroups ) throws IOException {
+  private void beautifyImports(File pFile, List<String> pImportGroups) throws IOException {
     try {
       this.getLog().debug("Beautifying imports on " + pFile.getPath());
       ImportProcessor lProcessor = new ImportProcessor();
@@ -4198,7 +4199,7 @@ public class GeneratorMojo extends AbstractMojo {
       this.copyOpenAPISpecDependencies();
 
       // Run validation. Specs are validated in parallel, results are logged in the order of the specs.
-      List<String> lOpenAPISpecs = new OpenAPIValidationFileFilter(openAPIValidationExcludePattern, this.getLog())
+      List<String> lOpenAPISpecs = new FileFilter(openAPIValidationExcludePattern, this.getLog())
           .filter(this.resolveOpenAPISpecs(resourceGenDirectory));
       List<List<String>> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
       for (int i = 0; i < lOpenAPISpecs.size(); i++) {
@@ -4235,7 +4236,7 @@ public class GeneratorMojo extends AbstractMojo {
   /**
    * @return {@link List} Error messages per spec, in the order of the passed specs.
    */
-  private List<List<String>> validateOpenAPISpecs( List<String> pFileNames ) throws MojoExecutionException {
+  private List<List<String>> validateOpenAPISpecs(List<String> pFileNames) throws MojoExecutionException {
     int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), pFileNames.size()));
     ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
     try {
