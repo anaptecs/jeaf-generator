@@ -68,10 +68,6 @@ import com.anaptecs.jeaf.xfun.api.checks.VerificationResult;
 import com.anaptecs.jeaf.xfun.api.errorhandling.ApplicationException;
 import com.anaptecs.jeaf.xfun.api.trace.Trace;
 import de.plushnikov.doctorjim.ImportProcessor;
-import io.swagger.parser.OpenAPIParser;
-import io.swagger.v3.parser.core.models.AuthorizationValue;
-import io.swagger.v3.parser.core.models.ParseOptions;
-import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.execution.MavenSession;
@@ -4207,13 +4203,13 @@ public class GeneratorMojo extends AbstractMojo {
 
       // Run validation. Specs are validated in parallel, results are logged in the order of the specs.
       List<String> lOpenAPISpecs = openAPIValidationFilter.filter(this.resolveOpenAPISpecs(resourceGenDirectory));
-      List<OpenAPIValidationResult> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
+      List<OpenAPISpecValidator.Result> lValidationResults = this.validateOpenAPISpecs(lOpenAPISpecs);
       for (int i = 0; i < lOpenAPISpecs.size(); i++) {
         String lNextOpenAPISpec = lOpenAPISpecs.get(i);
         this.getLog().info("");
         this.getLog().info("Validating OpenAPI specification " + lNextOpenAPISpec);
 
-        OpenAPIValidationResult lValidationResult = lValidationResults.get(i);
+        OpenAPISpecValidator.Result lValidationResult = lValidationResults.get(i);
         List<String> lErrorMessages = lValidationResult.errors();
 
         if (lErrorMessages.isEmpty() == false) {
@@ -4244,24 +4240,19 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Warnings and error messages of the validation of one OpenAPI specification.
-   */
-  private record OpenAPIValidationResult(List<String> errors, List<String> warnings) {
-  }
-
-  /**
    * @return {@link List} Validation result per spec, in the order of the passed specs.
    */
-  private List<OpenAPIValidationResult> validateOpenAPISpecs(List<String> pFileNames) throws MojoExecutionException {
+  private List<OpenAPISpecValidator.Result> validateOpenAPISpecs(List<String> pFileNames)
+    throws MojoExecutionException {
     int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), pFileNames.size()));
     ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
     try {
-      List<Future<OpenAPIValidationResult>> lResults = new ArrayList<>(pFileNames.size());
+      List<Future<OpenAPISpecValidator.Result>> lResults = new ArrayList<>(pFileNames.size());
       for (String lFileName : pFileNames) {
-        lResults.add(lExecutor.submit(( ) -> this.validateOpenAPISpec(lFileName, validateReferencedOpenAPISpecs)));
+        lResults.add(lExecutor.submit(( ) -> OpenAPISpecValidator.validate(lFileName, validateReferencedOpenAPISpecs)));
       }
-      List<OpenAPIValidationResult> lErrorMessages = new ArrayList<>(pFileNames.size());
-      for (Future<OpenAPIValidationResult> lResult : lResults) {
+      List<OpenAPISpecValidator.Result> lErrorMessages = new ArrayList<>(pFileNames.size());
+      for (Future<OpenAPISpecValidator.Result> lResult : lResults) {
         try {
           lErrorMessages.add(lResult.get());
         }
@@ -4280,33 +4271,6 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-  private OpenAPIValidationResult validateOpenAPISpec(String pFileName, boolean pValidateReferencedOpenAPISpecs) {
-    ParseOptions lOptions = new ParseOptions();
-    lOptions.setResolve(pValidateReferencedOpenAPISpecs);
-
-    // Workaround for https://github.com/OpenAPITools/openapi-generator/issues/14648
-    SwaggerParseResult lResult =
-        new OpenAPIParser().readLocation(pFileName.replaceAll("\\\\", "/"), (List<AuthorizationValue>) null, lOptions);
-
-    List<String> lErrorMessages;
-    List<String> lWarnings;
-    if (lResult == null) {
-      lErrorMessages = List.of("Parsing of OpenAPI Specification in file " + pFileName + " failed for unknown reason.");
-      lWarnings = Collections.emptyList();
-    }
-    else {
-      lErrorMessages = lResult.getMessages() != null ? lResult.getMessages() : Collections.emptyList();
-      // E.g. empty files or YAML files that are no OpenAPI specification. Only a warning to not break existing builds.
-      if (lResult.getOpenAPI() == null && lErrorMessages.isEmpty()) {
-        lWarnings = List.of("File " + pFileName
-            + " does not contain an OpenAPI specification. Please consider to exclude it using parameter 'openAPIValidationExcludePattern'.");
-      }
-      else {
-        lWarnings = Collections.emptyList();
-      }
-    }
-    return new OpenAPIValidationResult(lErrorMessages, lWarnings);
-  }
 
   private List<String> resolveOpenAPISpecs(String pDirectory) throws IOException {
     FilenameFilter lFilter = FileTools.getFileTools().createExtensionFilenameFilter(List.of("*.yaml", "*.yml"), null);

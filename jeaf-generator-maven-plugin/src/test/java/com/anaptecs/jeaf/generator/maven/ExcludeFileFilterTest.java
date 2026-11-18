@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.maven.plugin.MojoFailureException;
@@ -45,5 +46,51 @@ public class ExcludeFileFilterTest {
     MojoFailureException lException = assertThrows(MojoFailureException.class,
         ( ) -> new ExcludeFileFilter("([", new SystemStreamLog()));
     assertTrue(lException.getMessage().contains("openAPIValidationExcludePattern"));
+  }
+
+  @Test
+  void testExcludedFilesAreLogged( ) throws MojoFailureException {
+    RecordingLog lLog = new RecordingLog();
+    new ExcludeFileFilter(".*-nam\\.ya?ml", lLog).filter(FILES);
+    assertEquals(2, lLog.infos.size());
+    assertTrue(lLog.infos.get(0).endsWith("product-api-nam.yaml"));
+    assertTrue(lLog.infos.get(1).endsWith("base-nam.yml"));
+    assertTrue(lLog.warnings.isEmpty());
+  }
+
+  @Test
+  void testWarningIfAllFilesAreExcluded( ) throws MojoFailureException {
+    RecordingLog lLog = new RecordingLog();
+    assertTrue(new ExcludeFileFilter(".*\\.ya?ml", lLog).filter(FILES).isEmpty());
+    assertEquals(3, lLog.infos.size());
+    assertEquals(1, lLog.warnings.size());
+    assertTrue(lLog.warnings.get(0).contains("openAPIValidationExcludePattern"));
+  }
+
+  @Test
+  void testNoWarningWithoutFiles( ) throws MojoFailureException {
+    RecordingLog lLog = new RecordingLog();
+    assertTrue(new ExcludeFileFilter(".*", lLog).filter(List.of()).isEmpty());
+    assertTrue(lLog.infos.isEmpty());
+    assertTrue(lLog.warnings.isEmpty());
+  }
+
+  /**
+   * Log that records info and warning messages.
+   */
+  private static class RecordingLog extends SystemStreamLog {
+    final List<String> infos = new ArrayList<>();
+
+    final List<String> warnings = new ArrayList<>();
+
+    @Override
+    public void info(CharSequence pContent) {
+      infos.add(pContent.toString());
+    }
+
+    @Override
+    public void warn(CharSequence pContent) {
+      warnings.add(pContent.toString());
+    }
   }
 }
