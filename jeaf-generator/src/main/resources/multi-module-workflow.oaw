@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
-	<bean class="oaw.uml2.Setup" standardUML2Setup="true"/>
+	<bean class="org.eclipse.xtend.typesystem.uml2.Setup"/>
 
-	<component class="org.openarchitectureware.emf.XmiReader">
+	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
 		<modelFile value="${model.file}"/>
 		<outputSlot value="${output.slot}"/>
 	</component>
 
 	<!-- JMM version check -->
 	<component class="com.anaptecs.jeaf.fwk.generator.workflow.CachingCheckComponent">
-		<metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
-		<metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
+		<metaModel id="UmlMM" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+		<metaModel id="${profile.name}" class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
 			<profile value="${profile.file}"/>
 		</metaModel>
-		<metaModel id="CustomProfile" class="oaw.uml2.profile.ProfileMetaModel">
+		<metaModel id="CustomProfile" class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
 			<profile value="${customprofile.file}"/>
 		</metaModel>
 
@@ -24,11 +24,11 @@
 
 	<!-- Run Generator -->
 	<component id="generator" class="com.anaptecs.jeaf.fwk.generator.workflow.CachingGenerator" skipOnErrors="true">
-		<metaModel id="UmlMM" class="oaw.uml2.UML2MetaModel"/>
-		<metaModel id="${profile.name}" class="oaw.uml2.profile.ProfileMetaModel">
+		<metaModel id="UmlMM" class="org.eclipse.xtend.typesystem.uml2.UML2MetaModel"/>
+		<metaModel id="${profile.name}" class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
 			<profile value="${profile.file}"/>
 		</metaModel>
-		<metaModel id="CustomProfile" class="oaw.uml2.profile.ProfileMetaModel">
+		<metaModel id="CustomProfile" class="org.eclipse.xtend.typesystem.uml2.profile.ProfileMetaModel">
 			<profile value="${customprofile.file}"/>
 		</metaModel>
 

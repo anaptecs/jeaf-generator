@@ -8,10 +8,10 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Element;
-import org.openarchitectureware.expression.TypeSystemImpl;
-import org.openarchitectureware.type.Operation;
-import org.openarchitectureware.type.Type;
-import org.openarchitectureware.uml2.profile.MultipleStereotypeType;
+import org.eclipse.xtend.expression.TypeSystemImpl;
+import org.eclipse.xtend.typesystem.Operation;
+import org.eclipse.xtend.typesystem.Type;
+import org.eclipse.xtend.typesystem.uml2.profile.MultipleStereotypeType;
 
 /**
  * Type system that speeds up type lookups and operation calls of oAW 4.3.1:

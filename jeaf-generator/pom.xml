@@ -10,6 +10,12 @@
     <artifactId>jeaf-generator</artifactId>
     <packaging>jar</packaging>
 
+    <properties>
+        <xpand.version>2.2.0</xpand.version>
+        <mwe.version>1.3.20.201605261059</mwe.version>
+        <mwe2.version>2.9.0.201605261059</mwe2.version>
+    </properties>
+
     <dependencies>
         <!-- Dependency so that message constants generator will also be integrated. -->
         <dependency>
@@ -26,12 +32,78 @@
         	<scope>runtime</scope>
         </dependency>
 
-        <!-- Dependencies to openArchitectureWare ${oaw.version} -->
+        <!-- Eclipse Xpand / Xtend 2.2 (successor of openArchitectureWare 4.3) and MWE 1.x -->
         <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>antlr-runtime</artifactId>
-            <version>${oaw.version}</version>
+            <groupId>com.anaptecs.jeaf.xpandlibs</groupId>
+            <artifactId>org.eclipse.xpand</artifactId>
+            <version>${xpand.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.anaptecs.jeaf.xpandlibs</groupId>
+            <artifactId>org.eclipse.xtend</artifactId>
+            <version>${xpand.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.anaptecs.jeaf.xpandlibs</groupId>
+            <artifactId>org.eclipse.xtend.typesystem.emf</artifactId>
+            <version>${xpand.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.anaptecs.jeaf.xpandlibs</groupId>
+            <artifactId>org.eclipse.xtend.typesystem.uml2</artifactId>
+            <version>${xpand.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.anaptecs.jeaf.xpandlibs</groupId>
+            <artifactId>org.eclipse.xtend.util.stdlib</artifactId>
+            <version>${xpand.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.mwe.core</artifactId>
+            <version>${mwe.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.mwe.utils</artifactId>
+            <version>${mwe.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
+            <version>${mwe2.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr-runtime</artifactId>
+            <version>3.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Eclipse libraries (EMF, UML2, ...) still from openArchitectureWare ${oaw.version} distribution -->
         <dependency>
             <groupId>com.anaptecs.jeaf.owalibs</groupId>
             <artifactId>org.apache.commons.cli</artifactId>
@@ -145,46 +217,6 @@
         <dependency>
             <groupId>com.anaptecs.jeaf.owalibs</groupId>
             <artifactId>org.eclipse.uml2.uml.resources</artifactId>
-            <version>${oaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>org.openarchitectureware.core.emftools</artifactId>
-            <version>${oaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>org.openarchitectureware.core.expressions</artifactId>
-            <version>${oaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>org.openarchitectureware.core.workflow</artifactId>
-            <version>${oaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>org.openarchitectureware.core.xpand2</artifactId>
-            <version>${oaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>org.openarchitectureware.dependencies</artifactId>
-            <version>${oaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>org.openarchitectureware.uml2.adapter</artifactId>
-            <version>${oaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>org.openarchitectureware.util.stdlib</artifactId>
-            <version>${oaw.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.anaptecs.jeaf.owalibs</groupId>
-            <artifactId>org.openarchitectureware.workflow</artifactId>
             <version>${oaw.version}</version>
         </dependency>
         <dependency>

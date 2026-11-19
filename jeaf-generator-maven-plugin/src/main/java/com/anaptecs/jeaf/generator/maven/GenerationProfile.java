@@ -16,11 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.maven.plugin.logging.Log;
-import org.openarchitectureware.util.ProfileCollector;
-import org.openarchitectureware.util.ProfileCollector.ProfileEntry;
 
 /**
- * Profile of a generator run based on oAW's {@link ProfileCollector}. Its values cumulate over all modules of a Maven
+ * Profile of a generator run based on oAW's ProfileCollector. Its values cumulate over all modules of a Maven
  * build, so only the difference to the snapshot taken at the start is reported.
  */
 class GenerationProfile {
@@ -78,13 +76,9 @@ class GenerationProfile {
     pLog.info("--------------------------------------------------------------------------------------");
   }
 
+  // PoC of the migration to Xpand 2.2: oAW's ProfileCollector doesn't exist there, so no profile is collected yet.
   private static Map<String, Entry> capture( ) {
-    Map<String, Entry> lEntries = new HashMap<>();
-    for (ProfileEntry lEntry : ProfileCollector.getInstance().getProfile()) {
-      lEntries.put(lEntry.getContextName(), new Entry(lEntry.getContextName(), lEntry.getNumCalls(),
-          lEntry.getTotalTimeGross(), lEntry.getTotalTimeNet()));
-    }
-    return lEntries;
+    return new HashMap<>();
   }
 
   private static final class Entry {

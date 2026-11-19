@@ -9,7 +9,7 @@
 «EXTENSION functions::Dependency»
 «EXTENSION functions::NamedElement»
 «EXTENSION functions::SystemProperties»
-«EXTENSION org::openarchitectureware::util::stdlib::io»
+«EXTENSION org::eclipse::xtend::util::stdlib::io»
 
 «DEFINE GenerateCustomValidation FOR CustomConstraint»
 	«info("Processing «CustomConstraint» " + this.name + " (" + (this.fqn()) + ")")»
