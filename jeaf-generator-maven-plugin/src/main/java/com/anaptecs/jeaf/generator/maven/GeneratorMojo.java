@@ -3085,7 +3085,7 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Method runs the UML generator. The UML generator is based on a library called oAW (openArchitectureWare)
+   * Method runs the UML generator. The UML generator is based on Eclipse Xpand and the Modeling Workflow Engine (MWE).
    *
    * @throws MojoFailureException
    */
@@ -3526,7 +3526,7 @@ public class GeneratorMojo extends AbstractMojo {
         lParams.put("path.res.test.gen", resourceTestGenDirectory);
         lParams.put("path.res.test", resourceTestDirectory);
 
-        // Execute oAW Workflow Runner. This will cause the UML generation to be executed.
+        // Execute MWE workflow. This will cause the UML generation to be executed.
         if (this.codeFromUMLModelGenerated()) {
           this.getLog().info("Starting code generation from UML model " + umlModelFile);
         }

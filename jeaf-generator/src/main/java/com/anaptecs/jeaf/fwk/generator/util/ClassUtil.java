@@ -48,12 +48,10 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
 /**
- * Class for string manipulation operations. Methods with a well known signature are able to be accessed from
- * openarchitectureware extend files. Methods are accessed through *.ext files. Example: Method: public static String
- * getPackageName (Class pCls) { ... } is accessed through: String packageName (Class cls) : JAVA
- * oaw.extend.ClassUtil.getPackageName(org.openarchitectureware.meta.uml.classifier.Class); in the NamingConventions.ext
- * file from the directory template/java NamingConventions.ext can delegate requests to this class. Mehotds in *.ext
- * files can be accessed from expand templates.
+ * Class for string manipulation operations. Methods with a well known signature are able to be accessed from Xtend
+ * extension files (*.ext), e.g. <code>String packageName(uml::Package package) : JAVA
+ * com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getPackageName(org.eclipse.uml2.uml.Package);</code>. Extensions in
+ * *.ext files can be used in Xpand templates.
  * 
  * @author JEAF Development Team
  * @version 1.0 $LastChangedBy: $ $LastChangedDate: $ $LastChangedRevision: $
