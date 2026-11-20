@@ -49,9 +49,8 @@ public class TemplateParameterHelper {
 		EList<TemplateParameterSubstitution> lParameterSubstitutions = pTemplateBinding.getParameterSubstitutions();
 		Map<String, String> lMapping = new HashMap<String, String>();
 		for (TemplateParameterSubstitution lNext : lParameterSubstitutions) {
-			EList<ParameterableElement> lActuals = lNext.getActuals();
-			if(lActuals.size() > 0) {
-				ParameterableElement lParameterableElement = lActuals.get(0);
+			ParameterableElement lParameterableElement = lNext.getActual();
+			if(lParameterableElement != null) {
 				NamedElement lTemplateParamName = (NamedElement) lNext.getFormal().getParameteredElement();
 				NamedElement lActual = (NamedElement) lParameterableElement;
 				String lFullyQualifiedName = Naming.getFullyQualifiedName(lActual);

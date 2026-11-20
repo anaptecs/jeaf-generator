@@ -1128,6 +1128,33 @@ public class ClassUtil {
   }
 
   /**
+   * Method returns the opposite end of an association end, if both ends are navigable. This is the semantics of
+   * {@link Property#getOpposite()} up to UML2 2.x. Since UML 2.4 the opposite end is returned for every binary
+   * association, also for association ends that are owned by the association.
+   *
+   * @param pProperty Association end whose opposite end should be returned. The parameter may be null.
+   * @return {@link Property} Navigable opposite end or null if the passed property is no navigable end of a binary
+   * association or if the opposite end is not navigable.
+   */
+  public static Property getNavigableOpposite( Property pProperty ) {
+    Property lOpposite = null;
+    if (pProperty != null && pProperty.isNavigable()) {
+      Association lAssociation = pProperty.getAssociation();
+      if (lAssociation != null && lAssociation.getMemberEnds().size() == 2) {
+        int lIndex = lAssociation.getMemberEnds().indexOf(pProperty);
+        if (lIndex != -1) {
+          Property lOtherEnd = lAssociation.getMemberEnds().get(1 - lIndex);
+          if (lAssociation.getOwnedEnds().contains(lOtherEnd) == false
+              || lAssociation.getNavigableOwnedEnds().contains(lOtherEnd)) {
+            lOpposite = lOtherEnd;
+          }
+        }
+      }
+    }
+    return lOpposite;
+  }
+
+  /**
    * Method checks the applied stereotypes on this classifier.
    * 
    * @param pClassifier Classifier The classifier which should be checked wether the stereotype is applied to it.
@@ -1322,7 +1349,7 @@ public class ClassUtil {
     Stereotype lAssEnd = ClassUtil.getAppliedStereotype(pProperty, "Role");
     // The passed property is an association end
     if (lAssEnd != null) {
-      Property lOpposite = pProperty.getOpposite();
+      Property lOpposite = ClassUtil.getNavigableOpposite(pProperty);
       String thisLinkTable = (String) pProperty.getValue(lAssEnd, "linkTable");
       String oppositeLinkTable = (String) lOpposite.getValue(lAssEnd, "linkTable");
 
@@ -1373,7 +1400,7 @@ public class ClassUtil {
         return thisLinkTable;
       }
       else {
-        org.eclipse.uml2.uml.Property lOpposite = pProperty.getOpposite();
+        org.eclipse.uml2.uml.Property lOpposite = ClassUtil.getNavigableOpposite(pProperty);
         String oppositeLinkTable = (String) lOpposite.getValue(lStereotype, "linkTable");
         if (oppositeLinkTable != null && oppositeLinkTable.length() > 0) {
           return oppositeLinkTable;
