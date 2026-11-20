@@ -72,13 +72,26 @@
 		<swagger-parser.version>2.1.48</swagger-parser.version>
 		<swagger.codegen.plugin.version>3.0.85</swagger.codegen.plugin.version>
 		<openapi-generator-maven-plugin.version>7.27.0</openapi-generator-maven-plugin.version>
-		<log4j-to-slf4j.version>2.26.1</log4j-to-slf4j.version>
+		<log4j.version>2.26.1</log4j.version>
 		<equalsverifier.version>4.5.2</equalsverifier.version>
 		<flexmark.version>0.64.8</flexmark.version>
 		
 		<java.source.version>17</java.source.version>
 		<java.target.version>17</java.target.version>
 	</properties>
+
+	<!-- All Log4J2 modules in the same version (JEAF X-Fun brings log4j-core and log4j-jcl of an older version). -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-bom</artifactId>
+				<version>${log4j.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<modules>
 		<module>jeaf-generator-code-styles</module>

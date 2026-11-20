@@ -2199,9 +2199,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Initialize object
    */
   public GeneratorMojo( ) {
-    // Set Log4J and Log4J2 configuration. Unfortunately some used plugins still use Log4J 1.x so we have to maintain
-    // configurations for both versions.
-    System.setProperty("log4j.configuration", "jeaf-generator-log4j.xml");
+    // Set Log4J2 configuration. Otherwise JEAF X-Fun uses its fallback configuration.
     System.setProperty("log4j2.configurationFile", "jeaf-generator-log4j2.xml");
   }
 
