@@ -102,6 +102,12 @@ public class GeneratorMojo extends AbstractMojo {
   private static final String PROPERTY_PREFIX = "jeaf.generator.";
 
   /**
+   * Original values (<code>null</code> if not set) of system properties that were overwritten by custom template
+   * parameters. They are restored before the next module of a multi-module build is generated.
+   */
+  private static final Map<String, String> CUSTOM_PARAMETER_ORIGINAL_VALUES = new HashMap<>();
+
+  /**
    * Reference to Maven project. Reference will be injected by Maven and can not be configured via POM.
    */
   @Parameter(defaultValue = "${project}", required = true, readonly = true)
@@ -3430,6 +3436,9 @@ public class GeneratorMojo extends AbstractMojo {
       if (customTemplateParameters != null) {
         for (Entry<String, String> lNext : customTemplateParameters.entrySet()) {
           if (lNext.getValue() != null) {
+            if (CUSTOM_PARAMETER_ORIGINAL_VALUES.containsKey(lNext.getKey()) == false) {
+              CUSTOM_PARAMETER_ORIGINAL_VALUES.put(lNext.getKey(), System.getProperty(lNext.getKey()));
+            }
             System.setProperty(lNext.getKey(), lNext.getValue());
           }
         }
@@ -4289,15 +4298,26 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Operation cleans up system properties between multiple runs within multi-module builds
+   * Operation cleans up system properties between multiple runs within multi-module builds. Properties are removed
+   * (not set to an empty value), so that every module behaves as if it was built on its own and defaults apply.
    */
   private void cleanSystemProperties( ) {
-    for (Object lKey : System.getProperties().keySet()) {
-      String lKeyAsString = lKey.toString();
-      if (lKeyAsString.startsWith(PROPERTY_PREFIX) || lKeyAsString.startsWith("switch.gen.")) {
-        System.setProperty(lKeyAsString, "");
+    for (String lKey : System.getProperties().stringPropertyNames()) {
+      if (lKey.startsWith(PROPERTY_PREFIX) || lKey.startsWith("switch.gen.")) {
+        System.clearProperty(lKey);
       }
     }
+
+    // Restore system properties that were overwritten by custom template parameters of the previous module.
+    for (Entry<String, String> lNext : CUSTOM_PARAMETER_ORIGINAL_VALUES.entrySet()) {
+      if (lNext.getValue() != null) {
+        System.setProperty(lNext.getKey(), lNext.getValue());
+      }
+      else {
+        System.clearProperty(lNext.getKey());
+      }
+    }
+    CUSTOM_PARAMETER_ORIGINAL_VALUES.clear();
   }
 
   private String toString(List<? extends Enum<?>> pVersions) {
