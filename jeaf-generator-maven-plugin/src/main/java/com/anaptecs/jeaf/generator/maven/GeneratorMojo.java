@@ -27,11 +27,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.EnumMap;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.Set;
 import java.util.StringJoiner;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -77,6 +81,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.descriptor.PluginDescriptor;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.Component;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -84,6 +89,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.util.DirectoryScanner;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.openarchitectureware.workflow.WorkflowRunner;
 import org.twdata.maven.mojoexecutor.MojoExecutor;
@@ -97,6 +103,10 @@ import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
     requiresDependencyResolution = ResolutionScope.TEST)
 
 public class GeneratorMojo extends AbstractMojo {
+  private static final String JAVA_FILES = "**/*.java";
+
+  private static final String SOURCE_ENCODING = "project.build.sourceEncoding";
+
   private static final String DEFAULT_CUSTOM_ROOT = "CustomRoot::Root";
 
   private static final String PROPERTY_PREFIX = "jeaf.generator.";
@@ -4093,14 +4103,25 @@ public class GeneratorMojo extends AbstractMojo {
     else {
       this.getLog().info("Formatting generated code.");
 
-      // Execute Maven plugin to format sources.
       List<Dependency> lDependencies = MojoExecutor.dependencies(MojoExecutor.dependency("com.anaptecs.jeaf.generator",
           "jeaf-generator-code-styles", XFun.getVersionInfo().getVersionString()));
       Plugin lFormatterPlugin = plugin("net.revelc.code.formatter", "formatter-maven-plugin", "2.29.0", lDependencies);
-      String lFormatterGoal = goal("format");
-      Xpp3Dom lFormatterConfiguration = configuration(element("configFile", javaFormatterStyleFile),
-          element("configXmlFile", xmlFormatterStyleFile), this.createDirectoryElementConfiguration());
+      List<String> lDirectories = this.getFormatterDirectories();
+      List<Element> lConfiguration = new ArrayList<>();
+      lConfiguration.add(element("configFile", javaFormatterStyleFile));
+      lConfiguration.add(element("configXmlFile", xmlFormatterStyleFile));
+      lConfiguration.add(this.createDirectoriesElement(lDirectories));
 
+      // The plugin formats all files sequentially. Java files are therefore formatted in parallel with the Java
+      // formatter of the plugin, unless the plugin is configured by properties.
+      if (this.isFormatterConfiguredByProperties() == false) {
+        this.formatJavaFiles(lFormatterPlugin, lDirectories);
+        lConfiguration.add(element("excludes", element("exclude", JAVA_FILES)));
+      }
+
+      // Execute Maven plugin to format all other files.
+      String lFormatterGoal = goal("format");
+      Xpp3Dom lFormatterConfiguration = configuration(lConfiguration.toArray(new Element[] {}));
       ExecutionEnvironment lExecutionEnvironment = executionEnvironment(mavenProject, mavenSession, pluginManager);
       executeMojo(lFormatterPlugin, lFormatterGoal, lFormatterConfiguration, lExecutionEnvironment);
     }
@@ -4149,60 +4170,205 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Method creates the directory configuration for called Maven plugins depending on the configured formatter settings.
+   * Method returns the directories that should be formatted depending on the configured formatter settings.
    *
-   * @return {@link Element} Configuration element for the directories that should be formatted.
+   * @return {@link List} Directories that should be formatted. The method never returns null.
    */
-  private Element createDirectoryElementConfiguration( ) {
-    Element lElement;
+  private List<String> getFormatterDirectories( ) {
+    List<String> lDirectories;
     if (disableSourceFormatting == false && disableResourceFormatting == false) {
       if (disableSrcDirFormatting == false) {
-        lElement =
-            element("directories",
-                element("directory", sourceDirectory),
-                element("directory", sourceGenDirectory),
-                element("directory", resourceGenDirectory),
-                element("directory", sourceTestDirectory),
-                element("directory", sourceTestGenDirectory),
-                element("directory", resourceTestGenDirectory));
+        lDirectories = this.removeDuplicateDirectories(
+            sourceDirectory,
+            sourceGenDirectory,
+            resourceGenDirectory,
+            sourceTestDirectory,
+            sourceTestGenDirectory,
+            resourceTestGenDirectory);
       }
       else {
-        lElement =
-            element("directories",
-                element("directory", sourceGenDirectory),
-                element("directory", resourceGenDirectory),
-                element("directory", sourceTestGenDirectory),
-                element("directory", resourceTestGenDirectory));
+        lDirectories = this.removeDuplicateDirectories(
+            sourceGenDirectory,
+            resourceGenDirectory,
+            sourceTestGenDirectory,
+            resourceTestGenDirectory);
       }
     }
     else if (disableSourceFormatting == true) {
-      lElement =
-          element("directories",
-              element("directory", resourceGenDirectory),
-              element("directory", resourceTestGenDirectory));
+      lDirectories = this.removeDuplicateDirectories(
+          resourceGenDirectory,
+          resourceTestGenDirectory);
     }
     else if (disableResourceFormatting == true) {
       if (disableSrcDirFormatting == false) {
-        lElement =
-            element("directories",
-                element("directory", sourceDirectory),
-                element("directory", sourceGenDirectory),
-                element("directory", sourceTestDirectory),
-                element("directory", sourceTestGenDirectory));
+        lDirectories = this.removeDuplicateDirectories(
+            sourceDirectory,
+            sourceGenDirectory,
+            sourceTestDirectory,
+            sourceTestGenDirectory);
       }
       else {
-        lElement =
-            element("directories",
-                element("directory", sourceGenDirectory),
-                element("directory", sourceTestGenDirectory));
+        lDirectories = this.removeDuplicateDirectories(
+            sourceGenDirectory,
+            sourceTestGenDirectory);
       }
     }
     else {
-      lElement = null;
+      lDirectories = Collections.emptyList();
       Assert.internalError("Method must not be called if formatting is disabled completely.");
     }
-    return lElement;
+    return lDirectories;
   }
+
+  /**
+   * Directories are only formatted once, as test directories default to the main directories and source and generated
+   * source directory may be the same. Otherwise all files of such a directory are processed several times by the
+   * formatter.
+   */
+  private List<String> removeDuplicateDirectories( String... pDirectories ) {
+    Set<String> lAddedDirectories = new HashSet<>();
+    List<String> lDirectories = new ArrayList<>();
+    for (String lDirectory : pDirectories) {
+      if (lDirectory == null || lAddedDirectories.add(this.getCanonicalPath(lDirectory))) {
+        lDirectories.add(lDirectory);
+      }
+    }
+    return lDirectories;
+  }
+
+  private Element createDirectoriesElement( List<String> pDirectories ) {
+    List<Element> lElements = new ArrayList<>();
+    for (String lDirectory : pDirectories) {
+      lElements.add(element("directory", lDirectory));
+    }
+    return element("directories", lElements.toArray(new Element[] {}));
+  }
+
+  /**
+   * The formatter-maven-plugin can also be configured by properties (e.g. <code>formatter.java.skip</code> or
+   * <code>lineending</code>). In this case Java files are formatted by the plugin itself.
+   */
+  private boolean isFormatterConfiguredByProperties( ) {
+    List<Properties> lAllProperties = Arrays.asList(mavenSession.getUserProperties(),
+        mavenSession.getSystemProperties(), mavenProject.getProperties());
+    for (Properties lProperties : lAllProperties) {
+      for (String lName : lProperties.stringPropertyNames()) {
+        if (lName.startsWith("formatter.") || lName.equals("lineending")) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Formats all Java files in the passed directories in parallel. Files are selected and formatted the same way as by
+   * the formatter-maven-plugin.
+   */
+  private void formatJavaFiles( Plugin pFormatterPlugin, List<String> pDirectories ) throws MojoExecutionException {
+    long lStart = System.currentTimeMillis();
+    Collection<Path> lFiles = this.findJavaFiles(pDirectories);
+    if (lFiles.isEmpty() == false) {
+      JavaSourceFormatter lFormatter = new JavaSourceFormatter(this.getPluginClassLoader(pFormatterPlugin),
+          javaFormatterStyleFile, mavenProject.getBasedir(), this.getSourceEncoding(), this.getLog());
+      Map<JavaSourceFormatter.Result, Integer> lResultCounts = new EnumMap<>(JavaSourceFormatter.Result.class);
+      int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), lFiles.size()));
+      ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
+      try {
+        List<Future<JavaSourceFormatter.Result>> lResults = new ArrayList<>(lFiles.size());
+        for (Path lFile : lFiles) {
+          lResults.add(lExecutor.submit(( ) -> lFormatter.format(lFile)));
+        }
+        for (Future<JavaSourceFormatter.Result> lResult : lResults) {
+          lResultCounts.merge(lResult.get(), 1, Integer::sum);
+        }
+      }
+      catch (ExecutionException e) {
+        throw new MojoExecutionException("Unexpected error while formatting Java files.", e.getCause());
+      }
+      catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+        throw new MojoExecutionException("Interrupted while formatting Java files.", e);
+      }
+      finally {
+        lExecutor.shutdownNow();
+      }
+      String lMessage = String.format("Formatted %d Java files in %d ms (Changed: %d, Unchanged: %d, Failed: %d)",
+          lFiles.size(), System.currentTimeMillis() - lStart,
+          lResultCounts.getOrDefault(JavaSourceFormatter.Result.FORMATTED, 0),
+          lResultCounts.getOrDefault(JavaSourceFormatter.Result.UNCHANGED, 0),
+          lResultCounts.getOrDefault(JavaSourceFormatter.Result.FAILED, 0));
+      if (lResultCounts.containsKey(JavaSourceFormatter.Result.FAILED)) {
+        this.getLog().error(lMessage);
+      }
+      else {
+        this.getLog().info(lMessage);
+      }
+    }
+  }
+
+  /**
+   * Finds Java files with the same settings as the formatter-maven-plugin. Each file is only contained once, so that it
+   * is not formatted concurrently.
+   */
+  private Collection<Path> findJavaFiles( List<String> pDirectories ) {
+    Map<String, Path> lFiles = new LinkedHashMap<>();
+    for (String lDirectory : pDirectories) {
+      File lBaseDirectory = lDirectory != null ? new File(lDirectory) : null;
+      if (lBaseDirectory != null && lBaseDirectory.isDirectory()) {
+        DirectoryScanner lScanner = new DirectoryScanner();
+        lScanner.setBasedir(lBaseDirectory);
+        lScanner.setIncludes(new String[] { JAVA_FILES });
+        lScanner.addDefaultExcludes();
+        lScanner.setCaseSensitive(false);
+        lScanner.setFollowSymlinks(false);
+        lScanner.scan();
+        for (String lFileName : lScanner.getIncludedFiles()) {
+          // The plugin only formats files with exactly this extension.
+          if (lFileName.endsWith(".java")) {
+            File lFile = new File(lBaseDirectory, lFileName);
+            if (lFile.canWrite()) {
+              lFiles.putIfAbsent(this.getCanonicalPath(lFile.getPath()), lFile.toPath());
+            }
+            else {
+              this.getLog().warn("File " + lFile + " is read only");
+            }
+          }
+        }
+      }
+    }
+    return lFiles.values();
+  }
+
+  private ClassLoader getPluginClassLoader( Plugin pPlugin ) throws MojoExecutionException {
+    try {
+      PluginDescriptor lDescriptor = pluginManager.loadPlugin(pPlugin, mavenProject.getRemotePluginRepositories(),
+          mavenSession.getRepositorySession());
+      return pluginManager.getPluginRealm(mavenSession, lDescriptor);
+    }
+    catch (Exception e) {
+      throw new MojoExecutionException("Unable to load plugin " + pPlugin.getId(), e);
+    }
+  }
+
+  /**
+   * Same encoding as used by the formatter-maven-plugin.
+   */
+  private Charset getSourceEncoding( ) {
+    String lEncoding = mavenSession.getUserProperties().getProperty(SOURCE_ENCODING,
+        mavenProject.getProperties().getProperty(SOURCE_ENCODING));
+    return lEncoding != null && lEncoding.isEmpty() == false ? Charset.forName(lEncoding) : Charset.defaultCharset();
+  }
+
+  private String getCanonicalPath( String pPath ) {
+    try {
+      return new File(pPath).getCanonicalPath();
+    }
+    catch (IOException e) {
+      return new File(pPath).getAbsolutePath();
+    }
+  }
+
 
   private void validateOpenAPISpec( ) throws MojoExecutionException {
     this.getLog().info("");
