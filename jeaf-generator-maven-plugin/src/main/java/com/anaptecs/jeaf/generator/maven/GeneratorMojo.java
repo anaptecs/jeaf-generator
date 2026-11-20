@@ -92,7 +92,12 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.DirectoryScanner;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.eclipse.emf.mwe.core.WorkflowRunner;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.mwe.core.WorkflowContext;
+import org.eclipse.emf.mwe.core.WorkflowEngine;
+import org.eclipse.xtend.typesystem.uml2.UML2Util2;
 import org.twdata.maven.mojoexecutor.MojoExecutor;
 import org.twdata.maven.mojoexecutor.MojoExecutor.Element;
 import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
@@ -3532,11 +3537,16 @@ public class GeneratorMojo extends AbstractMojo {
         if (System.getProperty(MWE_ENGINE_LOG_LEVEL) == null) {
           System.setProperty(MWE_ENGINE_LOG_LEVEL, "warn");
         }
-        WorkflowRunner lRunner = new WorkflowRunner();
+        WorkflowEngine lRunner = new WorkflowEngine();
 
         String lWorkflowFile = this.getWorkflowFile();
         GenerationProfile lProfile = profileGeneration ? GenerationProfile.start() : null;
-        lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
+        try {
+          lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
+        }
+        finally {
+          this.unloadModels(lRunner.getContext());
+        }
         if (lProfile != null) {
           lProfile.report(this.getLog(),
               new File(mavenProject.getBuild().getDirectory(), "jeaf-generator-profile.csv"));
@@ -3547,6 +3557,35 @@ public class GeneratorMojo extends AbstractMojo {
       lSuccessful = true;
     }
     return lSuccessful;
+  }
+
+  /**
+   * Unloads all models of the workflow and the cached UML profiles. Loaded models are referenced by the global UML2
+   * cache adapter, so they would remain in memory for all further modules of a Maven build otherwise.
+   */
+  private void unloadModels( WorkflowContext pContext ) {
+    if (pContext != null) {
+      Set<ResourceSet> lResourceSets = new HashSet<>();
+      for (String lSlot : pContext.getSlotNames()) {
+        Object lValue = pContext.get(lSlot);
+        Collection<?> lValues = lValue instanceof Collection ? (Collection<?>) lValue : Collections.singleton(lValue);
+        for (Object lNext : lValues) {
+          if (lNext instanceof EObject) {
+            Resource lResource = ((EObject) lNext).eResource();
+            if (lResource != null && lResource.getResourceSet() != null) {
+              lResourceSets.add(lResource.getResourceSet());
+            }
+          }
+        }
+      }
+      for (ResourceSet lResourceSet : lResourceSets) {
+        for (Resource lResource : lResourceSet.getResources()) {
+          lResource.unload();
+        }
+        lResourceSet.getResources().clear();
+      }
+    }
+    UML2Util2.clearProfileCache();
   }
 
   private Boolean skipModelChecks( ) {
