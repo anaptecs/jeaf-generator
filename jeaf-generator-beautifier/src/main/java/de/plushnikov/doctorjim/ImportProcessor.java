@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import com.github.javaparser.JavaParser;
@@ -58,6 +60,15 @@ public class ImportProcessor {
   private static final String IMPORT_STATEMENT = "import ";
 
   private static final String STAR_IMPORT = ".*";
+
+  private static final Pattern UPPER_CASE_START = Pattern.compile("\\p{Lu}.*");
+
+  private static final Pattern PACKAGE_START = Pattern.compile("[\\p{L}&&[^\\p{Lu}]].*\\..*");
+
+  /**
+   * Qualified names consisting only of these characters can be replaced without regular expressions.
+   */
+  private static final Pattern SIMPLE_QUALIFIED_NAME = Pattern.compile("[\\w\\p{L}.]+");
 
   /**
    * Import parser behavior for .* imports
@@ -195,7 +206,8 @@ public class ImportProcessor {
     sLogger.debug("Started initialization of the parser");
     // create Parser and initialize with input string
     ParserConfiguration lConfiguration = new ParserConfiguration();
-    lConfiguration.setLanguageLevel(LanguageLevel.JAVA_21);
+    // No validation of language features, as only the structure of the code is needed to organize imports.
+    lConfiguration.setLanguageLevel(LanguageLevel.RAW);
     lConfiguration.setTabSize(1);
     JavaParser lParser = new JavaParser(lConfiguration);
 
@@ -332,7 +344,7 @@ public class ImportProcessor {
         if (lParts.length > 1) {
           boolean lFound = false;
           for (String lPart : lParts) {
-            if (lPart.matches("\\p{Lu}.*")) {
+            if (UPPER_CASE_START.matcher(lPart).matches()) {
               lFound = true;
               break;
             }
@@ -375,7 +387,7 @@ public class ImportProcessor {
         if (lParts.length > 1) {
           for (int i = lParts.length - 1; i >= 0; i--) {
             String lPart = lParts[i];
-            if (lPart.matches("\\p{Lu}.*")) {
+            if (UPPER_CASE_START.matcher(lPart).matches()) {
               lIndex = i;
             }
             else {
@@ -420,7 +432,7 @@ public class ImportProcessor {
 
         int lCurrentScanToken = lParts.length - 1;
         // search for last (first from the end) type-part, which starts with upper case letter
-        while (lCurrentScanToken >= 0 && !lParts[lCurrentScanToken].matches("\\p{Lu}.*")) {
+        while (lCurrentScanToken >= 0 && !UPPER_CASE_START.matcher(lParts[lCurrentScanToken]).matches()) {
           lCurrentScanToken--;
         }
         // be sure, we have find something
@@ -433,17 +445,13 @@ public class ImportProcessor {
           lImport2Replace = changeReplacementWorkaround(lImport2Replace);
 
           // import should start with lower case and contains '.'
-          if (lImport2Replace.matches("[\\p{L}&&[^\\p{Lu}]].*\\..*")
+          if (PACKAGE_START.matcher(lImport2Replace).matches()
               && !isConflict(lImport2Replace, lOriginalImports, lGeneratedImports)) {
             final String lImport2ReplaceWith = lImport2Replace
                 .substring(lImport2Replace.lastIndexOf('.') + 1);
 
-            final String lReplaceSource = "([^\\w\\p{L}\\.\"])"
-                + lImport2Replace.replaceAll("\\.", "\\\\s*\\.\\\\s*") + "([^\\p{L}\"])";
-            final String lReplaceTarget = "$1" + lImport2ReplaceWith + "$2";
-
-            final String lBodyNew = lBody.replaceAll(lReplaceSource, lReplaceTarget);
-            final String lHeadSectionNew = lHeadSection.replaceAll(lReplaceSource, lReplaceTarget);
+            final String lBodyNew = replaceQualifiedName(lBody, lImport2Replace, lImport2ReplaceWith);
+            final String lHeadSectionNew = replaceQualifiedName(lHeadSection, lImport2Replace, lImport2ReplaceWith);
 
             // add new import only if something has really changed in the output
             if (!lBodyNew.equals(lBody) || !lHeadSectionNew.equals(lHeadSection)) {
@@ -505,6 +513,109 @@ public class ImportProcessor {
     {
       throw new ParseException(lParseResult.getProblems().toString());
     }
+  }
+
+  /**
+   * Replaces all usages of the passed qualified name by the simple name. Equivalent to
+   * <code>pText.replaceAll("([^\\w\\p{L}\\.\"])" + name with "\\s*\\.\\s*" between its parts + "([^\\p{L}\"])", "$1" + simpleName + "$2")</code>
+   * but much faster, as the regular expression can not use a fast search for its start and was executed for every type
+   * on the whole file.
+   *
+   * @param pText Text in which the qualified name should be replaced.
+   * @param pQualifiedName Qualified name that should be replaced, e.g. <code>java.util.List</code>
+   * @param pSimpleName Simple name that should be used instead, e.g. <code>List</code>
+   * @return Text with replaced qualified names. If nothing was replaced, the passed text is returned.
+   */
+  static String replaceQualifiedName(String pText, String pQualifiedName, String pSimpleName) {
+    if (!SIMPLE_QUALIFIED_NAME.matcher(pQualifiedName).matches() || containsSurrogates(pText)) {
+      return pText.replaceAll(
+          "([^\\w\\p{L}\\.\"])" + pQualifiedName.replaceAll("\\.", "\\\\s*\\.\\\\s*") + "([^\\p{L}\"])",
+          "$1" + Matcher.quoteReplacement(pSimpleName) + "$2");
+    }
+    String[] lParts = pQualifiedName.split("\\.", -1);
+    StringBuilder lResult = null;
+    // Position up to which the text is already processed (end of last replacement).
+    int lProcessed = 0;
+    int lCandidate = pText.indexOf(lParts[0], 1);
+    while (lCandidate > 0) {
+      // Character before the name must not be consumed by a previous replacement.
+      int lMatchStart = lCandidate - 1;
+      int lEnd = lMatchStart >= lProcessed && !isLeadingNameChar(pText.charAt(lMatchStart))
+          ? matchQualifiedName(pText, lCandidate, lParts) : -1;
+      if (lEnd >= 0) {
+        if (lResult == null) {
+          lResult = new StringBuilder(pText.length());
+        }
+        // Keep leading and trailing character, replace qualified name in between.
+        lResult.append(pText, lProcessed, lCandidate).append(pSimpleName).append(pText.charAt(lEnd));
+        lProcessed = lEnd + 1;
+        lCandidate = pText.indexOf(lParts[0], lProcessed + 1);
+      }
+      else {
+        lCandidate = pText.indexOf(lParts[0], lCandidate + 1);
+      }
+    }
+    if (lResult == null) {
+      return pText;
+    }
+    return lResult.append(pText, lProcessed, pText.length()).toString();
+  }
+
+  /**
+   * Matches the parts of a qualified name (separated by dots with optional whitespace) and the trailing character.
+   *
+   * @return Index of the trailing character or -1 if the qualified name does not match.
+   */
+  private static int matchQualifiedName(String pText, int pStart, String[] pParts) {
+    int lPosition = pStart + pParts[0].length();
+    for (int i = 1; i < pParts.length; i++) {
+      lPosition = skipWhitespace(pText, lPosition);
+      if (lPosition >= pText.length() || pText.charAt(lPosition) != '.') {
+        return -1;
+      }
+      lPosition = skipWhitespace(pText, lPosition + 1);
+      if (!pText.startsWith(pParts[i], lPosition)) {
+        return -1;
+      }
+      lPosition += pParts[i].length();
+    }
+    if (lPosition >= pText.length()) {
+      return -1;
+    }
+    char lTrailing = pText.charAt(lPosition);
+    return Character.isLetter(lTrailing) || lTrailing == '"' ? -1 : lPosition;
+  }
+
+  private static int skipWhitespace(String pText, int pPosition) {
+    int lPosition = pPosition;
+    while (lPosition < pText.length() && isRegexWhitespace(pText.charAt(lPosition))) {
+      lPosition++;
+    }
+    return lPosition;
+  }
+
+  /**
+   * Whitespace as defined by <code>\\s</code> in regular expressions.
+   */
+  private static boolean isRegexWhitespace(char pChar) {
+    return pChar == ' ' || pChar == '\t' || pChar == '\n' || pChar == '\u000B' || pChar == '\f' || pChar == '\r';
+  }
+
+  /**
+   * Characters that must not precede a qualified name (<code>[\\w\\p{L}\\.\"]</code>).
+   */
+  private static boolean isLeadingNameChar(char pChar) {
+    return (pChar >= 'a' && pChar <= 'z') || (pChar >= 'A' && pChar <= 'Z') || (pChar >= '0' && pChar <= '9')
+        || pChar == '_' || pChar == '.' || pChar == '"' || Character.isLetter(pChar);
+  }
+
+  private static boolean containsSurrogates(String pText) {
+    for (int i = 0; i < pText.length(); i++) {
+      if (Character.isSurrogate(pText.charAt(i))) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**

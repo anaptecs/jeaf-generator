@@ -28,10 +28,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.StringJoiner;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -4158,43 +4160,43 @@ public class GeneratorMojo extends AbstractMojo {
     if (disableSourceFormatting == false && disableResourceFormatting == false) {
       if (disableSrcDirFormatting == false) {
         lElement =
-            element("directories",
-                element("directory", sourceDirectory),
-                element("directory", sourceGenDirectory),
-                element("directory", resourceGenDirectory),
-                element("directory", sourceTestDirectory),
-                element("directory", sourceTestGenDirectory),
-                element("directory", resourceTestGenDirectory));
+            this.createDirectoriesElement(
+                sourceDirectory,
+                sourceGenDirectory,
+                resourceGenDirectory,
+                sourceTestDirectory,
+                sourceTestGenDirectory,
+                resourceTestGenDirectory);
       }
       else {
         lElement =
-            element("directories",
-                element("directory", sourceGenDirectory),
-                element("directory", resourceGenDirectory),
-                element("directory", sourceTestGenDirectory),
-                element("directory", resourceTestGenDirectory));
+            this.createDirectoriesElement(
+                sourceGenDirectory,
+                resourceGenDirectory,
+                sourceTestGenDirectory,
+                resourceTestGenDirectory);
       }
     }
     else if (disableSourceFormatting == true) {
       lElement =
-          element("directories",
-              element("directory", resourceGenDirectory),
-              element("directory", resourceTestGenDirectory));
+          this.createDirectoriesElement(
+              resourceGenDirectory,
+              resourceTestGenDirectory);
     }
     else if (disableResourceFormatting == true) {
       if (disableSrcDirFormatting == false) {
         lElement =
-            element("directories",
-                element("directory", sourceDirectory),
-                element("directory", sourceGenDirectory),
-                element("directory", sourceTestDirectory),
-                element("directory", sourceTestGenDirectory));
+            this.createDirectoriesElement(
+                sourceDirectory,
+                sourceGenDirectory,
+                sourceTestDirectory,
+                sourceTestGenDirectory);
       }
       else {
         lElement =
-            element("directories",
-                element("directory", sourceGenDirectory),
-                element("directory", sourceTestGenDirectory));
+            this.createDirectoriesElement(
+                sourceGenDirectory,
+                sourceTestGenDirectory);
       }
     }
     else {
@@ -4203,6 +4205,32 @@ public class GeneratorMojo extends AbstractMojo {
     }
     return lElement;
   }
+
+  /**
+   * Creates the directories element for the formatter. Directories are only added once, as test directories default to
+   * the main directories and source and generated source directory may be the same. Otherwise all files of such a
+   * directory are processed several times by the formatter.
+   */
+  private Element createDirectoriesElement( String... pDirectories ) {
+    Set<String> lAddedDirectories = new HashSet<>();
+    List<Element> lElements = new ArrayList<>();
+    for (String lDirectory : pDirectories) {
+      if (lDirectory == null || lAddedDirectories.add(this.getCanonicalPath(lDirectory))) {
+        lElements.add(element("directory", lDirectory));
+      }
+    }
+    return element("directories", lElements.toArray(new Element[] {}));
+  }
+
+  private String getCanonicalPath( String pPath ) {
+    try {
+      return new File(pPath).getCanonicalPath();
+    }
+    catch (IOException e) {
+      return new File(pPath).getAbsolutePath();
+    }
+  }
+
 
   private void validateOpenAPISpec( ) throws MojoExecutionException {
     this.getLog().info("");
