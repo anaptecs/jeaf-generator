@@ -13,7 +13,7 @@ import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
 public class CustomChecksWorkflow extends AbstractWorkflowComponent2 {
-  CheckComponent checkComponent = new CachingCheckComponent();
+  CheckComponent checkComponent = new JEAFCheckComponent();
 
   @Override
   protected void checkConfigurationInternal( Issues pIssues ) {

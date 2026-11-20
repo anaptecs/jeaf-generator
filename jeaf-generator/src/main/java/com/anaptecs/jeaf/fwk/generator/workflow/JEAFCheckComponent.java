@@ -12,8 +12,8 @@ import org.eclipse.xtend.check.CheckComponent;
  * so that they are logged in the same format as with openArchitectureWare. If profiling is enabled, functions are
  * measured by {@link GenerationProfiler}.
  */
-public class CachingCheckComponent extends CheckComponent {
-  public CachingCheckComponent( ) {
+public class JEAFCheckComponent extends CheckComponent {
+  public JEAFCheckComponent( ) {
     GenerationProfiler lProfiler = GenerationProfiler.getProfilerIfEnabled();
     if (lProfiler != null) {
       this.setVetoableCallback(lProfiler);
