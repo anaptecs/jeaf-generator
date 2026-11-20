@@ -17,8 +17,11 @@ import java.util.Map;
 
 import org.apache.maven.plugin.logging.Log;
 
+import com.anaptecs.jeaf.fwk.generator.workflow.GenerationProfiler;
+import com.anaptecs.jeaf.fwk.generator.workflow.GenerationProfiler.ProfileEntry;
+
 /**
- * Profile of a generator run based on oAW's ProfileCollector. Its values cumulate over all modules of a Maven
+ * Profile of a generator run based on {@link GenerationProfiler}. Its values cumulate over all modules of a Maven
  * build, so only the difference to the snapshot taken at the start is reported.
  */
 class GenerationProfile {
@@ -76,9 +79,13 @@ class GenerationProfile {
     pLog.info("--------------------------------------------------------------------------------------");
   }
 
-  // PoC of the migration to Xpand 2.2: oAW's ProfileCollector doesn't exist there, so no profile is collected yet.
   private static Map<String, Entry> capture( ) {
-    return new HashMap<>();
+    Map<String, Entry> lEntries = new HashMap<>();
+    for (ProfileEntry lEntry : GenerationProfiler.getProfile()) {
+      lEntries.put(lEntry.getName(),
+          new Entry(lEntry.getName(), lEntry.getCalls(), lEntry.getGrossMillis(), lEntry.getNetMillis()));
+    }
+    return lEntries;
   }
 
   private static final class Entry {

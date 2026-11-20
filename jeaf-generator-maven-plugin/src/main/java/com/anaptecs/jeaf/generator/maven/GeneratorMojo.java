@@ -47,6 +47,7 @@ import java.util.stream.Stream;
 import com.anaptecs.jeaf.fwk.generator.checks.CheckExclusion;
 import com.anaptecs.jeaf.fwk.generator.checks.CheckExclusionCache;
 import com.anaptecs.jeaf.fwk.generator.util.EnterpriseJavaType;
+import com.anaptecs.jeaf.fwk.generator.workflow.GenerationProfiler;
 import com.anaptecs.jeaf.fwk.generator.util.JacksonVersion;
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
 import com.anaptecs.jeaf.fwk.generator.util.OpenAPIVersion;
@@ -3099,6 +3100,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("list.pkgs.whitelist", this.getPackageWhitelist());
       System.setProperty(PROPERTY_PREFIX + "runAllChecks", this.runAllChecks().toString());
       System.setProperty(PROPERTY_PREFIX + "skipModelChecks", this.skipModelChecks().toString());
+      System.setProperty(GenerationProfiler.PROFILING_ENABLED, profileGeneration.toString());
 
       // Set exclusions
       System.setProperty(PROPERTY_PREFIX + "disableAllNonMandatoryChecks", disableAllNonMandatoryChecks.toString());

@@ -12,9 +12,17 @@ import org.eclipse.xtend.check.CheckComponent;
  * <p>
  * Xpand 2.2 caches the resolution of extensions itself, so the standard execution context is used (PoC of the
  * migration from oAW 4.3.1 to Xpand 2.2). Check results are passed on as {@link CheckMessageDiagnostic}, so that they
- * are logged in the same format as with oAW.
+ * are logged in the same format as with oAW. If profiling is enabled, functions are measured by
+ * {@link GenerationProfiler}.
  */
 public class CachingCheckComponent extends CheckComponent {
+  public CachingCheckComponent( ) {
+    GenerationProfiler lProfiler = GenerationProfiler.getProfilerIfEnabled();
+    if (lProfiler != null) {
+      this.setVetoableCallback(lProfiler);
+    }
+  }
+
   @Override
   protected void invokeInternal2( WorkflowContext pContext, ProgressMonitor pMonitor, Issues pIssues ) {
     Issues lCheckResults = new IssuesImpl();
