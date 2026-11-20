@@ -384,6 +384,7 @@ This is the first line of the first comment
 | **`parentAttribute`** : `java.lang.String`   `[1..1]`<br> |  |  |
 | *`weirdAttribute`* : `byte`   `[1..1]`<br> |  | :exclamation:**Deprecation Notice (since: ):**<br> |
 | **`hello`** : `String`   `[1..1]`<br> |  |  |
+| **`newProperty`** : `int`   `[1..1]`<br> |  |  |
 
 <br>
 
@@ -459,7 +460,7 @@ This is the first line of the first comment
 | **`cInteger`** : `Integer`   `[1..1]`<br>        `@Min: minValue=100`<br>        `@Max: maxValue=1000` |  |  |
 | **`aLong`** : `long`   `[1..1]`<br> |  |  |
 | **`bLong`** : `java.lang.Long`   `[1..1]`<br>        `@DecimalMax: maxValue=299792458, inclusive=false` |  |  |
-| **`aBigInteger`** : `java.math.BigInteger`   `[1..1]`<br>        `@DecimalMax: maxValue=3.14159265359, inclusive=true`<br>        `@DecimalMin: minValue=-3.14159265359, inclusive=true` |  |  |
+| **`aBigInteger`** : `java.math.BigInteger`   `[1..1]`<br>        `@DecimalMin: minValue=-3.14159265359, inclusive=true`<br>        `@DecimalMax: maxValue=3.14159265359, inclusive=true` |  |  |
 | **`aCharacter`** : `char`   `[1..1]`<br> |  |  |
 | **`bCharacter`** : `java.lang.Character`   `[1..1]`<br> |  |  |
 | **`aFloat`** : `float`   `[1..1]`<br> |  |  |

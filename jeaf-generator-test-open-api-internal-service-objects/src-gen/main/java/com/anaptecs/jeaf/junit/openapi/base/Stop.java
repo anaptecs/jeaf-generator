@@ -45,8 +45,8 @@ public class Stop implements ServiceObject {
   @JsonSetter(nulls = Nulls.SKIP)
   private List<@Valid LinkObject> links;
 
-  @Max(value = 32)
   @PositiveOrZero
+  @Max(value = 32)
   private byte index;
 
   /**

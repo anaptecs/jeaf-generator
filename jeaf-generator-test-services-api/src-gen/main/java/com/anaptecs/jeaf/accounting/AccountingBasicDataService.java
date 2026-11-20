@@ -34,7 +34,7 @@ public interface AccountingBasicDataService extends Service {
    * @return {@link Bank}
    */
   @JEAFCustomAnnotationTest
-  Bank createBank( @JEAFCustomAnnotationTest @Valid @NotNull Bank pBank );
+  Bank createBank( @JEAFCustomAnnotationTest @NotNull @Valid Bank pBank );
 
   /**
    * @param pPerson

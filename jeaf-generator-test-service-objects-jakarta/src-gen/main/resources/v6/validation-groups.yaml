@@ -302,10 +302,10 @@ components:
         decimalProperty:
           type: number
           format: double
-          maximum: 49
-          exclusiveMaximum: false
           minimum: 42
           exclusiveMinimum: false
+          maximum: 49
+          exclusiveMaximum: false
           nullable: true
         integerProperty:
           type: integer

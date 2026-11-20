@@ -70,8 +70,8 @@ public class UICStop extends Stop implements IStop {
   @Size(min = 32, max = 255)
   private String uicCode;
 
-  @DecimalMax(value = "32.777", inclusive = true)
   @DecimalMin(value = "1.025", inclusive = true)
+  @DecimalMax(value = "32.777", inclusive = true)
   private int priority;
 
   @Min(value = 1000)

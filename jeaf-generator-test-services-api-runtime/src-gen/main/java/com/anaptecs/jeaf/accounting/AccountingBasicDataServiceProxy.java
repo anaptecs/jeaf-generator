@@ -58,7 +58,7 @@ public final class AccountingBasicDataServiceProxy extends ServiceProxy implemen
    * Generated proxy implementation for method
    * {@link com.anaptecs.jeaf.accounting.AccountingBasicDataService#createBank}
    */
-  public Bank createBank( @Valid @NotNull Bank pBank ) {
+  public Bank createBank( @NotNull @Valid Bank pBank ) {
     try {
       Command lCommand = new CreateBank_Bank_AccountingBasicDataService_Command(pBank);
       return (Bank) this.executeCommand(lCommand);
