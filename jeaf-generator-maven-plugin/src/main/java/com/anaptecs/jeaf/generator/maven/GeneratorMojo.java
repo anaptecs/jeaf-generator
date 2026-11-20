@@ -3624,14 +3624,14 @@ public class GeneratorMojo extends AbstractMojo {
     String lWorkflowFile;
     if (useMultiModuleWorkflow) {
       if (this.isTopLevelModule()) {
-        lWorkflowFile = "multi-module-parent-workflow.oaw";
+        lWorkflowFile = "multi-module-parent-workflow.mwe";
       }
       else {
-        lWorkflowFile = "multi-module-workflow.oaw";
+        lWorkflowFile = "multi-module-workflow.mwe";
       }
     }
     else {
-      lWorkflowFile = "default-workflow.oaw";
+      lWorkflowFile = "default-workflow.mwe";
     }
     return lWorkflowFile;
   }
