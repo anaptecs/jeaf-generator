@@ -113,6 +113,11 @@ public class GeneratorMojo extends AbstractMojo {
   private static final String PROPERTY_PREFIX = "jeaf.generator.";
 
   /**
+   * Log level of MWE's workflow engine in Maven's SLF4J logger.
+   */
+  private static final String MWE_ENGINE_LOG_LEVEL = "org.slf4j.simpleLogger.log.org.eclipse.emf.mwe.core.WorkflowEngine";
+
+  /**
    * Original values (<code>null</code> if not set) of system properties that were overwritten by custom template
    * parameters. They are restored before the next module of a multi-module build is generated.
    */
@@ -3522,6 +3527,10 @@ public class GeneratorMojo extends AbstractMojo {
         }
         else {
           this.getLog().info("Starting check of UML model " + umlModelFile);
+        }
+        // Suppress startup banner of MWE (logged with level INFO); check results are logged as warnings / errors.
+        if (System.getProperty(MWE_ENGINE_LOG_LEVEL) == null) {
+          System.setProperty(MWE_ENGINE_LOG_LEVEL, "warn");
         }
         WorkflowRunner lRunner = new WorkflowRunner();
 
