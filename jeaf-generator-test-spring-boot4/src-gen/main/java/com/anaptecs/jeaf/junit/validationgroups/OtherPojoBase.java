@@ -127,10 +127,10 @@ public abstract class OtherPojoBase {
   @Size(min = 1, groups = { V7.class })
   private String[] multiValuedProperty;
 
-  @DecimalMax(value = "48", inclusive = false, groups = { V7.class })
-  @DecimalMax(value = "49", inclusive = true, groups = { V4.class, V5.class, V6.class })
   @DecimalMin(value = "42", inclusive = false, groups = { V7.class })
   @DecimalMin(value = "42", inclusive = true, groups = { V4.class, V5.class, V6.class })
+  @DecimalMax(value = "48", inclusive = false, groups = { V7.class })
+  @DecimalMax(value = "49", inclusive = true, groups = { V4.class, V5.class, V6.class })
   @Digits(integer = 5, fraction = 2, groups = { V7.class })
   @Digits(integer = 5, fraction = 3, groups = { V4.class, V5.class, V6.class })
   @NotNull(groups = { V7.class })
@@ -149,8 +149,8 @@ public abstract class OtherPojoBase {
   @NotNull
   private String stringProperty;
 
-  @Email(groups = { V7.class })
   @NotEmpty(groups = { V7.class })
+  @Email(groups = { V7.class })
   private String emailProperty;
 
   @AssertTrue(groups = { V7.class })
@@ -158,8 +158,8 @@ public abstract class OtherPojoBase {
   @NotNull
   private Boolean booleanProperty;
 
-  @FutureOrPresent(groups = { V7.class })
   @Past(groups = { V7.class })
+  @FutureOrPresent(groups = { V7.class })
   @Future(groups = { V4.class, V5.class, V6.class })
   @PastOrPresent(groups = { V4.class, V5.class, V6.class })
   @NotNull

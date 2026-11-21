@@ -280,8 +280,8 @@ public class PrimitiveObjectWithRestrictions extends Object implements ServiceOb
   // "java.math.BigInteger"
   @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
-  @DecimalMax(value = "3.14159265359", inclusive = true)
   @DecimalMin(value = "-3.14159265359", inclusive = true)
+  @DecimalMax(value = "3.14159265359", inclusive = true)
   private BigInteger aBigInteger;
 
   // "java.math.BigInteger"

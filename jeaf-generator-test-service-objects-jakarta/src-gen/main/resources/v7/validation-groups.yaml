@@ -199,10 +199,10 @@ components:
         decimalProperty:
           type: number
           format: double
-          maximum: 48
-          exclusiveMaximum: true
           minimum: 42
           exclusiveMinimum: true
+          maximum: 48
+          exclusiveMaximum: true
           nullable: false
         integerProperty:
           type: integer

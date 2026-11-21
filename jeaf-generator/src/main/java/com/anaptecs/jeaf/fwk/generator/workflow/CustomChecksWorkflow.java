@@ -2,18 +2,18 @@ package com.anaptecs.jeaf.fwk.generator.workflow;
 
 import java.util.List;
 
-import org.openarchitectureware.check.CheckComponent;
-import org.openarchitectureware.type.MetaModel;
-import org.openarchitectureware.workflow.WorkflowContext;
-import org.openarchitectureware.workflow.issues.Issues;
-import org.openarchitectureware.workflow.lib.AbstractWorkflowComponent2;
-import org.openarchitectureware.workflow.monitor.ProgressMonitor;
+import org.eclipse.xtend.check.CheckComponent;
+import org.eclipse.xtend.typesystem.MetaModel;
+import org.eclipse.emf.mwe.core.WorkflowContext;
+import org.eclipse.emf.mwe.core.issues.Issues;
+import org.eclipse.emf.mwe.core.lib.AbstractWorkflowComponent2;
+import org.eclipse.emf.mwe.core.monitor.ProgressMonitor;
 
 import com.anaptecs.jeaf.xfun.api.XFun;
 import com.anaptecs.jeaf.xfun.api.config.Configuration;
 
 public class CustomChecksWorkflow extends AbstractWorkflowComponent2 {
-  CheckComponent checkComponent = new CachingCheckComponent();
+  CheckComponent checkComponent = new JEAFCheckComponent();
 
   @Override
   protected void checkConfigurationInternal( Issues pIssues ) {

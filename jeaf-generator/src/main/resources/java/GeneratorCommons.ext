@@ -15,6 +15,10 @@ cached boolean isInGeneratorWhitelist(uml::NamedElement namedElement) :
 cached List getAuthorizationTypeNames(uml::Interface service) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.AuthorizationHelper.getAuthorizationTypeNames(org.eclipse.uml2.uml.Interface);
     
+// Opposite end of an association end, if both ends are navigable (semantics of "opposite" up to UML2 2.x).
+uml::Property navigableOpposite(uml::Property property) :
+    JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.getNavigableOpposite(org.eclipse.uml2.uml.Property);
+    
 cached boolean isStereotypeApplied(uml::Element element, String stereotype) :
     JAVA com.anaptecs.jeaf.fwk.generator.util.ClassUtil.isStereotypeApplied(org.eclipse.uml2.uml.Element, java.lang.String);
     
@@ -472,10 +476,10 @@ boolean isTransient(uml::Property property):
   property.isStereotypeApplied("Transient") || property.isStereotypeApplied("CompositeDataTypePublicField");
   
 cached boolean isTransientBidirectionalBackReference(uml::Property property) :
-  property.opposite != null && property.opposite.isNavigable() && property.opposite.isTransient();
+  property.navigableOpposite() != null && property.navigableOpposite().isNavigable() && property.navigableOpposite().isTransient();
   
 cached boolean belongsToTransientBidirectionalBackReference(uml::Property property) :
-  property.opposite != null && property.isNavigable() && property.isTransient();
+  property.navigableOpposite() != null && property.isNavigable() && property.isTransient();
   
 cached boolean isBooleanType(uml::Type type) :
   type.fqn() == "java.lang.Boolean" || type.fqn() == "Boolean" ||type.fqn() == "boolean"; 

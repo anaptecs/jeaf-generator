@@ -43,8 +43,8 @@ public class ValidationTestObject extends Object implements ServiceObject {
   // "java.lang.String"
   @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
-  @Email()
   @NotNull
+  @Email()
   private String myEMail;
 
   // "java.lang.String"

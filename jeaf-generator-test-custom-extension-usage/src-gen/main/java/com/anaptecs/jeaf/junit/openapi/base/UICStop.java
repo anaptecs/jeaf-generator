@@ -91,8 +91,8 @@ public class UICStop extends Stop implements IStop {
   // "int"
   @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
-  @DecimalMax(value = "32.777", inclusive = true)
   @DecimalMin(value = "1.025", inclusive = true)
+  @DecimalMax(value = "32.777", inclusive = true)
   private int priority;
 
   // "int"

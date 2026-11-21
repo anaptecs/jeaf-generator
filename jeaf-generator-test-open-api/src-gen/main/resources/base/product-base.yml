@@ -1770,10 +1770,10 @@ components:
         aBigInteger:
           type: integer
           format: int64
-          maximum: 3.14159265359
-          exclusiveMaximum: false
           minimum: -3.14159265359
           exclusiveMinimum: false
+          maximum: 3.14159265359
+          exclusiveMaximum: false
           nullable: false
         aCharacter:
           type: string
@@ -2011,8 +2011,8 @@ components:
         index:
           type: integer
           format: int32
-          maximum: 32
           minimum: 0
+          maximum: 32
           nullable: false
         theSoftLinkID:
           type: string
@@ -2125,10 +2125,10 @@ components:
             priority:
               type: integer
               format: int32
-              maximum: 32.777
-              exclusiveMaximum: false
               minimum: 1.025
               exclusiveMinimum: false
+              maximum: 32.777
+              exclusiveMaximum: false
               nullable: false
             code:
               type: integer

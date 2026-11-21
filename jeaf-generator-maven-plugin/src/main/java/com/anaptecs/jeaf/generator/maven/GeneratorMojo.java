@@ -56,6 +56,7 @@ import com.anaptecs.jeaf.fwk.generator.util.TargetRuntime;
 import com.anaptecs.jeaf.fwk.generator.util.maven.ArtifactCache;
 import com.anaptecs.jeaf.fwk.generator.util.maven.ProjectArchetype;
 import com.anaptecs.jeaf.fwk.generator.util.maven.UMLCoordinatesSourceType;
+import com.anaptecs.jeaf.fwk.generator.workflow.GenerationProfiler;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ConversionResult;
 import com.anaptecs.jeaf.fwk.tools.message.generator.ExcelToMessageResourceConverter;
 import com.anaptecs.jeaf.fwk.tools.message.generator.MessageConstantsGenerator;
@@ -91,7 +92,12 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.DirectoryScanner;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
-import org.openarchitectureware.workflow.WorkflowRunner;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.mwe.core.WorkflowContext;
+import org.eclipse.emf.mwe.core.WorkflowEngine;
+import org.eclipse.xtend.typesystem.uml2.UML2Util2;
 import org.twdata.maven.mojoexecutor.MojoExecutor;
 import org.twdata.maven.mojoexecutor.MojoExecutor.Element;
 import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
@@ -99,7 +105,7 @@ import org.twdata.maven.mojoexecutor.MojoExecutor.ExecutionEnvironment;
 @Mojo(
     name = "Generator",
     defaultPhase = LifecyclePhase.NONE,
-    threadSafe = true,
+    threadSafe = false,
     requiresDependencyResolution = ResolutionScope.TEST)
 
 public class GeneratorMojo extends AbstractMojo {
@@ -110,6 +116,12 @@ public class GeneratorMojo extends AbstractMojo {
   private static final String DEFAULT_CUSTOM_ROOT = "CustomRoot::Root";
 
   private static final String PROPERTY_PREFIX = "jeaf.generator.";
+
+  /**
+   * Log level of MWE's workflow engine in Maven's SLF4J logger.
+   */
+  private static final String MWE_ENGINE_LOG_LEVEL =
+      "org.slf4j.simpleLogger.log.org.eclipse.emf.mwe.core.WorkflowEngine";
 
   /**
    * Original values (<code>null</code> if not set) of system properties that were overwritten by custom template
@@ -2188,9 +2200,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Initialize object
    */
   public GeneratorMojo( ) {
-    // Set Log4J and Log4J2 configuration. Unfortunately some used plugins still use Log4J 1.x so we have to maintain
-    // configurations for both versions.
-    System.setProperty("log4j.configuration", "jeaf-generator-log4j.xml");
+    // Set Log4J2 configuration. Otherwise JEAF X-Fun uses its fallback configuration.
     System.setProperty("log4j2.configurationFile", "jeaf-generator-log4j2.xml");
   }
 
@@ -3074,7 +3084,7 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Method runs the UML generator. The UML generator is based on a library called oAW (openArchitectureWare)
+   * Method runs the UML generator. The UML generator is based on Eclipse Xpand and the Modeling Workflow Engine (MWE).
    *
    * @throws MojoFailureException
    */
@@ -3099,6 +3109,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty("list.pkgs.whitelist", this.getPackageWhitelist());
       System.setProperty(PROPERTY_PREFIX + "runAllChecks", this.runAllChecks().toString());
       System.setProperty(PROPERTY_PREFIX + "skipModelChecks", this.skipModelChecks().toString());
+      System.setProperty(GenerationProfiler.PROFILING_ENABLED, profileGeneration.toString());
 
       // Set exclusions
       System.setProperty(PROPERTY_PREFIX + "disableAllNonMandatoryChecks", disableAllNonMandatoryChecks.toString());
@@ -3514,18 +3525,27 @@ public class GeneratorMojo extends AbstractMojo {
         lParams.put("path.res.test.gen", resourceTestGenDirectory);
         lParams.put("path.res.test", resourceTestDirectory);
 
-        // Execute oAW Workflow Runner. This will cause the UML generation to be executed.
+        // Execute MWE workflow. This will cause the UML generation to be executed.
         if (this.codeFromUMLModelGenerated()) {
           this.getLog().info("Starting code generation from UML model " + umlModelFile);
         }
         else {
           this.getLog().info("Starting check of UML model " + umlModelFile);
         }
-        WorkflowRunner lRunner = new WorkflowRunner();
+        // Suppress startup banner of MWE (logged with level INFO); check results are logged as warnings / errors.
+        if (System.getProperty(MWE_ENGINE_LOG_LEVEL) == null) {
+          System.setProperty(MWE_ENGINE_LOG_LEVEL, "warn");
+        }
+        WorkflowEngine lRunner = new WorkflowEngine();
 
         String lWorkflowFile = this.getWorkflowFile();
         GenerationProfile lProfile = profileGeneration ? GenerationProfile.start() : null;
-        lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
+        try {
+          lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
+        }
+        finally {
+          this.unloadModels(lRunner.getContext());
+        }
         if (lProfile != null) {
           lProfile.report(this.getLog(),
               new File(mavenProject.getBuild().getDirectory(), "jeaf-generator-profile.csv"));
@@ -3536,6 +3556,35 @@ public class GeneratorMojo extends AbstractMojo {
       lSuccessful = true;
     }
     return lSuccessful;
+  }
+
+  /**
+   * Unloads all models of the workflow and the cached UML profiles. Loaded models are referenced by the global UML2
+   * cache adapter, so they would remain in memory for all further modules of a Maven build otherwise.
+   */
+  private void unloadModels(WorkflowContext pContext) {
+    if (pContext != null) {
+      Set<ResourceSet> lResourceSets = new HashSet<>();
+      for (String lSlot : pContext.getSlotNames()) {
+        Object lValue = pContext.get(lSlot);
+        Collection<?> lValues = lValue instanceof Collection ? (Collection<?>) lValue : Collections.singleton(lValue);
+        for (Object lNext : lValues) {
+          if (lNext instanceof EObject) {
+            Resource lResource = ((EObject) lNext).eResource();
+            if (lResource != null && lResource.getResourceSet() != null) {
+              lResourceSets.add(lResource.getResourceSet());
+            }
+          }
+        }
+      }
+      for (ResourceSet lResourceSet : lResourceSets) {
+        for (Resource lResource : lResourceSet.getResources()) {
+          lResource.unload();
+        }
+        lResourceSet.getResources().clear();
+      }
+    }
+    UML2Util2.clearProfileCache();
   }
 
   private Boolean skipModelChecks( ) {
@@ -3574,14 +3623,14 @@ public class GeneratorMojo extends AbstractMojo {
     String lWorkflowFile;
     if (useMultiModuleWorkflow) {
       if (this.isTopLevelModule()) {
-        lWorkflowFile = "multi-module-parent-workflow.oaw";
+        lWorkflowFile = "multi-module-parent-workflow.mwe";
       }
       else {
-        lWorkflowFile = "multi-module-workflow.oaw";
+        lWorkflowFile = "multi-module-workflow.mwe";
       }
     }
     else {
-      lWorkflowFile = "default-workflow.oaw";
+      lWorkflowFile = "default-workflow.mwe";
     }
     return lWorkflowFile;
   }
@@ -4225,7 +4274,7 @@ public class GeneratorMojo extends AbstractMojo {
    * source directory may be the same. Otherwise all files of such a directory are processed several times by the
    * formatter.
    */
-  private List<String> removeDuplicateDirectories( String... pDirectories ) {
+  private List<String> removeDuplicateDirectories(String... pDirectories) {
     Set<String> lAddedDirectories = new HashSet<>();
     List<String> lDirectories = new ArrayList<>();
     for (String lDirectory : pDirectories) {
@@ -4236,7 +4285,7 @@ public class GeneratorMojo extends AbstractMojo {
     return lDirectories;
   }
 
-  private Element createDirectoriesElement( List<String> pDirectories ) {
+  private Element createDirectoriesElement(List<String> pDirectories) {
     List<Element> lElements = new ArrayList<>();
     for (String lDirectory : pDirectories) {
       lElements.add(element("directory", lDirectory));
@@ -4265,7 +4314,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Formats all Java files in the passed directories in parallel. Files are selected and formatted the same way as by
    * the formatter-maven-plugin.
    */
-  private void formatJavaFiles( Plugin pFormatterPlugin, List<String> pDirectories ) throws MojoExecutionException {
+  private void formatJavaFiles(Plugin pFormatterPlugin, List<String> pDirectories) throws MojoExecutionException {
     long lStart = System.currentTimeMillis();
     Collection<Path> lFiles = this.findJavaFiles(pDirectories);
     if (lFiles.isEmpty() == false) {
@@ -4311,7 +4360,7 @@ public class GeneratorMojo extends AbstractMojo {
    * Finds Java files with the same settings as the formatter-maven-plugin. Each file is only contained once, so that it
    * is not formatted concurrently.
    */
-  private Collection<Path> findJavaFiles( List<String> pDirectories ) {
+  private Collection<Path> findJavaFiles(List<String> pDirectories) {
     Map<String, Path> lFiles = new LinkedHashMap<>();
     for (String lDirectory : pDirectories) {
       File lBaseDirectory = lDirectory != null ? new File(lDirectory) : null;
@@ -4340,7 +4389,7 @@ public class GeneratorMojo extends AbstractMojo {
     return lFiles.values();
   }
 
-  private ClassLoader getPluginClassLoader( Plugin pPlugin ) throws MojoExecutionException {
+  private ClassLoader getPluginClassLoader(Plugin pPlugin) throws MojoExecutionException {
     try {
       PluginDescriptor lDescriptor = pluginManager.loadPlugin(pPlugin, mavenProject.getRemotePluginRepositories(),
           mavenSession.getRepositorySession());
@@ -4360,7 +4409,7 @@ public class GeneratorMojo extends AbstractMojo {
     return lEncoding != null && lEncoding.isEmpty() == false ? Charset.forName(lEncoding) : Charset.defaultCharset();
   }
 
-  private String getCanonicalPath( String pPath ) {
+  private String getCanonicalPath(String pPath) {
     try {
       return new File(pPath).getCanonicalPath();
     }
@@ -4368,7 +4417,6 @@ public class GeneratorMojo extends AbstractMojo {
       return new File(pPath).getAbsolutePath();
     }
   }
-
 
   private void validateOpenAPISpec( ) throws MojoExecutionException {
     this.getLog().info("");
@@ -4447,7 +4495,6 @@ public class GeneratorMojo extends AbstractMojo {
     }
   }
 
-
   private List<String> resolveOpenAPISpecs(String pDirectory) throws IOException {
     FilenameFilter lFilter = FileTools.getFileTools().createExtensionFilenameFilter(List.of("*.yaml", "*.yml"), null);
     return this.resolveFiles(pDirectory, lFilter);
@@ -4464,8 +4511,8 @@ public class GeneratorMojo extends AbstractMojo {
   }
 
   /**
-   * Operation cleans up system properties between multiple runs within multi-module builds. Properties are removed
-   * (not set to an empty value), so that every module behaves as if it was built on its own and defaults apply.
+   * Operation cleans up system properties between multiple runs within multi-module builds. Properties are removed (not
+   * set to an empty value), so that every module behaves as if it was built on its own and defaults apply.
    */
   private void cleanSystemProperties( ) {
     for (String lKey : System.getProperties().stringPropertyNames()) {

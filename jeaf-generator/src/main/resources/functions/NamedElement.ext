@@ -19,6 +19,10 @@ cached String getElementNameForMessage(uml::NamedElement element):
 	JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getElementNameForMessage(org.eclipse.uml2.uml.NamedElement);
 
 
+cached String getElementShortNameForMessage(uml::NamedElement element):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.Naming.getElementShortNameForMessage(org.eclipse.uml2.uml.NamedElement);
+
+
 cached String asLocalVariable(uml::NamedElement element):
 	element.asLocalVar();
 

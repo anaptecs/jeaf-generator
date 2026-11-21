@@ -1812,8 +1812,8 @@ components:
         aBigInteger:
           type: integer
           format: int64
-          maximum: 3.14159265359
           minimum: -3.14159265359
+          maximum: 3.14159265359
           nullable: false
         aCharacter:
           type: string
@@ -2051,8 +2051,8 @@ components:
         index:
           type: integer
           format: int32
-          maximum: 32
           minimum: 0
+          maximum: 32
           nullable: false
         theSoftLinkID:
           type: string
@@ -2165,8 +2165,8 @@ components:
             priority:
               type: integer
               format: int32
-              maximum: 32.777
               minimum: 1.025
+              maximum: 32.777
               nullable: false
             code:
               type: integer

@@ -1,5 +1,6 @@
 «EXTENSION java::Naming»
 «EXTENSION entity::ModelProperties»
+«EXTENSION java::GeneratorCommons»
 «IMPORT uml»
 «IMPORT JMM»
 «IMPORT java»
@@ -25,7 +26,7 @@
 		«ELSE-»
 		    <!-- Association mapping for role "«name» («this.lower»..«IF this.upper > 0»«this.upper»«ELSE»*«ENDIF»)"«IF association.name.length > 0» in association "«association.name»"«ENDIF» -->
 		    <!-- Association «this.class.name» - «type.name» -->
-            «IF opposite == null -»
+            «IF navigableOpposite() == null -»
                «IF isMultivalued() -»
                    «EXPAND UnidirectionalToMany -»
                «ELSE-»
@@ -33,13 +34,13 @@
                «ENDIF -»
             «ELSE -»
 	            «IF isMultivalued() -»
-	                «IF !opposite.isMultivalued() -»
+	                «IF !navigableOpposite().isMultivalued() -»
 	                    «EXPAND BidirectionalOneToManyMapping -»
 	                «ELSE-»
 	                    «EXPAND BidirectionalManyToManyMapping -»
 	                «ENDIF-»
 	            «ELSE-»
-	                «IF opposite.isMultivalued() -»
+	                «IF navigableOpposite().isMultivalued() -»
 	                    «EXPAND BidirectionalManyToOne -»
 	                «ELSE-»
 	                    «EXPAND BidirectionalOneToOneMapping -»
@@ -71,8 +72,8 @@
 // Bidirectional one-to-many association
 «DEFINE BidirectionalOneToManyMapping FOR Role -»
 	<set name="«name»" access="field" «IF notlazy»lazy="false"«ENDIF» inverse="true" cascade="«cascade.getCascadeTypeNames()»" «IF batchSize > 0»batch-size="«batchSize»"«ENDIF» «IF fetchType.name != "none"»fetch="«fetchType.name»"«ENDIF»>
-	    <key column="«getForeignKeyName(opposite)»"/>
-        <one-to-many class="«opposite.class.fqn()»"/>
+	    <key column="«getForeignKeyName(navigableOpposite())»"/>
+        <one-to-many class="«navigableOpposite().class.fqn()»"/>
     </set>
 «ENDDEFINE»
 
@@ -80,7 +81,7 @@
 «DEFINE BidirectionalManyToManyMapping FOR Role -»
 	<set name="«name»" table="«getLinkTable()»" access="field" «IF notlazy»lazy="false"«ENDIF» «IF this.linkTable.length > 0»inverse="true"«ENDIF» cascade="«cascade.getCascadeTypeNames()»" «IF batchSize > 0»batch-size="«batchSize»"«ENDIF»>
 		<key column="«getForeignKeyName(class)»"/>
-		<many-to-many class="«opposite.class.fqn()»" column="«getForeignKeyName(opposite.class)»"/>
+		<many-to-many class="«navigableOpposite().class.fqn()»" column="«getForeignKeyName(navigableOpposite().class)»"/>
 	</set>
 «ENDDEFINE»
 
@@ -89,7 +90,7 @@
          «IF foreignKeyOwner -»
            <many-to-one name="«asInstanceVar()»" class="«type.fqn()»" column="«getForeignKeyName()»" access="field" «IF lower == 1 && ((uml::Class) this.owner).superClass == null» not-null="true"«ENDIF» unique="true" «IF notlazy»lazy="false"«ENDIF» cascade="«cascade.getCascadeTypeNames()»"/>
          «ELSE-»
-           <one-to-one name="«asInstanceVar()»" class="«opposite.class.fqn()»" access="field" «IF notlazy»lazy="false"«ENDIF» cascade="«cascade.getCascadeTypeNames()»" property-ref="«opposite.asInstanceVar()»"/>
+           <one-to-one name="«asInstanceVar()»" class="«navigableOpposite().class.fqn()»" access="field" «IF notlazy»lazy="false"«ENDIF» cascade="«cascade.getCascadeTypeNames()»" property-ref="«navigableOpposite().asInstanceVar()»"/>
          «ENDIF-»
 «ENDDEFINE»
 

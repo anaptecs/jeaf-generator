@@ -876,13 +876,13 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 								«ENDIF»
 							«ENDIF»
 
-                            «IF attr.opposite != null && attr.opposite.isNavigable() == true»
+                            «IF attr.navigableOpposite() != null && attr.navigableOpposite().isNavigable() == true»
                                // As association is bidirectional we also have to set it in the other direction.
                                for(«attr.type.fqn()» lNext : «attr.name») {
-                                   «IF attr.opposite.isMultivalued()»
-                                       lNext.addTo«attr.opposite.name.toFirstUpper()»((«attr.opposite.type.fqn()») this);
+                                   «IF attr.navigableOpposite().isMultivalued()»
+                                       lNext.addTo«attr.navigableOpposite().name.toFirstUpper()»((«attr.navigableOpposite().type.fqn()») this);
                                    «ELSE»
-                                       lNext.«attr.opposite.asSetter()»((«attr.opposite.type.fqn()») this);
+                                       lNext.«attr.navigableOpposite().asSetter()»((«attr.navigableOpposite().type.fqn()») this);
                                    «ENDIF»
                                } 
                             «ENDIF»
@@ -897,13 +897,13 @@ public static abstract class BuilderBase«this.getTemplateParams()» «IF superC
 						«ELSE»
 						  «attr.name» = pBuilder.«attr.name»;
 						«ENDIF»
-                        «IF attr.opposite != null && attr.opposite.isNavigable() == true»
+                        «IF attr.navigableOpposite() != null && attr.navigableOpposite().isNavigable() == true»
                             if(«attr.name» != null) {
                                // As association is bidirectional we also have to set it in the other direction.
-                               «IF attr.opposite.isMultivalued()»
-                                   «attr.name».addTo«attr.opposite.name.toFirstUpper()»((«attr.opposite.type.fqn()») this);
+                               «IF attr.navigableOpposite().isMultivalued()»
+                                   «attr.name».addTo«attr.navigableOpposite().name.toFirstUpper()»((«attr.navigableOpposite().type.fqn()») this);
                                «ELSE»
-                                   «attr.name».«attr.opposite.asSetter()»((«attr.opposite.type.fqn()») this);
+                                   «attr.name».«attr.navigableOpposite().asSetter()»((«attr.navigableOpposite().type.fqn()») this);
                                «ENDIF»
                             }
                         «ENDIF»
