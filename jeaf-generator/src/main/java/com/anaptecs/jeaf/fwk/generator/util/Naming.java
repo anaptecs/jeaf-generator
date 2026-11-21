@@ -141,64 +141,39 @@ public class Naming {
    * @return {@link String} Name of the element for messages. The method never returns null.
    */
   public static String getElementNameForMessage(NamedElement pNamedElement) {
-    String lName;
-    if (pNamedElement == null) {
-      lName = "unknown";
-    }
-    else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
-        || pNamedElement instanceof Enumeration || pNamedElement instanceof PrimitiveType) {
-      lName = Naming.getFullyQualifiedName(pNamedElement, true);
-    }
-    else if (pNamedElement instanceof Package) {
-      lName = ClassUtil.getPackageName(pNamedElement);
-    }
-    else if (pNamedElement instanceof Association) {
-      Association lAssociation = (Association) pNamedElement;
-      EList<NamedElement> lMembers = lAssociation.getMembers();
-      lName = Naming.getElementNameForMessage(lMembers.get(lMembers.size() - 1));
-    }
-    else {
-      // Name of the owner. Association ends that are owned by the
-      // association belong to the type of the other end.
-      Element lOwner = pNamedElement.getOwner();
-      if (pNamedElement instanceof Property && lOwner instanceof Association) {
-        Property lOtherEnd = ((Property) pNamedElement).getOtherEnd();
-        if (lOtherEnd != null && lOtherEnd.getType() != null) {
-          lOwner = lOtherEnd.getType();
-        }
-      }
-      String lOwnerName = null;
-      if (lOwner instanceof NamedElement && ((NamedElement) lOwner).getName() != null) {
-        lOwnerName = Naming.getElementNameForMessage((NamedElement) lOwner);
-      }
-      String lElementName = pNamedElement.getName() != null ? pNamedElement.getName() : "";
-      boolean lHasOwnerName = lOwnerName != null && lOwnerName.isEmpty() == false
-          && lOwnerName.equals("unknown") == false;
-      if (lHasOwnerName && lElementName.isEmpty() == false) {
-        lName = lOwnerName + "." + lElementName;
-      }
-      // Unnamed elements (e.g. return parameters) are identified by their
-      // owner. Unnamed elements in a package (e.g.
-      // dependencies) get no name, so that messages describe them as
-      // unnamed element in the package.
-      else if (lHasOwnerName && lOwner instanceof Package == false) {
-        lName = lOwnerName;
-      }
-      else {
-        lName = lElementName;
-      }
-    }
-    return lName;
+    return Naming.getElementNameForMessage(pNamedElement, true);
   }
 
+  /**
+   * Method returns the name of the passed element as it is used in messages, but in contrast to
+   * {@link #getElementNameForMessage(NamedElement)} classes, interfaces, enumerations and primitive types are identified
+   * by their simple name only, e.g. <code>Customer.name</code> instead of <code>com.anaptecs.Customer.name</code>.
+   * Packages are still identified by their fully qualified name.
+   *
+   * @param pNamedElement Element whose name should be returned. The parameter may be null.
+   * @return {@link String} Short name of the element for messages.
+   */
   public static String getElementShortNameForMessage(NamedElement pNamedElement) {
+    return Naming.getElementNameForMessage(pNamedElement, false);
+  }
+
+  /**
+   * Common implementation of {@link #getElementNameForMessage(NamedElement)} and
+   * {@link #getElementShortNameForMessage(NamedElement)}.
+   *
+   * @param pNamedElement Element whose name should be returned. The parameter may be null.
+   * @param pFullyQualified If <code>true</code> classes, interfaces, enumerations and primitive types are identified by
+   * their fully qualified name, otherwise by their simple name.
+   * @return {@link String} Name of the element for messages.
+   */
+  private static String getElementNameForMessage(NamedElement pNamedElement, boolean pFullyQualified) {
     String lName;
     if (pNamedElement == null) {
       lName = "unknown";
     }
     else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
         || pNamedElement instanceof Enumeration || pNamedElement instanceof PrimitiveType) {
-      lName = pNamedElement.getName();
+      lName = pFullyQualified ? Naming.getFullyQualifiedName(pNamedElement, true) : pNamedElement.getName();
     }
     else if (pNamedElement instanceof Package) {
       lName = ClassUtil.getPackageName(pNamedElement);
@@ -206,7 +181,7 @@ public class Naming {
     else if (pNamedElement instanceof Association) {
       Association lAssociation = (Association) pNamedElement;
       EList<NamedElement> lMembers = lAssociation.getMembers();
-      lName = Naming.getElementShortNameForMessage(lMembers.get(lMembers.size() - 1));
+      lName = Naming.getElementNameForMessage(lMembers.get(lMembers.size() - 1), pFullyQualified);
     }
     else {
       // Name of the owner. Association ends that are owned by the association belong to the type of the other end.
@@ -219,7 +194,7 @@ public class Naming {
       }
       String lOwnerName = null;
       if (lOwner instanceof NamedElement && ((NamedElement) lOwner).getName() != null) {
-        lOwnerName = Naming.getElementShortNameForMessage((NamedElement) lOwner);
+        lOwnerName = Naming.getElementNameForMessage((NamedElement) lOwner, pFullyQualified);
       }
       String lElementName = pNamedElement.getName() != null ? pNamedElement.getName() : "";
       boolean lHasOwnerName = lOwnerName != null && lOwnerName.isEmpty() == false
