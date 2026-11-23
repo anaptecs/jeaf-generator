@@ -118,6 +118,11 @@ public class GeneratorMojo extends AbstractMojo {
   private static final String PROPERTY_PREFIX = "jeaf.generator.";
 
   /**
+   * Group ID of the old openArchitectureWare libraries.
+   */
+  static final String OAW_GROUP_ID = "com.anaptecs.jeaf.owalibs";
+
+  /**
    * Log level of MWE's workflow engine in Maven's SLF4J logger.
    */
   private static final String MWE_ENGINE_LOG_LEVEL =
@@ -137,6 +142,13 @@ public class GeneratorMojo extends AbstractMojo {
 
   @Parameter(defaultValue = "${session}", readonly = true)
   private MavenSession mavenSession;
+
+  /**
+   * Descriptor of this plugin incl. its resolved dependencies. It will be injected by Maven and can not be configured
+   * via POM.
+   */
+  @Parameter(defaultValue = "${plugin}", readonly = true)
+  private PluginDescriptor pluginDescriptor;
 
   /**
    * UML Modeling Tool that was used to create the UML Model. By default it is assumed that MagicDraw UML was used.
@@ -2275,8 +2287,56 @@ public class GeneratorMojo extends AbstractMojo {
       throw new MojoFailureException(
           "Configuration parameter 'mavenProjectUMLPackage' is not defined even though it is required.");
     }
+    if (pluginDescriptor != null) {
+      this.checkPluginDependencies(pluginDescriptor.getArtifacts());
+    }
     // Invalid exclude pattern is reported before generation starts, even if OpenAPI validation is disabled.
     openAPIValidationFilter = new ExcludeFileFilter(openAPIValidationExcludePattern, this.getLog());
+  }
+
+  /**
+   * Old openArchitectureWare libraries contain outdated EMF, UML2 and ANTLR classes that hide the ones of JEAF
+   * Generator. They are usually brought in by the dependencies of a custom template artifact.
+   */
+  void checkPluginDependencies( Collection<Artifact> pArtifacts ) throws MojoFailureException {
+    List<String> lOAWArtifacts = findOAWArtifacts(pArtifacts);
+    if (lOAWArtifacts.isEmpty() == false) {
+      Log lLog = this.getLog();
+      lLog.error("");
+      lLog.error("JEAF Generator is no longer based on openArchitectureWare (oAW). Its old libraries must not be on the");
+      lLog.error("classpath of the plugin, but the following ones were found:");
+      for (String lArtifact : lOAWArtifacts) {
+        lLog.error("  " + lArtifact);
+      }
+      lLog.error("They are usually declared as dependencies of a custom template artifact. Please remove them there");
+      lLog.error("or exclude them where the template artifact is added as dependency of jeaf-generator-maven-plugin:");
+      lLog.error("  <exclusions>");
+      lLog.error("    <exclusion>");
+      lLog.error("      <groupId>" + OAW_GROUP_ID + "</groupId>");
+      lLog.error("      <artifactId>*</artifactId>");
+      lLog.error("    </exclusion>");
+      lLog.error("  </exclusions>");
+      lLog.error("");
+      throw new MojoFailureException(
+          "Libraries of openArchitectureWare (" + OAW_GROUP_ID + ") found on classpath of JEAF Generator.");
+    }
+  }
+
+  static List<String> findOAWArtifacts( Collection<Artifact> pArtifacts ) {
+    List<String> lOAWArtifacts = new ArrayList<>();
+    if (pArtifacts != null) {
+      for (Artifact lArtifact : pArtifacts) {
+        if (OAW_GROUP_ID.equals(lArtifact.getGroupId())) {
+          String lEntry = lArtifact.getId();
+          List<String> lTrail = lArtifact.getDependencyTrail();
+          if (lTrail != null && lTrail.size() > 2) {
+            lEntry = lEntry + " (via " + lTrail.get(1) + ")";
+          }
+          lOAWArtifacts.add(lEntry);
+        }
+      }
+    }
+    return lOAWArtifacts;
   }
 
   private void resolveArtifactVersions( ) {
