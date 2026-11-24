@@ -4,3 +4,5 @@ import JMM;
 extension java::GeneratorCommons;
 
 context Model if this.getAllAppliedProfiles().allOwnedElements().typeSelect(ModelVersion).size > 0 ERROR this.getErrorMessage("9100", {"1147", this.getMetaModelVersion().toString()}): this.getMetaModelVersion() >= 1147;
+
+context Model if this.getMinimumGeneratorVersion() != null ERROR this.getErrorMessage("9199", {this.getMetaModelVersionName(), this.getMinimumGeneratorVersion(), getGeneratorVersion()}): this.isGeneratorVersionSupported();
