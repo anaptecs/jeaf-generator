@@ -98,6 +98,15 @@ public class GeneratorVersionCheckTest {
 
   private static ResourceSet createResourceSet( ) {
     ResourceSet lResourceSet = new ResourceSetImpl();
+    // UML2 4.x and newer: standalone setup incl. the Standard profile, which marks the metaclasses.
+    try {
+      Class.forName("org.eclipse.uml2.uml.resources.util.UMLResourcesUtil").getMethod("init", ResourceSet.class)
+          .invoke(null, lResourceSet);
+      return lResourceSet;
+    }
+    catch (ReflectiveOperationException e) {
+      // Older UML2 versions without UMLResourcesUtil: map the path maps manually.
+    }
     lResourceSet.getPackageRegistry().put(UMLPackage.eNS_URI, UMLPackage.eINSTANCE);
     lResourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
         UMLResource.Factory.INSTANCE);
