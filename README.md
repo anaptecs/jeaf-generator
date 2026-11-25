@@ -19,6 +19,17 @@ For further details please have a look on [Maven Integration](https://www.jeaf-g
 
 <br>
 
+### Line Endings
+JEAF Generator always writes generated files with LF line endings, independent of the operating system. To avoid that Git (e.g. on Windows with `core.autocrlf=true`) reports generated files as modified after each generator run, configure Git to check them out with LF as well. Add the following to the `.gitattributes` file of your repository (adapt the pattern if you use other directories for generated files):
+
+```
+**/src-gen/** text=auto eol=lf
+```
+
+After adding the rule, run `git add --renormalize .` once.
+
+<br>
+
 ## Releases, Backward Compatibility and Versioning Scheme
 * In general we try to keep JEAF Generator and especially the generated code backward compatible when ever possible / meaningful
 * The same we also try to apply to JEAF Generator Maven Plugin itself

@@ -2222,6 +2222,10 @@ public class GeneratorMojo extends AbstractMojo {
           this.runFormatter();
         }
 
+        // Generated files always use LF, independent of platform, templates and formatter.
+        this.normalizeLineEndings(sourceGenDirectory, resourceGenDirectory, sourceTestGenDirectory,
+            resourceTestGenDirectory);
+
         // Validate OpenAPI specification
         if (generateOpenAPISpec && validateOpenAPISpec) {
           this.validateOpenAPISpec();
@@ -2231,6 +2235,7 @@ public class GeneratorMojo extends AbstractMojo {
         if (initialProjectGeneration && initialOutputDirectory != null && initialOutputDirectory.isEmpty() == false) {
           FileTools.getFileTools().tryDeleteRecursive(initialOutputDirectory, true);
           String lSourceDirectory = "./temp/" + mavenArtifactIdPattern;
+          this.normalizeLineEndings(lSourceDirectory);
           this.copyDirectory(lSourceDirectory, initialOutputDirectory);
           FileTools.getFileTools().deleteRecursive(lSourceDirectory);
         }
@@ -3981,6 +3986,38 @@ public class GeneratorMojo extends AbstractMojo {
       lResourceFiles = Collections.emptyList();
     }
     return lResourceFiles;
+  }
+
+  /**
+   * Method converts the line endings of all text files in the passed directories to LF. Binary files are not changed.
+   *
+   * @param pDirectories Directories that should be processed. Directories that are null or do not exist are ignored.
+   * @throws MojoExecutionException
+   */
+  private void normalizeLineEndings( String... pDirectories ) throws MojoExecutionException {
+    for (String lDirectory : this.removeDuplicateDirectories(pDirectories)) {
+      if (lDirectory != null && Files.isDirectory(Paths.get(lDirectory))) {
+        try (Stream<Path> lFiles = Files.walk(Paths.get(lDirectory))) {
+          for (Path lFile : (Iterable<Path>) lFiles.filter(Files::isRegularFile)::iterator) {
+            this.normalizeLineEndings(lFile);
+          }
+        }
+        catch (IOException e) {
+          throw new MojoExecutionException("Unable to normalize line endings in directory " + lDirectory, e);
+        }
+      }
+    }
+  }
+
+  private void normalizeLineEndings( Path pFile ) throws IOException {
+    // ISO-8859-1 maps bytes 1:1, so the content is not changed apart from line endings, whatever the file encoding is.
+    String lContent = new String(Files.readAllBytes(pFile), StandardCharsets.ISO_8859_1);
+    if (lContent.indexOf('\r') >= 0 && lContent.indexOf('\0') < 0) {
+      String lNormalized = lContent.replaceAll("\r+\n", "\n");
+      if (lNormalized.equals(lContent) == false) {
+        Files.write(pFile, lNormalized.getBytes(StandardCharsets.ISO_8859_1));
+      }
+    }
   }
 
   /**

@@ -1,0 +1,3 @@
+# JEAF Generator writes generated files with LF line endings. Checking them out with LF avoids Git reporting them as
+# modified after regeneration on Windows (core.autocrlf=true). text=auto keeps binary files (e.g. reports) untouched.
+**/src-gen/** text=auto eol=lf
