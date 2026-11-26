@@ -47,4 +47,5 @@ private cached boolean isExcludedFromCheck(String pModelElementName, String pChe
 
 
 cached String getModelElementInfo(uml::Element element):
-	" (Model element: " + element.asNamedElement().getElementNameForMessage() + ")"; 
+	" (Model element: " + element.asNamedElement().getElementNameForMessage() + ")";
+ 

@@ -12,9 +12,9 @@ import static org.twdata.maven.mojoexecutor.MojoExecutor.executionEnvironment;
 import static org.twdata.maven.mojoexecutor.MojoExecutor.goal;
 import static org.twdata.maven.mojoexecutor.MojoExecutor.plugin;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -48,6 +48,7 @@ import com.anaptecs.jeaf.fwk.generator.checks.CheckExclusion;
 import com.anaptecs.jeaf.fwk.generator.checks.CheckExclusionCache;
 import com.anaptecs.jeaf.fwk.generator.util.EnterpriseJavaType;
 import com.anaptecs.jeaf.fwk.generator.util.JacksonVersion;
+import com.anaptecs.jeaf.fwk.generator.util.LineEnding;
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
 import com.anaptecs.jeaf.fwk.generator.util.OpenAPIVersion;
 import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
@@ -1923,6 +1924,13 @@ public class GeneratorMojo extends AbstractMojo {
   private Boolean disableSrcDirFormatting;
 
   /**
+   * Line ending of all generated files and of formatted Java files: <code>LF</code> (default), <code>CRLF</code> or
+   * <code>AUTO</code> for the line ending of the operating system on which JEAF Generator is executed.
+   */
+  @Parameter(required = false, defaultValue = "LF")
+  private LineEnding lineEnding;
+
+  /**
    * Parameter can be used to disable formatting of generated resources only.
    */
   @Parameter(required = false, defaultValue = "false")
@@ -2479,6 +2487,7 @@ public class GeneratorMojo extends AbstractMojo {
         lIgnoredResources = "none";
       }
       lLog.info("Ignored resource files:                           " + lIgnoredResources);
+      lLog.info("Line ending:                                      " + lineEnding);
 
       if (useMultiModuleWorkflow) {
         lLog.info("Using multi-module workflow:                      " + useMultiModuleWorkflow);
@@ -3170,6 +3179,7 @@ public class GeneratorMojo extends AbstractMojo {
       System.setProperty(PROPERTY_PREFIX + "runAllChecks", this.runAllChecks().toString());
       System.setProperty(PROPERTY_PREFIX + "skipModelChecks", this.skipModelChecks().toString());
       System.setProperty(GenerationProfiler.PROFILING_ENABLED, profileGeneration.toString());
+      System.setProperty(LineEnding.PROPERTY, lineEnding.name());
 
       // Set exclusions
       System.setProperty(PROPERTY_PREFIX + "disableAllNonMandatoryChecks", disableAllNonMandatoryChecks.toString());
@@ -3967,9 +3977,11 @@ public class GeneratorMojo extends AbstractMojo {
                 Builder lProperties = DocumentProperties.Builder.newBuilder();
                 lProperties.setDoctypePublic("MessageData");
                 lProperties.setDoctypeSystem("MessageData.dtd");
-                try (FileOutputStream lOutputStream = new FileOutputStream(lOutputFileName, false);) {
-                  Tools.getXMLTools().writeDocument(lResult.getDocument(), lProperties.build(), lOutputStream);
-                }
+                // XML serializer writes the line ending of the operating system.
+                ByteArrayOutputStream lXML = new ByteArrayOutputStream();
+                Tools.getXMLTools().writeDocument(lResult.getDocument(), lProperties.build(), lXML);
+                String lContent = lineEnding.normalize(lXML.toString(StandardCharsets.UTF_8)).toString();
+                Files.write(Paths.get(lOutputFileName), lContent.getBytes(StandardCharsets.UTF_8));
               }
               else {
                 throw new MojoFailureException("Message resource file '" + lOutputFileName
@@ -4379,7 +4391,7 @@ public class GeneratorMojo extends AbstractMojo {
     Collection<Path> lFiles = this.findJavaFiles(pDirectories);
     if (lFiles.isEmpty() == false) {
       JavaSourceFormatter lFormatter = new JavaSourceFormatter(this.getPluginClassLoader(pFormatterPlugin),
-          javaFormatterStyleFile, mavenProject.getBasedir(), this.getSourceEncoding(), this.getLog());
+          javaFormatterStyleFile, mavenProject.getBasedir(), this.getSourceEncoding(), lineEnding, this.getLog());
       Map<JavaSourceFormatter.Result, Integer> lResultCounts = new EnumMap<>(JavaSourceFormatter.Result.class);
       int lThreads = Math.max(1, Math.min(Runtime.getRuntime().availableProcessors(), lFiles.size()));
       ExecutorService lExecutor = Executors.newFixedThreadPool(lThreads);
