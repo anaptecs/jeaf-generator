@@ -32,8 +32,8 @@ public class ValidationTestObject implements ServiceObject {
    */
   public static final String DATEOFBIRTH = "dateOfBirth";
 
-  @Email()
   @NotNull
+  @Email()
   private String myEMail;
 
   @Past

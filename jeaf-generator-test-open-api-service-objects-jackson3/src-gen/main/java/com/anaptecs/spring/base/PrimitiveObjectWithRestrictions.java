@@ -75,8 +75,8 @@ public class PrimitiveObjectWithRestrictions {
   @NotNull
   private Long bLong;
 
-  @DecimalMax(value = "3.14159265359", inclusive = true)
   @DecimalMin(value = "-3.14159265359", inclusive = true)
+  @DecimalMax(value = "3.14159265359", inclusive = true)
   @NotNull
   private BigInteger aBigInteger;
 

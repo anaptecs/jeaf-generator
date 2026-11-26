@@ -31,433 +31,454 @@ import com.anaptecs.jeaf.xfun.api.checks.Check;
 
 public class Naming {
 
-	public static final String STEREOTYPE_PERSISTENT_OBJECT = "JMM::PersistentObject";
+  public static final String STEREOTYPE_PERSISTENT_OBJECT = "JMM::PersistentObject";
 
-	public static final String STEREOTYPE_DOMAIN_OBJECT = "JMM::DomainObject";
+  public static final String STEREOTYPE_DOMAIN_OBJECT = "JMM::DomainObject";
 
-	private static final String PARAM_SEPERATOR = ", ";
+  private static final String PARAM_SEPERATOR = ", ";
 
-	public static final char PARAM_PREFIX = 'p';
+  public static final char PARAM_PREFIX = 'p';
 
-	public static final char COMMAND_CLASS_NAME_SEPERATOR = '_';
+  public static final char COMMAND_CLASS_NAME_SEPERATOR = '_';
 
-	public static String getUMLQualifiedName(org.eclipse.uml2.uml.NamedElement pNamedElement) {
-		return Naming.getFullyQualifiedName(pNamedElement, true, "");
-	}
+  public static String getUMLQualifiedName(org.eclipse.uml2.uml.NamedElement pNamedElement) {
+    return Naming.getFullyQualifiedName(pNamedElement, true, "");
+  }
 
-	public static String getFullyQualifiedName(org.eclipse.uml2.uml.NamedElement pNamedElement) {
-		return Naming.getFullyQualifiedName(pNamedElement, false, "");
-	}
+  public static String getFullyQualifiedName(org.eclipse.uml2.uml.NamedElement pNamedElement) {
+    return Naming.getFullyQualifiedName(pNamedElement, false, "");
+  }
 
-	public static String getFullyQualifiedName(org.eclipse.uml2.uml.NamedElement pNamedElement,
-			Boolean pIgnoreTemplateBinding) {
-		return Naming.getFullyQualifiedName(pNamedElement, pIgnoreTemplateBinding, "");
-	}
+  public static String getFullyQualifiedName(org.eclipse.uml2.uml.NamedElement pNamedElement,
+      Boolean pIgnoreTemplateBinding) {
+    return Naming.getFullyQualifiedName(pNamedElement, pIgnoreTemplateBinding, "");
+  }
 
-	public static String getFullyQualifiedName(org.eclipse.uml2.uml.NamedElement pNamedElement,
-			Boolean pIgnoreTemplateBinding, String pPropertyTypeArgumentAnnotation) {
-		// Check parameter.
-		String lQualifiedName;
-		if (pNamedElement != null) {
-			// Is primitive type
-			if (pNamedElement instanceof PrimitiveType) {
-				lQualifiedName = pNamedElement.getName();
-				if (lQualifiedName.equals("Boolean")) {
-					lQualifiedName = "boolean";
-				}
-			} else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
-					|| pNamedElement instanceof Enumeration) {
+  public static String getFullyQualifiedName(org.eclipse.uml2.uml.NamedElement pNamedElement,
+      Boolean pIgnoreTemplateBinding, String pPropertyTypeArgumentAnnotation) {
+    // Check parameter.
+    String lQualifiedName;
+    if (pNamedElement != null) {
+      // Is primitive type
+      if (pNamedElement instanceof PrimitiveType) {
+        lQualifiedName = pNamedElement.getName();
+        if (lQualifiedName.equals("Boolean")) {
+          lQualifiedName = "boolean";
+        }
+      }
+      else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
+          || pNamedElement instanceof Enumeration) {
 
-				// Generate FQN for class with template binding
-				if (pNamedElement instanceof Class && ((Class) pNamedElement).getTemplateBindings().isEmpty() == false
-						&& pIgnoreTemplateBinding == false) {
-					lQualifiedName = Naming.getTemplateBindingFQN((Class) pNamedElement);
-				} else {
-					Element lOwner = pNamedElement.getOwner();
-					if (lOwner instanceof NamedElement) {
-						String lPackageName = Naming.getFullyQualifiedName((NamedElement) lOwner);
-						if (lPackageName != null && lPackageName.length() > 0) {
-							lQualifiedName = lPackageName + '.' + pNamedElement.getName();
-						} else {
-							lQualifiedName = pNamedElement.getName();
-						}
-					}
-					// In case of template types no package is present.
-					else {
-						lQualifiedName = pNamedElement.getName();
-					}
-				}
-			}
-			// Get type of port.
-			else if (pNamedElement instanceof Port) {
-				Port lPort = (Port) pNamedElement;
-				final Type lPortType = lPort.getType();
-				String lPackageName = ClassUtil.getPackageName(lPortType);
-				if (lPackageName != null && lPackageName.length() > 0) {
-					lQualifiedName = lPackageName + '.' + lPortType.getName();
-				} else {
-					lQualifiedName = lPortType.getName();
-				}
-			}
-			// Get type of property
-			else if (pNamedElement instanceof Property) {
-				Property lProperty = (Property) pNamedElement;
-				lQualifiedName = ClassUtil.getTypeName(lProperty, pPropertyTypeArgumentAnnotation);
-			} else if (pNamedElement instanceof Operation) {
-				Element lOwner = pNamedElement.getOwner();
-				String lOwnerName = getFullyQualifiedName((NamedElement) lOwner);
-				lQualifiedName = lOwnerName + "." + pNamedElement.getName();
-			} else if (pNamedElement instanceof Package) {
-				lQualifiedName = ClassUtil.getPackageName(pNamedElement);
-			} else {
-				lQualifiedName = pNamedElement.getName();
-			}
-			if (lQualifiedName.equals("java.lang.Class")) {
-				lQualifiedName = "java.lang.Class<?>";
-			}
-		} else {
-			lQualifiedName = "unknown";
-		}
+        // Generate FQN for class with template binding
+        if (pNamedElement instanceof Class && ((Class) pNamedElement).getTemplateBindings().isEmpty() == false
+            && pIgnoreTemplateBinding == false) {
+          lQualifiedName = Naming.getTemplateBindingFQN((Class) pNamedElement);
+        }
+        else {
+          Element lOwner = pNamedElement.getOwner();
+          if (lOwner instanceof NamedElement) {
+            String lPackageName = Naming.getFullyQualifiedName((NamedElement) lOwner);
+            if (lPackageName != null && lPackageName.length() > 0) {
+              lQualifiedName = lPackageName + '.' + pNamedElement.getName();
+            }
+            else {
+              lQualifiedName = pNamedElement.getName();
+            }
+          }
+          // In case of template types no package is present.
+          else {
+            lQualifiedName = pNamedElement.getName();
+          }
+        }
+      }
+      // Get type of port.
+      else if (pNamedElement instanceof Port) {
+        Port lPort = (Port) pNamedElement;
+        final Type lPortType = lPort.getType();
+        String lPackageName = ClassUtil.getPackageName(lPortType);
+        if (lPackageName != null && lPackageName.length() > 0) {
+          lQualifiedName = lPackageName + '.' + lPortType.getName();
+        }
+        else {
+          lQualifiedName = lPortType.getName();
+        }
+      }
+      // Get type of property
+      else if (pNamedElement instanceof Property) {
+        Property lProperty = (Property) pNamedElement;
+        lQualifiedName = ClassUtil.getTypeName(lProperty, pPropertyTypeArgumentAnnotation);
+      }
+      else if (pNamedElement instanceof Operation) {
+        Element lOwner = pNamedElement.getOwner();
+        String lOwnerName = getFullyQualifiedName((NamedElement) lOwner);
+        lQualifiedName = lOwnerName + "." + pNamedElement.getName();
+      }
+      else if (pNamedElement instanceof Package) {
+        lQualifiedName = ClassUtil.getPackageName(pNamedElement);
+      }
+      else {
+        lQualifiedName = pNamedElement.getName();
+      }
+      if (lQualifiedName.equals("java.lang.Class")) {
+        lQualifiedName = "java.lang.Class<?>";
+      }
+    }
+    else {
+      lQualifiedName = "unknown";
+    }
 
-		return lQualifiedName;
-	}
+    return lQualifiedName;
+  }
 
-	/**
-	 * Method returns the name of the passed element as it is used in messages
-	 * (e.g. results of model checks). In contrast to
-	 * {@link #getFullyQualifiedName(NamedElement)}, which returns the name as
-	 * it is used in generated code (e.g. the type of a property), the element
-	 * itself is identified: classes, interfaces, enumerations and packages by
-	 * their fully qualified name, all other elements (e.g. properties,
-	 * parameters, enumeration literals) by the name of their owner followed by
-	 * their own name, e.g. <code>com.anaptecs.Customer.name</code>.
-	 * 
-	 * @param pNamedElement
-	 *            Element whose name should be returned. The parameter may be
-	 *            null.
-	 * @return {@link String} Name of the element for messages. The method never
-	 *         returns null.
-	 */
-	public static String getElementNameForMessage(NamedElement pNamedElement) {
-		String lName;
-		if (pNamedElement == null) {
-			lName = "unknown";
-		} else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
-				|| pNamedElement instanceof Enumeration || pNamedElement instanceof PrimitiveType) {
-			lName = Naming.getFullyQualifiedName(pNamedElement, true);
-		} else if (pNamedElement instanceof Package) {
-			lName = ClassUtil.getPackageName(pNamedElement);
-		} else if (pNamedElement instanceof Association) {
-			Association lAssociation = (Association) pNamedElement;
-			EList<NamedElement> lMembers = lAssociation.getMembers();
-			lName = Naming.getElementNameForMessage(lMembers.get(lMembers.size() - 1));
-		} else {
-			// Name of the owner. Association ends that are owned by the
-			// association belong to the type of the other end.
-			Element lOwner = pNamedElement.getOwner();
-			if (pNamedElement instanceof Property && lOwner instanceof Association) {
-				Property lOtherEnd = ((Property) pNamedElement).getOtherEnd();
-				if (lOtherEnd != null && lOtherEnd.getType() != null) {
-					lOwner = lOtherEnd.getType();
-				}
-			}
-			String lOwnerName = null;
-			if (lOwner instanceof NamedElement && ((NamedElement) lOwner).getName() != null) {
-				lOwnerName = Naming.getElementNameForMessage((NamedElement) lOwner);
-			}
-			String lElementName = pNamedElement.getName() != null ? pNamedElement.getName() : "";
-			boolean lHasOwnerName = lOwnerName != null && lOwnerName.isEmpty() == false
-					&& lOwnerName.equals("unknown") == false;
-			if (lHasOwnerName && lElementName.isEmpty() == false) {
-				lName = lOwnerName + "." + lElementName;
-			}
-			// Unnamed elements (e.g. return parameters) are identified by their
-			// owner. Unnamed elements in a package (e.g.
-			// dependencies) get no name, so that messages describe them as
-			// unnamed element in the package.
-			else if (lHasOwnerName && lOwner instanceof Package == false) {
-				lName = lOwnerName;
-			} else {
-				lName = lElementName;
-			}
-		}
-		return lName;
-	}
+  /**
+   * Method returns the name of the passed element as it is used in messages (e.g. results of model checks). In contrast
+   * to {@link #getFullyQualifiedName(NamedElement)}, which returns the name as it is used in generated code (e.g. the
+   * type of a property), the element itself is identified: classes, interfaces, enumerations and packages by their
+   * fully qualified name, all other elements (e.g. properties, parameters, enumeration literals) by the name of their
+   * owner followed by their own name, e.g. <code>com.anaptecs.Customer.name</code>.
+   * 
+   * @param pNamedElement Element whose name should be returned. The parameter may be null.
+   * @return {@link String} Name of the element for messages. The method never returns null.
+   */
+  public static String getElementNameForMessage(NamedElement pNamedElement) {
+    return Naming.getElementNameForMessage(pNamedElement, true);
+  }
 
-	public static String getTemplateBindingFQN(Class pTemplateClass) {
-		TemplateBinding lTemplateBinding = pTemplateClass.getTemplateBindings().get(0);
+  /**
+   * Method returns the name of the passed element as it is used in messages, but in contrast to
+   * {@link #getElementNameForMessage(NamedElement)} classes, interfaces, enumerations and primitive types are identified
+   * by their simple name only, e.g. <code>Customer.name</code> instead of <code>com.anaptecs.Customer.name</code>.
+   * Packages are still identified by their fully qualified name.
+   *
+   * @param pNamedElement Element whose name should be returned. The parameter may be null.
+   * @return {@link String} Short name of the element for messages.
+   */
+  public static String getElementShortNameForMessage(NamedElement pNamedElement) {
+    return Naming.getElementNameForMessage(pNamedElement, false);
+  }
 
-		boolean lMultivalued;
-		boolean lOrdered;
-		boolean lUnique;
-		if (ClassUtil.isStereotypeApplied(lTemplateBinding, "TemplateBindingMultiplicity")) {
-			lMultivalued = Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding,
-					"TemplateBindingMultiplicity", "multivalued"));
-			lOrdered = Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding, "TemplateBindingMultiplicity",
-					"ordered"));
-			lUnique = Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding, "TemplateBindingMultiplicity",
-					"unique"));
-		} else {
-			lMultivalued = false;
-			lOrdered = false;
-			lUnique = false;
-		}
-		NamedElement lGenericClass = (NamedElement) lTemplateBinding.getTargets().get(0).getOwner();
+  /**
+   * Common implementation of {@link #getElementNameForMessage(NamedElement)} and
+   * {@link #getElementShortNameForMessage(NamedElement)}.
+   *
+   * @param pNamedElement Element whose name should be returned. The parameter may be null.
+   * @param pFullyQualified If <code>true</code> classes, interfaces, enumerations and primitive types are identified by
+   * their fully qualified name, otherwise by their simple name.
+   * @return {@link String} Name of the element for messages.
+   */
+  private static String getElementNameForMessage(NamedElement pNamedElement, boolean pFullyQualified) {
+    String lName;
+    if (pNamedElement == null) {
+      lName = "unknown";
+    }
+    else if (pNamedElement instanceof Class || pNamedElement instanceof Interface
+        || pNamedElement instanceof Enumeration || pNamedElement instanceof PrimitiveType) {
+      lName = pFullyQualified ? Naming.getFullyQualifiedName(pNamedElement, true) : pNamedElement.getName();
+    }
+    else if (pNamedElement instanceof Package) {
+      lName = ClassUtil.getPackageName(pNamedElement);
+    }
+    else if (pNamedElement instanceof Association) {
+      Association lAssociation = (Association) pNamedElement;
+      EList<NamedElement> lMembers = lAssociation.getMembers();
+      lName = Naming.getElementNameForMessage(lMembers.get(lMembers.size() - 1), pFullyQualified);
+    }
+    else {
+      // Name of the owner. Association ends that are owned by the association belong to the type of the other end.
+      Element lOwner = pNamedElement.getOwner();
+      if (pNamedElement instanceof Property && lOwner instanceof Association) {
+        Property lOtherEnd = ((Property) pNamedElement).getOtherEnd();
+        if (lOtherEnd != null && lOtherEnd.getType() != null) {
+          lOwner = lOtherEnd.getType();
+        }
+      }
+      String lOwnerName = null;
+      if (lOwner instanceof NamedElement && ((NamedElement) lOwner).getName() != null) {
+        lOwnerName = Naming.getElementNameForMessage((NamedElement) lOwner, pFullyQualified);
+      }
+      String lElementName = pNamedElement.getName() != null ? pNamedElement.getName() : "";
+      boolean lHasOwnerName = lOwnerName != null && lOwnerName.isEmpty() == false
+          && lOwnerName.equals("unknown") == false;
+      if (lHasOwnerName && lElementName.isEmpty() == false) {
+        lName = lOwnerName + "." + lElementName;
+      }
+      // Unnamed elements (e.g. return parameters) are identified by their owner. Unnamed elements in a package (e.g.
+      // dependencies) get no name, so that messages describe them as unnamed element in the package.
+      else if (lHasOwnerName && lOwner instanceof Package == false) {
+        lName = lOwnerName;
+      }
+      else {
+        lName = lElementName;
+      }
+    }
+    return lName;
+  }
 
-		StringBuilder lTemplateParameter = new StringBuilder();
-		lTemplateParameter.append(Naming.getFullyQualifiedName(lGenericClass.getNearestPackage()));
-		lTemplateParameter.append(".");
-		lTemplateParameter.append(lGenericClass.getName());
-		lTemplateParameter.append("<");
+  public static String getTemplateBindingFQN(Class pTemplateClass) {
+    TemplateBinding lTemplateBinding = pTemplateClass.getTemplateBindings().get(0);
 
-		if (lMultivalued == true) {
-			lTemplateParameter.append(Naming.getCollectionType(lOrdered, lUnique));
-			lTemplateParameter.append("<");
-		}
+    boolean lMultivalued;
+    boolean lOrdered;
+    boolean lUnique;
+    if (ClassUtil.isStereotypeApplied(lTemplateBinding, "TemplateBindingMultiplicity")) {
+      lMultivalued = Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding,
+          "TemplateBindingMultiplicity", "multivalued"));
+      lOrdered = Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding, "TemplateBindingMultiplicity",
+          "ordered"));
+      lUnique = Boolean.valueOf(ClassUtil.getStereotypeValue(lTemplateBinding, "TemplateBindingMultiplicity",
+          "unique"));
+    }
+    else {
+      lMultivalued = false;
+      lOrdered = false;
+      lUnique = false;
+    }
+    NamedElement lGenericClass = (NamedElement) lTemplateBinding.getTargets().get(0).getOwner();
 
-		List<String> lTypeParameterNames = TemplateParameterHelper.getTypeParameterNames(pTemplateClass);
-		if (lTypeParameterNames.isEmpty() == false) {
-			lTemplateParameter.append(String.join(", ", lTypeParameterNames));
-		} else {
-			lTemplateParameter.append("???");
-		}
+    StringBuilder lTemplateParameter = new StringBuilder();
+    lTemplateParameter.append(Naming.getFullyQualifiedName(lGenericClass.getNearestPackage()));
+    lTemplateParameter.append(".");
+    lTemplateParameter.append(lGenericClass.getName());
+    lTemplateParameter.append("<");
 
-		if (lMultivalued == true) {
-			lTemplateParameter.append(">");
-		}
-		lTemplateParameter.append(">");
+    if (lMultivalued == true) {
+      lTemplateParameter.append(Naming.getCollectionType(lOrdered, lUnique));
+      lTemplateParameter.append("<");
+    }
 
-		return lTemplateParameter.toString();
-	}
+    List<String> lTypeParameterNames = TemplateParameterHelper.getTypeParameterNames(pTemplateClass);
+    if (lTypeParameterNames.isEmpty() == false) {
+      lTemplateParameter.append(String.join(", ", lTypeParameterNames));
+    }
+    else {
+      lTemplateParameter.append("???");
+    }
 
-	public static String getCollectionType(boolean pOrdered, boolean pUnique) {
-		String lCollectionType;
-		if (pOrdered == false && pUnique == false) {
-			// Type is not unique and not ordered -> Collection
-			lCollectionType = Collection.class.getName();
-		} else if (pOrdered == false && pUnique == true) {
-			lCollectionType = Set.class.getName();
-		} else if (pOrdered == true && pUnique == false) {
-			lCollectionType = List.class.getName();
-		} else {
-			lCollectionType = SortedSet.class.getName();
-		}
-		return lCollectionType;
-	}
+    if (lMultivalued == true) {
+      lTemplateParameter.append(">");
+    }
+    lTemplateParameter.append(">");
 
-	public static String getFullyQualifiedNameForXML(org.eclipse.uml2.uml.NamedElement pNamedElement) {
-		String lFullyQualifiedName = Naming.getFullyQualifiedName(pNamedElement);
-		if (lFullyQualifiedName.endsWith("<?>")) {
-			lFullyQualifiedName = lFullyQualifiedName.substring(0, lFullyQualifiedName.length() - 3);
-		}
-		return lFullyQualifiedName;
-	}
+    return lTemplateParameter.toString();
+  }
 
-	/**
-	 * Method checks whether the passed object is a business object. The method
-	 * returns true if the stereotype business object was applied to the passed
-	 * object.
-	 * 
-	 * @param pNamedElement
-	 * @return
-	 */
-	public static boolean isPersistentObject(org.eclipse.uml2.uml.NamedElement pNamedElement) {
-		return pNamedElement.getAppliedStereotype(STEREOTYPE_PERSISTENT_OBJECT) != null;
-	}
+  public static String getCollectionType(boolean pOrdered, boolean pUnique) {
+    String lCollectionType;
+    if (pOrdered == false && pUnique == false) {
+      // Type is not unique and not ordered -> Collection
+      lCollectionType = Collection.class.getName();
+    }
+    else if (pOrdered == false && pUnique == true) {
+      lCollectionType = Set.class.getName();
+    }
+    else if (pOrdered == true && pUnique == false) {
+      lCollectionType = List.class.getName();
+    }
+    else {
+      lCollectionType = SortedSet.class.getName();
+    }
+    return lCollectionType;
+  }
 
-	/**
-	 * Method uses the passed named element and returns its name as parameter
-	 * name according to the code conventions. Example: name = "person" return
-	 * value "pPerson"
-	 * 
-	 * @param pNamedElement
-	 *            Named element that should be used as parameter. The parameter
-	 *            must not be null and the name must consist of at least one
-	 *            character.
-	 * @return String Named element as parameter name. The method never returns
-	 *         null.
-	 */
-	public static String asParameterName(NamedElement pNamedElement) {
-		// Check parameter
-		Check.checkInvalidParameterNull(pNamedElement, "pNamedElement");
-		Check.checkIsRealString(pNamedElement.getName(), "pNamedElement.getName()");
+  public static String getFullyQualifiedNameForXML(org.eclipse.uml2.uml.NamedElement pNamedElement) {
+    String lFullyQualifiedName = Naming.getFullyQualifiedName(pNamedElement);
+    if (lFullyQualifiedName.endsWith("<?>")) {
+      lFullyQualifiedName = lFullyQualifiedName.substring(0, lFullyQualifiedName.length() - 3);
+    }
+    return lFullyQualifiedName;
+  }
 
-		return asParameterName(pNamedElement.getName());
-	}
+  /**
+   * Method checks whether the passed object is a business object. The method returns true if the stereotype business
+   * object was applied to the passed object.
+   * 
+   * @param pNamedElement
+   * @return
+   */
+  public static boolean isPersistentObject(org.eclipse.uml2.uml.NamedElement pNamedElement) {
+    return pNamedElement.getAppliedStereotype(STEREOTYPE_PERSISTENT_OBJECT) != null;
+  }
 
-	public static String asParameterName(String pName) {
-		StringBuffer lBuffer = new StringBuffer(pName.length() + 1);
-		lBuffer.append(PARAM_PREFIX);
-		lBuffer.append(Character.toUpperCase(pName.charAt(0)));
-		lBuffer.append(pName.substring(1));
+  /**
+   * Method uses the passed named element and returns its name as parameter name according to the code conventions.
+   * Example: name = "person" return value "pPerson"
+   * 
+   * @param pNamedElement Named element that should be used as parameter. The parameter must not be null and the name
+   * must consist of at least one character.
+   * @return String Named element as parameter name. The method never returns null.
+   */
+  public static String asParameterName(NamedElement pNamedElement) {
+    // Check parameter
+    Check.checkInvalidParameterNull(pNamedElement, "pNamedElement");
+    Check.checkIsRealString(pNamedElement.getName(), "pNamedElement.getName()");
 
-		return lBuffer.toString();
-	}
+    return asParameterName(pNamedElement.getName());
+  }
 
-	/**
-	 * Method uses the passed named element and returns its name as parameter
-	 * name according to the code conventions. Example: name = "person" return
-	 * value "pPerson"
-	 * 
-	 * @param pNamedElement
-	 *            Named element that should be used as parameter. The parameter
-	 *            must not be null and the name must consist of at least one
-	 *            character.
-	 * @return String Named element as parameter name. The method never returns
-	 *         null.
-	 */
-	public static String asInstanceName(NamedElement pNamedElement) {
-		// Check parameter
-		Check.checkInvalidParameterNull(pNamedElement, "pNamedElement");
-		Check.checkIsRealString(pNamedElement.getName(), "pNamedElement.getName()");
+  public static String asParameterName(String pName) {
+    StringBuffer lBuffer = new StringBuffer(pName.length() + 1);
+    lBuffer.append(PARAM_PREFIX);
+    lBuffer.append(Character.toUpperCase(pName.charAt(0)));
+    lBuffer.append(pName.substring(1));
 
-		final String lName = pNamedElement.getName();
+    return lBuffer.toString();
+  }
 
-		StringBuffer lBuffer = new StringBuffer(lName.length() + 1);
-		lBuffer.append(Character.toLowerCase(lName.charAt(0)));
-		lBuffer.append(lName.substring(1));
+  /**
+   * Method uses the passed named element and returns its name as parameter name according to the code conventions.
+   * Example: name = "person" return value "pPerson"
+   * 
+   * @param pNamedElement Named element that should be used as parameter. The parameter must not be null and the name
+   * must consist of at least one character.
+   * @return String Named element as parameter name. The method never returns null.
+   */
+  public static String asInstanceName(NamedElement pNamedElement) {
+    // Check parameter
+    Check.checkInvalidParameterNull(pNamedElement, "pNamedElement");
+    Check.checkIsRealString(pNamedElement.getName(), "pNamedElement.getName()");
 
-		return lBuffer.toString();
-	}
+    final String lName = pNamedElement.getName();
 
-	/**
-	 * Method returns the name for the JEAF Command class or the passed method
-	 * object. The returned name will be created from the name of the method and
-	 * the type of each parameter.
-	 * 
-	 * @param pOperation
-	 * @return
-	 */
-	public static String getCommandClassName(Operation pOperation) {
-		// Check parameter for null.
-		Check.checkInvalidParameterNull(pOperation, "pOperation");
+    StringBuffer lBuffer = new StringBuffer(lName.length() + 1);
+    lBuffer.append(Character.toLowerCase(lName.charAt(0)));
+    lBuffer.append(lName.substring(1));
 
-		StringBuffer lBuffer = new StringBuffer(128);
-		lBuffer.append(Naming.firstToUpper(pOperation.getName()));
-		lBuffer.append(COMMAND_CLASS_NAME_SEPERATOR);
+    return lBuffer.toString();
+  }
 
-		// Append type name of all parameters.
-		List<Parameter> lInputParameters = ClassUtil.getInputParameters(pOperation);
-		for (Parameter lNextParameter : lInputParameters) {
-			lBuffer.append(lNextParameter.getType().getName());
-			lBuffer.append(COMMAND_CLASS_NAME_SEPERATOR);
-		}
+  /**
+   * Method returns the name for the JEAF Command class or the passed method object. The returned name will be created
+   * from the name of the method and the type of each parameter.
+   * 
+   * @param pOperation
+   * @return
+   */
+  public static String getCommandClassName(Operation pOperation) {
+    // Check parameter for null.
+    Check.checkInvalidParameterNull(pOperation, "pOperation");
 
-		// Append "Command" as suffix
-		lBuffer.append(((NamedElement) pOperation.getOwner()).getName());
-		lBuffer.append("_Command");
+    StringBuffer lBuffer = new StringBuffer(128);
+    lBuffer.append(Naming.firstToUpper(pOperation.getName()));
+    lBuffer.append(COMMAND_CLASS_NAME_SEPERATOR);
 
-		// Return name of command class.
-		return lBuffer.toString();
-	}
+    // Append type name of all parameters.
+    List<Parameter> lInputParameters = ClassUtil.getInputParameters(pOperation);
+    for (Parameter lNextParameter : lInputParameters) {
+      lBuffer.append(lNextParameter.getType().getName());
+      lBuffer.append(COMMAND_CLASS_NAME_SEPERATOR);
+    }
 
-	/**
-	 * Method converts the list of named elements to a Java parameter list for
-	 * an method call
-	 * 
-	 * @param pNamedElements
-	 * @return
-	 */
-	public static String asParameterDefinitionList(List<? extends NamedElement> pNamedElements) {
-		// Check parameter
-		Check.checkInvalidParameterNull(pNamedElements, "pElements");
+    // Append "Command" as suffix
+    lBuffer.append(((NamedElement) pOperation.getOwner()).getName());
+    lBuffer.append("_Command");
 
-		StringBuffer lBuffer = new StringBuffer();
+    // Return name of command class.
+    return lBuffer.toString();
+  }
 
-		final int lSize = pNamedElements.size();
-		for (int i = 0; i < lSize; i++) {
-			NamedElement lElement = pNamedElements.get(i);
-			lBuffer.append(Naming.getFullyQualifiedName(lElement));
-			lBuffer.append(' ');
-			lBuffer.append(Naming.asParameterName(lElement));
-			if (i < lSize - 1) {
-				lBuffer.append(PARAM_SEPERATOR);
-			}
-		}
-		return lBuffer.toString();
-	}
+  /**
+   * Method converts the list of named elements to a Java parameter list for an method call
+   * 
+   * @param pNamedElements
+   * @return
+   */
+  public static String asParameterDefinitionList(List<? extends NamedElement> pNamedElements) {
+    // Check parameter
+    Check.checkInvalidParameterNull(pNamedElements, "pElements");
 
-	/**
-	 * Method converts the list of named elements to a Java parameter list for
-	 * an method call
-	 * 
-	 * @param pNamedElements
-	 * @return
-	 */
-	public static String asParameterList(List<? extends NamedElement> pNamedElements) {
-		// Check parameter
-		Check.checkInvalidParameterNull(pNamedElements, "pElements");
+    StringBuffer lBuffer = new StringBuffer();
 
-		StringBuffer lBuffer = new StringBuffer();
+    final int lSize = pNamedElements.size();
+    for (int i = 0; i < lSize; i++) {
+      NamedElement lElement = pNamedElements.get(i);
+      lBuffer.append(Naming.getFullyQualifiedName(lElement));
+      lBuffer.append(' ');
+      lBuffer.append(Naming.asParameterName(lElement));
+      if (i < lSize - 1) {
+        lBuffer.append(PARAM_SEPERATOR);
+      }
+    }
+    return lBuffer.toString();
+  }
 
-		final int lSize = pNamedElements.size();
-		for (int i = 0; i < lSize; i++) {
-			NamedElement lElement = pNamedElements.get(i);
-			lBuffer.append(Naming.asParameterName(lElement));
-			if (i < lSize - 1) {
-				lBuffer.append(PARAM_SEPERATOR);
-			}
-		}
-		return lBuffer.toString();
-	}
+  /**
+   * Method converts the list of named elements to a Java parameter list for an method call
+   * 
+   * @param pNamedElements
+   * @return
+   */
+  public static String asParameterList(List<? extends NamedElement> pNamedElements) {
+    // Check parameter
+    Check.checkInvalidParameterNull(pNamedElements, "pElements");
 
-	/**
-	 * Method changes the first character of the passed string to its upper case
-	 * character.
-	 * 
-	 * @param pString
-	 * @return
-	 */
-	public static String firstToUpper(String pString) {
-		String lFirstUpperString;
-		// String has at least 2 characters
-		if (pString.length() > 1) {
-			String lFirstCharacter = pString.substring(0, 1);
-			String lTail = pString.substring(1, pString.length());
-			lFirstUpperString = lFirstCharacter.toUpperCase() + lTail;
-		}
-		// Not more than one character
-		else {
-			lFirstUpperString = pString.toUpperCase();
-		}
-		return lFirstUpperString;
-	}
+    StringBuffer lBuffer = new StringBuffer();
 
-	/**
-	 * Method changes the first character of the passed string to its lower case
-	 * character.
-	 * 
-	 * @param pString
-	 * @return
-	 */
-	public static String firstToLower(String pString) {
-		String lFirstLowerString;
-		// String has at least 2 characters
-		if (pString.length() > 1) {
-			String lFirstCharacter = pString.substring(0, 1);
-			String lTail = pString.substring(1, pString.length());
-			lFirstLowerString = lFirstCharacter.toLowerCase() + lTail;
-		}
-		// Not more than one character
-		else {
-			lFirstLowerString = pString.toLowerCase();
-		}
-		return lFirstLowerString;
-	}
+    final int lSize = pNamedElements.size();
+    for (int i = 0; i < lSize; i++) {
+      NamedElement lElement = pNamedElements.get(i);
+      lBuffer.append(Naming.asParameterName(lElement));
+      if (i < lSize - 1) {
+        lBuffer.append(PARAM_SEPERATOR);
+      }
+    }
+    return lBuffer.toString();
+  }
 
-	public static Set<String> getOperationNames(Interface pInterface) {
-		Set<String> lNames = new HashSet<String>();
-		for (Operation lOperation : pInterface.getOwnedOperations()) {
-			lNames.add(lOperation.getName());
-		}
-		return lNames;
-	}
+  /**
+   * Method changes the first character of the passed string to its upper case character.
+   * 
+   * @param pString
+   * @return
+   */
+  public static String firstToUpper(String pString) {
+    String lFirstUpperString;
+    // String has at least 2 characters
+    if (pString.length() > 1) {
+      String lFirstCharacter = pString.substring(0, 1);
+      String lTail = pString.substring(1, pString.length());
+      lFirstUpperString = lFirstCharacter.toUpperCase() + lTail;
+    }
+    // Not more than one character
+    else {
+      lFirstUpperString = pString.toUpperCase();
+    }
+    return lFirstUpperString;
+  }
 
-	public static String fromParameterToInstance(NamedElement pElement) {
-		String lName = pElement.getName();
-		if (lName.length() > 1) {
-			lName = lName.substring(1);
-		}
-		return Naming.firstToLower(lName);
-	}
+  /**
+   * Method changes the first character of the passed string to its lower case character.
+   * 
+   * @param pString
+   * @return
+   */
+  public static String firstToLower(String pString) {
+    String lFirstLowerString;
+    // String has at least 2 characters
+    if (pString.length() > 1) {
+      String lFirstCharacter = pString.substring(0, 1);
+      String lTail = pString.substring(1, pString.length());
+      lFirstLowerString = lFirstCharacter.toLowerCase() + lTail;
+    }
+    // Not more than one character
+    else {
+      lFirstLowerString = pString.toLowerCase();
+    }
+    return lFirstLowerString;
+  }
+
+  public static Set<String> getOperationNames(Interface pInterface) {
+    Set<String> lNames = new HashSet<String>();
+    for (Operation lOperation : pInterface.getOwnedOperations()) {
+      lNames.add(lOperation.getName());
+    }
+    return lNames;
+  }
+
+  public static String fromParameterToInstance(NamedElement pElement) {
+    String lName = pElement.getName();
+    if (lName.length() > 1) {
+      lName = lName.substring(1);
+    }
+    return Naming.firstToLower(lName);
+  }
 }

@@ -49,8 +49,8 @@ public class Stop implements ServiceObject {
 
   private List<LinkObject> links;
 
-  @Max(value = 32)
   @PositiveOrZero
+  @Max(value = 32)
   private byte index;
 
   /**

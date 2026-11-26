@@ -20,7 +20,7 @@ context PersistentObject if runChecks("PersistentObject") WARNING this.getWarnin
 
 
 // Checks for stereotype Role
-context Role if runChecks("Role") && opposite != null ERROR this.getErrorMessage("9134", {((NamedElement)this.owner).name + "." + name, ((NamedElement)opposite.owner).name + "." + opposite.name}): opposite.isStereotypeApplied("Role") == true;
-context Role if isMultivalued() && opposite.isMultivalued() && runChecks("Role") 
+context Role if runChecks("Role") && navigableOpposite() != null ERROR this.getErrorMessage("9134", {((NamedElement)this.owner).name + "." + name, ((NamedElement)navigableOpposite().owner).name + "." + navigableOpposite().name}): navigableOpposite().isStereotypeApplied("Role") == true;
+context Role if isMultivalued() && navigableOpposite().isMultivalued() && runChecks("Role") 
 	ERROR "Error: " + class.fqn()+ "->"+ type.fqn() + ": The tag linkTable must be set to only one association end of of an association. Not setting it is not allowed." :
 	isTableValid();

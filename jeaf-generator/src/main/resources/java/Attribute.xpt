@@ -290,10 +290,10 @@
         // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
         if («this.asInstanceVar()»BackReferenceInitialized == false) {
           «this.getSoftLinkPropertyName()»BackReferenceInitialized = true;
-            «IF opposite.isMultivalued() == true»
-            «this.asInstanceVar()».addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
+            «IF navigableOpposite().isMultivalued() == true»
+            «this.asInstanceVar()».addTo«navigableOpposite().name.toFirstUpper()»((«navigableOpposite().type.name»)this);
             «ELSE»
-            «this.asInstanceVar()».«opposite.asSetter()»((«opposite.type.name»)this);
+            «this.asInstanceVar()».«navigableOpposite().asSetter()»((«navigableOpposite().type.name»)this);
             «ENDIF»
         }
         «ENDIF»
@@ -317,7 +317,7 @@
     «EXPAND java::Helper::GenerateAnnotations-»
     public final void unset«this.getSoftLinkPropertyName().toFirstUpper()» () {
         «EXPAND GenerateRemoveOpposite»
-        «IF opposite == null || opposite.isNavigable() == false»
+        «IF navigableOpposite() == null || navigableOpposite().isNavigable() == false»
           «this.getSoftLinkPropertyName()» = null;
         «ENDIF»
     }
@@ -336,10 +336,10 @@
         if («this.asInstanceVar()»BackReferenceInitialized == false) {
           «this.asInstanceVar()»BackReferenceInitialized = true;
           for («this.type.fqn()» lNext : «this.asInstanceVar()») {
-            «IF opposite.isMultivalued() == true»
-            lNext.addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
+            «IF navigableOpposite().isMultivalued() == true»
+            lNext.addTo«navigableOpposite().name.toFirstUpper()»((«navigableOpposite().type.name»)this);
             «ELSE»
-            lNext.«opposite.asSetter()»((«opposite.type.name»)this);
+            lNext.«navigableOpposite().asSetter()»((«navigableOpposite().type.name»)this);
             «ENDIF»
           }
         }
@@ -386,11 +386,11 @@
         com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
         «ENDIF»
         
-        «IF opposite != null && opposite.isNavigable() == true»
-            «IF opposite.isMultivalued() == false»
+        «IF navigableOpposite() != null && navigableOpposite().isNavigable() == true»
+            «IF navigableOpposite().isMultivalued() == false»
                 // Since this is not a many-to-many association the association to which the passed object belongs, has to 
                 // be released.
-                «asParameter()».«opposite.asUnset()»();
+                «asParameter()».«navigableOpposite().asUnset()»();
             «ENDIF»
         «ENDIF»
         
@@ -437,7 +437,7 @@
      */
     «EXPAND java::Helper::GenerateAnnotations-»
     public void clear«this.getSoftLinkPropertyName().toFirstUpper()» () {
-      «IF opposite != null && opposite.isNavigable() == true»
+      «IF navigableOpposite() != null && navigableOpposite().isNavigable() == true»
       // Remove all objects from association "«asInstanceVar()»".
       java.util.Collection<«this.getMultivaluedJavaSoftLinkType()»> «asLocalVar()» = new java.util.HashSet<«this.getMultivaluedJavaSoftLinkType()»>(«asInstanceVar()»);
       java.util.Iterator<«this.getMultivaluedJavaSoftLinkType()»> lIterator = «asLocalVar()».iterator();
@@ -470,10 +470,10 @@
 		    // Due to restrictions in JSON serialization / deserialization bi-directional associations need a special handling after an object was deserialized.
 		    if («this.asInstanceVar()»BackReferenceInitialized == false) {
 		      «this.asInstanceVar()»BackReferenceInitialized = true;
-		        «IF opposite.isMultivalued() == true»
-		        «this.asInstanceVar()».addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
+		        «IF navigableOpposite().isMultivalued() == true»
+		        «this.asInstanceVar()».addTo«navigableOpposite().name.toFirstUpper()»((«navigableOpposite().type.name»)this);
 		        «ELSE»
-			    «this.asInstanceVar()».«opposite.asSetter()»((«opposite.type.name»)this);
+			    «this.asInstanceVar()».«navigableOpposite().asSetter()»((«navigableOpposite().type.name»)this);
 			    «ENDIF»
 		    }
 		    «ENDIF»
@@ -493,13 +493,13 @@
 			com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
 			«ENDIF»
 		
-			«IF opposite != null && opposite.isNavigable() == true»
+			«IF navigableOpposite() != null && navigableOpposite().isNavigable() == true»
 				// Release already referenced object before setting a new association.
 				if(«asInstanceVar()» != null) {
-				«IF opposite.isMultivalued() == true»
-					«asInstanceVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+				«IF navigableOpposite().isMultivalued() == true»
+					«asInstanceVar()».removeFrom«navigableOpposite().name.toFirstUpper()»( («navigableOpposite().type.fqn()») this);
 				«ELSE»
-					«asInstanceVar()».«opposite.asUnset()»();
+					«asInstanceVar()».«navigableOpposite().asUnset()»();
 				«ENDIF»
 				}
 			«ENDIF»
@@ -516,7 +516,7 @@
     «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» final void «asUnset()» () {
         «IF this.generateBackwardCompatibility() == false»
 	        «EXPAND GenerateRemoveOpposite»
-	        «IF opposite == null || opposite.isNavigable() == false || this.belongsToTransientBidirectionalBackReference()»
+	        «IF navigableOpposite() == null || navigableOpposite().isNavigable() == false || this.belongsToTransientBidirectionalBackReference()»
 	          «asInstanceVar()» = null;
 	        «ENDIF»
 	    «ELSE»
@@ -558,10 +558,10 @@
 		    if («this.asInstanceVar()»BackReferenceInitialized == false) {
 		      «this.asInstanceVar()»BackReferenceInitialized = true;
 		      for («this.type.fqn()» lNext : «this.asInstanceVar()») {
-		        «IF opposite.isMultivalued() == true»
-		        lNext.addTo«opposite.name.toFirstUpper()»((«opposite.type.name»)this);
+		        «IF navigableOpposite().isMultivalued() == true»
+		        lNext.addTo«navigableOpposite().name.toFirstUpper()»((«navigableOpposite().type.name»)this);
 		        «ELSE»
-			    lNext.«opposite.asSetter()»((«opposite.type.name»)this);
+			    lNext.«navigableOpposite().asSetter()»((«navigableOpposite().type.name»)this);
 			    «ENDIF»
 		      }
 		    }
@@ -612,10 +612,10 @@
 	        com.anaptecs.jeaf.xfun.api.checks.Check.checkInvalidParameterNull(«asParameter()», "«asParameter()»");
 	        «ENDIF»
 	        
-		    «IF opposite != null && opposite.isNavigable() == true»
-		        «IF opposite.isMultivalued() == false && this.belongsToTransientBidirectionalBackReference() == false»
+		    «IF navigableOpposite() != null && navigableOpposite().isNavigable() == true»
+		        «IF navigableOpposite().isMultivalued() == false && this.belongsToTransientBidirectionalBackReference() == false»
 		            // Since this is not a many-to-many association the association to which the passed object belongs, has to be released.
-		            «asParameter()».«opposite.asUnset()»();
+		            «asParameter()».«navigableOpposite().asUnset()»();
 		        «ENDIF»
 		    «ENDIF»
 		    
@@ -670,7 +670,7 @@
     «EXPAND java::Helper::GenerateAnnotations-»
     «IF this.isInternalProperty() == false && this.belongsToTransientBidirectionalBackReference() == false»public«ENDIF» void clear«name.toFirstUpper()» () {
       «IF this.generateBackwardCompatibility() == false»
-	      «IF opposite != null && opposite.isNavigable() == true»
+	      «IF navigableOpposite() != null && navigableOpposite().isNavigable() == true»
 	      // Remove all objects from association "«asInstanceVar()»".
 	      java.util.Collection<«type.fqn()»> «asLocalVar()» = new java.util.HashSet<«type.fqn()»>(«asInstanceVar()»);
 	      java.util.Iterator<«type.fqn()»> lIterator = «asLocalVar()».iterator();
@@ -704,50 +704,50 @@
 
 // Template generates the code that will be generated if the association is bidirectional.
 «DEFINE GenerateInitOpposite FOR Property»
-    «IF opposite != null && opposite.isNavigable() == true  && this.belongsToTransientBidirectionalBackReference() == false»
-        «IF opposite.isMultivalued() == true»
+    «IF navigableOpposite() != null && navigableOpposite().isNavigable() == true  && this.belongsToTransientBidirectionalBackReference() == false»
+        «IF navigableOpposite().isMultivalued() == true»
 	        // The association is set in both directions because within the UML model it is defined to be bidirectional.
 	        // In case that one side will be removed from the association the other side will also be removed.
-            if («IF generateNullChecksForToOneAssociationsOfServiceObjects() == false» «asParameter()» != null && «ENDIF»«asParameter()».get«opposite.name.toFirstUpper()»().contains(this) == false ) {
-                «asParameter()».addTo«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+            if («IF generateNullChecksForToOneAssociationsOfServiceObjects() == false» «asParameter()» != null && «ENDIF»«asParameter()».get«navigableOpposite().name.toFirstUpper()»().contains(this) == false ) {
+                «asParameter()».addTo«navigableOpposite().name.toFirstUpper()»( («navigableOpposite().type.fqn()») this);
             }
         «ELSE»
 	        // The association is set in both directions because within the UML model it is defined to be bidirectional.
 	        // In case that one side will be removed from the association the other side will also be removed.
-            if(«IF generateNullChecksForToOneAssociationsOfServiceObjects() == false» «asParameter()» != null && «ENDIF»this.equals(«asParameter()».get«opposite.name.toFirstUpper()»()) == false) {
-                «asParameter()».«opposite.asSetter()»( («opposite.type.fqn()») this);
+            if(«IF generateNullChecksForToOneAssociationsOfServiceObjects() == false» «asParameter()» != null && «ENDIF»this.equals(«asParameter()».get«navigableOpposite().name.toFirstUpper()»()) == false) {
+                «asParameter()».«navigableOpposite().asSetter()»( («navigableOpposite().type.fqn()») this);
             }
         «ENDIF»
     «ENDIF»     
 «ENDDEFINE»
 
 «DEFINE GenerateRemoveOpposite FOR Property»
-    «IF opposite != null && opposite.isNavigable() == true && this.belongsToTransientBidirectionalBackReference() == false»
+    «IF navigableOpposite() != null && navigableOpposite().isNavigable() == true && this.belongsToTransientBidirectionalBackReference() == false»
         // The association is set in both directions because within the UML model it is defined to be bidirectional.
         // In case that one side will be removed from the association the other side will also be removed.
         «IF isMultivalued() == true»
-            «IF opposite.isMultivalued() == true»
-                if («asParameter()».get«opposite.name.toFirstUpper()»().contains(this) == true ) {
-                    «asParameter()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+            «IF navigableOpposite().isMultivalued() == true»
+                if («asParameter()».get«navigableOpposite().name.toFirstUpper()»().contains(this) == true ) {
+                    «asParameter()».removeFrom«navigableOpposite().name.toFirstUpper()»( («navigableOpposite().type.fqn()») this);
                 }
             «ELSE»
-                if(this.equals(«asParameter()».get«opposite.name.toFirstUpper()»()) == true) {
-                    «asParameter()».«opposite.asUnset()»();
+                if(this.equals(«asParameter()».get«navigableOpposite().name.toFirstUpper()»()) == true) {
+                    «asParameter()».«navigableOpposite().asUnset()»();
                 }
             «ENDIF»
         «ELSE»
-	        «IF opposite != null && opposite.isNavigable() == true && this.isMultivalued() == false»
+	        «IF navigableOpposite() != null && navigableOpposite().isNavigable() == true && this.isMultivalued() == false»
 	            «type.fqn()» «type.asLocalVar()» = «asInstanceVar()»;
 	        «ENDIF»
 	        «asInstanceVar()» = null;
         
-            «IF opposite.isMultivalued() == true»
-                if («type.asLocalVar()» != null && «type.asLocalVar()».get«opposite.name.toFirstUpper()»().contains(this) == true ) {
-                    «type.asLocalVar()».removeFrom«opposite.name.toFirstUpper()»( («opposite.type.fqn()») this);
+            «IF navigableOpposite().isMultivalued() == true»
+                if («type.asLocalVar()» != null && «type.asLocalVar()».get«navigableOpposite().name.toFirstUpper()»().contains(this) == true ) {
+                    «type.asLocalVar()».removeFrom«navigableOpposite().name.toFirstUpper()»( («navigableOpposite().type.fqn()») this);
                 }
             «ELSE»
-                if(«type.asLocalVar()» != null && this.equals(«type.asLocalVar()».get«opposite.name.toFirstUpper()»()) == true) {
-                    «type.asLocalVar()».«opposite.asUnset()»();
+                if(«type.asLocalVar()» != null && this.equals(«type.asLocalVar()».get«navigableOpposite().name.toFirstUpper()»()) == true) {
+                    «type.asLocalVar()».«navigableOpposite().asUnset()»();
                 }
             «ENDIF»
         «ENDIF»

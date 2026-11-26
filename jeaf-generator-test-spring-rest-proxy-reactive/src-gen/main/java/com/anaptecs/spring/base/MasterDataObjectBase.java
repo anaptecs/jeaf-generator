@@ -32,6 +32,11 @@ public abstract class MasterDataObjectBase {
    */
   public static final String INTERNALPROPERTY = "internalProperty";
 
+  /**
+   * Constant for the name of attribute "newProperty".
+   */
+  public static final String NEWPROPERTY = "newProperty";
+
   private List<DataUnit> dataUnits;
 
   private Entity entity;
@@ -39,6 +44,8 @@ public abstract class MasterDataObjectBase {
   private String objectID;
 
   private String internalProperty;
+
+  private String newProperty;
 
   /**
    * Initialize object using the passed builder.
@@ -51,6 +58,7 @@ public abstract class MasterDataObjectBase {
     entity = pBuilder.entity;
     objectID = pBuilder.objectID;
     internalProperty = pBuilder.internalProperty;
+    newProperty = pBuilder.newProperty;
   }
 
   /**
@@ -65,6 +73,8 @@ public abstract class MasterDataObjectBase {
     private String objectID;
 
     private String internalProperty;
+
+    private String newProperty;
 
     /**
      * Use {@link MasterDataObject.builder()} instead of protected constructor to create new builder.
@@ -82,6 +92,7 @@ public abstract class MasterDataObjectBase {
         this.setEntity(pObject.entity);
         this.setObjectID(pObject.objectID);
         this.setInternalProperty(pObject.internalProperty);
+        this.setNewProperty(pObject.newProperty);
       }
     }
 
@@ -167,6 +178,18 @@ public abstract class MasterDataObjectBase {
     public BuilderBase setInternalProperty( String pInternalProperty ) {
       // Assign value to attribute
       internalProperty = pInternalProperty;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #newProperty}.<br/>
+     *
+     * @param pNewProperty Value to which {@link #newProperty} should be set.
+     * @return {@link BuilderBase} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    public BuilderBase setNewProperty( String pNewProperty ) {
+      // Assign value to attribute
+      newProperty = pNewProperty;
       return this;
     }
 
@@ -297,6 +320,25 @@ public abstract class MasterDataObjectBase {
   }
 
   /**
+   * Method returns attribute {@link #newProperty}.<br/>
+   *
+   * @return {@link String} Value to which {@link #newProperty} is set.
+   */
+  public String getNewProperty( ) {
+    return newProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #newProperty}.<br/>
+   *
+   * @param pNewProperty Value to which {@link #newProperty} should be set.
+   */
+  public void setNewProperty( String pNewProperty ) {
+    // Assign value to attribute
+    newProperty = pNewProperty;
+  }
+
+  /**
    * Convenience method to create new instance of class MasterDataObject.
    *
    *
@@ -306,13 +348,16 @@ public abstract class MasterDataObjectBase {
    *
    * @param pInternalProperty Value to which {@link #internalProperty} should be set.
    *
+   * @param pNewProperty Value to which {@link #newProperty} should be set.
+   *
    * @return {@link MasterDataObject}
    */
-  public static MasterDataObject of( Entity pEntity, String pObjectID, String pInternalProperty ) {
+  public static MasterDataObject of( Entity pEntity, String pObjectID, String pInternalProperty, String pNewProperty ) {
     var lBuilder = MasterDataObject.builder();
     lBuilder.setEntity(pEntity);
     lBuilder.setObjectID(pObjectID);
     lBuilder.setInternalProperty(pInternalProperty);
+    lBuilder.setNewProperty(pNewProperty);
     return lBuilder.build();
   }
 
@@ -405,6 +450,10 @@ public abstract class MasterDataObjectBase {
     lBuilder.append(pIndent);
     lBuilder.append("internalProperty: ");
     lBuilder.append(internalProperty);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("newProperty: ");
+    lBuilder.append(newProperty);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }

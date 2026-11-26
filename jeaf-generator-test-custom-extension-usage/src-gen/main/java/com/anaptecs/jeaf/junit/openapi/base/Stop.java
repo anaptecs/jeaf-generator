@@ -74,8 +74,8 @@ public class Stop extends Object implements ServiceObject {
   // "byte"
   @ClassPropertyDeclaration
   @JEAFCustomAnnotationTest
-  @Max(value = 32)
   @PositiveOrZero
+  @Max(value = 32)
   private byte index;
 
   // "byte"

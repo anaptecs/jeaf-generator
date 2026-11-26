@@ -75,15 +75,19 @@ public class ChildPOJO extends ParentPOJO {
    *
    * @param pHello Value to which {@link #hello} should be set.
    *
+   * @param pNewProperty Value to which {@link #newProperty} should be set.
+   *
    * @param pChildAttribute Value to which {@link #childAttribute} should be set.
    *
    * @return {@link ChildPOJO}
    */
-  public static ChildPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello, Integer pChildAttribute ) {
+  public static ChildPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello, int pNewProperty,
+      Integer pChildAttribute ) {
     var lBuilder = ChildPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setWeirdAttribute(pWeirdAttribute);
     lBuilder.setHello(pHello);
+    lBuilder.setNewProperty(pNewProperty);
     lBuilder.setChildAttribute(pChildAttribute);
     return lBuilder.build();
   }
@@ -160,6 +164,20 @@ public class ChildPOJO extends ParentPOJO {
     public Builder setHello( String pHello ) {
       // Call super class implementation.
       super.setHello(pHello);
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #newProperty}.<br/>
+     *
+     * @param pNewProperty Value to which {@link #newProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    @Override
+    public Builder setNewProperty( int pNewProperty ) {
+      // Call super class implementation.
+      super.setNewProperty(pNewProperty);
       return this;
     }
 
