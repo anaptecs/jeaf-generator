@@ -13,7 +13,6 @@ import com.anaptecs.jeaf.accounting.Customer;
 import com.anaptecs.jeaf.accounting.CustomerLoadStrategy;
 import com.anaptecs.jeaf.accounting.CustomerQuery;
 import com.anaptecs.jeaf.accounting.Person;
-import com.anaptecs.jeaf.accounting.SecurityToken;
 import com.anaptecs.jeaf.core.api.Component;
 import com.anaptecs.jeaf.core.api.ServiceObjectID;
 import com.anaptecs.jeaf.xfun.api.health.CheckLevel;
@@ -110,7 +109,7 @@ final class AccountingServiceImpl extends AccountingServiceImplBase {
    * @param pSecurityToken
    */
   @Override
-  public void performBooking( Booking pBooking, SecurityToken pSecurityToken ) {
+  public void performBooking( Booking pBooking, String pSecurityToken ) {
   }
 
   /**

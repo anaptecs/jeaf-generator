@@ -5,8 +5,16 @@
  */
 package com.anaptecs.jeaf.generator.maven;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.List;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import io.swagger.parser.OpenAPIParser;
 import io.swagger.v3.parser.core.models.AuthorizationValue;
@@ -51,15 +59,40 @@ final class OpenAPISpecValidator {
     }
     else {
       lErrorMessages = lResult.getMessages() != null ? lResult.getMessages() : Collections.emptyList();
-      // E.g. empty files or YAML files that are no OpenAPI specification. Only a warning to not break existing builds.
+      lWarnings = Collections.emptyList();
       if (lResult.getOpenAPI() == null && lErrorMessages.isEmpty()) {
-        lWarnings = List.of("File " + pFileName
-            + " does not contain an OpenAPI specification. Please consider to exclude it using parameter 'openAPIValidationExcludePattern'.");
-      }
-      else {
-        lWarnings = Collections.emptyList();
+        // The parser also returns nothing for files that are no valid YAML at all. They have to break the build.
+        String lSyntaxError = getYAMLSyntaxError(pFileName);
+        if (lSyntaxError != null) {
+          lErrorMessages = List.of("File " + pFileName + " is not a valid YAML file: " + lSyntaxError);
+        }
+        // E.g. empty files. Only a warning to not break existing builds.
+        else {
+          lWarnings = List.of("File " + pFileName
+              + " does not contain an OpenAPI specification. Please consider to exclude it using parameter 'openAPIValidationExcludePattern'.");
+        }
       }
     }
     return new Result(lErrorMessages, lWarnings);
+  }
+
+  /**
+   * @return {@link String} Syntax error of the passed YAML file incl. its location or <code>null</code> if it is valid
+   * YAML.
+   */
+  private static String getYAMLSyntaxError(String pFileName) {
+    String lError;
+    try {
+      new ObjectMapper(new YAMLFactory()).readTree(Files.readString(Path.of(pFileName), StandardCharsets.UTF_8));
+      lError = null;
+    }
+    catch (JsonProcessingException e) {
+      lError = e.getOriginalMessage() + (e.getLocation() != null ? " (line " + e.getLocation().getLineNr()
+          + ", column " + e.getLocation().getColumnNr() + ")" : "");
+    }
+    catch (IOException e) {
+      lError = e.getMessage();
+    }
+    return lError;
   }
 }

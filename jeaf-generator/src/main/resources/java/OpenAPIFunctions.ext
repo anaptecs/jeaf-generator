@@ -303,6 +303,10 @@ cached boolean isBasicOpenAPIType(uml::Element type):
 cached boolean isOpenAPIDataType(uml::Type type):
    isStereotypeApplied(type, "OpenAPIDataType");
 
+// Properties that hold the value of an OpenAPI data type (static and derived ones don't).
+cached List[uml::Property] getDataTypeProperties(JMM::OpenAPIDataType dataType):
+   dataType.ownedAttribute.select(e|e.isStatic == false && e.isDerived == false);
+
 
 cached List[uml::Parameter] getDataTypeParameters(uml::Operation operation):
    operation.ownedParameter.select(e|e.type.isOpenAPIDataType() && e.isInputParameter() && e.isRequestBody() == false && e.isParameterSuppressed() == false);
@@ -715,6 +719,18 @@ cached boolean isElementActiveForOpenAPI(uml::NamedElement element):
 	if element.isDeprecated() && element.getCompatibilityGroups().isEmpty == false
 	then !element.getCompatibilityGroups().getValidationGroupsForGroup().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty
 	else true;
+
+
+cached boolean isExcludedFromOpenAPI(uml::Type type):
+	type != null && type.isElementActiveForOpenAPI() == false;
+
+
+cached String getCompatibilityGroupNames(uml::NamedElement element):
+	element.getCompatibilityGroups().name.toString(", ");
+
+
+cached uml::Class getParentExcludedFromOpenAPI(uml::Class class):
+	class.parents().typeSelect(uml::Class).selectFirst(e|e.isExcludedFromOpenAPI());
 
 
 cached boolean isBreakingChangeNoticeRequired(uml::NamedElement element):

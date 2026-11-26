@@ -5,11 +5,14 @@ import java.math.BigInteger;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 
 import org.eclipse.emf.common.util.EList;
@@ -42,6 +45,15 @@ public class OpenAPIHelper {
   public static final Map<Integer, String> httpStatusCodeValues = new HashMap<Integer, String>();
 
   public static final Map<String, String> specDependencies = new HashMap<String, String>();
+
+  /**
+   * Problems with types and parameters that could not be resolved while OpenAPI specifications were generated. They are
+   * reported by the Maven plugin after the generation.
+   */
+  private static final Set<String> unresolvedReferences = new TreeSet<String>();
+
+  private static final String NOT_IN_ANY_SPEC =
+      "does not belong to any OpenAPI specification, e.g. because it is excluded by its compatibility group";
 
   static {
     // boolean
@@ -328,13 +340,12 @@ public class OpenAPIHelper {
           lTypeName = "'" + lLocation + "#/components/schemas/" + pClass.getName() + "'";
         }
         else {
-          XFun.getTrace().error("Dependency " + lKey + " not found.");
-          lTypeName = "unknown type: " + lFQN;
+          lTypeName = unresolved("type", pClass, lFQN, pSpec, notInDependentSpec(lOpenAPIType));
         }
       }
     }
     else {
-      lTypeName = "unknown type: " + lFQN;
+      lTypeName = unresolved("type", pClass, lFQN, pSpec, NOT_IN_ANY_SPEC);
     }
     return lTypeName;
   }
@@ -358,13 +369,12 @@ public class OpenAPIHelper {
           lTypeName = "'" + lLocation + "#/components/responses/" + pClass.getName() + "'";
         }
         else {
-          XFun.getTrace().error("Dependency " + lKey + " not found.");
-          lTypeName = "unknown type: " + lFQN;
+          lTypeName = unresolved("type", pClass, lFQN, pSpec, notInDependentSpec(lOpenAPIType));
         }
       }
     }
     else {
-      lTypeName = "unknown type: " + lFQN;
+      lTypeName = unresolved("type", pClass, lFQN, pSpec, NOT_IN_ANY_SPEC);
     }
     return lTypeName;
   }
@@ -415,15 +425,49 @@ public class OpenAPIHelper {
           lTypeName = "'" + lLocation + "#/components/parameters/" + pProperty.getName() + "'";
         }
         else {
-          XFun.getTrace().error("Dependency " + lKey + " not found.");
-          lTypeName = "unknown parameter: " + lFQN;
+          lTypeName = unresolved("parameter", pProperty, lFQN, pSpec, notInDependentSpec(lOpenAPIType));
         }
       }
     }
     else {
-      lTypeName = "unknown parameter: " + lFQN;
+      lTypeName = unresolved("parameter", pProperty, lFQN, pSpec, NOT_IN_ANY_SPEC);
     }
     return lTypeName;
+  }
+
+  private static String notInDependentSpec( OpenAPIType pOpenAPIType ) {
+    return "belongs to OpenAPI specification '" + pOpenAPIType.spec.getName()
+        + "', but there is no dependency between the two specifications";
+  }
+
+  /**
+   * Records that a type or parameter could not be resolved (message 9217) and returns the text that is written into the
+   * specification instead of a reference.
+   */
+  private static String unresolved( String pKind, NamedElement pElement, String pFQN, Component pSpec,
+      String pReason ) {
+    String lMessage = GeneratorCommons.getMessage(pElement, "9217",
+        Arrays.asList(pSpec.getName(), pKind, Naming.getElementNameForMessage(pElement), pReason));
+    synchronized (unresolvedReferences) {
+      unresolvedReferences.add(lMessage);
+    }
+    return "unknown " + pKind + ": " + pFQN;
+  }
+
+  /**
+   * @return {@link List} Problems with types and parameters that could not be resolved since the last call of
+   * {@link #clearUnresolvedReferences()}, sorted. The method never returns null.
+   */
+  public static List<String> getUnresolvedReferences( ) {
+    synchronized (unresolvedReferences) {
+      return new ArrayList<String>(unresolvedReferences);
+    }
+  }
+
+  public static void clearUnresolvedReferences( ) {
+    synchronized (unresolvedReferences) {
+      unresolvedReferences.clear();
+    }
   }
 
   public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Element pType ) {

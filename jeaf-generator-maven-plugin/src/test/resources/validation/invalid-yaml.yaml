@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: Invalid YAML
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        modificationType:
+          description: |
+            Type of the modification.
+          $ref: unknown type: com.anaptecs.test.ModificationType

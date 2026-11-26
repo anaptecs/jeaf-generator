@@ -50,6 +50,7 @@ import com.anaptecs.jeaf.fwk.generator.util.EnterpriseJavaType;
 import com.anaptecs.jeaf.fwk.generator.util.JacksonVersion;
 import com.anaptecs.jeaf.fwk.generator.util.LineEnding;
 import com.anaptecs.jeaf.fwk.generator.util.ModelingTool;
+import com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper;
 import com.anaptecs.jeaf.fwk.generator.util.OpenAPIVersion;
 import com.anaptecs.jeaf.fwk.generator.util.RESTLibrary;
 import com.anaptecs.jeaf.fwk.generator.util.ReportFormat;
@@ -3610,11 +3611,21 @@ public class GeneratorMojo extends AbstractMojo {
 
         String lWorkflowFile = this.getWorkflowFile();
         GenerationProfile lProfile = profileGeneration ? GenerationProfile.start() : null;
+        OpenAPIHelper.clearUnresolvedReferences();
         try {
           lSuccessful = lRunner.run(lWorkflowFile, null, lParams, null);
         }
         finally {
           this.unloadModels(lRunner.getContext());
+        }
+        // Unresolved references would be written into the OpenAPI specifications as invalid YAML. Logged in the same
+        // format as check messages (9217).
+        List<String> lUnresolvedReferences = OpenAPIHelper.getUnresolvedReferences();
+        if (lUnresolvedReferences.isEmpty() == false) {
+          for (String lNextProblem : lUnresolvedReferences) {
+            this.getLog().error(" !!!  " + lNextProblem);
+          }
+          lSuccessful = false;
         }
         if (lProfile != null) {
           lProfile.report(this.getLog(),

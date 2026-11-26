@@ -6,6 +6,7 @@ extension functions::Property;
 extension functions::NamedElement;
 extension functions::Parameter;
 extension functions::Operation;
+extension functions::Validation;
 
 
 cached boolean runNonMandatoryChecks(uml::NamedElement element):
@@ -48,4 +49,47 @@ private cached boolean isExcludedFromCheck(String pModelElementName, String pChe
 
 cached String getModelElementInfo(uml::Element element):
 	" (Model element: " + element.asNamedElement().getElementNameForMessage() + ")";
+
+
+cached boolean isValidDefaultValue(uml::Property property):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.DefaultValueCheck.isValidDefaultValue(org.eclipse.uml2.uml.Property);
+
+
+cached String getDefaultValueAsString(uml::Property property):
+	property.defaultValue.stringValue();
+
+
+// Return parameter whose type is named "void". Only "void" of the MagicDraw profile is generated as void.
+cached uml::Parameter getReturnParameterNamedVoid(uml::Operation operation):
+	operation.ownedParameter.selectFirst(e|e.direction.toString() == "return" && e.type != null && e.type.name == "void");
+
+
+cached List[String] getSlotsWithoutValue(uml::EnumerationLiteral literal):
+	literal.slot.select(e|e.value.isEmpty).definingFeature.name;
+
+
+private cached boolean isInstanceOfMetaclass(uml::Element element, String metaclass):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.TypeChecks.isInstanceOf(org.eclipse.uml2.uml.Element, java.lang.String);
+
+
+// «EnumSubset» on a dependency restricts the property or parameter the dependency starts from.
+cached uml::TypedElement getEnumSubsetTypedElement(uml::Element element):
+	if element.isInstanceOfMetaclass("org.eclipse.uml2.uml.TypedElement")
+	then ((uml::TypedElement) element)
+	else
+		if element.isInstanceOfMetaclass("org.eclipse.uml2.uml.Dependency")
+		then ((uml::TypedElement) ((uml::Dependency) element).client.selectFirst(e|e.isInstanceOfMetaclass("org.eclipse.uml2.uml.TypedElement")))
+		else null;
+
+
+cached boolean hasEnumerationType(uml::TypedElement element):
+	element.type.isInstanceOfMetaclass("org.eclipse.uml2.uml.Enumeration");
+
+
+cached List[JMM::ValidationGroup] getValidationGroupsWithSameIdentifier(JMM::ValidationGroup group):
+	group.getModel().getAllValidationGroupsFromModel().select(e|e != group && e.identifier == group.identifier);
+
+
+cached List[JMM::ValidationGroup] getOpenAPIValidationGroups(uml::Model model):
+	model.getAllValidationGroupsFromModel().select(e|e.openAPIValidationGroup);
  

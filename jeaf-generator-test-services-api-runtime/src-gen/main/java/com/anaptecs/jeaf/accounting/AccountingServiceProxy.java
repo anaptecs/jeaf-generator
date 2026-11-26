@@ -95,9 +95,9 @@ public final class AccountingServiceProxy extends ServiceProxy implements Accoun
   /**
    * Generated proxy implementation for method {@link com.anaptecs.jeaf.accounting.AccountingService#performBooking}
    */
-  public void performBooking( Booking pBooking, SecurityToken pSecurityToken ) {
+  public void performBooking( Booking pBooking, String pSecurityToken ) {
     try {
-      Command lCommand = new PerformBooking_Booking_SecurityToken_AccountingService_Command(pBooking, pSecurityToken);
+      Command lCommand = new PerformBooking_Booking_String_AccountingService_Command(pBooking, pSecurityToken);
       this.executeCommand(lCommand);
     }
     catch (ApplicationException e) {
@@ -575,7 +575,7 @@ final class Unlock_Account_AccountingService_Command extends Command {
 /**
  * Generated command class for service method "performBooking".
  */
-final class PerformBooking_Booking_SecurityToken_AccountingService_Command extends Command {
+final class PerformBooking_Booking_String_AccountingService_Command extends Command {
   /**
    * Default serial version uid.
    */
@@ -600,11 +600,11 @@ final class PerformBooking_Booking_SecurityToken_AccountingService_Command exten
    */
   static {
     try {
-      SERVICE_METHOD = AccountingService.class.getMethod("performBooking", Booking.class, SecurityToken.class);
+      SERVICE_METHOD = AccountingService.class.getMethod("performBooking", Booking.class, String.class);
     }
     catch (NoSuchMethodException e) {
       throw new JEAFSystemException(MessageConstants.SERVICE_METHOD_DOES_NOT_EXIST, e,
-          AccountingService.class.getName(), "performBooking(Booking.class, SecurityToken.class)");
+          AccountingService.class.getName(), "performBooking(Booking.class, String.class)");
     }
   }
 
@@ -616,16 +616,16 @@ final class PerformBooking_Booking_SecurityToken_AccountingService_Command exten
   /**
    * Attribute transports the method parameter "pSecurityToken" to the service implementation via the service channel.
    */
-  private final SecurityToken securityToken;
+  private final String securityToken;
 
   /**
    * Initialize object. All parameters from method "performBooking" have to be passed as parameters to this command
    * object.
    *
    * @param pBooking Booking
-   * @param pSecurityToken SecurityToken
+   * @param pSecurityToken String
    */
-  PerformBooking_Booking_SecurityToken_AccountingService_Command( Booking pBooking, SecurityToken pSecurityToken ) {
+  PerformBooking_Booking_String_AccountingService_Command( Booking pBooking, String pSecurityToken ) {
     super(AccountingService.class);
     booking = pBooking;
     securityToken = pSecurityToken;
