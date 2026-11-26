@@ -25,7 +25,7 @@
 | `getAccount(ServiceObjectID)` |  |
 | `getCustomer(ServiceObjectID, CustomerLoadStrategy)` |  |
 | `lockAccount(Account)` |  |
-| `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
+| `performBooking(Booking, String)` | `/api/v1/accounting/bookings [PUT]` |
 | `searchCustomers(CustomerQuery)` |  |
 | `unlock(Account)` |  |
 
@@ -53,7 +53,7 @@
 | `getAccount(ServiceObjectID)` |  |
 | `getCustomer(ServiceObjectID, CustomerLoadStrategy)` |  |
 | `lockAccount(Account)` |  |
-| `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
+| `performBooking(Booking, String)` | `/api/v1/accounting/bookings [PUT]` |
 | `searchCustomers(CustomerQuery)` |  |
 | `unlock(Account)` |  |
 
@@ -121,7 +121,7 @@
 
 | Operation        | REST Resource Path |
 |------------------|--------------------|
-| `performBooking(Booking, SecurityToken)` | `/api/v1/accounting/bookings [PUT]` |
+| `performBooking(Booking, String)` | `/api/v1/accounting/bookings [PUT]` |
 | `searchCustomers(CustomerQuery)` |  |
 
 <br>

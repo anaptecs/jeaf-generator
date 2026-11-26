@@ -103,6 +103,10 @@ ChildB |   | Multi<br>line<br>class<br>comment |
 ChildBB |   |  |
 ChildBeanParameterType |   |  |
 ChildPOJO |   | This is the first line of the first comment<br>2nd line |
+ChkCar |   | Subclass with «JSONDefaultImpl». Expected in the generated code: ChkCar and ChkSportsCar use ChkCar as default implementation (same as for POJOs); ChkVehicle and ChkTruck use ChkVehicle. |
+ChkSportsCar |   | Subclass of ChkCar. |
+ChkTruck |   | Second subclass of ChkVehicle. |
+ChkVehicle |   | Top-level class with «JSONDefaultImpl». |
 ClassA |   |  |
 ClassB |   |  |
 ClientClass |   |  |
@@ -344,6 +348,17 @@ MultiTemplateClass |   |  |
 MyBusinessObject |   |  |
 TemplateEnumTest |   |  |
 YetAnotherPOJO |   |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.jsondefaultimpl`
+
+| Type     | Legacy Name | Description  |
+|----------|---------------------|------------|
+ChkCar |   | Subclass with «JSONDefaultImpl». Expected in the generated code: ChkCar and ChkSportsCar use ChkCar as default implementation (same as for POJOs); ChkVehicle and ChkTruck use ChkVehicle. |
+ChkSportsCar |   | Subclass of ChkCar. |
+ChkTruck |   | Second subclass of ChkVehicle. |
+ChkVehicle |   | Top-level class with «JSONDefaultImpl». |
 
 <br>
 

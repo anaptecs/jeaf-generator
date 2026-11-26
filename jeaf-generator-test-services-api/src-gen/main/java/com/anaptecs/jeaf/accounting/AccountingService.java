@@ -83,8 +83,7 @@ public interface AccountingService extends Service {
    * @param pSecurityToken
    */
   @JEAFCustomAnnotationTest
-  void performBooking( @JEAFCustomAnnotationTest Booking pBooking,
-      @JEAFCustomAnnotationTest SecurityToken pSecurityToken );
+  void performBooking( @JEAFCustomAnnotationTest Booking pBooking, @JEAFCustomAnnotationTest String pSecurityToken );
 
   /**
    * Method creates a new customer object from the data of the passed service object.<br/>

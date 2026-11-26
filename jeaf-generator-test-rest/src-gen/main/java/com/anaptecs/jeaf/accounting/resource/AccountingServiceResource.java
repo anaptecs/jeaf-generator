@@ -19,7 +19,6 @@ import javax.ws.rs.core.Response;
 
 import com.anaptecs.jeaf.accounting.AccountingService;
 import com.anaptecs.jeaf.accounting.Booking;
-import com.anaptecs.jeaf.accounting.SecurityToken;
 import com.anaptecs.jeaf.core.api.JEAF;
 import com.anaptecs.jeaf.workload.api.Workload;
 import com.anaptecs.jeaf.workload.api.WorkloadManager;
@@ -43,7 +42,7 @@ public class AccountingServiceResource {
     @Path("bookings")
     @PUT
     public void performBooking( @Suspended AsyncResponse pAsyncResponse, @Context HttpServletRequest pRequest,
-                    Booking pBooking, @HeaderParam("pSecurityToken") SecurityToken pSecurityToken ) {
+                    Booking pBooking, @HeaderParam("pSecurityToken") String pSecurityToken ) {
         // Lookup workload manager that takes care that the system will have an optimal throughput.
         WorkloadManager lWorkloadManager = Workload.getWorkloadManager();
         // Prepare meta information about the request.
