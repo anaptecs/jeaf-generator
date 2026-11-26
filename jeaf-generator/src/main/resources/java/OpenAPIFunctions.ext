@@ -729,8 +729,15 @@ cached String getCompatibilityGroupNames(uml::NamedElement element):
 	element.getCompatibilityGroups().name.toString(", ");
 
 
-cached uml::Class getParentExcludedFromOpenAPI(uml::Class class):
-	class.parents().typeSelect(uml::Class).selectFirst(e|e.isExcludedFromOpenAPI());
+// Nearest super class that is part of the OpenAPI specification. Super classes that are removed by their compatibility
+// group are skipped together with their properties.
+cached uml::Class getActiveOpenAPISuperClass(uml::Class class):
+	if class.superClass.isEmpty
+	then null
+	else
+		if class.superClass.first().isElementActiveForOpenAPI()
+		then class.superClass.first()
+		else class.superClass.first().getActiveOpenAPISuperClass();
 
 
 cached boolean isBreakingChangeNoticeRequired(uml::NamedElement element):

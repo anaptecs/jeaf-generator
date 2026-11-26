@@ -1,0 +1,87 @@
+openapi: 3.0.3
+
+info:
+  title: DeprecatedParentsOpenAPI
+  version: 1.0
+  description: |
+    OpenAPI specification for the test case of issue #877.
+
+paths:
+  # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # So we define NOP operation here as workaround.
+  /nop:
+    get:
+      operationId: noOperation
+      responses:
+        '200':
+          description: Nothing is the result of nop ;-)
+
+components:
+  securitySchemes:
+    MyOAuthSecuritySchema:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'https://example.com/api/oauth/dialog'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+        implicit:
+          authorizationUrl: 'https://example.com/api/oauth/dialog'
+          tokenUrl: 'TODO Please add required token URL'
+          refreshUrl: 'https://example.com/api/oauth/dialog'
+          scopes: 
+            read:pets: Read pets data
+            write:pets: Modify pets
+
+  schemas:
+    # com.anaptecs.jeaf.junit.deprecatedparents.types.Bike
+    Bike:
+      description: |
+        Expected: allOf references Vehicle, no properties.
+      allOf:
+        - $ref: '#/components/schemas/Vehicle'
+        - type: object
+          additionalProperties: false
+    # com.anaptecs.jeaf.junit.deprecatedparents.types.Car
+    Car:
+      description: |
+        Expected: allOf references Vehicle, only own property seats.
+      allOf:
+        - $ref: '#/components/schemas/Vehicle'
+        - type: object
+          additionalProperties: false
+          required:
+            - seats
+          properties:
+            seats:
+              description: |
+                Number of seats.
+              type: integer
+              format: int32
+              nullable: false
+    # com.anaptecs.jeaf.junit.deprecatedparents.types.Vehicle
+    Vehicle:
+      type: object
+      additionalProperties: false
+      description: |
+        Top of the hierarchy. Expected: part of the specification.
+      discriminator:
+        propertyName: objectType
+      required:
+        - objectType
+        - vehicleID
+      properties:
+        objectType:
+          description: Attribute is used as discriminator for inheritance between data types.
+          type: string
+        vehicleID:
+          description: |
+            ID of the vehicle.
+          type: string
+          nullable: false
+
+      

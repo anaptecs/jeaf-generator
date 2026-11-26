@@ -15,7 +15,7 @@
 «IMPORT jeaf»
 
 «DEFINE GenerateOpenAPIType(OpenAPI3Specification spec) FOR OpenAPIType -»
-    «IF this.superClass.isEmpty == true || this.isTopOfClassHierarchy()-»
+    «IF this.getActiveOpenAPISuperClass() == null || this.isTopOfClassHierarchy()-»
         «EXPAND GenerateOpenAPIBaseType(spec) FOR this-»
     «ELSE-»
         «EXPAND GenerateOpenAPISubType(spec) FOR this-»
@@ -48,9 +48,9 @@
           «ENDFOREACH-»
         «ENDIF-»  
       «ENDIF-»
-      «IF superClass.isEmpty == false -»
+      «IF this.getActiveOpenAPISuperClass() != null -»
       allOf:
-        - $ref: «superClass.get(0).getOpenAPIType(spec)»
+        - $ref: «this.getActiveOpenAPISuperClass().getOpenAPIType(spec)»
       «ENDIF-»
       «IF this.isDeprecated() -»
       deprecated: true
@@ -268,7 +268,7 @@
       deprecated: true
       «ENDIF -»
       allOf:
-        - $ref: «superClass.get(0).getOpenAPIType(spec)»
+        - $ref: «this.getActiveOpenAPISuperClass().getOpenAPIType(spec)»
         - type: object
           additionalProperties: false
       «IF this.hasRequiredOpenAPIProperties() -»
