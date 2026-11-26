@@ -3618,11 +3618,12 @@ public class GeneratorMojo extends AbstractMojo {
         finally {
           this.unloadModels(lRunner.getContext());
         }
-        // Unresolved references would be written into the OpenAPI specifications as invalid YAML.
+        // Unresolved references would be written into the OpenAPI specifications as invalid YAML. Logged in the same
+        // format as check messages (9217).
         List<String> lUnresolvedReferences = OpenAPIHelper.getUnresolvedReferences();
         if (lUnresolvedReferences.isEmpty() == false) {
           for (String lNextProblem : lUnresolvedReferences) {
-            this.getLog().error(lNextProblem);
+            this.getLog().error(" !!!  " + lNextProblem);
           }
           lSuccessful = false;
         }

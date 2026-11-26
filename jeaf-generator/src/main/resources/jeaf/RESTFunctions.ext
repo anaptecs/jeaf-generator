@@ -249,4 +249,53 @@ cached int lowerForREST(uml::MultiplicityElement multiplicityElement):
 	multiplicityElement.lower;
 
 
+// Functions for checks 9201 - 9207
+cached boolean definesPathAndOperationPathPrefix(JMM::RESTResource resource):
+	resource.path != null && resource.path.length > 0 && resource.operationPathPrefix != null && resource.operationPathPrefix.length > 0;
+
+
+cached List[String] getOpenAPIKindStereotypes(uml::Element element):
+	{"OpenAPIType", "OpenAPIDataType", "BeanParam"}.select(e|element.isStereotypeApplied(e));
+
+
+cached String asStereotypeList(List[String] stereotypes):
+	stereotypes.collect(e|"«" + e + "»").toString(", ");
+
+
+cached String getRESTParamStereotypeName(uml::Element element):
+	{"PathParam", "QueryParam", "HeaderParam", "CookieParam"}.selectFirst(e|element.isStereotypeApplied(e));
+
+
+// Stereotypes that extend several metaclasses (e.g. «PathParam») make typeSelect() match all of them, so the metaclass
+// is checked in Java.
+cached boolean isUMLInstanceOf(uml::Element element, String metaclass):
+	JAVA com.anaptecs.jeaf.fwk.generator.util.TypeChecks.isInstanceOf(org.eclipse.uml2.uml.Element, java.lang.String);
+
+
+// Properties of classes that are used as type of a parameter with «BeanParam» are also REST parameters.
+cached boolean isSupportedRESTParamPlacement(uml::Element element):
+	if element.isUMLInstanceOf("org.eclipse.uml2.uml.Parameter")
+	then element.owner.isStereotypeApplied("RESTOperation")
+	else
+		if element.isUMLInstanceOf("org.eclipse.uml2.uml.Property")
+		then element.owner.isStereotypeApplied("BeanParam") || element.getModel().getTypesOfBeanParamParameters().contains(element.owner)
+		else false;
+
+
+private cached List[uml::Type] getTypesOfBeanParamParameters(uml::Model model):
+	((List[uml::Parameter]) model.allOwnedElements().select(e|e.isUMLInstanceOf("org.eclipse.uml2.uml.Parameter") && e.isStereotypeApplied("BeanParam"))).type.toSet().toList();
+
+
+cached boolean hasRESTParamProperties(uml::Class beanParam):
+	beanParam.getAllAttributesFromHierarchy().select(e|e.isPathParamProperty() || e.isQueryParamProperty() || e.isHeaderParamProperty() || e.isCookieParamProperty()).isEmpty == false;
+
+
+cached boolean isSupportedRESTParamType(uml::Type type):
+	type == null || type.isUMLInstanceOf("org.eclipse.uml2.uml.Class") == false || type.isBasicOpenAPIType() || type.isOpenAPIDataType() || type.isCompositeDataTypeClass();
+
+
+private cached boolean isCompositeDataTypeClass(uml::Type type):
+	(type.isStereotypeApplied("POJO") && ((JMM::POJO) type).compositeDataType) || (type.isStereotypeApplied("ServiceObject") && ((JMM::ServiceObject) type).compositeDataType);
+
+
 

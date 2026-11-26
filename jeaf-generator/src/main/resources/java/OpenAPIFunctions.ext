@@ -721,6 +721,18 @@ cached boolean isElementActiveForOpenAPI(uml::NamedElement element):
 	else true;
 
 
+cached boolean isExcludedFromOpenAPI(uml::Type type):
+	type != null && type.isElementActiveForOpenAPI() == false;
+
+
+cached String getCompatibilityGroupNames(uml::NamedElement element):
+	element.getCompatibilityGroups().name.toString(", ");
+
+
+cached uml::Class getParentExcludedFromOpenAPI(uml::Class class):
+	class.parents().typeSelect(uml::Class).selectFirst(e|e.isExcludedFromOpenAPI());
+
+
 cached boolean isBreakingChangeNoticeRequired(uml::NamedElement element):
 	if element.getCompatibilityGroups().isEmpty == false
 	then !element.getCompatibilityGroups().getValidationGroupsForGroup().select(e|e.isActiveOpenAPIValidationGroup()).isEmpty

@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +51,9 @@ public class OpenAPIHelper {
    * reported by the Maven plugin after the generation.
    */
   private static final Set<String> unresolvedReferences = new TreeSet<String>();
+
+  private static final String NOT_IN_ANY_SPEC =
+      "does not belong to any OpenAPI specification, e.g. because it is excluded by its compatibility group";
 
   static {
     // boolean
@@ -336,14 +340,12 @@ public class OpenAPIHelper {
           lTypeName = "'" + lLocation + "#/components/schemas/" + pClass.getName() + "'";
         }
         else {
-          lTypeName = unresolved("type", lFQN, pSpec, "from OpenAPI specification '" + lOpenAPIType.spec.getName()
-              + "', but there is no dependency between the two specifications.");
+          lTypeName = unresolved("type", pClass, lFQN, pSpec, notInDependentSpec(lOpenAPIType));
         }
       }
     }
     else {
-      lTypeName = unresolved("type", lFQN, pSpec,
-          "that does not belong to any OpenAPI specification, e.g. because it is excluded by its compatibility group.");
+      lTypeName = unresolved("type", pClass, lFQN, pSpec, NOT_IN_ANY_SPEC);
     }
     return lTypeName;
   }
@@ -367,14 +369,12 @@ public class OpenAPIHelper {
           lTypeName = "'" + lLocation + "#/components/responses/" + pClass.getName() + "'";
         }
         else {
-          lTypeName = unresolved("type", lFQN, pSpec, "from OpenAPI specification '" + lOpenAPIType.spec.getName()
-              + "', but there is no dependency between the two specifications.");
+          lTypeName = unresolved("type", pClass, lFQN, pSpec, notInDependentSpec(lOpenAPIType));
         }
       }
     }
     else {
-      lTypeName = unresolved("type", lFQN, pSpec,
-          "that does not belong to any OpenAPI specification, e.g. because it is excluded by its compatibility group.");
+      lTypeName = unresolved("type", pClass, lFQN, pSpec, NOT_IN_ANY_SPEC);
     }
     return lTypeName;
   }
@@ -425,26 +425,31 @@ public class OpenAPIHelper {
           lTypeName = "'" + lLocation + "#/components/parameters/" + pProperty.getName() + "'";
         }
         else {
-          lTypeName = unresolved("parameter", lFQN, pSpec, "from OpenAPI specification '"
-              + lOpenAPIType.spec.getName() + "', but there is no dependency between the two specifications.");
+          lTypeName = unresolved("parameter", pProperty, lFQN, pSpec, notInDependentSpec(lOpenAPIType));
         }
       }
     }
     else {
-      lTypeName = unresolved("parameter", lFQN, pSpec,
-          "that does not belong to any OpenAPI specification, e.g. because it is excluded by its compatibility group.");
+      lTypeName = unresolved("parameter", pProperty, lFQN, pSpec, NOT_IN_ANY_SPEC);
     }
     return lTypeName;
   }
 
+  private static String notInDependentSpec( OpenAPIType pOpenAPIType ) {
+    return "belongs to OpenAPI specification '" + pOpenAPIType.spec.getName()
+        + "', but there is no dependency between the two specifications";
+  }
+
   /**
-   * Records that a type or parameter could not be resolved and returns the text that is written into the specification
-   * instead of a reference.
+   * Records that a type or parameter could not be resolved (message 9217) and returns the text that is written into the
+   * specification instead of a reference.
    */
-  private static String unresolved( String pKind, String pFQN, Component pSpec, String pReason ) {
+  private static String unresolved( String pKind, NamedElement pElement, String pFQN, Component pSpec,
+      String pReason ) {
+    String lMessage = GeneratorCommons.getMessage(pElement, "9217",
+        Arrays.asList(pSpec.getName(), pKind, Naming.getElementNameForMessage(pElement), pReason));
     synchronized (unresolvedReferences) {
-      unresolvedReferences
-          .add("OpenAPI specification '" + pSpec.getName() + "' uses " + pKind + " '" + pFQN + "' " + pReason);
+      unresolvedReferences.add(lMessage);
     }
     return "unknown " + pKind + ": " + pFQN;
   }
