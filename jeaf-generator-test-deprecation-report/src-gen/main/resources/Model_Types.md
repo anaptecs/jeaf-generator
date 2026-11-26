@@ -79,6 +79,7 @@ BidirectionalA |   |  |
 BidirectionalB |   |  |
 BigDecimalCode |   |  |
 BigIntegerCode |   |  |
+Bike |   | Expected: allOf references Vehicle, no properties. |
 Booking |   |  |
 BookingCode |   |  |
 BookingID |   | Type represents a booking ID. |
@@ -93,6 +94,7 @@ ByteCode |   |  |
 ByteCodeType |   |  |
 CHStopPlace |   |  |
 Campaign |   |  |
+Car |   | Expected: allOf references Vehicle, only own property seats. |
 Cat |   |  |
 Channel |   |  |
 ChannelCode |   |  |
@@ -178,6 +180,7 @@ JSONDefaultChildB |   |  |
 JSONDefaultParent |   |  |
 JustAType |   |  |
 Leg |   |  |
+LegacyVehicle |   | Removed by its compatibility group. Expected: not part of the specification, including its properties. |
 LinkObject |   |  |
 LocalBeanParamType |   |  |
 LongCode |   |  |
@@ -190,6 +193,7 @@ Message |   |  |
 Message |   |  |
 ModelWrapperArrayServiceObject |   |  |
 ModelWrapperTypeServiceObject |   |  |
+MotorVehicle |   | Removed by its compatibility group. Expected: not part of the specification, including its properties. |
 MultiTemplateClass |   |  |
 MultiValuedDataType |   |  |
 MultivaluedQueryParamsBean |   |  |
@@ -275,6 +279,7 @@ UICStop |  Haltestelle |  |
 UICStopPlace |   |  |
 VAT |   |  |
 ValidationTestObject |   |  |
+Vehicle |   | Top of the hierarchy. Expected: part of the specification. |
 VerkehrsmittelTyp |   |  |
 VersionedObjectSoftLink |   |  |
 WeirdBooking |   |  |
@@ -317,6 +322,18 @@ ValidationTestObject |   |  |
 WrapperArrayServiceObject |   |  |
 WrapperDatatypeServiceObject |   |  |
 WrapperTypesServiceObject |   |  |
+
+<br>
+
+## Package `com.anaptecs.jeaf.junit.deprecatedparents.types`
+
+| Type     | Legacy Name | Description  |
+|----------|---------------------|------------|
+Bike |   | Expected: allOf references Vehicle, no properties. |
+Car |   | Expected: allOf references Vehicle, only own property seats. |
+LegacyVehicle |   | Removed by its compatibility group. Expected: not part of the specification, including its properties. |
+MotorVehicle |   | Removed by its compatibility group. Expected: not part of the specification, including its properties. |
+Vehicle |   | Top of the hierarchy. Expected: part of the specification. |
 
 <br>
 

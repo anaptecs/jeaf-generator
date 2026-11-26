@@ -85,6 +85,8 @@
 |   | `campaigns` |  |  |  |  |
 | `JustAType` | |  |  |  |  |
 |   | `legacy` | Hello |  |  |  |
+| `LegacyVehicle` | | Removed from the API. | 1.0 | 2.0 |  |
+| `MotorVehicle` | | Removed from the API. | 1.0 | 2.0 |  |
 | `MyPOJOResponse` | |  |  |  |  |
 |   | `deprecatedProperty` |  |  | 7.0 |  |
 | `MyPojoRequest` | |  |  |  |  |

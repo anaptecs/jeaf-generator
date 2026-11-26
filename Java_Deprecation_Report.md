@@ -99,6 +99,21 @@
 
 <br>
 
+## Package `com.anaptecs.jeaf.junit.deprecatedparents.types`
+
+<br>
+
+### Classes with Deprecations
+
+<br>
+
+| Type   | Attribute   | Description   | Deprecated since   | Planned to be removed   | Go live date | End of Compatibility Period |
+|--------|-------------|---------------|:------------------:|:-----------------------:|:------------:|:--------------------------:|
+| `LegacyVehicle` | | Removed from the API. | 1.0 | 2.0 |  |  |
+| `MotorVehicle` | | Removed from the API. | 1.0 | 2.0 |  |  |
+
+<br>
+
 ## Package `com.anaptecs.jeaf.junit.deprecation`
 
 <br>

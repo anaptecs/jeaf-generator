@@ -91,7 +91,7 @@ context Property if owner.asNamedElement().runChecks("OpenAPIType") && ignore() 
 
 // Check for missing dependencies between OpenAPI specs
 context Property if owner.asNamedElement().runChecks("OpenAPIType") && runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9171", {name, owner.asNamedElement().name, type.name, this.getOwnOpenAPISpecification().name, this.getReferencedOpenAPISpecification().name}): this.checkOpenAPIDependencies();
-context OpenAPIType if this.runChecks("OpenAPIType") && runOpenAPIDependencyCheck() && parents().size > 0 && ignore() == false ERROR this.getErrorMessage("9196", {name, parents().qualifiedName().toString(", "), this.getOwnOpenAPISpecification().name, this.parents().first().getOwnOpenAPISpecification().name}): checkOpenAPIDependenciesForInheritance();
+context OpenAPIType if this.runChecks("OpenAPIType") && runOpenAPIDependencyCheck() && this.getActiveOpenAPISuperClass() != null && ignore() == false ERROR this.getErrorMessage("9196", {name, this.getActiveOpenAPISuperClass().qualifiedName(), this.getOwnOpenAPISpecification().name, this.getActiveOpenAPISuperClass().getOwnOpenAPISpecification().name}): checkOpenAPIDependenciesForInheritance();
 
 // Check for types that do not belong to an OpenAPI specification at all.
 context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isOpenAPIType() && this.getNearestPackage().getOwnOpenAPISpecification() != null &&runOpenAPIDependencyCheck () && ignore() == false ERROR this.getErrorMessage("9172", {name, owner.asNamedElement().name, type.name}): this.checkForOrphanedOpenAPITypes();
@@ -100,10 +100,10 @@ context Property if owner.asNamedElement().runChecks("OpenAPIType") && owner.isO
 
 context BeanParam if runChecks("BeanParam") && ignore() == false ERROR this.getErrorMessage("9186", {this.qualifiedName()}) : this.ownedElement.typeSelect(Property).select(e|e.hasNoRESTParamStereotype()).size == 0;
 
-// Active elements must not reference types that are excluded from OpenAPI by their compatibility group.
+// Active elements must not reference types that are excluded from OpenAPI by their compatibility group. Excluded super
+// classes are skipped (see getActiveOpenAPISuperClass()).
 context Property if owner.getOpenAPIKindStereotypes().isEmpty == false && owner.asNamedElement().runChecks("OpenAPIType") && ignore() == false &&owner.asNamedElement().isElementActiveForOpenAPI() && this.isElementActiveForOpenAPI() && this.isNonMandatoryCheckActive("9200") ERROR this.getErrorMessage("9200", {owner.asNamedElement().name + "." + name, type.name, type.getCompatibilityGroupNames()}): type.isExcludedFromOpenAPI() == false;
 context Parameter if owner.isRESTOperation() && owner.asNamedElement().runChecks("RESTOperation") && generateOpenAPISpec() && owner.ignore() == false && owner.asNamedElement().isElementActiveForOpenAPI() && owner.owner.asNamedElement().isElementActiveForOpenAPI() && this.asNamedElement().isNonMandatoryCheckActive("9200") ERROR this.asNamedElement().getErrorMessage("9200", {owner.asNamedElement().name + "." + name, type.name, type.getCompatibilityGroupNames()}): type.isExcludedFromOpenAPI() == false;
-context OpenAPIType if runChecks("OpenAPIType") && ignore() == false && this.isElementActiveForOpenAPI() && this.isNonMandatoryCheckActive("9200") ERROR this.getErrorMessage("9200", {name, this.getParentExcludedFromOpenAPI().name, this.getParentExcludedFromOpenAPI().getCompatibilityGroupNames()}): this.getParentExcludedFromOpenAPI() == null;
 
 context RESTResource if runChecks("RESTResource") && ignore() == false && this.isNonMandatoryCheckActive("9201") ERROR this.getErrorMessage("9201", {name}): this.definesPathAndOperationPathPrefix() == false;
 context RESTResource if runChecks("RESTResource") && ignore() == false && this.isNonMandatoryCheckActive("9205") ERROR this.getErrorMessage("9205", {name}): this.isStereotypeApplied("JEAFService");
