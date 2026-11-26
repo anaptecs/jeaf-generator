@@ -50,6 +50,11 @@ public class ParentPOJO {
    */
   public static final String HELLO = "hello";
 
+  /**
+   * Constant for the name of attribute "newProperty".
+   */
+  public static final String NEWPROPERTY = "newProperty";
+
   @NotNull
   private String parentAttribute;
 
@@ -59,6 +64,8 @@ public class ParentPOJO {
 
   @NotNull
   private String hello;
+
+  private int newProperty;
 
   /**
    * Initialize object using the passed builder.
@@ -72,6 +79,7 @@ public class ParentPOJO {
     parentAttribute = pBuilder.parentAttribute;
     weirdAttribute = pBuilder.weirdAttribute;
     hello = pBuilder.hello;
+    newProperty = pBuilder.newProperty;
   }
 
   /**
@@ -93,13 +101,16 @@ public class ParentPOJO {
    *
    * @param pHello Value to which {@link #hello} should be set.
    *
+   * @param pNewProperty Value to which {@link #newProperty} should be set.
+   *
    * @return {@link ParentPOJO}
    */
-  public static ParentPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello ) {
+  public static ParentPOJO of( String pParentAttribute, byte pWeirdAttribute, String pHello, int pNewProperty ) {
     var lBuilder = ParentPOJO.builder();
     lBuilder.setParentAttribute(pParentAttribute);
     lBuilder.setWeirdAttribute(pWeirdAttribute);
     lBuilder.setHello(pHello);
+    lBuilder.setNewProperty(pNewProperty);
     return lBuilder.build();
   }
 
@@ -117,6 +128,8 @@ public class ParentPOJO {
 
     private String hello;
 
+    private int newProperty;
+
     /**
      * Use {@link ParentPOJO#builder()} instead of private constructor to create new builder.
      */
@@ -132,6 +145,7 @@ public class ParentPOJO {
         this.setParentAttribute(pObject.parentAttribute);
         this.setWeirdAttribute(pObject.weirdAttribute);
         this.setHello(pObject.hello);
+        this.setNewProperty(pObject.newProperty);
       }
     }
 
@@ -173,6 +187,19 @@ public class ParentPOJO {
     public Builder setHello( String pHello ) {
       // Assign value to attribute
       hello = pHello;
+      return this;
+    }
+
+    /**
+     * Method sets attribute {@link #newProperty}.<br/>
+     *
+     * @param pNewProperty Value to which {@link #newProperty} should be set.
+     * @return {@link Builder} Instance of this builder to support chaining setters. Method never returns null.
+     */
+    @JsonSetter(nulls = Nulls.SKIP)
+    public Builder setNewProperty( int pNewProperty ) {
+      // Assign value to attribute
+      newProperty = pNewProperty;
       return this;
     }
 
@@ -260,6 +287,25 @@ public class ParentPOJO {
     hello = pHello;
   }
 
+  /**
+   * Method returns attribute {@link #newProperty}.<br/>
+   *
+   * @return int Value to which {@link #newProperty} is set.
+   */
+  public int getNewProperty( ) {
+    return newProperty;
+  }
+
+  /**
+   * Method sets attribute {@link #newProperty}.<br/>
+   *
+   * @param pNewProperty Value to which {@link #newProperty} should be set.
+   */
+  public void setNewProperty( int pNewProperty ) {
+    // Assign value to attribute
+    newProperty = pNewProperty;
+  }
+
   @Override
   public int hashCode( ) {
     final int lPrime = 31;
@@ -267,6 +313,7 @@ public class ParentPOJO {
     lResult = lPrime * lResult + Objects.hashCode(parentAttribute);
     lResult = lPrime * lResult + weirdAttribute;
     lResult = lPrime * lResult + Objects.hashCode(hello);
+    lResult = lPrime * lResult + newProperty;
     return lResult;
   }
 
@@ -285,7 +332,7 @@ public class ParentPOJO {
     else {
       ParentPOJO lOther = (ParentPOJO) pObject;
       lEquals = Objects.equals(parentAttribute, lOther.parentAttribute) && weirdAttribute == lOther.weirdAttribute
-          && Objects.equals(hello, lOther.hello);
+          && Objects.equals(hello, lOther.hello) && newProperty == lOther.newProperty;
     }
     return lEquals;
   }
@@ -312,6 +359,10 @@ public class ParentPOJO {
     lBuilder.append(pIndent);
     lBuilder.append("hello: ");
     lBuilder.append(hello);
+    lBuilder.append(System.lineSeparator());
+    lBuilder.append(pIndent);
+    lBuilder.append("newProperty: ");
+    lBuilder.append(newProperty);
     lBuilder.append(System.lineSeparator());
     return lBuilder;
   }
