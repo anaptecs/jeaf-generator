@@ -100,20 +100,20 @@ cached boolean isMultiLineValue(String value):
 
 cached String makeMultiLineCompatible(String value, String indentation):
     if value.isMultiLineValue()
-    then value.replaceAll("\n", "\r\n" + indentation)
+    then value.replaceAll("\n", "\n" + indentation)
     else value;
 
 
 cached String getYAMLStyleComment(uml::Element element, String indentation):
-    element.ownedComment.get(0).body.trim().replaceAll("\n", "\r\n" + indentation + "# ");
+    element.ownedComment.get(0).body.trim().replaceAll("\n", "\n" + indentation + "# ");
 
 
 cached String getCommentForOpenAPIDescription(uml::Element element, String indentation):
     if  element.getComment().length == 0 && element.hasDefaultComment()
-    then element.getDefaultComment().replaceAll("\n", "<br>\r\n" + indentation) + element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+    then element.getDefaultComment().replaceAll("\n", "<br>\n" + indentation) + element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
     else
         if element.getComment().length > 0
-	    then element.getComment().replaceAll("\n", "<br>\r\n" + indentation) + element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+	    then element.getComment().replaceAll("\n", "<br>\n" + indentation) + element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
 	    else element.getAlternateNameForOpenAPI(indentation) + element.getAliasDocs(indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + element.getAuthorizedRoles(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
 
 
@@ -123,7 +123,7 @@ cached String getParameterCommentForOpenAPIDescription(uml::Element element, Str
 //    then element.asParameter().getDefaultComment(indentation)
 //    else
 //	    if element.getComment().length > 0
-//	    then element.getComment().trim().replaceAll("\n", "\r\n" + indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
+//	    then element.getComment().trim().replaceAll("\n", "\n" + indentation) + ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation)
 //	    else ((uml::NamedElement) element).getBreakingChangeDescriptionInternal(indentation) + ((uml::NamedElement) element).getInternalDeprecationDescription(indentation);
 
 
@@ -133,31 +133,31 @@ private boolean hasMeaningfulComment(uml::Element element):
 
 private String getDefaultComment(uml::Parameter parameter, String indentation):
         if parameter.type.ownedComment.select(e|e.isDefaultComment()) != null
-        then indentation +  parameter.type.ownedComment.select(e|e.isDefaultComment()).body.trim().replaceAll("\n", "<br>\r\n" + indentation)
+        then indentation +  parameter.type.ownedComment.select(e|e.isDefaultComment()).body.trim().replaceAll("\n", "<br>\n" + indentation)
         else indentation;
 
 
 private cached String getAlternateNameForOpenAPI(uml::Element element, String indentation):
     if element.isAlias()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "Alternate Name: `" + element.asAlias().getAlternateName() + "`"
+    then "\n" + indentation + "<br><br>\n" + indentation + "Alternate Name: `" + element.asAlias().getAlternateName() + "`"
     else "";
 
 
 private cached String getAliasDocs(uml::Element property, String indentation):
     if property.hasAliasAttributeName()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "Java Property Name: '" + ((uml::Property) property).name + "' " 
+    then "\n" + indentation + "<br><br>\n" + indentation + "Java Property Name: '" + ((uml::Property) property).name + "' " 
     else "";
 
 
 private cached String getAuthorizedRoles(uml::Element element, String indentation):
     if element.isOperation() && element.asOperation().hasSecurityRoles()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "Authorized Roles: " + element.asOperation().getSecurityRolesForDocumentation().collect(e| "`" + e + "`").toString(", ")
+    then "\n" + indentation + "<br><br>\n" + indentation + "Authorized Roles: " + element.asOperation().getSecurityRolesForDocumentation().collect(e| "`" + e + "`").toString(", ")
     else "";
 
 
 private cached String getInternalDeprecationDescription(uml::NamedElement element, String indentation):
     if element.isJEAFDeprecated() && element.hasMeaningfulDeprecationInfo()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + element.getDeprecationRemovalString() + element.getDeprecationGoLiveDateString() + element.getDeprecationEndOfCompatibilityPeriodString() + "):**<br><br>\r\n" + indentation + element.getDeprecationDescriptionForMarkup()
+    then "\n" + indentation + "<br><br>\n" + indentation + "**Deprecation Notice " + "(since: " + element.getDeprecatedSince() + element.getDeprecationRemovalString() + element.getDeprecationGoLiveDateString() + element.getDeprecationEndOfCompatibilityPeriodString() + "):**<br><br>\n" + indentation + element.getDeprecationDescriptionForMarkup()
     else "";
 
 
@@ -181,7 +181,7 @@ private String getDeprecationEndOfCompatibilityPeriodString(uml::NamedElement el
 
 private cached String getBreakingChangeDescriptionInternal(uml::NamedElement element, String indentation):
     if element.isBreakingChange() && element.isBreakingChangeNoticeRequired()
-    then "\r\n" + indentation + "<br><br>\r\n" + indentation + "**Breaking Change Notice (since: " + element.getBreakingChangeSince() + element.getBreakingChangeActiveWithString() + element.getBreakingChangeGoLiveDateString() + element.getBreakingChangeEndOfCompatibilityPeriodString() + "):**<br><br>\r\n" + indentation + element.getBreakingChangeDescription()
+    then "\n" + indentation + "<br><br>\n" + indentation + "**Breaking Change Notice (since: " + element.getBreakingChangeSince() + element.getBreakingChangeActiveWithString() + element.getBreakingChangeGoLiveDateString() + element.getBreakingChangeEndOfCompatibilityPeriodString() + "):**<br><br>\n" + indentation + element.getBreakingChangeDescription()
     else "";
 
 

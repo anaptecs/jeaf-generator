@@ -23,6 +23,8 @@ import java.util.regex.Pattern;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.logging.Log;
 
+import com.anaptecs.jeaf.fwk.generator.util.LineEnding;
+
 /**
  * Formats Java files with the Java formatter of the formatter-maven-plugin. In contrast to the plugin, files can be
  * formatted in parallel.
@@ -69,17 +71,19 @@ final class JavaSourceFormatter {
    * the plugin's class loader. The parameter must not be null.
    * @param pBaseDirectory Base directory of the project. The parameter must not be null.
    * @param pEncoding Encoding of the Java files. The parameter must not be null.
+   * @param pLineEnding Line ending of the formatted files. The parameter must not be null.
    * @param pLog Log that is used by the formatter. The parameter must not be null.
    */
   JavaSourceFormatter( ClassLoader pFormatterClassLoader, String pConfigFile, File pBaseDirectory, Charset pEncoding,
-      Log pLog ) throws MojoExecutionException {
+      LineEnding pLineEnding, Log pLog ) throws MojoExecutionException {
     formatterClassLoader = pFormatterClassLoader;
     encoding = pEncoding;
     log = pLog;
     try {
       options = this.readOptions(pConfigFile, pBaseDirectory);
       Class<?> lLineEndingClass = this.loadFormatterClass("LineEnding");
-      lineEnding = this.enumValue(lLineEndingClass, "AUTO");
+      // formatter-maven-plugin uses the same names (LF, CRLF, AUTO).
+      lineEnding = this.enumValue(lLineEndingClass, pLineEnding.name());
       formatFileMethod = this.loadFormatterClass("java.JavaFormatter").getMethod("formatFile", Path.class,
           String.class, lLineEndingClass);
     }

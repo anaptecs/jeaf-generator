@@ -1,0 +1,8 @@
+# Templates, extensions, checks and workflows of JEAF Generator
+*.xpt text eol=lf
+*.ext text eol=lf
+*.chk text eol=lf
+*.mwe text eol=lf
+
+# Generated files (JEAF Generator writes them with LF)
+**/src-gen/** text=auto eol=lf
