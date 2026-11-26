@@ -147,4 +147,14 @@ context CompatibilityGroup if this.runChecks() && ignore() == false ERROR this.g
 
 context CompatibilityInfo if this.runChecks() && ignore() == false ERROR this.getErrorMessage("9188", {this.name}): this.clientDependency.typeSelect(JMM::FirstIncompatibleVersion).size <= 1;
 
+// Default values
+context Property if this.defaultValue != null && this.getNearestPackage().runChecks() && ignore() == false ERROR this.getErrorMessage("9208", {owner.asNamedElement().name + "." + name}): this.isMultivalued() == false;
+context Property if this.defaultValue != null && this.isMultivalued() == false && this.getNearestPackage().runChecks() && ignore() == false ERROR this.getErrorMessage("9209", {this.getDefaultValueAsString(), owner.asNamedElement().name + "." + name, type.name}): this.isValidDefaultValue();
+
+context Class if this.isLeaf && this.getNearestPackage().runChecks() && ignore() == false WARNING this.getWarningMessage("9211", {name}): this.isAbstract == false;
+
+context Operation if this.getReturnParameterNamedVoid() != null && this.getNearestPackage().runChecks() && ignore() == false ERROR this.getErrorMessage("9212", {owner.asNamedElement().name + "." + name, this.getReturnParameterNamedVoid().type.qualifiedName()}): this.getReturnTypeName() == "void";
+
+context EnumerationLiteral if this.getNearestPackage().runChecks() && ignore() == false ERROR this.getErrorMessage("9216", {name, owner.asNamedElement().name, this.getSlotsWithoutValue().toString(", ")}): this.getSlotsWithoutValue().isEmpty;
+
 context Association if runNonMandatoryChecks() ERROR this.getErrorMessage("9197", {this.member.last().asNamedElement().getElementShortNameForMessage(), this.member.first().asNamedElement().getElementShortNameForMessage()}): this.getCompatibilityGroups().size == 0;
