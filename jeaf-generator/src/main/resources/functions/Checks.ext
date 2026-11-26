@@ -31,9 +31,16 @@ private cached isExcludedFromNonMandatoryChecks(uml::NamedElement element, Strin
 	then element.getExclusionElementName().isExcludedFromCheck(checkCode)
 	else false;
 
+
+// Unlike runNonMandatoryChecks(...) this does not call runChecks(...), so that checks can keep their own conditions.
+cached boolean isNonMandatoryCheckActive(uml::NamedElement element, String checkCode):
+	disableAllNonMandatoryChecks() == false && element.isExcludedFromNonMandatoryChecks(checkCode) == false;
+
 cached getExclusionElementName(uml::NamedElement element):
-	if element.isClass() || element.isEnumeration()
+	if element.isClass() || element.isEnumeration() || element.isInstanceOfMetaclass("org.eclipse.uml2.uml.Interface")
 	then element.qualifiedName()
+	else if element.isInstanceOfMetaclass("org.eclipse.uml2.uml.EnumerationLiteral")
+	then (element.owner.asNamedElement().qualifiedName() + "." + element.name)
 	else if element.isProperty()
 	then (element.owner.asNamedElement().qualifiedName() + "." + element.name)
 	else if element.isParameter()
