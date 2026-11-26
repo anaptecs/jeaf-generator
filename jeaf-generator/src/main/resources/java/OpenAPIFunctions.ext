@@ -303,6 +303,10 @@ cached boolean isBasicOpenAPIType(uml::Element type):
 cached boolean isOpenAPIDataType(uml::Type type):
    isStereotypeApplied(type, "OpenAPIDataType");
 
+// Properties that hold the value of an OpenAPI data type (static and derived ones don't).
+cached List[uml::Property] getDataTypeProperties(JMM::OpenAPIDataType dataType):
+   dataType.ownedAttribute.select(e|e.isStatic == false && e.isDerived == false);
+
 
 cached List[uml::Parameter] getDataTypeParameters(uml::Operation operation):
    operation.ownedParameter.select(e|e.type.isOpenAPIDataType() && e.isInputParameter() && e.isRequestBody() == false && e.isParameterSuppressed() == false);

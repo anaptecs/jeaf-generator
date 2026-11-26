@@ -39,8 +39,11 @@ private cached boolean ignoreUnknownSubtypesForSO(JMM::ServiceObject class):
 		else false;
 
 
-private cached List[uml::Class] getJSONDefaultImplClass(uml::Class class):
-	class.getAllSubclasses().add(class).typeSelect(JMM::JSONDefaultImpl).first();
+// Same as for POJOs (Class.ext): the class itself is preferred.
+private cached uml::Class getJSONDefaultImplClass(uml::Class class):
+	if class.isStereotypeApplied("JSONDefaultImpl")
+	then class
+	else class.getAllSubclasses().add(class).typeSelect(JMM::JSONDefaultImpl).first();
 
 
 private cached List[uml::Class] getAllSubclasses(uml::Type class) :

@@ -45,6 +45,15 @@ public class OpenAPISpecValidatorTest {
   }
 
   @Test
+  void testInvalidYAMLCausesError( ) throws IOException {
+    OpenAPISpecValidator.Result lResult = validate("validation/invalid-yaml.yaml");
+    assertEquals(1, lResult.errors().size(), lResult.errors().toString());
+    assertTrue(lResult.errors().get(0).contains("is not a valid YAML file"), lResult.errors().get(0));
+    assertTrue(lResult.errors().get(0).contains("line 14"), lResult.errors().get(0));
+    assertTrue(lResult.warnings().isEmpty());
+  }
+
+  @Test
   void testBrokenReferenceCausesErrors( ) throws IOException {
     OpenAPISpecValidator.Result lResult = validate("validation/broken-ref.yaml");
     assertFalse(lResult.errors().isEmpty());

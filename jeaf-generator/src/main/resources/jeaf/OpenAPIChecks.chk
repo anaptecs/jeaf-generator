@@ -61,10 +61,10 @@ context OpenAPIType if runChecks("OpenAPIType") && ignore() == false WARNING thi
 
 
 // Checks for stereotype OpenAPIDataType
-context OpenAPIDataType if runChecks("OpenDataAPIType") && ignore() == false ERROR this.getErrorMessage("9124", {"OpenAPIDataType", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
-context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false ERROR this.getErrorMessage("9116", {name}): this.ownedAttribute.select(e|e.isStatic == false && e.isDerived == false).size == 1;
-context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false ERROR this.getErrorMessage("9117", {name}): this.ownedAttribute.get(0).type.isBasicOpenAPIType() == true;
-context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false ERROR this.getErrorMessage("9118", {name}): this.ownedAttribute.get(0).isMultivalued() == false;
+context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false ERROR this.getErrorMessage("9124", {"OpenAPIDataType", name}): ownedAttribute.select(e|e.isPropertySuppressed() == false).forAll( a | a.type != null);
+context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false ERROR this.getErrorMessage("9116", {name}): this.getDataTypeProperties().size == 1;
+context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false && this.getDataTypeProperties().size == 1 && this.getDataTypeProperties().first().type != null ERROR this.getErrorMessage("9117", {name}): this.getDataTypeProperties().first().type.isBasicOpenAPIType() == true;
+context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false && this.compositeDataType == false && this.getDataTypeProperties().size == 1 ERROR this.getErrorMessage("9118", {name}): this.getDataTypeProperties().first().isMultivalued() == false;
 context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false ERROR this.getErrorMessage("9119", {name}): this.superClass.size == 0;
 
 context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false WARNING this.getWarningMessage("9122", {"OpenAPIDataType", name}): ownedComment.size  > 0;
@@ -74,7 +74,7 @@ context OpenAPIDataType if runChecks("OpenAPIDataType") && ignore() == false WAR
 // Checks for stereotype PathParam
 context PathParam if runChecks("PathParam") && ignore() == false && isParameter() ERROR this.getErrorMessage("9120", {this.getElementNameForMessage()}): ((uml::Parameter) this).lowerForParam() == 1;
 context PathParam if runChecks("PathParam") && ignore() == false && isProperty() ERROR this.getErrorMessage("9120", {this.getElementNameForMessage()}): ((uml::Property) this).lower() == 1;
-context PathParam if runChecks("PathParam") && ignore() == false ERROR this.getErrorMessage("9120", {this.getElementNameForMessage()}): this.isMultivalued() == false;
+context PathParam if runChecks("PathParam") && ignore() == false ERROR this.getErrorMessage("9121", {this.getElementNameForMessage()}): this.isMultivalued() == false;
 
 // Checks for stereotype HeaderParam
 context HeaderParam if runChecks("HeaderParam") && ignore() == false WARNING this.getWarningMessage("9153", {owner.asNamedElement().getElementNameForMessage(), this.getRESTHeaderParamName(), name}): this.isIgnoredHeaderParam() == false;
