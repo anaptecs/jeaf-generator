@@ -108,3 +108,7 @@ cached OpenAPI3Specification getOwnOpenAPISpecification(NamedElement element):
     
 cached OpenAPI3Specification getOpenAPISpecificationForPackage(Package package):
     package.getRelationships().typeSelect(Dependency).client.typeSelect(OpenAPI3Specification).first();
+
+// All OpenAPI specifications with a dependency to the package. A package has to belong to exactly one (check 9219).
+cached List[OpenAPI3Specification] getOpenAPISpecificationsForPackage(Package package):
+    package.getRelationships().typeSelect(Dependency).client.typeSelect(OpenAPI3Specification).toSet().sortBy(e|e.name);

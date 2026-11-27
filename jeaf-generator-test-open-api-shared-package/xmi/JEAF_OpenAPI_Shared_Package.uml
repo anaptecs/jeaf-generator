@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:JMM="http://JMM/_11_5_1ab00d4_1164055757453_405595_1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://JMM/_11_5_1ab00d4_1164055757453_405595_1 JMM.profile.uml#_Jo9yZum6EfGDzO32JuuAbw">
+  <uml:Model xmi:id="0f442a6c-0bb7-52b6-8fd2-8c77c015df92" name="JEAF OpenAPI Shared Package">
+    <packagedElement xmi:type="uml:Package" xmi:id="42dc30dd-f40c-5f66-800a-6256296b55d2" name="com">
+      <packagedElement xmi:type="uml:Package" xmi:id="eae50486-bc82-5e46-a27f-1857531875e4" name="anaptecs">
+        <packagedElement xmi:type="uml:Package" xmi:id="371ee450-e713-5351-afef-830529ae694e" name="jeaf">
+          <packagedElement xmi:type="uml:Package" xmi:id="e6883cef-bca7-56a4-99ac-25f7e781a1f7" name="junit">
+            <packagedElement xmi:type="uml:Package" xmi:id="dc207594-4c28-5642-9f92-ecfb3bff257e" name="openapi">
+              <packagedElement xmi:type="uml:Package" xmi:id="0ebcfc32-c2f5-57f8-88a0-b0998efdbcea" name="sharedpackage">
+                <ownedComment xmi:id="c67107bd-69c3-5802-90e6-13eda8a48fd4" body="Test case for issue #885: a package that belongs to several OpenAPI specifications. Used by jeaf-generator-test-open-api-shared-package." annotatedElement="0ebcfc32-c2f5-57f8-88a0-b0998efdbcea"/>
+                <packagedElement xmi:type="uml:Package" xmi:id="222c7040-f93b-50c5-b237-29c9787567a1" name="shared">
+                  <ownedComment xmi:id="37152f43-f03c-528c-a85b-4e4080c8e5e1" body="Types of SharedPackageSpecA and SharedPackageSpecB. Expected: error 9219 (SharedPackageSpecA, SharedPackageSpecB)." annotatedElement="222c7040-f93b-50c5-b237-29c9787567a1"/>
+                  <packagedElement xmi:type="uml:Class" xmi:id="a77acec6-6cce-58e2-8577-97af0df97bab" name="SharedType">
+                    <ownedComment xmi:id="8ac293c5-c856-515c-96ab-680429931695" body="Type of a package that belongs to two specifications." annotatedElement="a77acec6-6cce-58e2-8577-97af0df97bab"/>
+                    <ownedAttribute xmi:id="8162770c-9415-5ae6-9c59-e8041e6d5505" name="name" visibility="private"><ownedComment xmi:id="a6f5e1ca-3789-5245-bb81-e6cc76f55377" body="Name." annotatedElement="8162770c-9415-5ae6-9c59-e8041e6d5505"/><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="d6991f1f-3f00-5d6b-81df-1d4c163bf4eb" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="6e6b9d66-ab26-5ec2-abfa-15dba4b81c52" name="" value="1"/></ownedAttribute>
+                  </packagedElement>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Package" xmi:id="4ae0f7de-8a8b-513f-bd8b-83086b239093" name="own">
+                  <ownedComment xmi:id="2824d0cc-c05f-5304-817f-2fc835ab250d" body="Types of SharedPackageSpecA only. Expected: no error." annotatedElement="4ae0f7de-8a8b-513f-bd8b-83086b239093"/>
+                  <packagedElement xmi:type="uml:Class" xmi:id="d52352d7-927a-5df5-a53d-4d7dba51e8f3" name="OwnType">
+                    <ownedComment xmi:id="02a6e35c-2617-59aa-97ca-fab7c1ada5f5" body="Type of a package that belongs to one specification." annotatedElement="d52352d7-927a-5df5-a53d-4d7dba51e8f3"/>
+                    <ownedAttribute xmi:id="de8f1633-8c81-5efb-b484-dc66a5ff3bcf" name="name" visibility="private"><ownedComment xmi:id="c24421fd-2073-51e2-97e3-6361eeddbff0" body="Name." annotatedElement="de8f1633-8c81-5efb-b484-dc66a5ff3bcf"/><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="f236b7f9-4c8f-5186-896f-890a0f46f520" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="96ccfc98-d533-5d07-bcdc-44d93377b4f9" name="" value="1"/></ownedAttribute>
+                  </packagedElement>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Component" xmi:id="0b59f8e3-5478-5af1-b79a-47a44df5f4c8" name="SharedPackageSpecA" clientDependency="7becc266-f530-53b4-b6e1-36e2776e635a 34c34fa6-43a8-5636-b78c-3ee4c321430a">
+                  <ownedComment xmi:id="ac0bc346-9f92-550d-96ee-f7a756e62470" body="Depends on the packages shared and own." annotatedElement="0b59f8e3-5478-5af1-b79a-47a44df5f4c8"/>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Component" xmi:id="e225da4d-a136-583a-b8f4-d2cf47d53d8b" name="SharedPackageSpecB" clientDependency="1bc88297-bef5-5e02-b82e-de2c40d360f6">
+                  <ownedComment xmi:id="3f004c8e-1d6c-5a49-9c7a-e83a88371226" body="Depends on the package shared, which also belongs to SharedPackageSpecA." annotatedElement="e225da4d-a136-583a-b8f4-d2cf47d53d8b"/>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="7becc266-f530-53b4-b6e1-36e2776e635a" name="" supplier="222c7040-f93b-50c5-b237-29c9787567a1" client="0b59f8e3-5478-5af1-b79a-47a44df5f4c8"/>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="34c34fa6-43a8-5636-b78c-3ee4c321430a" name="" supplier="4ae0f7de-8a8b-513f-bd8b-83086b239093" client="0b59f8e3-5478-5af1-b79a-47a44df5f4c8"/>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="1bc88297-bef5-5e02-b82e-de2c40d360f6" name="" supplier="222c7040-f93b-50c5-b237-29c9787567a1" client="e225da4d-a136-583a-b8f4-d2cf47d53d8b"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="69ac6211-0dba-505f-bf3d-5434e481e754">
+      <eAnnotations xmi:id="3751691f-a83e-5606-a66a-8ec3ee61a8b6" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="JMM.profile.uml#_Jo9yZum6EfGDzO32JuuAbw"/>
+      </eAnnotations>
+      <appliedProfile href="JMM.profile.uml#1343d0db-c83a-423c-ab17-a08901c7a7e2"/>
+    </profileApplication>
+  </uml:Model>
+  <JMM:OpenAPI3Specification xmi:id="50139b6c-2446-50bb-aba7-179048da13f0" base_Component="0b59f8e3-5478-5af1-b79a-47a44df5f4c8" resourceName="shared-package-spec-a.yml" apiVersion="1.0"/>
+  <JMM:OpenAPI3Specification xmi:id="9742dcc2-1729-5838-89c5-691ebeb49f65" base_Component="e225da4d-a136-583a-b8f4-d2cf47d53d8b" resourceName="shared-package-spec-b.yml" apiVersion="1.0"/>
+  <JMM:OpenAPIType xmi:id="858402a7-7e79-5124-af88-8172a98f9bc3" base_Class="a77acec6-6cce-58e2-8577-97af0df97bab"/>
+  <JMM:OpenAPIType xmi:id="71716344-eb95-5aa7-956c-9e2a06111afd" base_Class="d52352d7-927a-5df5-a53d-4d7dba51e8f3"/>
+</xmi:XMI>

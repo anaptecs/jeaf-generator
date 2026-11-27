@@ -47,6 +47,8 @@ cached getExclusionElementName(uml::NamedElement element):
 	then (element.owner.asNamedElement().qualifiedName() + "()." + element.name)
 	else if element.isOperation()
 	then element.qualifiedName() + "()"
+	else if element.isInstanceOfMetaclass("org.eclipse.uml2.uml.Package")
+	then element.qualifiedName()
 	else "";
 
 
