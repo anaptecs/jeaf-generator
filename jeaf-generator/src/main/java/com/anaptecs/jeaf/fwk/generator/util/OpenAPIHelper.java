@@ -321,7 +321,7 @@ public class OpenAPIHelper {
     specDependencies.clear();
   }
 
-  public static String getOpenAPIType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
+  public static String getOpenAPIType(org.eclipse.uml2.uml.Type pClass, Component pSpec) {
     String lFQN = Naming.getUMLQualifiedName(pClass);
     String lTypeName;
     if (basicTypes.containsKey(lFQN) == true) {
@@ -350,7 +350,7 @@ public class OpenAPIHelper {
     return lTypeName;
   }
 
-  public static String getResponseType( org.eclipse.uml2.uml.Type pClass, Component pSpec ) {
+  public static String getResponseType(org.eclipse.uml2.uml.Type pClass, Component pSpec) {
     String lFQN = Naming.getUMLQualifiedName(pClass);
     String lTypeName;
     if (basicTypes.containsKey(lFQN) == true) {
@@ -379,11 +379,11 @@ public class OpenAPIHelper {
     return lTypeName;
   }
 
-  public static String getOpenAPIFormat( org.eclipse.uml2.uml.Type pClass ) {
+  public static String getOpenAPIFormat(org.eclipse.uml2.uml.Type pClass) {
     return formatMapping.get(Naming.getUMLQualifiedName(pClass));
   }
 
-  public static void registerSpecDependency( Component pSource, Component pTarget, String pReference ) {
+  public static void registerSpecDependency(Component pSource, Component pTarget, String pReference) {
     String lKey = createSpecDependencyKey(pSource, pTarget);
     specDependencies.put(lKey, pReference);
 
@@ -392,24 +392,24 @@ public class OpenAPIHelper {
     // specDependencies.put(lOppositeKey, pReference);
   }
 
-  private static String createSpecDependencyKey( Component pSource, Component pTarget ) {
+  private static String createSpecDependencyKey(Component pSource, Component pTarget) {
     return Naming.getUMLQualifiedName(pSource) + "::" + Naming.getUMLQualifiedName(pTarget);
   }
 
-  public static void registerLocalType( org.eclipse.uml2.uml.NamedElement pClass, Component pSpec ) {
+  public static void registerLocalType(org.eclipse.uml2.uml.NamedElement pClass, Component pSpec) {
     String lFQN = Naming.getUMLQualifiedName(pClass);
     XFun.getTrace().debug("Registering local type " + lFQN + " with " + pSpec.getName() + ":" + pClass.getName());
     complexTypes.put(lFQN, new OpenAPIType(pClass, pSpec, lFQN));
   }
 
-  public static void registerLocalParameter( org.eclipse.uml2.uml.Property pProperty, Component pSpec ) {
+  public static void registerLocalParameter(org.eclipse.uml2.uml.Property pProperty, Component pSpec) {
     String lFQN = Naming.getUMLQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
     XFun.getTrace().debug(
         "Registering local parameter " + lFQN + " with " + pSpec.getName() + ":" + pProperty.getName());
     parameterTypes.put(lFQN, new OpenAPIType(pProperty, pSpec, lFQN));
   }
 
-  public static String getOpenAPIParameter( org.eclipse.uml2.uml.Property pProperty, Component pSpec ) {
+  public static String getOpenAPIParameter(org.eclipse.uml2.uml.Property pProperty, Component pSpec) {
     String lFQN = Naming.getUMLQualifiedName(pProperty.getClass_()) + "." + pProperty.getName();
     String lTypeName;
     if (parameterTypes.containsKey(lFQN) == true) {
@@ -435,7 +435,7 @@ public class OpenAPIHelper {
     return lTypeName;
   }
 
-  private static String notInDependentSpec( OpenAPIType pOpenAPIType ) {
+  private static String notInDependentSpec(OpenAPIType pOpenAPIType) {
     return "belongs to OpenAPI specification '" + pOpenAPIType.spec.getName()
         + "', but there is no dependency between the two specifications";
   }
@@ -444,8 +444,8 @@ public class OpenAPIHelper {
    * Records that a type or parameter could not be resolved (message 9217) and returns the text that is written into the
    * specification instead of a reference.
    */
-  private static String unresolved( String pKind, NamedElement pElement, String pFQN, Component pSpec,
-      String pReason ) {
+  private static String unresolved(String pKind, NamedElement pElement, String pFQN, Component pSpec,
+      String pReason) {
     String lMessage = GeneratorCommons.getMessage(pElement, "9217",
         Arrays.asList(pSpec.getName(), pKind, Naming.getElementNameForMessage(pElement), pReason));
     synchronized (unresolvedReferences) {
@@ -470,7 +470,7 @@ public class OpenAPIHelper {
     }
   }
 
-  public static boolean isBasicOpenAPIType( org.eclipse.uml2.uml.Element pType ) {
+  public static boolean isBasicOpenAPIType(org.eclipse.uml2.uml.Element pType) {
     boolean lBasicType;
     if (pType instanceof NamedElement) {
       lBasicType = basicTypes.containsKey(Naming.getUMLQualifiedName((NamedElement) pType));
@@ -481,11 +481,11 @@ public class OpenAPIHelper {
     return lBasicType;
   }
 
-  public static String toOpenAPIContentType( String pContentTypeID ) {
+  public static String toOpenAPIContentType(String pContentTypeID) {
     return contentTypeMapping.get(pContentTypeID);
   }
 
-  public static String getOpenAPIParameterType( Element pType ) {
+  public static String getOpenAPIParameterType(Element pType) {
     String lOpenAPIType;
     if (ClassUtil.isStereotypeApplied(pType, "PathParam")) {
       lOpenAPIType = "path";
@@ -510,7 +510,7 @@ public class OpenAPIHelper {
     return lOpenAPIType;
   }
 
-  public static boolean isIgnoredHeader( Element pElement ) {
+  public static boolean isIgnoredHeader(Element pElement) {
     boolean lIgnoredHeaderName;
     if (GeneratorCommons.addIgnorableHeadersToOpenAPISpec()) {
       lIgnoredHeaderName = false;
@@ -537,7 +537,7 @@ public class OpenAPIHelper {
     return lIgnoredHeaderName;
   }
 
-  public static List<Element> getAllAttributesFromHierarchy( Element pElement ) {
+  public static List<Element> getAllAttributesFromHierarchy(Element pElement) {
     List<Element> lElements = new ArrayList<Element>();
     Class lClass = (Class) pElement;
     if (lClass.parents().size() > 0) {
@@ -553,7 +553,7 @@ public class OpenAPIHelper {
     return lElements;
   }
 
-  public static String getJAXRSStatusCodeName( String pJMMStatusCode ) {
+  public static String getJAXRSStatusCodeName(String pJMMStatusCode) {
     String lStatusCode = httpStatusCodeMapping.get(pJMMStatusCode);
     if (lStatusCode == null) {
       XFun.getTrace().error("No mapping found for status code: " + pJMMStatusCode);
@@ -561,7 +561,7 @@ public class OpenAPIHelper {
     return lStatusCode;
   }
 
-  public static String getModelStatusCodeName( Integer pStatusCode ) {
+  public static String getModelStatusCodeName(Integer pStatusCode) {
     String lStatusCode = httpStatusCodeValues.get(pStatusCode);
     if (lStatusCode == null) {
       XFun.getTrace().error("Invalid REST (JAX-RS) status code: " + pStatusCode);
@@ -571,7 +571,7 @@ public class OpenAPIHelper {
 
   public static final String WITH_DELIMITER = "((?<=%1$s)|(?=%1$s))";
 
-  public static List<String> splitRESTPath( String pRESTPath, List<String> pPathParams, List<String> pVariableNames ) {
+  public static List<String> splitRESTPath(String pRESTPath, List<String> pPathParams, List<String> pVariableNames) {
     Assert.assertTrue(pPathParams.size() == pVariableNames.size(),
         "Internal error amount of path params and variables names must be the same");
 
@@ -598,7 +598,7 @@ public class OpenAPIHelper {
     return lParts;
   }
 
-  public static String[] splitRESTPath( String pRESTPath, String... pPathParams ) {
+  public static String[] splitRESTPath(String pRESTPath, String... pPathParams) {
     String[] lSplitResult;
     if (pPathParams != null && pPathParams.length > 0) {
       // Builder regular expression to split path into several parts
@@ -620,8 +620,8 @@ public class OpenAPIHelper {
     return lSplitResult;
   }
 
-  public static java.util.List<String> extractRESTParamsFromPath( String pPath ) {
-    java.util.List<String> lPathParams = new ArrayList();
+  public static java.util.List<String> extractRESTParamsFromPath(String pPath) {
+    java.util.List<String> lPathParams = new ArrayList<>();
     if (pPath != null) {
       java.util.regex.Matcher lMatcher = PATH_PARAM_PATTERN.matcher(pPath);
       while (lMatcher.find()) {
@@ -632,10 +632,10 @@ public class OpenAPIHelper {
     return lPathParams;
   }
 
-  public static java.util.List<String> detectMissingRESTPathParams( String pRESTPath,
-      java.util.List<String> pPathVariableNames ) {
+  public static java.util.List<String> detectMissingRESTPathParams(String pRESTPath,
+      java.util.List<String> pPathVariableNames) {
 
-    java.util.List<String> lMissingPathParams = new ArrayList();
+    java.util.List<String> lMissingPathParams = new ArrayList<>();
     if (pRESTPath != null) {
       java.util.List<String> lPathParams = extractRESTParamsFromPath(pRESTPath);
       for (String lNextPathParam : lPathParams) {
@@ -647,9 +647,9 @@ public class OpenAPIHelper {
     return lMissingPathParams;
   }
 
-  public static java.util.List<String> detectDeadRESTPathParams( String pRESTPath,
-      java.util.List<String> pPathVariableNames ) {
-    java.util.List<String> lDeadPathParams = new ArrayList();
+  public static java.util.List<String> detectDeadRESTPathParams(String pRESTPath,
+      java.util.List<String> pPathVariableNames) {
+    java.util.List<String> lDeadPathParams = new ArrayList<>();
 
     if (pPathVariableNames != null) {
       java.util.List<String> lPathParams = extractRESTParamsFromPath(pRESTPath);
