@@ -1,6 +1,7 @@
 import uml;
 import JMM;
-import Persistence;
+
+
 extension java::GeneratorCommons;
 
 List[PersistentObject] entity (Class dao) : dao.clientDependency.supplier.typeSelect(PersistentObject);
