@@ -267,6 +267,7 @@ public class GeneratorMojo extends AbstractMojo {
    * <code>com.anaptecs.jeaf.test.MyService.doSomething().size</code></li>
    * <li>Enumeration literal ("fully qualified name of enumeration"."literal name"):
    * <code>com.anaptecs.jeaf.test.Color.RED</code></li>
+   * <li>Package ("fully qualified name"): <code>com.anaptecs.jeaf.test</code></li>
    * </ul>
    * <br/>
    * <b>Example Configuration:</b> <br/>
