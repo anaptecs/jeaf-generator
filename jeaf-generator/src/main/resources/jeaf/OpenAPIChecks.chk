@@ -47,6 +47,7 @@ context Parameter if runChecks("RESTOperation") && this.owner.isRESTOperation() 
 context Model if runChecks() ERROR this.getErrorMessage("9114", {}): this.hasValidOneGlobalDefaultErrorResponse() == false;
 // Check is no longer correct
 //context OpenAPI3Specification if runChecks("OpenAPI3Specification") ERROR "Error: <<OpenAPI3Specification>> " + this.name + " has " + this.getCustomResponses().size + " error responses.": this.getCustomResponses().size < 2;
+context OpenAPI3Specification if runChecks("OpenAPI3Specification") && this.isNonMandatoryCheckActive("9218") WARNING this.getWarningMessage("9218", {name, this.getCircularOpenAPIDependencies().name.toString(", ")}): this.getCircularOpenAPIDependencies().isEmpty;
 
 
 // Checks for stereotype OpenAPIResponse

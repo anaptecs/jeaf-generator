@@ -53,7 +53,7 @@
 		<jeaf.rest.api.version>2.0.0-RC1</jeaf.rest.api.version>
 		<jeaf.rest.impl.version>2.0.0-RC1</jeaf.rest.impl.version>
 		<jeaf.test.model.version>2.14.0</jeaf.test.model.version>
-		<jeaf.generator.messages.version>1.27.0</jeaf.generator.messages.version>
+		<jeaf.generator.messages.version>1.27.1-SNAPSHOT</jeaf.generator.messages.version>
 		<jeaf-generator-annotations.version>2.0.0</jeaf-generator-annotations.version>
 		
 		<maven.plugin.plugin.version>3.16.0</maven.plugin.plugin.version>
@@ -129,6 +129,7 @@
 		<module>jeaf-generator-test-open-api-dependent-spec</module>
 		<module>jeaf-generator-test-open-api</module>
 		<module>jeaf-generator-test-open-api-31</module>
+		<module>jeaf-generator-test-open-api-circular-dependencies</module>
 		<module>jeaf-generator-test-open-api-service-objects</module>
     	<module>jeaf-generator-test-open-api-service-objects-jackson3</module>
 		<module>jeaf-generator-test-open-api-internal-service-objects</module>

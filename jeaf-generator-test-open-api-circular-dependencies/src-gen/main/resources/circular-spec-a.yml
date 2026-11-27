@@ -1,0 +1,40 @@
+openapi: 3.0.3
+
+info:
+  title: CircularSpecA
+  version: 1.0
+  description: |
+    Direct circular dependency with CircularSpecB, indirect one via CircularSpecB and CircularSpecC. Expected: warning 9218 (CircularSpecB, CircularSpecC).
+
+paths:
+  # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # So we define NOP operation here as workaround.
+  /nop:
+    get:
+      operationId: noOperation
+      responses:
+        '200':
+          description: Nothing is the result of nop ;-)
+
+components:
+  schemas:
+    # com.anaptecs.jeaf.junit.openapi.circular.a.CircularTypeA
+    CircularTypeA:
+      type: object
+      additionalProperties: false
+      description: |
+        Type of CircularSpecA.
+      required:
+        - name
+      properties:
+        name:
+          description: |
+            Name.
+          type: string
+          nullable: false
+        circularTypeB:
+          description: |
+            Reference to a type of CircularSpecB.
+          $ref: 'circular-spec-b.yml#/components/schemas/CircularTypeB'
+
+      

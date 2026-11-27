@@ -22,7 +22,7 @@
 
 «DEFINE GenerateAllOpenAPISpecs FOR Model»
 	«LET this.allOwnedElements().typeSelect(OpenAPI3Specification).select(e|e.isInGeneratorWhitelist()) AS allSpecs»
-	«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH allSpecs»
+	«EXPAND java::OpenAPI::RegisterLocalTypes FOREACH allSpecs.getSpecsIncludingDependentSpecs()»
 	
 	«FOREACH allSpecs AS spec»
 		«info("Processing «OpenAPI3Specification» " + spec.name + " (" + (spec.getNearestPackage().fqn()) + ")")»
@@ -260,7 +260,6 @@ components:
 	    «ENDIF»
 	  «ENDFOREACH»
 	«ENDFOREACH»
-	«EXPAND RegisterLocalTypes FOREACH this.getDependentSpecs()»
 «ENDDEFINE»
 
 «DEFINE RegisterLocalType(OpenAPI3Specification spec) FOR OpenAPIResponse»
