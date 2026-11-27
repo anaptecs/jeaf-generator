@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:JMM="http://JMM/_11_5_1ab00d4_1164055757453_405595_1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xsi:schemaLocation="http://JMM/_11_5_1ab00d4_1164055757453_405595_1 JMM.profile.uml#_Jo9yZum6EfGDzO32JuuAbw">
+  <uml:Model xmi:id="32248cc6-1abc-5f89-84a9-030132c72ab5" name="JEAF Circular OpenAPI Specs">
+    <packagedElement xmi:type="uml:Package" xmi:id="4509c276-fafb-5c42-ab9d-a0044e9d1b87" name="com">
+      <packagedElement xmi:type="uml:Package" xmi:id="37c7c018-1479-509d-95eb-41831bff18c8" name="anaptecs">
+        <packagedElement xmi:type="uml:Package" xmi:id="e70144de-2cb5-5aae-a2f3-3cb736b8785e" name="jeaf">
+          <packagedElement xmi:type="uml:Package" xmi:id="9572c346-20b9-5ebd-9164-84a22d7dece1" name="junit">
+            <packagedElement xmi:type="uml:Package" xmi:id="97908494-c88d-5da4-ab8a-7ac54fcdff93" name="openapi">
+              <packagedElement xmi:type="uml:Package" xmi:id="8d602ded-e342-5762-9704-4bbac4fce036" name="circular">
+                <ownedComment xmi:id="5bea6e0b-0b87-5225-a7de-1407bf98af15" body="Test case for issue #883: circular dependencies between OpenAPI specifications. Used by jeaf-generator-test-open-api-circular-dependencies." annotatedElement="8d602ded-e342-5762-9704-4bbac4fce036"/>
+                <packagedElement xmi:type="uml:Package" xmi:id="e0163218-f1da-5333-846b-88545af89c95" name="a">
+                  <ownedComment xmi:id="471e06b1-8a20-54c9-9f01-7eaa15a4bb62" body="Types of CircularSpecA." annotatedElement="e0163218-f1da-5333-846b-88545af89c95"/>
+                  <packagedElement xmi:type="uml:Class" xmi:id="48694fc2-dd38-5950-957e-1510ee4172c7" name="CircularTypeA">
+                    <ownedComment xmi:id="bf41f876-e2b4-5f51-a3ef-54dd78fbbb66" body="Type of CircularSpecA." annotatedElement="48694fc2-dd38-5950-957e-1510ee4172c7"/>
+                    <ownedAttribute xmi:id="99900d9a-356f-55fc-ba73-7de98feb7a43" name="name" visibility="private"><ownedComment xmi:id="08587f53-f049-5485-813e-f29650d000d1" body="Name." annotatedElement="99900d9a-356f-55fc-ba73-7de98feb7a43"/><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="b03c9f3a-7f12-5e57-affc-536a8e4f35e0" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="9b01cba5-be30-585a-88ac-b619f513fe17" name="" value="1"/></ownedAttribute>
+                    <ownedAttribute xmi:id="b4f0889d-13b5-5ef5-a3bc-af146bce1402" name="circularTypeB" visibility="private" type="c687eb2b-6577-5ce8-a7bd-abbc03a1114a"><ownedComment xmi:id="2b129d21-13b4-53f5-9c43-3c740f225a7f" body="Reference to a type of CircularSpecB." annotatedElement="b4f0889d-13b5-5ef5-a3bc-af146bce1402"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="c490787b-2a24-5f2e-9867-239a4b6a5429" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="24e1f99e-9bc0-5166-aa92-0810c7ed171c" name=""/></ownedAttribute>
+                  </packagedElement>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Component" xmi:id="e3d83290-4cc1-5974-9174-3654fc5c31c2" name="CircularSpecA" clientDependency="c39ce38e-df48-5d82-bbd1-c5a9d0b062cf d824ff0f-7b27-5d9a-a00b-b77c710d94b5">
+                  <ownedComment xmi:id="75f8b755-b032-5922-a604-c2e38f8958a5" body="Direct circular dependency with CircularSpecB, indirect one via CircularSpecB and CircularSpecC. Expected: warning 9218 (CircularSpecB, CircularSpecC)." annotatedElement="e3d83290-4cc1-5974-9174-3654fc5c31c2"/>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="c39ce38e-df48-5d82-bbd1-c5a9d0b062cf" name="" supplier="e0163218-f1da-5333-846b-88545af89c95" client="e3d83290-4cc1-5974-9174-3654fc5c31c2"/>
+                <packagedElement xmi:type="uml:Package" xmi:id="016a4a3b-199d-542b-805d-e750c2db5f32" name="b">
+                  <ownedComment xmi:id="2f46011e-d232-5cec-8cc5-b367a419fa93" body="Types of CircularSpecB." annotatedElement="016a4a3b-199d-542b-805d-e750c2db5f32"/>
+                  <packagedElement xmi:type="uml:Class" xmi:id="c687eb2b-6577-5ce8-a7bd-abbc03a1114a" name="CircularTypeB">
+                    <ownedComment xmi:id="0b0dcd82-ea9e-51c8-a846-b01194b3febb" body="Type of CircularSpecB." annotatedElement="c687eb2b-6577-5ce8-a7bd-abbc03a1114a"/>
+                    <ownedAttribute xmi:id="9bcfd610-b0d9-5ad1-994c-a37449515a1d" name="name" visibility="private"><ownedComment xmi:id="6d13f2a0-c183-5c28-bfc0-0bc8b233fba7" body="Name." annotatedElement="9bcfd610-b0d9-5ad1-994c-a37449515a1d"/><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="e7fbb750-40b9-54f0-983b-1c74cbb3ebfe" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="82121e92-c602-5d42-b500-88948620e39b" name="" value="1"/></ownedAttribute>
+                    <ownedAttribute xmi:id="f8b3fc86-8ac5-5fd4-bba0-a6d3cfe26aa4" name="circularTypeA" visibility="private" type="48694fc2-dd38-5950-957e-1510ee4172c7"><ownedComment xmi:id="fa73841f-a487-5ac1-ad38-64d2a9944d14" body="Reference to a type of CircularSpecA." annotatedElement="f8b3fc86-8ac5-5fd4-bba0-a6d3cfe26aa4"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="48170378-056c-5cd4-bfd0-0c65a6fb3345" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="7f22071e-847e-5a30-b5d1-dae8cb096ad0" name=""/></ownedAttribute>
+                    <ownedAttribute xmi:id="2bce5deb-7b0e-547a-931c-5f820ded6f70" name="circularTypeC" visibility="private" type="6f77f2ac-b064-5e89-9de8-aa3dcb1009b6"><ownedComment xmi:id="c3d231da-afdc-5125-a944-bd6c0f41d332" body="Reference to a type of CircularSpecC." annotatedElement="2bce5deb-7b0e-547a-931c-5f820ded6f70"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="8349f4b6-914c-51a8-9169-db36150c9188" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="ed62a43d-7528-52f2-a4f5-d90c445c6af4" name=""/></ownedAttribute>
+                  </packagedElement>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Component" xmi:id="170d7ff2-d768-527a-8de0-f02b4ceb2d5b" name="CircularSpecB" clientDependency="06a68ccc-d08e-5f8d-9bda-87ffbcfeb214 d3d9c601-136d-518a-a7b4-9839fb92ca64 d1fe1916-33cb-5965-90dd-c9757dada537">
+                  <ownedComment xmi:id="1b7b6104-b383-50df-b5df-2f37f4562b97" body="Direct circular dependency with CircularSpecA, indirect one via CircularSpecC. Expected: warning 9218 (CircularSpecA, CircularSpecC)." annotatedElement="170d7ff2-d768-527a-8de0-f02b4ceb2d5b"/>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="06a68ccc-d08e-5f8d-9bda-87ffbcfeb214" name="" supplier="016a4a3b-199d-542b-805d-e750c2db5f32" client="170d7ff2-d768-527a-8de0-f02b4ceb2d5b"/>
+                <packagedElement xmi:type="uml:Package" xmi:id="07c4d310-24a7-518b-b913-fd30aef3cfd9" name="c">
+                  <ownedComment xmi:id="ee8a2f5c-8f14-5f9f-82ba-acc72de05c6f" body="Types of CircularSpecC." annotatedElement="07c4d310-24a7-518b-b913-fd30aef3cfd9"/>
+                  <packagedElement xmi:type="uml:Class" xmi:id="6f77f2ac-b064-5e89-9de8-aa3dcb1009b6" name="CircularTypeC">
+                    <ownedComment xmi:id="bc10ee70-1720-5417-99a7-22e02fb9d137" body="Type of CircularSpecC." annotatedElement="6f77f2ac-b064-5e89-9de8-aa3dcb1009b6"/>
+                    <ownedAttribute xmi:id="a4ee802d-baea-5343-9899-afa26fcc8122" name="name" visibility="private"><ownedComment xmi:id="5572b4cd-d212-5d98-b133-0c8ff93eb04a" body="Name." annotatedElement="a4ee802d-baea-5343-9899-afa26fcc8122"/><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="43d29b54-6af2-5f8d-9fa3-f5ccf9d92fce" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="2892eaf2-d7b3-57b6-93ca-2cf901c1ea35" name="" value="1"/></ownedAttribute>
+                    <ownedAttribute xmi:id="ae97e7e9-eb26-5e8c-ab38-1e3d73d64d21" name="circularTypeA" visibility="private" type="48694fc2-dd38-5950-957e-1510ee4172c7"><ownedComment xmi:id="4fba1992-df43-578b-8258-7e91348d24d5" body="Reference to a type of CircularSpecA." annotatedElement="ae97e7e9-eb26-5e8c-ab38-1e3d73d64d21"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="a9652f41-a88a-53c0-9379-b2baeeb55223" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="d041d58c-b826-5f7e-83af-60c8f989ad21" name=""/></ownedAttribute>
+                  </packagedElement>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Component" xmi:id="dd42ce42-b631-507f-b612-071b9ff56d3a" name="CircularSpecC" clientDependency="c967d47f-1978-5b2a-9362-244d71f0d34f 9057ed60-1884-5583-9f1f-9c5522bcd351">
+                  <ownedComment xmi:id="54f56302-fb13-5309-b60c-8e8ec7f278b2" body="Indirect circular dependency via CircularSpecA and CircularSpecB. Expected: warning 9218 (CircularSpecA, CircularSpecB)." annotatedElement="dd42ce42-b631-507f-b612-071b9ff56d3a"/>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="c967d47f-1978-5b2a-9362-244d71f0d34f" name="" supplier="07c4d310-24a7-518b-b913-fd30aef3cfd9" client="dd42ce42-b631-507f-b612-071b9ff56d3a"/>
+                <packagedElement xmi:type="uml:Package" xmi:id="023fab57-3934-57ed-a0ba-14c11e66d80b" name="d">
+                  <ownedComment xmi:id="d51b4c06-2fd0-53cf-8181-a5b22bfbd02d" body="Types of CircularSpecD." annotatedElement="023fab57-3934-57ed-a0ba-14c11e66d80b"/>
+                  <packagedElement xmi:type="uml:Class" xmi:id="02cd26dc-cc59-56e3-9ada-77fb6426c266" name="CircularTypeD">
+                    <ownedComment xmi:id="0ba39438-6e38-5bc6-9803-d29cdacc0e65" body="Type of CircularSpecD." annotatedElement="02cd26dc-cc59-56e3-9ada-77fb6426c266"/>
+                    <ownedAttribute xmi:id="9ce4a105-1579-5b32-8e1a-16c264373aef" name="name" visibility="private"><ownedComment xmi:id="6f4ae6e2-1fe1-5176-a9b2-d72b6e046d37" body="Name." annotatedElement="9ce4a105-1579-5b32-8e1a-16c264373aef"/><type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="3b5cff74-e736-5903-9b1d-77a4b49b0d4d" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="f4919613-d90f-530f-9529-c35adf08e080" name="" value="1"/></ownedAttribute>
+                    <ownedAttribute xmi:id="c958a2fc-36b7-53ce-b5d3-313e519ac04d" name="circularTypeA" visibility="private" type="48694fc2-dd38-5950-957e-1510ee4172c7"><ownedComment xmi:id="f426473d-39d9-5a84-8cdf-8bab61313a99" body="Reference to a type of CircularSpecA." annotatedElement="c958a2fc-36b7-53ce-b5d3-313e519ac04d"/><upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="1f61631b-ba6f-5192-bbe5-ced9b5c4d71b" name="" value="1"/><lowerValue xmi:type="uml:LiteralInteger" xmi:id="59390c36-0ee6-59bb-9848-d4407feb1b55" name=""/></ownedAttribute>
+                  </packagedElement>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Component" xmi:id="8bdc8d1c-f777-54da-b1df-29a7f6a96091" name="CircularSpecD" clientDependency="bb33949f-1ebc-5772-874c-59c5956e8a97 00186bc2-41d5-5eac-a248-53f32281bb90">
+                  <ownedComment xmi:id="33d34429-5573-512e-a0f2-0a7c4934abf0" body="Depends on the circular specifications but is not part of the cycle. Expected: no warning." annotatedElement="8bdc8d1c-f777-54da-b1df-29a7f6a96091"/>
+                </packagedElement>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="bb33949f-1ebc-5772-874c-59c5956e8a97" name="" supplier="023fab57-3934-57ed-a0ba-14c11e66d80b" client="8bdc8d1c-f777-54da-b1df-29a7f6a96091"/>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="d824ff0f-7b27-5d9a-a00b-b77c710d94b5" name="" supplier="170d7ff2-d768-527a-8de0-f02b4ceb2d5b" client="e3d83290-4cc1-5974-9174-3654fc5c31c2"/>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="d3d9c601-136d-518a-a7b4-9839fb92ca64" name="" supplier="e3d83290-4cc1-5974-9174-3654fc5c31c2" client="170d7ff2-d768-527a-8de0-f02b4ceb2d5b"/>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="d1fe1916-33cb-5965-90dd-c9757dada537" name="" supplier="dd42ce42-b631-507f-b612-071b9ff56d3a" client="170d7ff2-d768-527a-8de0-f02b4ceb2d5b"/>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="9057ed60-1884-5583-9f1f-9c5522bcd351" name="" supplier="e3d83290-4cc1-5974-9174-3654fc5c31c2" client="dd42ce42-b631-507f-b612-071b9ff56d3a"/>
+                <packagedElement xmi:type="uml:Dependency" xmi:id="00186bc2-41d5-5eac-a248-53f32281bb90" name="" supplier="e3d83290-4cc1-5974-9174-3654fc5c31c2" client="8bdc8d1c-f777-54da-b1df-29a7f6a96091"/>
+              </packagedElement>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="1ed275bf-fa4e-5ee3-a155-d7c972658751">
+      <eAnnotations xmi:id="8d4c2e02-8653-5d1e-8b0a-b3c47bd4308a" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="JMM.profile.uml#_Jo9yZum6EfGDzO32JuuAbw"/>
+      </eAnnotations>
+      <appliedProfile href="JMM.profile.uml#1343d0db-c83a-423c-ab17-a08901c7a7e2"/>
+    </profileApplication>
+  </uml:Model>
+  <JMM:OpenAPI3Specification xmi:id="ebd84b31-e555-5f90-9c7d-0b94b108aab6" base_Component="e3d83290-4cc1-5974-9174-3654fc5c31c2" resourceName="circular-spec-a.yml" apiVersion="1.0"/>
+  <JMM:OpenAPI3Specification xmi:id="aed3eda4-b3dd-529f-812e-82cdc0aac8f1" base_Component="170d7ff2-d768-527a-8de0-f02b4ceb2d5b" resourceName="circular-spec-b.yml" apiVersion="1.0"/>
+  <JMM:OpenAPI3Specification xmi:id="8df77bca-ba4e-5771-97cd-07a9976d5d19" base_Component="dd42ce42-b631-507f-b612-071b9ff56d3a" resourceName="circular-spec-c.yml" apiVersion="1.0"/>
+  <JMM:OpenAPI3Specification xmi:id="08f3a539-0b53-5119-90a2-9857e620e848" base_Component="8bdc8d1c-f777-54da-b1df-29a7f6a96091" resourceName="circular-spec-d.yml" apiVersion="1.0"/>
+  <JMM:OpenAPISpecReference xmi:id="96d9e80c-0066-5089-95b9-66257d48b66a" base_Dependency="d824ff0f-7b27-5d9a-a00b-b77c710d94b5"/>
+  <JMM:OpenAPISpecReference xmi:id="84ff7b87-8dbf-5502-a460-e5c2acf979cd" base_Dependency="d3d9c601-136d-518a-a7b4-9839fb92ca64"/>
+  <JMM:OpenAPISpecReference xmi:id="f88ce571-c112-5d5b-94ce-8072f4890943" base_Dependency="d1fe1916-33cb-5965-90dd-c9757dada537"/>
+  <JMM:OpenAPISpecReference xmi:id="1ae6ec21-e445-5768-81c2-23bc7a00eac2" base_Dependency="9057ed60-1884-5583-9f1f-9c5522bcd351"/>
+  <JMM:OpenAPISpecReference xmi:id="a13422a1-78ca-5460-8436-4580bc6045a9" base_Dependency="00186bc2-41d5-5eac-a248-53f32281bb90"/>
+  <JMM:OpenAPIType xmi:id="3be3d66f-277e-5714-bbd9-9d5258e69fc8" base_Class="48694fc2-dd38-5950-957e-1510ee4172c7"/>
+  <JMM:OpenAPIType xmi:id="d9730a67-edb3-5bc3-ab7c-7e3d90b4293e" base_Class="c687eb2b-6577-5ce8-a7bd-abbc03a1114a"/>
+  <JMM:OpenAPIType xmi:id="4d6bec2a-a1c7-5014-8827-61989b03f36f" base_Class="6f77f2ac-b064-5e89-9de8-aa3dcb1009b6"/>
+  <JMM:OpenAPIType xmi:id="2cd5f229-3ece-52d4-8053-b4c67b3c2a2f" base_Class="02cd26dc-cc59-56e3-9ada-77fb6426c266"/>
+</xmi:XMI>

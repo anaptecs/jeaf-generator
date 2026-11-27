@@ -1,0 +1,40 @@
+openapi: 3.0.3
+
+info:
+  title: CircularSpecD
+  version: 1.0
+  description: |
+    Depends on the circular specifications but is not part of the cycle. Expected: no warning.
+
+paths:
+  # OpenAPI standard requires to define at least 1 operation. This API however seems to be a pure type definition. 
+  # So we define NOP operation here as workaround.
+  /nop:
+    get:
+      operationId: noOperation
+      responses:
+        '200':
+          description: Nothing is the result of nop ;-)
+
+components:
+  schemas:
+    # com.anaptecs.jeaf.junit.openapi.circular.d.CircularTypeD
+    CircularTypeD:
+      type: object
+      additionalProperties: false
+      description: |
+        Type of CircularSpecD.
+      required:
+        - name
+      properties:
+        name:
+          description: |
+            Name.
+          type: string
+          nullable: false
+        circularTypeA:
+          description: |
+            Reference to a type of CircularSpecA.
+          $ref: 'circular-spec-a.yml#/components/schemas/CircularTypeA'
+
+      

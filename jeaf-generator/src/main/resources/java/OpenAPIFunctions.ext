@@ -62,6 +62,20 @@ cached List[JMM::OpenAPI3Specification] getDependentSpecs(JMM::OpenAPI3Specifica
 	spec.clientDependency.supplier.typeSelect(JMM::OpenAPI3Specification);
 
 
+// Passed specifications and all specifications they depend on (transitive), each only once, so that circular
+// dependencies are possible.
+cached List[JMM::OpenAPI3Specification] getSpecsIncludingDependentSpecs(List[JMM::OpenAPI3Specification] specs):
+	specs.collectDependentSpecs(specs);
+
+private List[JMM::OpenAPI3Specification] collectDependentSpecs(List[JMM::OpenAPI3Specification] newSpecs, List[JMM::OpenAPI3Specification] visited):
+	if newSpecs.isEmpty
+	then visited
+	else newSpecs.getNotVisitedDependentSpecs(visited).collectDependentSpecs({}.addAll(visited).addAll(newSpecs.getNotVisitedDependentSpecs(visited)).toList());
+
+private List[JMM::OpenAPI3Specification] getNotVisitedDependentSpecs(List[JMM::OpenAPI3Specification] specs, List[JMM::OpenAPI3Specification] visited):
+	specs.getDependentSpecs().select(e|visited.contains(e) == false).toSet().toList();
+
+
 Void registerSpecDependency( uml::Component pSource, uml::Component pTarget, String pReference ):
     JAVA com.anaptecs.jeaf.fwk.generator.util.OpenAPIHelper.registerSpecDependency( org.eclipse.uml2.uml.Component, org.eclipse.uml2.uml.Component, java.lang.String );
 

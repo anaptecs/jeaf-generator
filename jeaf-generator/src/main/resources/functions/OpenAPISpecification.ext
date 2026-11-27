@@ -77,20 +77,28 @@ cached List[OpenAPI3Specification] getDependentOpenAPISpecs(OpenAPI3Specificatio
 cached List[OpenAPI3Specification] getDependentOpenAPISpecs(OpenAPI3Specification spec, boolean transitiv):
 	if transitiv == false
 	then spec.getDependentOpenAPISpecs()
-	else {spec}.toList().getOpenAPIDependencies(true).getOpenAPISpecFromDependency().toSet();
-	
+	else {spec}.toList().getOpenAPIDependencies(true).getOpenAPISpecFromDependency().select(e|e != spec).toSet();
+
 private List[OpenAPISpecReference] getDirectOpenAPIDependencies(OpenAPI3Specification spec):
 	spec.clientDependency.typeSelect(OpenAPISpecReference);
 
 cached List[OpenAPISpecReference] getOpenAPIDependencies(OpenAPI3Specification spec, boolean transitive):
 	if transitive == false
 	then spec.getDirectOpenAPIDependencies()
-	else {spec}.toList().getRecursiveOpenAPIDependencies().toSet();
-	
-private List[OpenAPISpecReference] getRecursiveOpenAPIDependencies(List[OpenAPI3Specification] specs):
+	else {spec}.toList().getRecursiveOpenAPIDependencies({spec}.toList()).toSet();
+
+// Specifications that were already visited are not processed again, so that circular dependencies are possible.
+private List[OpenAPISpecReference] getRecursiveOpenAPIDependencies(List[OpenAPI3Specification] specs, List[OpenAPI3Specification] visited):
 	if specs.getDirectOpenAPIDependencies().isEmpty == false
-	then specs.getDirectOpenAPIDependencies().addAll(specs.getDirectOpenAPIDependencies().getOpenAPISpecFromDependency().getRecursiveOpenAPIDependencies())
+	then specs.getDirectOpenAPIDependencies().addAll(specs.getNewOpenAPISpecs(visited).getRecursiveOpenAPIDependencies({}.addAll(visited).addAll(specs.getNewOpenAPISpecs(visited)).toList()))
 	else {};
+
+// Specifications that the passed specification depends on and that depend on it as well (circular dependency).
+cached List[OpenAPI3Specification] getCircularOpenAPIDependencies(OpenAPI3Specification spec):
+	spec.getDependentOpenAPISpecs(true).select(e|e.getDependentOpenAPISpecs(true).contains(spec)).sortBy(e|e.name);
+
+private List[OpenAPI3Specification] getNewOpenAPISpecs(List[OpenAPI3Specification] specs, List[OpenAPI3Specification] visited):
+	specs.getDirectOpenAPIDependencies().getOpenAPISpecFromDependency().select(e|visited.contains(e) == false).toSet().toList();
 
 cached OpenAPI3Specification getOpenAPISpecFromDependency(OpenAPISpecReference dependency):
 	dependency.supplier.typeSelect(OpenAPI3Specification);
